@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers" 
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="Mynfo.Views.RegisterPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate Register}">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding Register}">
+            <StackLayout
+                Padding="5">
+                <controls:CircleImage 
+                    Aspect="AspectFill"
+                    HeightRequest="250"
+                    Source="{Binding ImageSource}">
+                    <controls:CircleImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}" />
+                    </controls:CircleImage.GestureRecognizers>
+                </controls:CircleImage>
+                <Label
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    Text="{i18n:Translate ChangeImage}">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="FirstName"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding FirstName}"
+                        Placeholder="FirstNamePlaceHolder">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="LastName"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="{Binding LastName}"
+                        Placeholder="LastNamePlaceHolder">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="{i18n:Translate EMail}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Keyboard="Email"
+                        Text="{Binding Email}"
+                        Placeholder="EmailPlaceHolder">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="{i18n:Translate Password}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        IsPassword="True"
+                        Text="{Binding Password}"
+                        Placeholder="PasswordPlaceHolder">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        Text="Confirm"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        IsPassword="True"
+                        Text="{Binding Confirm}"
+                        Placeholder="PasswordConfirmPlaceHolder">
+                    </Entry>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="{StaticResource MainColor}"
+                    BorderRadius="23"
+                    Command="{Binding RegisterCommand}"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Save"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

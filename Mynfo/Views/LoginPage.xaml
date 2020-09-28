@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.LoginPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate Login}">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding Login}">
+            <StackLayout
+                Padding="5">
+                <Image
+                    Source="Logomynfo"
+                    WidthRequest="120"/>
+                <Grid
+                    Margin="10,0"
+                    VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="{i18n:Translate EMail}"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Keyboard="Email"
+                        Text="{Binding Email, Mode=TwoWay}"
+                        Placeholder="{i18n:Translate EmailPlaceHolder}"/>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="{i18n:Translate Password}"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        IsPassword="True"
+                        Text="{Binding Password, Mode=TwoWay}"
+                        Placeholder="{i18n:Translate PasswordPlaceHolder}"/>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <StackLayout
+                    Margin="10,0"
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand">
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate Rememberme}" 
+                        VerticalOptions="Center"/>
+                    <Switch
+                        IsToggled="{Binding IsRemembered, Mode=TwoWay}"
+                        HorizontalOptions="End"/>
+                </StackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{i18n:Translate Forgot}"
+                    TextColor="{StaticResource AccentColor}"
+                    VerticalOptions="FillAndExpand"/>
+                <Button
+                        BackgroundColor="{StaticResource MainColor}"
+                        BorderRadius="23"
+                        Command="{Binding LoginCommand}"
+                        HeightRequest="46"
+                        WidthRequest="250"
+                        HorizontalOptions="Center"
+                        IsEnabled="{Binding IsEnabled,Mode=TwoWay}"
+                        Text="{i18n:Translate Login}"
+                        TextColor="White"/>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{i18n:Translate Register}"
+                    TextColor="{StaticResource AccentColor}"
+                    VerticalOptions="FillAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                    <Image
+                        Source="facebook_logo"
+                        WidthRequest="60">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginFacebookComand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Source="twitter_logo"
+                        WidthRequest="60"/>
+                    <Image
+                        Source="instagram_logo"
+                        WidthRequest="60"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
