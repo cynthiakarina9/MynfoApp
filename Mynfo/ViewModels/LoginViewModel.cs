@@ -2,6 +2,7 @@
 {
     using GalaSoft.MvvmLight.Command;
     using Helpers;
+    using Mynfo.Models;
     using Services;
     using System.Windows.Input;
     using Views;
@@ -56,6 +57,7 @@
         public LoginViewModel()
         {
             this.apiService = new ApiService();
+
             this.IsRemembered = true;
             this.IsEnabled = true;
         }
@@ -139,18 +141,38 @@
                 apiSecurity,
                 "/api",
                 "/Users/GetUserByEmail",
+                token.TokenType,
+                token.AccessToken,
                 this.Email);
 
+            var userLocal = Converter.ToUserLocal(user);
+            userLocal.Password = this.Password;
+
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token.AccessToken;
-            mainViewModel.TokenType = token.TokenType;
-            mainViewModel.User = user;
+            mainViewModel.Token = token;
+            mainViewModel.User = userLocal;
 
             if(this.IsRemembered)
             {
-                Settings.Token = token.AccessToken;
-                Settings.TokenType = token.TokenType;
+                Settings.IsRemembered = "true";
             }
+            else
+            {
+                Settings.IsRemembered = "false";
+            }
+
+            //Save Local User in SQLite
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.CreateTable<UserLocal>();
+                conn.Insert(userLocal);
+            }
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.CreateTable<TokenResponse>();
+                conn.Insert(token);
+            }
+
             mainViewModel.Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
 

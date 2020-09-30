@@ -19,7 +19,7 @@
                 FontSize="20"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
-                Text="{Binding User.FullName, StringFormat='Hola: {0}'}"
+                Text="{Binding User.FullName, StringFormat='Perfil {0}'}"
                 TextColor="{StaticResource MainColor}"/>
             <ListView 
                 BackgroundColor="WhiteSmoke"

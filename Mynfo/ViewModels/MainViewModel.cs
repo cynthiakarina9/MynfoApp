@@ -1,26 +1,20 @@
 ﻿namespace Mynfo.ViewModels
 {
     using Models;
-    using Mynfo.Domain;
     using Mynfo.Helpers;
-    using System;
     using System.Collections.ObjectModel;
-    using ViewModels;
-    using Xamarin.Forms;
 
-    public class MainViewModel
+    public class MainViewModel : BaseViewModel
     {
+        #region Attributes
+        private UserLocal user;
+        #endregion
+
         #region Properties
-        public string Token  
+        public TokenResponse Token  
         { 
             get; 
             set; 
-        }
-
-        public string TokenType
-        {
-            get;
-            set;
         }
 
         public ObservableCollection <MenuItemViewModel> Menus
@@ -29,7 +23,11 @@
             set;
         }
 
-        public User User{ get; set; }
+        public UserLocal User
+        {
+            get { return this.user; }
+            set { SetValue(ref this.user, value); }
+        }
         #endregion
         #region ViewModels
         public LoginViewModel Login
@@ -45,6 +43,18 @@
         }
 
         public RegisterViewModel Register 
+        { 
+            get; 
+            set; 
+        }
+
+        public MyProfileViewModel MyProfile
+        { 
+            get; 
+            set; 
+        }
+
+        public ChangePasswordViewModel ChangePassword 
         { 
             get; 
             set; 
@@ -67,8 +77,8 @@
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "account",
-                PageName = Languages.MyProfile,
-                Title = "MyProfile",
+                PageName = "MyProfilePage",
+                Title = Languages.MyProfile,
             });
             this.Menus.Add(new MenuItemViewModel
             {

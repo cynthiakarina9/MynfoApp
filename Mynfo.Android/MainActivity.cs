@@ -7,6 +7,7 @@
     using ImageCircle.Forms.Plugin.Droid;
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
+    using System.IO;
 
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
@@ -26,7 +27,11 @@
         #endregion
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            
+            //Set DB root
+            string dbName = "Mynfo.db3";
+            string dbBinder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            string dbRoot = Path.Combine(dbBinder, dbName);
+
             instance = this;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -36,7 +41,7 @@
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             
-            LoadApplication(new App());
+            LoadApplication(new App(dbRoot));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

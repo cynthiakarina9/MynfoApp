@@ -5,6 +5,7 @@
     using Helpers;
     using Xamarin.Forms;
     using Views;
+    using Mynfo.Models;
 
     public class MenuItemViewModel
     {
@@ -25,21 +26,30 @@
 
         private void Navigate()
         {
+            App.Master.IsPresented = false;
+            var mainViewModal = MainViewModel.GetInstance();
             if (this.PageName == "LoginPage")
             {
-                Settings.Token = string.Empty;
-                Settings.TokenType = string.Empty;
-                var mainViewModal = MainViewModel.GetInstance();
-                mainViewModal.Token = string.Empty;
-                mainViewModal.TokenType = string.Empty;
+                Settings.IsRemembered = "false";
+                //var mainViewModal = MainViewModel.GetInstance();
+                mainViewModal.Token = null;
+                mainViewModal.User = null;
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.DeleteAll<UserLocal>();
+                }
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.DeleteAll<TokenResponse>();
+                }
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
             else if (this.PageName == "MyProfilePage")
             {
-                //MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
-                //App.Navigator.PushAsync(new MyProfilePage());
+                MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+                App.Navigator.PushAsync(new MyProfilePage());
             }
-            
+
         }
         #endregion
     }

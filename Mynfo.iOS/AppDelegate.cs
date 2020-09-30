@@ -1,6 +1,8 @@
 ﻿namespace Mynfo.iOS
 {
     using Foundation;
+    using System;
+    using System.IO;
     using UIKit; 
 
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -18,8 +20,13 @@
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            //Set DB root
+            string dbName = "Mynfo.db3";
+            string dbBinder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", "Databases");
+            string dbRoot = Path.Combine(dbBinder, dbName);
+
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(dbRoot));
 
             return base.FinishedLaunching(app, options);
         }

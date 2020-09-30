@@ -6,12 +6,12 @@ namespace Mynfo.Models
 {
     using System;
     using Newtonsoft.Json;
-    //using SQLite.Net.Attributes;
+    using SQLite;
 
     public class TokenResponse
     {
         #region Properties
-        //[PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int TokenResponseId { get; set; }
 
         [JsonProperty(PropertyName = "access_token")]
@@ -36,11 +36,11 @@ namespace Mynfo.Models
         public string ErrorDescription { get; set; }
         #endregion
 
-        //#region Methods
-        //public override int GetHashCode()
-        //{
-        //    return TokenResponseId;
-        //}
-        //#endregion
+        #region Methods
+        public override int GetHashCode()
+        {
+            return TokenResponseId;
+        }
+        #endregion
     }
 }

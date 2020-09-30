@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using Domain;
     using Models;
+    using Mynfo.Helpers;
     using Newtonsoft.Json;
     using Plugin.Connectivity;
 
@@ -20,7 +21,7 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "ConnectionError1",
+                    Message = Languages.ConnectionError1,
                 };
             }
 
@@ -31,7 +32,7 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "ConnectionError2",
+                    Message = Languages.ConnectionError2,
                 };
             }
 
@@ -436,6 +437,8 @@
             string urlBase,
             string servicePrefix,
             string controller,
+            string tokenType,
+            string accessToken,
             string email)
         {
             try
@@ -451,6 +454,8 @@
                     Encoding.UTF8,
                     "application/json");
                 var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(tokenType, accessToken);
                 client.BaseAddress = new Uri(urlBase);
                 var url = string.Format("{0}{1}", servicePrefix, controller);
                 var response = await client.PostAsync(url, content);
