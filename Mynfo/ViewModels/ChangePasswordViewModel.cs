@@ -86,8 +86,8 @@
                     Languages.Accept);
                 return;
             }
-
-            if (this.CurrentPassword != MainViewModel.GetInstance().User.Password)
+            var mainViewModal = MainViewModel.GetInstance();
+            if (this.CurrentPassword != mainViewModal.User.Password)
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -148,44 +148,46 @@
                 return;
             }
 
-        //    var request = new ChangePasswordRequest
-        //    {
-        //        CurrentPassword = this.CurrentPassword,
-        //        Email = MainViewModel.GetInstance().User.Email,
-        //        NewPassword = this.NewPassword,
-        //    };
+            var request = new ChangePasswordRequest
+            {
+                CurrentPassword = this.CurrentPassword,
+                Email = MainViewModel.GetInstance().User.Email,
+                NewPassword = this.NewPassword,
+            };
 
-        //    var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-        //    var response = await this.apiService.ChangePassword(
-        //        apiSecurity,
-        //        "/api",
-        //        "/Users/ChangePassword",
-        //        MainViewModel.GetInstance().Token.TokenType,
-        //        MainViewModel.GetInstance().Token.AccessToken,
-        //        request);
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var response = await this.apiService.ChangePassword(
+                apiSecurity,
+                "/api",
+                "/Users/ChangePassword",
+                MainViewModel.GetInstance().Token.TokenType,
+                MainViewModel.GetInstance().Token.AccessToken,
+                request);
 
-        //    if (!response.IsSuccess)
-        //    {
-        //        this.IsRunning = false;
-        //        this.IsEnabled = true;
-        //        await Application.Current.MainPage.DisplayAlert(
-        //            Languages.Error,
-        //            Languages.ErrorChangingPassword,
-        //            Languages.Accept);
-        //        return;
-        //    }
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ErrorChangingPassword,
+                    Languages.Accept);
+                return;
+            }
 
-        //    MainViewModel.GetInstance().User.Password = this.NewPassword;
-        //    this.dataService.Update(MainViewModel.GetInstance().User);
+            MainViewModel.GetInstance().User.Password = this.NewPassword;
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.Update(MainViewModel.GetInstance().User);
+            }
+            this.IsRunning = false;
+            this.IsEnabled = true;
 
-        //    this.IsRunning = false;
-        //    this.IsEnabled = true;
-
-        //    await Application.Current.MainPage.DisplayAlert(
-        //        Languages.ConfirmLabel,
-        //        Languages.ChagePasswordConfirm,
-        //        Languages.Accept);
-        //    await App.Navigator.PopAsync();
+            await Application.Current.MainPage.DisplayAlert(
+                Languages.ConfirmLabel,
+                Languages.ChagePasswordConfirm,
+                Languages.Accept);
+            await App.Navigator.PopAsync();
         }
         #endregion
     }

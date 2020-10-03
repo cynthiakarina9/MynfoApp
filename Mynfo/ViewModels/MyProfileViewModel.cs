@@ -55,7 +55,15 @@
             this.apiService = new ApiService();
 
             this.User = MainViewModel.GetInstance().User;
-            this.ImageSource = this.User.ImageFullPath;
+            if(this.User.ImageFullPath == "noimage")
+            {
+                this.ImageSource = "no_image";
+            }
+            else
+            {
+                this.ImageSource = this.User.ImageFullPath;
+            }   
+            
             this.isEnabled = true;
         }
         #endregion

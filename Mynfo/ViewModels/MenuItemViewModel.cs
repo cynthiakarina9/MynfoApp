@@ -7,7 +7,7 @@
     using Views;
     using Mynfo.Models;
 
-    public class MenuItemViewModel
+    public class MenuItemViewModel : BaseViewModel
     {
         #region Properties
         public string Icon { get; set; }
@@ -23,7 +23,6 @@
                 return new RelayCommand(Navigate);
             }
         }
-
         private void Navigate()
         {
             App.Master.IsPresented = false;

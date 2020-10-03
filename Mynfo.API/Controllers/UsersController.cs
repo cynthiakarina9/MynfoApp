@@ -1,19 +1,21 @@
 ﻿namespace Mynfo.API.Controllers
 {
-    using Domain;
-    using Helpers;
-    using Newtonsoft.Json.Linq;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.IO;
     using System.Linq;
-    using System.Net;
     using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Description;
     using System.Web.Routing;
-
+    using Domain;
+    using Helpers;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
+    using Newtonsoft.Json.Linq;
+    
     [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
@@ -53,6 +55,44 @@
             return Ok(user);
         }
 
+        [HttpPost]
+        [Authorize]
+        [Route("ChangePassword")]
+        public async Task<IHttpActionResult> ChangePassword(JObject form)
+        {
+            var email = string.Empty;
+            var currentPassword = string.Empty;
+            var newPassword = string.Empty;
+            dynamic jsonObject = form;
+
+            try
+            {
+                email = jsonObject.Email.Value;
+                currentPassword = jsonObject.CurrentPassword.Value;
+                newPassword = jsonObject.NewPassword.Value;
+            }
+            catch
+            {
+                return BadRequest("Incorrect call");
+            }
+
+            var userContext = new ApplicationDbContext();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
+            var userASP = userManager.FindByEmail(email);
+
+            if (userASP == null)
+            {
+                return BadRequest("Incorrect call");
+            }
+
+            var response = await userManager.ChangePasswordAsync(userASP.Id, currentPassword, newPassword);
+            if (!response.Succeeded)
+            {
+                return BadRequest(response.Errors.FirstOrDefault());
+            }
+
+            return Ok("ok");
+        }
 
         // PUT: api/Users/5
         [Authorize]
