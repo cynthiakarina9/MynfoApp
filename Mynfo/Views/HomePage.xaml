@@ -5,10 +5,26 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Home">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="10,35,10,10">
+                <Label Text="Notes"
+               HorizontalOptions="Center"
+               FontAttributes="Bold" />
+                <Editor x:Name="editor"
+                Placeholder="Enter your note"
+                HeightRequest="100" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Save"
+                    Clicked="OnSaveButtonClicked" />
+                    <Button Grid.Column="1"
+                    Text="Delete"
+                    Clicked="OnDeleteButtonClicked"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
