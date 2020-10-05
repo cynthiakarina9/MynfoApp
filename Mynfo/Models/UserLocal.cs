@@ -15,8 +15,6 @@ namespace Mynfo.Models
 
         public string Email { get; set; }
 
-        public string Telephone { get; set; }
-
         public string ImagePath { get; set; }
 
         public int UserTypeId { get; set; }
@@ -35,7 +33,7 @@ namespace Mynfo.Models
                 if (this.UserTypeId == 1)
                 {
                     return string.Format(
-                        "http://mynfoapi.azurewebsites.net/{0}",
+                        "https://mynfoapi.azurewebsites.net/{0}",
                         ImagePath.Substring(1));
                 }
 
