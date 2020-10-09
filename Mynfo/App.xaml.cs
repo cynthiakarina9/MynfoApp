@@ -39,7 +39,7 @@
             //Set root SQLite
             root_db = root_DB;
 
-            if (Settings.IsRemembered == "True")
+            if (Settings.IsRemembered == "true")
             {
                 
                 var token = new TokenResponse();               
