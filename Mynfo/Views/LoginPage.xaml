@@ -2,47 +2,52 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.LoginPage" 
-             BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate Login}">
+             x:Class="Mynfo.Views.LoginPage"
+             BackgroundColor="#F2F2F2"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}">
             <StackLayout
-                Padding="5">
+                Padding="15">
                 <Image
-                    Source="Logomynfo"
+                    Source="account"
                     WidthRequest="120"/>
-                <Grid
-                    Margin="10,0"
-                    VerticalOptions="CenterAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
+                <Image
+                    Source="tipography"
+                    WidthRequest="180"/>
+                <Image
+                    Source="ingreso"
+                    WidthRequest="100"/>
+                <StackLayout HorizontalOptions="CenterAndExpand">
                     <Label
-                        Grid.Row="0"
-                        Grid.Column="0"
                         Text="{i18n:Translate EMail}"
-                        VerticalOptions="Center"/>
+                        TextColor="{StaticResource FontColor}"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="CenterAndExpand"/>
                     <Entry
-                        Grid.Row="0"
-                        Grid.Column="1"
+                        BackgroundColor="#AAAAAA"
+                        HeightRequest="35"
                         Keyboard="Email"
                         Text="{Binding Email, Mode=TwoWay}"
-                        Placeholder="{i18n:Translate EmailPlaceHolder}"/>
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Text="{i18n:Translate Password}"
-                        VerticalOptions="Center"/>
-                    <Entry
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        IsPassword="True"
-                        Text="{Binding Password, Mode=TwoWay}"
-                        Placeholder="{i18n:Translate PasswordPlaceHolder}"/>
-                </Grid>
+                        TextColor="{StaticResource BackgroundColor}"
+                        WidthRequest="300"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{i18n:Translate Password}"
+                            TextColor="{StaticResource FontColor}"
+                            VerticalOptions="CenterAndExpand"/>
+                        <Entry
+                            BackgroundColor="#AAAAAA"
+                            HeightRequest="35"
+                            IsPassword="True"
+                            Text="{Binding Password, Mode=TwoWay}"
+                            TextColor="{StaticResource BackgroundColor}"
+                            WidthRequest="300"/>
+                    </StackLayout>
+                
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning, Mode=TwoWay}"
                     VerticalOptions="CenterAndExpand">
@@ -64,6 +69,7 @@
                     Text="{i18n:Translate Forgot}"
                     TextColor="{StaticResource AccentColor}"
                     VerticalOptions="FillAndExpand"/>
+                <Label Text=" "/>
                 <Button
                         BackgroundColor="{StaticResource MainColor}"
                         BorderRadius="23"
@@ -73,7 +79,8 @@
                         HorizontalOptions="Center"
                         IsEnabled="{Binding IsEnabled,Mode=TwoWay}"
                         Text="{i18n:Translate Login}"
-                        TextColor="White"/>
+                        TextColor="#F2F2F2"/>
+                <Label Text=" "/>
                 <Label
                     HorizontalOptions="Center"
                     Text="{i18n:Translate Register}"
@@ -88,18 +95,18 @@
                     Orientation="Horizontal"
                     VerticalOptions="EndAndExpand">
                     <Image
-                        Source="facebook_logo"
-                        WidthRequest="60">
+                        Source="facebook1"
+                        WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding LoginFacebookComand}"/>
                         </Image.GestureRecognizers>
                     </Image>
                     <Image
-                        Source="twitter_logo"
-                        WidthRequest="60"/>
+                        Source="twitter1"
+                        WidthRequest="40"/>
                     <Image
-                        Source="instagram_logo"
-                        WidthRequest="60"/>
+                        Source="instagram1"
+                        WidthRequest="40"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

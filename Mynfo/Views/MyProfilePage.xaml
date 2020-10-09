@@ -10,7 +10,7 @@
         <ScrollView  
             BindingContext="{Binding MyProfile}">
             <StackLayout
-                Padding="5">
+                Padding="15">
                 <controls:CircleImage 
                     Aspect="AspectFill"
                     HeightRequest="250"
@@ -58,19 +58,6 @@
                         TextColor="{StaticResource FontColor}" 
                         Text="{Binding User.LastName, Mode=TwoWay}">
                     </Entry>
-                    <Label 
-                        Grid.Column="0" 
-                        Grid.Row="2" 
-                        Text="{i18n:Translate EMail}" 
-                        TextColor="{StaticResource FontColor}" 
-                        VerticalOptions="Center">
-                    </Label>
-                    <Label 
-                        Grid.Column="1" 
-                        Grid.Row="2" 
-                        TextColor="{StaticResource FontColor}" 
-                        Text="{Binding User.Email, Mode=TwoWay}">
-                    </Label>
                 </Grid>
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning, Mode=TwoWay}"

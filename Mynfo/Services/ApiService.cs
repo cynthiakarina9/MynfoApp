@@ -42,7 +42,7 @@
             };
         }
 
-        public async Task<Models.FacebookResponse> GetFacebook(string accessToken)
+        public async Task<Models.FacebookResponse> GetFacebookProfile(string accessToken)
         {
             var requestUrl = "https://graph.facebook.com/v2.8/me/?fields=name," +
                 "picture.width(999),cover,age_range,devices,email,gender," +

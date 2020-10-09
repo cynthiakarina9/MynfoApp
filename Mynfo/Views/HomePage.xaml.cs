@@ -1,42 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Mynfo.Views
+﻿namespace Mynfo.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using Xamarin.Forms;
+    using Models;
+
     public partial class HomePage : ContentPage
     {
-        string _fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "notes.txt");
-
         public HomePage()
         {
             InitializeComponent();
-
-            if (File.Exists(_fileName))
-            {
-                editor.Text = File.ReadAllText(_fileName);
-            }
         }
 
-        void OnSaveButtonClicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            File.WriteAllText(_fileName, editor.Text);
+            base.OnAppearing();
+
+            var notes = new List<Box>();
+
+            var files = Directory.EnumerateFiles(App.FolderPath, "*.notes.txt");
+            foreach (var filename in files)
+            {
+                notes.Add(new Box
+                {
+                    Filename = filename,
+                    Name = Path.GetFileName(filename),
+                    Text = File.ReadAllText(filename),
+                    Date = File.GetCreationTime(filename)
+                });
+            }
+
+            listView.ItemsSource = notes
+                .OrderBy(d => d.Date)
+                .ToList();
         }
 
-        void OnDeleteButtonClicked(object sender, EventArgs e)
+        async void OnNoteAddedClicked(object sender, EventArgs e)
         {
-            if (File.Exists(_fileName))
+            await Navigation.PushAsync(new BoxRegisterPage
             {
-                File.Delete(_fileName);
+                BindingContext = new Box()
+            });
+        }
+
+        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new BoxRegisterPage
+                {
+                    BindingContext = e.SelectedItem as Box
+                });
             }
-            editor.Text = string.Empty;
         }
     }
 }

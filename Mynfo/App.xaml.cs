@@ -4,6 +4,7 @@
     using Models;
     using Services;
     using System;
+    using System.IO;
     using System.Threading.Tasks;
     using ViewModels;
     using Views;
@@ -25,17 +26,20 @@
             get; 
             internal set; 
         }
+        public static string FolderPath { get; private set; }
         #endregion
 
         #region Constructors
         public App(string root_DB)
         {
+            FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+            MainPage = new NavigationPage(new HomePage());
             InitializeComponent();
 
             //Set root SQLite
             root_db = root_DB;
 
-            if (Settings.IsRemembered == "true")
+            if (Settings.IsRemembered == "True")
             {
                 
                 var token = new TokenResponse();               

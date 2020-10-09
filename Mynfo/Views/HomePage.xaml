@@ -2,29 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.HomePage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Home">
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Margin="10,35,10,10">
-                <Label Text="Notes"
-               HorizontalOptions="Center"
-               FontAttributes="Bold" />
-                <Editor x:Name="editor"
-                Placeholder="Enter your note"
-                HeightRequest="100" />
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button Text="Save"
-                    Clicked="OnSaveButtonClicked" />
-                    <Button Grid.Column="1"
-                    Text="Delete"
-                    Clicked="OnDeleteButtonClicked"/>
-                </Grid>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+"
+                     Clicked="OnNoteAddedClicked" />
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="listView"
+              Margin="20"
+              ItemSelected="OnListViewItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Name}"/>
+                <!-- Detail="{Binding Date}" /> -->
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

@@ -7,6 +7,7 @@ namespace Mynfo.Droid.Implementations
     using System;
     using System.Threading.Tasks;
     using Android.App;
+    using Android.Content;
     using Models;
     using Services;
     using Xamarin.Auth;
@@ -14,23 +15,17 @@ namespace Mynfo.Droid.Implementations
 
     public class LoginPageRenderer : PageRenderer
     {
-        public LoginPageRenderer()
+        public LoginPageRenderer(Context context) : base(context)
         {
-            var activity = this.Context as Activity;
+            var activity = Context as Activity;
 
             var auth = new OAuth2Authenticator(
-                clientId: "205774500008151",
-                scope: "",
+                clientId: "694367591430475",
+                scope: "email",
                 authorizeUrl: new Uri("https://www.facebook.com/dialog/oauth/"),
                 redirectUrl: new Uri("https://www.facebook.com/connect/login_success.html"));
-
-            //var auth = new OAuth2Authenticator(
-            // clientId: "78mdlh88n0y3cc",
-            // clientSecret: "B4ND7RSQCvRRWihK",
-            // scope: "r_basicprofile",
-            // authorizeUrl: new Uri("https://www.linkedin.com/uas/oauth2/authorization"),
-            // redirectUrl: new Uri("https://atx.mx/"),
-            // accessTokenUrl: new Uri("https://www.linkedin.com/uas/oauth2/accessToken"));
+            auth.AllowCancel = true; //back button allowed 
+            auth.Title = "Facebook";
 
             auth.Completed += async (sender, eventArgs) =>
             {
@@ -55,7 +50,7 @@ namespace Mynfo.Droid.Implementations
                 "age_range,devices,email,gender,is_verified,birthday,languages,work,website,religion," +
                 "location,locale,link,first_name,last_name,hometown&access_token=" + accessToken;
             var apiService = new ApiService();
-            return await apiService.GetFacebook(requestUrl);
+            return await apiService.GetFacebookProfile(requestUrl);
         }
     }
 }

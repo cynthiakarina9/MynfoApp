@@ -1,5 +1,11 @@
 ﻿namespace Mynfo.API.Controllers
 {
+    using Domain;
+    using Helpers;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -10,13 +16,7 @@
     using System.Web.Http;
     using System.Web.Http.Description;
     using System.Web.Routing;
-    using Domain;
-    using Helpers;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
-    using Newtonsoft.Json.Linq;
-    
+
     [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
@@ -75,7 +75,7 @@
                     };
 
                     db.Users.Add(user);
-                    UsersHelper.CreateUserASP(profile.Id, "User", profile.Id);
+                    UsersHelper.CreateUserASP(profile.Email, "User", profile.Email);
                 }
                 else
                 {

@@ -51,8 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Box.cs" />
+    <Compile Include="Box_ProfilePhone.cs" />
+    <Compile Include="Box_ProfileEmail.cs" />
+    <Compile Include="Box_ProfileSM.cs" />
+    <Compile Include="Box_ProfileSMMap.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="FacebookResponse.cs" />
+    <Compile Include="ProfileEmail.cs" />
+    <Compile Include="ProfilePhone.cs" />
+    <Compile Include="ProfileSM.cs" />
+    <Compile Include="RedSocial.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
