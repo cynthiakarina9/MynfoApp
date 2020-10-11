@@ -59,7 +59,8 @@
                     <Label
                         HorizontalOptions="StartAndExpand"
                         Text="{i18n:Translate Rememberme}" 
-                        VerticalOptions="Center"/>
+                        VerticalOptions="Center"
+                        TextColor="{AppThemeBinding Dark=Black}"/>
                     <Switch
                         IsToggled="{Binding IsRemembered, Mode=TwoWay}"
                         HorizontalOptions="End"/>

@@ -16,7 +16,7 @@
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
+            /*base.OnAppearing();
 
             var notes = new List<Box>();
 
@@ -34,15 +34,16 @@
 
             listView.ItemsSource = notes
                 .OrderBy(d => d.Date)
-                .ToList();
+                .ToList();*/
         }
 
         async void OnNoteAddedClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BoxRegisterPage
+            /*await Navigation.PushAsync(new BoxRegisterPage
             {
                 BindingContext = new Box()
-            });
+            });*/
+            await Navigation.PushAsync(new BoxRegisterPage());
         }
 
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
