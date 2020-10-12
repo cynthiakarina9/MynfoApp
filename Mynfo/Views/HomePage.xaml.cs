@@ -43,18 +43,7 @@
             {
                 BindingContext = new Box()
             });*/
-            await Navigation.PushAsync(new BoxRegisterPage());
-        }
-
-        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem != null)
-            {
-                await Navigation.PushAsync(new BoxRegisterPage
-                {
-                    BindingContext = e.SelectedItem as Box
-                });
-            }
+            await Navigation.PushAsync(new ProfilesBySMPage());
         }
     }
 }

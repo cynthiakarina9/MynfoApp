@@ -1,12 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mynfo.Views.DetailsProfilePage">
+             x:Class="Mynfo.Views.DetailsProfilePage"
+             Title="Detalles de Perfil">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Label Text="Editar datos de email/Teléfono" 
+                   FontSize="25" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Text="Nombre del perfil" 
+                   Grid.Row="1"
+                   FontSize="21" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Entry Grid.Row="2"
+                   FontSize="21"
+                   WidthRequest="200"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Text="Correo/Teléfono" 
+                   Grid.Row="3"
+                   FontSize="21" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Entry Grid.Row="4"
+                   FontSize="21"
+                   WidthRequest="200"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Button Grid.Row="5"
+                    Text="Actualizar"
+                    BackgroundColor="#FF5521"
+                    BorderRadius="23"
+                    HeightRequest="46"
+                    Margin="80,0,80,0"
+                    TextColor="White"
+                    VerticalOptions="End"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

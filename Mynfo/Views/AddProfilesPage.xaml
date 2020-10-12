@@ -3,10 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.AddProfilesPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Agregar perfiles a Box" 
+                       Grid.ColumnSpan="3"
+                       FontSize="25" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <BoxView Grid.Row="1"
+                     Grid.Column="1"
+                         BackgroundColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                <BoxView Grid.Row="3"
+                     Grid.Column="1"
+                         BackgroundColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                
+                <Button Grid.Row="4"
+                        Grid.Column="1"
+                        BackgroundColor="#FF5521"
+                        BorderRadius="23"
+                        HeightRequest="46"
+                        Margin="50,0,50,0"
+                        Text="Guardar"
+                        TextColor="White"
+                        VerticalOptions="Center"/>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
