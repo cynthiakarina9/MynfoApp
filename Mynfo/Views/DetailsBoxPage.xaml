@@ -3,10 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.DetailsBoxPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+                <RowDefinition Height="120"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!--Nombre de la box -->
+            <Entry Text="Nombre de la box"
+                   FontSize="25" 
+                   Grid.ColumnSpan="4"
+                   HorizontalOptions="Center"/>
+
+            <!-- Box predeterminada-->
+            <CheckBox Grid.Row="1" 
+                      Grid.Column="1" 
+                      VerticalOptions="Center"/>
+            <Label Grid.Row="1" 
+                   Grid.Column="2" 
+                   Text="Box predeterminada" 
+                   VerticalOptions="Center"/>
+            
+            <!-- Listado de perfiles -->
+            <ListView Grid.Row="2"
+                      Grid.ColumnSpan="4">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Facebook 1</x:String>
+                        <x:String>Facebook 2</x:String>
+                        <x:String>Twitter 1</x:String>
+                        <x:String>Twitter 2</x:String>
+                        <x:String>Correo 1</x:String>
+                        <x:String>Correo 2</x:String>
+                        <x:String>Teléfono</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+
+            <!-- Agregar perfiles -->
+            <Button
+                Grid.Row="3"
+                Grid.ColumnSpan="4"
+                WidthRequest      ="70"
+                HeightRequest     ="70"
+                CornerRadius      ="35"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="#FF5521"
+                Text="+"
+                TextColor="white"
+                FontSize="20"
+                FontAttributes="Bold"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

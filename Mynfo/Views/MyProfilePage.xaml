@@ -22,8 +22,8 @@
                 <Label 
                     HorizontalOptions="Center" 
                     FontSize="Small" 
-                    Text="{i18n:Translate ChangeImage}" 
-                    TextColor="{StaticResource FontColor}">
+                    Text="{i18n:Translate ChangeImage}" >
+                    <!--TextColor="{StaticResource FontColor}">-->
                 </Label>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -34,29 +34,29 @@
                         Grid.Column="0" 
                         Grid.Row="0" 
                         Text="{i18n:Translate FirstNameLabel}" 
-                        TextColor="{StaticResource FontColor}" 
                         VerticalOptions="Center">
+                        <!--TextColor="{StaticResource FontColor}">-->
                     </Label>
                     <Entry 
                         Grid.Column="1" 
                         Grid.Row="0" 
                         Placeholder="{i18n:Translate FirstNamePlaceHolder}" 
-                        TextColor="{StaticResource FontColor}" 
                         Text="{Binding User.FirstName, Mode=TwoWay}">
+                        <!--TextColor="{StaticResource FontColor}">-->
                     </Entry>
                     <Label 
                         Grid.Column="0" 
                         Grid.Row="1" 
                         Text="{i18n:Translate LastNameLabel}" 
-                        TextColor="{StaticResource FontColor}" 
                         VerticalOptions="Center">
+                        <!--TextColor="{StaticResource FontColor}">-->
                     </Label>
                     <Entry 
                         Grid.Column="1" 
                         Grid.Row="1" 
                         Placeholder="{i18n:Translate LastNamePlaceHolder}" 
-                        TextColor="{StaticResource FontColor}" 
                         Text="{Binding User.LastName, Mode=TwoWay}">
+                        <!--TextColor="{StaticResource FontColor}">-->
                     </Entry>
                 </Grid>
                 <ActivityIndicator

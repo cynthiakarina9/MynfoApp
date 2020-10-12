@@ -36,6 +36,9 @@
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            //Color de tema
+            Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
+
             base.OnCreate(savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
