@@ -1,53 +1,194 @@
 ﻿namespace Mynfo.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
-    using Mynfo.Views;
-    using System;
-    using System.IO;
+    using Helpers;
+    using Models;
+    using Services;
     using System.Windows.Input;
+    using Xamarin.Forms;
 
-
-    public class HomeViewModel
+    public class HomeViewModel : BaseViewModel
     {
-        HomePage homePage;
-        string _fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "notes.txt");
+        #region Services
+        private ApiService apiService;
+        #endregion
+
+        #region Attributes
+        private bool isRunning;
+        private bool isEnabled;
+        #endregion
+
+        #region Properties
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set { SetValue(ref this.isRunning, value); }
+        }
+
+        public bool IsEnabled
+        {
+            get { return this.isEnabled; }
+            set { SetValue(ref this.isEnabled, value); }
+        }
+
+        public string CurrentPassword
+        {
+            get;
+            set;
+        }
+
+        public string NewPassword
+        {
+            get;
+            set;
+        }
+
+        public string Confirm
+        {
+            get;
+            set;
+        }
+        #endregion
+
+        #region Constructors
         public HomeViewModel()
         {
-            if (File.Exists(_fileName))
-            {
-                //homePage.editor2 = File.ReadAllText(_fileName);
-            }
+            this.apiService = new ApiService();
+            this.IsEnabled = true;
         }
+        #endregion
 
-        public ICommand SaveNotesCommand
+        #region Commands
+        public ICommand ChangePasswordCommand
         {
             get
             {
-                return new RelayCommand(SaveNotes);
+                return new RelayCommand(ChangePassword);
             }
         }
 
-        public void SaveNotes()
+        private async void ChangePassword()
         {
-            //File.WriteAllText(_fileName, homePage.editor2);
-        }
-
-
-        public ICommand DeleteNotesCommand
-        {
-            get
+            if (string.IsNullOrEmpty(this.CurrentPassword))
             {
-                return new RelayCommand(DeleteNotes);
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.PasswordValidation,
+                    Languages.Accept);
+                return;
             }
-        }
 
-        public void DeleteNotes()
-        {
-            if (File.Exists(_fileName))
+            if (this.CurrentPassword.Length < 6)
             {
-                File.Delete(_fileName);
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.PasswordValidation2,
+                    Languages.Accept);
+                return;
             }
-            //homePage.editor2 = string.Empty;
+            var mainViewModal = MainViewModel.GetInstance();
+            if (this.CurrentPassword != mainViewModal.User.Password)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.PasswordError,
+                    Languages.Accept);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.NewPassword))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.PasswordValidation,
+                    Languages.Accept);
+                return;
+            }
+
+            if (this.NewPassword.Length < 6)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.PasswordValidation2,
+                    Languages.Accept);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.Confirm))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ConfirmValidation,
+                    Languages.Accept);
+                return;
+            }
+
+            if (this.NewPassword != this.Confirm)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ConfirmValidation2,
+                    Languages.Accept);
+                return;
+            }
+
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                return;
+            }
+
+            var request = new ChangePasswordRequest
+            {
+                CurrentPassword = this.CurrentPassword,
+                Email = MainViewModel.GetInstance().User.Email,
+                NewPassword = this.NewPassword,
+            };
+
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var response = await this.apiService.ChangePassword(
+                apiSecurity,
+                "/api",
+                "/Users/ChangePassword",
+                MainViewModel.GetInstance().Token.TokenType,
+                MainViewModel.GetInstance().Token.AccessToken,
+                request);
+
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ErrorChangingPassword,
+                    Languages.Accept);
+                return;
+            }
+
+            MainViewModel.GetInstance().User.Password = this.NewPassword;
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.Update(MainViewModel.GetInstance().User);
+            }
+            this.IsRunning = false;
+            this.IsEnabled = true;
+
+            await Application.Current.MainPage.DisplayAlert(
+                Languages.ConfirmLabel,
+                Languages.ChagePasswordConfirm,
+                Languages.Accept);
+            await App.Navigator.PopAsync();
         }
+        #endregion
     }
 }

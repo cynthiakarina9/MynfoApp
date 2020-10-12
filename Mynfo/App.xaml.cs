@@ -125,11 +125,11 @@
                 userLocal = Converter.ToUserLocal(user);
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.DeleteAll<UserLocal>();
+                    conn.Insert(userLocal);
                 }
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.DeleteAll<TokenResponse>();
+                    conn.Insert(token);
                 }
             }
 

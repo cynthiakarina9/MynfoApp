@@ -11,14 +11,18 @@
             <StackLayout
                 Padding="15">
                 <Image
-                    Source="account"
+                    Source="logo2"
                     WidthRequest="120"/>
                 <Image
                     Source="tipography"
                     WidthRequest="180"/>
-                <Image
-                    Source="ingreso"
-                    WidthRequest="100"/>
+                <Label
+                        Text="{i18n:Translate Login}"
+                        TextColor="{StaticResource MainColor}"
+                        FontAttributes="Bold"
+                        FontSize="25"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="CenterAndExpand"/>
                 <StackLayout HorizontalOptions="CenterAndExpand">
                     <Label
                         Text="{i18n:Translate EMail}"
@@ -27,11 +31,11 @@
                         HorizontalOptions="CenterAndExpand"/>
                     <Entry
                         BackgroundColor="#AAAAAA"
-                        HeightRequest="35"
+                        HeightRequest="40"
                         Keyboard="Email"
                         Text="{Binding Email, Mode=TwoWay}"
                         TextColor="{StaticResource BackgroundColor}"
-                        WidthRequest="300"/>
+                        WidthRequest="250"/>
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand">
                         <Label
@@ -41,11 +45,11 @@
                             VerticalOptions="CenterAndExpand"/>
                         <Entry
                             BackgroundColor="#AAAAAA"
-                            HeightRequest="35"
+                            HeightRequest="40"
                             IsPassword="True"
                             Text="{Binding Password, Mode=TwoWay}"
                             TextColor="{StaticResource BackgroundColor}"
-                            WidthRequest="300"/>
+                            WidthRequest="250"/>
                     </StackLayout>
                 
                 <ActivityIndicator
@@ -59,6 +63,7 @@
                     <Label
                         HorizontalOptions="StartAndExpand"
                         Text="{i18n:Translate Rememberme}" 
+                        TextColor="{StaticResource FontColor}"
                         VerticalOptions="Center"/>
                     <Switch
                         IsToggled="{Binding IsRemembered, Mode=TwoWay}"
