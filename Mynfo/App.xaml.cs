@@ -33,7 +33,7 @@
         public App(string root_DB)
         {
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
-            MainPage = new NavigationPage(new HomePage());
+            //MainPage = new NavigationPage(new HomePage());
             InitializeComponent();
 
             //Set root SQLite

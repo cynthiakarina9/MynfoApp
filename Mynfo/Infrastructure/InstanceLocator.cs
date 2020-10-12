@@ -14,7 +14,7 @@
         #region Constructors
         public InstanceLocator()
         {
-            Main = new MainViewModel();
+            this.Main = new MainViewModel();
         }
         #endregion
     }
