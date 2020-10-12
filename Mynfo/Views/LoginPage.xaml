@@ -27,7 +27,7 @@
                         HorizontalOptions="CenterAndExpand"/>
                     <Entry
                         BackgroundColor="#AAAAAA"
-                        HeightRequest="35"
+                        HeightRequest="40"
                         Keyboard="Email"
                         Text="{Binding Email, Mode=TwoWay}"
                         TextColor="{StaticResource BackgroundColor}"
@@ -41,7 +41,7 @@
                             VerticalOptions="CenterAndExpand"/>
                         <Entry
                             BackgroundColor="#AAAAAA"
-                            HeightRequest="35"
+                            HeightRequest="40"
                             IsPassword="True"
                             Text="{Binding Password, Mode=TwoWay}"
                             TextColor="{StaticResource BackgroundColor}"

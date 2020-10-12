@@ -33,7 +33,7 @@
         public App(string root_DB)
         {
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
-            MainPage = new NavigationPage(new HomePage());
+            //MainPage = new NavigationPage(new HomePage());
             InitializeComponent();
 
             //Set root SQLite
@@ -125,11 +125,11 @@
                 userLocal = Converter.ToUserLocal(user);
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.DeleteAll<UserLocal>();
+                    conn.Insert(userLocal);
                 }
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.DeleteAll<TokenResponse>();
+                    conn.Insert(token);
                 }
             }
 

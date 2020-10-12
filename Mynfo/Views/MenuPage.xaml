@@ -46,7 +46,7 @@
                                     Grid.Column="1"
                                     VerticalOptions="Center"
                                     Text="{Binding Title}"
-                                    TextColor="{AppThemeBinding Dark=Gray}">
+                                    TextColor="{AppThemeBinding Dark={StaticResource TestColor},Light={StaticResource FontColor}}">
                                 </Label>
                             </Grid>
                         </ViewCell>
