@@ -61,7 +61,7 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="LightGray"
+                    BackgroundColor   ="{StaticResource BoxActiveColor}"
                     Text="Amigos"
                     TextColor="{StaticResource FontColor}"
                     FontSize="10"
@@ -77,9 +77,9 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="LightGray"
+                    BackgroundColor   ="{StaticResource BoxActiveColor}"
                     Text="Trabajo"
-                    TextColor="Black"
+                    TextColor="{StaticResource FontColor}"
                     FontSize="10"
                     FontAttributes="Bold"/>
 
@@ -93,7 +93,7 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="LightGray"
+                    BackgroundColor   ="{StaticResource BoxActiveColor}"
                     Text="Citas"
                     TextColor="{StaticResource FontColor}"
                     FontSize="10"
@@ -111,7 +111,7 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="gray"
+                    BackgroundColor   ="{StaticResource BoxEmptyColor}"
                     IsEnabled="False"/>
 
                 <BoxView Grid.Row="3"
@@ -124,7 +124,7 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="gray"
+                    BackgroundColor   ="{StaticResource BoxEmptyColor}"
                     IsEnabled="False"/>
 
                 <BoxView Grid.Row="3"
@@ -137,7 +137,7 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="gray"
+                    BackgroundColor   ="{StaticResource BoxEmptyColor}"
                     IsEnabled="False"/>
 
                 <!-- De la box 7 a la 9 -->
@@ -152,7 +152,7 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="gray"
+                    BackgroundColor   ="{StaticResource BoxEmptyColor}"
                     IsEnabled="False"/>
 
                 <BoxView Grid.Row="4"
@@ -165,7 +165,7 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="gray"
+                    BackgroundColor   ="{StaticResource BoxEmptyColor}"
                     IsEnabled="False"/>
 
                 <BoxView Grid.Row="4"
@@ -178,7 +178,7 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="gray"
+                    BackgroundColor   ="{StaticResource BoxEmptyColor}"
                     IsEnabled="False"/>
 
                 <!-- Botón para agregar box nueva-->
@@ -192,23 +192,13 @@
                     CornerRadius      ="40"
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
-                    BackgroundColor   ="White"
+                    BackgroundColor   ="{StaticResource BackgroundColor}"
                     Text="+"
-                    TextColor="Black"
+                    TextColor="{StaticResource FontColor}"
                     FontSize="40"
                     FontAttributes="Bold"
                     Command="{Binding CreateBoxCommand}"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
-    <!--<ListView x:Name="listView"
-              Margin="20"
-              ItemSelected="OnListViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Name}"/>
-                --><!-- Detail="{Binding Date}" /> --><!--
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>-->
 </ContentPage>

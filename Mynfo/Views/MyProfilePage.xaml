@@ -23,7 +23,6 @@
                     HorizontalOptions="Center" 
                     FontSize="Small" 
                     Text="{i18n:Translate ChangeImage}" >
-                    <!--TextColor="{StaticResource FontColor}">-->
                 </Label>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -35,28 +34,24 @@
                         Grid.Row="0" 
                         Text="{i18n:Translate FirstNameLabel}" 
                         VerticalOptions="Center">
-                        <!--TextColor="{StaticResource FontColor}">-->
                     </Label>
                     <Entry 
                         Grid.Column="1" 
                         Grid.Row="0" 
                         Placeholder="{i18n:Translate FirstNamePlaceHolder}" 
                         Text="{Binding User.FirstName, Mode=TwoWay}">
-                        <!--TextColor="{StaticResource FontColor}">-->
                     </Entry>
                     <Label 
                         Grid.Column="0" 
                         Grid.Row="1" 
                         Text="{i18n:Translate LastNameLabel}" 
                         VerticalOptions="Center">
-                        <!--TextColor="{StaticResource FontColor}">-->
                     </Label>
                     <Entry 
                         Grid.Column="1" 
                         Grid.Row="1" 
                         Placeholder="{i18n:Translate LastNamePlaceHolder}" 
                         Text="{Binding User.LastName, Mode=TwoWay}">
-                        <!--TextColor="{StaticResource FontColor}">-->
                     </Entry>
                 </Grid>
                 <ActivityIndicator
@@ -75,7 +70,7 @@
                         HorizontalOptions="FillAndExpand"
                         IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         Text="{i18n:Translate Save}"
-                        TextColor="White">
+                        TextColor="{StaticResource Dark_FontColor}">
                     </Button>
                     <Button
                         BackgroundColor="{StaticResource MainColor}"
@@ -85,7 +80,7 @@
                         HorizontalOptions="FillAndExpand"
                         IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         Text="{i18n:Translate ChangePassword}"
-                        TextColor="White">
+                        TextColor="{StaticResource Dark_FontColor}">
                     </Button>
                 </StackLayout>
             </StackLayout>

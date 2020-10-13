@@ -57,9 +57,9 @@
                 CornerRadius      ="35"
                 VerticalOptions   ="Center"
                 HorizontalOptions ="Center"
-                BackgroundColor   ="#FF5521"
+                BackgroundColor   ="{StaticResource MainColor}"
                 Text="+"
-                TextColor="white"
+                TextColor="{StaticResource Dark_FontColor}"
                 FontSize="20"
                 FontAttributes="Bold"/>
 

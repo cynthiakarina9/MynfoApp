@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.LoginPage"
-             BackgroundColor="#F2F2F2"
+             BackgroundColor="{StaticResource BackgroundColor}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <ScrollView
@@ -26,7 +26,7 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="CenterAndExpand"/>
                     <Entry
-                        BackgroundColor="#AAAAAA"
+                        BackgroundColor="{StaticResource LoginEntryColor}"
                         HeightRequest="40"
                         Keyboard="Email"
                         Text="{Binding Email, Mode=TwoWay}"
@@ -40,7 +40,7 @@
                             TextColor="{StaticResource FontColor}"
                             VerticalOptions="CenterAndExpand"/>
                         <Entry
-                            BackgroundColor="#AAAAAA"
+                            BackgroundColor="{StaticResource LoginEntryColor}"
                             HeightRequest="40"
                             IsPassword="True"
                             Text="{Binding Password, Mode=TwoWay}"
@@ -60,7 +60,7 @@
                         HorizontalOptions="StartAndExpand"
                         Text="{i18n:Translate Rememberme}" 
                         VerticalOptions="Center"
-                        TextColor="{AppThemeBinding Dark=Black}"/>
+                        TextColor="{AppThemeBinding Dark={StaticResource DarkMenu_FontColor}}"/>
                     <Switch
                         IsToggled="{Binding IsRemembered, Mode=TwoWay}"
                         HorizontalOptions="End"/>
@@ -80,7 +80,7 @@
                         HorizontalOptions="Center"
                         IsEnabled="{Binding IsEnabled,Mode=TwoWay}"
                         Text="{i18n:Translate Login}"
-                        TextColor="#F2F2F2"/>
+                        TextColor="{StaticResource Dark_FontColor}"/>
                 <Label Text=" "/>
                 <Label
                     HorizontalOptions="Center"

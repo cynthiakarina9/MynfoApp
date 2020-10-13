@@ -41,11 +41,11 @@
                    VerticalOptions="Center" />
             <Button Grid.Row="5"
                     Text="Actualizar"
-                    BackgroundColor="#FF5521"
+                    BackgroundColor="{StaticResource MainColor}"
                     BorderRadius="23"
                     HeightRequest="46"
                     Margin="80,0,80,0"
-                    TextColor="White"
+                    TextColor="{StaticResource Dark_FontColor}"
                     VerticalOptions="End"/>
         </Grid>
     </ContentPage.Content>

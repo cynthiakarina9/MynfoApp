@@ -25,20 +25,20 @@
                        VerticalOptions="Center" />
                 <BoxView Grid.Row="1"
                      Grid.Column="1"
-                         BackgroundColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                         BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
 
                 <BoxView Grid.Row="3"
                      Grid.Column="1"
-                         BackgroundColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                         BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                 
                 <Button Grid.Row="4"
                         Grid.Column="1"
-                        BackgroundColor="#FF5521"
+                        BackgroundColor="{StaticResource MainColor}}"
                         BorderRadius="23"
                         HeightRequest="46"
                         Margin="50,0,50,0"
                         Text="Guardar"
-                        TextColor="White"
+                        TextColor="{StaticResource Dark_FontColor}}"
                         VerticalOptions="Center"/>
             </Grid>
         </ScrollView>

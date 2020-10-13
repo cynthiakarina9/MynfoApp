@@ -37,6 +37,13 @@
                 .ToList();*/
         }
 
-       
+        async void OnNoteAddedClicked(object sender, EventArgs e)
+        {
+            /*await Navigation.PushAsync(new BoxRegisterPage
+            {
+                BindingContext = new Box()
+            });*/
+            await Navigation.PushAsync(new ProfilesPage());
+        }
     }
 }

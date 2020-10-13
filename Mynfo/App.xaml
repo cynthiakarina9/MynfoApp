@@ -20,7 +20,13 @@
             <Color x:Key="MenuFountColor">#F1FF99</Color>
             <Color x:Key="AccentColor">#192DB3</Color>
             <Color x:Key="BackgroundColor">#ffff</Color>
-            <Color x:Key="TestColor">pink</Color>
+            <Color x:Key="DarkMenu_FontColor">#000000</Color>
+            <Color x:Key="Menu_BackgroundColor">#F2F2F2</Color>
+            <Color x:Key="Dark_FontColor">#fff</Color>
+            <Color x:Key="Light_FontColor">#000000</Color>
+            <Color x:Key="BoxActiveColor">LightGray</Color>
+            <Color x:Key="BoxEmptyColor">Gray</Color>
+            <Color x:Key="LoginEntryColor">#AAA</Color>
 
         </ResourceDictionary>
     </Application.Resources>
