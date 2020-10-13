@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.AddProfilesPage">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             x:Class="Mynfo.Views.AddProfilesPage"
+             Title="AddProfiles">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView 
+            BindingContext="{Binding AddProfiles}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
@@ -24,6 +27,7 @@
                        FontSize="25" 
                        HorizontalOptions="Center"
                        VerticalOptions="Center" />
+                
                 <BoxView Grid.Row="1"
                      Grid.Column="1"
                          BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
@@ -32,15 +36,17 @@
                      Grid.Column="1"
                          BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                 
-                <Button Grid.Row="4"
-                        Grid.Column="1"
-                        BackgroundColor="{StaticResource MainColor}}"
-                        BorderRadius="23"
-                        HeightRequest="46"
-                        Margin="50,0,50,0"
-                        Text="{i18n:Translate Save}"
-                        TextColor="{StaticResource Dark_FontColor}}"
-                        VerticalOptions="Center"/>
+                <Button 
+                    
+                    BorderRadius = "23"
+                    BackgroundColor = "{StaticResource MainColor}"
+                    Grid.Row = "4"
+                    Grid.Column = "1"
+                    HeightRequest = "46"
+                    Margin = "50,0,50,0"
+                    Text = "{i18n:Translate Save}"
+                    TextColor = "{StaticResource Dark_FontColor}"
+                    VerticalOptions = "Center"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

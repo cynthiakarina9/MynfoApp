@@ -15,25 +15,29 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <Label Text="{i18n:Translate BoxName}" 
-                       Grid.Row="1"
-                       FontSize="25" 
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
-                <Entry Grid.Row="2"
-                       FontSize="20"
-                       WidthRequest="200"
-                       HorizontalTextAlignment="Center"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
-                <Button Grid.Row="3"
-                        Text="{i18n:Translate Create}"
-                        BackgroundColor="{StaticResource MainColor}"
-                        BorderRadius="23"
-                        HeightRequest="46"
-                        Margin="70,0,70,0"
-                        TextColor="White"
-                        VerticalOptions="End"/>
+                <Label 
+                    Text="{i18n:Translate BoxName}" 
+                    Grid.Row="1"
+                    FontSize="25" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+                <Entry 
+                    Grid.Row="2"
+                    FontSize="20"
+                    WidthRequest="200"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+                <Button 
+                    Command = "{Binding SaveBoxCommand}"
+                    Grid.Row = "3"
+                    Text = "{i18n:Translate Create}"
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    HeightRequest = "46"
+                    Margin = "70,0,70,0"
+                    TextColor = "{StaticResource Dark_FontColor}"
+                    VerticalOptions = "End"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

@@ -29,6 +29,7 @@
             set { SetValue(ref this.user, value); }
         }
         #endregion
+
         #region ViewModels
         public LoginViewModel Login
         { 
@@ -72,6 +73,12 @@
         }
 
         public ProfilesViewModel Profiles
+        {
+            get;
+            set;
+        }
+
+        public AddProfilesViewModel AddProfiles
         {
             get;
             set;

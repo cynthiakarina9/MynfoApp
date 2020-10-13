@@ -183,22 +183,23 @@
                     IsEnabled="False"/>
 
                 <!-- Botón para agregar box nueva-->
-                <BoxView Grid.Row="5"
-                     Grid.ColumnSpan="3"/>
+                <BoxView 
+                    Grid.ColumnSpan = "3"
+                    Grid.Row = "5"/>
                 <Button
-                    Grid.Row="5"
-                    Grid.ColumnSpan="3"
-                    WidthRequest      ="80"
-                    HeightRequest     ="80"
-                    CornerRadius      ="40"
-                    VerticalOptions   ="Center"
-                    HorizontalOptions ="Center"
-                    BackgroundColor   ="{StaticResource BackgroundColor}"
-                    Text="+"
-                    TextColor="{StaticResource FontColor}"
-                    FontSize="40"
+                    BackgroundColor ="{StaticResource BackgroundColor}"
+                    Command="{Binding CreateBoxCommand}"
+                    CornerRadius = "40"
                     FontAttributes="Bold"
-                    Command="{Binding CreateBoxCommand}"/>
+                    FontSize= "40"
+                    Grid.Row= "5"
+                    Grid.ColumnSpan="3"
+                    HeightRequest = "80"
+                    HorizontalOptions ="Center"
+                    Text = "+"
+                    TextColor="{StaticResource FontColor}"
+                    VerticalOptions = "Center"
+                    WidthRequest = "80" />
             </Grid>
         </ScrollView>
     </ContentPage.Content>
