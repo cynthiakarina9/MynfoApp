@@ -5,24 +5,25 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor="WhiteSmoke"
+             BackgroundColor="#F2F2F2"
              Title="{i18n:Translate Menu}">
     <ContentPage.Content>
         <StackLayout
-            Padding="5,20,5,5">
+            Padding="20,30,5,5">
             <controls:CircleImage
                 Aspect="AspectFill"
-                HeightRequest="150"
+                HeightRequest="180"
                 Source="{Binding User.ImageFullPath}">
             </controls:CircleImage>
             <Label 
-                FontSize="20"
-                FontAttributes="Bold"
+                FontSize="26"
+                FontAttributes="None"
                 HorizontalOptions="Center"
+                Padding="25"
                 Text="{Binding User.FullName, StringFormat='{0}'}"
                 TextColor="{StaticResource MainColor}"/>
             <ListView 
-                BackgroundColor="WhiteSmoke"
+                BackgroundColor="#F2F2F2"
                 ItemsSource="{Binding Menus}"
                 HasUnevenRows="True"
                 SeparatorVisibility="None">
@@ -34,19 +35,25 @@
                                     <TapGestureRecognizer Command="{Binding NavigateCommand}"/>
                                 </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Image 
+                                    Grid.Column="0"
+                                    HeightRequest="50"
                                     Source="{Binding Icon}"
-                                    WidthRequest="50"
-                                    HeightRequest="50">
+                                    WidthRequest="50">
                                 </Image>
                                 <Label 
+                                    FontSize="17"
                                     Grid.Column="1"
-                                    VerticalOptions="Center"
                                     Text="{Binding Title}"
-                                    TextColor="{AppThemeBinding Dark=Gray}">
+                                    TextColor="{AppThemeBinding Dark={StaticResource TestColor},Light={StaticResource FontColor}}"
+                                    VerticalOptions="Center">
                                 </Label>
                             </Grid>
                         </ViewCell>

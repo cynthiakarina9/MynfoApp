@@ -520,6 +520,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Account.
+        /// </summary>
+        public static string MyAccount {
+            get {
+                return ResourceManager.GetString("MyAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Languages.
         /// </summary>
         public static string MyLanguages {
@@ -529,11 +538,11 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Profile.
+        ///   Looks up a localized string similar to My Profiles.
         /// </summary>
-        public static string MyProfile {
+        public static string MyProfiles {
             get {
-                return ResourceManager.GetString("MyProfile", resourceCulture);
+                return ResourceManager.GetString("MyProfiles", resourceCulture);
             }
         }
         
@@ -723,6 +732,15 @@ namespace Mynfo.Resources {
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         

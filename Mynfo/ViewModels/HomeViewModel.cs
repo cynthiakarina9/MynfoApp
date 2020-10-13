@@ -1,53 +1,25 @@
 ﻿namespace Mynfo.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
-    using Mynfo.Views;
-    using System;
-    using System.IO;
     using System.Windows.Input;
-
+    using Views;
 
     public class HomeViewModel
     {
-        HomePage homePage;
-        string _fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "notes.txt");
-        public HomeViewModel()
-        {
-            if (File.Exists(_fileName))
-            {
-                //homePage.editor2 = File.ReadAllText(_fileName);
-            }
-        }
-
-        public ICommand SaveNotesCommand
+        #region Commands
+        public ICommand CreateBoxCommand
         {
             get
             {
-                return new RelayCommand(SaveNotes);
+                return new RelayCommand(CreateBox);
             }
         }
-
-        public void SaveNotes()
+        private void CreateBox()
         {
-            //File.WriteAllText(_fileName, homePage.editor2);
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.BoxRegister = new BoxRegisterViewModel();
+            App.Navigator.PushAsync(new BoxRegisterPage());
         }
-
-
-        public ICommand DeleteNotesCommand
-        {
-            get
-            {
-                return new RelayCommand(DeleteNotes);
-            }
-        }
-
-        public void DeleteNotes()
-        {
-            if (File.Exists(_fileName))
-            {
-                File.Delete(_fileName);
-            }
-            //homePage.editor2 = string.Empty;
-        }
+        #endregion
     }
 }

@@ -20,6 +20,7 @@
             <Color x:Key="MenuFountColor">#F1FF99</Color>
             <Color x:Key="AccentColor">#192DB3</Color>
             <Color x:Key="BackgroundColor">#ffff</Color>
+            <Color x:Key="TestColor">pink</Color>
 
         </ResourceDictionary>
     </Application.Resources>

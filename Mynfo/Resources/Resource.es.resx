@@ -121,7 +121,7 @@
     <value>Aceptar</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>Ingresa tu email..</value>
+    <value>Ingresa tu email.</value>
   </data>
   <data name="EmailValidation" xml:space="preserve">
     <value>Debes ingresar un email.</value>
@@ -142,13 +142,13 @@
     <value>Ingresar</value>
   </data>
   <data name="EMail" xml:space="preserve">
-    <value>E-Mail</value>
+    <value>Correo:</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
   </data>
   <data name="PasswordPlaceHolder" xml:space="preserve">
-    <value>Ingresa tu contraseña...</value>
+    <value>Ingresa tu contraseña.</value>
   </data>
   <data name="Forgot" xml:space="preserve">
     <value>¿Olvidaste tu contraseña?</value>
@@ -157,7 +157,7 @@
     <value>Registrarse</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Buscar...</value>
+    <value>Buscar.</value>
   </data>
   <data name="Countries" xml:space="preserve">
     <value>Países</value>
@@ -249,8 +249,8 @@
   <data name="Menu" xml:space="preserve">
     <value>Menú</value>
   </data>
-  <data name="MyProfile" xml:space="preserve">
-    <value>Mi perfil</value>
+  <data name="MyAccount" xml:space="preserve">
+    <value>Mi cuenta</value>
   </data>
   <data name="Statics" xml:space="preserve">
     <value>Estadísticas</value>
@@ -268,7 +268,7 @@
     <value>Nombres</value>
   </data>
   <data name="FirstNamePlaceHolder" xml:space="preserve">
-    <value>Ingresa nombres...</value>
+    <value>Ingresa nombres.</value>
   </data>
   <data name="FirstNameValidation" xml:space="preserve">
     <value>Debes ingresar nombre(s)</value>
@@ -277,7 +277,7 @@
     <value>Apellidos</value>
   </data>
   <data name="LastNamePlaceHolder" xml:space="preserve">
-    <value>Ingresa apellidos...</value>
+    <value>Ingresa apellidos.</value>
   </data>
   <data name="LastNameValidation" xml:space="preserve">
     <value>Debes ingresar apellido(s).</value>
@@ -286,7 +286,7 @@
     <value>Teléfono</value>
   </data>
   <data name="PhonePlaceHolder" xml:space="preserve">
-    <value>Ingresa teléfono...</value>
+    <value>Ingresa teléfono.</value>
   </data>
   <data name="PhoneValidation" xml:space="preserve">
     <value>Debes ingresar un teléfono.</value>
@@ -340,7 +340,7 @@
     <value>Contraseña nueva</value>
   </data>
   <data name="NewPasswordPlaceHolder" xml:space="preserve">
-    <value>Ingrese la nueva contraseña...</value>
+    <value>Ingrese la nueva contraseña.</value>
   </data>
   <data name="ConnectionError1" xml:space="preserve">
     <value>Verifica que tengas los parámetros de internet activados.</value>
@@ -359,5 +359,11 @@
   </data>
   <data name="ErrorChangingPassword" xml:space="preserve">
     <value>La contraseña no pudo ser cambiada, por favor intenta más tarde.</value>
+  </data>
+  <data name="MyProfiles" xml:space="preserve">
+    <value>Mis perfiles</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Configuraciones</value>
   </data>
 </root>

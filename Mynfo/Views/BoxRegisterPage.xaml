@@ -2,34 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.BoxRegisterPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Nueva Box">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <Label Text="Nombre de la box" 
-                   Grid.Row="1"
-                   FontSize="25" 
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Entry Grid.Row="2"
-                   FontSize="20"
-                   WidthRequest="200"
-                   HorizontalTextAlignment="Center"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Button Grid.Row="3"
-                    Text="Crear"
-                    BackgroundColor="#FF5521"
-                    BorderRadius="23"
-                    HeightRequest="46"
-                    Margin="70,0,70,0"
-                    TextColor="White"
-                    VerticalOptions="End"/>
-        </Grid>
+        <ScrollView
+            BindingContext="{Binding BoxRegister}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Label Text="Nombre de la box" 
+                       Grid.Row="1"
+                       FontSize="25" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Entry Grid.Row="2"
+                       FontSize="20"
+                       WidthRequest="200"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Button Grid.Row="3"
+                        Text="Crear"
+                        BackgroundColor="#FF5521"
+                        BorderRadius="23"
+                        HeightRequest="46"
+                        Margin="70,0,70,0"
+                        TextColor="White"
+                        VerticalOptions="End"/>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

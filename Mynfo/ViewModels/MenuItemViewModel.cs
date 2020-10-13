@@ -49,6 +49,17 @@
                 App.Navigator.PushAsync(new MyProfilePage());
             }
 
+            else if (this.PageName == "ProfilesPage")
+            {
+                MainViewModel.GetInstance().Profiles = new ProfilesViewModel();
+                App.Navigator.PushAsync(new ProfilesPage());
+            }
+
+            else if (this.PageName == "SettingsPage")
+            {
+                MainViewModel.GetInstance().Settings = new SettingsViewModel();
+                App.Navigator.PushAsync(new SettingsPage());
+            }
         }
         #endregion
     }

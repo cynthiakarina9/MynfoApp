@@ -2,198 +2,203 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.HomePage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Home">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+"
-                     Clicked="OnNoteAddedClicked" />
+                     Command="{Binding CreateBoxCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="200" />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+        <ScrollView
+            BindingContext="{Binding Home}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="200" />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-            <!--Cabecera -->
-            <BoxView Grid.ColumnSpan="3"/>
-            <Label Text="Lista de Boxes" 
-                   Grid.ColumnSpan="3"
-                   FontSize="25" 
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                <!--Cabecera -->
+                <BoxView Grid.ColumnSpan="3"/>
+                <Label Text="Lista de Boxes" 
+                       Grid.ColumnSpan="3"
+                       FontSize="25" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
 
-            <!-- Box principal -->
-            <BoxView Grid.Row="1"
+                <!-- Box principal -->
+                <BoxView Grid.Row="1"
+                         Grid.ColumnSpan="3"/>
+                <Button
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    WidthRequest      ="140"
+                    HeightRequest     ="140"
+                    CornerRadius      ="70"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="{StaticResource MainColor}"
+                    Text="Negocios"
+                    TextColor="white"
+                    FontSize="20"
+                    FontAttributes="Bold"/>
+
+                <!-- Primeras 3 boxes -->
+                <BoxView Grid.Row="2"/>
+                <Button
+                    Grid.Row="2"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="LightGray"
+                    Text="Amigos"
+                    TextColor="{StaticResource FontColor}"
+                    FontSize="10"
+                    FontAttributes="Bold"/>
+
+                <BoxView Grid.Row="2"
+                     Grid.Column="1"/>
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="LightGray"
+                    Text="Trabajo"
+                    TextColor="Black"
+                    FontSize="10"
+                    FontAttributes="Bold"/>
+
+                <BoxView Grid.Row="2"
+                     Grid.Column="2"/>
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="LightGray"
+                    Text="Citas"
+                    TextColor="{StaticResource FontColor}"
+                    FontSize="10"
+                    FontAttributes="Bold"/>
+
+                <!-- De la box 4 a la 6 -->
+                <BoxView Grid.Row="3"
                      Grid.ColumnSpan="3"/>
-            <Button
-                Grid.Row="1"
-                Grid.ColumnSpan="3"
-                WidthRequest      ="140"
-                HeightRequest     ="140"
-                CornerRadius      ="70"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="#FF5521"
-                Text="Negocios"
-                TextColor="white"
-                FontSize="20"
-                FontAttributes="Bold"/>
 
-            <!-- Primeras 3 boxes -->
-            <BoxView Grid.Row="2"/>
-            <Button
-                Grid.Row="2"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="LightGray"
-                Text="Amigos"
-                TextColor="Black"
-                FontSize="10"
-                FontAttributes="Bold"/>
+                <BoxView Grid.Row="3"/>
+                <Button
+                    Grid.Row="3"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="gray"
+                    IsEnabled="False"/>
 
-            <BoxView Grid.Row="2"
-                 Grid.Column="1"/>
-            <Button
-                Grid.Row="2"
-                Grid.Column="1"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="LightGray"
-                Text="Trabajo"
-                TextColor="Black"
-                FontSize="10"
-                FontAttributes="Bold"/>
+                <BoxView Grid.Row="3"
+                     Grid.Column="1"/>
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="gray"
+                    IsEnabled="False"/>
 
-            <BoxView Grid.Row="2"
-                 Grid.Column="2"/>
-            <Button
-                Grid.Row="2"
-                Grid.Column="2"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="LightGray"
-                Text="Citas"
-                TextColor="Black"
-                FontSize="10"
-                FontAttributes="Bold"/>
+                <BoxView Grid.Row="3"
+                     Grid.Column="2"/>
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="gray"
+                    IsEnabled="False"/>
 
-            <!-- De la box 4 a la 6 -->
-            <BoxView Grid.Row="3"
-                 Grid.ColumnSpan="3"/>
+                <!-- De la box 7 a la 9 -->
+                <BoxView Grid.Row="4"
+                     Grid.ColumnSpan="3"/>
 
-            <BoxView Grid.Row="3"/>
-            <Button
-                Grid.Row="3"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="gray"
-                IsEnabled="False"/>
+                <BoxView Grid.Row="4"/>
+                <Button
+                    Grid.Row="4"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="gray"
+                    IsEnabled="False"/>
 
-            <BoxView Grid.Row="3"
-                 Grid.Column="1"/>
-            <Button
-                Grid.Row="3"
-                Grid.Column="1"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="gray"
-                IsEnabled="False"/>
+                <BoxView Grid.Row="4"
+                     Grid.Column="1"/>
+                <Button
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="gray"
+                    IsEnabled="False"/>
 
-            <BoxView Grid.Row="3"
-                 Grid.Column="2"/>
-            <Button
-                Grid.Row="3"
-                Grid.Column="2"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="gray"
-                IsEnabled="False"/>
+                <BoxView Grid.Row="4"
+                     Grid.Column="2"/>
+                <Button
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="gray"
+                    IsEnabled="False"/>
 
-            <!-- De la box 7 a la 9 -->
-            <BoxView Grid.Row="4"
-                 Grid.ColumnSpan="3"/>
-
-            <BoxView Grid.Row="4"/>
-            <Button
-                Grid.Row="4"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="gray"
-                IsEnabled="False"/>
-
-            <BoxView Grid.Row="4"
-                 Grid.Column="1"/>
-            <Button
-                Grid.Row="4"
-                Grid.Column="1"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="gray"
-                IsEnabled="False"/>
-
-            <BoxView Grid.Row="4"
-                 Grid.Column="2"/>
-            <Button
-                Grid.Row="4"
-                Grid.Column="2"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="gray"
-                IsEnabled="False"/>
-
-            <!-- Botón para agregar box nueva-->
-            <BoxView Grid.Row="5"
-                 Grid.ColumnSpan="3"/>
-            <Button
-                Grid.Row="5"
-                Grid.ColumnSpan="3"
-                WidthRequest      ="80"
-                HeightRequest     ="80"
-                CornerRadius      ="40"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="White"
-                Text="+"
-                TextColor="Black"
-                FontSize="40"
-                FontAttributes="Bold"/>
-        </Grid>
+                <!-- Botón para agregar box nueva-->
+                <BoxView Grid.Row="5"
+                     Grid.ColumnSpan="3"/>
+                <Button
+                    Grid.Row="5"
+                    Grid.ColumnSpan="3"
+                    WidthRequest      ="80"
+                    HeightRequest     ="80"
+                    CornerRadius      ="40"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="White"
+                    Text="+"
+                    TextColor="Black"
+                    FontSize="40"
+                    FontAttributes="Bold"
+                    Command="{Binding CreateBoxCommand}"/>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
     <!--<ListView x:Name="listView"
               Margin="20"
