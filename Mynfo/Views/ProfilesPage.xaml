@@ -3,10 +3,154 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.ProfilesPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="90"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!--Cabecera -->
+            <BoxView Grid.ColumnSpan="3"/>
+            <Label Text="Mis cuentas activas" 
+                   Grid.ColumnSpan="3"
+                   FontSize="25" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            <!-- Primeras 3 redes sociales -->
+            <Button
+                Grid.Row="1"
+                WidthRequest      ="80"
+                HeightRequest     ="80"
+                CornerRadius      ="40"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="Blue"
+                Text="Facebook"
+                TextColor="White"
+                FontSize="10"
+                FontAttributes="Bold"/>
+            
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                WidthRequest      ="80"
+                HeightRequest     ="80"
+                CornerRadius      ="40"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="LightBlue"
+                Text="Twitter"
+                TextColor="Black"
+                FontSize="10"
+                FontAttributes="Bold"/>
+            
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
+                WidthRequest      ="80"
+                HeightRequest     ="80"
+                CornerRadius      ="40"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="Purple"
+                Text="Instagram"
+                TextColor="White"
+                FontSize="10"
+                FontAttributes="Bold"/>
+
+            <!-- De la red social 4 a la 6 -->
+            <Button
+                Grid.Row="2"
+                WidthRequest      ="80"
+                HeightRequest     ="80"
+                CornerRadius      ="40"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="gray"
+                Text="Email"
+                TextColor="White"
+                FontSize="10"
+                FontAttributes="Bold"/>
+            
+            <Button
+                Grid.Row="2"
+                Grid.Column="1"
+                WidthRequest      ="80"
+                HeightRequest     ="80"
+                CornerRadius      ="40"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="Green"
+                Text="Teléfonos"
+                TextColor="White"
+                FontSize="10"
+                FontAttributes="Bold"/>
+            
+            <Button
+                Grid.Row="2"
+                Grid.Column="2"
+                WidthRequest      ="80"
+                HeightRequest     ="80"
+                CornerRadius      ="40"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="Blue"
+                Text="Linkedin"
+                TextColor="White"
+                FontSize="10"
+                FontAttributes="Bold"/>
+
+            <!-- De la red social 7 a la 9 -->
+            
+            <Button
+                Grid.Row="3"
+                WidthRequest      ="80"
+                HeightRequest     ="80"
+                CornerRadius      ="40"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="Red"
+                Text="Youtube"
+                TextColor="White"
+                FontSize="10"
+                FontAttributes="Bold"/>
+            
+            <Button
+                Grid.Row="3"
+                Grid.Column="1"
+                WidthRequest      ="80"
+                HeightRequest     ="80"
+                CornerRadius      ="40"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="LawnGreen"
+                Text="Spotify"
+                TextColor="Black"
+                FontSize="10"
+                FontAttributes="Bold"/>
+
+            <Button
+                Grid.Row="3"
+                Grid.Column="2"
+                WidthRequest      ="80"
+                HeightRequest     ="80"
+                CornerRadius      ="40"
+                VerticalOptions   ="Center"
+                HorizontalOptions ="Center"
+                BackgroundColor   ="Yellow"
+                Text="Snapchat"
+                TextColor="Black"
+                FontSize="10"
+                FontAttributes="Bold"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

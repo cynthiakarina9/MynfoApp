@@ -42,9 +42,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\BoxRegisterPage.xaml.cs">
-      <DependentUpon>BoxRegisterPage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\CreateProfilePage.xaml.cs">
       <DependentUpon>CreateProfilePage.xaml</DependentUpon>
     </Compile>
@@ -62,9 +59,6 @@
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AddProfilesPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\BoxRegisterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ChangePasswordPage.xaml">
