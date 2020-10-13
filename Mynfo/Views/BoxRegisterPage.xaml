@@ -27,7 +27,7 @@
                        VerticalOptions="Center" />
                 <Button Grid.Row="3"
                         Text="Crear"
-                        BackgroundColor="#FF5521"
+                        BackgroundColor="{StaticResource MainColor}"
                         BorderRadius="23"
                         HeightRequest="46"
                         Margin="70,0,70,0"

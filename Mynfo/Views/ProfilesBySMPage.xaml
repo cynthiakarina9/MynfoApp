@@ -30,11 +30,11 @@
             <!-- Agregar cuentas -->
             <Button Grid.Row="2"
                     Text="Agregar cuenta"
-                    BackgroundColor="#FF5521"
+                    BackgroundColor="{StaticResource MainColor}"
                     BorderRadius="23"
                     HeightRequest="46"
                     Margin="80,0,80,0"
-                    TextColor="White"
+                    TextColor="{StaticResource Dark_FontColor}"
                     VerticalOptions="Center"/>
 
         </Grid>

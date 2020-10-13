@@ -104,7 +104,7 @@
                     HeightRequest="46"
                     IsEnabled="{Binding IsEnabled}"
                     Text="Save"
-                    TextColor="White">
+                    TextColor="{StaticResource Dark_FontColor}">
                 </Button>
             </StackLayout>
         </ScrollView>
