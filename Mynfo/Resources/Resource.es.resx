@@ -366,4 +366,10 @@
   <data name="Settings" xml:space="preserve">
     <value>Configuraciones</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Mis perfiles activos</value>
+  </data>
 </root>

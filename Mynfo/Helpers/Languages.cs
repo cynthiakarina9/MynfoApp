@@ -370,5 +370,13 @@
         {
             get { return Resource.Settings; }
         }
+        public static string Home
+        {
+            get { return Resource.Home; }
+        }
+        public static string Profiles
+        {
+            get { return Resource.Profiles; }
+        }
     }
 }
