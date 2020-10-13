@@ -32,7 +32,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="0"
-                        Text="FirstName"
+                        Text="{i18n:Translate FirstNameLabel}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
@@ -44,7 +44,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
-                        Text="LastName"
+                        Text="{i18n:Translate LastNameLabel}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
@@ -82,7 +82,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="4"
-                        Text="Confirm"
+                        Text="{i18n:Translate ConfirmLabel}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
@@ -103,7 +103,7 @@
                     Command="{Binding RegisterCommand}"
                     HeightRequest="46"
                     IsEnabled="{Binding IsEnabled}"
-                    Text="Save"
+                    Text="{i18n:Translate Save}"
                     TextColor="{StaticResource Dark_FontColor}">
                 </Button>
             </StackLayout>

@@ -87,7 +87,7 @@
         }
         #endregion
 
-        #region Methos
+        #region Methods
         private void LoadMenu()
         {
             this.Menus = new ObservableCollection<MenuItemViewModel>();

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.AddProfilesPage">
     <ContentPage.Content>
         <ScrollView>
@@ -18,7 +19,7 @@
                     <ColumnDefinition Width="0.1*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Agregar perfiles a Box" 
+                <Label Text="{i18n:Translate AddPBox}" 
                        Grid.ColumnSpan="3"
                        FontSize="25" 
                        HorizontalOptions="Center"
@@ -37,7 +38,7 @@
                         BorderRadius="23"
                         HeightRequest="46"
                         Margin="50,0,50,0"
-                        Text="Guardar"
+                        Text="{i18n:Translate Save}"
                         TextColor="{StaticResource Dark_FontColor}}"
                         VerticalOptions="Center"/>
             </Grid>

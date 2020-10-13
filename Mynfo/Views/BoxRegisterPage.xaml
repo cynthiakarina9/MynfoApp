@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.BoxRegisterPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Nueva Box">
+             Title="{i18n:Translate NewBox}">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding BoxRegister}">
@@ -14,7 +15,7 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <Label Text="Nombre de la box" 
+                <Label Text="{i18n:Translate BoxName}" 
                        Grid.Row="1"
                        FontSize="25" 
                        HorizontalOptions="Center"
@@ -26,7 +27,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center" />
                 <Button Grid.Row="3"
-                        Text="Crear"
+                        Text="{i18n:Translate Create}"
                         BackgroundColor="{StaticResource MainColor}"
                         BorderRadius="23"
                         HeightRequest="46"

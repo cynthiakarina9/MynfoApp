@@ -372,4 +372,58 @@
   <data name="Profiles" xml:space="preserve">
     <value>My active profiles</value>
   </data>
+  <data name="ActiveAccounts" xml:space="preserve">
+    <value>My active accounts</value>
+  </data>
+  <data name="AddAccount" xml:space="preserve">
+    <value>Add account</value>
+  </data>
+  <data name="AddPBox" xml:space="preserve">
+    <value>Add profiles to Box</value>
+  </data>
+  <data name="AddPSocialMedia" xml:space="preserve">
+    <value>Add profile to social network</value>
+  </data>
+  <data name="BoxList" xml:space="preserve">
+    <value>Box list</value>
+  </data>
+  <data name="BoxName" xml:space="preserve">
+    <value>Box name</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="DefaultBox" xml:space="preserve">
+    <value>Default Box</value>
+  </data>
+  <data name="EditProfileData" xml:space="preserve">
+    <value>Edit profile data</value>
+  </data>
+  <data name="LoginSession" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="MyAccounts" xml:space="preserve">
+    <value>My accounts in</value>
+  </data>
+  <data name="NewBox" xml:space="preserve">
+    <value>New Box</value>
+  </data>
+  <data name="NewProfile" xml:space="preserve">
+    <value>New Profile</value>
+  </data>
+  <data name="ProfileDetails" xml:space="preserve">
+    <value>Profile details</value>
+  </data>
+  <data name="ProfileName" xml:space="preserve">
+    <value>Profile name</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
 </root>

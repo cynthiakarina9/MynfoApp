@@ -378,5 +378,77 @@
         {
             get { return Resource.Profiles; }
         }
+        public static string AddPBox
+        {
+            get { return Resource.AddPBox; }
+        }
+        public static string NewBox
+        {
+            get { return Resource.NewBox; }
+        }
+        public static string BoxName
+        {
+            get { return Resource.BoxName; }
+        }
+        public static string Create
+        {
+            get { return Resource.Create; }
+        }
+        public static string AddPSocialMedia
+        {
+            get { return Resource.AddPSocialMedia; }
+        }
+        public static string User
+        {
+            get { return Resource.User; }
+        }
+        public static string LoginSession
+        {
+            get { return Resource.LoginSession; }
+        }
+        public static string NewProfile
+        {
+            get { return Resource.NewProfile; }
+        }
+        public static string DefaultBox
+        {
+            get { return Resource.DefaultBox; }
+        }
+        public static string ProfileDetails
+        {
+            get { return Resource.ProfileDetails; }
+        }
+        public static string EditProfileData
+        {
+            get { return Resource.EditProfileData; }
+        }
+        public static string ProfileName
+        {
+            get { return Resource.ProfileName; }
+        }
+        public static string Value
+        {
+            get { return Resource.Value; }
+        }
+        public static string Update
+        {
+            get { return Resource.Update; }
+        }
+        public static string BoxList
+        {
+            get { return Resource.BoxList; }
+        }
+        public static string MyAccounts
+        {
+            get { return Resource.MyAccounts; }
+        }
+        public static string AddAccount
+        {
+            get { return Resource.AddAccount; }
+        }
+        public static string ActiveAccounts
+        {
+            get { return Resource.ActiveAccounts; }
+        }
     }
 }

@@ -24,7 +24,7 @@
 
                 <!--Cabecera -->
                 <BoxView Grid.ColumnSpan="3"/>
-                <Label Text="Mis cuentas activas" 
+                <Label Text="{i18n:Translate ActiveAccounts}" 
                        Grid.ColumnSpan="3"
                        FontSize="25" 
                        HorizontalOptions="Center"
@@ -81,7 +81,7 @@
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
                     BackgroundColor   ="gray"
-                    Text="Email"
+                    Text="{i18n:Translate EMail}"
                     TextColor="White"
                     FontSize="10"
                     FontAttributes="Bold"/>
@@ -95,7 +95,7 @@
                     VerticalOptions   ="Center"
                     HorizontalOptions ="Center"
                     BackgroundColor   ="Green"
-                    Text="Teléfonos"
+                    Text="{i18n:Translate PhoneLabel}"
                     TextColor="White"
                     FontSize="10"
                     FontAttributes="Bold"/>

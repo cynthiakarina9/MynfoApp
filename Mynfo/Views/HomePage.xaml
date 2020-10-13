@@ -29,13 +29,14 @@
 
                 <!--Cabecera -->
                 <BoxView Grid.ColumnSpan="3"/>
-                <Label Text="Lista de Boxes" 
+                <Label Text="{i18n:Translate BoxList}" 
                        Grid.ColumnSpan="3"
                        FontSize="25" 
                        HorizontalOptions="Center"
                        VerticalOptions="Center" />
 
                 <!-- Box principal -->
+                <!-- El texto en los botónes es dinámico-->
                 <BoxView Grid.Row="1"
                          Grid.ColumnSpan="3"/>
                 <Button
@@ -48,7 +49,7 @@
                     HorizontalOptions ="Center"
                     BackgroundColor   ="{StaticResource MainColor}"
                     Text="Negocios"
-                    TextColor="white"
+                    TextColor="{StaticResource Dark_FontColor}"
                     FontSize="20"
                     FontAttributes="Bold"/>
 

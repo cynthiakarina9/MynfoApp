@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.CreateProfilePage"
-             Title="Nuevo perfil">
+             Title="{i18n:Translate NewProfile}">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -13,11 +14,11 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <Label Text="Agregar perfil de Red Social" 
+            <Label Text="{i18n:Translate AddPSocialMedia}" 
                    FontSize="25" 
                    HorizontalOptions="Center"
                    VerticalOptions="Center" />
-            <Label Text="Usuario" 
+            <Label Text="{i18n:Translate User}" 
                    Grid.Row="1"
                    FontSize="21" 
                    HorizontalOptions="Center"
@@ -28,7 +29,7 @@
                    HorizontalTextAlignment="Center"
                    HorizontalOptions="Center"
                    VerticalOptions="Center" />
-            <Label Text="Contraseña" 
+            <Label Text="{i18n:Translate Password}" 
                    Grid.Row="3"
                    FontSize="21" 
                    HorizontalOptions="Center"
@@ -41,7 +42,7 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center" />
             <Button Grid.Row="5"
-                    Text="Iniciar sesión"
+                    Text="{i18n:Translate LoginSession}"
                     BackgroundColor="{StaticResource MainColor}"
                     BorderRadius="23"
                     HeightRequest="46"

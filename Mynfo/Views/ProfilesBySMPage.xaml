@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesBySMPage">
     <ContentPage.Content>
         <Grid>
@@ -11,12 +12,14 @@
             </Grid.RowDefinitions>
 
             <!--Nombre de la Red -->
-            <Label Text="Mis cuentas en 'Red Social'"
+            <!-- Nombre de la red social dinámico-->
+            <Label Text="{i18n:Translate MyAccounts}"
                    FontSize="25" 
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
 
             <!-- Listado de cuentas -->
+            <!-- Nombres en la lista dinámicos-->
             <ListView Grid.Row="1">
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -29,7 +32,7 @@
 
             <!-- Agregar cuentas -->
             <Button Grid.Row="2"
-                    Text="Agregar cuenta"
+                    Text="{i18n:Translate AddAccount}"
                     BackgroundColor="{StaticResource MainColor}"
                     BorderRadius="23"
                     HeightRequest="46"
