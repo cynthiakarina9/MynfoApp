@@ -21,5 +21,11 @@
             //modelBuilder.Configurations.Add(new Box_ProfileSMMap());
         }
         #endregion
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.Box> Boxes { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.ProfileEmail> ProfileEmails { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.ProfilePhone> ProfilePhones { get; set; }
     }
 }

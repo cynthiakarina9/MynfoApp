@@ -5,7 +5,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate MyProfile}">
+             Title="{i18n:Translate MyAccount}">
     <ContentPage.Content>
         <ScrollView  
             BindingContext="{Binding MyProfile}">

@@ -178,9 +178,9 @@
             get { return Resource.Menu; }
         }
 
-        public static string MyProfile
+        public static string MyAccount
         {
-            get { return Resource.MyProfile; }
+            get { return Resource.MyAccount; }
         }
 
         public static string Statics
@@ -360,6 +360,15 @@
         public static string ErrorChangingPassword
         {
             get { return Resource.ErrorChangingPassword; }
+        }
+
+        public static string MyProfiles
+        {
+            get { return Resource.MyProfiles; }
+        }
+        public static string Settings
+        {
+            get { return Resource.Settings; }
         }
     }
 }
