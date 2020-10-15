@@ -16,5 +16,10 @@ namespace Mynfo.Views
         {
             InitializeComponent();
         }
+
+        private void Button_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

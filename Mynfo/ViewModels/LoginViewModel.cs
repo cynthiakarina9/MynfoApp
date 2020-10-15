@@ -57,7 +57,7 @@
         public LoginViewModel()
         {
             this.apiService = new ApiService();
-
+            
             this.IsRemembered = true;
             this.IsEnabled = true;
         }

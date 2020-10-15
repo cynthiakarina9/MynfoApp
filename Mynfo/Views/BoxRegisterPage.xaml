@@ -3,39 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.BoxRegisterPage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate NewBox}">
+             BindingContext = "{Binding Main, Source = {StaticResource Locator}}"
+             Title = "{i18n:Translate NewBox}">
     <ContentPage.Content>
         <ScrollView
-            BindingContext="{Binding BoxRegister}">
+            BindingContext = "{Binding BoxRegister}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height = "60"/>
+                    <RowDefinition Height = "50"/>
+                    <RowDefinition Height = "50"/>
+                    <RowDefinition Height = "50"/>
                 </Grid.RowDefinitions>
                 <Label 
-                    Text="{i18n:Translate BoxName}" 
-                    Grid.Row="1"
-                    FontSize="25" 
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
+                    FontSize = "25" 
+                    Grid.Row = "1"
+                    HorizontalOptions = "Center"
+                    Text = "{i18n:Translate BoxName}" 
+                    VerticalOptions = "Center" />
                 <Entry 
-                    Grid.Row="2"
-                    FontSize="20"
-                    WidthRequest="200"
-                    HorizontalTextAlignment="Center"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
+                    FontSize = "20"
+                    Grid.Row = "2"
+                    HorizontalOptions = "Center"
+                    HorizontalTextAlignment = "Center"
+                    VerticalOptions = "Center"
+                    WidthRequest = "200"/>
                 <Button 
-                    Command = "{Binding SaveBoxCommand}"
-                    Grid.Row = "3"
-                    Text = "{i18n:Translate Create}"
                     BackgroundColor = "{StaticResource MainColor}"
                     BorderRadius = "23"
+                    Command = "{Binding SaveBoxCommand}"
+                    Grid.Row = "3"
                     HeightRequest = "46"
                     Margin = "70,0,70,0"
+                    Text = "{i18n:Translate Create}"
                     TextColor = "{StaticResource Dark_FontColor}"
                     VerticalOptions = "End"/>
             </Grid>
