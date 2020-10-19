@@ -4,7 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="Mynfo.Views.AddProfilesPage"
-             Title="AddProfiles">
+             Title="{i18n:Translate AddProfiles}">
     <ContentPage.Content>
         <ScrollView 
             BindingContext="{Binding AddProfiles}">

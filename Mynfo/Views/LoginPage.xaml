@@ -72,11 +72,11 @@
                         IsToggled = "{Binding IsRemembered, Mode = TwoWay}"
                         HorizontalOptions = "End"/>
                 </StackLayout>
-                <Label
+                <!--<Label
                     HorizontalOptions = "Center"
                     Text = "{i18n:Translate Forgot}"
                     TextColor = "{StaticResource AccentColor}"
-                    VerticalOptions = "FillAndExpand"/>
+                    VerticalOptions = "FillAndExpand"/>-->
                 <Label Text = " "/>
                 <Button
                     BackgroundColor = "{StaticResource MainColor}"

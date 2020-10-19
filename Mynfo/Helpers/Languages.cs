@@ -450,5 +450,9 @@
         {
             get { return Resource.ActiveAccounts; }
         }
+        public static string AddProfiles
+        {
+            get { return Resource.AddProfiles; }
+        }
     }
 }

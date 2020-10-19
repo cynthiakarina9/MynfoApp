@@ -38,7 +38,7 @@
                             FontSize = "18"
                             HorizontalOptions = "Center"
                             Text = "{i18n:Translate FirstNameLabel}"
-                            TextColor = "{StaticResource FontColor}"
+                            TextColor = "{AppThemeBinding Light={StaticResource FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" />
                         <Entry 
                             BackgroundColor = "{StaticResource LoginEntryColor}"
@@ -54,7 +54,7 @@
                             FontFamily = "Avenir Next LT Pro Demi"
                             FontSize = "18"
                             HorizontalOptions = "Center"
-                            TextColor = "{StaticResource FontColor}"
+                            TextColor = "{AppThemeBinding Light={StaticResource FontColor}, Dark={StaticResource Dark_FontColor}}"
                             Text = "{i18n:Translate LastNameLabel}" 
                             VerticalOptions = "Center" />
                         <Entry 
@@ -71,7 +71,7 @@
                             FontFamily = "Avenir Next LT Pro Demi"
                             FontSize = "18"
                             HorizontalOptions = "Center"
-                            TextColor = "{StaticResource FontColor}"
+                            TextColor = "{AppThemeBinding Light={StaticResource FontColor}, Dark={StaticResource Dark_FontColor}}"
                             Text = "{i18n:Translate EMail}" 
                             VerticalOptions = "Center" />
                         <Entry 

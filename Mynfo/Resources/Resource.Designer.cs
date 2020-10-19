@@ -97,6 +97,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Add profiles.
+        /// </summary>
+        public static string AddProfiles {
+            get {
+                return ResourceManager.GetString("AddProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Add profile to social network.
         /// </summary>
         public static string AddPSocialMedia {

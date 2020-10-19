@@ -426,4 +426,7 @@
   <data name="Value" xml:space="preserve">
     <value>Valor</value>
   </data>
+  <data name="AddProfiles" xml:space="preserve">
+    <value>Adicionar perfis</value>
+  </data>
 </root>
