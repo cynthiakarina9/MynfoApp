@@ -50,7 +50,7 @@ namespace Mynfo.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "BoxId,Name,BoxDefault,UserId")] Box box)
+        public async Task<ActionResult> Create([Bind(Include = "BoxId,Name,BoxDefault,UserId,Time")] Box box)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace Mynfo.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "BoxId,Name,BoxDefault,UserId")] Box box)
+        public async Task<ActionResult> Edit([Bind(Include = "BoxId,Name,BoxDefault,UserId,Time")] Box box)
         {
             if (ModelState.IsValid)
             {

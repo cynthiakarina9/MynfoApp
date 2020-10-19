@@ -1,6 +1,7 @@
 ﻿namespace Mynfo.Domain
 {
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     public class Box
@@ -16,6 +17,8 @@
 
         public int UserId { get; set; }
 
+        public virtual DateTime Time { get; set; }
+
         [JsonIgnore]
         public virtual User User { get; set; }
 
@@ -24,5 +27,8 @@
 
         [JsonIgnore]
         public virtual ICollection<Box_ProfileEmail> Box_ProfileEmail { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Box_ProfilePhone> Box_ProfilePhone { get; set; }
     }
 }

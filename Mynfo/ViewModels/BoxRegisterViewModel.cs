@@ -7,6 +7,7 @@
     using System.Windows.Input;
     using Views;
     using Xamarin.Forms;
+    using System;
 
     public class BoxRegisterViewModel : BaseViewModel
     {
@@ -35,6 +36,16 @@
             set;
         }
         #endregion
+
+        #region Constructors
+        public BoxRegisterViewModel()
+        {
+            this.apiService = new ApiService();
+
+            this.IsEnabled = true;
+        }
+        #endregion
+
         #region Commands
         public ICommand SaveBoxCommand
         {
@@ -69,22 +80,22 @@
                     return;
                 }
 
-                var box = new Box
+            var mainViewModel = MainViewModel.GetInstance();
+            DateTime boxTime = DateTime.Now;
+            var box = new Box
                 {
                     Name = this.Name,
-                    FirstName = this.FirstName,
-                    LastName = this.LastName,
-                    ImageArray = imageArray,
-                    UserTypeId = 1,
-                    UserId = this.Password,
+                    BoxDefault = false,
+                    UserId = mainViewModel.User.UserId,
+                    Time = boxTime,
                 };
 
                 var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
                 var response = await this.apiService.Post(
                     apiSecurity,
                     "/api",
-                    "/Users",
-                    user);
+                    "/Boxes",
+                    box);
 
                 if (!response.IsSuccess)
                 {
@@ -104,15 +115,7 @@
                     Languages.ConfirmLabel,
                     Languages.UserRegisteredMessage,
                     Languages.Accept);
-                var mainViewModel = new MainViewModel();
-                //mainViewModel.SocialMedia = new SocialMediaViewModel();
-                //Application.Current.MainPage = new SocialMediaPage();
-                this.Email = string.Empty;
-                this.FirstName = string.Empty;
-                this.LastName = string.Empty;
-                this.Password = string.Empty;
-                this.Confirm = string.Empty;
-                this.ImageSource = "no_image";
+                this.Name = string.Empty;
                 mainViewModel.AddProfiles = new AddProfilesViewModel();
                 App.Navigator.PushAsync(new AddProfilesPage());
             

@@ -51,10 +51,11 @@
                     Grid.Row = "0"
                     HeightRequest = "140"
                     HorizontalOptions = "Center"
-                    Text = "Negocios"
+                    Text = "{Binding Box.Name}"
                     TextColor = "{StaticResource Dark_FontColor}"
                     VerticalOptions = "Center"
-                    WidthRequest = "140"/>
+                    WidthRequest = "140"
+                    x:Name="botonDefault"/>
 
                 <!-- Primeras 3 boxes -->
                 <BoxView 

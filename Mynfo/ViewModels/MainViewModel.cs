@@ -8,6 +8,7 @@
     {
         #region Attributes
         private UserLocal user;
+        private BoxLocal box;
         #endregion
 
         #region Properties
@@ -27,6 +28,12 @@
         {
             get { return this.user; }
             set { SetValue(ref this.user, value); }
+        }
+
+        public BoxLocal Box
+        {
+            get { return this.box; }
+            set { SetValue(ref this.box, value); }
         }
         #endregion
 

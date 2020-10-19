@@ -26,6 +26,7 @@
                     Grid.Row = "2"
                     HorizontalOptions = "Center"
                     HorizontalTextAlignment = "Center"
+                    Text = "{Binding Name}"
                     VerticalOptions = "Center"
                     WidthRequest = "200"/>
                 <Button 
@@ -38,6 +39,10 @@
                     Text = "{i18n:Translate Create}"
                     TextColor = "{StaticResource Dark_FontColor}"
                     VerticalOptions = "End"/>
+                <ActivityIndicator
+                    IsRunning = "{Binding IsRunning}"
+                    VerticalOptions = "CenterAndExpand">
+                </ActivityIndicator>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

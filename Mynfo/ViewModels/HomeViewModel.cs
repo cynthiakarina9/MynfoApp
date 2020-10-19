@@ -6,6 +6,10 @@
 
     public class HomeViewModel
     {
+        #region Properties
+        public string Name { get; set; }
+        
+        #endregion
         #region Commands
         public ICommand CreateBoxCommand
         {
@@ -20,6 +24,14 @@
             mainViewModel.BoxRegister = new BoxRegisterViewModel();
             App.Navigator.PushAsync(new BoxRegisterPage());
         }
+        #endregion
+
+        #region Methods
+        public void Botton()
+        {
+            //botonDefault.Name = Botton
+        }
+
         #endregion
     }
 }

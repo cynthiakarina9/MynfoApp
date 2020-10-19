@@ -279,11 +279,6 @@
     <Content Include="Views\ProfileEmails\Details.cshtml" />
     <Content Include="Views\ProfileEmails\Edit.cshtml" />
     <Content Include="Views\ProfileEmails\Index.cshtml" />
-    <Content Include="Views\Boxes\Create.cshtml" />
-    <Content Include="Views\Boxes\Delete.cshtml" />
-    <Content Include="Views\Boxes\Details.cshtml" />
-    <Content Include="Views\Boxes\Edit.cshtml" />
-    <Content Include="Views\Boxes\Index.cshtml" />
     <Content Include="Views\ProfileSMs\Create.cshtml" />
     <Content Include="Views\ProfileSMs\Delete.cshtml" />
     <Content Include="Views\ProfileSMs\Details.cshtml" />
@@ -304,6 +299,11 @@
     <Content Include="Views\Box_ProfilePhone\Details.cshtml" />
     <Content Include="Views\Box_ProfilePhone\Edit.cshtml" />
     <Content Include="Views\Box_ProfilePhone\Index.cshtml" />
+    <Content Include="Views\Boxes\Create.cshtml" />
+    <Content Include="Views\Boxes\Delete.cshtml" />
+    <Content Include="Views\Boxes\Details.cshtml" />
+    <Content Include="Views\Boxes\Edit.cshtml" />
+    <Content Include="Views\Boxes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
