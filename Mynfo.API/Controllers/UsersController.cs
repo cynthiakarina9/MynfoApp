@@ -75,7 +75,7 @@
                     };
 
                     db.Users.Add(user);
-                    UsersHelper.CreateUserASP(profile.Email, "User", profile.Email);
+                    UsersHelper.CreateUserASP(profile.Id, "User", profile.Id);
                 }
                 else
                 {

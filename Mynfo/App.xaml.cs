@@ -39,6 +39,7 @@
             //Set root SQLite
             root_db = root_DB;
 
+
             if (Settings.IsRemembered == "true")
             {
                 
@@ -119,20 +120,24 @@
                 token.AccessToken,
                 token.UserName);
 
-            UserLocal userLocal = null;
+            UserLocal userLocal;
+            userLocal = Converter.ToUserLocal(user);
+
             if (user != null)
             {
-                userLocal = Converter.ToUserLocal(user);
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
+                    conn.CreateTable<UserLocal>();
                     conn.Insert(userLocal);
                 }
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
+                    conn.CreateTable<TokenResponse>();
                     conn.Insert(token);
                 }
             }
-
+            
+            
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;
             mainViewModel.User = userLocal;
