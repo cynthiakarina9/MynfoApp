@@ -1,6 +1,4 @@
-﻿
-
-namespace Mynfo.Models
+﻿namespace Mynfo.Models
 {
     using SQLite;
 

@@ -3,9 +3,10 @@
     using System;
     public class Box
     {
-        public string Filename { get; set; }
+        public int BoxId { get; set; }
         public string Name { get; set; }
-        public string Text { get; set; }
+        public bool BoxDefault { get; set; }
+        public int UserId { get; set; } 
         public DateTime Date { get; set; }
     }
 }
