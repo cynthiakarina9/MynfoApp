@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.CreateProfilePhonePage"
+             Title="{i18n:Translate CreateProfilePhone}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext = "{Binding CreateProfilePhone}">
+            <Grid>
+                <StackLayout Grid.Row="1">
+                    <Label 
+                        Text="{i18n:Translate NameProfile}" 
+                        FontSize="21" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                    <Entry 
+                        FontSize="21"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        Text = "{Binding Name}"
+                        VerticalOptions="Center" 
+                        WidthRequest="200"/>
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Label 
+                        Text="{i18n:Translate NumberPhone}" 
+                        FontSize="21" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                    <Entry 
+                        FontSize="21"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        Keyboard="Telephone"
+                        MaxLength="10"
+                        Text = "{Binding Number}"
+                        VerticalOptions="Center" 
+                        WidthRequest="200"/>
+                </StackLayout>
+                <Button 
+                    Grid.Row="3"
+                    Text="{i18n:Translate Save}"
+                    BackgroundColor="{StaticResource MainColor}"
+                    BorderRadius="23"
+                    Command = "{Binding SaveProfilePhoneCommand}"
+                    HeightRequest="46"
+                    Margin="80,0,80,0"
+                    TextColor="{StaticResource Dark_FontColor}"
+                    VerticalOptions="End"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

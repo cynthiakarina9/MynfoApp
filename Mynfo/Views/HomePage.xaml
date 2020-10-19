@@ -9,9 +9,6 @@
             Order = "Primary" 
             Priority = "0"
             Text = "{Binding User.FullName, StringFormat = '{0}'}" />
-        <ToolbarItem 
-            Order = "Secondary"
-            Text = "Tiempo" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView
@@ -42,21 +39,22 @@
                 <!-- El texto en los botónes es dinámico-->
                 <!--<BoxView Grid.Row="1"
                          Grid.ColumnSpan="3"/>-->
-                <Button
-                    BackgroundColor = "#f9a589"
-                    CornerRadius = "70"
-                    FontAttributes = "Bold"
-                    FontSize = "20"
-                    Grid.ColumnSpan = "3"
-                    Grid.Row = "0"
-                    HeightRequest = "140"
-                    HorizontalOptions = "Center"
-                    Text = "{Binding Box.Name}"
-                    TextColor = "{StaticResource Dark_FontColor}"
-                    VerticalOptions = "Center"
-                    WidthRequest = "140"
-                    x:Name="botonDefault"/>
-
+                <StackLayout x:Name="DefaultButton">
+                    <Button
+                        BackgroundColor = "#f9a589"
+                        CornerRadius = "70"
+                        FontAttributes = "Bold"
+                        FontSize = "20"
+                        Grid.ColumnSpan = "3"
+                        Grid.Row = "0"
+                        HeightRequest = "140"
+                        HorizontalOptions = "Center"
+                        Text = "{Binding Box.Name}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "140"
+                        x:Name="botonDefault"/>
+                </StackLayout>
                 <!-- Primeras 3 boxes -->
                 <BoxView 
                     Grid.Row = "1"/>
@@ -210,6 +208,17 @@
                     ImageSource = "Plus"
                     VerticalOptions = "Center"
                     WidthRequest = "30" />
+                <StackLayout>
+                    <Button
+                    BackgroundColor = "Black"
+                    Command = "{Binding PruebaPerfilCommand}"
+                    Grid.ColumnSpan = "3"
+                    Grid.Row = "4"
+                    HeightRequest = "30"
+                    HorizontalOptions ="End"
+                    VerticalOptions = "Center"
+                    WidthRequest = "30" />
+                </StackLayout>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

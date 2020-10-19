@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mynfo.ViewModels
+﻿namespace Mynfo.ViewModels
 {
-    public class CreateProfileViewModel
+    public class CreateProfileViewModel 
     {
+       
     }
 }

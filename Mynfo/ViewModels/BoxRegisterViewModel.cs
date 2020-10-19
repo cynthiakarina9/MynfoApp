@@ -14,10 +14,12 @@
         #region Services
         private ApiService apiService;
         #endregion
+
         #region Atributtes
         private bool isRunning;
         private bool isEnabled;
         #endregion
+
         #region Properties
         public bool IsEnabled
         {
