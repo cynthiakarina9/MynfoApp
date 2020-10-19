@@ -6,44 +6,27 @@
     using System.Linq;
     using Xamarin.Forms;
     using Models;
+    using Xamarin.Forms.Xaml;
 
     public partial class HomePage : ContentPage
     {
         public HomePage()
         {
             InitializeComponent();
+
+            var Default = new Button();
+            Default.Text = "Prueba 1";
+            Default.BackgroundColor = Color.FromHex("#f9a589");
+            Default.CornerRadius = 70;
+            Default.FontAttributes = FontAttributes.Bold;
+            Default.FontSize = 20;
+            Default.HeightRequest = 140;
+            Default.TextColor = Color.FromHex("#fff");
+            Default.WidthRequest = 140;
+
+
+            DefaultButton.Children.Add(Default);
         }
 
-        protected override void OnAppearing()
-        {
-            /*base.OnAppearing();
-
-            var notes = new List<Box>();
-
-            var files = Directory.EnumerateFiles(App.FolderPath, "*.notes.txt");
-            foreach (var filename in files)
-            {
-                notes.Add(new Box
-                {
-                    Filename = filename,
-                    Name = Path.GetFileName(filename),
-                    Text = File.ReadAllText(filename),
-                    Date = File.GetCreationTime(filename)
-                });
-            }
-
-            listView.ItemsSource = notes
-                .OrderBy(d => d.Date)
-                .ToList();*/
-        }
-
-        async void OnNoteAddedClicked(object sender, EventArgs e)
-        {
-            /*await Navigation.PushAsync(new BoxRegisterPage
-            {
-                BindingContext = new Box()
-            });*/
-            await Navigation.PushAsync(new ProfilesPage());
-        }
     }
 }

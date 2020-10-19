@@ -42,7 +42,13 @@
                 <!-- El texto en los botónes es dinámico-->
                 <!--<BoxView Grid.Row="1"
                          Grid.ColumnSpan="3"/>-->
-                <Button
+                <StackLayout 
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    x:Name="DefaultButton">
+                <!--<Button
                     BackgroundColor = "#f9a589"
                     CornerRadius = "70"
                     FontAttributes = "Bold"
@@ -55,7 +61,8 @@
                     TextColor = "{StaticResource Dark_FontColor}"
                     VerticalOptions = "Center"
                     WidthRequest = "140"
-                    x:Name="botonDefault"/>
+                    x:Name="botonDefault"/>-->
+                </StackLayout>
 
                 <!-- Primeras 3 boxes -->
                 <BoxView 
