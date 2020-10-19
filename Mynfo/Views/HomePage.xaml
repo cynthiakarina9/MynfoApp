@@ -201,7 +201,7 @@
                     Grid.ColumnSpan = "3"
                     Grid.Row = "4"/>
                 <Button
-                    BackgroundColor = "{StaticResource BackgroundColor}"
+                    BackgroundColor = "Transparent"
                     Command = "{Binding CreateBoxCommand}"
                     Grid.ColumnSpan = "3"
                     Grid.Row = "4"
