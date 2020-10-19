@@ -429,4 +429,13 @@
   <data name="AddProfiles" xml:space="preserve">
     <value>Adicionar perfis</value>
   </data>
+  <data name="CreateProfilePhone" xml:space="preserve">
+    <value>Criar perfil de telefone</value>
+  </data>
+  <data name="NameProfile" xml:space="preserve">
+    <value>Nome do perfil</value>
+  </data>
+  <data name="NumberPhone" xml:space="preserve">
+    <value>Número de telefone ou celular</value>
+  </data>
 </root>

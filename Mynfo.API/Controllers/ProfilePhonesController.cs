@@ -75,10 +75,10 @@ namespace Mynfo.API.Controllers
         [ResponseType(typeof(ProfilePhone))]
         public async Task<IHttpActionResult> PostProfilePhone(ProfilePhone profilePhone)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             db.ProfilePhones.Add(profilePhone);
             await db.SaveChangesAsync();

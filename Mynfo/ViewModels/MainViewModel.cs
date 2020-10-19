@@ -73,6 +73,12 @@
             set; 
         }
 
+        public CreateProfilePhoneViewModel CreateProfilePhone
+        {
+            get;
+            set;
+        }
+
         public SettingsViewModel Settings
         {
             get;

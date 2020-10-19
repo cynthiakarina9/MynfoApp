@@ -454,5 +454,17 @@
         {
             get { return Resource.AddProfiles; }
         }
+        public static string CreateProfilePhone
+        {
+            get { return Resource.CreateProfilePhone; }
+        }
+        public static string NameProfile
+        {
+            get { return Resource.NameProfile; }
+        }
+        public static string NumberPhone
+        {
+            get { return Resource.NumberPhone; }
+        }
     }
 }
