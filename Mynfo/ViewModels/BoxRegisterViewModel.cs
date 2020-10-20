@@ -113,15 +113,10 @@
                 this.IsRunning = false;
                 this.IsEnabled = true;
 
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.ConfirmLabel,
-                    Languages.UserRegisteredMessage,
-                    Languages.Accept);
                 this.Name = string.Empty;
-                mainViewModel.AddProfiles = new AddProfilesViewModel();
-                App.Navigator.PushAsync(new AddProfilesPage());
-            
-            
+
+                mainViewModel.DetailsBox = new DetailsBoxViewModel();
+                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage());
         }
         #endregion
 

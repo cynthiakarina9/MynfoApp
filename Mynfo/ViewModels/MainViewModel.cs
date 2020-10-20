@@ -96,6 +96,12 @@
             get;
             set;
         }
+
+        public DetailsBoxViewModel DetailsBox
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructors

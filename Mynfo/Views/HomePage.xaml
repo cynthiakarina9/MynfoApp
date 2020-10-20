@@ -9,9 +9,6 @@
             Order = "Primary" 
             Priority = "0"
             Text = "{Binding User.FullName, StringFormat = '{0}'}" />
-        <ToolbarItem 
-            Order = "Secondary"
-            Text = "Tiempo" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView
@@ -48,20 +45,6 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     x:Name="DefaultButton">
-                <!--<Button
-                    BackgroundColor = "#f9a589"
-                    CornerRadius = "70"
-                    FontAttributes = "Bold"
-                    FontSize = "20"
-                    Grid.ColumnSpan = "3"
-                    Grid.Row = "0"
-                    HeightRequest = "140"
-                    HorizontalOptions = "Center"
-                    Text = "{Binding Box.Name}"
-                    TextColor = "{StaticResource Dark_FontColor}"
-                    VerticalOptions = "Center"
-                    WidthRequest = "140"
-                    x:Name="botonDefault"/>-->
                 </StackLayout>
 
                 <!-- Primeras 3 boxes -->

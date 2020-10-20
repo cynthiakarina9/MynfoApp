@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mynfo.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,13 @@ namespace Mynfo.Views
         public DetailsBoxPage()
         {
             InitializeComponent();
+        }
+
+        async void Home_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Home = new HomeViewModel();
+            await App.Navigator.PushAsync(new MasterPage());
         }
     }
 }
