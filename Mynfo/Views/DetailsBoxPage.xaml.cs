@@ -1,17 +1,11 @@
-﻿using Mynfo.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using System.Data.SqlClient;
-using Mynfo.ViewModels;
-
-namespace Mynfo.Views
+﻿namespace Mynfo.Views
 {
+    using ViewModels;
+    using System;
+    using System.Data.SqlClient;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsBoxPage : ContentPage
     {
@@ -19,15 +13,15 @@ namespace Mynfo.Views
         {
             InitializeComponent();
 
-            int     BoxId = _boxId;
-            string  consultaDefault = "select * from dbo.Boxes where dbo.Boxes.BoxId = "+ BoxId;
-            string  cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            int BoxId = _boxId;
+            string consultaDefault = "select * from dbo.Boxes where dbo.Boxes.BoxId = " + BoxId;
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             System.Text.StringBuilder sb;
-            String  BoxName = "";
-            bool    BoxDefault = false;
-            var     BxNameEntry = new Entry();
-            var     BxSaveName = new Button();
-            var     BxDefaultCheckBox = new CheckBox();
+            String BoxName = "";
+            bool BoxDefault = false;
+            var BxNameEntry = new Entry();
+            var BxSaveName = new Button();
+            var BxDefaultCheckBox = new CheckBox();
 
             //Consulta para obtener Box
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -55,7 +49,7 @@ namespace Mynfo.Views
             BxNameEntry.FontSize = 25;
 
             BoxNameEntry.Children.Add(BxNameEntry);
-            
+
             //Creación de botón para actualizar nombre de la Box
             //BxSaveName.Text = "Guardar";
             /*BxSaveName.Text = "S";
@@ -70,6 +64,8 @@ namespace Mynfo.Views
             BxDefaultCheckBox.IsChecked = BoxDefault;
 
             BoxDefaultCheckBox.Children.Add(BxDefaultCheckBox);
+
+        }
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();

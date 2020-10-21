@@ -58,62 +58,62 @@
         }
         private async void SaveBox()
         {
-            //if (string.IsNullOrEmpty(this.Name))
-            //   {
-            //       await Application.Current.MainPage.DisplayAlert(
-            //           Languages.Error,
-            //           Languages.NameValidation,
-            //           Languages.Accept);
-            //       return;
-            //   }
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NameValidation,
+                    Languages.Accept);
+                return;
+            }
 
-            //   this.IsRunning = true;
-            //   this.IsEnabled = false;
+            this.IsRunning = true;
+            this.IsEnabled = false;
 
-            //   var checkConnetion = await this.apiService.CheckConnection();
-            //   if (!checkConnetion.IsSuccess)
-            //   {
-            //       this.IsRunning = false;
-            //       this.IsEnabled = true;
-            //       await Application.Current.MainPage.DisplayAlert(
-            //           Languages.Error,
-            //           checkConnetion.Message,
-            //           Languages.Accept);
-            //       return;
-            //   }
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
 
             var mainViewModel = MainViewModel.GetInstance();
-            //DateTime boxTime = DateTime.Now;
-            //var box = new Box
-            //    {
-            //        Name = this.Name,
-            //        BoxDefault = false,
-            //        UserId = mainViewModel.User.UserId,
-            //        Time = boxTime,
-            //    };
+            DateTime boxTime = DateTime.Now;
+            var box = new Box
+            {
+                Name = this.Name,
+                BoxDefault = false,
+                UserId = mainViewModel.User.UserId,
+                Time = boxTime,
+            };
 
-            //    var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            //    var response = await this.apiService.Post(
-            //        apiSecurity,
-            //        "/api",
-            //        "/Boxes",
-            //        box);
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var response = await this.apiService.Post(
+                apiSecurity,
+                "/api",
+                "/Boxes",
+                box);
 
-            //    if (!response.IsSuccess)
-            //    {
-            //        this.IsRunning = false;
-            //        this.IsEnabled = true;
-            //        await Application.Current.MainPage.DisplayAlert(
-            //            Languages.Error,
-            //            response.Message,
-            //            Languages.Accept);
-            //        return;
-            //    }
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    response.Message,
+                    Languages.Accept);
+                return;
+            }
 
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
+            this.IsRunning = false;
+            this.IsEnabled = true;
 
-                this.Name = string.Empty;
+            this.Name = string.Empty;
 
             mainViewModel.DetailsBox = new DetailsBoxViewModel();
             Application.Current.MainPage = new NavigationPage(new DetailsBoxPage());
