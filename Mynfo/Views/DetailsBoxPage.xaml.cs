@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Data.SqlClient;
-using Mynfo.ViewModels;
 
 namespace Mynfo.Views
 {
@@ -68,8 +67,15 @@ namespace Mynfo.Views
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
+            //BxDefaultCheckBox.
 
             BoxDefaultCheckBox.Children.Add(BxDefaultCheckBox);
+        }
+
+        //Marcar o desmarcar la box predeterminada
+        private void CheckDefaultBox(object sender, EventArgs e, int _BoxId)
+        {
+
         }
     }
 }

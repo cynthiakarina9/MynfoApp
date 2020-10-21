@@ -39,12 +39,6 @@
             int arrayPos = 0;
             int DefaultBoxId = 0;
 
-            //Ir hacia detalles de la box
-            async void BoxDetailsView(object sender, EventArgs e, int _BoxId)
-            {
-                await Navigation.PushAsync(new DetailsBoxPage(_BoxId));
-            }
-
             //Primer consulta para obtener box default
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
@@ -367,6 +361,13 @@
 
 
 
+        }
+
+        //Ir hacia detalles de la box
+        private void BoxDetailsView(object sender, EventArgs e, int _BoxId)
+        {
+            Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+            //await Navigation.PushModalAsync(new DetailsBoxPage(_BoxId));
         }
 
     }
