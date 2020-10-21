@@ -17,26 +17,33 @@
         {
             InitializeComponent();
 
-            string  userId = MainViewModel.GetInstance().User.UserId.ToString();
-            string  DefaultBoxName = "";
-            string  consultaDefault = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 1";
-            string  consultaBoxes = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 0";
-            string  cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string userId = MainViewModel.GetInstance().User.UserId.ToString();
+            string DefaultBoxName = "";
+            string consultaDefault = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 1";
+            string consultaBoxes = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 0";
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             System.Text.StringBuilder sb;
-            var     Default = new Button();
-            var     Box2 = new Button();
-            var     Box3 = new Button();
-            var     Box4 = new Button();
-            var     Box5 = new Button();
-            var     Box6 = new Button();
-            var     Box7 = new Button();
-            var     Box8 = new Button();
-            var     Box9 = new Button();
-            var     Box10 = new Button();
-            var     NoBoxes = new Label();
+            var Default = new Button();
+            var Box2 = new Button();
+            var Box3 = new Button();
+            var Box4 = new Button();
+            var Box5 = new Button();
+            var Box6 = new Button();
+            var Box7 = new Button();
+            var Box8 = new Button();
+            var Box9 = new Button();
+            var Box10 = new Button();
+            var NoBoxes = new Label();
             string[] boxes = new string[9];
-            int     arrayPos = 0;
-            int     DefaultBoxId = 0;
+            int[] boxesIDs = new int[9];
+            int arrayPos = 0;
+            int DefaultBoxId = 0;
+
+            //Ir hacia detalles de la box
+            async void BoxDetailsView(object sender, EventArgs e, int _BoxId)
+            {
+                await Navigation.PushAsync(new DetailsBoxPage(_BoxId));
+            }
 
             //Primer consulta para obtener box default
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -78,6 +85,7 @@
                 Default.HeightRequest = 140;
                 Default.TextColor = Color.FromHex("#fff");
                 Default.WidthRequest = 140;
+                Default.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender,e,DefaultBoxId));
 
                 DefaultButton.Children.Add(Default);
             }
@@ -97,6 +105,7 @@
                         while (reader.Read())
                         {
                             boxes[arrayPos] = (string)reader["Name"];
+                            boxesIDs[arrayPos] = (int)reader["BoxId"];
 
                             arrayPos++;
                         }
@@ -116,6 +125,7 @@
                 Box2.HeightRequest = 80;
                 Box2.TextColor = Color.Black;
                 Box2.WidthRequest = 80;
+                Box2.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[0]));
 
                 LayoutBox2.Children.Add(Box2);
             }
@@ -143,6 +153,7 @@
                 Box3.HeightRequest = 80;
                 Box3.TextColor = Color.Black;
                 Box3.WidthRequest = 80;
+                Box3.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[1]));
 
                 LayoutBox3.Children.Add(Box3);
             }
@@ -170,6 +181,7 @@
                 Box4.HeightRequest = 80;
                 Box4.TextColor = Color.Black;
                 Box4.WidthRequest = 80;
+                Box4.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[2]));
 
                 LayoutBox4.Children.Add(Box4);
             }
@@ -197,6 +209,7 @@
                 Box5.HeightRequest = 80;
                 Box5.TextColor = Color.Black;
                 Box5.WidthRequest = 80;
+                Box5.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[3]));
 
                 LayoutBox5.Children.Add(Box5);
             }
@@ -224,6 +237,7 @@
                 Box6.HeightRequest = 80;
                 Box6.TextColor = Color.Black;
                 Box6.WidthRequest = 80;
+                Box6.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[4]));
 
                 LayoutBox6.Children.Add(Box6);
             }
@@ -251,6 +265,7 @@
                 Box7.HeightRequest = 80;
                 Box7.TextColor = Color.Black;
                 Box7.WidthRequest = 80;
+                Box7.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[5]));
 
                 LayoutBox7.Children.Add(Box7);
             }
@@ -278,6 +293,7 @@
                 Box8.HeightRequest = 80;
                 Box8.TextColor = Color.Black;
                 Box8.WidthRequest = 80;
+                Box8.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[6]));
 
                 LayoutBox8.Children.Add(Box8);
             }
@@ -305,6 +321,7 @@
                 Box9.HeightRequest = 80;
                 Box9.TextColor = Color.Black;
                 Box9.WidthRequest = 80;
+                Box9.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[7]));
 
                 LayoutBox9.Children.Add(Box9);
             }
@@ -332,6 +349,7 @@
                 Box10.HeightRequest = 80;
                 Box10.TextColor = Color.Black;
                 Box10.WidthRequest = 80;
+                Box10.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[8]));
 
                 LayoutBox10.Children.Add(Box10);
             }

@@ -39,13 +39,6 @@
             mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
             App.Navigator.PushAsync(new CreateProfilePhonePage());
         }
-        public ICommand BoxDetailsCommand
-        {
-            get
-            {
-                return new RelayCommand(PruebaPerfil);
-            }
-        }
 
         #endregion
 
