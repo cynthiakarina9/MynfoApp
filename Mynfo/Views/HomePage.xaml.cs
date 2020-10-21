@@ -1,17 +1,9 @@
 ﻿namespace Mynfo.Views
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using Xamarin.Forms;
-    using Models;
-    using Xamarin.Forms.Xaml;
     using Mynfo.ViewModels;
-    using Mynfo.Domain;
+    using System;
     using System.Data.SqlClient;
-    using System.Windows.Input;
-    using GalaSoft.MvvmLight.Command;
+    using Xamarin.Forms;
 
     public partial class HomePage : ContentPage
     {
@@ -19,27 +11,27 @@
         {
             InitializeComponent();
 
-            string userId = MainViewModel.GetInstance().User.UserId.ToString();
-            string DefaultBoxName = "";
-            string consultaDefault = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 1";
-            string consultaBoxes = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 0";
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             System.Text.StringBuilder sb;
-            var Default = new Button();
-            var Box2 = new Button();
-            var Box3 = new Button();
-            var Box4 = new Button();
-            var Box5 = new Button();
-            var Box6 = new Button();
-            var Box7 = new Button();
-            var Box8 = new Button();
-            var Box9 = new Button();
-            var Box10 = new Button();
-            var NoBoxes = new Label();
-            string[] boxes = new string[9];
-            int[] boxesIDs = new int[9];
-            int arrayPos = 0;
-            int DefaultBoxId = 0;
+            string      userId = MainViewModel.GetInstance().User.UserId.ToString();
+            string      DefaultBoxName = "";
+            string      consultaDefault = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 1";
+            string      consultaBoxes = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 0";
+            string      cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            var         Default = new Button();
+            var         Box2 = new Button();
+            var         Box3 = new Button();
+            var         Box4 = new Button();
+            var         Box5 = new Button();
+            var         Box6 = new Button();
+            var         Box7 = new Button();
+            var         Box8 = new Button();
+            var         Box9 = new Button();
+            var         Box10 = new Button();
+            var         NoBoxes = new Label();
+            string[]    boxes = new string[9];
+            int[]       boxesIDs = new int[9];
+            int         arrayPos = 0;
+            int         DefaultBoxId = 0;
 
             //Primer consulta para obtener box default
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -59,6 +51,7 @@
                             DefaultBoxId    = (int)reader["BoxId"];
                         }
                     }
+                    connection.Close();
                 }
             }
 
@@ -106,6 +99,7 @@
                             arrayPos++;
                         }
                     }
+                    connection.Close();
                 }
             }
 
@@ -369,7 +363,6 @@
         private void BoxDetailsView(object sender, EventArgs e, int _BoxId)
         {
             Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-            //await Navigation.PushModalAsync(new DetailsBoxPage(_BoxId));
         }
 
         private async void CreateBox_Clicked(object sender, EventArgs e)

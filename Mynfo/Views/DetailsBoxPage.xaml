@@ -33,13 +33,13 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     x:Name="BoxNameEntry" />
-            <!--<StackLayout 
+            <StackLayout 
                     Grid.Column="3"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    x:Name="BoxUpdateBtn" />-->
+                    x:Name="BoxUpdateBtn" />
 
-            <!-- Box predeterminada-->
+                <!-- Box predeterminada-->
             <StackLayout 
                     Grid.Column="1"
                     Grid.Row="1"
