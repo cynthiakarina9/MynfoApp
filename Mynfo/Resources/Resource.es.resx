@@ -438,4 +438,19 @@
   <data name="NumberPhone" xml:space="preserve">
     <value>Número de Teléfono o celular</value>
   </data>
+  <data name="ChooseTypeProfile" xml:space="preserve">
+    <value>Elige el tipo de perfil</value>
+  </data>
+  <data name="ProfilePhone" xml:space="preserve">
+    <value>Perfil de Teléfono</value>
+  </data>
+  <data name="NameValidation" xml:space="preserve">
+    <value>Debe ingresar un nombre.</value>
+  </data>
+  <data name="NumberValidation" xml:space="preserve">
+    <value>Debe ingresar un número teléfonico.</value>
+  </data>
+  <data name="PhoneValidation2" xml:space="preserve">
+    <value>El número de teléfono debe contener 10 dígitos.</value>
+  </data>
 </root>

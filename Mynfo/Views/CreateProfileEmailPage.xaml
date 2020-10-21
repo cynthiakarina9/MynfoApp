@@ -2,19 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.CreateProfilePhonePage"
+             x:Class="Mynfo.Views.CreateProfileEmailPage"
              Title="{i18n:Translate CreateProfilePhone}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <ScrollView
-            BindingContext = "{Binding CreateProfilePhone}">
+            BindingContext = "{Binding CreateProfileEmail}">
             <Grid>
-                <StackLayout Grid.Row="1">
+                <StackLayout 
+                    Grid.Row="1">
                     <Label 
                         FontSize = "21" 
                         HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        Text = "{i18n:Translate NameProfile}"/>
+                        Text = "{i18n:Translate NameProfile}" 
+                        VerticalOptions = "Center" />
                     <Entry 
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
@@ -29,23 +30,22 @@
                     <Label 
                         FontSize = "21" 
                         HorizontalOptions = "Center"
-                        Text = "{i18n:Translate NumberPhone}" 
-                        VerticalOptions = "Center" />
+                        VerticalOptions = "Center" 
+                        Text = "{i18n:Translate EMail}" />
                     <Entry 
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
-                        Keyboard = "Telephone"
-                        MaxLength = "10"
-                        Text = "{Binding Number}"
+                        Keyboard = "Email"
+                        Text = "{Binding Email}"
                         VerticalOptions = "Center" 
-                        WidthRequest = "200"/>
+                        WidthRequest = "200" />
                 </StackLayout>
-                <Button 
-                    BackgroundColor="{StaticResource MainColor}"
-                    BorderRadius="23"
-                    Command = "{Binding SaveProfilePhoneCommand}"
-                    HeightRequest="46"
+                <Button
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    Command = "{Binding SaveProfileEmailCommand}"
+                    HeightRequest = "46"
                     Grid.Row = "3"
                     Margin = "80,0,80,0"
                     Text = "{i18n:Translate Save}"

@@ -26,6 +26,7 @@
                     Grid.Row = "2"
                     HorizontalOptions = "Center"
                     HorizontalTextAlignment = "Center"
+                    MaxLength="10"
                     Text = "{Binding Name}"
                     VerticalOptions = "Center"
                     WidthRequest = "200"/>

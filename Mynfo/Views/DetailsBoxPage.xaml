@@ -2,76 +2,79 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.DetailsBoxPage">
+             x:Class="Mynfo.Views.DetailsBoxPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem 
-            Text="Home"
-            Clicked="Home_Clicked"
-            IconImageSource=""/>
+        <ToolbarItem
+            Text = "{i18n:Translate Home}"
+            Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition />
-                <RowDefinition Height="120"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+        <ScrollView 
+            BindingContext = "{Binding DetailsBox}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition />
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <!--Nombre de la box -->
-            <!--El nombre de la box será variable-->
-            <Entry Text="Nombre de la box"
-                   FontSize="25" 
-                   Grid.ColumnSpan="4"
-                   HorizontalOptions="Center"/>
+                <!--Nombre de la box -->
+                <!--El nombre de la box será variable-->
+                <Entry Text="Nombre de la box"
+                       FontSize="25" 
+                       Grid.ColumnSpan="4"
+                       HorizontalOptions="Center"/>
 
-            <!-- Box predeterminada-->
-            <CheckBox Grid.Row="1" 
-                      Grid.Column="1" 
-                      VerticalOptions="Center"/>
-            <Label Grid.Row="1" 
-                   Grid.Column="2" 
-                   Text="{i18n:Translate DefaultBox}" 
-                   VerticalOptions="Center"/>
-            
-            <!-- Listado de perfiles -->
-            <!-- Los nombres de los perfiles serán dinámicos-->
-            <ListView Grid.Row="2"
-                      Grid.ColumnSpan="4">
-                <ListView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Facebook 1</x:String>
-                        <x:String>Facebook 2</x:String>
-                        <x:String>Twitter 1</x:String>
-                        <x:String>Twitter 2</x:String>
-                        <x:String>Correo 1</x:String>
-                        <x:String>Correo 2</x:String>
-                        <x:String>Teléfono</x:String>
-                    </x:Array>
-                </ListView.ItemsSource>
-            </ListView>
+                <!-- Box predeterminada-->
+                <CheckBox Grid.Row="1" 
+                          Grid.Column="1" 
+                          VerticalOptions="Center"/>
+                <Label Grid.Row="1" 
+                       Grid.Column="2" 
+                       Text="{i18n:Translate DefaultBox}" 
+                       VerticalOptions="Center"/>
 
-            <!-- Agregar perfiles -->
-            <Button
-                Grid.Row="3"
-                Grid.ColumnSpan="4"
-                WidthRequest      ="70"
-                HeightRequest     ="70"
-                CornerRadius      ="35"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="{StaticResource MainColor}"
-                Text="+"
-                TextColor="{StaticResource Dark_FontColor}"
-                FontSize="20"
-                FontAttributes="Bold"/>
+                <!-- Listado de perfiles -->
+                <!-- Los nombres de los perfiles serán dinámicos-->
+                <ListView Grid.Row="2"
+                          Grid.ColumnSpan="4">
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Facebook 1</x:String>
+                            <x:String>Facebook 2</x:String>
+                            <x:String>Twitter 1</x:String>
+                            <x:String>Twitter 2</x:String>
+                            <x:String>Correo 1</x:String>
+                            <x:String>Correo 2</x:String>
+                            <x:String>Teléfono</x:String>
+                        </x:Array>
+                    </ListView.ItemsSource>
+                </ListView>
 
-        </Grid>
+                <!-- Agregar perfiles -->
+                <Button
+                    Clicked = "BoxDetails_Clicked"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="4"
+                    WidthRequest      ="70"
+                    HeightRequest     ="70"
+                    CornerRadius      ="35"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="{StaticResource MainColor}"
+                    Text="+"
+                    TextColor="{StaticResource Dark_FontColor}"
+                    FontSize="20"
+                    FontAttributes="Bold"/>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

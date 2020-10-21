@@ -1,15 +1,9 @@
-﻿using Mynfo.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Mynfo.Views
+﻿namespace Mynfo.Views
 {
+    using Mynfo.ViewModels;
+    using System;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsBoxPage : ContentPage
     {
@@ -18,11 +12,19 @@ namespace Mynfo.Views
             InitializeComponent();
         }
 
-        async void Home_Clicked(object sender, EventArgs e)
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Home = new HomeViewModel();
-            await App.Navigator.PushAsync(new MasterPage());
+            //await Navigation.PopToRootAsync();
+            Application.Current.MainPage = new MasterPage();
+        }
+
+        private async void BoxDetails_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
+            await Navigation.PushAsync(new ProfilesBYPESMPage());
         }
     }
 }

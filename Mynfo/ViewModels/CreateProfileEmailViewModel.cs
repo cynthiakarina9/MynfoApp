@@ -7,7 +7,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class CreateProfilePhoneViewModel :  BaseViewModel
+    public class CreateProfileEmailViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -35,7 +35,7 @@
             get;
             set;
         }
-        public string Number
+        public string Email
         {
             get;
             set;
@@ -43,7 +43,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfilePhoneViewModel()
+        public CreateProfileEmailViewModel()
         {
             this.apiService = new ApiService();
 
@@ -52,14 +52,14 @@
         #endregion
 
         #region Commands
-        public ICommand SaveProfilePhoneCommand
+        public ICommand SaveProfileEmailCommand
         {
             get
             {
-                return new RelayCommand(SaveProfilePhone);
+                return new RelayCommand(SaveProfileEmail);
             }
         }
-        private async void SaveProfilePhone()
+        private async void SaveProfileEmail()
         {
             //if (string.IsNullOrEmpty(this.Name))
             //{
@@ -69,19 +69,19 @@
             //        Languages.Accept);
             //    return;
             //}
-            //if (string.IsNullOrEmpty(this.Number))
+            //if (string.IsNullOrEmpty(this.Email))
             //{
             //    await Application.Current.MainPage.DisplayAlert(
             //        Languages.Error,
-            //        Languages.NumberValidation,
+            //        Languages.EmailValidation,
             //        Languages.Accept);
             //    return;
             //}
-            //if (this.Number.Length != 10)
+            //if (!RegexUtilities.IsValidEmail(this.Email))
             //{
             //    await Application.Current.MainPage.DisplayAlert(
             //        Languages.Error,
-            //        Languages.PhoneValidation2,
+            //        Languages.EmailValidation2,
             //        Languages.Accept);
             //    return;
             //}
@@ -102,11 +102,11 @@
             //}
 
             //var mainViewModel = MainViewModel.GetInstance();
-           
-            //var profilePhone = new ProfilePhone
+
+            //var profileEmail = new ProfileEmail
             //{
             //    Name = this.Name,
-            //    Number = this.Number,
+            //    Email = this.Email,
             //    UserId = mainViewModel.User.UserId,
             //};
 
@@ -114,8 +114,8 @@
             //var response = await this.apiService.Post(
             //    apiSecurity,
             //    "/api",
-            //    "/ProfilePhones",
-            //    profilePhone);
+            //    "/ProfileEmails",
+            //    profileEmail);
 
             //if (!response.IsSuccess)
             //{
@@ -132,7 +132,8 @@
             //this.IsEnabled = true;
 
             //this.Name = string.Empty;
-            //this.Number = string.Empty;
+            //this.Email = string.Empty;
+            //await Application.Current.MainPage.Navigation.PopAsync();
             await App.Navigator.PopAsync();
         }
         #endregion

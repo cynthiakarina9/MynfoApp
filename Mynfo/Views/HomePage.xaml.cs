@@ -10,6 +10,8 @@
     using Mynfo.ViewModels;
     using Mynfo.Domain;
     using System.Data.SqlClient;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
 
     public partial class HomePage : ContentPage
     {
@@ -54,6 +56,13 @@
 
 
             DefaultButton.Children.Add(Default);
+        }
+
+        private async void CreateBox_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.BoxRegister = new BoxRegisterViewModel();
+            await Navigation.PushAsync(new BoxRegisterPage());
         }
 
     }

@@ -466,5 +466,25 @@
         {
             get { return Resource.NumberPhone; }
         }
+        public static string ChooseTypeProfile
+        {
+            get { return Resource.ChooseTypeProfile; }
+        }
+        public static string ProfilePhone
+        {
+            get { return Resource.ProfilePhone; }
+        }
+        public static string NameValidation
+        {
+            get { return Resource.NameValidation; }
+        }
+        public static string PhoneValidation2
+        {
+            get { return Resource.PhoneValidation2; }
+        }
+        public static string NumberValidation
+        {
+            get { return Resource.NumberValidation; }
+        }
     }
 }

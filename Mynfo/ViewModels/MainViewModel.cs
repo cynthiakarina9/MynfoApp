@@ -78,6 +78,11 @@
             get;
             set;
         }
+        public CreateProfileEmailViewModel CreateProfileEmail
+        {
+            get;
+            set;
+        }
 
         public SettingsViewModel Settings
         {
@@ -98,6 +103,11 @@
         }
 
         public DetailsBoxViewModel DetailsBox
+        {
+            get;
+            set;
+        }
+        public ProfilesBYPESMViewModel ProfilesBYPESM
         {
             get;
             set;

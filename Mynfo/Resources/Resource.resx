@@ -121,7 +121,7 @@
     <value>Accept</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>Enter your email...</value>
+    <value>Enter your email.</value>
   </data>
   <data name="EmailValidation" xml:space="preserve">
     <value>You must enter an email.</value>
@@ -157,7 +157,7 @@
     <value>Register</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Search...</value>
+    <value>Search.</value>
   </data>
   <data name="Countries" xml:space="preserve">
     <value>Countries</value>
@@ -268,7 +268,7 @@
     <value>First Name</value>
   </data>
   <data name="FirstNamePlaceHolder" xml:space="preserve">
-    <value>Enter the first name...</value>
+    <value>Enter the first name.</value>
   </data>
   <data name="FirstNameValidation" xml:space="preserve">
     <value>You must enter a first name.</value>
@@ -286,7 +286,7 @@
     <value>Phone</value>
   </data>
   <data name="PhonePlaceHolder" xml:space="preserve">
-    <value>Enter the phone...</value>
+    <value>Enter the phone.</value>
   </data>
   <data name="PhoneValidation" xml:space="preserve">
     <value>You must enter a phone.</value>
@@ -334,7 +334,7 @@
     <value>Current Password</value>
   </data>
   <data name="CurrentPasswordPlaceHolder" xml:space="preserve">
-    <value>Enter your current password...</value>
+    <value>Enter your current password.</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>New Password</value>
@@ -437,5 +437,20 @@
   </data>
   <data name="NumberPhone" xml:space="preserve">
     <value>Phone or cell number</value>
+  </data>
+  <data name="ChooseTypeProfile" xml:space="preserve">
+    <value>Choose type of profile</value>
+  </data>
+  <data name="ProfilePhone" xml:space="preserve">
+    <value>Phone profile</value>
+  </data>
+  <data name="NameValidation" xml:space="preserve">
+    <value>You must enter a name.</value>
+  </data>
+  <data name="NumberValidation" xml:space="preserve">
+    <value>You must enter a phone number.</value>
+  </data>
+  <data name="PhoneValidation2" xml:space="preserve">
+    <value>The phone number must contain 10 digits.</value>
   </data>
 </root>
