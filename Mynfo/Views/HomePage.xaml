@@ -26,165 +26,80 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-
-                <!--Cabecera -->
-                <!--<BoxView Grid.ColumnSpan="3"/>
-                <Label Text="{i18n:Translate BoxList}" 
-                       Grid.ColumnSpan="3"
-                       FontSize="25" 
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />-->
-
-                <!-- Box principal -->
-                <!-- El texto en los botónes es dinámico-->
-                <!--<BoxView Grid.Row="1"
-                         Grid.ColumnSpan="3"/>-->
+                
+                <!-- Box Predeterminada-->
                 <StackLayout 
                     Grid.ColumnSpan="3"
                     Grid.Row="0"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    x:Name="DefaultButton">
-                </StackLayout>
-
-                <!-- Primeras 3 boxes -->
-                <BoxView 
-                    Grid.Row = "1"/>
-                <Button
-                    BackgroundColor = "{StaticResource BoxActiveColor}"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
-                    Grid.Row = "1"
-                    HeightRequest = "80"
-                    HorizontalOptions ="Center"
-                    Text = "{Binding Box.Name, StringFormat = '{0}'}"
-                    TextColor = "{StaticResource FontColor}"
+                    x:Name="DefaultButton" />
+                
+                <!-- De la box 2 a la 4 -->
+                <StackLayout 
+                    Grid.Column = "0"
+                    Grid.Row ="1"
+                    HorizontalOptions = "Center"
                     VerticalOptions = "Center"
-                    WidthRequest = "80"/>
+                    x:Name = "LayoutBox2" />
 
-                <BoxView 
+                <StackLayout 
                     Grid.Column = "1"
-                    Grid.Row = "1" />
-                <Button
-                    BackgroundColor = "{StaticResource BoxActiveColor}"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
+                    Grid.Row ="1"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"
+                    x:Name = "LayoutBox3" />
+
+                <StackLayout 
+                    Grid.Column = "2"
+                    Grid.Row ="1"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"
+                    x:Name = "LayoutBox4" />
+
+                <!-- De la box 5 a la 7 -->
+                <StackLayout 
+                    Grid.Column = "0"
+                    Grid.Row ="2"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"
+                    x:Name = "LayoutBox5" />
+
+                <StackLayout 
                     Grid.Column = "1"
-                    Grid.Row = "1"
-                    HeightRequest = "80"
+                    Grid.Row ="2"
                     HorizontalOptions = "Center"
-                    Text = "Trabajo"
-                    TextColor = "{StaticResource FontColor}"
                     VerticalOptions = "Center"
-                    WidthRequest = "80"/>
+                    x:Name = "LayoutBox6" />
 
-                <BoxView 
+                <StackLayout 
                     Grid.Column = "2"
-                    Grid.Row = "1" />
-                <Button
-                    BackgroundColor = "{StaticResource BoxActiveColor}"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
-                    Grid.Column = "2"
-                    Grid.Row = "1"
-                    HeightRequest  = "80"
+                    Grid.Row ="2"
                     HorizontalOptions = "Center"
-                    Text = "Citas"
-                    TextColor = "{StaticResource FontColor}"
                     VerticalOptions = "Center"
-                    WidthRequest = "80" />
+                    x:Name = "LayoutBox7" />
 
-                <!-- De la box 4 a la 6 -->
-                <BoxView 
-                    Grid.ColumnSpan = "3"
-                    Grid.Row = "2" />
-
-                <BoxView 
-                    Grid.Row = "2" />
-                <Button
-                    BackgroundColor = "{StaticResource BoxEmptyColor}"
-                    CornerRadius = "40"
-                    Grid.Row = "2"
-                    HeightRequest = "80"
+                <!-- De la box 8 a la 10 -->
+                <StackLayout 
+                    Grid.Column = "0"
+                    Grid.Row ="3"
                     HorizontalOptions = "Center"
-                    IsEnabled = "False"
                     VerticalOptions = "Center"
-                    WidthRequest = "80" />
+                    x:Name = "LayoutBox8" />
 
-                <BoxView
+                <StackLayout 
                     Grid.Column = "1"
-                    Grid.Row = "2" />
-                <Button
-                    BackgroundColor = "{StaticResource BoxEmptyColor}"
-                    CornerRadius = "40"
-                    Grid.Column = "1"
-                    Grid.Row = "2"
-                    HeightRequest = "80"
+                    Grid.Row ="3"
                     HorizontalOptions = "Center"
-                    IsEnabled = "False"
                     VerticalOptions = "Center"
-                    WidthRequest = "80"/>
+                    x:Name = "LayoutBox9" />
 
-                <BoxView 
+                <StackLayout 
                     Grid.Column = "2"
-                    Grid.Row = "2" />
-                <Button
-                    BackgroundColor = "{StaticResource BoxEmptyColor}"
-                    CornerRadius  = "40"
-                    Grid.Column = "2"
-                    Grid.Row = "2"
-                    HeightRequest = "80"
+                    Grid.Row ="3"
                     HorizontalOptions = "Center"
-                    IsEnabled = "False"
                     VerticalOptions = "Center"
-                    WidthRequest = "80" />
-
-                <!-- De la box 7 a la 9 -->
-                <BoxView Grid.ColumnSpan = "3"
-                    Grid.Row = "3"/>
-
-                <BoxView 
-                    Grid.Row = "3"/>
-                <Button
-                    BackgroundColor = "{StaticResource BoxEmptyColor}"
-                    CornerRadius = "40"
-                    Grid.Row = "3"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    IsEnabled = "False"
-                    VerticalOptions = "Center"
-                    WidthRequest = "80" />
-
-                <BoxView 
-                    Grid.Column = "1"
-                    Grid.Row = "3" />
-                <Button
-                    BackgroundColor = "{StaticResource BoxEmptyColor}"
-                    CornerRadius = "40"
-                    Grid.Column = "1"
-                    Grid.Row = "3"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    IsEnabled = "False"
-                    VerticalOptions = "Center"
-                    WidthRequest = "80"/>
-
-                <BoxView 
-                    Grid.Column = "2"
-                    Grid.Row = "3" />
-                <Button
-                    BackgroundColor = "{StaticResource BoxEmptyColor}"
-                    CornerRadius = "40"
-                    Grid.Row = "3"
-                    Grid.Column = "2"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    IsEnabled = "False"
-                    VerticalOptions = "Center"
-                    WidthRequest = "80" />
+                    x:Name = "LayoutBox10" />
 
                 <!-- Botón para agregar box nueva-->
                 <BoxView 

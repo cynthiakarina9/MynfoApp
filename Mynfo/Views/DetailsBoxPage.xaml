@@ -26,38 +26,48 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <!--Nombre de la box -->
-                <!--El nombre de la box será variable-->
-                <Entry Text="Nombre de la box"
-                       FontSize="25" 
-                       Grid.ColumnSpan="4"
-                       HorizontalOptions="Center"/>
+            <!--Nombre de la box -->
+            <!--El nombre de la box será variable-->
+            <StackLayout 
+                    Grid.ColumnSpan="4"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    x:Name="BoxNameEntry" />
+            <!--<StackLayout 
+                    Grid.Column="3"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    x:Name="BoxUpdateBtn" />-->
 
-                <!-- Box predeterminada-->
-                <CheckBox Grid.Row="1" 
-                          Grid.Column="1" 
-                          VerticalOptions="Center"/>
-                <Label Grid.Row="1" 
-                       Grid.Column="2" 
-                       Text="{i18n:Translate DefaultBox}" 
-                       VerticalOptions="Center"/>
-
-                <!-- Listado de perfiles -->
-                <!-- Los nombres de los perfiles serán dinámicos-->
-                <ListView Grid.Row="2"
-                          Grid.ColumnSpan="4">
-                    <ListView.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Facebook 1</x:String>
-                            <x:String>Facebook 2</x:String>
-                            <x:String>Twitter 1</x:String>
-                            <x:String>Twitter 2</x:String>
-                            <x:String>Correo 1</x:String>
-                            <x:String>Correo 2</x:String>
-                            <x:String>Teléfono</x:String>
-                        </x:Array>
-                    </ListView.ItemsSource>
-                </ListView>
+            <!-- Box predeterminada-->
+            <StackLayout 
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    VerticalOptions="Center"
+                    x:Name="BoxDefaultCheckBox" />
+            
+            <Label Grid.Row="1" 
+                   Grid.Column="2" 
+                   Text="{i18n:Translate DefaultBox}" 
+                   VerticalOptions="Center"/>
+            
+            <!-- Listado de perfiles -->
+            <!-- Los nombres de los perfiles serán dinámicos-->
+            <!--<ListView Grid.Row="2"
+                      Grid.ColumnSpan="4">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Facebook 1</x:String>
+                        <x:String>Facebook 2</x:String>
+                        <x:String>Twitter 1</x:String>
+                        <x:String>Twitter 2</x:String>
+                        <x:String>Correo 1</x:String>
+                        <x:String>Correo 2</x:String>
+                        <x:String>Teléfono</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>-->
+            
 
                 <!-- Agregar perfiles -->
                 <Button
