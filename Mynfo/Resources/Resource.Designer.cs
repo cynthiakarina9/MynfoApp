@@ -223,6 +223,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose type of profile.
+        /// </summary>
+        public static string ChooseTypeProfile {
+            get {
+                return ResourceManager.GetString("ChooseTypeProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CIOC:.
         /// </summary>
         public static string CIOC {
@@ -349,7 +358,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your current password....
+        ///   Looks up a localized string similar to Enter your current password..
         /// </summary>
         public static string CurrentPasswordPlaceHolder {
             get {
@@ -403,7 +412,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your email....
+        ///   Looks up a localized string similar to Enter your email..
         /// </summary>
         public static string EmailPlaceHolder {
             get {
@@ -457,7 +466,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the first name....
+        ///   Looks up a localized string similar to Enter the first name..
         /// </summary>
         public static string FirstNamePlaceHolder {
             get {
@@ -682,6 +691,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a name..
+        /// </summary>
+        public static string NameValidation {
+            get {
+                return ResourceManager.GetString("NameValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Native Name:.
         /// </summary>
         public static string NativeName {
@@ -732,6 +750,15 @@ namespace Mynfo.Resources {
         public static string NumberPhone {
             get {
                 return ResourceManager.GetString("NumberPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a phone number..
+        /// </summary>
+        public static string NumberValidation {
+            get {
+                return ResourceManager.GetString("NumberValidation", resourceCulture);
             }
         }
         
@@ -808,7 +835,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the phone....
+        ///   Looks up a localized string similar to Enter the phone..
         /// </summary>
         public static string PhonePlaceHolder {
             get {
@@ -822,6 +849,15 @@ namespace Mynfo.Resources {
         public static string PhoneValidation {
             get {
                 return ResourceManager.GetString("PhoneValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The phone number must contain 10 digits..
+        /// </summary>
+        public static string PhoneValidation2 {
+            get {
+                return ResourceManager.GetString("PhoneValidation2", resourceCulture);
             }
         }
         
@@ -858,6 +894,15 @@ namespace Mynfo.Resources {
         public static string ProfileName {
             get {
                 return ResourceManager.GetString("ProfileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone profile.
+        /// </summary>
+        public static string ProfilePhone {
+            get {
+                return ResourceManager.GetString("ProfilePhone", resourceCulture);
             }
         }
         
@@ -916,7 +961,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search....
+        ///   Looks up a localized string similar to Search..
         /// </summary>
         public static string Search {
             get {

@@ -107,14 +107,14 @@
                     Grid.Row = "4"/>
                 <Button
                     BackgroundColor = "Transparent"
-                    Command = "{Binding CreateBoxCommand}"
+                    Clicked = "CreateBox_Clicked"
                     Grid.ColumnSpan = "3"
                     Grid.Row = "4"
-                    HeightRequest = "30"
+                    HeightRequest = "60"
                     HorizontalOptions ="Center"
                     ImageSource = "Plus"
                     VerticalOptions = "Center"
-                    WidthRequest = "30" />
+                    WidthRequest = "60" />
             </Grid>
         </ScrollView>
     </ContentPage.Content>

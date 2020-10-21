@@ -10,6 +10,8 @@
     using Mynfo.ViewModels;
     using Mynfo.Domain;
     using System.Data.SqlClient;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
 
     public partial class HomePage : ContentPage
     {
@@ -368,6 +370,13 @@
         {
             Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
             //await Navigation.PushModalAsync(new DetailsBoxPage(_BoxId));
+        }
+
+        private async void CreateBox_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.BoxRegister = new BoxRegisterViewModel();
+            await Navigation.PushAsync(new BoxRegisterPage());
         }
 
     }

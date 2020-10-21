@@ -70,6 +70,19 @@ namespace Mynfo.Views
             //BxDefaultCheckBox.
 
             BoxDefaultCheckBox.Children.Add(BxDefaultCheckBox);
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Home = new HomeViewModel();
+            //await Navigation.PopToRootAsync();
+            Application.Current.MainPage = new MasterPage();
+        }
+
+        private async void BoxDetails_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
+            await Navigation.PushAsync(new ProfilesBYPESMPage());
         }
 
         //Marcar o desmarcar la box predeterminada

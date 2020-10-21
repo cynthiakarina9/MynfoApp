@@ -2,21 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.DetailsBoxPage">
+             x:Class="Mynfo.Views.DetailsBoxPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text = "{i18n:Translate Home}"
+            Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition />
-                <RowDefinition Height="120"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+        <ScrollView 
+            BindingContext = "{Binding DetailsBox}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition />
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
             <!--Nombre de la box -->
             <!--El nombre de la box será variable-->
@@ -61,21 +69,22 @@
             </ListView>-->
             
 
-            <!-- Agregar perfiles -->
-            <Button
-                Grid.Row="3"
-                Grid.ColumnSpan="4"
-                WidthRequest      ="70"
-                HeightRequest     ="70"
-                CornerRadius      ="35"
-                VerticalOptions   ="Center"
-                HorizontalOptions ="Center"
-                BackgroundColor   ="{StaticResource MainColor}"
-                Text="+"
-                TextColor="{StaticResource Dark_FontColor}"
-                FontSize="20"
-                FontAttributes="Bold"/>
-
-        </Grid>
+                <!-- Agregar perfiles -->
+                <Button
+                    Clicked = "BoxDetails_Clicked"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="4"
+                    WidthRequest      ="70"
+                    HeightRequest     ="70"
+                    CornerRadius      ="35"
+                    VerticalOptions   ="Center"
+                    HorizontalOptions ="Center"
+                    BackgroundColor   ="{StaticResource MainColor}"
+                    Text="+"
+                    TextColor="{StaticResource Dark_FontColor}"
+                    FontSize="20"
+                    FontAttributes="Bold"/>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
