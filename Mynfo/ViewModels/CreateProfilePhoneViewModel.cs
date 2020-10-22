@@ -6,6 +6,7 @@
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using Mynfo.Views;
 
     public class CreateProfilePhoneViewModel :  BaseViewModel
     {
@@ -61,79 +62,80 @@
         }
         private async void SaveProfilePhone()
         {
-            //if (string.IsNullOrEmpty(this.Name))
-            //{
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        Languages.NameValidation,
-            //        Languages.Accept);
-            //    return;
-            //}
-            //if (string.IsNullOrEmpty(this.Number))
-            //{
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        Languages.NumberValidation,
-            //        Languages.Accept);
-            //    return;
-            //}
-            //if (this.Number.Length != 10)
-            //{
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        Languages.PhoneValidation2,
-            //        Languages.Accept);
-            //    return;
-            //}
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NameValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (string.IsNullOrEmpty(this.Number))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NumberValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (this.Number.Length != 10)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.PhoneValidation2,
+                    Languages.Accept);
+                return;
+            }
 
-            //this.IsRunning = true;
-            //this.IsEnabled = false;
+            this.IsRunning = true;
+            this.IsEnabled = false;
 
-            //var checkConnetion = await this.apiService.CheckConnection();
-            //if (!checkConnetion.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        checkConnetion.Message,
-            //        Languages.Accept);
-            //    return;
-            //}
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
 
-            //var mainViewModel = MainViewModel.GetInstance();
-           
-            //var profilePhone = new ProfilePhone
-            //{
-            //    Name = this.Name,
-            //    Number = this.Number,
-            //    UserId = mainViewModel.User.UserId,
-            //};
+            var mainViewModel = MainViewModel.GetInstance();
 
-            //var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            //var response = await this.apiService.Post(
-            //    apiSecurity,
-            //    "/api",
-            //    "/ProfilePhones",
-            //    profilePhone);
+            var profilePhone = new ProfilePhone
+            {
+                Name = this.Name,
+                Number = this.Number,
+                UserId = mainViewModel.User.UserId,
+            };
 
-            //if (!response.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        response.Message,
-            //        Languages.Accept);
-            //    return;
-            //}
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var response = await this.apiService.Post(
+                apiSecurity,
+                "/api",
+                "/ProfilePhones",
+                profilePhone);
 
-            //this.IsRunning = false;
-            //this.IsEnabled = true;
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    response.Message,
+                    Languages.Accept);
+                return;
+            }
 
-            //this.Name = string.Empty;
-            //this.Number = string.Empty;
+            this.IsRunning = false;
+            this.IsEnabled = true;
+
+            this.Name = string.Empty;
+            this.Number = string.Empty;
             await App.Navigator.PopAsync();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
         }
         #endregion
     }

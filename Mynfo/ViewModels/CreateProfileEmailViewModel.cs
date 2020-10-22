@@ -6,6 +6,7 @@
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using Mynfo.Views;
 
     public class CreateProfileEmailViewModel : BaseViewModel
     {
@@ -133,8 +134,8 @@
 
             this.Name = string.Empty;
             this.Email = string.Empty;
-            await Application.Current.MainPage.Navigation.PopAsync();
-            await App.Navigator.PopAsync();
+
+            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
         }
         #endregion
     }

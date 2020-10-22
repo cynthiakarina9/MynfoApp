@@ -30,25 +30,45 @@
     <ContentPage.Content>
         <ScrollView
             BindingContext = "{Binding ProfilesByEmail}">
-            <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition />
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+
+                <!--Titulo-->
+
                 <Label 
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" 
-                    Text="Welcome to Xamarin.Forms!"/>
-                <BoxView 
-                    Grid.ColumnSpan = "3"
-                    Grid.Row = "4"/>
+                    Grid.Row = "0" 
+                    Text = "{i18n:Translate EmailProfileList}"
+                    FontSize = "25"
+                    FontAttributes="Bold"
+                    TextColor = "{StaticResource MainColor}"
+                    HorizontalOptions = "CenterAndExpand"
+                    VerticalOptions = "EndAndExpand"  
+                    Margin = "0,5,0,15"/>
+
+                <!--End Titulo-->
+                
+                <!-- Lista de correos -->
+                <StackLayout 
+                    Grid.Row="1"
+                    HorizontalOptions="FillAndExpand"
+                    Padding="25"
+                    x:Name="EmailList" />
+                
+                <!-- Botón de nuevo correo -->
                 <Button
+                    Grid.Row="2"
                     BackgroundColor = "Transparent"
                     Clicked = "NewProfileEmail_Clicked"
-                    Grid.ColumnSpan = "3"
-                    Grid.Row = "4"
                     HeightRequest = "60"
                     HorizontalOptions ="Center"
                     ImageSource = "Plus"
                     VerticalOptions = "Center"
                     WidthRequest = "60" />
-            </StackLayout>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

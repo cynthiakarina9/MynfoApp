@@ -1,14 +1,10 @@
-﻿using Mynfo.Domain;
-using Mynfo.Helpers;
-using Mynfo.Services;
+﻿using Mynfo.Services;
 using Mynfo.ViewModels;
 using System;
 using System.Data.SqlClient;
+using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Text;
-using Xamarin.Forms.Markup;
-using Xamarin.Forms.Shapes;
 
 namespace Mynfo.Views
 {
@@ -165,6 +161,7 @@ namespace Mynfo.Views
 
                             phoneName.Text = (string)reader["Name"];
                             phoneName.FontSize = 15;
+                            phoneName.FontAttributes = FontAttributes.Bold;
 
                             phoneNumber.Text = (string)reader["Number"];
                             phoneNumber.FontSize = 25;
@@ -215,6 +212,7 @@ namespace Mynfo.Views
 
                             emailProfile.Text = (string)reader["Name"];
                             emailProfile.FontSize = 15;
+                            emailProfile.FontAttributes = FontAttributes.Bold;
 
                             emailAddress.Text = (string)reader["Email"];
                             emailAddress.FontSize = 25;

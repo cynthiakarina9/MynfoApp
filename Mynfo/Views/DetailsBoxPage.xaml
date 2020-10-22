@@ -79,7 +79,8 @@
                 <StackLayout 
                         Grid.Row="2"
                         Grid.ColumnSpan="4"
-                        HorizontalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        Padding="25"
                         x:Name="ProfilesList" />
 
                 <!-- Agregar perfiles -->
