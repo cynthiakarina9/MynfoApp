@@ -13,14 +13,13 @@
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <item name="colorAccent">#FF5521</item>
-  
-    <!--<!– Splash Screen !-–>-->
-    
   </style>
-    <style name="Theme.Splash" parent="android:Theme">
-    <item name="android:windowBackground">@drawable/ss</item>
+    <!--Splash Screen-->
+  
+  <style name="Theme.Splash" parent="android:Theme">
+    <item name="android:windowBackground">@drawable/SS</item>
     <item name="android:windowNoTitle">true</item>
-    <item name="android:windowFullscreen">false</item>
-    <item name="colorPrimaryDark">#FF5521</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="colorPrimaryDark">#313131</item>
   </style>
 </resources>
