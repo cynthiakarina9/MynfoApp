@@ -1,6 +1,7 @@
 ﻿namespace Mynfo.Domain
 {
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     public class User
@@ -61,6 +62,16 @@
                 return string.Format("{0} {1}", this.FirstName, this.LastName);
             }
         }
+        [JsonIgnore]
+        public virtual ICollection<ProfileEmail> ProfilePhone { get; set; }
 
+        [JsonIgnore]
+        public virtual ICollection<ProfilePhone> ProfileEmail { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Box> Box { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<ProfileSM> ProfileSM { get; set; }
     }
 }

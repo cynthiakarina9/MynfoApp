@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.ProfilesBYPESMPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <StackLayout 
+            Orientation = "Horizontal"
+            Spacing = "160">
+            <StackLayout
+                HorizontalOptions = "Center">
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "18"
+                    HorizontalOptions = "Center"
+                    Text = "{i18n:Translate MyAccount}"
+                    TextColor = "{StaticResource Dark_FontColor}"/>
+            </StackLayout>
+            <StackLayout
+                VerticalOptions = "EndAndExpand">
+                <Image 
+                    HeightRequest = "30"
+                    Source = "logo_superior.png" 
+                    WidthRequest = "60" 
+                    VerticalOptions = "End">
+                </Image>
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext = "{Binding ProfilesBYPESM}">
+            <Grid>
+                <ListView 
+                    ItemsSource = "{Binding Menus}"
+                    HasUnevenRows = "True"
+                    SeparatorVisibility = "None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command = "{Binding NavigateCommand}" />
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width = "*"></ColumnDefinition>
+                                        <ColumnDefinition Width = "2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height = "Auto"></RowDefinition>
+                                        <RowDefinition Height = "*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image 
+                                        Grid.Column = "0"
+                                        HeightRequest = "50"
+                                        Source = "{Binding Icon}"
+                                        WidthRequest = "50" />
+                                    <Label 
+                                        FontSize = "17"
+                                        Grid.Column = "1"
+                                        Text = "{Binding Title}"
+                                        TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor},Light = {StaticResource Light_FontColor}}"
+                                        VerticalOptions = "Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout >
+                    <Button
+                        BackgroundColor = "Transparent"
+                        Clicked = "GoToProfiles_Clicked"
+                        Grid.ColumnSpan = "3"
+                        Grid.Row = "4"
+                        HeightRequest = "60"
+                        HorizontalOptions ="Center"
+                        ImageSource = "Plus"
+                        VerticalOptions = "Center"
+                        WidthRequest = "60" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

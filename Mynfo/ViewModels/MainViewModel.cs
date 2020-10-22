@@ -8,6 +8,7 @@
     {
         #region Attributes
         private UserLocal user;
+        private BoxLocal box;
         #endregion
 
         #region Properties
@@ -28,7 +29,14 @@
             get { return this.user; }
             set { SetValue(ref this.user, value); }
         }
+
+        public BoxLocal Box
+        {
+            get { return this.box; }
+            set { SetValue(ref this.box, value); }
+        }
         #endregion
+
         #region ViewModels
         public LoginViewModel Login
         { 
@@ -53,11 +61,67 @@
             get; 
             set; 
         }
+        public BoxRegisterViewModel BoxRegister
+        {
+            get;
+            set;
+        }
 
         public ChangePasswordViewModel ChangePassword 
         { 
             get; 
             set; 
+        }
+
+        public CreateProfilePhoneViewModel CreateProfilePhone
+        {
+            get;
+            set;
+        }
+        public CreateProfileEmailViewModel CreateProfileEmail
+        {
+            get;
+            set;
+        }
+
+        public ProfilesByPhoneViewModel ProfilesByPhone
+        {
+            get;
+            set;
+        }
+        public ProfilesByEmailViewModel ProfilesByEmail
+        {
+            get;
+            set;
+        }
+
+        public SettingsViewModel Settings
+        {
+            get;
+            set;
+        }
+
+        public ProfilesViewModel Profiles
+        {
+            get;
+            set;
+        }
+
+        public AddProfilesViewModel AddProfiles
+        {
+            get;
+            set;
+        }
+
+        public DetailsBoxViewModel DetailsBox
+        {
+            get;
+            set;
+        }
+        public ProfilesBYPESMViewModel ProfilesBYPESM
+        {
+            get;
+            set;
         }
         #endregion
 
@@ -70,7 +134,7 @@
         }
         #endregion
 
-        #region Methos
+        #region Methods
         private void LoadMenu()
         {
             this.Menus = new ObservableCollection<MenuItemViewModel>();
@@ -78,11 +142,23 @@
             {
                 Icon = "account",
                 PageName = "MyProfilePage",
-                Title = Languages.MyProfile,
+                Title = Languages.MyAccount,
             });
             this.Menus.Add(new MenuItemViewModel
             {
-                Icon = "exit",
+                Icon = "perfiles",
+                PageName = "ProfilesPage",
+                Title = Languages.MyProfiles,
+            });
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "configuraciones",
+                PageName = "SettingsPage",
+                Title = Languages.Settings,
+            });
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "logout",
                 PageName = "LoginPage",
                 Title = Languages.LogOut,
             });

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             x:Class="Mynfo.Views.AddProfilesPage" >
+    <NavigationPage.TitleView>
+        <Grid
+            HeightRequest = "20">
+            <StackLayout 
+                HorizontalOptions="Start">
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "18"
+                    HorizontalOptions = "Start"
+                    Text = "{i18n:Translate AddProfiles}"
+                    TextColor = "{StaticResource Dark_FontColor}"/>
+            </StackLayout>
+            <StackLayout
+                HorizontalOptions = "End">
+                <Image 
+                    HeightRequest = "20"
+                    HorizontalOptions = "End"
+                    Source = "logo_superior.png" 
+                    WidthRequest = "75" >
+                </Image>
+            </StackLayout>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView 
+            BindingContext="{Binding AddProfiles}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{i18n:Translate AddPBox}" 
+                       Grid.ColumnSpan="3"
+                       FontSize="25" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                
+                <BoxView Grid.Row="1"
+                     Grid.Column="1"
+                         BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+
+                <BoxView Grid.Row="3"
+                     Grid.Column="1"
+                         BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                
+                <Button 
+                    
+                    BorderRadius = "23"
+                    BackgroundColor = "{StaticResource MainColor}"
+                    Grid.Row = "4"
+                    Grid.Column = "1"
+                    HeightRequest = "46"
+                    Margin = "50,0,50,0"
+                    Text = "{i18n:Translate Save}"
+                    TextColor = "{StaticResource Dark_FontColor}"
+                    VerticalOptions = "Center"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

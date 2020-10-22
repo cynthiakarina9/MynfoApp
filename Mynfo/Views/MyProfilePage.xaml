@@ -1,104 +1,141 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mynfo.Views.MyProfilePage"
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate MyProfile}">
+             x:Class="Mynfo.Views.MyProfilePage"
+             BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Grid
+            HeightRequest = "20">
+            <StackLayout 
+                HorizontalOptions="Start">
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "19"
+                    HorizontalOptions = "Start"
+                    Text = "{i18n:Translate MyAccount}"
+                    TextColor = "{StaticResource Dark_FontColor}"/>
+            </StackLayout>
+            <StackLayout
+                HorizontalOptions = "End">
+                <Image 
+                    HeightRequest = "20"
+                    HorizontalOptions = "End"
+                    Source = "logo_superior.png" 
+                    WidthRequest = "75" >
+                </Image>
+            </StackLayout>
+        </Grid>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView  
-            BindingContext="{Binding MyProfile}">
+            BindingContext = "{Binding MyProfile}">
             <StackLayout
-                Padding="5">
+                Padding = "15">
                 <controls:CircleImage 
-                    Aspect="AspectFill"
-                    HeightRequest="250"
-                    Source="{Binding ImageSource}">
+                    Aspect = "AspectFill"
+                    HeightRequest = "250"
+                    Source = "{Binding ImageSource}">
                     <controls:CircleImage.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}" />
+                        <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />
                     </controls:CircleImage.GestureRecognizers>
                 </controls:CircleImage>
                 <Label 
-                    HorizontalOptions="Center" 
-                    FontSize="Small" 
-                    Text="{i18n:Translate ChangeImage}" 
-                    TextColor="{StaticResource FontColor}">
+                    HorizontalOptions = "Center" 
+                    FontSize = "Small" 
+                    Padding = "0,0,0,19"
+                    Text = "{i18n:Translate ChangeImage}" >
                 </Label>
-                <Grid>
+                <Grid >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width = "2*" />
                     </Grid.ColumnDefinitions>
-                    <Label 
-                        Grid.Column="0" 
-                        Grid.Row="0" 
-                        Text="{i18n:Translate FirstNameLabel}" 
-                        TextColor="{StaticResource FontColor}" 
-                        VerticalOptions="Center">
-                    </Label>
-                    <Entry 
-                        Grid.Column="1" 
-                        Grid.Row="0" 
-                        Placeholder="{i18n:Translate FirstNamePlaceHolder}" 
-                        TextColor="{StaticResource FontColor}" 
-                        Text="{Binding User.FirstName, Mode=TwoWay}">
-                    </Entry>
-                    <Label 
-                        Grid.Column="0" 
-                        Grid.Row="1" 
-                        Text="{i18n:Translate LastNameLabel}" 
-                        TextColor="{StaticResource FontColor}" 
-                        VerticalOptions="Center">
-                    </Label>
-                    <Entry 
-                        Grid.Column="1" 
-                        Grid.Row="1" 
-                        Placeholder="{i18n:Translate LastNamePlaceHolder}" 
-                        TextColor="{StaticResource FontColor}" 
-                        Text="{Binding User.LastName, Mode=TwoWay}">
-                    </Entry>
-                    <Label 
-                        Grid.Column="0" 
-                        Grid.Row="2" 
-                        Text="{i18n:Translate EMail}" 
-                        TextColor="{StaticResource FontColor}" 
-                        VerticalOptions="Center">
-                    </Label>
-                    <Label 
-                        Grid.Column="1" 
-                        Grid.Row="2" 
-                        TextColor="{StaticResource FontColor}" 
-                        Text="{Binding User.Email, Mode=TwoWay}">
-                    </Label>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height = "2*" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation = "Vertical" HorizontalOptions = "Center">
+                        <Label
+                            FontFamily = "Avenir Next LT Pro Demi"
+                            FontSize = "18"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate FirstNameLabel}"
+                            TextColor = "{AppThemeBinding Light={StaticResource FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            VerticalOptions = "Center" />
+                        <Entry 
+                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            FontFamily = "Avenir Next LT Pro Demi"
+                            FontSize = "20"
+                            HorizontalOptions = "Center"
+                            Placeholder = "{i18n:Translate FirstNamePlaceHolder}" 
+                            Text = "{Binding User.FirstName, Mode = TwoWay}" 
+                            TextColor = "{StaticResource BackgroundColor}"
+                            HorizontalTextAlignment = "Center" 
+                            WidthRequest = "300" />
+                        <Label 
+                            FontFamily = "Avenir Next LT Pro Demi"
+                            FontSize = "18"
+                            HorizontalOptions = "Center"
+                            TextColor = "{AppThemeBinding Light={StaticResource FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            Text = "{i18n:Translate LastNameLabel}" 
+                            VerticalOptions = "Center" />
+                        <Entry 
+                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            FontFamily = "Avenir Next LT Pro Demi"
+                            FontSize = "20"
+                            HorizontalOptions = "Center"
+                            Placeholder = "{i18n:Translate LastNamePlaceHolder}" 
+                            Text = "{Binding User.LastName, Mode=TwoWay}"
+                            TextColor = "{StaticResource BackgroundColor}"
+                            HorizontalTextAlignment = "Center" 
+                            WidthRequest = "300" />
+                        <Label 
+                            FontFamily = "Avenir Next LT Pro Demi"
+                            FontSize = "18"
+                            HorizontalOptions = "Center"
+                            TextColor = "{AppThemeBinding Light={StaticResource FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            Text = "{i18n:Translate EMail}" 
+                            VerticalOptions = "Center" />
+                        <Entry 
+                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            FontFamily = "Avenir Next LT Pro Demi"
+                            FontSize = "20"
+                            HorizontalOptions = "Center"
+                            HorizontalTextAlignment = "Center" 
+                            IsReadOnly="true"
+                            Placeholder = "{i18n:Translate LastNamePlaceHolder}" 
+                            Text = "{Binding User.Email, Mode = TwoWay}"
+                            TextColor = "{StaticResource BackgroundColor}"
+                            WidthRequest = "300" />
+                    </StackLayout>
                 </Grid>
                 <ActivityIndicator
-                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions="CenterAndExpand">
+                    IsRunning = "{Binding IsRunning, Mode = TwoWay}"
+                    VerticalOptions = "CenterAndExpand">
                 </ActivityIndicator>
                 <StackLayout
-                    Margin="40,0"
-                    Orientation="Horizontal"
-                    VerticalOptions="End">
+                    Margin = "40,0"
+                    Orientation = "Horizontal"
+                    VerticalOptions = "End">
                     <Button
-                        BackgroundColor="{StaticResource MainColor}"
-                        BorderRadius="23"
-                        Command="{Binding SaveCommand}"
-                        HeightRequest="46"
-                        HorizontalOptions="FillAndExpand"
-                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                        Text="{i18n:Translate Save}"
-                        TextColor="White">
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Command = "{Binding SaveCommand}"
+                        HeightRequest = "46"
+                        HorizontalOptions = "FillAndExpand"
+                        IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
+                        Text = "{i18n:Translate Save}"
+                        TextColor = "{StaticResource Dark_FontColor}">
                     </Button>
                     <Button
-                        BackgroundColor="{StaticResource MainColor}"
-                        BorderRadius="23"
-                        Command="{Binding ChangePasswordCommand}"
-                        HeightRequest="46"
-                        HorizontalOptions="FillAndExpand"
-                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                        Text="{i18n:Translate ChangePassword}"
-                        TextColor="White">
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Command = "{Binding ChangePasswordCommand}"
+                        HeightRequest = "46"
+                        HorizontalOptions = "FillAndExpand"
+                        IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
+                        Text = "{i18n:Translate ChangePassword}"
+                        TextColor = "{StaticResource Dark_FontColor}">
                     </Button>
                 </StackLayout>
             </StackLayout>

@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
     using System.Web.Mvc;
     
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UserTypesController : Controller
     {
         private LocalDataContext db = new LocalDataContext();

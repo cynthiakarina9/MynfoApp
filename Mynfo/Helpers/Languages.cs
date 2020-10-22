@@ -178,9 +178,9 @@
             get { return Resource.Menu; }
         }
 
-        public static string MyProfile
+        public static string MyAccount
         {
-            get { return Resource.MyProfile; }
+            get { return Resource.MyAccount; }
         }
 
         public static string Statics
@@ -360,6 +360,139 @@
         public static string ErrorChangingPassword
         {
             get { return Resource.ErrorChangingPassword; }
+        }
+
+        public static string MyProfiles
+        {
+            get { return Resource.MyProfiles; }
+        }
+        public static string Settings
+        {
+            get { return Resource.Settings; }
+        }
+        public static string Home
+        {
+            get { return Resource.Home; }
+        }
+        public static string Profiles
+        {
+            get { return Resource.Profiles; }
+        }
+        public static string AddPBox
+        {
+            get { return Resource.AddPBox; }
+        }
+        public static string NewBox
+        {
+            get { return Resource.NewBox; }
+        }
+        public static string BoxName
+        {
+            get { return Resource.BoxName; }
+        }
+        public static string Create
+        {
+            get { return Resource.Create; }
+        }
+        public static string AddPSocialMedia
+        {
+            get { return Resource.AddPSocialMedia; }
+        }
+        public static string User
+        {
+            get { return Resource.User; }
+        }
+        public static string LoginSession
+        {
+            get { return Resource.LoginSession; }
+        }
+        public static string NewProfile
+        {
+            get { return Resource.NewProfile; }
+        }
+        public static string DefaultBox
+        {
+            get { return Resource.DefaultBox; }
+        }
+        public static string ProfileDetails
+        {
+            get { return Resource.ProfileDetails; }
+        }
+        public static string EditProfileData
+        {
+            get { return Resource.EditProfileData; }
+        }
+        public static string ProfileName
+        {
+            get { return Resource.ProfileName; }
+        }
+        public static string Value
+        {
+            get { return Resource.Value; }
+        }
+        public static string Update
+        {
+            get { return Resource.Update; }
+        }
+        public static string BoxList
+        {
+            get { return Resource.BoxList; }
+        }
+        public static string MyAccounts
+        {
+            get { return Resource.MyAccounts; }
+        }
+        public static string AddAccount
+        {
+            get { return Resource.AddAccount; }
+        }
+        public static string ActiveAccounts
+        {
+            get { return Resource.ActiveAccounts; }
+        }
+        public static string AddProfiles
+        {
+            get { return Resource.AddProfiles; }
+        }
+        public static string CreateProfilePhone
+        {
+            get { return Resource.CreateProfilePhone; }
+        }
+        public static string NameProfile
+        {
+            get { return Resource.NameProfile; }
+        }
+        public static string NumberPhone
+        {
+            get { return Resource.NumberPhone; }
+        }
+        public static string ChooseTypeProfile
+        {
+            get { return Resource.ChooseTypeProfile; }
+        }
+        public static string ProfilePhone
+        {
+            get { return Resource.ProfilePhone; }
+        }
+        public static string NameValidation
+        {
+            get { return Resource.NameValidation; }
+        }
+        public static string PhoneValidation2
+        {
+            get { return Resource.PhoneValidation2; }
+        }
+        public static string NumberValidation
+        {
+            get { return Resource.NumberValidation; }
+        }
+        public static string ProfileEmail
+        {
+            get { return Resource.ProfileEmail; }
+        }
+        public static string DetailBox
+        {
+            get { return Resource.DetailBox; }
         }
     }
 }

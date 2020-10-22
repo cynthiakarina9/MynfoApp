@@ -7,5 +7,10 @@
         {
             InitializeComponent();
         }
+
+        private void RowDefinitionCollection_ItemSizeChanged(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

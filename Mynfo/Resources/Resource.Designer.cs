@@ -70,6 +70,51 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My active accounts.
+        /// </summary>
+        public static string ActiveAccounts {
+            get {
+                return ResourceManager.GetString("ActiveAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add account.
+        /// </summary>
+        public static string AddAccount {
+            get {
+                return ResourceManager.GetString("AddAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add profiles to Box.
+        /// </summary>
+        public static string AddPBox {
+            get {
+                return ResourceManager.GetString("AddPBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add profiles.
+        /// </summary>
+        public static string AddProfiles {
+            get {
+                return ResourceManager.GetString("AddProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add profile to social network.
+        /// </summary>
+        public static string AddPSocialMedia {
+            get {
+                return ResourceManager.GetString("AddPSocialMedia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alpha Code 2:.
         /// </summary>
         public static string AlphaCode2 {
@@ -102,6 +147,24 @@ namespace Mynfo.Resources {
         public static string Borders {
             get {
                 return ResourceManager.GetString("Borders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Box list.
+        /// </summary>
+        public static string BoxList {
+            get {
+                return ResourceManager.GetString("BoxList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Box name.
+        /// </summary>
+        public static string BoxName {
+            get {
+                return ResourceManager.GetString("BoxName", resourceCulture);
             }
         }
         
@@ -156,6 +219,15 @@ namespace Mynfo.Resources {
         public static string ChangePassword {
             get {
                 return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose type of profile.
+        /// </summary>
+        public static string ChooseTypeProfile {
+            get {
+                return ResourceManager.GetString("ChooseTypeProfile", resourceCulture);
             }
         }
         
@@ -241,6 +313,24 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create profile phone.
+        /// </summary>
+        public static string CreateProfilePhone {
+            get {
+                return ResourceManager.GetString("CreateProfilePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Croatian:.
         /// </summary>
         public static string Croatian {
@@ -268,11 +358,20 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your current password....
+        ///   Looks up a localized string similar to Enter your current password..
         /// </summary>
         public static string CurrentPasswordPlaceHolder {
             get {
                 return ResourceManager.GetString("CurrentPasswordPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Box.
+        /// </summary>
+        public static string DefaultBox {
+            get {
+                return ResourceManager.GetString("DefaultBox", resourceCulture);
             }
         }
         
@@ -286,11 +385,29 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Box details.
+        /// </summary>
+        public static string DetailBox {
+            get {
+                return ResourceManager.GetString("DetailBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dutch:.
         /// </summary>
         public static string Dutch {
             get {
                 return ResourceManager.GetString("Dutch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit profile data.
+        /// </summary>
+        public static string EditProfileData {
+            get {
+                return ResourceManager.GetString("EditProfileData", resourceCulture);
             }
         }
         
@@ -304,7 +421,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your email....
+        ///   Looks up a localized string similar to Enter your email..
         /// </summary>
         public static string EmailPlaceHolder {
             get {
@@ -358,7 +475,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the first name....
+        ///   Looks up a localized string similar to Enter the first name..
         /// </summary>
         public static string FirstNamePlaceHolder {
             get {
@@ -426,6 +543,15 @@ namespace Mynfo.Resources {
         public static string GINI {
             get {
                 return ResourceManager.GetString("GINI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -502,6 +628,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log in.
+        /// </summary>
+        public static string LoginSession {
+            get {
+                return ResourceManager.GetString("LoginSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string LogOut {
@@ -520,6 +655,24 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Account.
+        /// </summary>
+        public static string MyAccount {
+            get {
+                return ResourceManager.GetString("MyAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My accounts in.
+        /// </summary>
+        public static string MyAccounts {
+            get {
+                return ResourceManager.GetString("MyAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Languages.
         /// </summary>
         public static string MyLanguages {
@@ -529,11 +682,29 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Profile.
+        ///   Looks up a localized string similar to My Profiles.
         /// </summary>
-        public static string MyProfile {
+        public static string MyProfiles {
             get {
-                return ResourceManager.GetString("MyProfile", resourceCulture);
+                return ResourceManager.GetString("MyProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile name.
+        /// </summary>
+        public static string NameProfile {
+            get {
+                return ResourceManager.GetString("NameProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a name..
+        /// </summary>
+        public static string NameValidation {
+            get {
+                return ResourceManager.GetString("NameValidation", resourceCulture);
             }
         }
         
@@ -543,6 +714,15 @@ namespace Mynfo.Resources {
         public static string NativeName {
             get {
                 return ResourceManager.GetString("NativeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Box.
+        /// </summary>
+        public static string NewBox {
+            get {
+                return ResourceManager.GetString("NewBox", resourceCulture);
             }
         }
         
@@ -561,6 +741,33 @@ namespace Mynfo.Resources {
         public static string NewPasswordPlaceHolder {
             get {
                 return ResourceManager.GetString("NewPasswordPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Profile.
+        /// </summary>
+        public static string NewProfile {
+            get {
+                return ResourceManager.GetString("NewProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone or cell number.
+        /// </summary>
+        public static string NumberPhone {
+            get {
+                return ResourceManager.GetString("NumberPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a phone number..
+        /// </summary>
+        public static string NumberValidation {
+            get {
+                return ResourceManager.GetString("NumberValidation", resourceCulture);
             }
         }
         
@@ -637,7 +844,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the phone....
+        ///   Looks up a localized string similar to Enter the phone..
         /// </summary>
         public static string PhonePlaceHolder {
             get {
@@ -651,6 +858,15 @@ namespace Mynfo.Resources {
         public static string PhoneValidation {
             get {
                 return ResourceManager.GetString("PhoneValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The phone number must contain 10 digits..
+        /// </summary>
+        public static string PhoneValidation2 {
+            get {
+                return ResourceManager.GetString("PhoneValidation2", resourceCulture);
             }
         }
         
@@ -669,6 +885,51 @@ namespace Mynfo.Resources {
         public static string Portuguese {
             get {
                 return ResourceManager.GetString("Portuguese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile details.
+        /// </summary>
+        public static string ProfileDetails {
+            get {
+                return ResourceManager.GetString("ProfileDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email profile.
+        /// </summary>
+        public static string ProfileEmail {
+            get {
+                return ResourceManager.GetString("ProfileEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile name.
+        /// </summary>
+        public static string ProfileName {
+            get {
+                return ResourceManager.GetString("ProfileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone profile.
+        /// </summary>
+        public static string ProfilePhone {
+            get {
+                return ResourceManager.GetString("ProfilePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My active profiles.
+        /// </summary>
+        public static string Profiles {
+            get {
+                return ResourceManager.GetString("Profiles", resourceCulture);
             }
         }
         
@@ -718,11 +979,20 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search....
+        ///   Looks up a localized string similar to Search..
         /// </summary>
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         
@@ -781,11 +1051,38 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The user was create, now you can login with this email and password..
         /// </summary>
         public static string UserRegisteredMessage {
             get {
                 return ResourceManager.GetString("UserRegisteredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
             }
         }
     }

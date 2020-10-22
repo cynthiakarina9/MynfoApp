@@ -17,6 +17,7 @@
 
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     [IntentFilter(new[] { NfcAdapter.ActionTechDiscovered }, Categories = new[] { Intent.CategoryDefault }, DataMimeType = "application/com.companyname.Mynfo",DataScheme = "vnd.android.nfc", DataPathPrefix = "/com.Mynfo:letypetype", DataHost = "ext")]    
+
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         #region Singleton
@@ -65,6 +66,8 @@
                 // Register callback to listen for message-sent success
                 mNfcAdapter.SetOnNdefPushCompleteCallback(null, this);
             }
+            //Color de tema
+            Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
             base.OnCreate(savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

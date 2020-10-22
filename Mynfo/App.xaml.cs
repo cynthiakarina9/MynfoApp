@@ -4,6 +4,7 @@
     using Models;
     using Services;
     using System;
+    using System.IO;
     using System.Threading.Tasks;
     using ViewModels;
     using Views;
@@ -25,15 +26,19 @@
             get; 
             internal set; 
         }
+        public static string FolderPath { get; private set; }
         #endregion
 
         #region Constructors
         public App(string root_DB)
         {
+            FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+            //MainPage = new NavigationPage(new HomePage());
             InitializeComponent();
 
             //Set root SQLite
             root_db = root_DB;
+
 
             if (Settings.IsRemembered == "true")
             {
@@ -115,20 +120,24 @@
                 token.AccessToken,
                 token.UserName);
 
-            UserLocal userLocal = null;
+            UserLocal userLocal;
+            userLocal = Converter.ToUserLocal(user);
+
             if (user != null)
             {
-                userLocal = Converter.ToUserLocal(user);
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.DeleteAll<UserLocal>();
+                    conn.CreateTable<UserLocal>();
+                    conn.Insert(userLocal);
                 }
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.DeleteAll<TokenResponse>();
+                    conn.CreateTable<TokenResponse>();
+                    conn.Insert(token);
                 }
             }
-
+            
+            
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;
             mainViewModel.User = userLocal;

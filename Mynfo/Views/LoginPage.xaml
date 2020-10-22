@@ -1,105 +1,126 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.LoginPage" 
-             BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate Login}">
+<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n = "clr-namespace:Mynfo.Helpers"
+             x:Class = "Mynfo.Views.LoginPage"
+             BackgroundColor = "{StaticResource BackgroundColor}"
+             BindingContext = "{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <ScrollView
-            BindingContext="{Binding Login}">
+            BindingContext = "{Binding Login}">
             <StackLayout
-                Padding="5">
+                Padding = "15">
                 <Image
-                    Source="Logomynfo"
-                    WidthRequest="120"/>
-                <Grid
-                    Margin="10,0"
-                    VerticalOptions="CenterAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
+                    Source = "logo"
+                    WidthRequest = "120"/>
+                <Image
+                    Source = "tipography"
+                    WidthRequest = "180"/>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontFamily = "Avenir Next LT Pro Demi"
+                    FontSize = "30"
+                    HorizontalOptions = "Center"
+                    Text = "{i18n:Translate Login}"
+                    TextColor = "{StaticResource MainFountyColor}"/>
+                
+                <StackLayout HorizontalOptions = "CenterAndExpand">
                     <Label
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Text="{i18n:Translate EMail}"
-                        VerticalOptions="Center"/>
+                        Text = "{i18n:Translate EMail}"
+                        TextColor = "{StaticResource FontColor}"
+                        VerticalTextAlignment = "Center"
+                        HorizontalOptions = "CenterAndExpand"/>
                     <Entry
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Keyboard="Email"
-                        Text="{Binding Email, Mode=TwoWay}"
-                        Placeholder="{i18n:Translate EmailPlaceHolder}"/>
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Text="{i18n:Translate Password}"
-                        VerticalOptions="Center"/>
-                    <Entry
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        IsPassword="True"
-                        Text="{Binding Password, Mode=TwoWay}"
-                        Placeholder="{i18n:Translate PasswordPlaceHolder}"/>
-                </Grid>
-                <ActivityIndicator
-                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions="CenterAndExpand">
-                </ActivityIndicator>
-                <StackLayout
-                    Margin="10,0"
-                    Orientation="Horizontal"
-                    VerticalOptions="FillAndExpand">
-                    <Label
-                        HorizontalOptions="StartAndExpand"
-                        Text="{i18n:Translate Rememberme}" 
-                        VerticalOptions="Center"/>
-                    <Switch
-                        IsToggled="{Binding IsRemembered, Mode=TwoWay}"
-                        HorizontalOptions="End"/>
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        HeightRequest = "40"
+                        Keyboard = "Email"
+                        Text = "{Binding Email, Mode = TwoWay}"
+                        TextColor = "{StaticResource BackgroundColor}"
+                        WidthRequest = "300"/>
                 </StackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{i18n:Translate Forgot}"
-                    TextColor="{StaticResource AccentColor}"
-                    VerticalOptions="FillAndExpand"/>
+                
+                <StackLayout HorizontalOptions = "CenterAndExpand">
+                        <Label
+                            HorizontalOptions = "CenterAndExpand"
+                            Text = "{i18n:Translate Password}"
+                            TextColor = "{StaticResource FontColor}"
+                            VerticalOptions = "CenterAndExpand"/>
+                        <Entry
+                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            HeightRequest = "40"
+                            IsPassword = "True"
+                            Text = "{Binding Password, Mode = TwoWay}"
+                            TextColor = "{StaticResource BackgroundColor}"
+                            WidthRequest = "300"/>
+                    </StackLayout>
+                
+                <ActivityIndicator
+                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions = "CenterAndExpand">
+                </ActivityIndicator>
+                
+                <StackLayout
+                    Margin = "10,0"
+                    Orientation = "Horizontal"
+                    VerticalOptions = "FillAndExpand">
+                    <Label
+                        HorizontalOptions = "StartAndExpand"
+                        Text = "{i18n:Translate Rememberme}" 
+                        VerticalOptions = "Center"
+                        TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor}}"/>
+                    <Switch
+                        IsToggled = "{Binding IsRemembered, Mode = TwoWay}"
+                        HorizontalOptions = "End"/>
+                </StackLayout>
+                <!--<Label
+                    HorizontalOptions = "Center"
+                    Text = "{i18n:Translate Forgot}"
+                    TextColor = "{StaticResource AccentColor}"
+                    VerticalOptions = "FillAndExpand"/>-->
+                <Label Text = " "/>
                 <Button
-                        BackgroundColor="{StaticResource MainColor}"
-                        BorderRadius="23"
-                        Command="{Binding LoginCommand}"
-                        HeightRequest="46"
-                        WidthRequest="250"
-                        HorizontalOptions="Center"
-                        IsEnabled="{Binding IsEnabled,Mode=TwoWay}"
-                        Text="{i18n:Translate Login}"
-                        TextColor="White"/>
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    Command = "{Binding LoginCommand}"
+                    HeightRequest = "46"
+                    HorizontalOptions = "Center"
+                    IsEnabled = "{Binding IsEnabled,Mode = TwoWay}"
+                    Text = "{i18n:Translate Login}"
+                    TextColor = "{StaticResource Dark_FontColor}"
+                    WidthRequest = "150"/>
+                <Label Text = " "/>
                 <Label
-                    HorizontalOptions="Center"
-                    Text="{i18n:Translate Register}"
-                    TextColor="{StaticResource AccentColor}"
-                    VerticalOptions="FillAndExpand">
+                    HorizontalOptions = "Center"
+                    FontAttributes = "Bold"
+                    FontSize = "20"
+                    Text = "{i18n:Translate Register}"
+                    TextColor = "{StaticResource MainFountyColor}"
+                    VerticalOptions = "FillAndExpand">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                        <TapGestureRecognizer Command = "{Binding RegisterCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
+                <Label Text = " "/>
                 <StackLayout
-                    HorizontalOptions="Center"
-                    Orientation="Horizontal"
-                    VerticalOptions="EndAndExpand">
+                    HorizontalOptions = "Center"
+                    Orientation = "Horizontal"
+                    VerticalOptions = "EndAndExpand">
                     <Image
-                        Source="facebook_logo"
-                        WidthRequest="60">
+                        Source = "facebook1"
+                        WidthRequest = "45">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding LoginFacebookComand}"/>
+                            <TapGestureRecognizer Command = "{Binding LoginFacebookComand}"/>
                         </Image.GestureRecognizers>
                     </Image>
+                    <Frame 
+                        OutlineColor = "Transparent">
+                        <Image
+                        Source = "twitter1"
+                        WidthRequest = "45"/>
+                    </Frame>
                     <Image
-                        Source="twitter_logo"
-                        WidthRequest="60"/>
-                    <Image
-                        Source="instagram_logo"
-                        WidthRequest="60"/>
+                        Source = "instagram1"
+                        WidthRequest = "45"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

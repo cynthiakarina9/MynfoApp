@@ -121,7 +121,7 @@
     <value>Accept</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>Enter your email...</value>
+    <value>Enter your email.</value>
   </data>
   <data name="EmailValidation" xml:space="preserve">
     <value>You must enter an email.</value>
@@ -157,7 +157,7 @@
     <value>Register</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Search...</value>
+    <value>Search.</value>
   </data>
   <data name="Countries" xml:space="preserve">
     <value>Countries</value>
@@ -249,8 +249,8 @@
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
-  <data name="MyProfile" xml:space="preserve">
-    <value>My Profile</value>
+  <data name="MyAccount" xml:space="preserve">
+    <value>My Account</value>
   </data>
   <data name="Statics" xml:space="preserve">
     <value>Statics</value>
@@ -268,7 +268,7 @@
     <value>First Name</value>
   </data>
   <data name="FirstNamePlaceHolder" xml:space="preserve">
-    <value>Enter the first name...</value>
+    <value>Enter the first name.</value>
   </data>
   <data name="FirstNameValidation" xml:space="preserve">
     <value>You must enter a first name.</value>
@@ -286,7 +286,7 @@
     <value>Phone</value>
   </data>
   <data name="PhonePlaceHolder" xml:space="preserve">
-    <value>Enter the phone...</value>
+    <value>Enter the phone.</value>
   </data>
   <data name="PhoneValidation" xml:space="preserve">
     <value>You must enter a phone.</value>
@@ -334,7 +334,7 @@
     <value>Current Password</value>
   </data>
   <data name="CurrentPasswordPlaceHolder" xml:space="preserve">
-    <value>Enter your current password...</value>
+    <value>Enter your current password.</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>New Password</value>
@@ -359,5 +359,104 @@
   </data>
   <data name="ErrorChangingPassword" xml:space="preserve">
     <value>The password can't be changed, please try latter.</value>
+  </data>
+  <data name="MyProfiles" xml:space="preserve">
+    <value>My Profiles</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>My active profiles</value>
+  </data>
+  <data name="ActiveAccounts" xml:space="preserve">
+    <value>My active accounts</value>
+  </data>
+  <data name="AddAccount" xml:space="preserve">
+    <value>Add account</value>
+  </data>
+  <data name="AddPBox" xml:space="preserve">
+    <value>Add profiles to Box</value>
+  </data>
+  <data name="AddPSocialMedia" xml:space="preserve">
+    <value>Add profile to social network</value>
+  </data>
+  <data name="BoxList" xml:space="preserve">
+    <value>Box list</value>
+  </data>
+  <data name="BoxName" xml:space="preserve">
+    <value>Box name</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="DefaultBox" xml:space="preserve">
+    <value>Default Box</value>
+  </data>
+  <data name="EditProfileData" xml:space="preserve">
+    <value>Edit profile data</value>
+  </data>
+  <data name="LoginSession" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="MyAccounts" xml:space="preserve">
+    <value>My accounts in</value>
+  </data>
+  <data name="NewBox" xml:space="preserve">
+    <value>New Box</value>
+  </data>
+  <data name="NewProfile" xml:space="preserve">
+    <value>New Profile</value>
+  </data>
+  <data name="ProfileDetails" xml:space="preserve">
+    <value>Profile details</value>
+  </data>
+  <data name="ProfileName" xml:space="preserve">
+    <value>Profile name</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="AddProfiles" xml:space="preserve">
+    <value>Add profiles</value>
+  </data>
+  <data name="CreateProfilePhone" xml:space="preserve">
+    <value>Create profile phone</value>
+  </data>
+  <data name="NameProfile" xml:space="preserve">
+    <value>Profile name</value>
+  </data>
+  <data name="NumberPhone" xml:space="preserve">
+    <value>Phone or cell number</value>
+  </data>
+  <data name="ChooseTypeProfile" xml:space="preserve">
+    <value>Choose type of profile</value>
+  </data>
+  <data name="ProfilePhone" xml:space="preserve">
+    <value>Phone profile</value>
+  </data>
+  <data name="NameValidation" xml:space="preserve">
+    <value>You must enter a name.</value>
+  </data>
+  <data name="NumberValidation" xml:space="preserve">
+    <value>You must enter a phone number.</value>
+  </data>
+  <data name="PhoneValidation2" xml:space="preserve">
+    <value>The phone number must contain 10 digits.</value>
+  </data>
+  <data name="DetailBox" xml:space="preserve">
+    <value>Box details</value>
+  </data>
+  <data name="ProfileEmail" xml:space="preserve">
+    <value>Email profile</value>
   </data>
 </root>
