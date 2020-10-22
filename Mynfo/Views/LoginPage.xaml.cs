@@ -8,7 +8,7 @@
     {
         public LoginPage()
         {
-            InitializeComponent();
+            InitializeComponent();                       
         }
     }
 }
