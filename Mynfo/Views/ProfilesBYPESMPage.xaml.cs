@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +17,8 @@ namespace Mynfo.Views
         public ProfilesBYPESMPage(int _BoxId)
         {
             InitializeComponent();
-
+            BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender,e,_BoxId));
+            RefreshCommand = new Command(async () => await LoadPublications());
             int BoxId = _BoxId;
             int UserId = MainViewModel.GetInstance().User.UserId;
 
@@ -229,6 +230,31 @@ namespace Mynfo.Views
                 }
             }
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));
+        }
+        private bool _isRefreshing;
+
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set { _isRefreshing = value; OnPropertyChanged(); }
+        }
+
+        public ICommand RefreshCommand { private set; get; }
+
+
+        // methods - code omitted
+
+        async Task LoadPublications()
+        {
+            // code omitted
+
+            IsRefreshing = false;
+        }
+        private void Back_Clicked(object sender, EventArgs e, int _BoxId)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.DetailsBox = new DetailsBoxViewModel();
+            Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
         }
     }
 }

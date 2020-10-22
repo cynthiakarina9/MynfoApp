@@ -465,4 +465,7 @@
   <data name="EmailProfileList" xml:space="preserve">
     <value>Lista de perfis de correio</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Para retornar</value>
+  </data>
 </root>

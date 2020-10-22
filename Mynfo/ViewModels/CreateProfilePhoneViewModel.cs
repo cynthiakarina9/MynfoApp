@@ -7,6 +7,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
     using Mynfo.Views;
+    using System.Threading.Tasks;
 
     public class CreateProfilePhoneViewModel :  BaseViewModel
     {
@@ -46,6 +47,7 @@
         #region Constructor
         public CreateProfilePhoneViewModel()
         {
+            RefreshCommand = new Command(async () => await LoadPublications());
             this.apiService = new ApiService();
 
             this.IsEnabled = true;
@@ -53,7 +55,26 @@
         #endregion
 
         #region Commands
-        public ICommand SaveProfilePhoneCommand
+        private bool _isRefreshing;
+
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set { _isRefreshing = value; OnPropertyChanged(); }
+        }
+
+        public ICommand RefreshCommand { private set; get; }
+
+        // methods - code omitted
+
+        async Task LoadPublications()
+        {
+            // code omitted
+
+            IsRefreshing = false;
+        }
+    
+    public ICommand SaveProfilePhoneCommand
         {
             get
             {
@@ -135,7 +156,7 @@
             this.Name = string.Empty;
             this.Number = string.Empty;
             await App.Navigator.PopAsync();
-            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
+            await App.Navigator.PushAsync(new ProfilesByPhonePage());
         }
         #endregion
     }

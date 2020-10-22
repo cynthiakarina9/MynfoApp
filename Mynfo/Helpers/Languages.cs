@@ -494,5 +494,9 @@
         {
             get { return Resource.DetailBox; }
         }
+        public static string Back
+        {
+            get { return Resource.Back; }
+        }
     }
 }
