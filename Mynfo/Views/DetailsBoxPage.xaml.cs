@@ -289,7 +289,7 @@ namespace Mynfo.Views
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
-            await Navigation.PushAsync(new ProfilesBYPESMPage(_BoxId));
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId)
