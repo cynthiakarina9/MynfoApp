@@ -5,9 +5,8 @@
              x:Class="Mynfo.Views.ProfilesBYPESMPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <StackLayout 
-            Orientation = "Horizontal"
-            Spacing = "160">
+        <Grid
+            HeightRequest = "20">
             <StackLayout
                 HorizontalOptions = "Center">
                 <Label 
@@ -18,68 +17,63 @@
                     TextColor = "{StaticResource Dark_FontColor}"/>
             </StackLayout>
             <StackLayout
-                VerticalOptions = "EndAndExpand">
+                HorizontalOptions = "Start">
                 <Image 
-                    HeightRequest = "30"
+                    HeightRequest = "20"
                     Source = "logo_superior.png" 
-                    WidthRequest = "60" 
-                    VerticalOptions = "End">
+                    WidthRequest = "75" 
+                    HorizontalOptions = "Start">
                 </Image>
             </StackLayout>
-        </StackLayout>
+        </Grid>
     </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            x:Name="BackDetails"
+            Text = "{i18n:Translate Back}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView
             BindingContext = "{Binding ProfilesBYPESM}">
-            <Grid>
-                <ListView 
-                    ItemsSource = "{Binding Menus}"
-                    HasUnevenRows = "True"
-                    SeparatorVisibility = "None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid>
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command = "{Binding NavigateCommand}" />
-                                    </Grid.GestureRecognizers>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width = "*"></ColumnDefinition>
-                                        <ColumnDefinition Width = "2*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height = "Auto"></RowDefinition>
-                                        <RowDefinition Height = "*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Image 
-                                        Grid.Column = "0"
-                                        HeightRequest = "50"
-                                        Source = "{Binding Icon}"
-                                        WidthRequest = "50" />
-                                    <Label 
-                                        FontSize = "17"
-                                        Grid.Column = "1"
-                                        Text = "{Binding Title}"
-                                        TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor},Light = {StaticResource Light_FontColor}}"
-                                        VerticalOptions = "Center" />
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <StackLayout >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition />
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Titulo-->
+
+                    <Label 
+                        Grid.Row = "0" 
+                        Text = "{i18n:Translate MyProfiles}"
+                        FontSize = "25"
+                        FontAttributes="Bold"
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions = "EndAndExpand"  
+                        Margin = "0,5,0,15"/>
+
+                    <!--End Titulo-->
+
+                    <!--Lista de Perfiles-->
+                    <StackLayout 
+                        Grid.Row="1"
+                        HorizontalOptions="FillAndExpand"
+                        Padding="25"
+                        x:Name="ProfileList" />
+
+                    <!--Botón para agregar nuevas cuentas-->
                     <Button
                         BackgroundColor = "Transparent"
                         Clicked = "GoToProfiles_Clicked"
-                        Grid.ColumnSpan = "3"
-                        Grid.Row = "4"
+                        Grid.Row = "2"
                         HeightRequest = "60"
                         HorizontalOptions ="Center"
                         ImageSource = "Plus"
                         VerticalOptions = "Center"
                         WidthRequest = "60" />
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+                </Grid>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

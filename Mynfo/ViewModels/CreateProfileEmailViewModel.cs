@@ -6,6 +6,8 @@
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using Mynfo.Views;
+    using System.Threading.Tasks;
 
     public class CreateProfileEmailViewModel : BaseViewModel
     {
@@ -45,6 +47,7 @@
         #region Constructor
         public CreateProfileEmailViewModel()
         {
+            RefreshCommand = new Command(async () => await LoadPublications());
             this.apiService = new ApiService();
 
             this.IsEnabled = true;
@@ -58,6 +61,25 @@
             {
                 return new RelayCommand(SaveProfileEmail);
             }
+        }
+        private bool _isRefreshing;
+
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set { _isRefreshing = value; OnPropertyChanged(); }
+        }
+
+        public ICommand RefreshCommand { private set; get; }
+
+
+        // methods - code omitted
+
+        async Task LoadPublications()
+        {
+            // code omitted
+
+            IsRefreshing = false;
         }
         private async void SaveProfileEmail()
         {
@@ -133,8 +155,8 @@
 
             this.Name = string.Empty;
             this.Email = string.Empty;
-            await Application.Current.MainPage.Navigation.PopAsync();
-            await App.Navigator.PopAsync();
+
+            await App.Navigator.PushAsync(new ProfilesByEmailPage());
         }
         #endregion
     }

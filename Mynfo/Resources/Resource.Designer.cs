@@ -142,6 +142,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Borders.
         /// </summary>
         public static string Borders {
@@ -426,6 +435,15 @@ namespace Mynfo.Resources {
         public static string EmailPlaceHolder {
             get {
                 return ResourceManager.GetString("EmailPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email profile list.
+        /// </summary>
+        public static string EmailProfileList {
+            get {
+                return ResourceManager.GetString("EmailProfileList", resourceCulture);
             }
         }
         
@@ -849,6 +867,15 @@ namespace Mynfo.Resources {
         public static string PhonePlaceHolder {
             get {
                 return ResourceManager.GetString("PhonePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone profile list.
+        /// </summary>
+        public static string PhoneProfileList {
+            get {
+                return ResourceManager.GetString("PhoneProfileList", resourceCulture);
             }
         }
         

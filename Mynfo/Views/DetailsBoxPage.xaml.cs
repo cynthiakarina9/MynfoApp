@@ -1,27 +1,19 @@
-﻿using Mynfo.Domain;
-using Mynfo.Helpers;
-using Mynfo.Services;
+﻿using Mynfo.Services;
 using Mynfo.ViewModels;
 using System;
 using System.Data.SqlClient;
+using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Text;
-using Xamarin.Forms.Markup;
-using Xamarin.Forms.Shapes;
 
 namespace Mynfo.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsBoxPage : ContentPage
     {
-        private ApiService apiService;
-
         public DetailsBoxPage(int _boxId = 0)
         {
             InitializeComponent();
-
-            this.apiService = new ApiService();
 
             int BoxId = _boxId;
             int UserID = MainViewModel.GetInstance().User.UserId;
@@ -41,7 +33,7 @@ namespace Mynfo.Views
             var BxDefaultCheckBox = new CheckBox();
 
             //Llenar BoxId si es 0
-            if(BoxId == 0)
+            if (BoxId == 0)
             {
                 using (SqlConnection connection = new SqlConnection(cadenaConexion))
                 {
@@ -65,6 +57,9 @@ namespace Mynfo.Views
                     }
                 }
             }
+
+            //Navegación a ventana de perfiles
+            BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId));
 
             //Asignación de querys
             consultaDefault = "select * from dbo.Boxes where dbo.Boxes.BoxId = " + BoxId;
@@ -165,6 +160,7 @@ namespace Mynfo.Views
 
                             phoneName.Text = (string)reader["Name"];
                             phoneName.FontSize = 15;
+                            phoneName.FontAttributes = FontAttributes.Bold;
 
                             phoneNumber.Text = (string)reader["Number"];
                             phoneNumber.FontSize = 25;
@@ -215,6 +211,7 @@ namespace Mynfo.Views
 
                             emailProfile.Text = (string)reader["Name"];
                             emailProfile.FontSize = 15;
+                            emailProfile.FontAttributes = FontAttributes.Bold;
 
                             emailAddress.Text = (string)reader["Email"];
                             emailAddress.FontSize = 25;
@@ -285,15 +282,14 @@ namespace Mynfo.Views
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Home = new HomeViewModel();
-            //await Navigation.PopToRootAsync();
             Application.Current.MainPage = new MasterPage();
         }
 
-        private async void BoxDetails_Clicked(object sender, EventArgs e)
+        private async void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
-            await Navigation.PushAsync(new ProfilesBYPESMPage());
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId)

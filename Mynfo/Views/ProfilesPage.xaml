@@ -55,7 +55,8 @@
                         Grid.Row = "0" 
                         Grid.ColumnSpan = "2" 
                         Text = "{i18n:Translate ChooseTypeProfile}"
-                        FontSize = "15"
+                        FontSize = "25"
+                        FontAttributes="Bold"
                         TextColor = "{StaticResource MainColor}"
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions = "EndAndExpand"  
@@ -70,12 +71,22 @@
                         Color="Transparent"                  
                         CornerRadius="15" />
 
-                    <Button 
+                    <!--<Button 
                         Grid.Row="1"                                
                         ImageSource="arroba3.png"   
                         AnchorX="100"
                         AnchorY="100"    
                         BackgroundColor="Transparent"
+                        Clicked = "EmailProfile_Clicked"/>-->
+
+                    <Button 
+                        Grid.Row="1"   
+                        BackgroundColor="{StaticResource MainColor}"
+                        CornerRadius="20"
+                        ImageSource="arroba4.png"   
+                        AnchorX="50"
+                        AnchorY="50"
+                        Margin="25"
                         Clicked = "EmailProfile_Clicked"/>
 
                     <!--BoxView 2-->
@@ -89,10 +100,12 @@
                     <Button 
                         Grid.Row="1" 
                         Grid.Column="1"
+                        BackgroundColor="{StaticResource MainColor}"
+                        CornerRadius="20"
                         ImageSource="tel3.png"   
-                        AnchorX="90"
-                        AnchorY="90"   
-                        BackgroundColor="Transparent"
+                        AnchorX="50"
+                        AnchorY="50"   
+                        Margin="25"
                         Clicked = "PhoneProfile_Clicked"/>
                 </Grid>
                 <!--<Grid.RowDefinitions>

@@ -30,25 +30,45 @@
     <ContentPage.Content>
         <ScrollView
             BindingContext = "{Binding ProfilesByPhone}">
-            <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition />
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+
+                <!--Titulo-->
+
                 <Label 
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" 
-                    Text="Welcome to Xamarin.Forms!"/>
-                <BoxView 
-                    Grid.ColumnSpan = "3"
-                    Grid.Row = "4"/>
-                <Button
-                    BackgroundColor = "Transparent"
-                    Clicked = "NewProfilePhone_Clicked"
-                    Grid.ColumnSpan = "3"
-                    Grid.Row = "4"
-                    HeightRequest = "60"
-                    HorizontalOptions ="Center"
-                    ImageSource = "Plus"
-                    VerticalOptions = "Center"
-                    WidthRequest = "60" />
-            </StackLayout>
+                        Grid.Row = "0" 
+                        Text = "{i18n:Translate PhoneProfileList}"
+                        FontSize = "25"
+                        FontAttributes="Bold"
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions = "EndAndExpand"  
+                        Margin = "0,5,0,15"/>
+
+                <!--End Titulo-->
+
+                <!--Lista de Teléfonos-->
+                    <StackLayout 
+                        Grid.Row="1"
+                        HorizontalOptions="FillAndExpand"
+                        Padding="25"
+                        x:Name="PhoneList" />
+                    
+                    <!--Botón para agregar nuevos teléfonos-->
+                    <Button
+                        Grid.Row="2"
+                        BackgroundColor = "Transparent"
+                        Clicked = "NewProfilePhone_Clicked"
+                        HeightRequest = "60"
+                        HorizontalOptions ="Center"
+                        ImageSource = "Plus"
+                        VerticalOptions = "Center"
+                        WidthRequest = "60" />
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

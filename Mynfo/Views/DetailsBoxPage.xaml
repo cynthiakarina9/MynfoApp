@@ -79,12 +79,12 @@
                 <StackLayout 
                         Grid.Row="2"
                         Grid.ColumnSpan="4"
-                        HorizontalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        Padding="25"
                         x:Name="ProfilesList" />
 
                 <!-- Agregar perfiles -->
                 <Button
-                        Clicked             = "BoxDetails_Clicked"
                         Grid.Row            = "3"
                         Grid.ColumnSpan     = "4"
                         WidthRequest        = "70"
@@ -96,7 +96,8 @@
                         Text                = "+"
                         TextColor           = "{StaticResource Dark_FontColor}"
                         FontSize            = "20"
-                        FontAttributes      = "Bold"/>
+                        FontAttributes      = "Bold"
+                        x:Name="BoxProfiles"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

@@ -459,4 +459,13 @@
   <data name="ProfileEmail" xml:space="preserve">
     <value>Perfil de Email.</value>
   </data>
+  <data name="PhoneProfileList" xml:space="preserve">
+    <value>Lista de perfis de telefone</value>
+  </data>
+  <data name="EmailProfileList" xml:space="preserve">
+    <value>Lista de perfis de correio</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Para retornar</value>
+  </data>
 </root>
