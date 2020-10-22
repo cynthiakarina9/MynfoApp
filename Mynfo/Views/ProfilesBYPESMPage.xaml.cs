@@ -23,10 +23,12 @@ namespace Mynfo.Views
 
             string queryGetEmailProfiles = "select dbo.ProfileEmails.ProfileEmailId from dbo.ProfileEmails " +
                                             "where dbo.ProfileEmails.UserId = " + UserId + " except select " +
-                                            "dbo.Box_ProfileEmail.ProfileEmailId from dbo.Box_ProfileEmail";
+                                            "dbo.Box_ProfileEmail.ProfileEmailId from dbo.Box_ProfileEmail "+
+                                            "where dbo.Box_ProfileEmail.BoxId = "+ BoxId;
             string queryGetPhoneProfiles = "SELECT dbo.ProfilePhones.ProfilePhoneId FROM dbo.ProfilePhones "+
                                             "where dbo.ProfilePhones.UserId = " + UserId + " EXCEPT SELECT " +
-                                            "dbo.Box_ProfilePhone.ProfilePhoneId FROM dbo.Box_ProfilePhone";
+                                            "dbo.Box_ProfilePhone.ProfilePhoneId FROM dbo.Box_ProfilePhone "+
+                                            "where dbo.Box_ProfilePhone.BoxId = "+ BoxId;
 
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             System.Text.StringBuilder sb, sb2;
