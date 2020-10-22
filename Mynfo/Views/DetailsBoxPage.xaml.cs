@@ -11,13 +11,9 @@ namespace Mynfo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsBoxPage : ContentPage
     {
-        private ApiService apiService;
-
         public DetailsBoxPage(int _boxId = 0)
         {
             InitializeComponent();
-
-            this.apiService = new ApiService();
 
             int BoxId = _boxId;
             int UserID = MainViewModel.GetInstance().User.UserId;
@@ -37,7 +33,7 @@ namespace Mynfo.Views
             var BxDefaultCheckBox = new CheckBox();
 
             //Llenar BoxId si es 0
-            if(BoxId == 0)
+            if (BoxId == 0)
             {
                 using (SqlConnection connection = new SqlConnection(cadenaConexion))
                 {
@@ -61,6 +57,9 @@ namespace Mynfo.Views
                     }
                 }
             }
+
+            //Navegación a ventana de perfiles
+            BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId));
 
             //Asignación de querys
             consultaDefault = "select * from dbo.Boxes where dbo.Boxes.BoxId = " + BoxId;
@@ -286,11 +285,11 @@ namespace Mynfo.Views
             Application.Current.MainPage = new MasterPage();
         }
 
-        private async void BoxDetails_Clicked(object sender, EventArgs e)
+        private async void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
-            await Navigation.PushAsync(new ProfilesBYPESMPage());
+            await Navigation.PushAsync(new ProfilesBYPESMPage(_BoxId));
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId)
