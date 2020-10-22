@@ -283,7 +283,6 @@ namespace Mynfo.Views
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Home = new HomeViewModel();
-            //await Navigation.PopToRootAsync();
             Application.Current.MainPage = new MasterPage();
         }
 
