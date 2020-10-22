@@ -486,5 +486,13 @@
         {
             get { return Resource.NumberValidation; }
         }
+        public static string ProfileEmail
+        {
+            get { return Resource.ProfileEmail; }
+        }
+        public static string DetailBox
+        {
+            get { return Resource.DetailBox; }
+        }
     }
 }

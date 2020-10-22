@@ -235,6 +235,7 @@
             this.Confirm = string.Empty;
             this.ImageSource = "no_image";
             await Application.Current.MainPage.Navigation.PopAsync();
+
         }
 
         public ICommand ChangeImageCommand

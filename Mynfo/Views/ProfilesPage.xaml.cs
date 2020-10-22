@@ -16,14 +16,14 @@
         private async void PhoneProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
-            await Navigation.PushAsync(new CreateProfilePhonePage());
+            mainViewModel.ProfilesByPhone = new ProfilesByPhoneViewModel();
+            await Navigation.PushAsync(new ProfilesByPhonePage());
         }
         private async void EmailProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-            await Navigation.PushAsync(new CreateProfileEmailPage());
+            mainViewModel.ProfilesByEmail = new ProfilesByEmailViewModel();
+            await Navigation.PushAsync(new ProfilesByEmailPage());
         }
     }
 }
