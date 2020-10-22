@@ -3,13 +3,99 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             x:Class="Mynfo.Views.ProfilesPage"
-             Title="{i18n:Translate Profiles}">
+             x:Class="Mynfo.Views.ProfilesPage">
+    <NavigationPage.TitleView>
+        <Grid
+            HeightRequest = "20">
+            <StackLayout 
+                HorizontalOptions="Start">
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "18"
+                    HorizontalOptions = "Start"
+                    Text = "{i18n:Translate Profiles}"
+                    TextColor = "{StaticResource Dark_FontColor}"/>
+            </StackLayout>
+            <StackLayout
+                HorizontalOptions = "End">
+                <Image 
+                    HeightRequest = "20"
+                    HorizontalOptions = "End"
+                    Source = "logo_superior.png" 
+                    WidthRequest = "75" >
+                </Image>
+            </StackLayout>
+        </Grid>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Profiles}">
             <Grid>
-                <Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.4*" />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="0.3*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <!--Titulo-->
+
+                    <BoxView 
+                        Grid.Row="0" 
+                        Grid.ColumnSpan="2" 
+                        BackgroundColor="Transparent"/>
+
+                    <Label 
+                        Grid.Row = "0" 
+                        Grid.ColumnSpan = "2" 
+                        Text = "{i18n:Translate ChooseTypeProfile}"
+                        FontSize = "15"
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions = "EndAndExpand"  
+                        Margin = "0,5,0,15"/>
+
+                    <!--End Titulo-->
+
+                    <!--BoxView 1-->
+
+                    <BoxView 
+                        Grid.Row="1" 
+                        Color="Transparent"                  
+                        CornerRadius="15" />
+
+                    <Button 
+                        Grid.Row="1"                                
+                        ImageSource="arroba3.png"   
+                        AnchorX="100"
+                        AnchorY="100"    
+                        BackgroundColor="Transparent"
+                        Clicked = "EmailProfile_Clicked"/>
+
+                    <!--BoxView 2-->
+
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Color="Transparent"                 
+                        CornerRadius="15" />
+                    
+                    <Button 
+                        Grid.Row="1" 
+                        Grid.Column="1"
+                        ImageSource="tel3.png"   
+                        AnchorX="90"
+                        AnchorY="90"   
+                        BackgroundColor="Transparent"
+                        Clicked = "PhoneProfile_Clicked"/>
+                </Grid>
+                <!--<Grid.RowDefinitions>
                     <RowDefinition Height = "80" />
                     <RowDefinition Height = "90" />
                     <RowDefinition Height = "90" />
@@ -22,7 +108,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <!--Cabecera -->
+                --><!--Cabecera --><!--
                 <BoxView 
                     Grid.ColumnSpan = "3" />
                 <Label 
@@ -32,7 +118,7 @@
                     Text = "{i18n:Translate ActiveAccounts}" 
                     VerticalOptions = "Center" />
 
-                <!-- Primeras 3 redes sociales -->
+                --><!-- Primeras 3 redes sociales --><!--
                 <Button
                     BackgroundColor = "Blue"
                     CornerRadius = "40"
@@ -74,7 +160,7 @@
                     VerticalOptions = "Center"
                     WidthRequest = "80"/>
 
-                <!-- De la red social 4 a la 6 -->
+                --><!-- De la red social 4 a la 6 --><!--
                 <Button
                     BackgroundColor = "gray"
                     Clicked = "EmailProfile_Clicked"
@@ -120,7 +206,7 @@
                     VerticalOptions = "Center"
                     WidthRequest = "80" />
 
-                <!-- De la red social 7 a la 9 -->
+                --><!-- De la red social 7 a la 9 --><!--
 
                 <Button
                     BackgroundColor = "Red"
@@ -147,7 +233,7 @@
                     Text = "Spotify"
                     TextColor = "Black"
                     VerticalOptions = "Center"
-                    WidthRequest = "80" />
+                    WidthRequest = "80" />-->
 
                 <!--<Button
                     Grid.Row="3"

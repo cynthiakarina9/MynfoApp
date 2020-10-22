@@ -84,6 +84,17 @@
             set;
         }
 
+        public ProfilesByPhoneViewModel ProfilesByPhone
+        {
+            get;
+            set;
+        }
+        public ProfilesByEmailViewModel ProfilesByEmail
+        {
+            get;
+            set;
+        }
+
         public SettingsViewModel Settings
         {
             get;

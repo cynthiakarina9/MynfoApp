@@ -4,8 +4,30 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              x:Class="Mynfo.Views.MyProfilePage"
-             BindingContext = "{Binding Main, Source = {StaticResource Locator}}"
-             Title = "{i18n:Translate MyAccount}">
+             BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Grid
+            HeightRequest = "20">
+            <StackLayout 
+                HorizontalOptions="Start">
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "19"
+                    HorizontalOptions = "Start"
+                    Text = "{i18n:Translate MyAccount}"
+                    TextColor = "{StaticResource Dark_FontColor}"/>
+            </StackLayout>
+            <StackLayout
+                HorizontalOptions = "End">
+                <Image 
+                    HeightRequest = "20"
+                    HorizontalOptions = "End"
+                    Source = "logo_superior.png" 
+                    WidthRequest = "75" >
+                </Image>
+            </StackLayout>
+        </Grid>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView  
             BindingContext = "{Binding MyProfile}">

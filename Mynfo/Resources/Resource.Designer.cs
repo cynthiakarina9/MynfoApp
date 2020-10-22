@@ -385,6 +385,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Box details.
+        /// </summary>
+        public static string DetailBox {
+            get {
+                return ResourceManager.GetString("DetailBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dutch:.
         /// </summary>
         public static string Dutch {
@@ -885,6 +894,15 @@ namespace Mynfo.Resources {
         public static string ProfileDetails {
             get {
                 return ResourceManager.GetString("ProfileDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email profile.
+        /// </summary>
+        public static string ProfileEmail {
+            get {
+                return ResourceManager.GetString("ProfileEmail", resourceCulture);
             }
         }
         

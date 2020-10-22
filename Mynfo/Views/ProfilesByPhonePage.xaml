@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.SettingsPage"
+             x:Class="Mynfo.Views.ProfilesByPhonePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -13,7 +13,7 @@
                     FontAttributes = "Bold"
                     FontSize = "18"
                     HorizontalOptions = "Start"
-                    Text = "{i18n:Translate Settings}"
+                    Text = "{i18n:Translate ProfilePhone}"
                     TextColor = "{StaticResource Dark_FontColor}"/>
             </StackLayout>
             <StackLayout
@@ -29,11 +29,25 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView
-            BindingContext="{Binding Settings}">
+            BindingContext = "{Binding ProfilesByPhone}">
             <StackLayout>
-                <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                <Label 
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                    Text="Welcome to Xamarin.Forms!"/>
+                <BoxView 
+                    Grid.ColumnSpan = "3"
+                    Grid.Row = "4"/>
+                <Button
+                    BackgroundColor = "Transparent"
+                    Clicked = "NewProfilePhone_Clicked"
+                    Grid.ColumnSpan = "3"
+                    Grid.Row = "4"
+                    HeightRequest = "60"
+                    HorizontalOptions ="Center"
+                    ImageSource = "Plus"
+                    VerticalOptions = "Center"
+                    WidthRequest = "60" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

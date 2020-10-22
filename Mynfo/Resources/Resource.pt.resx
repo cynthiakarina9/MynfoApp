@@ -453,4 +453,10 @@
   <data name="PhoneValidation2" xml:space="preserve">
     <value>O número de telefone deve conter 10 dígitos.</value>
   </data>
+  <data name="DetailBox" xml:space="preserve">
+    <value>Detalhes da Box.</value>
+  </data>
+  <data name="ProfileEmail" xml:space="preserve">
+    <value>Perfil de Email.</value>
+  </data>
 </root>
