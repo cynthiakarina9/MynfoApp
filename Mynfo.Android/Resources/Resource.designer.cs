@@ -7557,28 +7557,31 @@ namespace Mynfo.Droid
 			public const int secondary_text_disabled_material_light = 2131034256;
 			
 			// aapt resource value: 0x7F050091
-			public const int switch_thumb_disabled_material_dark = 2131034257;
+			public const int splash_background = 2131034257;
 			
 			// aapt resource value: 0x7F050092
-			public const int switch_thumb_disabled_material_light = 2131034258;
+			public const int switch_thumb_disabled_material_dark = 2131034258;
 			
 			// aapt resource value: 0x7F050093
-			public const int switch_thumb_material_dark = 2131034259;
+			public const int switch_thumb_disabled_material_light = 2131034259;
 			
 			// aapt resource value: 0x7F050094
-			public const int switch_thumb_material_light = 2131034260;
+			public const int switch_thumb_material_dark = 2131034260;
 			
 			// aapt resource value: 0x7F050095
-			public const int switch_thumb_normal_material_dark = 2131034261;
+			public const int switch_thumb_material_light = 2131034261;
 			
 			// aapt resource value: 0x7F050096
-			public const int switch_thumb_normal_material_light = 2131034262;
+			public const int switch_thumb_normal_material_dark = 2131034262;
 			
 			// aapt resource value: 0x7F050097
-			public const int tooltip_background_dark = 2131034263;
+			public const int switch_thumb_normal_material_light = 2131034263;
 			
 			// aapt resource value: 0x7F050098
-			public const int tooltip_background_light = 2131034264;
+			public const int tooltip_background_dark = 2131034264;
+			
+			// aapt resource value: 0x7F050099
+			public const int tooltip_background_light = 2131034265;
 			
 			static Color()
 			{
