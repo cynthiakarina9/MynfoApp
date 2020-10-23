@@ -5,22 +5,12 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="Mynfo.Views.AddProfilesPage" >
     <NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "20">
-            <StackLayout 
-                HorizontalOptions="Start">
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "18"
-                    HorizontalOptions = "Start"
-                    Text = "{i18n:Translate AddProfiles}"
-                    TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
+        <Grid>
             <StackLayout
-                HorizontalOptions = "End">
+                HorizontalOptions = "Start">
                 <Image 
                     HeightRequest = "20"
-                    HorizontalOptions = "End"
+                    HorizontalOptions = "Start"
                     Source = "logo_superior.png" 
                     WidthRequest = "75" >
                 </Image>

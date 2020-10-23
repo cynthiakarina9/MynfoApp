@@ -4,27 +4,6 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.HomePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "20">
-            <StackLayout HorizontalOptions="Center">
-                <Label 
-                    FontSize = "17"
-                    HorizontalOptions="Center"
-                    Text = "{Binding User.FullName, StringFormat = '{0}'}" 
-                    TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions = "End">
-                <Image 
-                    HeightRequest = "20"
-                    Source = "Conections.png" 
-                    WidthRequest = "23" 
-                    HorizontalOptions = "End">
-                </Image>
-            </StackLayout>
-        </Grid>
-    </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView
             BindingContext = "{Binding Home}">

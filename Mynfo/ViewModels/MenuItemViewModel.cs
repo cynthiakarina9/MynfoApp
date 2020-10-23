@@ -6,6 +6,7 @@
     using Xamarin.Forms;
     using Views;
     using Mynfo.Models;
+    using Mynfo.Services;
 
     public class MenuItemViewModel : BaseViewModel
     {
@@ -16,6 +17,7 @@
         #endregion
 
         #region Commands
+
         public ICommand NavigateCommand
         {
             get
@@ -45,8 +47,18 @@
             }
             else if (this.PageName == "MyProfilePage")
             {
-                MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
-                App.Navigator.PushAsync(new MyProfilePage());
+                var user = MainViewModel.GetInstance().User;
+                if (user.UserTypeId == 1)
+                {
+                    MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+                    App.Navigator.PushAsync(new MyProfilePage());
+                }
+                else
+                {
+                    MainViewModel.GetInstance().MyExternalProfile = new MyExternalProfileViewModel();
+                    App.Navigator.PushAsync(new MyExternalProfilePage());
+                }
+                
             }
 
             else if (this.PageName == "ProfilesPage")

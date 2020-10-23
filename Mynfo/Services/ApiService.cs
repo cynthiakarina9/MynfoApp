@@ -26,7 +26,7 @@
             }
 
             var isReachable = await CrossConnectivity.Current.IsRemoteReachable(
-                "google.com");
+                "http://portal.azure.com");
             if (!isReachable)
             {
                 return new Response

@@ -38,28 +38,10 @@
         #endregion
 
         #region ViewModels
-        public LoginViewModel Login
-        { 
-            get; 
-            set; 
-        }
-
-        public HomeViewModel Home
+        public AddProfilesViewModel AddProfiles
         {
             get;
             set;
-        }
-
-        public RegisterViewModel Register 
-        { 
-            get; 
-            set; 
-        }
-
-        public MyProfileViewModel MyProfile
-        { 
-            get; 
-            set; 
         }
         public BoxRegisterViewModel BoxRegister
         {
@@ -67,13 +49,7 @@
             set;
         }
 
-        public ChangePasswordViewModel ChangePassword 
-        { 
-            get; 
-            set; 
-        }
-
-        public CreateProfilePhoneViewModel CreateProfilePhone
+        public ChangePasswordViewModel ChangePassword
         {
             get;
             set;
@@ -84,12 +60,64 @@
             set;
         }
 
-        public ProfilesByPhoneViewModel ProfilesByPhone
+        public CreateProfilePhoneViewModel CreateProfilePhone
+        {
+            get;
+            set;
+        }
+
+        public DetailsBoxViewModel DetailsBox
+        {
+            get;
+            set;
+        }
+
+        public HomeViewModel Home
+        {
+            get;
+            set;
+        }
+        public LoginViewModel Login
+        {
+            get;
+            set;
+        }
+
+        public MyExternalProfileViewModel MyExternalProfile
+        {
+            get;
+            set;
+        }
+
+        public MyProfileViewModel MyProfile
+        { 
+            get; 
+            set; 
+        }
+
+        public ProfilesViewModel Profiles
         {
             get;
             set;
         }
         public ProfilesByEmailViewModel ProfilesByEmail
+        {
+            get;
+            set;
+        }
+
+        public ProfilesByPhoneViewModel ProfilesByPhone
+        {
+            get;
+            set;
+        }
+        public ProfilesBYPESMViewModel ProfilesBYPESM
+        {
+            get;
+            set;
+        }
+
+        public RegisterViewModel Register
         {
             get;
             set;
@@ -101,28 +129,6 @@
             set;
         }
 
-        public ProfilesViewModel Profiles
-        {
-            get;
-            set;
-        }
-
-        public AddProfilesViewModel AddProfiles
-        {
-            get;
-            set;
-        }
-
-        public DetailsBoxViewModel DetailsBox
-        {
-            get;
-            set;
-        }
-        public ProfilesBYPESMViewModel ProfilesBYPESM
-        {
-            get;
-            set;
-        }
         #endregion
 
         #region Constructors
