@@ -15,8 +15,13 @@
     using System.IO;
     using System.Text;
 
-    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
-    [IntentFilter(new[] { NfcAdapter.ActionTechDiscovered }, Categories = new[] { Intent.CategoryDefault }, DataMimeType = "application/com.companyname.Mynfo",DataScheme = "vnd.android.nfc", DataPathPrefix = "/com.Mynfo:letypetype", DataHost = "ext")]    
+    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop)]
+    [IntentFilter(new[] { NfcAdapter.ActionNdefDiscovered }, 
+    Categories = new[] { Intent.CategoryDefault }, 
+    DataMimeType = "application/com.mynfo",
+    DataScheme = "vnd.android.nfc", 
+    DataPathPrefix = "/com.mynfo:letypetype", 
+    DataHost = "ext")]   
 
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -57,7 +62,7 @@
             mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
             if (mNfcAdapter == null)
             {
-                Console.WriteLine("");
+                Console.WriteLine("NFC is not available on this device.");
             }
             else
             {
@@ -75,10 +80,24 @@
             onCreate();           
             LoadApplication(new App(dbRoot));
         }
-        [Android.Runtime.Register("ACTION_NDEF_DISCOVERED", ApiSince = 10)]
-        //public string ActionNdefDiscovered;
-        IntentFilter[] nfcIntentFiltersArray;
-        PendingIntent nfcPendingIntent;
+
+        protected void HandleNFC(Intent intent, Boolean inForeground)
+        {
+            NdefMessage[] msgs = null;
+            IParcelable[] rawMsgs = intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
+
+            if (rawMsgs != null)
+            {               
+                NdefMessage msg = (NdefMessage)rawMsgs[0];
+                var Text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
+            }
+            else
+            {
+                Console.WriteLine("No message");
+            }
+        }
+
+
         protected override void OnResume()
         {
             base.OnResume();
@@ -86,25 +105,62 @@
             {
                 if (NfcAdapter.ActionNdefDiscovered == Intent.Action)
                 {
-                    IParcelable[] rawMsgs = Intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
-                    // only one message sent during the beam
-                    NdefMessage msg = (NdefMessage)rawMsgs[0];
-                    // record 0 contains the MIME type, record 1 is the AAR, if present
-                    nfc_mesage_ = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
-                }                         
+                    ProcessIntent(Intent);
+                }
+                
+                if (mNfcAdapter != null)
+                {
+                    var tagDetected = new IntentFilter(NfcAdapter.ActionTagDiscovered);//or try other Action type
+                    var tagDetectednDef = new IntentFilter(NfcAdapter.ActionNdefDiscovered);
+                    var tagDetectedtech = new IntentFilter(NfcAdapter.ActionTechDiscovered);
+                    var filters = new[] { tagDetected, tagDetectednDef, tagDetectedtech };
+                    var intent = new Intent(this, this.GetType()).AddFlags(ActivityFlags.SingleTop);
+
+                    var pendingIntent = PendingIntent.GetActivity(this, 0, intent, 0);
+                    mNfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);
+
+                    
+                }
+
+                                        
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }                      
-        } 
-       
+        }
+        void ProcessIntent(Intent intent)
+        {
+            IParcelable[] rawMsgs = intent.GetParcelableArrayExtra(
+                NfcAdapter.ExtraNdefMessages);
+            // only one message sent during the beam
+            NdefMessage msg = (NdefMessage)rawMsgs[0];
+            // record 0 contains the MIME type, record 1 is the AAR, if present
+           var Text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
+        }        
+
+        protected override void OnNewIntent(Intent intent)
+        {            
+            var tag = intent.GetParcelableExtra(NfcAdapter.ExtraTag) as Tag;
+
+            if (tag == null)
+            {
+                return;
+            }
+
+            if (NfcAdapter.ExtraTag.Contains("nfc"))
+            {
+                HandleNFC(intent, true);
+            }
+
+        }
+
         protected override void OnPause()
         {
             base.OnPause();
             try
-            {
-                NFCdevice.DisableForegroundDispatch(this);                
+            {                
+                if (mNfcAdapter != null) mNfcAdapter.DisableForegroundDispatch(this);
             }
             catch (Exception ex) { Console.WriteLine(ex); }
         }
