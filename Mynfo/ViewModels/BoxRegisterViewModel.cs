@@ -156,7 +156,6 @@
             this.IsEnabled = true;
 
             this.Name = string.Empty;
-            //var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.DetailsBox = new DetailsBoxViewModel();
             Application.Current.MainPage = new NavigationPage(new DetailsBoxPage());
         }

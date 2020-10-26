@@ -8,7 +8,7 @@
         <Grid
             HeightRequest = "20">
             <StackLayout 
-                HorizontalOptions="Center">
+                HorizontalOptions = "Center">
                 <Label 
                     FontAttributes = "Bold"
                     FontSize = "18"

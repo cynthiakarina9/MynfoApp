@@ -31,47 +31,49 @@
         <ScrollView
             BindingContext="{Binding Profiles}">
             <Grid>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.4*" />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="0.3*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.4*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label 
+                    Text = "{i18n:Translate ChooseTypeProfile}"
+                    FontSize = "25"
+                    FontAttributes="Bold"
+                    TextColor = "{StaticResource MainColor}"
+                    VerticalOptions = "EndAndExpand" />
+                <StackLayout Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.4*" />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="0.3*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
 
-                    <!--Titulo-->
+                        <!--Titulo-->
 
-                    <BoxView 
+
+
+
+                        <!--End Titulo-->
+
+                        <!--BoxView 1-->
+
+                        <BoxView 
                         Grid.Row="0" 
-                        Grid.ColumnSpan="2" 
-                        BackgroundColor="Transparent"/>
-
-                    <Label 
-                        Grid.Row = "0" 
-                        Grid.ColumnSpan = "2" 
-                        Text = "{i18n:Translate ChooseTypeProfile}"
-                        FontSize = "25"
-                        FontAttributes="Bold"
-                        TextColor = "{StaticResource MainColor}"
-                        HorizontalOptions = "CenterAndExpand"
-                        VerticalOptions = "EndAndExpand"  
-                        Margin = "0,5,0,15"/>
-
-                    <!--End Titulo-->
-
-                    <!--BoxView 1-->
-
-                    <BoxView 
-                        Grid.Row="1" 
                         Color="Transparent"                  
                         CornerRadius="15" />
 
-                    <!--<Button 
+                        <!--<Button 
                         Grid.Row="1"                                
                         ImageSource="arroba3.png"   
                         AnchorX="100"
@@ -79,188 +81,34 @@
                         BackgroundColor="Transparent"
                         Clicked = "EmailProfile_Clicked"/>-->
 
-                    <Button 
+                        <Button 
                         Grid.Row="1"   
                         BackgroundColor="{StaticResource MainColor}"
-                        CornerRadius="20"
                         ImageSource="arroba4.png"   
-                        AnchorX="50"
-                        AnchorY="50"
+                        WidthRequest      ="80"
+                        HeightRequest     ="80"
+                        CornerRadius      ="40"
+                        VerticalOptions   ="Center"
+                        HorizontalOptions ="Center"
                         Margin="25"
                         Clicked = "EmailProfile_Clicked"/>
 
-                    <!--BoxView 2-->
+                        <!--BoxView 2-->
 
-                    <BoxView 
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Color="Transparent"                 
-                        CornerRadius="15" />
-                    
-                    <Button 
+
+                        <Button 
+                        Clicked = "PhoneProfile_Clicked"
                         Grid.Row="1" 
-                        Grid.Column="1"
                         BackgroundColor="{StaticResource MainColor}"
-                        CornerRadius="20"
-                        ImageSource="tel3.png"   
-                        AnchorX="50"
-                        AnchorY="50"   
-                        Margin="25"
-                        Clicked = "PhoneProfile_Clicked"/>
-                </Grid>
-                <!--<Grid.RowDefinitions>
-                    <RowDefinition Height = "80" />
-                    <RowDefinition Height = "90" />
-                    <RowDefinition Height = "90" />
-                    <RowDefinition Height = "90" />
-                    <RowDefinition Height = "90" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                --><!--Cabecera --><!--
-                <BoxView 
-                    Grid.ColumnSpan = "3" />
-                <Label 
-                    FontSize = "25" 
-                    Grid.ColumnSpan = "3"
-                    HorizontalOptions = "Center"
-                    Text = "{i18n:Translate ActiveAccounts}" 
-                    VerticalOptions = "Center" />
-
-                --><!-- Primeras 3 redes sociales --><!--
-                <Button
-                    BackgroundColor = "Blue"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
-                    Grid.Row = "1"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    Text = "Facebook"
-                    TextColor = "White"
-                    VerticalOptions = "Center"
-                    WidthRequest = "80" />
-
-                <Button
-                    BackgroundColor = "LightBlue"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
-                    Grid.Column = "1"
-                    Grid.Row = "1"
-                    HeightRequest = "80"
-                    VerticalOptions = "Center"
-                    HorizontalOptions = "Center"
-                    Text = "Twitter"
-                    TextColor = "Black"
-                    WidthRequest = "80" />
-
-                <Button
-                    BackgroundColor = "Purple"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
-                    Grid.Column = "2"
-                    Grid.Row = "1"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    Text = "Instagram"
-                    TextColor = "White"
-                    VerticalOptions = "Center"
-                    WidthRequest = "80"/>
-
-                --><!-- De la red social 4 a la 6 --><!--
-                <Button
-                    BackgroundColor = "gray"
-                    Clicked = "EmailProfile_Clicked"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
-                    Grid.Column="0"
-                    Grid.Row = "2"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    Text = "{i18n:Translate EMail}"
-                    TextColor = "White"
-                    VerticalOptions = "Center"
-                    WidthRequest = "80" />
-
-                <Button
-                    BackgroundColor = "Transparent"
-                    Clicked = "PhoneProfile_Clicked"
-                    CornerRadius ="40"
-                    FontAttributes ="Bold"
-                    FontSize = "10"
-                    Grid.Column = "1"
-                    Grid.Row = "2"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    ImageSource = "whatsapp1.png"
-                    Text = "{i18n:Translate PhoneLabel}"
-                    TextColor = "White"
-                    VerticalOptions = "Center"
-                    WidthRequest ="80" />
-
-                <Button
-                    BackgroundColor = "Blue"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
-                    Grid.Column = "2"
-                    Grid.Row = "2"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    Text = "Linkedin"
-                    TextColor = "White"
-                    VerticalOptions = "Center"
-                    WidthRequest = "80" />
-
-                --><!-- De la red social 7 a la 9 --><!--
-
-                <Button
-                    BackgroundColor = "Red"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
-                    Grid.Row = "3"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    TextColor = "White"
-                    Text = "Youtube"
-                    VerticalOptions = "Center"
-                    WidthRequest = "80" />
-
-                <Button
-                    BackgroundColor = "LawnGreen"
-                    CornerRadius = "40"
-                    FontAttributes = "Bold"
-                    FontSize = "10"
-                    Grid.Row = "3"
-                    Grid.Column = "1"
-                    HeightRequest = "80"
-                    HorizontalOptions = "Center"
-                    Text = "Spotify"
-                    TextColor = "Black"
-                    VerticalOptions = "Center"
-                    WidthRequest = "80" />-->
-
-                <!--<Button
-                    Grid.Row="3"
-                    Grid.Column="2"
-                    WidthRequest      ="80"
-                    HeightRequest     ="80"
-                    CornerRadius      ="40"
-                    VerticalOptions   ="Center"
-                    HorizontalOptions ="Center"
-                    BackgroundColor   ="Yellow"
-                    Text="Snapchat"
-                    TextColor="Black"
-                    FontSize="10"
-                    FontAttributes="Bold"/>-->
+                        HeightRequest     ="80"
+                        CornerRadius      ="40"
+                        VerticalOptions   ="Center"
+                        HorizontalOptions ="Center"
+                        ImageSource="tel3.png"    
+                        Margin="35"
+                        WidthRequest    ="80"/>
+                    </Grid>
+                </StackLayout>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
