@@ -14,7 +14,7 @@ namespace Mynfo.Views
         public DetailsBoxPage(int _boxId = 0)
         {
             InitializeComponent();
-
+            NavigationPage.SetHasNavigationBar(this, false);
             int BoxId = _boxId;
             int UserID = MainViewModel.GetInstance().User.UserId;
             string consultaDefault;
@@ -135,12 +135,10 @@ namespace Mynfo.Views
             if(BoxDefault == true)
             {
                 BxDefaultCheckBox.IsEnabled = false;
-                FullBackGround.BackgroundColor = Color.FromHex("#AAAAAA");
             }
             else
             {
                 BxDefaultCheckBox.IsEnabled = true;
-                FullBackGround.BackgroundColor = Color.FromHex("#FFBA8F");
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 

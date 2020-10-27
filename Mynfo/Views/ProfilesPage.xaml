@@ -31,84 +31,99 @@
         <ScrollView
             BindingContext="{Binding Profiles}">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.4*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Label 
-                    Text = "{i18n:Translate ChooseTypeProfile}"
-                    FontSize = "25"
-                    FontAttributes="Bold"
-                    TextColor = "{StaticResource MainColor}"
-                    VerticalOptions = "EndAndExpand" />
-                <StackLayout Grid.Row="1">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.4*" />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="0.3*" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="1" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                        <!--Titulo-->
+                    <!--Titulo-->
 
-
-
-
-                        <!--End Titulo-->
-
-                        <!--BoxView 1-->
-
-                        <BoxView 
+                    <BoxView 
                         Grid.Row="0" 
+                        Grid.ColumnSpan="2" 
+                        BackgroundColor="Transparent"/>
+
+                    <Label 
+                        Grid.Row = "0" 
+                        Grid.ColumnSpan = "3" 
+                        Text = "{i18n:Translate ChooseTypeProfile}"
+                        FontSize = "25"
+                        FontAttributes="Bold"
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center"  
+                        Margin = "0,15,0,0"/>
+
+                    <!--End Titulo-->
+
+                    <!--BoxView 1-->
+
+                    <BoxView 
+                        Grid.Row="1" 
                         Color="Transparent"                  
                         CornerRadius="15" />
 
-                        <!--<Button 
-                        Grid.Row="1"                                
-                        ImageSource="arroba3.png"   
-                        AnchorX="100"
-                        AnchorY="100"    
-                        BackgroundColor="Transparent"
-                        Clicked = "EmailProfile_Clicked"/>-->
-
-                        <Button 
-                        Grid.Row="1"   
-                        BackgroundColor="{StaticResource MainColor}"
-                        ImageSource="arroba4.png"   
-                        WidthRequest      ="80"
-                        HeightRequest     ="80"
-                        CornerRadius      ="40"
-                        VerticalOptions   ="Center"
-                        HorizontalOptions ="Center"
-                        Margin="25"
+                    <ImageButton 
+                        Grid.Row = "1"   
+                        BackgroundColor = "Transparent"
+                        CornerRadius = "40"
+                        Source = "mail1.png"   
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center"
+                        WidthRequest = "80"
+                        HeightRequest = "80"
+                        Margin = "25"
                         Clicked = "EmailProfile_Clicked"/>
 
-                        <!--BoxView 2-->
+                    <!--BoxView 2-->
 
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Color="Transparent"                 
+                        CornerRadius="15" />
 
-                        <Button 
+                    <ImageButton 
+                        Grid.Row = "1" 
+                        Grid.Column = "1"
+                        BackgroundColor = "Transparent"
+                        CornerRadius = "40"
+                        HeightRequest = "80"
+                        Source = "whatsapp1.png"
                         Clicked = "PhoneProfile_Clicked"
-                        Grid.Row="1" 
-                        BackgroundColor="{StaticResource MainColor}"
-                        HeightRequest     ="80"
-                        CornerRadius      ="40"
-                        VerticalOptions   ="Center"
-                        HorizontalOptions ="Center"
-                        ImageSource="tel3.png"    
-                        Margin="35"
-                        WidthRequest    ="80"/>
-                    </Grid>
-                </StackLayout>
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center"
+                        WidthRequest = "80"/>
+
+                    <!--BoxView 3-->
+
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Color="Transparent"                 
+                        CornerRadius="15" />
+
+                    <ImageButton 
+                        Grid.Row = "1" 
+                        Grid.Column = "2"
+                        BackgroundColor = "Transparent"
+                        CornerRadius = "40"
+                        HeightRequest = "80"
+                        Source = "facebook1.png"
+                        Clicked = "PhoneProfile_Clicked"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center"
+                        WidthRequest = "80"/>
+                </Grid>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

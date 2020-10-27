@@ -59,13 +59,13 @@
                         x:Name="PhoneList" />
                     
                     <!--Botón para agregar nuevos teléfonos-->
-                    <Button
+                    <ImageButton
                         Grid.Row="2"
                         BackgroundColor = "Transparent"
                         Clicked = "NewProfilePhone_Clicked"
                         HeightRequest = "60"
                         HorizontalOptions ="Center"
-                        ImageSource = "Plus"
+                        Source = "Plus"
                         VerticalOptions = "Center"
                         WidthRequest = "60" />
             </Grid>
