@@ -11,6 +11,8 @@ namespace Mynfo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsBoxPage : ContentPage
     {
+
+        public Entry BxNameEntry = new Entry();
         public DetailsBoxPage(int _boxId = 0)
         {
             InitializeComponent();
@@ -28,8 +30,8 @@ namespace Mynfo.Views
             System.Text.StringBuilder sb;
             String BoxName = "";
             bool BoxDefault = false;
-            var BxNameEntry = new Entry();
-            var BxSaveName = new Button();
+            var BxSaveName = new ImageButton();
+            var bxBtnHome = new ImageButton();
             var BxDefaultCheckBox = new CheckBox();
 
             //Llenar BoxId si es 0
@@ -104,29 +106,41 @@ namespace Mynfo.Views
             //Definir color de fondo con respecto a si la box es predeterminada
             if(BoxDefault == true)
             {
-                FullBackGround.BackgroundColor = Color.FromHex("#FFBA8F");
+                FullBackGround.BackgroundColor = Color.FromHex("#FFAB8F");
+                bxBtnHome.BackgroundColor = Color.FromHex("#FFAB8F");
+                BxSaveName.BackgroundColor = Color.FromHex("#FFAB8F");
             }
             else
             {
                 FullBackGround.BackgroundColor = Color.FromHex("#AAAAAA");
+                bxBtnHome.BackgroundColor = Color.FromHex("#AAAAAA");
+                BxSaveName.BackgroundColor = Color.FromHex("#AAAAAA");
             }
+
+            //Creación del botón para volver a home
+            bxBtnHome.Source = "back.png";
+            bxBtnHome.WidthRequest = 50;
+            bxBtnHome.HeightRequest = 50;
+            bxBtnHome.Clicked += ToolbarItem_Clicked;
+
+            HomeButton.Children.Add(bxBtnHome);
 
             //Creación de Entry para colocar nombre de la box
             BxNameEntry.FontSize = 25;
             BxNameEntry.Text = BoxName;
             BxNameEntry.HorizontalTextAlignment = TextAlignment.Center;
             BxNameEntry.WidthRequest = 200;
+            BxNameEntry.TextColor = Color.FromHex("#FF5521");
+            BxNameEntry.FontAttributes = FontAttributes.Bold;
+            BxNameEntry.IsReadOnly = true;
 
             BoxNameEntry.Children.Add(BxNameEntry);
 
             //Creación de botón para actualizar nombre de la Box
-            //BxSaveName.Text = "Guardar";
-            BxSaveName.Text = "S";
-            BxSaveName.BackgroundColor = Color.FromHex("#FF5521");
-            BxSaveName.CornerRadius = 20;
-            BxSaveName.HeightRequest = 40;
-            BxSaveName.WidthRequest = 40;
-            BxSaveName.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID));
+            BxSaveName.Source = "edit2.png";
+            BxSaveName.HeightRequest = 25;
+            BxSaveName.WidthRequest = 25;
+            BxSaveName.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));
 
             BoxUpdateBtn.Children.Add(BxSaveName);
 
@@ -164,21 +178,21 @@ namespace Mynfo.Views
                         {
                             var phoneName = new Label();
                             var phoneNumber = new Label();
-                            var deleteProfile = new Button();
+                            var deleteProfile = new ImageButton();
                             var Line = new BoxView();
                             int PhoneId = (int)reader["ProfilePhoneId"];
 
                             phoneName.Text = (string)reader["Name"];
                             phoneName.FontSize = 15;
                             phoneName.FontAttributes = FontAttributes.Bold;
+                            phoneName.TextColor = Color.Black;
 
                             phoneNumber.Text = (string)reader["Number"];
                             phoneNumber.FontSize = 25;
                             phoneNumber.HorizontalTextAlignment = TextAlignment.Center;
+                            phoneNumber.TextColor = Color.Black;
 
-                            deleteProfile.Text = "B";
-                            deleteProfile.TextColor = Color.Black;
-                            deleteProfile.FontSize = 10;
+                            deleteProfile.Source = "trash2.png";
                             deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
                             deleteProfile.CornerRadius = 15;
                             deleteProfile.HeightRequest = 30;
@@ -189,10 +203,20 @@ namespace Mynfo.Views
                             Line.HeightRequest = 1;
                             Line.Color = Color.FromHex("#FF5521");
 
+                            //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
+                            if (BoxDefault == true)
+                            {
+                                deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+                            }
+                            else
+                            {
+                                deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
+                            }
+
+                            ProfilesList.Children.Add(Line);
                             ProfilesList.Children.Add(phoneName);
                             ProfilesList.Children.Add(phoneNumber);
                             ProfilesList.Children.Add(deleteProfile);
-                            ProfilesList.Children.Add(Line);
                         }
                     }
                     connection.Close();
@@ -215,21 +239,21 @@ namespace Mynfo.Views
                         {
                             var emailProfile = new Label();
                             var emailAddress = new Label();
-                            var deleteProfile = new Button();
+                            var deleteProfile = new ImageButton();
                             var Line = new BoxView();
                             int EmailId = (int)reader["ProfileEmailId"];
 
                             emailProfile.Text = (string)reader["Name"];
                             emailProfile.FontSize = 15;
                             emailProfile.FontAttributes = FontAttributes.Bold;
+                            emailProfile.TextColor = Color.Black;
 
                             emailAddress.Text = (string)reader["Email"];
                             emailAddress.FontSize = 25;
                             emailAddress.HorizontalTextAlignment = TextAlignment.Center;
+                            emailAddress.TextColor = Color.Black;
 
-                            deleteProfile.Text = "B";
-                            deleteProfile.TextColor = Color.Black;
-                            deleteProfile.FontSize = 10;
+                            deleteProfile.Source = "trash2.png";
                             deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
                             deleteProfile.CornerRadius = 15;
                             deleteProfile.HeightRequest = 30;
@@ -240,10 +264,21 @@ namespace Mynfo.Views
                             Line.HeightRequest = 1;
                             Line.Color = Color.FromHex("#FF5521");
 
+                            //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
+                            if (BoxDefault == true)
+                            {
+                                deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+                            }
+                            else
+                            {
+                                deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
+                            }
+
+
+                            ProfilesList.Children.Add(Line);
                             ProfilesList.Children.Add(emailProfile);
                             ProfilesList.Children.Add(emailAddress);
                             ProfilesList.Children.Add(deleteProfile);
-                            ProfilesList.Children.Add(Line);
                         }
                     }
                     connection.Close();
@@ -295,32 +330,42 @@ namespace Mynfo.Views
             Application.Current.MainPage = new MasterPage();
         }
 
-        private async void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId)
+        private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));
         }
 
-        private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId)
+        private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)
         {
-            //Actualizar el nombre de la Box
-            string queryUpdateBoxName = "update dbo.Boxes set Name = '" + _name + "' where dbo.Boxes.UserId = " + _UserId + " and dbo.Boxes.BoxId = " + _BoxId;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            if(disabled == true)
             {
-                sb = new System.Text.StringBuilder();
-                sb.Append(queryUpdateBoxName);
-                string sql = sb.ToString();
+                BxNameEntry.IsReadOnly = false;
+                BxNameEntry.TextColor = Color.Black;
+            }
+            else
+            {
+                //Actualizar el nombre de la Box
+                string queryUpdateBoxName = "update dbo.Boxes set Name = '" + _name + "' where dbo.Boxes.UserId = " + _UserId + " and dbo.Boxes.BoxId = " + _BoxId;
+                string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+                StringBuilder sb;
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
                 {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryUpdateBoxName);
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
                 }
+                BxNameEntry.IsReadOnly = true;
+                BxNameEntry.TextColor = Color.FromHex("#FF5521");
             }
         }
         private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)

@@ -38,8 +38,9 @@
             BindingContext = "{Binding DetailsBox}">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
                     <RowDefinition Height="80"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition />
                     <RowDefinition Height="120"/>
                 </Grid.RowDefinitions>
@@ -49,36 +50,47 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                
+                <!--Botón para volver a home-->
+                <StackLayout 
+                        Grid.ColumnSpan="4"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        Padding="0,10,10,0"
+                        x:Name="HomeButton" />
 
                 <!--Nombre de la box -->
                 <!--El nombre de la box será variable-->
                 <StackLayout 
                         Grid.ColumnSpan="4"
+                        Grid.Row="1"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
                         x:Name="BoxNameEntry" />
                 <StackLayout 
                         Grid.Column="3"
-                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        HorizontalOptions="Start"
                         VerticalOptions="Center"
                         x:Name="BoxUpdateBtn" />
 
                     <!-- Box predeterminada-->
                 <StackLayout 
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Grid.Column="1"
                     VerticalOptions="Center"
                     x:Name="BoxDefaultCheckBox" />
             
                 <Label 
-                    Grid.Row="1" 
+                    Grid.Row="2" 
                     Grid.Column="2" 
                     Text="{i18n:Translate DefaultBox}" 
+                    TextColor="Black"
                     VerticalOptions="Center"/>
             
                 <!-- Listado de perfiles -->
                 <StackLayout 
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Grid.ColumnSpan="4"
                         HorizontalOptions="FillAndExpand"
                         Padding="25"
@@ -86,7 +98,7 @@
 
                 <!-- Agregar perfiles -->
                 <Button
-                    Grid.Row = "3"
+                    Grid.Row = "4"
                     Grid.ColumnSpan = "4"
                     WidthRequest = "70"
                     HeightRequest = "70"
