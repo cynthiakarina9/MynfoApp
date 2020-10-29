@@ -1,9 +1,11 @@
 ﻿namespace Mynfo.Views
 {
-    using ViewModels;
+    using Badge.Plugin;
     using System;
+    using ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
+    using Syncfusion.XForms.BadgeView;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesPage : ContentPage

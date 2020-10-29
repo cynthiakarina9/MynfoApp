@@ -14,7 +14,6 @@ namespace Mynfo.Views
         public DetailsBoxPage(int _boxId = 0)
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
             int BoxId = _boxId;
             int UserID = MainViewModel.GetInstance().User.UserId;
             string consultaDefault;
@@ -28,8 +27,8 @@ namespace Mynfo.Views
             System.Text.StringBuilder sb;
             String BoxName = "";
             bool BoxDefault = false;
-            var BxNameEntry = new Entry();
-            var BxSaveName = new Button();
+            var BxNameEntry = new Entry { IsReadOnly = true};
+            var BxSaveName = new ImageButton();
             var BxDefaultCheckBox = new CheckBox();
 
             //Llenar BoxId si es 0
@@ -121,12 +120,13 @@ namespace Mynfo.Views
 
             //Creación de botón para actualizar nombre de la Box
             //BxSaveName.Text = "Guardar";
-            BxSaveName.Text = "S";
-            BxSaveName.BackgroundColor = Color.FromHex("#FF5521");
+            BxSaveName.Source = "edit2.png";
+            BxSaveName.BackgroundColor = Color.Transparent;
             BxSaveName.CornerRadius = 20;
             BxSaveName.HeightRequest = 40;
             BxSaveName.WidthRequest = 40;
             BxSaveName.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID));
+
 
             BoxUpdateBtn.Children.Add(BxSaveName);
 
@@ -286,6 +286,11 @@ namespace Mynfo.Views
 
                 BxDefaultCheckBox.IsEnabled = false;
             }
+        }
+
+        private void BxSaveName_Pressed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)

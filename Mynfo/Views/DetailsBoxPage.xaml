@@ -85,17 +85,7 @@
                         x:Name="ProfilesList" />
 
                 <!-- Agregar perfiles -->
-                <Button
-                    Grid.Row = "3"
-                    Grid.ColumnSpan = "4"
-                    WidthRequest = "70"
-                    HeightRequest = "70"
-                    VerticalOptions = "Center"
-                    HorizontalOptions = "Center"
-                    BackgroundColor = "Transparent"
-                    ImageSource = "plus"
-                    BorderColor = "Transparent"    
-                    x:Name="BoxProfiles"/>
+                
             </Grid>
         </ScrollView>
     </ContentPage.Content>

@@ -76,7 +76,8 @@
             base.OnCreate(savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);            
+            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            //ShortcutBadger.ApplyCount();
             onCreate();           
             LoadApplication(new App(dbRoot));
         }
