@@ -156,7 +156,6 @@
             this.Name = string.Empty;
             this.Number = string.Empty;
             await App.Navigator.PopAsync();
-            await App.Navigator.PushAsync(new ProfilesByPhonePage());
         }
         #endregion
     }

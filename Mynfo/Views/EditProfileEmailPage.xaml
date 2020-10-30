@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.EditProfileEmailPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext = "{Binding EditProfileEmail}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "100"/>
+                    <RowDefinition Height = "150"/>
+                    <RowDefinition Height = "120"/>
+                    <RowDefinition Height = "80"/>
+                    <RowDefinition />
+                    <RowDefinition Height = "120"/>
+                </Grid.RowDefinitions>
+                <Image 
+                        Source = "mail1"
+                        HeightRequest = "150"
+                        WidthRequest = "150"
+                        Grid.Row = "1"/>
+                <StackLayout 
+                        Grid.Row = "2"
+                        Padding = "20">
+                    <Label 
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate NameProfile}" 
+                        VerticalOptions = "Center"/>
+                    <Entry 
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        FontSize = "21"
+                        HorizontalTextAlignment = "Center"
+                        HeightRequest = "40"
+                        HorizontalOptions = "Center"
+                        MaxLength = "10"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300" 
+                        x:Name = "EntryName"/>
+                </StackLayout>
+                <StackLayout 
+                        Grid.Row = "3">
+                    <Label 
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center" 
+                        Text = "{i18n:Translate EMail}" />
+                    <Entry 
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        FontSize = "21"
+                        HorizontalTextAlignment = "Center"
+                        HeightRequest = "40"
+                        HorizontalOptions = "Center"
+                        Keyboard = "Email"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300"
+                        x:Name = "EntryEmail"/>
+                </StackLayout>
+                <StackLayout
+                        Grid.Row = "4"
+                        Padding = "40">
+                    <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Clicked="Save_Clicked"
+                        HeightRequest = "50"
+                        HorizontalOptions = "Center"
+                        IsEnabled = "True"
+                        Text = "{i18n:Translate Save}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" 
+                        x:Name = "ButtonSave"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

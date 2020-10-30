@@ -28,36 +28,32 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <RefreshView 
-            Command = "{Binding RefreshCommand}"
-            IsRefreshing = "{Binding IsRefreshing}"
-            RefreshColor = "Orange">
-            <ScrollView
+        <ScrollView
                 BindingContext = "{Binding CreateProfileEmail}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height = "100"/>
-                        <RowDefinition Height = "150"/>
-                        <RowDefinition Height = "120"/>
-                        <RowDefinition Height = "80"/>
-                        <RowDefinition />
-                        <RowDefinition Height = "120"/>
-                    </Grid.RowDefinitions>
-                    <Image 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "100"/>
+                    <RowDefinition Height = "150"/>
+                    <RowDefinition Height = "120"/>
+                    <RowDefinition Height = "80"/>
+                    <RowDefinition />
+                    <RowDefinition Height = "120"/>
+                </Grid.RowDefinitions>
+                <Image 
                         Source = "mail1"
                         HeightRequest = "150"
                         WidthRequest = "150"
                         Grid.Row = "1"/>
-                    <StackLayout 
+                <StackLayout 
                         Grid.Row = "2"
                         Padding = "20">
-                        <Label 
+                    <Label 
                             FontSize = "24" 
                             FontAttributes="Bold"
                             HorizontalOptions = "Center"
                             Text = "{i18n:Translate NameProfile}" 
                             VerticalOptions = "Center"/>
-                        <Entry 
+                    <Entry 
                             BackgroundColor = "{StaticResource LoginEntryColor}"
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
@@ -67,16 +63,16 @@
                             Text = "{Binding Name}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" />
-                    </StackLayout>
-                    <StackLayout 
+                </StackLayout>
+                <StackLayout 
                         Grid.Row = "3">
-                        <Label 
+                    <Label 
                             FontSize = "24" 
                             FontAttributes="Bold"
                             HorizontalOptions = "Center"
                             VerticalOptions = "Center" 
                             Text = "{i18n:Translate EMail}" />
-                        <Entry 
+                    <Entry 
                             BackgroundColor = "{StaticResource LoginEntryColor}"
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
@@ -86,11 +82,11 @@
                             Text = "{Binding Email}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" />
-                    </StackLayout>
-                    <StackLayout
+                </StackLayout>
+                <StackLayout
                         Grid.Row = "4"
                         Padding = "40">
-                        <Button 
+                    <Button 
                             BackgroundColor = "{StaticResource MainColor}"
                             BorderRadius = "23"
                             Command = "{Binding SaveProfileEmailCommand}"
@@ -100,9 +96,8 @@
                             TextColor = "{StaticResource Dark_FontColor}"
                             VerticalOptions = "Center"
                             WidthRequest = "150" />
-                    </StackLayout>
-                </Grid>
-            </ScrollView>
-        </RefreshView>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -3,12 +3,16 @@
     using Mynfo.ViewModels;
     using System;
     using System.Data.SqlClient;
+    using System.Threading.Tasks;
+    using System.Windows.Input;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesByEmailPage : ContentPage
     {
+
+        #region Constructors
         public ProfilesByEmailPage()
         {
             InitializeComponent();
@@ -34,6 +38,7 @@
                             var emailProfile = new Label();
                             var emailAddress = new Label();
                             //var deleteProfile = new Button();
+                            var editProfile = new ImageButton();
                             var Line = new BoxView();
 
                             emailProfile.Text = (string)reader["Name"];
@@ -53,19 +58,48 @@
                             deleteProfile.WidthRequest = 30;
                             deleteProfile.HorizontalOptions = LayoutOptions.End;
                             deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
-
+                            int EmailId = (int)reader["ProfileEmailId"];
+                            editProfile.Source = "edit2";
+                            editProfile.BackgroundColor = Color.FromHex("#f9a589");
+                            editProfile.CornerRadius = 15;
+                            editProfile.HeightRequest = 30;
+                            editProfile.WidthRequest = 30;
+                            editProfile.HorizontalOptions = LayoutOptions.End;
+                            editProfile.Clicked += new EventHandler((sender, e) => EditProfileEmail(sender, e, EmailId));
                             Line.HeightRequest = 1;
                             Line.Color = Color.FromHex("#FF5521");
 
                             EmailList.Children.Add(emailProfile);
                             EmailList.Children.Add(emailAddress);
                             //EmailList.Children.Add(deleteProfile);
+                            EmailList.Children.Add(editProfile);
                             EmailList.Children.Add(Line);
                         }
                     }
                     connection.Close();
                 }
             }
+            const int RefreshDuration = 2;
+            RefreshCommand = new Command(async () => await Task.Delay(TimeSpan.FromSeconds(RefreshDuration)));
+        }
+        #endregion
+
+        #region Commands
+        private bool _isRefreshing;
+
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set { _isRefreshing = value; OnPropertyChanged(); }
+        }
+
+        public ICommand RefreshCommand { private set; get; }
+
+        async Task LoadPublications()
+        {
+            // code omitted
+
+            IsRefreshing = false;
         }
         private async void NewProfileEmail_Clicked(object sender, EventArgs e)
         {
@@ -73,5 +107,13 @@
             mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
             await Navigation.PushAsync(new CreateProfileEmailPage());
         }
+        private async void EditProfileEmail(object sender, EventArgs e, int _ProfileEmailId)
+        {
+            //var mainViewModel = MainViewModel.GetInstance();
+            //mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(_ProfileEmailId);
+            await Navigation.PushAsync(new EditProfileEmailPage(_ProfileEmailId));
+        }
+
+        #endregion
     }
 }

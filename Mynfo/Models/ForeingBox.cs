@@ -1,6 +1,8 @@
 ﻿namespace Mynfo.Models
 {
     using SQLite;
+    using System;
+
     public class ForeingBox
     {
         [PrimaryKey]
@@ -9,6 +11,8 @@
         public int BoxId { get; set; }
 
         public int UserId { get; set; }
+
+        public DateTime Time { get; set; }
 
         public string ImagePath { get; set; }
 

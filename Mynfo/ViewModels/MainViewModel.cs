@@ -1,6 +1,7 @@
 ﻿namespace Mynfo.ViewModels
 {
     using Models;
+    using Mynfo.Domain;
     using Mynfo.Helpers;
     using System.Collections.ObjectModel;
 
@@ -9,16 +10,17 @@
         #region Attributes
         private UserLocal user;
         private BoxLocal box;
+        private ProfileEmail profileEmail;
         #endregion
 
         #region Properties
-        public TokenResponse Token  
-        { 
-            get; 
-            set; 
+        public TokenResponse Token
+        {
+            get;
+            set;
         }
 
-        public ObservableCollection <MenuItemViewModel> Menus
+        public ObservableCollection<MenuItemViewModel> Menus
         {
             get;
             set;
@@ -34,6 +36,12 @@
         {
             get { return this.box; }
             set { SetValue(ref this.box, value); }
+        }
+        public ProfileEmail ProfileEmail
+        {
+            get { return this.profileEmail; }
+            set { SetValue(ref this.profileEmail, value); }
+
         }
         #endregion
 
@@ -67,6 +75,12 @@
         }
 
         public DetailsBoxViewModel DetailsBox
+        {
+            get;
+            set;
+        }
+
+        public EditProfileEmailViewModel EditProfileEmail
         {
             get;
             set;

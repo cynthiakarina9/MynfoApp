@@ -50,6 +50,9 @@
     <Compile Update="Views\CreateProfilePage.xaml.cs">
       <DependentUpon>CreateProfilePage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\EditProfileEmailPage.xaml.cs">
+      <DependentUpon>EditProfileEmailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ProfilesBYPESMPage.xaml.cs">
       <DependentUpon>ProfilesBYPESMPage.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DetailsProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EditProfileEmailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomePage.xaml">

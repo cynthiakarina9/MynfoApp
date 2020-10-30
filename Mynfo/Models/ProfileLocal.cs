@@ -1,10 +1,10 @@
 ﻿namespace Mynfo.Models
 {
     using SQLite;
-    public class ForeingProfile
+    public class ProfileLocal
     {
         [PrimaryKey]
-        public int ForeingProfileId { get; set; }
+        public int ProfileLocalId { get; set; }
 
         public int IdBox { get; set; }
 
