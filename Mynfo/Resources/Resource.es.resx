@@ -468,4 +468,16 @@
   <data name="Back" xml:space="preserve">
     <value>Regresar</value>
   </data>
+  <data name="DeleteBoxNotification" xml:space="preserve">
+    <value>Esta a punto de borrar la box definitivamente, ¿Desea continuar?</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Advertencia</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Si</value>
+  </data>
 </root>

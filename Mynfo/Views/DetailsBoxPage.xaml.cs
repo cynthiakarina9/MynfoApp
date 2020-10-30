@@ -1,8 +1,9 @@
-﻿using Mynfo.Services;
+﻿using Mynfo.Resources;
 using Mynfo.ViewModels;
 using System;
 using System.Data.SqlClient;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,8 +32,10 @@ namespace Mynfo.Views
             String BoxName = "";
             bool BoxDefault = false;
             var BxSaveName = new ImageButton();
+            var BxBtnDelete = new ImageButton();
             var bxBtnHome = new ImageButton();
             var BxDefaultCheckBox = new CheckBox();
+            int listProfileNum = 0;
 
             //Llenar BoxId si es 0
             if (BoxId == 0)
@@ -109,12 +112,14 @@ namespace Mynfo.Views
                 FullBackGround.BackgroundColor = Color.FromHex("#FFAB8F");
                 bxBtnHome.BackgroundColor = Color.FromHex("#FFAB8F");
                 BxSaveName.BackgroundColor = Color.FromHex("#FFAB8F");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#FFAB8F");
             }
             else
             {
                 FullBackGround.BackgroundColor = Color.FromHex("#AAAAAA");
                 bxBtnHome.BackgroundColor = Color.FromHex("#AAAAAA");
                 BxSaveName.BackgroundColor = Color.FromHex("#AAAAAA");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#AAAAAA");
             }
 
             //Creación del botón para volver a home
@@ -124,6 +129,14 @@ namespace Mynfo.Views
             bxBtnHome.Clicked += ToolbarItem_Clicked;
 
             HomeButton.Children.Add(bxBtnHome);
+
+            //Creación de botón para borrar box
+            BxBtnDelete.Source = "trash.png";
+            BxBtnDelete.WidthRequest = 50;
+            BxBtnDelete.HeightRequest = 50;
+            BxBtnDelete.Clicked += new EventHandler((sender, e) => deleteBox(sender, e, BoxId, UserID, BoxDefault));
+
+            DeleteButton.Children.Add(BxBtnDelete);
 
             //Creación de Entry para colocar nombre de la box
             BxNameEntry.FontSize = 25;
@@ -176,21 +189,22 @@ namespace Mynfo.Views
                     {
                         while (reader.Read())
                         {
+                            var phoneIcon = new ImageButton();
                             var phoneName = new Label();
-                            var phoneNumber = new Label();
                             var deleteProfile = new ImageButton();
                             var Line = new BoxView();
                             int PhoneId = (int)reader["ProfilePhoneId"];
 
+                            phoneIcon.Source = "tel3.png";
+                            phoneIcon.WidthRequest = 50;
+                            phoneIcon.HeightRequest = 50;
+                            phoneIcon.HorizontalOptions = LayoutOptions.Center;
+
                             phoneName.Text = (string)reader["Name"];
                             phoneName.FontSize = 15;
+                            phoneName.HorizontalTextAlignment = TextAlignment.Center;
                             phoneName.FontAttributes = FontAttributes.Bold;
                             phoneName.TextColor = Color.Black;
-
-                            phoneNumber.Text = (string)reader["Number"];
-                            phoneNumber.FontSize = 25;
-                            phoneNumber.HorizontalTextAlignment = TextAlignment.Center;
-                            phoneNumber.TextColor = Color.Black;
 
                             deleteProfile.Source = "trash2.png";
                             deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
@@ -200,23 +214,56 @@ namespace Mynfo.Views
                             deleteProfile.HorizontalOptions = LayoutOptions.End;
                             deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));
 
-                            Line.HeightRequest = 1;
-                            Line.Color = Color.FromHex("#FF5521");
-
                             //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
                             if (BoxDefault == true)
                             {
                                 deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+                                phoneIcon.BackgroundColor = Color.FromHex("#FFAB8F");
                             }
                             else
                             {
                                 deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
+                                phoneIcon.BackgroundColor = Color.FromHex("#AAAAAA");
                             }
 
-                            ProfilesList.Children.Add(Line);
-                            ProfilesList.Children.Add(phoneName);
-                            ProfilesList.Children.Add(phoneNumber);
-                            ProfilesList.Children.Add(deleteProfile);
+                            //Asignación de caja en columnas
+                            switch(listProfileNum)
+                            {
+                                case 0:
+                                    listProfileNum = 2;
+
+                                    ProfilesList1.Children.Add(phoneIcon);
+                                    ProfilesList1.Children.Add(phoneName);
+                                    ProfilesList1.Children.Add(deleteProfile);
+                                    break;
+
+                                case 1:
+                                    listProfileNum = 2;
+
+                                    ProfilesList1.Children.Add(phoneIcon);
+                                    ProfilesList1.Children.Add(phoneName);
+                                    ProfilesList1.Children.Add(deleteProfile);
+                                    break;
+
+                                case 2:
+                                    listProfileNum = 3;
+
+                                    ProfilesList2.Children.Add(phoneIcon);
+                                    ProfilesList2.Children.Add(phoneName);
+                                    ProfilesList2.Children.Add(deleteProfile);
+                                    break;
+
+                                case 3:
+                                    listProfileNum = 1;
+
+                                    ProfilesList3.Children.Add(phoneIcon);
+                                    ProfilesList3.Children.Add(phoneName);
+                                    ProfilesList3.Children.Add(deleteProfile);
+                                    break;
+
+                                default:
+                                    break;
+                            }
                         }
                     }
                     connection.Close();
@@ -237,21 +284,22 @@ namespace Mynfo.Views
                     {
                         while (reader.Read())
                         {
+                            var emailIcon = new ImageButton();
                             var emailProfile = new Label();
-                            var emailAddress = new Label();
                             var deleteProfile = new ImageButton();
                             var Line = new BoxView();
                             int EmailId = (int)reader["ProfileEmailId"];
 
+                            emailIcon.Source = "mail1.png";
+                            emailIcon.WidthRequest = 50;
+                            emailIcon.HeightRequest = 50;
+                            emailIcon.HorizontalOptions = LayoutOptions.Center;
+
                             emailProfile.Text = (string)reader["Name"];
                             emailProfile.FontSize = 15;
+                            emailProfile.HorizontalTextAlignment = TextAlignment.Center;
                             emailProfile.FontAttributes = FontAttributes.Bold;
                             emailProfile.TextColor = Color.Black;
-
-                            emailAddress.Text = (string)reader["Email"];
-                            emailAddress.FontSize = 25;
-                            emailAddress.HorizontalTextAlignment = TextAlignment.Center;
-                            emailAddress.TextColor = Color.Black;
 
                             deleteProfile.Source = "trash2.png";
                             deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
@@ -261,30 +309,61 @@ namespace Mynfo.Views
                             deleteProfile.HorizontalOptions = LayoutOptions.End;
                             deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));
 
-                            Line.HeightRequest = 1;
-                            Line.Color = Color.FromHex("#FF5521");
-
                             //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
                             if (BoxDefault == true)
                             {
                                 deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+                                emailIcon.BackgroundColor = Color.FromHex("#FFAB8F");
                             }
                             else
                             {
                                 deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
+                                emailIcon.BackgroundColor = Color.FromHex("#AAAAAA");
                             }
 
+                            //Asignación de caja en columnas
+                            switch (listProfileNum)
+                            {
+                                case 0:
+                                    listProfileNum = 2;
 
-                            ProfilesList.Children.Add(Line);
-                            ProfilesList.Children.Add(emailProfile);
-                            ProfilesList.Children.Add(emailAddress);
-                            ProfilesList.Children.Add(deleteProfile);
+                                    ProfilesList1.Children.Add(emailIcon);
+                                    ProfilesList1.Children.Add(emailProfile);
+                                    ProfilesList1.Children.Add(deleteProfile);
+                                    break;
+
+                                case 1:
+                                    listProfileNum = 2;
+
+                                    ProfilesList1.Children.Add(emailIcon);
+                                    ProfilesList1.Children.Add(emailProfile);
+                                    ProfilesList1.Children.Add(deleteProfile);
+                                    break;
+
+                                case 2:
+                                    listProfileNum = 3;
+
+                                    ProfilesList2.Children.Add(emailIcon);
+                                    ProfilesList2.Children.Add(emailProfile);
+                                    ProfilesList2.Children.Add(deleteProfile);
+                                    break;
+
+                                case 3:
+                                    listProfileNum = 1;
+
+                                    ProfilesList3.Children.Add(emailIcon);
+                                    ProfilesList3.Children.Add(emailProfile);
+                                    ProfilesList3.Children.Add(deleteProfile);
+                                    break;
+
+                                default:
+                                    break;
+                            }
                         }
                     }
                     connection.Close();
                 }
             }
-
 
             //Marcar o desmarcar la box predeterminada
             void CheckDefaultBox(object sender, EventArgs e)
@@ -328,6 +407,95 @@ namespace Mynfo.Views
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+
+        async void deleteBox(object sender, EventArgs e, int _BoxId, int _UserId, bool _BoxDefault)
+        {
+            string  sqlDeleteEmails = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId, 
+                    sqlDeletePhones = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId, 
+                    sqlDeleteSMProfiles = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId, 
+                    sqlDeleteBox = "delete from dbo.Boxes where dbo.boxes.BoxId = " + _BoxId;
+            string  cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            StringBuilder sb;
+            string sql;
+
+            bool answer = await DisplayAlert(Resource.Warning, Resource.DeleteBoxNotification, Resource.Yes, Resource.No);
+
+            if(answer == true)
+            {
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    //Borrar emails de la box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeleteEmails);
+                    sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    //Borrar teléfonos de la box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeletePhones);
+                    sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    //Borrar perfiles de redes sociales de la box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeleteSMProfiles);
+                    sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    //Borrar box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeleteBox);
+                    sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    if(_BoxDefault == true)
+                    {
+                        string sqlUpdateBoxDefault = "update top (1) dbo.Boxes set BoxDefault = 1 where dbo.Boxes.UserId = " + _UserId;
+                        
+                        //Definir nueva box default
+                        sb = new System.Text.StringBuilder();
+                        sb.Append(sqlUpdateBoxDefault);
+                        sql = sb.ToString();
+
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                }
+
+                //Regresar a home
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.Home = new HomeViewModel();
+                Application.Current.MainPage = new MasterPage();
+            }
         }
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId)
