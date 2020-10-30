@@ -122,7 +122,8 @@
                     HorizontalOptions ="Center"
                     ImageSource = "Plus"
                     VerticalOptions = "Center"
-                    WidthRequest = "60" />
+                    WidthRequest = "60"
+                    x:Name="CreateBoxBtn"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
