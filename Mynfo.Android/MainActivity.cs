@@ -63,7 +63,7 @@
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //ShortcutBadger.ApplyCount();
             onCreate();           
-            LoadApplication(new App(dbRoot));
+            LoadApplication(new App(dbRoot));  
         }
 
         protected void HandleNFC(Intent intent, Boolean inForeground)
