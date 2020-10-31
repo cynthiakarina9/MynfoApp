@@ -498,5 +498,21 @@
         {
             get { return Resource.Back; }
         }
+        public static string Warning
+        {
+            get { return Resource.Warning; }
+        }
+        public static string DeleteBoxNotification
+        {
+            get { return Resource.DeleteBoxNotification; }
+        }
+        public static string Yes
+        {
+            get { return Resource.Yes; }
+        }
+        public static string No
+        {
+            get { return Resource.No; }
+        }
     }
 }

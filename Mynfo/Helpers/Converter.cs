@@ -32,5 +32,14 @@
                 ImageArray = imageArray,
             };
         }
+
+        public static ProfileEmail ToProfileLocal(ProfileLocal profile)
+        {
+            return new ProfileEmail
+            {
+                Name = profile.ProfileName,
+                Email = profile.value,
+            };
+        }
     }
 }

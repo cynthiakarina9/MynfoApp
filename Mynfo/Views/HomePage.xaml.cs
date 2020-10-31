@@ -16,6 +16,7 @@
             string      DefaultBoxName = "";
             string      consultaDefault = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 1";
             string      consultaBoxes = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 0";
+            string      consultaGetBoxesNum = "select * from dbo.Boxes where Boxes.UserId = " + userId;
             string      cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             var         Default = new Button();
             var         Box2 = new Button();
@@ -32,8 +33,32 @@
             int[]       boxesIDs = new int[9];
             int         arrayPos = 0;
             int         DefaultBoxId = 0;
+            int         BoxNum = 0;
 
-            //Primer consulta para obtener box default
+
+
+            //Primer consulta para saber cantidad de boxes creadas
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(consultaGetBoxesNum);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            BoxNum++;
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            //Segunda consulta para obtener box default
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
                 sb = new System.Text.StringBuilder();
@@ -79,7 +104,7 @@
                 DefaultButton.Children.Add(Default);
             }
 
-            //Segunda consulta para obtener las demás boxes
+            //Tercer consulta para obtener las demás boxes
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
                 sb = new System.Text.StringBuilder();
@@ -355,7 +380,17 @@
                 LayoutBox10.Children.Add(Box10);
             }
 
-
+            //Validamos que podamos crear boxes nuevas
+            if(BoxNum == 10)
+            {
+                CreateBoxBtn.IsVisible = false;
+                CreateBoxBtn.IsEnabled = false;
+            }
+            else if(BoxNum < 10)
+            {
+                CreateBoxBtn.IsVisible = true;
+                CreateBoxBtn.IsEnabled = true;
+            }
 
         }
 

@@ -1,15 +1,19 @@
 ﻿namespace Mynfo.Models
 {
-    using System;
     using SQLite;
-    public class BoxLocal
+    using System;
+
+    public class ForeingBox
     {
         [PrimaryKey]
+        public int BoxIdForeing { get; set; }
+
         public int BoxId { get; set; }
-        public string Name { get; set; }
-        public bool BoxDefault { get; set; }
-        public int UserId { get; set; } 
+
+        public int UserId { get; set; }
+
         public DateTime Time { get; set; }
+
         public string ImagePath { get; set; }
 
         public int UserTypeId { get; set; }

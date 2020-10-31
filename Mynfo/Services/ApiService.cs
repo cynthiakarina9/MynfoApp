@@ -115,6 +115,73 @@
                 return null;
             }
         }
+        public async Task<ProfileEmail> Get(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string tokenType,
+            string accessToken,
+            int id)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(tokenType, accessToken);
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    id);
+                var response = await client.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new ProfileEmail();
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ProfileEmail>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        //public async Task<ProfileEmail> Get(
+        //string urlBase,
+        //string servicePrefix,
+        //string controller,
+        //int id)
+        //{
+        //    try
+        //    {
+        //        var model = new ProfileEmail();
+
+        //        var request = JsonConvert.SerializeObject(model);
+        //        var content = new StringContent(
+        //            request,
+        //            Encoding.UTF8,
+        //            "application/json");
+        //        var client = new HttpClient();
+        //        client.BaseAddress = new Uri(urlBase);
+        //        var url = string.Format("{0}{1}", servicePrefix, controller);
+        //        var response = await client.PostAsync(url, content);
+
+        //        if (!response.IsSuccessStatusCode)
+        //        {
+        //            return null;
+        //        }
+        //        var result = await response.Content.ReadAsStringAsync();
+        //        return JsonConvert.DeserializeObject<ProfileEmail>(result);
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
+        //}
 
         public async Task<Response> ChangePassword(
             string urlBase,
@@ -478,9 +545,56 @@
             string urlBase,
             string servicePrefix,
             string controller,
-            string tokenType,
-            string accessToken,
             T model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    model.GetHashCode());
+                var response = await client.PutAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = JsonConvert.DeserializeObject<Response>(result);
+                    error.IsSuccess = false;
+                    return error;
+                }
+
+                var newRecord = JsonConvert.DeserializeObject<T>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = newRecord,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<Response> Put<T>(
+           string urlBase,
+           string servicePrefix,
+           string controller,
+           string tokenType,
+           string accessToken,
+           T model)
         {
             try
             {

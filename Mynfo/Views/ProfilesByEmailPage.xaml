@@ -4,7 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesByEmailPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <NavigationPage.TitleView>
+    <!--<NavigationPage.TitleView>
         <Grid
             HeightRequest = "20">
             <StackLayout 
@@ -26,20 +26,22 @@
                 </Image>
             </StackLayout>
         </Grid>
-    </NavigationPage.TitleView>
+    </NavigationPage.TitleView>-->
     <ContentPage.Content>
-        <ScrollView
+        <Grid>
+            <RefreshView Command="{Binding RefreshCommand}">
+                <ScrollView
             BindingContext = "{Binding ProfilesByEmail}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80" />
-                    <RowDefinition />
-                    <RowDefinition Height="120"/>
-                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition />
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
 
-                <!--Titulo-->
+                    <!--Titulo-->
 
-                <Label 
+                    <Label 
                     Grid.Row = "0" 
                     Text = "{i18n:Translate EmailProfileList}"
                     FontSize = "25"
@@ -49,26 +51,29 @@
                     VerticalOptions = "EndAndExpand"  
                     Margin = "0,5,0,15"/>
 
-                <!--End Titulo-->
-                
-                <!-- Lista de correos -->
-                <StackLayout 
+                    <!--End Titulo-->
+
+                    <!-- Lista de correos -->
+                    <StackLayout 
                     Grid.Row="1"
                     HorizontalOptions="FillAndExpand"
                     Padding="25"
                     x:Name="EmailList" />
-                
-                <!-- Botón de nuevo correo -->
-                <Button
-                    Grid.Row="2"
+
+                    <!-- Botón de nuevo correo -->
+
+                </Grid>
+                </ScrollView>
+            </RefreshView>
+            <ImageButton
+                    Grid.Row="0"
                     BackgroundColor = "Transparent"
                     Clicked = "NewProfileEmail_Clicked"
                     HeightRequest = "60"
                     HorizontalOptions ="Center"
-                    ImageSource = "Plus"
-                    VerticalOptions = "Center"
+                    Source = "Plus"
+                    VerticalOptions = "End"
                     WidthRequest = "60" />
-            </Grid>
-        </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
