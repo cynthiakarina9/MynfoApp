@@ -7,6 +7,8 @@
     using Android.Nfc.Tech;
     using Android.OS;
     using Android.Runtime;
+    using Mynfo.Models;
+    using Newtonsoft.Json;
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
     using Poz1.NFCForms.Abstract;
@@ -38,18 +40,10 @@
             return instance;
         }
         #endregion
-
-        public NfcAdapter NFCdevice;
-        public NfcAdapter nfcAdapter_call;        
-        private NfcAdapter.ICreateNdefMessageCallback callback;
+                
         private NdefMessage ndefMessage;
-        public NfcAdapter mNfcAdapter;
-        public NfcForms x;        
-        public string nfc_mesage_;
-
-        
-
-
+        public NfcAdapter mNfcAdapter;                
+      
         protected override void OnCreate(Bundle savedInstanceState)
         {
             //Set DB root
@@ -60,17 +54,7 @@
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
-            if (mNfcAdapter == null)
-            {
-                Console.WriteLine("NFC is not available on this device.");
-            }
-            else
-            {
-                // Register callback to set NDEF message
-                mNfcAdapter.SetNdefPushMessageCallback(null, this);
-                // Register callback to listen for message-sent success
-                mNfcAdapter.SetOnNdefPushCompleteCallback(null, this);
-            }
+            
             //Color de tema
             Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
             base.OnCreate(savedInstanceState);
@@ -79,7 +63,7 @@
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //ShortcutBadger.ApplyCount();
             onCreate();           
-            LoadApplication(new App(dbRoot));
+            LoadApplication(new App(dbRoot));  
         }
 
         protected void HandleNFC(Intent intent, Boolean inForeground)
@@ -88,9 +72,15 @@
             IParcelable[] rawMsgs = intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
 
             if (rawMsgs != null)
-            {               
+            {
+                Get_nfc get_nfc = null;
+                onCreate();
                 NdefMessage msg = (NdefMessage)rawMsgs[0];
-                var Text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
+                var text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
+                              
+                string[] Json = text.ToString().Split('¡');
+                string mesaje = Json[1].ToString();
+                get_nfc = JsonConvert.DeserializeObject<Get_nfc>(mesaje);
             }
             else
             {
@@ -103,12 +93,7 @@
         {
             base.OnResume();
             try
-            {
-                if (NfcAdapter.ActionNdefDiscovered == Intent.Action)
-                {
-                    ProcessIntent(Intent);
-                }
-                
+            {                                
                 if (mNfcAdapter != null)
                 {
                     var tagDetected = new IntentFilter(NfcAdapter.ActionTagDiscovered);//or try other Action type
@@ -116,29 +101,15 @@
                     var tagDetectedtech = new IntentFilter(NfcAdapter.ActionTechDiscovered);
                     var filters = new[] { tagDetected, tagDetectednDef, tagDetectedtech };
                     var intent = new Intent(this, this.GetType()).AddFlags(ActivityFlags.SingleTop);
-
                     var pendingIntent = PendingIntent.GetActivity(this, 0, intent, 0);
-                    mNfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);
-
-                    
-                }
-
-                                        
+                    mNfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);                    
+                }                                        
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }                      
-        }
-        void ProcessIntent(Intent intent)
-        {
-            IParcelable[] rawMsgs = intent.GetParcelableArrayExtra(
-                NfcAdapter.ExtraNdefMessages);
-            // only one message sent during the beam
-            NdefMessage msg = (NdefMessage)rawMsgs[0];
-            // record 0 contains the MIME type, record 1 is the AAR, if present
-           var Text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
-        }        
+        }              
 
         protected override void OnNewIntent(Intent intent)
         {            
@@ -208,7 +179,12 @@
             DateTime time = DateTime.Now;
             var text = ("Beam me up!\n\n" +
                             "Beam Time: " + time.ToString("DD/MM/YYYY HH:mm:ss"));
-            string json = "Box recibida correctamente!";
+            //string json = "Box recibida correctamente!";
+
+            string json = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+
+                            "¡{"+ @"""nombre"":""Gerado"",""apellido_paterno"":""Daza"",""apellido_materno"":""Lopez"",""id_usuario"":""10253"",""id"":""253"",""url"":""https:www.facebook.com?id=243hi3r374h3""}";
+
             try 
             {
                 NdefMessage msg = new NdefMessage(
@@ -222,7 +198,7 @@
                 NfcAdapter nfcAdapter = NfcAdapter.GetDefaultAdapter(this);
                 if (nfcAdapter == null) return;  // NFC not available on this device
                 nfcAdapter.SetNdefPushMessage(ndefMessage, this);
-
+                
                 Console.WriteLine(msg);
                 Console.WriteLine(msg);
 
@@ -230,12 +206,7 @@
                 if (nfcAdapter_call == null) return;  // NFC not available on this device            
 
                 NfcAdapter.ICreateNdefMessageCallback var_1 = null;
-
-                nfcAdapter_call.SetNdefPushMessageCallback(var_1, this);
-
-                var vari = nfcAdapter_call;
-
-                nfcAdapter_call.SetNdefPushMessageCallback(null, this);                                
+                nfcAdapter_call.SetNdefPushMessageCallback(var_1, this);                                           
             }
             catch (Exception ex) 
             {

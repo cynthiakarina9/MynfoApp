@@ -60,12 +60,13 @@
                             deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
                             int EmailId = (int)reader["ProfileEmailId"];
                             editProfile.Source = "edit2";
-                            editProfile.BackgroundColor = Color.FromHex("#f9a589");
+                            editProfile.BackgroundColor = Color.Transparent;
                             editProfile.CornerRadius = 15;
                             editProfile.HeightRequest = 30;
                             editProfile.WidthRequest = 30;
                             editProfile.HorizontalOptions = LayoutOptions.End;
                             editProfile.Clicked += new EventHandler((sender, e) => EditProfileEmail(sender, e, EmailId));
+
                             Line.HeightRequest = 1;
                             Line.Color = Color.FromHex("#FF5521");
 
@@ -109,8 +110,6 @@
         }
         private async void EditProfileEmail(object sender, EventArgs e, int _ProfileEmailId)
         {
-            //var mainViewModel = MainViewModel.GetInstance();
-            //mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(_ProfileEmailId);
             await Navigation.PushAsync(new EditProfileEmailPage(_ProfileEmailId));
         }
 

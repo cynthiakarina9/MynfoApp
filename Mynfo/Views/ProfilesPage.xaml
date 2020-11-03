@@ -119,7 +119,7 @@
                         CornerRadius = "40"
                         HeightRequest = "80"
                         Source = "facebook1.png"
-                        Clicked = "PhoneProfile_Clicked"
+                        Clicked = "FacebookProfile_Clicked"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
                         WidthRequest = "80"/>
