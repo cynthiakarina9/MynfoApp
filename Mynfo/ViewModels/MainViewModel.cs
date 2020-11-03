@@ -3,6 +3,7 @@
     using Models;
     using Mynfo.Domain;
     using Mynfo.Helpers;
+    using Mynfo.Views;
     using System.Collections.ObjectModel;
 
     public class MainViewModel : BaseViewModel
@@ -63,6 +64,12 @@
             set;
         }
         public CreateProfileEmailViewModel CreateProfileEmail
+        {
+            get;
+            set;
+        }
+
+        public CreateProfileFacebookViewModel CreateProfileFacebook
         {
             get;
             set;

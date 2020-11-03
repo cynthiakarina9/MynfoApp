@@ -405,6 +405,7 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.BoxRegister = new BoxRegisterViewModel();
             await Navigation.PushAsync(new BoxRegisterPage());
+
         }
 
     }

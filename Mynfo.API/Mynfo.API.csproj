@@ -212,6 +212,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileEmailsController.cs" />
     <Compile Include="Controllers\ProfilePhonesController.cs" />
+    <Compile Include="Controllers\ProfileSMsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

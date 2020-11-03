@@ -7,7 +7,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class CreateProfileEmailViewModel : BaseViewModel
+    public class CreateProfileFacebookViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -35,7 +35,7 @@
             get;
             set;
         }
-        public string Email
+        public string Link
         {
             get;
             set;
@@ -43,24 +43,22 @@
         #endregion
 
         #region Constructor
-        public CreateProfileEmailViewModel()
+        public CreateProfileFacebookViewModel()
         {
             this.apiService = new ApiService();
-
-            this.IsEnabled = true;
         }
         #endregion
 
         #region Commands
-        public ICommand SaveProfileEmailCommand
+        public ICommand SaveProfileFacebookCommand
         {
             get
             {
-                return new RelayCommand(SaveProfileEmail);
+                return new RelayCommand(SaveProfileFacebook);
             }
         }
-        
-        private async void SaveProfileEmail()
+
+        private async void SaveProfileFacebook()
         {
             if (string.IsNullOrEmpty(this.Name))
             {
@@ -70,19 +68,11 @@
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.Email))
+            if (string.IsNullOrEmpty(this.Link))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     Languages.EmailValidation,
-                    Languages.Accept);
-                return;
-            }
-            if (!RegexUtilities.IsValidEmail(this.Email))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.EmailValidation2,
                     Languages.Accept);
                 return;
             }
@@ -104,10 +94,10 @@
 
             var mainViewModel = MainViewModel.GetInstance();
 
-            var profileEmail = new ProfileEmail
+            var profileFB = new ProfileSM
             {
-                Name = this.Name,
-                Email = this.Email,
+                ProfileName = this.Name,
+                link = this.Link,
                 UserId = mainViewModel.User.UserId,
             };
 
@@ -115,8 +105,8 @@
             var response = await this.apiService.Post(
                 apiSecurity,
                 "/api",
-                "/ProfileEmails",
-                profileEmail);
+                "/ProfileSMs",
+                profileFB);
 
             if (!response.IsSuccess)
             {
@@ -133,7 +123,7 @@
             this.IsEnabled = true;
 
             this.Name = string.Empty;
-            this.Email = string.Empty;
+            this.Link = string.Empty;
 
             await App.Navigator.PopAsync();
         }
