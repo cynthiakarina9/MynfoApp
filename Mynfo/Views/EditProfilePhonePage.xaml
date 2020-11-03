@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.CreateProfileFacebookPage"
+             x:Class="Mynfo.Views.EditProfilePhonePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -13,7 +13,7 @@
                     FontAttributes = "Bold"
                     FontSize = "18"
                     HorizontalOptions = "Start"
-                    Text = "Create profile Facebook"
+                    Text = "{i18n:Translate CreateProfilePhone}"
                     TextColor = "{StaticResource Dark_FontColor}"/>
             </StackLayout>
             <StackLayout
@@ -28,71 +28,73 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <RefreshView IsRefreshing="{Binding IsRefreshing}"
-             Command="{Binding RefreshCommand}"
-             RefreshColor="Orange">
-            <ScrollView
-            BindingContext = "{Binding CreateProfileFacebook}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition />
-                        <RowDefinition Height="120"/>
-                    </Grid.RowDefinitions>
-                    <StackLayout>
-                        <Image 
-                            Source="facebook1" 
-                               HeightRequest="10"
-                               WidthRequest="10"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="1">
-                        <Label 
+        <ScrollView
+            BindingContext = "{Binding CreateProfilePhone}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition />
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+                <Image 
+                    Source = "phone1"
+                    HeightRequest = "150"
+                    WidthRequest = "150"
+                    Grid.Row = "1"/>
+                <StackLayout 
+                    Grid.Row = "1"
+                    Padding = "20">
+                    <Label 
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
                         Text = "{i18n:Translate NameProfile}"/>
-                        <Entry 
+                    <Entry 
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
                         MaxLength = "10"
                         Text = "{Binding Name}"
                         VerticalOptions = "Center" 
-                        WidthRequest = "250" />
-                    </StackLayout>
-                    <StackLayout 
+                        WidthRequest = "250" 
+                        x:Name = "EntryName"/>
+                </StackLayout>
+                <StackLayout 
                     Grid.Row = "3">
-                        <Label 
+                    <Label 
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
                         Text = "{i18n:Translate NumberPhone}" 
                         VerticalOptions = "Center" />
-                        <Entry 
+                    <Entry 
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
-                        Text = "{Binding Link}"
+                        Keyboard = "Telephone"
+                        MaxLength = "10"
+                        Text = "{Binding Number}"
                         VerticalOptions = "Center" 
-                        WidthRequest = "250"/>
-                    </StackLayout>
-                    <Button 
-                    BackgroundColor="{StaticResource MainColor}"
-                    BorderRadius="23"
-                    Command = "{Binding SaveProfileFacebookCommand}"
+                        WidthRequest = "250"
+                        x:Name = "EntryPhone"/>
+                </StackLayout>
+                <Button 
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    Clicked = "Save_Clicked"
                     HeightRequest = "50"
-                    WidthRequest ="300"
+                    HorizontalOptions = "Center"
                     Grid.Row = "5"
                     Text = "{i18n:Translate Save}"
                     TextColor = "{StaticResource Dark_FontColor}"
-                    VerticalOptions     = "Center"
-                    HorizontalOptions   = "Center"/>
-                </Grid>
-            </ScrollView>
-        </RefreshView>
+                    VerticalOptions = "Center"
+                    WidthRequest = "300"
+                    x:Name = "ButtonSave"/>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

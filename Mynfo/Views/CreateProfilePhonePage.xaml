@@ -28,10 +28,7 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <RefreshView IsRefreshing="{Binding IsRefreshing}"
-             Command="{Binding RefreshCommand}"
-             RefreshColor="Orange">
-            <ScrollView
+        <ScrollView
             BindingContext = "{Binding CreateProfilePhone}">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -42,14 +39,21 @@
                         <RowDefinition />
                         <RowDefinition Height="120"/>
                     </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="1">
-                        <Label 
+                <Image 
+                    Source = "phone1"
+                    HeightRequest = "150"
+                    WidthRequest = "150"
+                    Grid.Row = "1"/>
+                <StackLayout 
+                    Grid.Row = "1"
+                    Padding = "20">
+                    <Label 
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
                         Text = "{i18n:Translate NameProfile}"/>
-                        <Entry 
+                    <Entry 
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
@@ -57,8 +61,8 @@
                         Text = "{Binding Name}"
                         VerticalOptions = "Center" 
                         WidthRequest = "250" />
-                    </StackLayout>
-                    <StackLayout 
+                </StackLayout>
+                <StackLayout 
                     Grid.Row = "3">
                         <Label 
                         FontSize = "24" 
@@ -89,6 +93,5 @@
                     HorizontalOptions   = "Center"/>
                 </Grid>
             </ScrollView>
-        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

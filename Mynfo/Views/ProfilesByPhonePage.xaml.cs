@@ -34,6 +34,7 @@
                             var emailProfile = new Label();
                             var emailAddress = new Label();
                             //var deleteProfile = new Button();
+                            var editProfile = new ImageButton();
                             var Line = new BoxView();
 
                             emailProfile.Text = (string)reader["Name"];
@@ -53,6 +54,14 @@
                             deleteProfile.WidthRequest = 30;
                             deleteProfile.HorizontalOptions = LayoutOptions.End;
                             deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
+                            int PhoneId = (int)reader["ProfilePhoneId"];
+                            editProfile.Source = "edit2";
+                            editProfile.BackgroundColor = Color.Transparent;
+                            editProfile.CornerRadius = 15;
+                            editProfile.HeightRequest = 30;
+                            editProfile.WidthRequest = 30;
+                            editProfile.HorizontalOptions = LayoutOptions.End;
+                            editProfile.Clicked += new EventHandler((sender, e) => EditProfilePhone(sender, e, PhoneId));
 
                             Line.HeightRequest = 1;
                             Line.Color = Color.FromHex("#FF5521");
@@ -60,6 +69,7 @@
                             PhoneList.Children.Add(emailProfile);
                             PhoneList.Children.Add(emailAddress);
                             //EmailList.Children.Add(deleteProfile);
+                            PhoneList.Children.Add(editProfile);
                             PhoneList.Children.Add(Line);
                         }
                     }
@@ -72,6 +82,11 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
             await Navigation.PushAsync(new CreateProfilePhonePage());
+        }
+
+        private async void EditProfilePhone(object sender, EventArgs e, int _ProfilePhoneId)
+        {
+            await Navigation.PushAsync(new EditProfilePhonePage(_ProfilePhoneId));
         }
     }
 }

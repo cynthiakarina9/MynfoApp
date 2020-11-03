@@ -99,6 +99,7 @@
                 ProfileName = this.Name,
                 link = this.Link,
                 UserId = mainViewModel.User.UserId,
+                RedSocialId = 1,
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
