@@ -3,6 +3,7 @@
     using Mynfo.ViewModels;
     using System;
     using System.Data.SqlClient;
+    using Xamarin.Essentials;
     using Xamarin.Forms;
 
     public partial class HomePage : ContentPage
@@ -402,10 +403,14 @@
 
         private async void CreateBox_Clicked(object sender, EventArgs e)
         {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.BoxRegister = new BoxRegisterViewModel();
-            await Navigation.PushAsync(new BoxRegisterPage());
-        }
+             var mainViewModel = MainViewModel.GetInstance();
+             mainViewModel.BoxRegister = new BoxRegisterViewModel();
+             await Navigation.PushAsync(new BoxRegisterPage());
 
+            //await Launcher.OpenAsync(new Uri("fb://page/100000686899395"));
+            //await Launcher.OpenAsync(new Uri("https://twitter.com/RToachee"));
+            //await Launcher.OpenAsync(new Uri("instagram:page_id//user?username=rodritoachee"));
+            //await Launcher.OpenAsync(new Uri("mailto:rrodriguez@atx.com"));
+        }
     }
 }
