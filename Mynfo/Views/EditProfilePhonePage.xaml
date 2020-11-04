@@ -5,26 +5,16 @@
              x:Class="Mynfo.Views.EditProfilePhonePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "20">
-            <StackLayout 
-                HorizontalOptions="Start">
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "18"
-                    HorizontalOptions = "Start"
-                    Text = "{i18n:Translate CreateProfilePhone}"
-                    TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions = "End">
-                <Image 
-                    HeightRequest = "20"
-                    HorizontalOptions = "End"
-                    Source = "logo_superior.png" 
-                    WidthRequest = "75" >
-                </Image>
-            </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image 
+                Margin = "0,0,80,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "75"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -32,20 +22,29 @@
             BindingContext = "{Binding CreateProfilePhone}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="80"/>
+                    <RowDefinition Height = "80"/>
+                    <RowDefinition Height = "160"/>
+                    <RowDefinition Height = "120"/>
+                    <RowDefinition Height = "80"/>
                     <RowDefinition />
-                    <RowDefinition Height="120"/>
+                    <RowDefinition Height = "120"/>
                 </Grid.RowDefinitions>
-                <Image 
-                    Source = "phone1"
-                    HeightRequest = "150"
-                    WidthRequest = "150"
-                    Grid.Row = "1"/>
-                <StackLayout 
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "25"
+                    Grid.ColumnSpan ="1"
+                    Grid.Row = "0"
+                    HorizontalOptions = "Center"
+                    Text = "{i18n:Translate EditPhone}"
+                    TextColor = "{StaticResource MainColor}"
+                    VerticalOptions = "Center"/>
+                <Image
                     Grid.Row = "1"
+                    HeightRequest = "180"
+                    Source = "tel2"
+                    WidthRequest = "180"/>
+                <StackLayout 
+                    Grid.Row = "2"
                     Padding = "20">
                     <Label 
                         FontSize = "24" 
@@ -54,13 +53,14 @@
                         VerticalOptions = "Center"
                         Text = "{i18n:Translate NameProfile}"/>
                     <Entry 
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
                         MaxLength = "10"
                         Text = "{Binding Name}"
                         VerticalOptions = "Center" 
-                        WidthRequest = "250" 
+                        WidthRequest = "300" 
                         x:Name = "EntryName"/>
                 </StackLayout>
                 <StackLayout 
@@ -72,6 +72,7 @@
                         Text = "{i18n:Translate NumberPhone}" 
                         VerticalOptions = "Center" />
                     <Entry 
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
@@ -79,7 +80,7 @@
                         MaxLength = "10"
                         Text = "{Binding Number}"
                         VerticalOptions = "Center" 
-                        WidthRequest = "250"
+                        WidthRequest = "300"
                         x:Name = "EntryPhone"/>
                 </StackLayout>
                 <Button 
@@ -92,7 +93,7 @@
                     Text = "{i18n:Translate Save}"
                     TextColor = "{StaticResource Dark_FontColor}"
                     VerticalOptions = "Center"
-                    WidthRequest = "300"
+                    WidthRequest = "150"
                     x:Name = "ButtonSave"/>
             </Grid>
         </ScrollView>

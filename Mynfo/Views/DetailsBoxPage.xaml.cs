@@ -1,14 +1,12 @@
-﻿using Mynfo.Resources;
-using Mynfo.ViewModels;
-using System;
-using System.Data.SqlClient;
-using System.Text;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Mynfo.Views
+﻿namespace Mynfo.Views
 {
+    using Mynfo.Resources;
+    using Mynfo.ViewModels;
+    using System;
+    using System.Data.SqlClient;
+    using System.Text;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsBoxPage : ContentPage
     {
@@ -123,6 +121,7 @@ namespace Mynfo.Views
             }
 
             //Creación del botón para volver a home
+            bxBtnHome.BackgroundColor = Color.Transparent;
             bxBtnHome.Source = "back.png";
             bxBtnHome.WidthRequest = 50;
             bxBtnHome.HeightRequest = 50;
@@ -131,6 +130,7 @@ namespace Mynfo.Views
             HomeButton.Children.Add(bxBtnHome);
 
             //Creación de botón para borrar box
+            BxBtnDelete.BackgroundColor = Color.Transparent;
             BxBtnDelete.Source = "trash.png";
             BxBtnDelete.WidthRequest = 50;
             BxBtnDelete.HeightRequest = 50;
@@ -195,7 +195,7 @@ namespace Mynfo.Views
                             var Line = new BoxView();
                             int PhoneId = (int)reader["ProfilePhoneId"];
 
-                            phoneIcon.Source = "tel3.png";
+                            phoneIcon.Source = "tel2.png";
                             phoneIcon.WidthRequest = 50;
                             phoneIcon.HeightRequest = 50;
                             phoneIcon.HorizontalOptions = LayoutOptions.Center;
@@ -290,7 +290,7 @@ namespace Mynfo.Views
                             var Line = new BoxView();
                             int EmailId = (int)reader["ProfileEmailId"];
 
-                            emailIcon.Source = "mail1.png";
+                            emailIcon.Source = "mail2.png";
                             emailIcon.WidthRequest = 50;
                             emailIcon.HeightRequest = 50;
                             emailIcon.HorizontalOptions = LayoutOptions.Center;
@@ -579,7 +579,8 @@ namespace Mynfo.Views
                     connection.Close();
                 }
             }
-            Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+            //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+            Navigation.PushAsync(new DetailsBoxPage(_BoxId));
         }
 
 
