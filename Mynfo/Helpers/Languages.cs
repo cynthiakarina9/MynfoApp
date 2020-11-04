@@ -486,9 +486,9 @@
         {
             get { return Resource.NumberValidation; }
         }
-        public static string ProfileEmail
+        public static string CreateProfileEmail
         {
-            get { return Resource.ProfileEmail; }
+            get { return Resource.CreateProfileEmail; }
         }
         public static string DetailBox
         {
@@ -513,6 +513,26 @@
         public static string No
         {
             get { return Resource.No; }
+        }
+        public static string Link
+        {
+            get { return Resource.Link; }
+        }
+        public static string NProfilePlaceH
+        { 
+            get { return Resource.NProfilePlaceH; }
+        }
+        public static string ExampleEmail
+        {
+            get { return Resource.ExampleEmail; }
+        }
+        public static string EditPhone
+        {
+            get { return Resource.EditPhone; }
+        }
+        public static string EditEmail
+        {
+            get { return Resource.EditEmail; }
         }
     }
 }

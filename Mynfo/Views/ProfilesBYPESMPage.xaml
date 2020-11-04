@@ -33,7 +33,8 @@
             Text = "{i18n:Translate Back}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView
+        <Grid>
+            <ScrollView
             BindingContext = "{Binding ProfilesBYPESM}">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -62,18 +63,18 @@
                         HorizontalOptions="FillAndExpand"
                         Padding="25"
                         x:Name="ProfileList" />
-
-                    <!--Botón para agregar nuevas cuentas-->
-                    <Button
-                        BackgroundColor = "Transparent"
-                        Clicked = "GoToProfiles_Clicked"
-                        Grid.Row = "2"
-                        HeightRequest = "60"
-                        HorizontalOptions ="Center"
-                        ImageSource = "Plus"
-                        VerticalOptions = "Center"
-                        WidthRequest = "60" />
                 </Grid>
             </ScrollView>
+            <!--Botón para agregar nuevas cuentas-->
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Grid.Row = "0"
+                HeightRequest = "60"
+                HorizontalOptions ="Center"
+                Source = "Plus"
+                VerticalOptions = "End"
+                WidthRequest = "60" 
+                x:Name="GoToProfiles"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

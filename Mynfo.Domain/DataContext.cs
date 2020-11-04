@@ -27,5 +27,9 @@
         public System.Data.Entity.DbSet<Mynfo.Domain.ProfileEmail> ProfileEmails { get; set; }
 
         public System.Data.Entity.DbSet<Mynfo.Domain.ProfilePhone> ProfilePhones { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.ProfileSM> ProfileSMs { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.RedSocial> RedSocials { get; set; }
     }
 }

@@ -47,7 +47,6 @@
         #region Constructor
         public CreateProfilePhoneViewModel()
         {
-            RefreshCommand = new Command(async () => await LoadPublications());
             this.apiService = new ApiService();
 
             this.IsEnabled = true;
@@ -55,25 +54,7 @@
         #endregion
 
         #region Commands
-        private bool _isRefreshing;
-
-        public bool IsRefreshing
-        {
-            get => _isRefreshing;
-            set { _isRefreshing = value; OnPropertyChanged(); }
-        }
-
-        public ICommand RefreshCommand { private set; get; }
-
-        // methods - code omitted
-
-        async Task LoadPublications()
-        {
-            // code omitted
-
-            IsRefreshing = false;
-        }
-    
+       
     public ICommand SaveProfilePhoneCommand
         {
             get

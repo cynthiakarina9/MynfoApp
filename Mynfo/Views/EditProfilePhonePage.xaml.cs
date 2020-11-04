@@ -11,19 +11,18 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditProfileEmailPage : ContentPage
+    public partial class EditProfilePhonePage : ContentPage
     {
         #region Services
         private ApiService apiService;
         #endregion
 
         #region Attributes
-        ProfileEmail profileEmail = new ProfileEmail();
+        ProfilePhone profilePhone = new ProfilePhone();
         int UserID = MainViewModel.GetInstance().User.UserId;
         #endregion
-
-        #region Construtor
-        public EditProfileEmailPage(int _ProfileEmailId)
+        #region Constructor
+        public EditProfilePhonePage(int _ProfilePhoneId)
         {
             //var mainViewModel = MainViewModel.GetInstance();
             //mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(_ProfileEmailId);
@@ -31,15 +30,15 @@
             //apiService
             apiService = new ApiService();
             System.Text.StringBuilder sb;
-            string consultaEmail = "select * from dbo.ProfileEmails where dbo.ProfileEmails.ProfileEmailId =" + _ProfileEmailId +"and dbo.ProfileEmails.UserId = "+ UserID;
+            string consultaPhone = "select * from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId =" + _ProfilePhoneId + "and dbo.ProfilePhones.UserId = " + UserID;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            
+
 
             //Seleccionar ProfileEmail
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
                 sb = new System.Text.StringBuilder();
-                sb.Append(consultaEmail);
+                sb.Append(consultaPhone);
 
                 string sql = sb.ToString();
 
@@ -50,21 +49,20 @@
                     {
                         while (reader.Read())
                         {
-                            profileEmail.UserId = (int)reader["UserId"];
-                            profileEmail.ProfileEmailId = (int)reader["ProfileEmailId"];
-                            profileEmail.Name = (string)reader["Name"];
-                            profileEmail.Email = (string)reader["Email"];
+                            profilePhone.UserId = (int)reader["UserId"];
+                            profilePhone.ProfilePhoneId = (int)reader["ProfilePhoneId"];
+                            profilePhone.Name = (string)reader["Name"];
+                            profilePhone.Number = (string)reader["Number"];
                         }
                     }
 
                     connection.Close();
                 }
-
-                EntryEmail.Text = profileEmail.Email;
-                EntryName.Text = profileEmail.Name;
+                EntryName.Text = profilePhone.Name;
+                EntryPhone.Text = profilePhone.Number;
             }
+            #endregion
         }
-        #endregion
 
         #region Commands
         private async void Save_Clicked(object sender, EventArgs e)
@@ -78,20 +76,11 @@
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(EntryEmail.Text))
+            if (string.IsNullOrEmpty(EntryPhone.Text))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     Languages.EmailValidation,
-                    Languages.Accept);
-                return;
-            }
-
-            if (!RegexUtilities.IsValidEmail(EntryEmail.Text))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.EmailValidation2,
                     Languages.Accept);
                 return;
             }
@@ -107,7 +96,7 @@
                 return;
             }
 
-            string queryUpdateProfileEmail = "update dbo.ProfileEmails set Name = '" + EntryName.Text + "', Email = '" + EntryEmail.Text + "' where dbo.ProfileEmails.ProfileEmailId = " + profileEmail.ProfileEmailId + " and dbo.ProfileEmails.UserId = " + profileEmail.UserId;
+            string queryUpdateProfileEmail = "update dbo.ProfilePhones set Name = '" + EntryName.Text + "', Number = '" + EntryPhone.Text + "' where dbo.ProfilePhones.ProfilePhoneId = " + profilePhone.ProfilePhoneId + " and dbo.ProfilePhones.UserId = " + profilePhone.UserId;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))

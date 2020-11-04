@@ -27,5 +27,11 @@
             mainViewModel.ProfilesByEmail = new ProfilesByEmailViewModel();
             await Navigation.PushAsync(new ProfilesByEmailPage());
         }
+        private async void FacebookProfile_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
+            await Navigation.PushAsync(new CreateProfileFacebookPage());
+        }
     }
 }

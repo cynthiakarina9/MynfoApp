@@ -4,65 +4,57 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesByEmailPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <!--<NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "20">
-            <StackLayout 
-                HorizontalOptions="Start">
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "18"
-                    HorizontalOptions = "Start"
-                    Text = "{i18n:Translate ProfileEmail}"
-                    TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions = "End">
-                <Image 
-                    HeightRequest = "20"
-                    HorizontalOptions = "End"
-                    Source = "logo_superior.png" 
-                    WidthRequest = "75" >
-                </Image>
-            </StackLayout>
+    <NavigationPage.TitleView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image 
+                Margin = "0,0,80,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "75"/>
         </Grid>
-    </NavigationPage.TitleView>-->
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <RefreshView Command="{Binding RefreshCommand}">
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding RefreshCommand}"
+                 RefreshColor="Orange"> 
                 <ScrollView
-            BindingContext = "{Binding ProfilesByEmail}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
-                        <RowDefinition />
-                        <RowDefinition Height="120"/>
-                    </Grid.RowDefinitions>
+                    BindingContext = "{Binding ProfilesByEmail}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition />
+                            <RowDefinition Height="120"/>
+                        </Grid.RowDefinitions>
 
-                    <!--Titulo-->
+                        <!--Titulo-->
 
-                    <Label 
-                    Grid.Row = "0" 
-                    Text = "{i18n:Translate EmailProfileList}"
-                    FontSize = "25"
-                    FontAttributes="Bold"
-                    TextColor = "{StaticResource MainColor}"
-                    HorizontalOptions = "CenterAndExpand"
-                    VerticalOptions = "EndAndExpand"  
-                    Margin = "0,5,0,15"/>
+                        <Label 
+                        Grid.Row = "0" 
+                        Text = "{i18n:Translate EmailProfileList}"
+                        FontSize = "25"
+                        FontAttributes="Bold"
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions = "EndAndExpand"  
+                        Margin = "0,5,0,15"/>
 
-                    <!--End Titulo-->
+                        <!--End Titulo-->
 
-                    <!-- Lista de correos -->
-                    <StackLayout 
-                    Grid.Row="1"
-                    HorizontalOptions="FillAndExpand"
-                    Padding="25"
-                    x:Name="EmailList" />
+                        <!-- Lista de correos -->
+                        <StackLayout 
+                        Grid.Row="1"
+                        HorizontalOptions="FillAndExpand"
+                        Padding="25"
+                        x:Name="EmailList" />
 
-                    <!-- Botón de nuevo correo -->
+                        <!-- Botón de nuevo correo -->
 
-                </Grid>
+                    </Grid>
                 </ScrollView>
             </RefreshView>
             <ImageButton

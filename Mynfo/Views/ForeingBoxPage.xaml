@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.ForeingBoxPage"
+             BindingContext = "{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+               
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="180"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout
+                        Grid.Row="1"
+                        Padding = "20,30,5,5">
+                        <controls:CircleImage
+                            Aspect = "AspectFill"
+                            HeightRequest = "180"
+                            Source = "{Binding User.ImageFullPath}">
+                        </controls:CircleImage>
+                        <Label 
+                            FontSize = "26"
+                            FontAttributes = "None"
+                            HorizontalOptions = "Center"
+                            Padding = "15"
+                            Text = "{Binding User.FullName, StringFormat = '{0}'}"
+                            TextColor = "{StaticResource MainColor}" />
+                    </StackLayout>
+                    <Label 
+                        Grid.Row = "2"
+                        Text="{i18n:Translate EditProfileData}" 
+                        FontSize="25" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                    <Label 
+                        Text="{i18n:Translate ProfileName}" 
+                        Grid.Row="1"
+                        FontSize="21" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                    <Entry 
+                        Grid.Row="2"
+                        FontSize="21"
+                        WidthRequest="200"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                    <Label 
+                        Text="Value" 
+                        Grid.Row="3"
+                        FontSize="21" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                    <Entry 
+                        Grid.Row="4"
+                        FontSize="21"
+                        WidthRequest="200"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

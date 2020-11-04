@@ -3,6 +3,7 @@
     using Models;
     using Mynfo.Domain;
     using Mynfo.Helpers;
+    using Mynfo.Views;
     using System.Collections.ObjectModel;
 
     public class MainViewModel : BaseViewModel
@@ -68,6 +69,12 @@
             set;
         }
 
+        public CreateProfileFacebookViewModel CreateProfileFacebook
+        {
+            get;
+            set;
+        }
+
         public CreateProfilePhoneViewModel CreateProfilePhone
         {
             get;
@@ -84,6 +91,12 @@
         {
             get;
             set;
+        }
+
+        public ForeingBoxViewModel ForeingBox
+        { 
+            get; 
+            set; 
         }
 
         public HomeViewModel Home

@@ -16,7 +16,7 @@
                     Text = "{i18n:Translate NewBox}"
                     TextColor = "{StaticResource Dark_FontColor}"/>
             </StackLayout>
-            <!--<StackLayout
+            <StackLayout
                 HorizontalOptions = "End">
                 <Image 
                     HeightRequest = "20"
@@ -24,7 +24,7 @@
                     Source = "logo_superior.png" 
                     WidthRequest = "75" >
                 </Image>
-            </StackLayout>-->
+            </StackLayout>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
