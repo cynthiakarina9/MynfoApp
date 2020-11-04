@@ -68,13 +68,13 @@
             <!--Botón para agregar nuevas cuentas-->
             <ImageButton
                 BackgroundColor = "Transparent"
-                Clicked = "GoToProfiles_Clicked"
                 Grid.Row = "0"
                 HeightRequest = "60"
                 HorizontalOptions ="Center"
                 Source = "Plus"
                 VerticalOptions = "End"
-                WidthRequest = "60" />
+                WidthRequest = "60" 
+                x:Name="GoToProfiles"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

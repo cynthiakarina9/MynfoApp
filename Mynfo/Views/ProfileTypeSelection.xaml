@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.ProfileTypeSelection">
+    <NavigationPage.TitleView>
+        <Grid
+            HeightRequest = "20">
+            <StackLayout
+                HorizontalOptions = "Start">
+                <Image 
+                    HeightRequest = "20"
+                    Source = "logo_superior.png" 
+                    WidthRequest = "75" 
+                    HorizontalOptions = "Start">
+                </Image>
+            </StackLayout>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            x:Name="BackDetails"
+            Text = "{i18n:Translate Back}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding Profiles}">
+            <Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="1" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <!--Titulo-->
+
+                    <BoxView 
+                        Grid.Row="0" 
+                        Grid.ColumnSpan="2" 
+                        BackgroundColor="Transparent"/>
+
+                    <Label 
+                        Grid.Row = "0" 
+                        Grid.ColumnSpan = "3" 
+                        Text = "{i18n:Translate ChooseTypeProfile}"
+                        FontSize = "25"
+                        FontAttributes="Bold"
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center"  
+                        Margin = "0,15,0,0"/>
+
+                    <!--End Titulo-->
+
+                    <!--BoxView 1-->
+
+                    <BoxView 
+                        Grid.Row="1"
+                        Color="Transparent"                  
+                        CornerRadius="15" />
+
+                    <ImageButton   
+                        Grid.Row="1"
+                        BackgroundColor = "Transparent"
+                        Source = "mail1.png"   
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center"
+                        WidthRequest = "80"
+                        HeightRequest = "80"
+                        Margin = "25"
+                        x:Name="ProfilesEmail"/>
+
+                    <!--BoxView 2-->
+
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Color="Transparent"                 
+                        CornerRadius="15" />
+
+                    <ImageButton 
+                        Grid.Row="1"
+                        Grid.Column = "1"
+                        BackgroundColor = "Transparent"
+                        HeightRequest = "80"
+                        Source = "whatsapp1.png"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center"
+                        WidthRequest = "80"
+                        x:Name="ProfilesPhone"/>
+
+                    <!--BoxView 3-->
+
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Color="Transparent"                 
+                        CornerRadius="15" />
+
+                    <ImageButton 
+                        Grid.Row="1"
+                        Grid.Column = "2"
+                        BackgroundColor = "Transparent"
+                        HeightRequest = "80"
+                        Source = "facebook1.png"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center"
+                        WidthRequest = "80"
+                        x:Name="ProfilesFacebook"/>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

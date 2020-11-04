@@ -1,10 +1,12 @@
-﻿using Mynfo.Resources;
+﻿using Mynfo.Models;
+using Mynfo.Resources;
 using Mynfo.ViewModels;
 using System;
 using System.Data.SqlClient;
 using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
 
 namespace Mynfo.Views
@@ -19,6 +21,7 @@ namespace Mynfo.Views
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             int BoxId = _boxId;
+            var boxLocal = new BoxLocal();
             int UserID = MainViewModel.GetInstance().User.UserId;
             string consultaDefault;
             string queryLastBoxCreated = "SELECT TOP 1 * FROM dbo.Boxes where dbo.Boxes.UserId = " + UserID + " ORDER BY BoxId DESC";
@@ -31,6 +34,8 @@ namespace Mynfo.Views
             System.Text.StringBuilder sb;
             String BoxName = "";
             bool BoxDefault = false;
+            int UserId = 0;
+            DateTime boxcreation = DateTime.Now;
             var BxSaveName = new ImageButton();
             var BxBtnDelete = new ImageButton();
             var bxBtnHome = new ImageButton();
@@ -80,7 +85,10 @@ namespace Mynfo.Views
                               "Join dbo.Boxes on(dbo.Boxes.BoxId = dbo.Box_ProfileEmail.BoxId) " +
                               "Join dbo.ProfileEmails on(dbo.ProfileEmails.ProfileEmailId = dbo.Box_ProfileEmail.ProfileEmailId) " +
                               "where dbo.Boxes.BoxId = " + BoxId;
-            queryGetSMProfiles = "select * from dbo.ProfileSMs where dbo.ProfileSMs.UserId = " + UserID;
+            queryGetSMProfiles = "select * from dbo.Box_ProfileSM " +
+                                    "join dbo.ProfileSMs on(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
+                                    "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
+                                    "where dbo.Box_ProfileSM.BoxId = " + _boxId;
 
             //Consulta para obtener Box
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -99,6 +107,8 @@ namespace Mynfo.Views
                         {
                             BoxName = (string)reader["Name"];
                             BoxDefault = (bool)reader["BoxDefault"];
+                            UserId = (int)reader["UserId"];
+                            boxcreation = (DateTime)reader["Time"];
                         }
                     }
 
@@ -106,8 +116,18 @@ namespace Mynfo.Views
                 }
             }
 
+            boxLocal.BoxId = _boxId;
+            boxLocal.Name = BoxName;
+            boxLocal.BoxDefault = BoxDefault;
+            boxLocal.UserId = UserId;
+            boxLocal.Time = boxcreation;
+            boxLocal.FirstName = MainViewModel.GetInstance().User.FirstName;
+            boxLocal.LastName = MainViewModel.GetInstance().User.LastName;
+            boxLocal.ImagePath = MainViewModel.GetInstance().User.ImagePath;
+            boxLocal.UserTypeId = MainViewModel.GetInstance().User.UserTypeId;
+
             //Definir color de fondo con respecto a si la box es predeterminada
-            if(BoxDefault == true)
+            if (BoxDefault == true)
             {
                 FullBackGround.BackgroundColor = Color.FromHex("#FFAB8F");
                 bxBtnHome.BackgroundColor = Color.FromHex("#FFAB8F");
@@ -195,10 +215,11 @@ namespace Mynfo.Views
                             var Line = new BoxView();
                             int PhoneId = (int)reader["ProfilePhoneId"];
 
-                            phoneIcon.Source = "tel3.png";
-                            phoneIcon.WidthRequest = 50;
-                            phoneIcon.HeightRequest = 50;
+                            phoneIcon.Source = "whatsapp1.png";
+                            phoneIcon.WidthRequest = 80;
+                            phoneIcon.HeightRequest = 80;
                             phoneIcon.HorizontalOptions = LayoutOptions.Center;
+                            phoneIcon.IsEnabled = false;
 
                             phoneName.Text = (string)reader["Name"];
                             phoneName.FontSize = 15;
@@ -291,9 +312,10 @@ namespace Mynfo.Views
                             int EmailId = (int)reader["ProfileEmailId"];
 
                             emailIcon.Source = "mail1.png";
-                            emailIcon.WidthRequest = 50;
-                            emailIcon.HeightRequest = 50;
+                            emailIcon.WidthRequest = 80;
+                            emailIcon.HeightRequest = 80;
                             emailIcon.HorizontalOptions = LayoutOptions.Center;
+                            emailIcon.IsEnabled = false;
 
                             emailProfile.Text = (string)reader["Name"];
                             emailProfile.FontSize = 15;
@@ -365,9 +387,264 @@ namespace Mynfo.Views
                 }
             }
 
+            //Consulta para obtener Perfiles de redes sociales
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryGetSMProfiles);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var SMIcon = new ImageButton();
+                            var SMProfileName = new Label();
+                            var deleteProfile = new ImageButton();
+                            var Line = new BoxView();
+                            int SMId = (int)reader["ProfileMSId"];
+                            string link = (string)reader["link"];
+                            string SMType = (string)reader["Name"];
+
+                            //Aquí se deben agregar las diferentes variables de redes sociales que se agreguen en el futúro
+                            switch(SMType)
+                            {
+                                case "Facebook":
+                                    SMIcon.Source = "facebook1.png";
+                                    SMIcon.WidthRequest = 80;
+                                    SMIcon.HeightRequest = 80;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = false;
+
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
+
+                                default:
+                                    break;
+                            }
+
+                            
+
+                            deleteProfile.Source = "trash2.png";
+                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
+                            deleteProfile.CornerRadius = 15;
+                            deleteProfile.HeightRequest = 30;
+                            deleteProfile.WidthRequest = 30;
+                            deleteProfile.HorizontalOptions = LayoutOptions.End;
+                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+
+                            //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
+                            if (BoxDefault == true)
+                            {
+                                deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+                                SMIcon.BackgroundColor = Color.FromHex("#FFAB8F");
+                            }
+                            else
+                            {
+                                deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
+                                SMIcon.BackgroundColor = Color.FromHex("#AAAAAA");
+                            }
+
+                            //Asignación de caja en columnas
+                            switch (listProfileNum)
+                            {
+                                case 0:
+                                    listProfileNum = 2;
+
+                                    ProfilesList1.Children.Add(SMIcon);
+                                    ProfilesList1.Children.Add(SMProfileName);
+                                    ProfilesList1.Children.Add(deleteProfile);
+                                    break;
+
+                                case 1:
+                                    listProfileNum = 2;
+
+                                    ProfilesList1.Children.Add(SMIcon);
+                                    ProfilesList1.Children.Add(SMProfileName);
+                                    ProfilesList1.Children.Add(deleteProfile);
+                                    break;
+
+                                case 2:
+                                    listProfileNum = 3;
+
+                                    ProfilesList2.Children.Add(SMIcon);
+                                    ProfilesList2.Children.Add(SMProfileName);
+                                    ProfilesList2.Children.Add(deleteProfile);
+                                    break;
+
+                                case 3:
+                                    listProfileNum = 1;
+
+                                    ProfilesList3.Children.Add(SMIcon);
+                                    ProfilesList3.Children.Add(SMProfileName);
+                                    ProfilesList3.Children.Add(deleteProfile);
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
             //Marcar o desmarcar la box predeterminada
             void CheckDefaultBox(object sender, EventArgs e)
             {
+                string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
+                                            "join dbo.Box_ProfileEmail on" +
+                                            "(dbo.ProfileEmails.ProfileEmailId = dbo.Box_ProfileEmail.ProfileEmailId) "+
+                                            "where dbo.Box_ProfileEmail.BoxId = " + _boxId;
+                string queryGetBoxPhone = "select * from dbo.ProfilePhones " +
+                                            "join dbo.Box_ProfilePhone on" +
+                                            "(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) "+
+                                            "where dbo.Box_ProfilePhone.BoxId = " + _boxId;
+                string queryGetBoxSMProfiles = "select * from dbo.ProfileSMs " +
+                                                "join dbo.Box_ProfileSM on" +
+                                                "(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
+                                                "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
+                                                "where dbo.Box_ProfileSM.BoxId = " + _boxId;
+
+                //Borrar box predeterminada anterior
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.DeleteAll<BoxLocal>();
+                }
+                //Borrar perfiles de box predeterminada anteriores
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.DeleteAll<ProfileLocal>();
+                }
+
+                //Crear box local predeterminada
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.CreateTable<BoxLocal>();
+                    conn.Insert(boxLocal);
+                }
+
+                //Crear tabla de perfiles de box local predeterminada
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.CreateTable<ProfileLocal>();
+                }
+
+
+                //Consulta para obtener perfiles email
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryGetBoxEmail);
+
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProfileLocal emailProfile = new ProfileLocal
+                                {
+                                    IdBox = _boxId,
+                                    UserId = (int)reader["UserId"],
+                                    ProfileName = (string)reader["Name"],
+                                    value = (string)reader["Email"],
+                                    ProfileType = "Email"
+                                };
+                                //Crear perfil de correo de box local predeterminada
+                                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                {
+                                    conn.Insert(emailProfile);
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+
+                //Consulta para obtener perfiles teléfono
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryGetBoxPhone);
+
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProfileLocal phoneProfile = new ProfileLocal
+                                {
+                                    IdBox = _boxId,
+                                    UserId = (int)reader["UserId"],
+                                    ProfileName = (string)reader["Name"],
+                                    value = (string)reader["Number"],
+                                    ProfileType = "Phone"
+                                };
+                                //Crear perfil de teléfono de box local predeterminada
+                                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                {
+                                    conn.Insert(phoneProfile);
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+
+                //Consulta para obtener perfiles de redes sociales
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryGetBoxSMProfiles);
+
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProfileLocal smProfile = new ProfileLocal
+                                {
+                                    IdBox = _boxId,
+                                    UserId = (int)reader["UserId"],
+                                    ProfileName = (string)reader["ProfileName"],
+                                    value = (string)reader["link"],
+                                    ProfileType = (string)reader["Name"]
+                                };
+                                //Crear perfil de teléfono de box local predeterminada
+                                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                {
+                                    conn.Insert(smProfile);
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+
+
+
                 //Consulta para predeterminar la box actual
                 using (SqlConnection connection = new SqlConnection(cadenaConexion))
                 {
@@ -500,9 +777,12 @@ namespace Mynfo.Views
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId)
         {
+            /*var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));*/
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));
+            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId));
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)
@@ -539,14 +819,14 @@ namespace Mynfo.Views
         private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)
         {
             //Borrar la relación de la box con el teléfono
-            string queryUpdateBoxName = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId + " and dbo.Box_ProfilePhone.ProfilePhoneId = " + _PhoneId;
+            string queryDeleteBoxPhone = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId + " and dbo.Box_ProfilePhone.ProfilePhoneId = " + _PhoneId;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
 
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
                 sb = new System.Text.StringBuilder();
-                sb.Append(queryUpdateBoxName);
+                sb.Append(queryDeleteBoxPhone);
                 string sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
@@ -562,14 +842,37 @@ namespace Mynfo.Views
         private void DeleteBoxEmail(object sender, EventArgs e, int _BoxId, int _EmailId)
         {
             //Borrar la relación de la box con el correo
-            string queryUpdateBoxName = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId + " and dbo.Box_ProfileEmail.ProfileEmailId = " + _EmailId;
+            string queryDeleteBoxEmail = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId + " and dbo.Box_ProfileEmail.ProfileEmailId = " + _EmailId;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
 
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
                 sb = new System.Text.StringBuilder();
-                sb.Append(queryUpdateBoxName);
+                sb.Append(queryDeleteBoxEmail);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+        }
+
+        private void DeleteBoxSM(object sender, EventArgs e, int _BoxId, int _SMId)
+        {
+            //Borrar la relación de la box con el correo
+            string queryDeleteBoxSM = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId + " and dbo.Box_ProfileSM.ProfileMSId = " + _SMId;
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            StringBuilder sb;
+
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryDeleteBoxSM);
                 string sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
