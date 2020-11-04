@@ -456,8 +456,8 @@
   <data name="DetailBox" xml:space="preserve">
     <value>Box details</value>
   </data>
-  <data name="ProfileEmail" xml:space="preserve">
-    <value>Email profile</value>
+  <data name="CreateProfileEmail" xml:space="preserve">
+    <value>Create email profile.</value>
   </data>
   <data name="PhoneProfileList" xml:space="preserve">
     <value>Phone profile list</value>
@@ -476,5 +476,23 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="ExampleEmail" xml:space="preserve">
+    <value>example@domain.com</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Profile url</value>
+  </data>
+  <data name="NProfilePlaceH" xml:space="preserve">
+    <value>Business, Personal, Friends.</value>
+  </data>
+  <data name="EditEmail" xml:space="preserve">
+    <value>Edit email profile.</value>
+  </data>
+  <data name="EditPhone" xml:space="preserve">
+    <value>Edit phone profile.</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
   </data>
 </root>

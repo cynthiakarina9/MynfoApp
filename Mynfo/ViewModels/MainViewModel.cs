@@ -93,6 +93,12 @@
             set;
         }
 
+        public ForeingBoxViewModel ForeingBox
+        { 
+            get; 
+            set; 
+        }
+
         public HomeViewModel Home
         {
             get;

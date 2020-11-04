@@ -412,5 +412,14 @@
             //await Launcher.OpenAsync(new Uri("instagram:page_id//user?username=rodritoachee"));
             //await Launcher.OpenAsync(new Uri("mailto:rrodriguez@atx.com"));
         }
+
+        private async void ForeingBoxes_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ForeingBox = new ForeingBoxViewModel();
+            await Navigation.PushAsync(new ForeingBoxPage());
+
+        }
+
     }
 }

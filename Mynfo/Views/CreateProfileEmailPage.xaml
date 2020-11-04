@@ -5,26 +5,16 @@
              x:Class="Mynfo.Views.CreateProfileEmailPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "20">
-            <StackLayout 
-                HorizontalOptions = "Start">
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "18"
-                    HorizontalOptions = "Start"
-                    Text = "{i18n:Translate ProfileEmail}"
-                    TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions = "End">
-                <Image 
-                    HeightRequest = "20"
-                    HorizontalOptions = "End"
-                    Source = "logo_superior.png" 
-                    WidthRequest = "75" >
-                </Image>
-            </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image 
+                Margin = "0,0,80,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "75"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -32,70 +22,81 @@
                 BindingContext = "{Binding CreateProfileEmail}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height = "100"/>
-                    <RowDefinition Height = "150"/>
+                    <RowDefinition Height = "80"/>
+                    <RowDefinition Height = "160"/>
                     <RowDefinition Height = "120"/>
                     <RowDefinition Height = "80"/>
                     <RowDefinition />
                     <RowDefinition Height = "120"/>
                 </Grid.RowDefinitions>
-                <Image 
-                        Source = "mail1"
-                        HeightRequest = "150"
-                        WidthRequest = "150"
-                        Grid.Row = "1"/>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "25"
+                    Grid.ColumnSpan ="1"
+                    Grid.Row = "0"
+                    HorizontalOptions = "Center"
+                    Text = "{i18n:Translate CreateProfileEmail}"
+                    TextColor = "{StaticResource MainColor}"
+                    VerticalOptions = "Center"/>
+                <Image
+                    HeightRequest = "180"
+                    Source = "mail2"
+                    Grid.Row = "1"
+                    WidthRequest = "180"/>
                 <StackLayout 
-                        Grid.Row = "2"
-                        Padding = "20">
+                    Grid.Row = "2"
+                    Padding = "20">
                     <Label 
-                            FontSize = "24" 
-                            FontAttributes="Bold"
-                            HorizontalOptions = "Center"
-                            Text = "{i18n:Translate NameProfile}" 
-                            VerticalOptions = "Center"/>
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate NameProfile}" 
+                        VerticalOptions = "Center"/>
                     <Entry 
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
-                            FontSize = "21"
-                            HorizontalTextAlignment = "Center"
-                            HeightRequest = "40"
-                            HorizontalOptions = "Center"
-                            MaxLength = "10"
-                            Text = "{Binding Name}"
-                            VerticalOptions = "Center" 
-                            WidthRequest = "300" />
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        FontSize = "21"
+                        HorizontalTextAlignment = "Center"
+                        HeightRequest = "46"
+                        HorizontalOptions = "Center"
+                        MaxLength = "10"
+                        Placeholder = "{i18n:Translate NProfilePlaceH}"
+                        Text = "{Binding Name}"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300" />
                 </StackLayout>
                 <StackLayout 
                         Grid.Row = "3">
                     <Label 
-                            FontSize = "24" 
-                            FontAttributes="Bold"
-                            HorizontalOptions = "Center"
-                            VerticalOptions = "Center" 
-                            Text = "{i18n:Translate EMail}" />
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center" 
+                        Text = "{i18n:Translate EMail}" />
                     <Entry 
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
-                            FontSize = "21"
-                            HorizontalTextAlignment = "Center"
-                            HeightRequest = "40"
-                            HorizontalOptions = "Center"
-                            Keyboard = "Email"
-                            Text = "{Binding Email}"
-                            VerticalOptions = "Center" 
-                            WidthRequest = "300" />
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        FontSize = "21"
+                        HorizontalTextAlignment = "Center"
+                        HeightRequest = "46"
+                        HorizontalOptions = "Center"
+                        Keyboard = "Email"
+                        Placeholder = "{i18n:Translate ExampleEmail}"
+                        Text = "{Binding Email}"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300" />
                 </StackLayout>
                 <StackLayout
-                        Grid.Row = "4"
-                        Padding = "40">
+                    Grid.Row = "4"
+                    Padding = "40">
                     <Button 
-                            BackgroundColor = "{StaticResource MainColor}"
-                            BorderRadius = "23"
-                            Command = "{Binding SaveProfileEmailCommand}"
-                            HeightRequest = "50"
-                            HorizontalOptions = "Center"
-                            Text = "{i18n:Translate Save}"
-                            TextColor = "{StaticResource Dark_FontColor}"
-                            VerticalOptions = "Center"
-                            WidthRequest = "150" />
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Command = "{Binding SaveProfileEmailCommand}"
+                        HeightRequest = "50"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate Save}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" />
                 </StackLayout>
             </Grid>
         </ScrollView>

@@ -4,19 +4,28 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.HomePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <!--<NavigationPage.TitleView>
-        <Grid RowSpacing="0" ColumnSpacing="2" Padding="0" BackgroundColor="Transparent">
+    <NavigationPage.TitleView>
+        <Grid 
+            Padding = "0" 
+            BackgroundColor = "Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button  ImageSource="logo_superior4" HeightRequest="5" WidthRequest="10" />
-            <Button Grid.Column="2" Text="Recividas" FontAttributes="Bold" FontSize="16" TextColor="Black"  BackgroundColor="Transparent"/>
+            <Label
+                Grid.Column = "0"
+                Text = "{Binding User.FullName, Mode = TwoWay}" 
+                TextColor="White"
+                VerticalOptions = "Center"/>
+            <ImageButton  
+                BackgroundColor = "Transparent"
+                Clicked = "ForeingBoxes_Clicked"
+                Grid.Column = "2" 
+                HeightRequest = "30"
+                Source = "Conections"
+                WidthRequest = "30"/>
         </Grid>
-    </NavigationPage.TitleView>-->
-    <NavigationPage.TitleView>
-        <Label Text = "{Binding User.FullName, Mode = TwoWay}" TextColor="White"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView
