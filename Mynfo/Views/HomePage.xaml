@@ -24,6 +24,7 @@
                 Grid.Column = "2" 
                 HeightRequest = "30"
                 Source = "Conections"
+                VerticalOptions = "End"
                 WidthRequest = "30"/>
         </Grid>
     </NavigationPage.TitleView>
