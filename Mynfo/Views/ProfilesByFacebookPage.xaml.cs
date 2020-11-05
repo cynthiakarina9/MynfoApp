@@ -39,7 +39,7 @@
                             var Line = new BoxView();
 
                             FacebookProfile.Text = (string)reader["ProfileName"];
-                            FacebookProfile.FontSize = 15;
+                            FacebookProfile.FontSize = 25;
                             FacebookProfile.FontAttributes = FontAttributes.Bold;
 
                             /*deleteProfile.Text = "B";

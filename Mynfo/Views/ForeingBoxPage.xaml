@@ -13,13 +13,14 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="180"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -38,7 +39,6 @@
                         VerticalOptions = "Center">
                         <Label 
                             FontSize = "20"
-                            FontAttributes = "None"
                             HorizontalOptions = "Center"
                             Padding = "15"
                             Text = "{Binding User.FullName, StringFormat = '{0}'}"
@@ -48,6 +48,8 @@
                         Grid.Row="2"
                         Grid.ColumnSpan="1">
                         <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>

@@ -35,7 +35,6 @@
                 Padding = "15"
                 VerticalOptions="Center">
                 <controls:CircleImage 
-                    Aspect = "AspectFill"
                     HeightRequest = "200"
                     Source = "{Binding ImageSource}">
                     <controls:CircleImage.GestureRecognizers>
