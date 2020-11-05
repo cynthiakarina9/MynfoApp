@@ -38,7 +38,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
-                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
                     <!--Titulo-->
@@ -50,7 +49,7 @@
 
                     <Label 
                         Grid.Row = "0" 
-                        Grid.ColumnSpan = "3" 
+                        Grid.ColumnSpan = "2" 
                         Text = "{i18n:Translate ChooseTypeProfile}"
                         FontSize = "25"
                         FontAttributes="Bold"
@@ -74,8 +73,8 @@
                         Source = "mail1.png"   
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
-                        WidthRequest = "80"
-                        HeightRequest = "80"
+                        WidthRequest = "150"
+                        HeightRequest = "150"
                         Margin = "25"
                         x:Name="ProfilesEmail"/>
 
@@ -91,30 +90,30 @@
                         Grid.Row="1"
                         Grid.Column = "1"
                         BackgroundColor = "Transparent"
-                        HeightRequest = "80"
+                        HeightRequest = "150"
                         Source = "whatsapp1.png"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
-                        WidthRequest = "80"
+                        WidthRequest = "150"
                         x:Name="ProfilesPhone"/>
 
                     <!--BoxView 3-->
 
                     <BoxView 
-                        Grid.Row="1"
-                        Grid.Column="2"
+                        Grid.Row="2"
+                        Grid.Column="0"
                         Color="Transparent"                 
                         CornerRadius="15" />
 
                     <ImageButton 
-                        Grid.Row="1"
-                        Grid.Column = "2"
+                        Grid.Row="2"
+                        Grid.Column = "0"
                         BackgroundColor = "Transparent"
-                        HeightRequest = "80"
+                        HeightRequest = "150"
                         Source = "facebook1.png"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
-                        WidthRequest = "80"
+                        WidthRequest = "150"
                         x:Name="ProfilesFacebook"/>
                 </Grid>
             </Grid>

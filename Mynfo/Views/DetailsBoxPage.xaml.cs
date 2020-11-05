@@ -68,9 +68,6 @@ namespace Mynfo.Views
                 }
             }
 
-            //Navegación a ventana de perfiles
-            BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId));
-
             //Asignación de querys
             consultaDefault = "select * from dbo.Boxes where dbo.Boxes.BoxId = " + BoxId;
             queryUpdatesetDefault = "update dbo.Boxes set BoxDefault = 1 where dbo.Boxes.UserId =" + UserID + " and dbo.Boxes.BoxId =" + BoxId;
@@ -141,6 +138,10 @@ namespace Mynfo.Views
                 BxSaveName.BackgroundColor = Color.FromHex("#AAAAAA");
                 BxBtnDelete.BackgroundColor = Color.FromHex("#AAAAAA");
             }
+
+
+            //Navegación a ventana de perfiles
+            BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault));
 
             //Creación del botón para volver a home
             bxBtnHome.BackgroundColor = Color.Transparent;
@@ -415,9 +416,9 @@ namespace Mynfo.Views
                             switch(SMType)
                             {
                                 case "Facebook":
-                                    SMIcon.Source = "facebook1.png";
-                                    SMIcon.WidthRequest = 80;
-                                    SMIcon.HeightRequest = 80;
+                                    SMIcon.Source = "facebook2.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
                                     SMIcon.HorizontalOptions = LayoutOptions.Center;
                                     SMIcon.IsEnabled = false;
 
@@ -752,10 +753,25 @@ namespace Mynfo.Views
                         connection.Close();
                     }
 
+                    //Si la box es predeterminada
                     if(_BoxDefault == true)
                     {
+                        //Borrar box predeterminada anterior
+                        using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                        {
+                            conn.DeleteAll<BoxLocal>();
+                        }
+                        //Borrar perfiles de box predeterminada anteriores
+                        using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                        {
+                            conn.DeleteAll<ProfileLocal>();
+                        }
+
                         string sqlUpdateBoxDefault = "update top (1) dbo.Boxes set BoxDefault = 1 where dbo.Boxes.UserId = " + _UserId;
-                        
+                        BoxLocal boxLocal;
+                        bool boxLocalExists = false;
+                        int boxIdLocal = 0;
+
                         //Definir nueva box default
                         sb = new System.Text.StringBuilder();
                         sb.Append(sqlUpdateBoxDefault);
@@ -767,6 +783,179 @@ namespace Mynfo.Views
                             command.ExecuteNonQuery();
                             connection.Close();
                         }
+
+
+                        string sqlGetNewDefault = "select * from dbo.Boxes " + 
+                                                    "where dbo.Boxes.UserId = " + _UserId  +
+                                                    "and dbo.Boxes.BoxDefault = 1";
+
+                        //Definir nueva box default
+                        sb = new System.Text.StringBuilder();
+                        sb.Append(sqlGetNewDefault);
+                        sql = sb.ToString();
+                        //Creación de nueva box local
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            connection.Open();
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    boxLocal = new BoxLocal
+                                    {
+                                        BoxId = (int)reader["BoxId"],
+                                        BoxDefault = true,
+                                        Name = (String)reader["Name"],
+                                        UserId = MainViewModel.GetInstance().User.UserId,
+                                        Time = (DateTime)reader["Time"],
+                                        FirstName = MainViewModel.GetInstance().User.FirstName,
+                                        LastName = MainViewModel.GetInstance().User.LastName,
+                                        ImagePath = MainViewModel.GetInstance().User.ImagePath,
+                                        UserTypeId = MainViewModel.GetInstance().User.UserTypeId
+                                    };
+                                    //Crear box local predeterminada
+                                    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                    {
+                                        conn.CreateTable<BoxLocal>();
+                                        conn.Insert(boxLocal);
+                                    }
+                                    //Crear tabla de perfiles de box local predeterminada
+                                    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                    {
+                                        conn.CreateTable<ProfileLocal>();
+                                    }
+                                    boxLocalExists = true;
+                                    boxIdLocal = (int)reader["BoxId"];
+                                }
+                            }
+
+                            connection.Close();
+                        }
+
+                        //Si se creo la box local, procedo a crear los perfiles locales
+                        if(boxLocalExists == true)
+                        {
+                            //Creación de perfiles locales de box local
+                            string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
+                                            "join dbo.Box_ProfileEmail on" +
+                                            "(dbo.ProfileEmails.ProfileEmailId = dbo.Box_ProfileEmail.ProfileEmailId) " +
+                                            "where dbo.Box_ProfileEmail.BoxId = " + boxIdLocal;
+                            string queryGetBoxPhone = "select * from dbo.ProfilePhones " +
+                                                        "join dbo.Box_ProfilePhone on" +
+                                                        "(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) " +
+                                                        "where dbo.Box_ProfilePhone.BoxId = " + boxIdLocal;
+                            string queryGetBoxSMProfiles = "select * from dbo.ProfileSMs " +
+                                                            "join dbo.Box_ProfileSM on" +
+                                                            "(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
+                                                            "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
+                                                            "where dbo.Box_ProfileSM.BoxId = " + boxIdLocal;
+
+                            //Consulta para obtener perfiles email
+                            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                            {
+                                sb = new System.Text.StringBuilder();
+                                sb.Append(queryGetBoxEmail);
+
+                                sql = sb.ToString();
+
+                                using (SqlCommand command = new SqlCommand(sql, conn))
+                                {
+                                    conn.Open();
+                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            ProfileLocal emailProfile = new ProfileLocal
+                                            {
+                                                IdBox = boxIdLocal,
+                                                UserId = (int)reader["UserId"],
+                                                ProfileName = (string)reader["Name"],
+                                                value = (string)reader["Email"],
+                                                ProfileType = "Email"
+                                            };
+                                            //Crear perfil de correo de box local predeterminada
+                                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                            {
+                                                connSQLite.Insert(emailProfile);
+                                            }
+                                        }
+                                    }
+
+                                    conn.Close();
+                                }
+                            }
+
+                            //Consulta para obtener perfiles teléfono
+                            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                            {
+                                sb = new System.Text.StringBuilder();
+                                sb.Append(queryGetBoxPhone);
+
+                                sql = sb.ToString();
+
+                                using (SqlCommand command = new SqlCommand(sql, conn))
+                                {
+                                    conn.Open();
+                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            ProfileLocal phoneProfile = new ProfileLocal
+                                            {
+                                                IdBox = boxIdLocal,
+                                                UserId = (int)reader["UserId"],
+                                                ProfileName = (string)reader["Name"],
+                                                value = (string)reader["Number"],
+                                                ProfileType = "Phone"
+                                            };
+                                            //Crear perfil de teléfono de box local predeterminada
+                                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                            {
+                                                connSQLite.Insert(phoneProfile);
+                                            }
+                                        }
+                                    }
+
+                                    conn.Close();
+                                }
+                            }
+
+                            //Consulta para obtener perfiles de redes sociales
+                            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                            {
+                                sb = new System.Text.StringBuilder();
+                                sb.Append(queryGetBoxSMProfiles);
+
+                                sql = sb.ToString();
+
+                                using (SqlCommand command = new SqlCommand(sql, conn))
+                                {
+                                    conn.Open();
+                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            ProfileLocal smProfile = new ProfileLocal
+                                            {
+                                                IdBox = boxIdLocal,
+                                                UserId = (int)reader["UserId"],
+                                                ProfileName = (string)reader["ProfileName"],
+                                                value = (string)reader["link"],
+                                                ProfileType = (string)reader["Name"]
+                                            };
+                                            //Crear perfil de teléfono de box local predeterminada
+                                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                            {
+                                                connSQLite.Insert(smProfile);
+                                            }
+                                        }
+                                    }
+
+                                    conn.Close();
+                                }
+                            }
+                        }
+
                     }
                 }
 
@@ -777,14 +966,14 @@ namespace Mynfo.Views
             }
         }
 
-        private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId)
+        private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault)
         {
             /*var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));*/
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId));
+            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault));
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)

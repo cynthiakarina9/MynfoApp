@@ -53,7 +53,8 @@
                             Placeholder = "{i18n:Translate NProfilePlaceH}"
                             Text = "{Binding Name}"
                             VerticalOptions = "Center" 
-                            WidthRequest = "300" />
+                            WidthRequest = "300" 
+                            x:Name="ProfileName"/>
                 </StackLayout>
                 <StackLayout 
                         Grid.Row = "3">
@@ -71,7 +72,8 @@
                             HorizontalOptions = "Center"
                             Text = "{Binding Link}"
                             VerticalOptions = "Center" 
-                            WidthRequest = "300"/>
+                            WidthRequest = "300" 
+                            x:Name="ProfileLink"/>
                 </StackLayout>
                 <Button 
                         BackgroundColor="{StaticResource MainColor}"
@@ -83,7 +85,20 @@
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
                         HorizontalOptions = "Center"
-                        WidthRequest ="150"/>
+                        WidthRequest ="150"
+                    x:Name="Save"/>
+                <!-- Botón si viene de agregar perfiles a box -->
+                <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        HeightRequest = "50"
+                        Grid.Row = "5"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate Save}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" 
+                        x:Name="SaveWBox"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

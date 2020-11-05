@@ -63,7 +63,8 @@
                         Placeholder = "{i18n:Translate NProfilePlaceH}"
                         Text = "{Binding Name}"
                         VerticalOptions = "Center" 
-                        WidthRequest = "300" />
+                        WidthRequest = "300" 
+                        x:Name="ProfileName"/>
                 </StackLayout>
                 <StackLayout 
                         Grid.Row = "3">
@@ -83,7 +84,8 @@
                         Placeholder = "{i18n:Translate ExampleEmail}"
                         Text = "{Binding Email}"
                         VerticalOptions = "Center" 
-                        WidthRequest = "300" />
+                        WidthRequest = "300" 
+                        x:Name="ProfileMail"/>
                 </StackLayout>
                 <StackLayout
                     Grid.Row = "4"
@@ -97,7 +99,19 @@
                         Text = "{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
-                        WidthRequest = "150" />
+                        WidthRequest = "150" 
+                        x:Name="Save"/>
+                    <!-- Botón si viene de agregar perfiles a box -->
+                    <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        HeightRequest = "50"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate Save}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" 
+                        x:Name="SaveWBox"/>
                 </StackLayout>
             </Grid>
         </ScrollView>
