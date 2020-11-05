@@ -7,22 +7,41 @@ namespace Mynfo.Models
 {
     public class Get_nfc
     {
-        [JsonProperty("nombre")]
-        public string Nombre { get; set; }
+        [JsonProperty("BoxId")]
+        public string boxId { get; set; }
 
-        [JsonProperty("apellido_paterno")]
-        public string Apellido_paterno { get; set; }
+        [JsonProperty("Name")]
+        public string name { get; set; }
 
-        [JsonProperty("apellido_materno")]
-        public string Apellido_materno { get; set; }
+        [JsonProperty("BoxDefault")]
+        public string boxDefault { get; set; }
 
-        [JsonProperty("id_usuario")]
-        public string Id_usuario { get; set; }
+        [JsonProperty("UserId")]
+        public string userId { get; set; }
 
-        [JsonProperty("id")]
-        public string Id { get; set; }
+        [JsonProperty("Time")]
+        public string time { get; set; }
 
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }                 
-}
+        [JsonProperty("ImagePath")]
+        public string imagePath { get; set; }
+
+        [JsonProperty("UserTypeId")]
+        public string userTypeId { get; set; }
+
+        [JsonProperty("FirstName")]
+        public string firstName { get; set; }
+
+        [JsonProperty("LastName")]
+        public string lastName { get; set; }
+
+        [JsonProperty("ImageFullPath")]
+        public string imageFullPath { get; set; }
+
+        [JsonProperty("FullName")]
+        public string fullName { get; set; }
+    }
+}                   
+
+
+
+

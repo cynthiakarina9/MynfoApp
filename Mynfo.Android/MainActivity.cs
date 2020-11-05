@@ -103,17 +103,56 @@
         {
             try
             {
-                var user = new UserLocal();
+                var Profile = new ProfileLocal();
+
+                var Box_Local = new BoxLocal();
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
-                    conn.CreateTable<UserLocal>();
-                    user = conn.Table<UserLocal>().FirstOrDefault();
+                    conn.CreateTable<ProfileLocal>();
+                    Profile = conn.Table<ProfileLocal>().FirstOrDefault();
 
+                    conn.CreateTable<BoxLocal>();
+                    Box_Local = conn.Table<BoxLocal>().FirstOrDefault();
+
+
+
+                    /*json = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+
+                           "¡{" 
+                              + @"""BoxId"":""" + Box_Local.BoxId + @""",
+                                ""Name"":""" + Box_Local.Name + @""",
+                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
+                                ""UserId"":""" + Box_Local.UserId + @""",
+                                ""Time"":""" + Box_Local.Time + @""",
+                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
+                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
+                                ""FirstName"":""" + Box_Local.FirstName + @""",
+                                ""LastName"":""" + Box_Local.LastName + @""",
+                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
+                                ""FullName"":""" + Box_Local.FullName + @""",
+                                ""ProfileLocalId"":""" + Profile.ProfileLocalId + @""",
+                                ""IdBox"":""" + Profile.IdBox + @""",
+                                ""UserId"":""" + Profile.UserId + @""",
+                                ""ProfileName"":""" + Profile.ProfileName + @""",
+                                ""value"":""" + Profile.value + @""",
+                                ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
+                                }";*/
 
                     json = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
 
-                           "¡{" + @"""nombre"":""" + user.FirstName + @""",""apellido_paterno"":""" + user.LastName + @""",""apellido_materno"":""X"",""id_usuario"":""" + user.UserId + @""",""id"":""253"",""url"":""https:www.facebook.com?id=243hi3r374h3""}";
-
+                               "¡{"
+                                  + @"""BoxId"":""" + Box_Local.BoxId + @""",
+                                ""Name"":""" + Box_Local.Name + @""",
+                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
+                                ""UserId"":""" + Box_Local.UserId + @""",
+                                ""Time"":""" + Box_Local.Time + @""",
+                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
+                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
+                                ""FirstName"":""" + Box_Local.FirstName + @""",
+                                ""LastName"":""" + Box_Local.LastName + @""",
+                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
+                                ""FullName"":""" + Box_Local.FullName + @"""                                                                                           
+                                }";
                 }
             }
             catch (Exception exx)
@@ -123,32 +162,7 @@
             }
 
             return json;
-        }
-
-        /*public void get_box()
-        {
-            string json;
-            try
-            {
-                var user = new UserLocal();
-                using (var conn = new SQLite.SQLiteConnection(App.root_db))
-                {
-                    conn.CreateTable<UserLocal>();
-                    user = conn.Table<UserLocal>().FirstOrDefault();
-
-                    json = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
-
-                           "¡{" + @"""nombre"":""" + user.FirstName + @""",""apellido_paterno"":""" + user.LastName + @""",""apellido_materno"":""X"",""id_usuario"":""" + user.UserId + @""",""id"":""253"",""url"":""https:www.facebook.com?id=243hi3r374h3""}";
-                }
-            }
-            catch (Exception exx)
-            {
-                Console.Write(exx);
-                json = null;
-            }
-
-            Get_BoxSent.json_get = json;
-        }*/
+        }        
 
         protected override void OnResume()
         {
@@ -251,7 +265,7 @@
 
             try 
             {
-                //get_box();
+                get_box();
                 NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { CreateMimeRecord (
                 "application/com.example.android.beam", Encoding.UTF8.GetBytes(json.ToString()))
