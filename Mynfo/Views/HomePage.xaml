@@ -133,6 +133,10 @@
                     VerticalOptions = "Center"
                     WidthRequest = "60"
                     x:Name="CreateBoxBtn"/>
+                <Label
+                    x:Name="Test">
+                    
+                </Label>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
