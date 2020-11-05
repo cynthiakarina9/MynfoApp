@@ -1,25 +1,24 @@
 ﻿namespace Mynfo.Views
 {
-    using System.Collections.Generic;
+    using System;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
-    using Models;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListForeignBoxPage : ContentPage
     {
-        public IList<ForeingBox> foreingBoxe { get; private set; }
+        #region Contructor
         public ListForeignBoxPage()
-        {
-            
-            InitializeComponent();
-            foreingBoxe = new List<ForeingBox>();
-            foreingBoxe.Add(new ForeingBox
-            {
-                
-
-            });
-
+        {           
+            InitializeComponent();          
         }
+        #endregion
+
+        #region Commands
+        private async void ViewProfile_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ForeingBoxPage());
+        }
+        #endregion
     }
 }

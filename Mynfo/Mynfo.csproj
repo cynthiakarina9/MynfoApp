@@ -59,8 +59,8 @@
     <Compile Update="Views\ProfilesBYPESMPage.xaml.cs">
       <DependentUpon>ProfilesBYPESMPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ProfilesBySMPage.xaml.cs">
-      <DependentUpon>ProfilesBySMPage.xaml</DependentUpon>
+    <Compile Update="Views\ProfilesByFacebookPage.xaml.cs">
+      <DependentUpon>ProfilesByFacebookPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\ProfilesPage.xaml.cs">
       <DependentUpon>ProfilesPage.xaml</DependentUpon>
@@ -141,7 +141,7 @@
     <EmbeddedResource Update="Views\ProfilesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProfilesBySMPage.xaml">
+    <EmbeddedResource Update="Views\ProfilesByFacebookPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfileTypeSelection.xaml">

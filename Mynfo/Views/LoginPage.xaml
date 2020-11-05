@@ -106,7 +106,7 @@
                     Orientation = "Horizontal"
                     VerticalOptions = "EndAndExpand">
                     <Image
-                        Source = "facebook1"
+                        Source = "facebook2"
                         WidthRequest = "45">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command = "{Binding LoginFacebookComand}"/>

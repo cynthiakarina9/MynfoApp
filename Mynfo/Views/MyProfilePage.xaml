@@ -12,7 +12,7 @@
                 HorizontalOptions="Start">
                 <Label 
                     FontAttributes = "Bold"
-                    FontSize = "19"
+                    FontSize = "18"
                     HorizontalOptions = "Start"
                     Text = "{i18n:Translate MyAccount}"
                     TextColor = "{StaticResource Dark_FontColor}"/>

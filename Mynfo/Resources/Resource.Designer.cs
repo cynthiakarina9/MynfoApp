@@ -529,6 +529,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of Facebook profiles..
+        /// </summary>
+        public static string FacebookProfileList {
+            get {
+                return ResourceManager.GetString("FacebookProfileList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First Name.
         /// </summary>
         public static string FirstNameLabel {
@@ -1020,6 +1029,15 @@ namespace Mynfo.Resources {
         public static string Profiles {
             get {
                 return ResourceManager.GetString("Profiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received Boxes..
+        /// </summary>
+        public static string ReceivedBoxes {
+            get {
+                return ResourceManager.GetString("ReceivedBoxes", resourceCulture);
             }
         }
         
