@@ -495,4 +495,10 @@
   <data name="EditPhone" xml:space="preserve">
     <value>Editar perfil de teléfono.</value>
   </data>
+  <data name="FacebookProfileList" xml:space="preserve">
+    <value>Lista de perfiles de Facebook.</value>
+  </data>
+  <data name="ReceivedBoxes" xml:space="preserve">
+    <value>Boxes recividas.</value>
+  </data>
 </root>

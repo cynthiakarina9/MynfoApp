@@ -6,7 +6,7 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
-            HeightRequest = "20">
+            HeightRequest = "25">
             <StackLayout 
                 HorizontalOptions="Start">
                 <Label 

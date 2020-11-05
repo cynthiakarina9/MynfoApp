@@ -38,12 +38,6 @@
             get { return this.box; }
             set { SetValue(ref this.box, value); }
         }
-        public ProfileEmail ProfileEmail
-        {
-            get { return this.profileEmail; }
-            set { SetValue(ref this.profileEmail, value); }
-
-        }
         #endregion
 
         #region ViewModels
@@ -104,6 +98,11 @@
             get;
             set;
         }
+        public ListForeignBoxViewModel ListForeignBox
+        {
+            get;
+            set;
+        }
         public LoginViewModel Login
         {
             get;
@@ -143,7 +142,11 @@
             get;
             set;
         }
-
+        public ProfilesByFacebookViewModel ProfilesByFacebook
+        {
+            get;
+            set;
+        }
         public RegisterViewModel Register
         {
             get;

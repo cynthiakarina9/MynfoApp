@@ -36,6 +36,7 @@
                         Grid.ColumnSpan ="1"
                         Grid.Row = "0"
                         HorizontalOptions = "Center"
+                        HorizontalTextAlignment = "Center"
                         Text = "{i18n:Translate EditEmail}"
                         TextColor = "{StaticResource MainColor}"
                         VerticalOptions = "Center"/>

@@ -420,8 +420,8 @@
         private async void ForeingBoxes_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.ForeingBox = new ForeingBoxViewModel();
-            await Navigation.PushAsync(new ForeingBoxPage());
+            mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
+            await Navigation.PushAsync(new ListForeignBoxPage());
 
         }
 

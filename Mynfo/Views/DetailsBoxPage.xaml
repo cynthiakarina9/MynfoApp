@@ -104,6 +104,7 @@
                 VerticalOptions = "End"
                 HorizontalOptions = "Center"
                 BackgroundColor = "Transparent"
+                Margin = "15"
                 Source = "plus"   
                 x:Name="BoxProfiles"/>
         </Grid>

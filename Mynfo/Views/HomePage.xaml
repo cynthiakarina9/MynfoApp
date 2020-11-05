@@ -122,14 +122,14 @@
                 <BoxView 
                     Grid.ColumnSpan = "3"
                     Grid.Row = "4"/>
-                <Button
+                <ImageButton
                     BackgroundColor = "Transparent"
                     Clicked = "CreateBox_Clicked"
                     Grid.ColumnSpan = "3"
                     Grid.Row = "4"
                     HeightRequest = "60"
                     HorizontalOptions ="Center"
-                    ImageSource = "Plus"
+                    Source = "Plus"
                     VerticalOptions = "Center"
                     WidthRequest = "60"
                     x:Name="CreateBoxBtn"/>

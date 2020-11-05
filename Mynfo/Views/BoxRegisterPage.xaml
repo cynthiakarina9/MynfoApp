@@ -45,14 +45,15 @@
                     VerticalOptions = "Center" />
                 <Entry 
                     BackgroundColor = "{StaticResource LoginEntryColor}"
-                    FontSize = "20"
+                    FontSize = "18"
                     Grid.Row = "2"
+                    HeightRequest = "50"
                     HorizontalOptions = "Center"
                     HorizontalTextAlignment = "Center"
                     MaxLength="10"
                     Text = "{Binding Name}"
                     VerticalOptions = "Center"
-                    WidthRequest = "250"/>
+                    WidthRequest = "300"/>
                 <Button 
                     BackgroundColor = "{StaticResource MainColor}"
                     BorderRadius = "23"

@@ -11,7 +11,7 @@
                 HorizontalOptions="Start">
                 <Label 
                     FontAttributes = "Bold"
-                    FontSize = "19"
+                    FontSize = "16"
                     HorizontalOptions = "Start"
                     Text = "{i18n:Translate MyProfiles}"
                     TextColor = "{StaticResource Dark_FontColor}"/>
@@ -35,7 +35,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.3*"/>
                         <RowDefinition Height = "150"/>
-                        <RowDefinition />
+                        <RowDefinition Height = "150"/>
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
@@ -78,7 +78,6 @@
                         VerticalOptions = "Center"
                         WidthRequest = "150"
                         HeightRequest = "150"
-                        Margin = "25"
                         Clicked = "EmailProfile_Clicked"/>
 
                     <!--BoxView 2-->

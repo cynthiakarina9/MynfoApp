@@ -20,8 +20,7 @@
     <ContentPage.Content>
         <Grid>
             <RefreshView IsRefreshing="{Binding IsRefreshing}"
-                 Command="{Binding RefreshCommand}"
-                 RefreshColor="Orange"> 
+                 Command="{Binding RefreshCommand}"> 
                 <ScrollView
                     BindingContext = "{Binding ProfilesByEmail}">
                     <Grid>
@@ -34,38 +33,37 @@
                         <!--Titulo-->
 
                         <Label 
-                        Grid.Row = "0" 
-                        Text = "{i18n:Translate EmailProfileList}"
-                        FontSize = "25"
-                        FontAttributes="Bold"
-                        TextColor = "{StaticResource MainColor}"
-                        HorizontalOptions = "CenterAndExpand"
-                        VerticalOptions = "EndAndExpand"  
-                        Margin = "0,5,0,15"/>
+                            Grid.Row = "0" 
+                            Text = "{i18n:Translate EmailProfileList}"
+                            FontSize = "25"
+                            FontAttributes="Bold"
+                            TextColor = "{StaticResource MainColor}"
+                            HorizontalOptions = "CenterAndExpand"
+                            VerticalOptions = "EndAndExpand"  
+                            Margin = "0,5,0,15"/>
 
                         <!--End Titulo-->
 
                         <!-- Lista de correos -->
                         <StackLayout 
-                        Grid.Row="1"
-                        HorizontalOptions="FillAndExpand"
-                        Padding="25"
-                        x:Name="EmailList" />
-
-                        <!-- Botón de nuevo correo -->
-
+                            Grid.Row="1"
+                            HorizontalOptions="FillAndExpand"
+                            Padding="25"
+                            x:Name="EmailList" />
                     </Grid>
                 </ScrollView>
             </RefreshView>
+            <!-- Botón de nuevo correo -->
             <ImageButton
-                    Grid.Row="0"
-                    BackgroundColor = "Transparent"
-                    Clicked = "NewProfileEmail_Clicked"
-                    HeightRequest = "60"
-                    HorizontalOptions ="Center"
-                    Source = "Plus"
-                    VerticalOptions = "End"
-                    WidthRequest = "60" />
+                Grid.Row="0"
+                BackgroundColor = "Transparent"
+                Clicked = "NewProfileEmail_Clicked"
+                HeightRequest = "60"
+                HorizontalOptions ="Center"
+                Margin = "15"
+                Source = "Plus"
+                VerticalOptions = "End"
+                WidthRequest = "60" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
