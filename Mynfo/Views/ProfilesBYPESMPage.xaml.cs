@@ -38,10 +38,11 @@ namespace Mynfo.Views
                                             "dbo.Box_ProfilePhone.ProfilePhoneId FROM dbo.Box_ProfilePhone " +
                                             "where dbo.Box_ProfilePhone.BoxId = " + BoxId;
             queryGetFacebookProfiles = "SELECT dbo.ProfileSMs.ProfileMSId FROM dbo.ProfileSMs " +
-                                            "where dbo.ProfileSMs.UserId = " + UserId + " EXCEPT SELECT " +
+                                            "where dbo.ProfileSMs.UserId = " + UserId +
+                                            " and dbo.ProfileSMs.RedSocialId = 1 " +
+                                            " EXCEPT SELECT " +
                                             "dbo.Box_ProfileSM.ProfileMSId FROM dbo.Box_ProfileSM " +
-                                            "where dbo.ProfilesSms.RedSocialId = 1 " +
-                                            "and dbo.Box_ProfileSM.BoxId = " + BoxId;
+                                            "where dbo.Box_ProfileSM.BoxId = " + BoxId;
 
             #endregion
 

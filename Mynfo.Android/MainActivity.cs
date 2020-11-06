@@ -45,7 +45,7 @@
                 
         private NdefMessage ndefMessage;
         public NfcAdapter mNfcAdapter;
-        public string json;
+        public string json = Data_ntc.data_value;
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -56,6 +56,7 @@
             instance = this;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+            
             mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
             
             //Color de tema
@@ -65,7 +66,7 @@
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //ShortcutBadger.ApplyCount();
-            onCreate();            
+            onCreate();
             LoadApplication(new App(dbRoot));
             
         }
@@ -87,6 +88,7 @@
                     string[] Json = text.ToString().Split('¡');
                     string mesaje = Json[1].ToString();
                     get_nfc = JsonConvert.DeserializeObject<Get_nfc>(mesaje);
+
                 }
                 else
                 {
@@ -152,7 +154,7 @@
                                 ""LastName"":""" + Box_Local.LastName + @""",
                                 ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
                                 ""FullName"":""" + Box_Local.FullName + @"""                                                                                           
-                                }";
+                                },";
                 }
             }
             catch (Exception exx)
@@ -168,7 +170,7 @@
         {
             base.OnResume();
             try
-            {                                
+            {
                 if (mNfcAdapter != null)
                 {
                     var tagDetected = new IntentFilter(NfcAdapter.ActionTagDiscovered);//or try other Action type
@@ -177,13 +179,14 @@
                     var filters = new[] { tagDetected, tagDetectednDef, tagDetectedtech };
                     var intent = new Intent(this, this.GetType()).AddFlags(ActivityFlags.SingleTop);
                     var pendingIntent = PendingIntent.GetActivity(this, 0, intent, 0);
-                    mNfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);                    
-                }                                        
+                    mNfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-            }                      
+            }
+
         }              
 
         protected override void OnNewIntent(Intent intent)
@@ -219,53 +222,13 @@
         }
         
         protected void onCreate()
-        {
-            /*try
-            {                
-                string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-
-                using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(cadenaConexion))
-                {
-                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                    sb.Append("select * from dbo.Boxes JOIN dbo.Box_ProfileSM on(dbo.Box_ProfileSM.BoxId= dbo.Boxes.BoxId) JOIN dbo.ProfileSMs on(dbo.Box_ProfileSM.Box_ProfileSMId = dbo.ProfileSMs.ProfileMSId) where dbo.Boxes.UserId = 11"); ;
-                    string sql = sb.ToString();
-
-                    using (System.Data.SqlClient.SqlCommand command = new System.Data.SqlClient.SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        using (System.Data.SqlClient.SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                var vari1_1 = reader.GetString(0);
-                                var vari1_2 = reader.GetString(1);
-                                var vari1_3 = reader.GetString(1);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (System.Exception ec)
-            {
-                System.Console.WriteLine(ec);
-            }*/
-
-             
+        {                         
             DateTime time = DateTime.Now;
             var text = ("Beam me up!\n\n" +
-                            "Beam Time: " + time.ToString("DD/MM/YYYY HH:mm:ss"));                      
-
-            /*
-            json = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
-
-                           "¡{" + @"""nombre"":""Gerado"",""apellido_paterno"":""Daza"",""apellido_materno"":""Lopez"",""id_usuario"":""10253"",""id"":""253"",""url"":""https:www.facebook.com?id=243hi3r374h3""}";
-            */
-            
-           
-
+                            "Beam Time: " + time.ToString("DD/MM/YYYY HH:mm:ss"));
+            get_box();
             try 
-            {
-                get_box();
+            {                
                 NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { CreateMimeRecord (
                 "application/com.example.android.beam", Encoding.UTF8.GetBytes(json.ToString()))
@@ -277,13 +240,15 @@
                 NfcAdapter nfcAdapter = NfcAdapter.GetDefaultAdapter(this);
                 if (nfcAdapter == null) return;  // NFC not available on this device
                 nfcAdapter.SetNdefPushMessage(ndefMessage, this);
-                                            
+
+                nfcAdapter.SetNdefPushMessageCallback(null, this);
+
+
             }
             catch (Exception ex) 
             {
                 Console.WriteLine(ex);
-            }
-            
+            }            
         }
 
         public NdefRecord CreateMimeRecord(String mimeType, byte[] payload)
