@@ -164,12 +164,13 @@
             }
             //var vUpdatedPage = new ProfilesByPhonePage(); 
             //Navigation.InsertPageBefore(vUpdatedPage, this); 
-            //await App.Navigator.PopAsync(true);
+            await App.Navigator.PopAsync(true);
         }
-        protected void onAppearing()
-        {
-            int _ProfilePhoneId = 0;
-            var nueva = new EditProfilePhonePage(_ProfilePhoneId);
-        }
+        //protected void onAppearing()
+        //{
+        //    int _ProfilePhoneId = 0;
+        //    var nueva = new EditProfilePhonePage(_ProfilePhoneId);
+        //}
+        #endregion
     }
 }
