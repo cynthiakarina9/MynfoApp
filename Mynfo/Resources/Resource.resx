@@ -495,4 +495,10 @@
   <data name="Value" xml:space="preserve">
     <value>Value</value>
   </data>
+  <data name="FacebookProfileList" xml:space="preserve">
+    <value>List of Facebook profiles.</value>
+  </data>
+  <data name="ReceivedBoxes" xml:space="preserve">
+    <value>Received Boxes.</value>
+  </data>
 </root>

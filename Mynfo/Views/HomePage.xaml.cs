@@ -2,8 +2,10 @@
 {
     using Mynfo.Models;
     using Mynfo.ViewModels;
+    using SQLite;
     using System;
     using System.Data.SqlClient;
+    using System.IO;
     using Xamarin.Essentials;
     using Xamarin.Forms;
 
@@ -61,6 +63,7 @@
                     connection.Close();
                 }
             }
+
 
             //Segunda consulta para obtener box default
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -484,8 +487,8 @@
         private async void ForeingBoxes_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.ForeingBox = new ForeingBoxViewModel();
-            await Navigation.PushAsync(new ForeingBoxPage());
+            mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
+            await Navigation.PushAsync(new ListForeignBoxPage());
 
         }
 

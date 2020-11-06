@@ -534,5 +534,13 @@
         {
             get { return Resource.EditEmail; }
         }
+        public static string FacebookProfileList
+        {
+            get { return Resource.FacebookProfileList; }
+        }
+        public static string ReceivedBoxes
+        {
+            get { return Resource.ReceivedBoxes; }
+        }
     }
 }

@@ -1,12 +1,146 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers" 
              x:Class="Mynfo.Views.ListForeignBoxPage">
+    <NavigationPage.TitleView>
+        <Grid
+            HeightRequest = "20">
+            <StackLayout 
+                HorizontalOptions="Start">
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "18"
+                    HorizontalOptions = "Start"
+                    Text = "{i18n:Translate ReceivedBoxes}"
+                    TextColor = "{StaticResource Dark_FontColor}"/>
+            </StackLayout>
+            <StackLayout
+                HorizontalOptions = "End">
+                <Image 
+                    HeightRequest = "20"
+                    HorizontalOptions = "End"
+                    Source = "logo_superior.png" 
+                    WidthRequest = "75" >
+                </Image>
+            </StackLayout>
+        </Grid>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton 
+                    BackgroundColor = "Transparent"
+                    Clicked = "ViewProfile_Clicked"
+                    Grid.Row = "1"
+                    Grid.Column = "0"
+                    Source="usuario"
+                    HeightRequest = "60"
+                    HorizontalOptions = "Center"
+                    Margin = "50,0,0,0"
+                    VerticalOptions = "Center"
+                    WidthRequest = "60"/>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "21"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"
+                    Grid.Row = "1"
+                    Grid.Column = "1"
+                    Text = "Miguel Aleman"
+                    TextColor = "{StaticResource MainColor}"/>
+
+                <ImageButton 
+                    BackgroundColor = "Transparent"
+                    Grid.Row = "2"
+                    Grid.Column = "0"
+                    Source="usuario"
+                    HeightRequest = "60"
+                    HorizontalOptions = "Center"
+                    Margin = "50,0,0,0"
+                    VerticalOptions = "Center"
+                    WidthRequest = "60"/>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "21"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"
+                    Grid.Row = "2"
+                    Grid.Column = "1"
+                    Text = "Lucero Marin"
+                    TextColor = "{StaticResource MainColor}"/>
+
+                <ImageButton 
+                    BackgroundColor = "Transparent"
+                    Grid.Row = "3"
+                    Grid.Column = "0"
+                    Source="usuario"
+                    HeightRequest = "60"
+                    HorizontalOptions = "Center"
+                    Margin = "50,0,0,0"
+                    VerticalOptions = "Center"
+                    WidthRequest = "60"/>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "21"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"
+                    Grid.Row = "3"
+                    Grid.Column = "1"
+                    Text = "Marina Laredo"
+                    TextColor = "{StaticResource MainColor}"/>
+                
+                <ImageButton 
+                    BackgroundColor = "Transparent"
+                    Grid.Row = "4"
+                    Grid.Column = "0"
+                    Source="usuario"
+                    HeightRequest = "60"
+                    HorizontalOptions = "Center"
+                    Margin = "50,0,0,0"
+                    VerticalOptions = "Center"
+                    WidthRequest = "60"/>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "21"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"
+                    Grid.Row = "4"
+                    Grid.Column = "1"
+                    Text = "Luna Lena"
+                    TextColor = "{StaticResource MainColor}"/>
+                <ImageButton 
+                    BackgroundColor = "Transparent"
+                    Grid.Row = "5"
+                    Grid.Column = "0"
+                    Source="usuario"
+                    HeightRequest = "60"
+                    HorizontalOptions = "Center"
+                    Margin = "50,0,0,0"
+                    VerticalOptions = "Center"
+                    WidthRequest = "60"/>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "21"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"
+                    Grid.Row = "5"
+                    Grid.Column = "1"
+                    Text = "Roberto Santa Marina"
+                    TextColor = "{StaticResource MainColor}"/>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

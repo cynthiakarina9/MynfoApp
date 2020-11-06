@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.ProfilesByPhonePage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             x:Class="Mynfo.Views.ProfilesByFacebookPage">
     <NavigationPage.TitleView>
         <Grid>
             <Grid.RowDefinitions>
@@ -19,11 +18,10 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <ScrollView
-            BindingContext = "{Binding ProfilesByPhone}">
+            <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
+                        <RowDefinition Height="80"/>
                         <RowDefinition />
                         <RowDefinition Height="120"/>
                     </Grid.RowDefinitions>
@@ -32,29 +30,26 @@
 
                     <Label 
                         Grid.Row = "0" 
-                        Text = "{i18n:Translate PhoneProfileList}"
+                        Text = "{i18n:Translate FacebookProfileList}"
                         FontSize = "25"
                         FontAttributes="Bold"
                         TextColor = "{StaticResource MainColor}"
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions = "EndAndExpand"  
                         Margin = "0,5,0,15"/>
-
-                    <!--End Titulo-->
-
-                    <!--Lista de Teléfonos-->
+                    <!-- Lista de correos -->
                     <StackLayout 
                         Grid.Row="1"
                         HorizontalOptions="FillAndExpand"
                         Padding="25"
-                        x:Name="PhoneList" />
+                        x:Name="FacebookList" />
                 </Grid>
             </ScrollView>
-            <!--Botón para agregar nuevos teléfonos-->
+            <!-- Botón de nuevo correo -->
             <ImageButton
-                BackgroundColor = "Transparent"
                 Grid.Row="0"
-                Clicked = "NewProfilePhone_Clicked"
+                BackgroundColor = "Transparent"
+                Clicked = "NewProfileFacebook_Clicked"
                 HeightRequest = "60"
                 HorizontalOptions ="Center"
                 Margin = "15"

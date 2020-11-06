@@ -1,4 +1,5 @@
-﻿using Mynfo.ViewModels;
+﻿using Mynfo.Models;
+using Mynfo.ViewModels;
 using System;
 using System.Data.SqlClient;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Mynfo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesBYPESMPage : ContentPage
     {
-        public ProfilesBYPESMPage(int _BoxId, string _ProfileType)
+        public ProfilesBYPESMPage(int _BoxId, string _ProfileType, bool _BoxDefault)
         {
             InitializeComponent();
             #region Variables
@@ -37,7 +38,9 @@ namespace Mynfo.Views
                                             "dbo.Box_ProfilePhone.ProfilePhoneId FROM dbo.Box_ProfilePhone " +
                                             "where dbo.Box_ProfilePhone.BoxId = " + BoxId;
             queryGetFacebookProfiles = "SELECT dbo.ProfileSMs.ProfileMSId FROM dbo.ProfileSMs " +
-                                            "where dbo.ProfileSMs.UserId = " + UserId + " EXCEPT SELECT " +
+                                            "where dbo.ProfileSMs.UserId = " + UserId +
+                                            " and dbo.ProfileSMs.RedSocialId = 1 " +
+                                            " EXCEPT SELECT " +
                                             "dbo.Box_ProfileSM.ProfileMSId FROM dbo.Box_ProfileSM " +
                                             "where dbo.Box_ProfileSM.BoxId = " + BoxId;
 
@@ -45,9 +48,9 @@ namespace Mynfo.Views
 
             #region Commands
 
-            BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId));
+            BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId, _BoxDefault));
             RefreshCommand = new Command(async () => await LoadPublications());
-            GoToProfiles.Clicked += new EventHandler((sender, e) => GoToProfiles_Clicked(sender, e, _BoxId,_ProfileType));
+            GoToProfiles.Clicked += new EventHandler((sender, e) => GoToProfiles_Clicked(sender, e, _BoxId,_ProfileType, _BoxDefault));
 
             #endregion
 
@@ -108,7 +111,7 @@ namespace Mynfo.Views
                                                     CreateRelation.HeightRequest = 30;
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
-                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxPhoneRelation(sender, e, BoxId, ProfilePhoneId));
+                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxPhoneRelation(sender, e, BoxId, ProfilePhoneId, _BoxDefault));
 
                                                     Line.HeightRequest = 1;
                                                     Line.Color = Color.FromHex("#FF5521");
@@ -181,7 +184,7 @@ namespace Mynfo.Views
                                                     CreateRelation.HeightRequest = 30;
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
-                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxEmailRelation(sender, e, BoxId, ProfileEmailId));
+                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxEmailRelation(sender, e, BoxId, ProfileEmailId, _BoxDefault));
 
                                                     Line.HeightRequest = 1;
                                                     Line.Color = Color.FromHex("#FF5521");
@@ -250,7 +253,7 @@ namespace Mynfo.Views
                                                     CreateRelation.HeightRequest = 30;
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
-                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxSMRelation(sender, e, BoxId, ProfileSMId));
+                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxSMRelation(sender, e, BoxId, ProfileSMId, _BoxDefault));
 
                                                     Line.HeightRequest = 1;
                                                     Line.Color = Color.FromHex("#FF5521");
@@ -275,29 +278,31 @@ namespace Mynfo.Views
 
             #endregion
         }
-        private void GoToProfiles_Clicked(object sender, EventArgs e, int _boxId, string _profileType)
+
+        #region Methods
+        private void GoToProfiles_Clicked(object sender, EventArgs e, int _boxId, string _profileType, bool _BoxDefault)
         {
             var mainViewModel = MainViewModel.GetInstance();
             switch (_profileType)
             {
                 case "Phone":
                     mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
-                    Navigation.PushAsync(new CreateProfilePhonePage());
+                    Navigation.PushAsync(new CreateProfilePhonePage(_BoxDefault,_boxId));
                     break;
                 case "Email":
                     mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-                    Navigation.PushAsync(new CreateProfileEmailPage());
+                    Navigation.PushAsync(new CreateProfileEmailPage(_BoxDefault,_boxId));
                     break;
                 case "Facebook":
                     mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
-                    Navigation.PushAsync(new CreateProfileFacebookPage());
+                    Navigation.PushAsync(new CreateProfileFacebookPage(_BoxDefault, _boxId));
                     break;
                 default:
                     break;
             }
         }
 
-        private void CreateBoxEmailRelation(object sender, EventArgs e, int _BoxId, int _EmailId)
+        private void CreateBoxEmailRelation(object sender, EventArgs e, int _BoxId, int _EmailId, bool _boxDefault)
         {
             //Crear la relación de la box con el correo
             string queryCreateEmailRelation = "INSERT INTO dbo.Box_ProfileEmail ( BoxId, ProfileEmailId) " +
@@ -318,10 +323,51 @@ namespace Mynfo.Views
                     connection.Close();
                 }
             }
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Email"));
+
+            //Agregar perfil local si la box es predeterminada
+            if(_boxDefault == true)
+            {
+                string queryGetBoxEmail = "select * from dbo.ProfileEmails where dbo.ProfileEmails.ProfileEmailId = " + _EmailId;
+
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryGetBoxEmail);
+
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProfileLocal emailProfile = new ProfileLocal
+                                {
+                                    IdBox = _BoxId,
+                                    UserId = (int)reader["UserId"],
+                                    ProfileName = (string)reader["Name"],
+                                    value = (string)reader["Email"],
+                                    ProfileType = "Email"
+                                };
+                                //Crear perfil de correo de box local predeterminada
+                                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                {
+                                    conn.Insert(emailProfile);
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+            }
+
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Email", _boxDefault));
         }
 
-        private void CreateBoxPhoneRelation(object sender, EventArgs e, int _BoxId, int _PhoneId)
+        private void CreateBoxPhoneRelation(object sender, EventArgs e, int _BoxId, int _PhoneId, bool _boxDefault)
         {
             //Crear la relación de la box con el teléfono
             string queryCreatePhoneRelation = "INSERT INTO dbo.Box_ProfilePhone ( BoxId, ProfilePhoneId) " +
@@ -342,10 +388,49 @@ namespace Mynfo.Views
                     connection.Close();
                 }
             }
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Phone"));
+            //Agregar perfil local si la box es predeterminada
+            if (_boxDefault == true)
+            {
+                string queryGetBoxEmail = "select * from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId = " + _PhoneId;
+
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryGetBoxEmail);
+
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProfileLocal phoneProfile = new ProfileLocal
+                                {
+                                    IdBox = _BoxId,
+                                    UserId = (int)reader["UserId"],
+                                    ProfileName = (string)reader["Name"],
+                                    value = (string)reader["Number"],
+                                    ProfileType = "Phone"
+                                };
+                                //Crear perfil de correo de box local predeterminada
+                                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                {
+                                    conn.Insert(phoneProfile);
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+            }
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Phone", _boxDefault));
         }
 
-        private void CreateBoxSMRelation(object sender, EventArgs e, int _BoxId, int _SMId)
+        private void CreateBoxSMRelation(object sender, EventArgs e, int _BoxId, int _SMId, bool _boxDefault)
         {
             //Crear la relación de la box con Facebook
             string queryCreateSMRelation = "INSERT INTO dbo.Box_ProfileSM ( BoxId, ProfileMSId) " +
@@ -366,7 +451,46 @@ namespace Mynfo.Views
                     connection.Close();
                 }
             }
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Facebook"));
+            //Agregar perfil local si la box es predeterminada
+            if (_boxDefault == true)
+            {
+                string queryGetBoxEmail = "select * from dbo.ProfileSMs where dbo.ProfileSMs.ProfileMSId = " + _SMId;
+
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryGetBoxEmail);
+
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProfileLocal facebookProfile = new ProfileLocal
+                                {
+                                    IdBox = _BoxId,
+                                    UserId = (int)reader["UserId"],
+                                    ProfileName = (string)reader["ProfileName"],
+                                    value = (string)reader["link"],
+                                    ProfileType = "Facebook"
+                                };
+                                //Crear perfil de correo de box local predeterminada
+                                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                {
+                                    conn.Insert(facebookProfile);
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+            }
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Facebook", _boxDefault));
         }
 
         private bool _isRefreshing;
@@ -388,10 +512,11 @@ namespace Mynfo.Views
 
             IsRefreshing = false;
         }
-        private void Back_Clicked(object sender, EventArgs e, int _BoxId)
+        private void Back_Clicked(object sender, EventArgs e, int _BoxId,bool _boxDefault)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId));
+            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault));
         }
     }
+    #endregion
 }

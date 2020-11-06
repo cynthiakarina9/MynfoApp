@@ -30,8 +30,8 @@
         private async void FacebookProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
-            await Navigation.PushAsync(new CreateProfileFacebookPage());
+            mainViewModel.ProfilesByFacebook = new ProfilesByFacebookViewModel();
+            await Navigation.PushAsync(new ProfilesByFacebookPage());
         }
     }
 }

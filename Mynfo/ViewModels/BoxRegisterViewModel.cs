@@ -10,6 +10,7 @@
     using System;
     using System.Data.SqlClient;
     using Mynfo.Models;
+    using SQLite;
 
     public class BoxRegisterViewModel : BaseViewModel
     {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mynfo.ViewModels
 {
-    public class ProfilesBySMViewModel
+    public class ProfilesByFacebookViewModel
     {
     }
 }

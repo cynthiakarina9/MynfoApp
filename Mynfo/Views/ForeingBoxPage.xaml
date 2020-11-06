@@ -13,60 +13,87 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="180"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <controls:CircleImage
+                        Grid.Row = "1"
+                        Grid.Column = "0"
+                        HorizontalOptions = "Start"
+                        HeightRequest = "120"
+                        Margin = "30,0,0,0"
+                        Source = "{Binding User.ImageFullPath}">
+                    </controls:CircleImage>
                     <StackLayout
                         Grid.Row="1"
-                        Padding = "20,30,5,5">
-                        <controls:CircleImage
-                            Aspect = "AspectFill"
-                            HeightRequest = "180"
-                            Source = "{Binding User.ImageFullPath}">
-                        </controls:CircleImage>
+                        Grid.Column = "1"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center">
                         <Label 
-                            FontSize = "26"
-                            FontAttributes = "None"
+                            FontSize = "20"
                             HorizontalOptions = "Center"
                             Padding = "15"
                             Text = "{Binding User.FullName, StringFormat = '{0}'}"
                             TextColor = "{StaticResource MainColor}" />
                     </StackLayout>
-                    <Label 
-                        Grid.Row = "2"
-                        Text="{i18n:Translate EditProfileData}" 
-                        FontSize="25" 
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
-                    <Label 
-                        Text="{i18n:Translate ProfileName}" 
-                        Grid.Row="1"
-                        FontSize="21" 
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
-                    <Entry 
+                    <Grid 
                         Grid.Row="2"
-                        FontSize="21"
-                        WidthRequest="200"
-                        HorizontalTextAlignment="Center"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
-                    <Label 
-                        Text="Value" 
+                        Grid.ColumnSpan="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    <Image 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Source="facebook2"
+                        WidthRequest = "60"
+                        HeightRequest="60"/>
+                    <Image 
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Source="tel2"
+                        WidthRequest = "60"
+                        HeightRequest="60"/>
+                    <Image 
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Source="mail2"
+                        WidthRequest = "60"
+                        HeightRequest="60"/>
+                    <Image 
                         Grid.Row="3"
-                        FontSize="21" 
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
-                    <Entry 
-                        Grid.Row="4"
-                        FontSize="21"
-                        WidthRequest="200"
-                        HorizontalTextAlignment="Center"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
+                        Grid.Column="0"
+                        Source="facebook2"
+                        WidthRequest = "60"
+                        HeightRequest="60"/>
+                    <Image 
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Source="tel2"
+                        WidthRequest = "60"
+                        HeightRequest="60"/>
+                    <Image 
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Source="mail2"
+                        WidthRequest = "60"
+                        HeightRequest="60"/>
                 </Grid>
             </Grid>
         </ScrollView>

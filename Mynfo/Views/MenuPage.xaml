@@ -11,7 +11,6 @@
         <StackLayout
             Padding = "20,30,5,5">
             <controls:CircleImage
-                Aspect = "AspectFill"
                 HeightRequest = "180"
                 Source = "{Binding User.ImageFullPath}">
             </controls:CircleImage>

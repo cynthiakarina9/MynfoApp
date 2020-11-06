@@ -24,13 +24,15 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <!--Botón para volver a home-->
+                    <!--Botón para borrar box-->
                     <StackLayout 
                         Grid.Column="0"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
                         Padding="10,10,0,0"
                         x:Name="DeleteButton" />
+
+                    <!--Botón para volver a home-->
                     <StackLayout 
                         Grid.Column ="3"
                         HorizontalOptions="End"
@@ -102,6 +104,7 @@
                 VerticalOptions = "End"
                 HorizontalOptions = "Center"
                 BackgroundColor = "Transparent"
+                Margin = "15"
                 Source = "plus"   
                 x:Name="BoxProfiles"/>
         </Grid>
