@@ -1,5 +1,6 @@
 ﻿namespace Mynfo.Views
 {
+    using Mynfo.Models;
     using Mynfo.ViewModels;
     using System;
     using System.Data.SqlClient;
@@ -11,6 +12,8 @@
         public HomePage()
         {
             InitializeComponent();
+
+            get_box();
 
             System.Text.StringBuilder sb;
             string      userId = MainViewModel.GetInstance().User.UserId.ToString();
@@ -391,8 +394,73 @@
             {
                 CreateBoxBtn.IsVisible = true;
                 CreateBoxBtn.IsEnabled = true;
+            }            
+        }
+
+        public void get_box()
+        {
+            string json;
+            try
+            {
+                var Profile = new ProfileLocal();
+
+                var Box_Local = new BoxLocal();
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.CreateTable<ProfileLocal>();
+                    Profile = conn.Table<ProfileLocal>().FirstOrDefault();
+
+                    conn.CreateTable<BoxLocal>();
+                    Box_Local = conn.Table<BoxLocal>().FirstOrDefault();
+
+
+
+                    /*json = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+
+                           "¡{" 
+                              + @"""BoxId"":""" + Box_Local.BoxId + @""",
+                                ""Name"":""" + Box_Local.Name + @""",
+                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
+                                ""UserId"":""" + Box_Local.UserId + @""",
+                                ""Time"":""" + Box_Local.Time + @""",
+                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
+                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
+                                ""FirstName"":""" + Box_Local.FirstName + @""",
+                                ""LastName"":""" + Box_Local.LastName + @""",
+                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
+                                ""FullName"":""" + Box_Local.FullName + @""",
+                                ""ProfileLocalId"":""" + Profile.ProfileLocalId + @""",
+                                ""IdBox"":""" + Profile.IdBox + @""",
+                                ""UserId"":""" + Profile.UserId + @""",
+                                ""ProfileName"":""" + Profile.ProfileName + @""",
+                                ""value"":""" + Profile.value + @""",
+                                ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
+                                }";*/
+
+                    json = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+
+                               "¡{"
+                                  + @"""BoxId"":""" + Box_Local.BoxId + @""",
+                                ""Name"":""" + Box_Local.Name + @""",
+                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
+                                ""UserId"":""" + Box_Local.UserId + @""",
+                                ""Time"":""" + Box_Local.Time + @""",
+                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
+                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
+                                ""FirstName"":""" + Box_Local.FirstName + @""",
+                                ""LastName"":""" + Box_Local.LastName + @""",
+                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
+                                ""FullName"":""" + Box_Local.FullName + @"""                                                                                           
+                                }";
+                }
+            }
+            catch (Exception exx)
+            {
+                Console.Write(exx);
+                json = null;
             }
 
+            Data_ntc.data_value = json;
         }
 
         //Ir hacia detalles de la box

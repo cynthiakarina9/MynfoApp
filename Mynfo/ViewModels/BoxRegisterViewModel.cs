@@ -213,6 +213,8 @@
             this.Name = string.Empty;
             mainViewModel.DetailsBox = new DetailsBoxViewModel();
             Application.Current.MainPage = new NavigationPage(new DetailsBoxPage());
+
+
         }
         #endregion
 
