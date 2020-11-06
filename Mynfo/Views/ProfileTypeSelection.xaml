@@ -4,24 +4,28 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfileTypeSelection">
     <NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "20">
-            <StackLayout
-                HorizontalOptions = "Start">
-                <Image 
-                    HeightRequest = "20"
-                    Source = "logo_superior.png" 
-                    WidthRequest = "75" 
-                    HorizontalOptions = "Start">
-                </Image>
-            </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image 
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,10,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "85"/>
+            <ImageButton 
+                BackgroundColor = "Transparent"
+                Grid.Column = "0"
+                HorizontalOptions = "Start"
+                Source = "ic_navigation_arrow_back"
+                VerticalOptions = "Start"
+                x:Name="BackDetails"/>
         </Grid>
     </NavigationPage.TitleView>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem
-            x:Name="BackDetails"
-            Text = "{i18n:Translate Back}" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Profiles}">

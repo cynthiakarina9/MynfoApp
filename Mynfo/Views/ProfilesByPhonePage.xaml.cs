@@ -9,6 +9,8 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesByPhonePage : ContentPage
     {
+        private bool _isRefreshing;
+        private Command _refreshViewCommand;
         public ProfilesByPhonePage()
         {
             InitializeComponent();
@@ -77,6 +79,22 @@
                 }
             }
         }
+        //public bool IsRefreshing
+        //{
+        //    get => _isRefreshing;
+        //    set => SetProperty(ref _isRefreshing, value);
+        //}
+
+        public Command RefreshViewCommand
+        {
+            get
+            {
+                return _refreshViewCommand ?? (_refreshViewCommand = new Command(() =>
+                {
+                    this.RefreshData();
+                }));
+            }
+        }
         private async void NewProfilePhone_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
@@ -88,5 +106,15 @@
         {
             await Navigation.PushAsync(new EditProfilePhonePage(_ProfilePhoneId));
         }
+
+        #region Methods  
+
+        private void RefreshData()
+        {
+            //Do your stuff  
+            //this.IsRefreshing = false;
+        }
+
+        #endregion
     }
 }

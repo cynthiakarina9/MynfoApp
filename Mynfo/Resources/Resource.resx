@@ -501,4 +501,7 @@
   <data name="ReceivedBoxes" xml:space="preserve">
     <value>Received Boxes.</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>

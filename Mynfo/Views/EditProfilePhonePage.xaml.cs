@@ -67,6 +67,7 @@
         #region Commands
         private async void Save_Clicked(object sender, EventArgs e)
         {
+            ButtonDelete.IsEnabled = false;
             ButtonSave.IsEnabled = false;
             if (string.IsNullOrEmpty(EntryName.Text))
             {
@@ -114,6 +115,61 @@
             }
             await App.Navigator.PopAsync();
         }
-        #endregion
+
+        private async void Delete_Clicked(object sender, EventArgs e)
+        {
+            ButtonSave.IsEnabled = false;
+            ButtonDelete.IsEnabled = false;
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess)
+            {
+                //this.IsRunning = false;
+                ButtonSave.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
+
+            string SelectBoxPhone = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.ProfilePhoneId = " + profilePhone.ProfilePhoneId;
+            string SelectProfilePhone = "delete from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId = " + profilePhone.ProfilePhoneId;
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            StringBuilder sb;
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(SelectBoxPhone);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(SelectProfilePhone);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            //var vUpdatedPage = new ProfilesByPhonePage(); 
+            //Navigation.InsertPageBefore(vUpdatedPage, this); 
+            //await App.Navigator.PopAsync(true);
+        }
+        protected void onAppearing()
+        {
+            int _ProfilePhoneId = 0;
+            var nueva = new EditProfilePhonePage(_ProfilePhoneId);
+        }
     }
 }

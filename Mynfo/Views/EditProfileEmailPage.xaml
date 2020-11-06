@@ -86,6 +86,7 @@
                     </StackLayout>
                     <StackLayout
                         Grid.Row = "4"
+                        Orientation = "Horizontal"
                         Padding = "40">
                         <Button 
                             BackgroundColor = "{StaticResource MainColor}"
@@ -99,6 +100,17 @@
                             VerticalOptions = "Center"
                             WidthRequest = "150" 
                             x:Name = "ButtonSave"/>
+                        <Button 
+                            BackgroundColor = "{StaticResource MainColor}"
+                            BorderRadius = "23"
+                            Clicked = "Delete_Clicked"
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            IsEnabled = "True"
+                            Text = "{i18n:Translate Delete}"
+                            TextColor = "{StaticResource Dark_FontColor}"
+                            VerticalOptions = "Center"
+                            WidthRequest = "150" />
                     </StackLayout>
                 </Grid>
             </ScrollView>

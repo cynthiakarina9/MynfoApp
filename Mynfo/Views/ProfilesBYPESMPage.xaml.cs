@@ -91,7 +91,7 @@ namespace Mynfo.Views
                                                 {
                                                     var phoneName = new Label();
                                                     var phoneNumber = new Label();
-                                                    var CreateRelation = new Button();
+                                                    var CreateRelation = new ImageButton();
                                                     var Line = new BoxView();
 
                                                     phoneName.Text = (string)reader2["Name"];
@@ -102,14 +102,12 @@ namespace Mynfo.Views
                                                     phoneNumber.FontSize = 25;
                                                     phoneNumber.HorizontalTextAlignment = TextAlignment.Center;
 
-                                                    CreateRelation.Text = "+";
-                                                    CreateRelation.TextColor = Color.Black;
-                                                    CreateRelation.FontSize = 10;
-                                                    CreateRelation.BackgroundColor = Color.FromHex("#f9a589");
+                                                    CreateRelation.BackgroundColor = Color.Transparent;
                                                     CreateRelation.CornerRadius = 15;
                                                     CreateRelation.HeightRequest = 30;
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
+                                                    CreateRelation.Source = "enter1";
                                                     CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxPhoneRelation(sender, e, BoxId, ProfilePhoneId, _BoxDefault));
 
                                                     Line.HeightRequest = 1;
@@ -164,7 +162,7 @@ namespace Mynfo.Views
                                                 {
                                                     var emailProfile = new Label();
                                                     var emailAddress = new Label();
-                                                    var CreateRelation = new Button();
+                                                    var CreateRelation = new ImageButton();
                                                     var Line = new BoxView();
 
                                                     emailProfile.Text = (string)reader2["Name"];
@@ -175,14 +173,12 @@ namespace Mynfo.Views
                                                     emailAddress.FontSize = 25;
                                                     emailAddress.HorizontalTextAlignment = TextAlignment.Center;
 
-                                                    CreateRelation.Text = "+";
-                                                    CreateRelation.TextColor = Color.Black;
-                                                    CreateRelation.FontSize = 10;
-                                                    CreateRelation.BackgroundColor = Color.FromHex("#f9a589");
+                                                    CreateRelation.BackgroundColor = Color.Transparent;
                                                     CreateRelation.CornerRadius = 15;
                                                     CreateRelation.HeightRequest = 30;
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
+                                                    CreateRelation.Source = "enter1";
                                                     CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxEmailRelation(sender, e, BoxId, ProfileEmailId, _BoxDefault));
 
                                                     Line.HeightRequest = 1;
@@ -236,7 +232,7 @@ namespace Mynfo.Views
                                                 while (reader2.Read())
                                                 {
                                                     var SMProfile = new Label();
-                                                    var CreateRelation = new Button();
+                                                    var CreateRelation = new ImageButton();
                                                     var Line = new BoxView();
 
                                                     SMProfile.Text = (string)reader2["ProfileName"];
@@ -244,14 +240,12 @@ namespace Mynfo.Views
                                                     SMProfile.FontAttributes = FontAttributes.Bold;
                                                     SMProfile.HorizontalTextAlignment = TextAlignment.Center;
 
-                                                    CreateRelation.Text = "+";
-                                                    CreateRelation.TextColor = Color.Black;
-                                                    CreateRelation.FontSize = 10;
-                                                    CreateRelation.BackgroundColor = Color.FromHex("#f9a589");
+                                                    CreateRelation.BackgroundColor = Color.Transparent;
                                                     CreateRelation.CornerRadius = 15;
                                                     CreateRelation.HeightRequest = 30;
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
+                                                    CreateRelation.Source = "enter1";
                                                     CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxSMRelation(sender, e, BoxId, ProfileSMId, _BoxDefault));
 
                                                     Line.HeightRequest = 1;

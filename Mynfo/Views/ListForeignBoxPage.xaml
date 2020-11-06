@@ -36,10 +36,12 @@
                     <RowDefinition Height="80" />
                     <RowDefinition Height="80" />
                     <RowDefinition Height="80" />
+                    <RowDefinition Height="80" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width = "2*"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <ImageButton 
                     BackgroundColor = "Transparent"

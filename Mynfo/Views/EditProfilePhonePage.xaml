@@ -83,18 +83,35 @@
                         WidthRequest = "300"
                         x:Name = "EntryPhone"/>
                 </StackLayout>
-                <Button 
-                    BackgroundColor = "{StaticResource MainColor}"
-                    BorderRadius = "23"
-                    Clicked = "Save_Clicked"
-                    HeightRequest = "50"
-                    HorizontalOptions = "Center"
-                    Grid.Row = "5"
-                    Text = "{i18n:Translate Save}"
-                    TextColor = "{StaticResource Dark_FontColor}"
-                    VerticalOptions = "Center"
-                    WidthRequest = "150"
-                    x:Name = "ButtonSave"/>
+                <StackLayout
+                        Grid.Row = "4"
+                        Orientation = "Horizontal"
+                        Padding = "40">
+                    <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Clicked = "Save_Clicked"
+                        HeightRequest = "50"
+                        HorizontalOptions = "Center"
+                        Grid.Row = "5"
+                        Text = "{i18n:Translate Save}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150"
+                        x:Name = "ButtonSave"/>
+                    <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Clicked = "Delete_Clicked"
+                        HeightRequest = "50"
+                        HorizontalOptions = "Center"
+                        IsEnabled = "True"
+                        Text = "{i18n:Translate Delete}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" 
+                        x:Name = "ButtonDelete"/>
+                </StackLayout>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
