@@ -110,6 +110,8 @@
         }
         private async void EditProfileEmail(object sender, EventArgs e, int _ProfileEmailId)
         {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.EditProfileEmail = new EditProfileEmailViewModel();
             await Navigation.PushAsync(new EditProfileEmailPage(_ProfileEmailId));
         }
 

@@ -989,8 +989,7 @@ namespace Mynfo.Views
             /*var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));*/
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
+            
             Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault));
         }
 

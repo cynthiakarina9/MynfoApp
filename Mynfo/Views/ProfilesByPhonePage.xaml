@@ -19,18 +19,20 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <ScrollView
+            <RefreshView    
+             Command="{Binding RefreshViewCommand}">
+                <ScrollView
             BindingContext = "{Binding ProfilesByPhone}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
-                        <RowDefinition />
-                        <RowDefinition Height="120"/>
-                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition />
+                            <RowDefinition Height="120"/>
+                        </Grid.RowDefinitions>
 
-                    <!--Titulo-->
+                        <!--Titulo-->
 
-                    <Label 
+                        <Label 
                         Grid.Row = "0" 
                         Text = "{i18n:Translate PhoneProfileList}"
                         FontSize = "25"
@@ -40,16 +42,17 @@
                         VerticalOptions = "EndAndExpand"  
                         Margin = "0,5,0,15"/>
 
-                    <!--End Titulo-->
+                        <!--End Titulo-->
 
-                    <!--Lista de Teléfonos-->
-                    <StackLayout 
+                        <!--Lista de Teléfonos-->
+                        <StackLayout 
                         Grid.Row="1"
                         HorizontalOptions="FillAndExpand"
                         Padding="25"
                         x:Name="PhoneList" />
-                </Grid>
-            </ScrollView>
+                    </Grid>
+                </ScrollView>
+            </RefreshView>
             <!--Botón para agregar nuevos teléfonos-->
             <ImageButton
                 BackgroundColor = "Transparent"
