@@ -54,5 +54,11 @@ namespace Mynfo.Views
 
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Email", _boxDefault));
         }
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByEmail = new ProfilesByEmailViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
+        }
     }
 }

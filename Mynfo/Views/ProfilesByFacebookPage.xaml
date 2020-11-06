@@ -5,15 +5,28 @@
              x:Class="Mynfo.Views.ProfilesByFacebookPage">
     <NavigationPage.TitleView>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <Image 
-                Margin = "0,0,80,0"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,10,0"
                 HorizontalOptions = "Center"
                 Source = "logo_superior.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "75"/>
+                WidthRequest = "85"/>
+            <ImageButton 
+                BackgroundColor = "Transparent"
+                Clicked = "Back_Clicked"
+                Grid.Column = "0"
+                HeightRequest = "40"
+                HorizontalOptions = "Start"
+                Source = "ic_navigation_arrow_back"
+                VerticalOptions = "Start"
+                WidthRequest = "40"
+                x:Name="BackButton"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>

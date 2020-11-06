@@ -123,7 +123,7 @@
                     connection.Close();
                 }
             }
-            await App.Navigator.PopAsync();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
         }
         private async void Delete_Clicked(object sender, EventArgs e)
         {
@@ -170,7 +170,13 @@
                     connection.Close();
                 }
             }
-            await App.Navigator.PopAsync(true);
+            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
+        }
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByEmail = new ProfilesByEmailViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
         }
         #endregion
     }

@@ -64,7 +64,7 @@
             else if (this.PageName == "ProfilesPage")
             {
                 MainViewModel.GetInstance().Profiles = new ProfilesViewModel();
-                App.Navigator.PushAsync(new ProfilesPage());
+                Application.Current.MainPage = new NavigationPage (new ProfilesPage());
             }
 
             else if (this.PageName == "SettingsPage")

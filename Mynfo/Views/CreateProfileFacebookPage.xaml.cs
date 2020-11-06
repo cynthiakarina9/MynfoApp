@@ -49,5 +49,11 @@
 
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Facebook", _BoxDefault));
         }
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByFacebook = new ProfilesByFacebookViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByFacebookPage());
+        }
     }
 }

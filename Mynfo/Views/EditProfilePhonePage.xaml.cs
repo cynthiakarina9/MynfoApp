@@ -27,6 +27,7 @@
             //var mainViewModel = MainViewModel.GetInstance();
             //mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(_ProfileEmailId);
             InitializeComponent();
+            
             //apiService
             apiService = new ApiService();
             System.Text.StringBuilder sb;
@@ -113,7 +114,7 @@
                     connection.Close();
                 }
             }
-            await App.Navigator.PopAsync();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
         }
 
         private async void Delete_Clicked(object sender, EventArgs e)
@@ -162,15 +163,14 @@
                     connection.Close();
                 }
             }
-            //var vUpdatedPage = new ProfilesByPhonePage(); 
-            //Navigation.InsertPageBefore(vUpdatedPage, this); 
-            await App.Navigator.PopAsync(true);
+            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
         }
-        //protected void onAppearing()
-        //{
-        //    int _ProfilePhoneId = 0;
-        //    var nueva = new EditProfilePhonePage(_ProfilePhoneId);
-        //}
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByPhone = new ProfilesByPhoneViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
+        }
         #endregion
     }
 }

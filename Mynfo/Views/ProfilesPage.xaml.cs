@@ -15,23 +15,30 @@
             InitializeComponent();
         }
 
-        private async void PhoneProfile_Clicked(object sender, EventArgs e)
+        private void PhoneProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByPhone = new ProfilesByPhoneViewModel();
-            await Navigation.PushAsync(new ProfilesByPhonePage());
+            Application.Current.MainPage = new NavigationPage (new ProfilesByPhonePage());
         }
-        private async void EmailProfile_Clicked(object sender, EventArgs e)
+        private void EmailProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByEmail = new ProfilesByEmailViewModel();
-            await Navigation.PushAsync(new ProfilesByEmailPage());
+            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
         }
-        private async void FacebookProfile_Clicked(object sender, EventArgs e)
+        private void FacebookProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByFacebook = new ProfilesByFacebookViewModel();
-            await Navigation.PushAsync(new ProfilesByFacebookPage());
+            Application.Current.MainPage = new NavigationPage(new ProfilesByFacebookPage());
+        }
+
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
     }
 }

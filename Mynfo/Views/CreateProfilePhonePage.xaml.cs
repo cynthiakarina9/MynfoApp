@@ -51,5 +51,12 @@
 
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Phone", _boxDefault));
         }
+
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByPhone = new ProfilesByPhoneViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
+        }
     }
 }
