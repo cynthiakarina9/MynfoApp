@@ -5,6 +5,8 @@
     using Helpers;
     using Services;
     using System;
+    using System.Data.SqlClient;
+    using System.Text;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -60,68 +62,50 @@
 
         #region Commands
 
-        public ICommand SaveProfileCommand
+        public ICommand DeleteProfileCommand
         {
             get
             {
-                return new RelayCommand(SaveProfileChange);
+                return new RelayCommand(DeleteProfile);
             }
         }
 
-        private async void SaveProfileChange()
+        private async void DeleteProfile()
         {
-            //if (string.IsNullOrEmpty(this.profileEmail.Name))
-            //{
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        Languages.LastNameValidation,
-            //        Languages.Accept);
-            //    return;
-            //}
 
-            //if (string.IsNullOrEmpty(this.profileEmail.Email))
-            //{
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        Languages.EmailValidation,
-            //        Languages.Accept);
-            //    return;
-            //}
+            this.IsRunning = true;
+            this.IsEnabled = false;
 
-            //if (!RegexUtilities.IsValidEmail(this.profileEmail.Email))
-            //{
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        Languages.EmailValidation2,
-            //        Languages.Accept);
-            //    return;
-            //}
-
-            //this.IsRunning = true;
-            //this.IsEnabled = false;
-
-            //var checkConnetion = await this.apiService.CheckConnection();
-            //if (!checkConnetion.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        checkConnetion.Message,
-            //        Languages.Accept);
-            //    return;
-            //}
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            //var response2 = await this.apiService.Get<ProfileEmail>(
-            //    apiSecurity,
-            //    "/api",
-            //    "/ProfileEmails",
-            //    MainViewModel.GetInstance().Token.TokenType,
-            //    MainViewModel.GetInstance().Token.AccessToken,
-            //    profileEmail.ProfileEmailId);
-            
+            string SelectBoxEmail = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.ProfileEmailId = " + profileEmail.ProfileEmailId;
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            StringBuilder sb;
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(SelectBoxEmail);
+                string sql = sb.ToString();
 
-            var response = await this.apiService.Put(
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            
+            var response = await this.apiService.Delete(
                 apiSecurity,
                 "/api",
                 "/ProfileEmails",

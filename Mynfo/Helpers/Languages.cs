@@ -542,5 +542,9 @@
         {
             get { return Resource.ReceivedBoxes; }
         }
+        public static string Delete
+        {
+            get { return Resource.Delete;}
+        }
     }
 }

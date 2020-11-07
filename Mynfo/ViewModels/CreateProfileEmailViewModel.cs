@@ -3,6 +3,7 @@
     using Domain;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
+    using Mynfo.Views;
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -135,7 +136,7 @@
             this.Name = string.Empty;
             this.Email = string.Empty;
 
-            await App.Navigator.PopAsync();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
         }
         #endregion
     }

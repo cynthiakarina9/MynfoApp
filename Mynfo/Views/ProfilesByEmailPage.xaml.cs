@@ -16,7 +16,7 @@
         public ProfilesByEmailPage()
         {
             InitializeComponent();
-
+            
             int UserId = MainViewModel.GetInstance().User.UserId;
             string queryGetEmailByUser = "select * from dbo.ProfileEmails where dbo.ProfileEmails.UserId = " + UserId;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
@@ -80,39 +80,29 @@
                     connection.Close();
                 }
             }
-            const int RefreshDuration = 2;
-            RefreshCommand = new Command(async () => await Task.Delay(TimeSpan.FromSeconds(RefreshDuration)));
-        }
+         }
         #endregion
 
         #region Commands
-        private bool _isRefreshing;
-
-        public bool IsRefreshing
-        {
-            get => _isRefreshing;
-            set { _isRefreshing = value; OnPropertyChanged(); }
-        }
-
-        public ICommand RefreshCommand { private set; get; }
-
-        async Task LoadPublications()
-        {
-            // code omitted
-
-            IsRefreshing = false;
-        }
-        private async void NewProfileEmail_Clicked(object sender, EventArgs e)
+        
+        private void NewProfileEmail_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-            await Navigation.PushAsync(new CreateProfileEmailPage());
+            Application.Current.MainPage = new NavigationPage(new CreateProfileEmailPage());
         }
         private async void EditProfileEmail(object sender, EventArgs e, int _ProfileEmailId)
         {
-            await Navigation.PushAsync(new EditProfileEmailPage(_ProfileEmailId));
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.EditProfileEmail = new EditProfileEmailViewModel();
+            Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage(_ProfileEmailId));
         }
-
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Profiles = new ProfilesViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesPage());
+        }
         #endregion
     }
 }

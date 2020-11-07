@@ -12,7 +12,6 @@
         public ProfilesByPhonePage()
         {
             InitializeComponent();
-
             int UserId = MainViewModel.GetInstance().User.UserId;
             string queryGetPhoneByUser = "select * from dbo.ProfilePhones where dbo.ProfilePhones.UserId = " + UserId;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
@@ -77,16 +76,27 @@
                 }
             }
         }
-        private async void NewProfilePhone_Clicked(object sender, EventArgs e)
+        private void NewProfilePhone_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
-            await Navigation.PushAsync(new CreateProfilePhonePage());
+            Application.Current.MainPage = new NavigationPage(new CreateProfilePhonePage());
         }
 
-        private async void EditProfilePhone(object sender, EventArgs e, int _ProfilePhoneId)
+        private void EditProfilePhone(object sender, EventArgs e, int _ProfilePhoneId)
         {
-            await Navigation.PushAsync(new EditProfilePhonePage(_ProfilePhoneId));
+            Application.Current.MainPage = new NavigationPage(new EditProfilePhonePage(_ProfilePhoneId));
         }
+
+        #region Methods  
+
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Profiles = new ProfilesViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesPage());
+        }
+
+        #endregion
     }
 }

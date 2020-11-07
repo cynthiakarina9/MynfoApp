@@ -73,35 +73,23 @@
                     connection.Close();
                 }
             }
-            const int RefreshDuration = 2;
-            RefreshCommand = new Command(async () => await Task.Delay(TimeSpan.FromSeconds(RefreshDuration)));
         }
         #endregion
 
         #region Commands
-        private bool _isRefreshing;
-
-        public bool IsRefreshing
-        {
-            get => _isRefreshing;
-            set { _isRefreshing = value; OnPropertyChanged(); }
-        }
-
-        public ICommand RefreshCommand { private set; get; }
-
-        async Task LoadPublications()
-        {
-            // code omitted
-
-            IsRefreshing = false;
-        }
-        private async void NewProfileFacebook_Clicked(object sender, EventArgs e)
+        private void NewProfileFacebook_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
-            await Navigation.PushAsync(new CreateProfileFacebookPage());
+            Application.Current.MainPage = new NavigationPage(new CreateProfileFacebookPage());
         }
 
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Profiles = new ProfilesViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesPage());
+        }
         #endregion
     }
 }

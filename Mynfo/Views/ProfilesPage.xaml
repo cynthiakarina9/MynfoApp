@@ -5,26 +5,30 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="Mynfo.Views.ProfilesPage">
     <NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "20">
-            <StackLayout 
-                HorizontalOptions="Start">
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "16"
-                    HorizontalOptions = "Start"
-                    Text = "{i18n:Translate MyProfiles}"
-                    TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions = "End">
-                <Image 
-                    HeightRequest = "20"
-                    HorizontalOptions = "End"
-                    Source = "logo_superior.png" 
-                    WidthRequest = "75" >
-                </Image>
-            </StackLayout>
+        <Grid>
+            <ImageButton 
+                BackgroundColor = "Transparent"
+                Clicked = "Back_Clicked"
+                HeightRequest = "40"
+                HorizontalOptions = "Start"
+                Source = "ic_navigation_arrow_back"
+                VerticalOptions = "Center"
+                WidthRequest = "40"
+                x:Name="BackButton"/>
+            <Label 
+                FontAttributes = "Bold"
+                FontSize = "19"
+                HorizontalOptions = "Center"
+                Margin = "0,0,180,0"
+                Text = "{i18n:Translate MyProfiles}"
+                TextColor = "{StaticResource Dark_FontColor}"
+                VerticalOptions = "Center"/>
+            <Image 
+                HeightRequest = "20"
+                HorizontalOptions = "End"
+                Source = "logo_superior.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "75" />
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>

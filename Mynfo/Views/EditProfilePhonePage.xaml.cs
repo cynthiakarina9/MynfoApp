@@ -27,6 +27,7 @@
             //var mainViewModel = MainViewModel.GetInstance();
             //mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(_ProfileEmailId);
             InitializeComponent();
+            
             //apiService
             apiService = new ApiService();
             System.Text.StringBuilder sb;
@@ -67,6 +68,7 @@
         #region Commands
         private async void Save_Clicked(object sender, EventArgs e)
         {
+            ButtonDelete.IsEnabled = false;
             ButtonSave.IsEnabled = false;
             if (string.IsNullOrEmpty(EntryName.Text))
             {
@@ -112,7 +114,62 @@
                     connection.Close();
                 }
             }
-            await App.Navigator.PopAsync();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
+        }
+
+        private async void Delete_Clicked(object sender, EventArgs e)
+        {
+            ButtonSave.IsEnabled = false;
+            ButtonDelete.IsEnabled = false;
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess)
+            {
+                //this.IsRunning = false;
+                ButtonSave.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
+
+            string SelectBoxPhone = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.ProfilePhoneId = " + profilePhone.ProfilePhoneId;
+            string SelectProfilePhone = "delete from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId = " + profilePhone.ProfilePhoneId;
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            StringBuilder sb;
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(SelectBoxPhone);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(SelectProfilePhone);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
+        }
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByPhone = new ProfilesByPhoneViewModel();
+            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
         }
         #endregion
     }
