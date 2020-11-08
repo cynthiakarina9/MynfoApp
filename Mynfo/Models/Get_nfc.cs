@@ -39,9 +39,27 @@ namespace Mynfo.Models
 
         [JsonProperty("FullName")]
         public string fullName { get; set; }
+
+        [JsonProperty("ProfileLocalId")]
+        public string profileLocalId { get; set; }
+
+        [JsonProperty("IdBox")]
+        public string idBox { get; set; }
+
+        [JsonProperty("UserId_p")]
+        public string userId_p { get; set; }
+
+        [JsonProperty("ProfileName")]
+        public string profileName { get; set; }
+
+        [JsonProperty("value")]
+        public string value { get; set; }
+
+        [JsonProperty("ProfileType")]
+        public string ProfileType { get; set; }        
     }
-}                   
-
-
-
-
+    public class NFCObject
+    {
+        public List<Get_nfc> value { get; set; }
+    }
+}                                                 

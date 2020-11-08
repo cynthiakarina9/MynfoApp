@@ -18,6 +18,8 @@
     using System.Text;
     using Mynfo.Models;
     using Mynfo.ViewModels;
+    using System.Collections.Generic;
+    using Newtonsoft.Json.Linq;
 
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop)]
     [IntentFilter(new[] { NfcAdapter.ActionNdefDiscovered }, 
@@ -71,6 +73,9 @@
             
         }
 
+        //List<Get_nfc> nfcData = null;
+        public List<Get_nfc> nfcData = new List<Get_nfc>();
+
         protected void HandleNFC(Intent intent, Boolean inForeground)
         {
             try 
@@ -85,10 +90,8 @@
                     NdefMessage msg = (NdefMessage)rawMsgs[0];
                     var text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
 
-                    string[] Json = text.ToString().Split('¡');
-                    string mesaje = Json[1].ToString();
-                    get_nfc = JsonConvert.DeserializeObject<Get_nfc>(mesaje);
-
+                    //nfcData almasena todo en una lista cuando obtiene los datos del telefono servidor 
+                    nfcData = (List<Get_nfc>)JsonConvert.DeserializeObject(text, typeof(List<Get_nfc>));                    
                 }
                 else
                 {
@@ -106,21 +109,44 @@
             try
             {
                 var Profile = new ProfileLocal();
-
+                var Profile_1 = new ProfileLocal();
                 var Box_Local = new BoxLocal();
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
-                {
-                    conn.CreateTable<ProfileLocal>();
-                    Profile = conn.Table<ProfileLocal>().FirstOrDefault();
-
-                    conn.CreateTable<BoxLocal>();
+                {                                        
+                    Profile_1 = conn.Table<ProfileLocal>().FirstOrDefault();                    
                     Box_Local = conn.Table<BoxLocal>().FirstOrDefault();
+                    int coun = conn.Table<ProfileLocal>().Count();
+                    string json_header = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
 
+                           "¡";
+                    string json_body;
+                    string json_value = "{"
+                              + @"""BoxId"":""" + Box_Local.BoxId + @""",
+                                ""Name"":""" + Box_Local.Name + @""",
+                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
+                                ""UserId"":""" + Box_Local.UserId + @""",
+                                ""Time"":""" + Box_Local.Time + @""",
+                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
+                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
+                                ""FirstName"":""" + Box_Local.FirstName + @""",
+                                ""LastName"":""" + Box_Local.LastName + @""",
+                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
+                                ""FullName"":""" + Box_Local.FullName + @""",
+                                ""ProfileLocalId"":""" + Profile_1.ProfileLocalId + @""",
+                                ""IdBox"":""" + Profile_1.IdBox + @""",
+                                ""UserId_p"":""" + Profile_1.UserId + @""",
+                                ""ProfileName"":""" + Profile_1.ProfileName + @""",
+                                ""value"":""" + Profile_1.value + @""",
+                                ""ProfileType"":""" + Profile_1.ProfileType + @"""                                                              
+                                }";
 
+                    if (coun > 1) 
+                    {
+                        for (int i = 1; i < coun; i++)
+                        {
+                            Profile = conn.Table<ProfileLocal>().ElementAt(i);
 
-                    /*json = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
-
-                           "¡{" 
+                            json_body = "{"
                               + @"""BoxId"":""" + Box_Local.BoxId + @""",
                                 ""Name"":""" + Box_Local.Name + @""",
                                 ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
@@ -134,27 +160,17 @@
                                 ""FullName"":""" + Box_Local.FullName + @""",
                                 ""ProfileLocalId"":""" + Profile.ProfileLocalId + @""",
                                 ""IdBox"":""" + Profile.IdBox + @""",
-                                ""UserId"":""" + Profile.UserId + @""",
+                                ""UserId_p"":""" + Profile.UserId + @""",
                                 ""ProfileName"":""" + Profile.ProfileName + @""",
                                 ""value"":""" + Profile.value + @""",
                                 ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
-                                }";*/
+                                }";
 
-                    json = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
-
-                               "¡{"
-                                  + @"""BoxId"":""" + Box_Local.BoxId + @""",
-                                ""Name"":""" + Box_Local.Name + @""",
-                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
-                                ""UserId"":""" + Box_Local.UserId + @""",
-                                ""Time"":""" + Box_Local.Time + @""",
-                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
-                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
-                                ""FirstName"":""" + Box_Local.FirstName + @""",
-                                ""LastName"":""" + Box_Local.LastName + @""",
-                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
-                                ""FullName"":""" + Box_Local.FullName + @"""                                                                                           
-                                },";
+                            json_value = json_value + ",\n" + json_body;
+                        }
+                        json_value = "[" +json_value + "]";
+                    }                    
+                    json = json_value;                   
                 }
             }
             catch (Exception exx)
@@ -186,7 +202,7 @@
             {
                 Console.WriteLine(ex);
             }
-
+            get_box();
         }              
 
         protected override void OnNewIntent(Intent intent)
