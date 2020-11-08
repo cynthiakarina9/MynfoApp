@@ -396,7 +396,7 @@
                 CreateBoxBtn.IsVisible = true;
                 CreateBoxBtn.IsEnabled = true;
             }            
-        }        
+        }
 
         public void get_box()
         {
@@ -461,8 +461,9 @@
                                 ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
                                 }";
 
-                            json_value = json_value + "," + json_body;
+                            json_value = json_value + ",\n" + json_body;
                         }
+                        json_value = "[" + json_value + "]";
                     }
                     json = json_value;
                 }
@@ -474,7 +475,7 @@
             }
 
             Data_ntc.data_value = json;
-        }
+        }        
 
         //Ir hacia detalles de la box
         private void BoxDetailsView(object sender, EventArgs e, int _BoxId)
