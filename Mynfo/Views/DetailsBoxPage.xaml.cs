@@ -771,7 +771,7 @@ namespace Mynfo.Views
                         connection.Close();
                     }
 
-                    //Si la box es predeterminada
+                    //Si la box era predeterminada
                     if(_BoxDefault == true)
                     {
                         //Borrar box predeterminada anterior
