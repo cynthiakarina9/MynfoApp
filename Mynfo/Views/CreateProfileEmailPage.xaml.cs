@@ -1,16 +1,12 @@
-﻿using Mynfo.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Mynfo.Views
+﻿namespace Mynfo.Views
 {
+    using Mynfo.ViewModels;
+    using System;
+    using System.Data.SqlClient;
+    using System.Text;
+
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateProfileEmailPage : ContentPage
     {
@@ -21,14 +17,16 @@ namespace Mynfo.Views
             if (_boxId == 0)
             {
                 SaveWBox.IsVisible = false;
+                BackButtonBox.IsVisible = false;
             }
             else
             {
                 Save.IsVisible = false;
+                BackButton.IsVisible = false;
             }
 
             SaveWBox.Clicked += new EventHandler((sender, e) => backToAssignProfiles(sender, e, _boxId, ProfileName.Text, ProfileMail.Text, _boxDefault));
-
+            BackButtonBox.Clicked += new EventHandler((sender, e) => BackBox_Clicked(sender, e, _boxId, _boxDefault));
         }
         private void backToAssignProfiles(object sender, EventArgs e, int _BoxId, string _profileName, string _profileMail, bool _boxDefault)
         {
@@ -59,6 +57,15 @@ namespace Mynfo.Views
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByEmail = new ProfilesByEmailViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
+        }
+        private void BackBox_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault)
+        {
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Email", _boxDefault));
+        }
+        private void BackHome_Clicked(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
     }
 }

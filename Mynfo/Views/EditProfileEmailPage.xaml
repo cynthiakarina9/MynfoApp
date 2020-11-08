@@ -11,7 +11,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image 
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,10,0"
                 HorizontalOptions = "Center"
@@ -31,102 +33,109 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <RefreshView>
-            <ScrollView
+        <ScrollView
             BindingContext = "{Binding EditProfileEmail}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height = "80"/>
-                        <RowDefinition Height = "160"/>
-                        <RowDefinition Height = "120"/>
-                        <RowDefinition Height = "80"/>
-                        <RowDefinition />
-                        <RowDefinition Height = "120"/>
-                    </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "70"/>
+                    <RowDefinition Height = "160"/>
+                    <RowDefinition Height = "110"/>
+                    <RowDefinition Height = "110"/>
+                    <RowDefinition />
+                    <RowDefinition Height = "50"/>
+                </Grid.RowDefinitions>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "25"
+                    Grid.ColumnSpan ="1"
+                    Grid.Row = "0"
+                    HorizontalOptions = "Center"
+                    HorizontalTextAlignment = "Center"
+                    Text = "{i18n:Translate EditEmail}"
+                    TextColor = "{StaticResource MainColor}"
+                    VerticalOptions = "Center"/>
+                <Image
+                    HeightRequest = "180"
+                    Source = "mail2"
+                    Grid.Row = "1"
+                    WidthRequest = "180"/>
+                <StackLayout 
+                    Grid.Row = "2"
+                    Padding = "20">
                     <Label 
-                        FontAttributes = "Bold"
-                        FontSize = "25"
-                        Grid.ColumnSpan ="1"
-                        Grid.Row = "0"
+                        FontSize = "24" 
+                        FontAttributes="Bold"
                         HorizontalOptions = "Center"
-                        HorizontalTextAlignment = "Center"
-                        Text = "{i18n:Translate EditEmail}"
-                        TextColor = "{StaticResource MainColor}"
+                        Text = "{i18n:Translate NameProfile}" 
                         VerticalOptions = "Center"/>
-                    <Image
-                        HeightRequest = "180"
-                        Source = "mail2"
-                        Grid.Row = "1"
-                        WidthRequest = "180"/>
-                    <StackLayout 
-                        Grid.Row = "2"
-                        Padding = "20">
-                        <Label 
-                            FontSize = "24" 
-                            FontAttributes="Bold"
-                            HorizontalOptions = "Center"
-                            Text = "{i18n:Translate NameProfile}" 
-                            VerticalOptions = "Center"/>
-                        <Entry 
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
-                            FontSize = "21"
-                            HorizontalTextAlignment = "Center"
-                            HeightRequest = "46"
-                            HorizontalOptions = "Center"
-                            MaxLength = "10"
-                            VerticalOptions = "Center" 
-                            WidthRequest = "300" 
-                            x:Name = "EntryName"/>
-                    </StackLayout>
-                    <StackLayout 
+                    <Entry 
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        FontSize = "21"
+                        HorizontalTextAlignment = "Center"
+                        HeightRequest = "46"
+                        HorizontalOptions = "Center"
+                        MaxLength = "10"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300" 
+                        x:Name = "EntryName"/>
+                </StackLayout>
+                <StackLayout 
                         Grid.Row = "3">
-                        <Label 
-                            FontSize = "24" 
-                            FontAttributes="Bold"
-                            HorizontalOptions = "Center"
-                            VerticalOptions = "Center" 
-                            Text = "{i18n:Translate EMail}" />
-                        <Entry 
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
-                            FontSize = "21"
-                            HorizontalTextAlignment = "Center"
-                            HeightRequest = "46"
-                            HorizontalOptions = "Center"
-                            Keyboard = "Email"
-                            VerticalOptions = "Center" 
-                            WidthRequest = "300"
-                            x:Name = "EntryEmail"/>
-                    </StackLayout>
-                    <StackLayout
-                        Grid.Row = "4"
-                        Orientation = "Horizontal"
-                        Padding = "40">
-                        <Button 
-                            BackgroundColor = "{StaticResource MainColor}"
-                            BorderRadius = "23"
-                            Clicked="Save_Clicked"
-                            HeightRequest = "50"
-                            HorizontalOptions = "Center"
-                            IsEnabled = "True"
-                            Text = "{i18n:Translate Save}"
-                            TextColor = "{StaticResource Dark_FontColor}"
-                            VerticalOptions = "Center"
-                            WidthRequest = "150" 
-                            x:Name = "ButtonSave"/>
-                        <Button 
-                            BackgroundColor = "{StaticResource MainColor}"
-                            BorderRadius = "23"
-                            Clicked = "Delete_Clicked"
-                            HeightRequest = "50"
-                            HorizontalOptions = "Center"
-                            IsEnabled = "True"
-                            Text = "{i18n:Translate Delete}"
-                            TextColor = "{StaticResource Dark_FontColor}"
-                            VerticalOptions = "Center"
-                            WidthRequest = "150" />
-                    </StackLayout>
-                </Grid>
-            </ScrollView>
-        </RefreshView>
+                    <Label 
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center" 
+                        Text = "{i18n:Translate EMail}" />
+                    <Entry 
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        FontSize = "21"
+                        HorizontalTextAlignment = "Center"
+                        HeightRequest = "46"
+                        HorizontalOptions = "Center"
+                        Keyboard = "Email"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300"
+                        x:Name = "EntryEmail"/>
+                </StackLayout>
+                <StackLayout
+                    Grid.Row = "4"
+                    VerticalOptions = "CenterAndExpand">
+                    <ActivityIndicator
+                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions = "CenterAndExpand">
+                    </ActivityIndicator>
+                </StackLayout>
+                <StackLayout
+                    Grid.Row = "5"
+                    Orientation = "Horizontal"
+                    Padding = "40">
+                    <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Clicked="Save_Clicked"
+                        HeightRequest = "50"
+                        HorizontalOptions = "Center"
+                        IsEnabled = "True"
+                        Text = "{i18n:Translate Save}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" 
+                        x:Name = "ButtonSave"/>
+                    <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Clicked = "Delete_Clicked"
+                        HeightRequest = "50"
+                        HorizontalOptions = "Center"
+                        IsEnabled = "True"
+                        Text = "{i18n:Translate Delete}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" 
+                        x:Name = "ButtonDelete"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

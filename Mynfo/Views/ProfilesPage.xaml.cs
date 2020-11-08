@@ -1,11 +1,9 @@
 ﻿namespace Mynfo.Views
 {
-    using Badge.Plugin;
     using System;
     using ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
-    using Syncfusion.XForms.BadgeView;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesPage : ContentPage
@@ -38,6 +36,11 @@
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
+        private void BackHome_Clicked(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
     }

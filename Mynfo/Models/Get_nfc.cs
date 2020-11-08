@@ -58,4 +58,8 @@ namespace Mynfo.Models
         [JsonProperty("ProfileType")]
         public string ProfileType { get; set; }        
     }
+    public class NFCObject
+    {
+        public List<Get_nfc> value { get; set; }
+    }
 }                                                 

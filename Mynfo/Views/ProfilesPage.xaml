@@ -17,13 +17,15 @@
                 x:Name="BackButton"/>
             <Label 
                 FontAttributes = "Bold"
-                FontSize = "19"
+                FontSize = "17"
                 HorizontalOptions = "Center"
-                Margin = "0,0,180,0"
+                Margin = "0,0,100,0"
                 Text = "{i18n:Translate MyProfiles}"
                 TextColor = "{StaticResource Dark_FontColor}"
                 VerticalOptions = "Center"/>
-            <Image 
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Clicked = "BackHome_Clicked"
                 HeightRequest = "20"
                 HorizontalOptions = "End"
                 Source = "logo_superior.png" 
@@ -59,7 +61,7 @@
                         Grid.Row = "0" 
                         Grid.ColumnSpan = "2" 
                         Text = "{i18n:Translate ChooseTypeProfile}"
-                        FontSize = "20"
+                        FontSize = "25"
                         FontAttributes="Bold"
                         TextColor = "{StaticResource MainColor}"
                         HorizontalOptions = "Center"

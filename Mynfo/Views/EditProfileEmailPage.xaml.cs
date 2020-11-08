@@ -70,6 +70,7 @@
         private async void Save_Clicked(object sender, EventArgs e)
         {
             ButtonSave.IsEnabled = false;
+            ButtonDelete.IsEnabled = false;
             if (string.IsNullOrEmpty(EntryName.Text))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -100,6 +101,7 @@
             {
                 //this.IsRunning = false;
                 ButtonSave.IsEnabled = true;
+                ButtonDelete.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     checkConnetion.Message,
@@ -128,11 +130,13 @@
         private async void Delete_Clicked(object sender, EventArgs e)
         {
             ButtonSave.IsEnabled = false;
+            ButtonDelete.IsEnabled = false;
             var checkConnetion = await this.apiService.CheckConnection();
             if (!checkConnetion.IsSuccess)
             {
                 //this.IsRunning = false;
                 ButtonSave.IsEnabled = true;
+                ButtonDelete.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     checkConnetion.Message,
@@ -177,6 +181,11 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByEmail = new ProfilesByEmailViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
+        }
+        private void BackHome_Clicked(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }
