@@ -11,7 +11,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image 
+            <ImageButton 
+                BackgroundColor = "Transparent"
+                Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,10,0"
                 HorizontalOptions = "Center"
@@ -28,6 +30,15 @@
                 VerticalOptions = "Start"
                 WidthRequest = "40"
                 x:Name="BackButton"/>
+            <ImageButton 
+                BackgroundColor = "Transparent"
+                Grid.Column = "0"
+                HeightRequest = "40"
+                HorizontalOptions = "Start"
+                Source = "ic_navigation_arrow_back"
+                VerticalOptions = "Start"
+                WidthRequest = "40"
+                x:Name="BackButtonBox"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -35,83 +46,91 @@
             BindingContext = "{Binding CreateProfileFacebook}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height = "80"/>
+                    <RowDefinition Height = "70"/>
                     <RowDefinition Height = "160"/>
-                    <RowDefinition Height = "120"/>
-                    <RowDefinition Height = "80"/>
+                    <RowDefinition Height = "110"/>
+                    <RowDefinition Height = "110"/>
                     <RowDefinition />
-                    <RowDefinition Height = "120"/>
+                    <RowDefinition Height = "50"/>
                 </Grid.RowDefinitions>
                 <Image 
-                        Grid.Row = "1" 
-                        HeightRequest = "180"
-                        Source ="facebook2"
-                        WidthRequest = "180"/>
+                    Grid.Row = "1" 
+                    HeightRequest = "180"
+                    Source ="facebook2"
+                    WidthRequest = "180"/>
                 <StackLayout 
-                        Grid.Row = "2"
-                        Padding = "20">
+                    Grid.Row = "2"
+                    Padding = "20">
                     <Label 
-                            FontSize = "24" 
-                            FontAttributes="Bold"
-                            HorizontalOptions = "Center"
-                            VerticalOptions = "Center"
-                            Text = "{i18n:Translate NameProfile}"/>
-                    <Entry 
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
-                            FontSize = "21"
-                            HeightRequest = "46"
-                            HorizontalTextAlignment = "Center"
-                            HorizontalOptions = "Center"
-                            MaxLength = "10"
-                            Placeholder = "{i18n:Translate NProfilePlaceH}"
-                            Text = "{Binding Name}"
-                            VerticalOptions = "Center" 
-                            WidthRequest = "300" 
-                            x:Name="ProfileName"/>
-                </StackLayout>
-                <StackLayout 
-                        Grid.Row = "3">
-                    <Label 
-                            FontSize = "24" 
-                            FontAttributes="Bold"
-                            HorizontalOptions = "Center"
-                            Text = "{i18n:Translate Link}" 
-                            VerticalOptions = "Center" />
-                    <Entry 
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
-                            FontSize = "21"
-                            HeightRequest = "46"
-                            HorizontalTextAlignment = "Center"
-                            HorizontalOptions = "Center"
-                            Text = "{Binding Link}"
-                            VerticalOptions = "Center" 
-                            WidthRequest = "300" 
-                            x:Name="ProfileLink"/>
-                </StackLayout>
-                <Button 
-                        BackgroundColor="{StaticResource MainColor}"
-                        BorderRadius="23"
-                        Command = "{Binding SaveProfileFacebookCommand}"
-                        HeightRequest = "50"
-                        Grid.Row = "5"
-                        Text = "{i18n:Translate Save}"
-                        TextColor = "{StaticResource Dark_FontColor}"
-                        VerticalOptions = "Center"
+                        FontSize = "24" 
+                        FontAttributes="Bold"
                         HorizontalOptions = "Center"
-                        WidthRequest ="150"
+                        VerticalOptions = "Center"
+                        Text = "{i18n:Translate NameProfile}"/>
+                    <Entry 
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        FontSize = "21"
+                        HeightRequest = "46"
+                        HorizontalTextAlignment = "Center"
+                        HorizontalOptions = "Center"
+                        MaxLength = "10"
+                        Placeholder = "{i18n:Translate NProfilePlaceH}"
+                        Text = "{Binding Name}"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300" 
+                        x:Name="ProfileName"/>
+                </StackLayout>
+                <StackLayout 
+                    Grid.Row = "3">
+                    <Label 
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate Link}" 
+                        VerticalOptions = "Center" />
+                    <Entry 
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        FontSize = "21"
+                        HeightRequest = "46"
+                        HorizontalTextAlignment = "Center"
+                        HorizontalOptions = "Center"
+                        Text = "{Binding Link}"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300" 
+                        x:Name="ProfileLink"/>
+                </StackLayout>
+                <Grid
+                    Grid.Row = "4"
+                    VerticalOptions = "CenterAndExpand">
+                    <ActivityIndicator
+                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions = "CenterAndExpand">
+                    </ActivityIndicator>
+                </Grid>
+                <Button 
+                    BackgroundColor="{StaticResource MainColor}"
+                    BorderRadius="23"
+                    Command = "{Binding SaveProfileFacebookCommand}"
+                    HeightRequest = "50"
+                    Grid.Row = "5"
+                    Text = "{i18n:Translate Save}"
+                    TextColor = "{StaticResource Dark_FontColor}"
+                    VerticalOptions = "Center"
+                    HorizontalOptions = "Center"
+                    WidthRequest ="150"
                     x:Name="Save"/>
                 <!-- Botón si viene de agregar perfiles a box -->
                 <Button 
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
-                        HeightRequest = "50"
-                        Grid.Row = "5"
-                        HorizontalOptions = "Center"
-                        Text = "{i18n:Translate Save}"
-                        TextColor = "{StaticResource Dark_FontColor}"
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" 
-                        x:Name="SaveWBox"/>
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    HeightRequest = "50"
+                    Grid.Row = "5"
+                    HorizontalOptions = "Center"
+                    Text = "{i18n:Translate Save}"
+                    TextColor = "{StaticResource Dark_FontColor}"
+                    VerticalOptions = "Center"
+                    WidthRequest = "150" 
+                    x:Name="SaveWBox"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

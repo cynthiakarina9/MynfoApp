@@ -21,6 +21,12 @@
             set;
         }
 
+        public Data_ntc data_nfc
+        {
+            get;
+            set;
+        }
+
         public ObservableCollection<MenuItemViewModel> Menus
         {
             get;

@@ -28,6 +28,15 @@
                 VerticalOptions = "Start"
                 WidthRequest = "40"
                 x:Name="BackButton"/>
+            <ImageButton 
+                BackgroundColor = "Transparent"
+                Grid.Column = "0"
+                HeightRequest = "40"
+                HorizontalOptions = "Start"
+                Source = "ic_navigation_arrow_back"
+                VerticalOptions = "Start"
+                WidthRequest = "40"
+                x:Name="BackButtonBox"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -35,12 +44,12 @@
                 BindingContext = "{Binding CreateProfileEmail}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height = "80"/>
+                    <RowDefinition Height = "70"/>
                     <RowDefinition Height = "160"/>
-                    <RowDefinition Height = "120"/>
-                    <RowDefinition Height = "80"/>
+                    <RowDefinition Height = "110"/>
+                    <RowDefinition Height = "110"/>
                     <RowDefinition />
-                    <RowDefinition Height = "120"/>
+                    <RowDefinition Height = "50"/>
                 </Grid.RowDefinitions>
                 <Label 
                     FontAttributes = "Bold"
@@ -100,8 +109,13 @@
                         WidthRequest = "300" 
                         x:Name="ProfileMail"/>
                 </StackLayout>
-                <StackLayout
+                <ActivityIndicator
                     Grid.Row = "4"
+                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions = "CenterAndExpand">
+                </ActivityIndicator>
+                <StackLayout
+                    Grid.Row = "5"
                     Padding = "40">
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"

@@ -17,13 +17,16 @@
             if (_boxId == 0)
             {
                 SaveWBox.IsVisible = false;
+                BackButtonBox.IsVisible = false;
             }
             else
             {
                 Save.IsVisible = false;
+                BackButton.IsVisible = false;
             }
 
             SaveWBox.Clicked += new EventHandler((sender, e) => backToAssignProfiles(sender, e, _boxId, ProfileName.Text, ProfileLink.Text, _BoxDefault));
+            BackButtonBox.Clicked += new EventHandler((sender, e) => BackBox_Clicked(sender, e, _boxId, _BoxDefault));
         }
         private void backToAssignProfiles(object sender, EventArgs e, int _BoxId, string _profileName, string _profileLink, bool _BoxDefault)
         {
@@ -54,6 +57,15 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByFacebook = new ProfilesByFacebookViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesByFacebookPage());
+        }
+        private void BackBox_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault)
+        {
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Facebook", _boxDefault));
+        }
+        private void BackHome_Clicked(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
     }
 }
