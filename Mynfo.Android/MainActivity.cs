@@ -18,6 +18,8 @@
     using System.Text;
     using Mynfo.Models;
     using Mynfo.ViewModels;
+    using System.Collections.Generic;
+    using Newtonsoft.Json.Linq;
 
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop)]
     [IntentFilter(new[] { NfcAdapter.ActionNdefDiscovered }, 
@@ -71,6 +73,9 @@
             
         }
 
+        //List<Get_nfc> nfcData = null;
+        public List<Get_nfc> nfcData = new List<Get_nfc>();
+
         protected void HandleNFC(Intent intent, Boolean inForeground)
         {
             try 
@@ -85,10 +90,8 @@
                     NdefMessage msg = (NdefMessage)rawMsgs[0];
                     var text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
 
-                    string[] Json = text.ToString().Split('¡');
-                    string mesaje = Json[1].ToString();
-                    get_nfc = JsonConvert.DeserializeObject<Get_nfc>(mesaje);
-
+                    //nfcData almasena todo en una lista cuando obtiene los datos del telefono servidor 
+                    nfcData = (List<Get_nfc>)JsonConvert.DeserializeObject(text, typeof(List<Get_nfc>));                    
                 }
                 else
                 {
@@ -163,8 +166,9 @@
                                 ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
                                 }";
 
-                            json_value = json_value +","+ json_body;
+                            json_value = json_value + ",\n" + json_body;
                         }
+                        json_value = "[" +json_value + "]";
                     }                    
                     json = json_value;                   
                 }
