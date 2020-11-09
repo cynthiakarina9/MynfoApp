@@ -112,7 +112,7 @@
                             <TapGestureRecognizer Command = "{Binding LoginFacebookComand}"/>
                         </Image.GestureRecognizers>
                     </Image>
-                    <Frame 
+                    <!--<Frame 
                         OutlineColor = "Transparent">
                         <Image
                         Source = "twitter1"
@@ -120,7 +120,7 @@
                     </Frame>
                     <Image
                         Source = "instagram1"
-                        WidthRequest = "45"/>
+                        WidthRequest = "45"/>-->
                 </StackLayout>
             </StackLayout>
         </ScrollView>
