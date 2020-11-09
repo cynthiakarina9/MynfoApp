@@ -247,7 +247,7 @@
     <AndroidResource Include="Resources\drawable\perfiles.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\trash1.png" />
+    <AndroidResource Include="Resources\drawable\trash.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Conections.png" />
