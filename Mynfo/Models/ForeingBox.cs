@@ -29,7 +29,7 @@
             {
                 if (string.IsNullOrEmpty(ImagePath))
                 {
-                    return "noimage";
+                    return "no_image";
                 }
 
                 if (this.UserTypeId == 1)

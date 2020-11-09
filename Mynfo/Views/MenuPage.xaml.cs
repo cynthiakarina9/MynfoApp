@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mynfo.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,14 @@ namespace Mynfo.Views
         public MenuPage()
         {
             InitializeComponent();
+        }
+        void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            MenuItemViewModel selectedItem = e.SelectedItem as MenuItemViewModel;
+        }
+        void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            MenuItemViewModel tappedItem = e.Item as MenuItemViewModel;
         }
     }
 }

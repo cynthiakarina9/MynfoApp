@@ -8861,7 +8861,7 @@ namespace Mynfo.Droid
 			public const int tooltip_frame_light = 2131165368;
 			
 			// aapt resource value: 0x7F0700B9
-			public const int trash1 = 2131165369;
+			public const int trash = 2131165369;
 			
 			// aapt resource value: 0x7F0700BA
 			public const int trash2 = 2131165370;
