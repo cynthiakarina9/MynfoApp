@@ -226,8 +226,6 @@
                 Languages.UserRegisteredMessage,
                 Languages.Accept);
             var mainViewModel = new MainViewModel();
-            //mainViewModel.SocialMedia = new SocialMediaViewModel();
-            //Application.Current.MainPage = new SocialMediaPage();
             this.Email = string.Empty;
             this.FirstName = string.Empty;
             this.LastName = string.Empty;

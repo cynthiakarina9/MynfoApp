@@ -23,7 +23,6 @@
 
             using (var conn = new SQLite.SQLiteConnection(App.root_db))
             {
-
                 int a = conn.Table<ForeingProfile>().Count();
 
                 foreignBoxList = conn.Table<ForeingBox>().ToList();
