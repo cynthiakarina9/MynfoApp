@@ -52,21 +52,21 @@
                             deleteProfile.HorizontalOptions = LayoutOptions.End;
                             deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
                             //int FacebookId = (int)reader["ProfileMSId"];
-                            //editProfile.Source = "facebook2";
-                            //editProfile.BackgroundColor = Color.Transparent;
-                            //editProfile.CornerRadius = 15;
-                            //editProfile.HeightRequest = 30;
-                            //editProfile.WidthRequest = 30;
-                            //editProfile.HorizontalOptions = LayoutOptions.End;
+                            editProfile.Source = "facebook2";
+                            editProfile.BackgroundColor = Color.Transparent;
+                            editProfile.CornerRadius = 20;
+                            editProfile.HeightRequest = 40;
+                            editProfile.WidthRequest = 40;
+                            editProfile.HorizontalOptions = LayoutOptions.Start;
                             //editProfile.Clicked += new EventHandler((sender, e) => EditProfileEmail(sender, e, EmailId));
 
                             Line.HeightRequest = 1;
                             Line.Color = Color.FromHex("#FF5521");
 
+                            FacebookList.Children.Add(editProfile);
                             FacebookList.Children.Add(FacebookProfile);
                             //FacebookList.Children.Add(emailAddress);
                             //EmailList.Children.Add(deleteProfile);
-                            //FacebookList.Children.Add(editProfile);
                             FacebookList.Children.Add(Line);
                         }
                     }
@@ -89,6 +89,11 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Profiles = new ProfilesViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesPage());
+        }
+        private void BackHome_Clicked(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

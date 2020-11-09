@@ -6,6 +6,7 @@
     public class ForeingBox
     {
         [PrimaryKey]
+        [AutoIncrement]
         public int BoxIdForeing { get; set; }
 
         public int BoxId { get; set; }
@@ -48,6 +49,11 @@
             {
                 return string.Format("{0} {1}", this.FirstName, this.LastName);
             }
+        }
+
+        public override string ToString()
+        {
+            return FirstName;
         }
     }
 }

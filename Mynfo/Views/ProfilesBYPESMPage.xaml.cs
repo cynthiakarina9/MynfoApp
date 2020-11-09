@@ -49,7 +49,7 @@ namespace Mynfo.Views
             #region Commands
 
             BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId, _BoxDefault));
-            RefreshCommand = new Command(async () => await LoadPublications());
+            
             GoToProfiles.Clicked += new EventHandler((sender, e) => GoToProfiles_Clicked(sender, e, _BoxId,_ProfileType, _BoxDefault));
 
             #endregion
@@ -281,15 +281,15 @@ namespace Mynfo.Views
             {
                 case "Phone":
                     mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
-                    Navigation.PushAsync(new CreateProfilePhonePage(_BoxDefault,_boxId));
+                    Application.Current.MainPage = new NavigationPage(new CreateProfilePhonePage(_BoxDefault,_boxId));
                     break;
                 case "Email":
                     mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-                    Navigation.PushAsync(new CreateProfileEmailPage(_BoxDefault,_boxId));
+                    Application.Current.MainPage = new NavigationPage(new CreateProfileEmailPage(_BoxDefault,_boxId));
                     break;
                 case "Facebook":
                     mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
-                    Navigation.PushAsync(new CreateProfileFacebookPage(_BoxDefault, _boxId));
+                    Application.Current.MainPage= new NavigationPage(new CreateProfileFacebookPage(_BoxDefault, _boxId));
                     break;
                 default:
                     break;
@@ -486,30 +486,15 @@ namespace Mynfo.Views
             }
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Facebook", _boxDefault));
         }
-
-        private bool _isRefreshing;
-
-        public bool IsRefreshing
-        {
-            get => _isRefreshing;
-            set { _isRefreshing = value; OnPropertyChanged(); }
-        }
-
-        public ICommand RefreshCommand { private set; get; }
-
-
-        // methods - code omitted
-
-        async Task LoadPublications()
-        {
-            // code omitted
-
-            IsRefreshing = false;
-        }
         private void Back_Clicked(object sender, EventArgs e, int _BoxId,bool _boxDefault)
         {
             var mainViewModel = MainViewModel.GetInstance();
             Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault));
+        }
+        private void BackHome_Clicked(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
     }
     #endregion

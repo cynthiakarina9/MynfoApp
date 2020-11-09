@@ -20,6 +20,7 @@
     using Mynfo.ViewModels;
     using System.Collections.Generic;
     using Newtonsoft.Json.Linq;
+    using SQLite;
 
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop)]
     [IntentFilter(new[] { NfcAdapter.ActionNdefDiscovered }, 
@@ -91,7 +92,13 @@
                     var text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
 
                     //nfcData almasena todo en una lista cuando obtiene los datos del telefono servidor 
-                    nfcData = (List<Get_nfc>)JsonConvert.DeserializeObject(text, typeof(List<Get_nfc>));                    
+                    nfcData = (List<Get_nfc>)JsonConvert.DeserializeObject(text, typeof(List<Get_nfc>));
+
+                    if(nfcData != null)
+                    {
+                        //Insertar método para poblar tabla de boxes foraneas
+                        this.InsertForeignData();
+                    }
                 }
                 else
                 {
@@ -278,5 +285,48 @@
                 NdefRecord.TnfMimeMedia, mimeBytes, new byte[0], payload);
             return mimeRecord;
         }       
+
+        public void InsertForeignData()
+        {
+            ForeingBox      foreingBox;
+            ForeingProfile  foreingProfile;
+
+            //Inicializar la box foranea
+            foreingBox = new ForeingBox
+            {
+                BoxId = Convert.ToInt32(nfcData[0].boxId),
+                UserId = Convert.ToInt32(nfcData[0].userId),
+                Time = Convert.ToDateTime(nfcData[0].time),
+                ImagePath = nfcData[0].imagePath,
+                UserTypeId = Convert.ToInt32(nfcData[0].userTypeId),
+                FirstName = nfcData[0].firstName,
+                LastName = nfcData[0].lastName
+            };
+
+            //Insertar la box foranea
+            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+            {
+                connSQLite.Insert(foreingBox);
+            }
+
+            //Recorrer la lista de perfiles para insertarlos
+            foreach(Get_nfc get_nfc in nfcData)
+            {
+                foreingProfile = new ForeingProfile
+                {
+                    BoxId = Convert.ToInt32(get_nfc.boxId),
+                    UserId = Convert.ToInt32(get_nfc.userId),
+                    ProfileName = get_nfc.profileName,
+                    value = get_nfc.value,
+                    ProfileType = get_nfc.ProfileType
+                };
+
+                //Insertar la box foranea
+                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    connSQLite.Insert(foreingProfile);
+                }
+            }
+        }
     }
 }

@@ -36,5 +36,10 @@ namespace Mynfo.Views
             mainViewModel.DetailsBox = new DetailsBoxViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault));
         }
+        private void BackHome_Clicked(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
     }
 }

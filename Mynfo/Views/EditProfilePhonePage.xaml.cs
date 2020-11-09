@@ -171,6 +171,11 @@
             mainViewModel.ProfilesByPhone = new ProfilesByPhoneViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
         }
+        private void BackHome_Clicked(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
         #endregion
     }
 }

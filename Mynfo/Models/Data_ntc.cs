@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mynfo.Models
+﻿namespace Mynfo.Models
 {
     public class Data_ntc
     {
