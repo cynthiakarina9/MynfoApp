@@ -7,6 +7,9 @@
     using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
+    using Xamarin.Forms.OpenWhatsApp;
+    using ViewModels;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ForeingBoxPage : ContentPage
     {
@@ -170,7 +173,16 @@
             switch(_profileType)
             {
                 case "Phone":
-                    // ??
+
+                    try
+                    {
+                        Chat.Open("+522461225479", "Hola un gusto soy " + MainViewModel.GetInstance().User.FullName + " Te comparto este mensaje por Mynfo!");
+                    }
+                    catch (Exception ex)
+                    {
+                        await DisplayAlert("Error", ex.Message, "OK");
+                    }
+
                     break;
 
                 case "Email":
@@ -188,8 +200,7 @@
             //await Launcher.OpenAsync(new Uri("https://twitter.com/RToachee"));
             //await Launcher.OpenAsync(new Uri("instagram:page_id//user?username=rodritoachee"));
             //await Launcher.OpenAsync(new Uri("mailto:rrodriguez@atx.com"));
-        }
-
+        }        
         #endregion
     }
 }
