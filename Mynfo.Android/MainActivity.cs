@@ -244,7 +244,11 @@
                             "Beam Time: " + time.ToString("DD/MM/YYYY HH:mm:ss"));
             get_box();
             try 
-            {                
+            {
+                if (json == null) 
+                {
+                    get_box();
+                }
                 NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { CreateMimeRecord (
                 "application/com.example.android.beam", Encoding.UTF8.GetBytes(json.ToString()))
