@@ -91,6 +91,7 @@
             {
                 //this.IsRunning = false;
                 ButtonSave.IsEnabled = true;
+                ButtonSave.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     checkConnetion.Message,
@@ -125,6 +126,7 @@
             if (!checkConnetion.IsSuccess)
             {
                 //this.IsRunning = false;
+                ButtonDelete.IsEnabled = true;
                 ButtonSave.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
