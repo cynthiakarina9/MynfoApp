@@ -50,7 +50,7 @@
                     <RowDefinition Height = "160"/>
                     <RowDefinition Height = "110"/>
                     <RowDefinition Height = "110"/>
-                    <RowDefinition />
+                    <RowDefinition Height = "40"/>
                     <RowDefinition Height = "50"/>
                 </Grid.RowDefinitions>
                 <Image 
