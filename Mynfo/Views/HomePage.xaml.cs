@@ -521,6 +521,18 @@
                                                 + " and dbo.Boxes.BoxDefault = 1";
                 StringBuilder sb;
                 var resultBoxLocal = conn.GetTableInfo("BoxLocal");
+                var resulForeingBox = conn.GetTableInfo("ForeingBox");
+                var resultForeingProfiles = conn.GetTableInfo("ForeingProfile");
+
+                if(resulForeingBox.Count == 0)
+                {
+                    conn.CreateTable<ForeingBox>();
+
+                    if (resultForeingProfiles.Count == 0)
+                    {
+                        conn.CreateTable <ForeingProfile>();
+                    }
+                }
 
                 //Si no existe la tabla de las boxes locales...
                 if (resultBoxLocal.Count == 0)

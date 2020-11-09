@@ -30,121 +30,43 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="80" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width = "2*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <ImageButton 
-                    BackgroundColor = "Transparent"
-                    Clicked = "ViewProfile_Clicked"
-                    Grid.Row = "1"
-                    Grid.Column = "0"
-                    Source="usuario"
-                    HeightRequest = "60"
-                    HorizontalOptions = "Center"
-                    Margin = "50,0,0,0"
-                    VerticalOptions = "Center"
-                    WidthRequest = "60"/>
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "21"
-                    HorizontalOptions = "Center"
-                    VerticalOptions = "Center"
-                    Grid.Row = "1"
-                    Grid.Column = "1"
-                    Text = "Miguel Aleman"
-                    TextColor = "{StaticResource MainColor}"/>
-
-                <ImageButton 
-                    BackgroundColor = "Transparent"
-                    Grid.Row = "2"
-                    Grid.Column = "0"
-                    Source="usuario"
-                    HeightRequest = "60"
-                    HorizontalOptions = "Center"
-                    Margin = "50,0,0,0"
-                    VerticalOptions = "Center"
-                    WidthRequest = "60"/>
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "21"
-                    HorizontalOptions = "Center"
-                    VerticalOptions = "Center"
-                    Grid.Row = "2"
-                    Grid.Column = "1"
-                    Text = "Lucero Marin"
-                    TextColor = "{StaticResource MainColor}"/>
-
-                <ImageButton 
-                    BackgroundColor = "Transparent"
-                    Grid.Row = "3"
-                    Grid.Column = "0"
-                    Source="usuario"
-                    HeightRequest = "60"
-                    HorizontalOptions = "Center"
-                    Margin = "50,0,0,0"
-                    VerticalOptions = "Center"
-                    WidthRequest = "60"/>
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "21"
-                    HorizontalOptions = "Center"
-                    VerticalOptions = "Center"
-                    Grid.Row = "3"
-                    Grid.Column = "1"
-                    Text = "Marina Laredo"
-                    TextColor = "{StaticResource MainColor}"/>
-                
-                <ImageButton 
-                    BackgroundColor = "Transparent"
-                    Grid.Row = "4"
-                    Grid.Column = "0"
-                    Source="usuario"
-                    HeightRequest = "60"
-                    HorizontalOptions = "Center"
-                    Margin = "50,0,0,0"
-                    VerticalOptions = "Center"
-                    WidthRequest = "60"/>
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "21"
-                    HorizontalOptions = "Center"
-                    VerticalOptions = "Center"
-                    Grid.Row = "4"
-                    Grid.Column = "1"
-                    Text = "Luna Lena"
-                    TextColor = "{StaticResource MainColor}"/>
-                <ImageButton 
-                    BackgroundColor = "Transparent"
-                    Grid.Row = "5"
-                    Grid.Column = "0"
-                    Source="usuario"
-                    HeightRequest = "60"
-                    HorizontalOptions = "Center"
-                    Margin = "50,0,0,0"
-                    VerticalOptions = "Center"
-                    WidthRequest = "60"/>
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "21"
-                    HorizontalOptions = "Center"
-                    VerticalOptions = "Center"
-                    Grid.Row = "5"
-                    Grid.Column = "1"
-                    Text = "Roberto Santa Marina"
-                    TextColor = "{StaticResource MainColor}"/>
-            </Grid>
+            <StackLayout Margin="20,35,20,20">
+                <ListView ItemsSource="{Binding foreingBox}"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemTapped="OnListViewItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Image Grid.RowSpan="2"
+                                       Source="{Binding ImageFullPath}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="60"
+                                       WidthRequest="60" />
+                                    <Label Grid.Column="1"
+                                       Text="{Binding FullName}"
+                                       FontAttributes="Bold" />
+                                    <!--<Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="{Binding LastName}"
+                                       VerticalOptions="End" />-->
+                                    
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

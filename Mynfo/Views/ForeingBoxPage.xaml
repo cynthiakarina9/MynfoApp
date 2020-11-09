@@ -14,10 +14,7 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="180"/>
                         <RowDefinition Height="80"/>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="60"/>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -25,6 +22,8 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <!--Botón para volver a home-->
+                    
+                    <!-- Nombre e imagen del usuario foraneo-->
                     <StackLayout 
                         Grid.Column ="2"
                         HorizontalOptions="End"
@@ -35,8 +34,8 @@
                         Grid.Row = "1"
                         Grid.Column = "1"
                         HeightRequest = "180"
-                        Source = "{Binding User.ImageFullPath}"
-                        WidthRequest = "180">
+                        WidthRequest = "180"
+                        x:Name="ForeignUserImage">
                     </controls:CircleImage>
                     <Label 
                         FontAttributes="Bold"
@@ -45,90 +44,34 @@
                         Grid.ColumnSpan = "3"
                         HorizontalTextAlignment="Center"
                         HorizontalOptions = "Center"
-                        Text = "{Binding User.FullName, StringFormat = '{0}'}"
-                        TextColor = "{StaticResource MainColor}" />
-                    <StackLayout
-                        Grid.Row="3"
-                        Grid.Column="0">
-                        <ImageButton 
-                            BackgroundColor = "Transparent"
-                            Source="facebook2"
-                            WidthRequest = "70"
-                            HeightRequest = "70"/>
-                        <Label 
-                            FontSize = "15"
-                            HorizontalOptions = "Center"
-                            Text="Personal"/>
-                    </StackLayout>
-                    <StackLayout
-                        Grid.Row="3"
-                        Grid.Column="1">
-                        <ImageButton 
-                            BackgroundColor = "Transparent"
-                            Source="tel2"
-                            WidthRequest = "70"
-                            HeightRequest = "70"/>
-                        <Label 
-                            FontSize = "15"
-                            HorizontalOptions = "Center"
-                            Text="Casa"/>
-                    </StackLayout>
-                    <StackLayout
-                        Grid.Row="3"
-                        Grid.Column="2"
-                        HeightRequest = "80">
-                        <ImageButton 
-                            BackgroundColor = "Transparent"
-                            Source="mail2"
-                            WidthRequest = "70"
-                            HeightRequest = "70"/>
-                        <Label 
-                            FontSize = "15"
-                            HorizontalOptions = "Center"
-                            Text="Personal"/>
-                    </StackLayout>
-                    <StackLayout
-                        Grid.Row="4"
-                        Grid.Column="0"
-                        HeightRequest = "80">
-                        <ImageButton 
-                            BackgroundColor = "Transparent"
-                            Source="mail2"
-                            WidthRequest = "70"
-                            HeightRequest = "70"/>
-                        <Label 
-                            FontSize = "15"
-                            HorizontalOptions = "Center"
-                            Text="Negocios"/>
-                    </StackLayout>
-                    <StackLayout
-                        Grid.Row="4"
+                        TextColor = "{StaticResource MainColor}"
+                        x:Name="ForeignUserName" />
+
+                    <!-- Listado de perfiles -->
+                    <Grid
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout 
+                        HorizontalOptions="FillAndExpand"
+                        Padding="5,35"
+                        x:Name="ProfilesList1" />
+                        <StackLayout 
                         Grid.Column="1"
-                        HeightRequest = "80">
-                        <ImageButton 
-                            BackgroundColor = "Transparent"
-                            Source="facebook2"
-                            WidthRequest = "70"
-                            HeightRequest = "70"/>
-                        <Label 
-                            FontSize = "15"
-                            HorizontalOptions = "Center"
-                            Text="Fans"/>
-                    </StackLayout>
-                    <StackLayout
-                        HeightRequest = "80"
-                        Grid.Row="4"
-                        Grid.Column="2">
-                        <ImageButton 
-                            BackgroundColor = "Transparent"
-                            Source="tel2"
-                            WidthRequest = "70"
-                            HeightRequest = "70"/>
-                        <Label 
-                            FontSize = "15"
-                            HorizontalOptions = "Center"
-                            Text="Celular"/>
-                    </StackLayout>
+                        HorizontalOptions="FillAndExpand"
+                        Padding="5,35"
+                        x:Name="ProfilesList2" />
+                        <StackLayout 
+                        Grid.Column="2"
+                        HorizontalOptions="FillAndExpand"
+                        Padding="5,35"
+                        x:Name="ProfilesList3" />
+                    </Grid>
                 </Grid>
             </Grid>
         </ScrollView>
