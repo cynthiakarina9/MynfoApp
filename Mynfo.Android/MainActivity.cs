@@ -327,6 +327,8 @@
                     connSQLite.Insert(foreingProfile);
                 }
             }
+            //Enviar a detalles de la box foranea cuando se inserta
+            App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox));
         }
     }
 }
