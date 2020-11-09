@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
              x:Class="Mynfo.Views.ListForeignBoxPage">
     <NavigationPage.TitleView>
@@ -30,7 +31,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Margin="20,35,20,20">
+            <StackLayout Margin="10,35,10,20">
                 <ListView ItemsSource="{Binding foreingBox}"
                             HasUnevenRows="true"
                             ItemSelected="OnListViewItemSelected"
@@ -40,27 +41,41 @@
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="100"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    
-                                    <Image Grid.RowSpan="2"
-                                       Source="{Binding ImageFullPath}"
-                                       Aspect="AspectFill"
-                                       HeightRequest="60"
-                                       WidthRequest="60" />
+
+                                    <controls:CircleImage
+                                        HeightRequest = "60"
+                                        WidthRequest="60"
+                                        Source="{Binding ImageFullPath}">                                    </controls:CircleImage>
+
                                     <Label Grid.Column="1"
-                                       Text="{Binding FullName}"
-                                       FontAttributes="Bold" />
-                                    <!--<Label Grid.Row="1"
-                                       Grid.Column="1"
-                                       Text="{Binding LastName}"
-                                       VerticalOptions="End" />-->
-                                    
+                                        Text="{Binding FullName}"
+                                        FontAttributes="Bold" 
+                                        FontSize="Title"
+                                        VerticalTextAlignment="Center"
+                                           Margin="15,0,0,0"/>
+
+                                    <!--<ImageButton Grid.Column="2"
+                                                 Source="time.png"
+                                                 Scale="0.3"
+                                                 BackgroundColor="Transparent">
+                                    </ImageButton>
+
+                                    <ImageButton Grid.Column="3"
+                                                 Source="icono_option.png"
+                                                 Scale="0.3"
+                                                 BackgroundColor="Transparent"
+                                                 x:Name="options"> 
+                                        
+                                    </ImageButton>-->
+
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

@@ -96,7 +96,7 @@
                         Grid.Column = "1"
                         BackgroundColor = "Transparent"
                         HeightRequest = "150"
-                        Source = "whatsapp1.png"
+                        Source = "tel1.png"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
                         WidthRequest = "150"

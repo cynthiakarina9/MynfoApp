@@ -63,6 +63,7 @@
                         profileIcon.HeightRequest = 50;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
+                        profileIcon.BackgroundColor = Color.Transparent;
                         profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
 
                         profileName.Text = foreingProfileValue.ProfileName;
@@ -81,6 +82,7 @@
                         profileIcon.HeightRequest = 50;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
+                        profileIcon.BackgroundColor = Color.Transparent;
                         profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
 
                         profileName.Text = foreingProfileValue.ProfileName;
@@ -98,6 +100,7 @@
                         profileIcon.HeightRequest = 50;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
+                        profileIcon.BackgroundColor = Color.Transparent;
                         profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
 
                         profileName.Text = foreingProfileValue.ProfileName;

@@ -25,8 +25,6 @@
                 BackgroundColor="#F2F2F2"
                 ItemsSource = "{Binding Menus}"
                 HasUnevenRows = "True"
-                ItemSelected="OnListViewItemSelected"
-                ItemTapped="OnListViewItemTapped"
                 SeparatorVisibility = "None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
