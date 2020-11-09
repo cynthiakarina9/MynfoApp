@@ -198,7 +198,7 @@
 
                 default:
                     break;
-            }
+            } 
             //await Launcher.OpenAsync(new Uri("fb://page/100000686899395"));
             //await Launcher.OpenAsync(new Uri("https://twitter.com/RToachee"));
             //await Launcher.OpenAsync(new Uri("instagram:page_id//user?username=rodritoachee"));
