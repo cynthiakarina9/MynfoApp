@@ -192,12 +192,12 @@
                 PageName = "ProfilesPage",
                 Title = Languages.MyProfiles,
             });
-            this.Menus.Add(new MenuItemViewModel
+           /* this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "configuraciones",
                 PageName = "SettingsPage",
                 Title = Languages.Settings,
-            });
+            });*/
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "logout",
