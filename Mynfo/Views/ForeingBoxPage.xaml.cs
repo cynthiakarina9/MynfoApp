@@ -179,7 +179,7 @@
 
                     try
                     {
-                        Chat.Open("+522461225479", "Hola un gusto soy " + MainViewModel.GetInstance().User.FullName + " Te comparto este mensaje por Mynfo!");
+                        Chat.Open("+52" + _profileValue, "Hola un gusto. Soy " + MainViewModel.GetInstance().User.FullName + ", te comparto este mensaje por Mynfo!");
                     }
                     catch (Exception ex)
                     {
