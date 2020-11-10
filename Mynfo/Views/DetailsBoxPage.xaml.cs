@@ -217,7 +217,7 @@ namespace Mynfo.Views
                             int PhoneId = (int)reader["ProfilePhoneId"];
                             var space = new BoxView();
 
-                            phoneIcon.Source = "tel1.png";
+                            phoneIcon.Source = "tel2.png";
                             phoneIcon.WidthRequest = 50;
                             phoneIcon.HeightRequest = 50;
                             phoneIcon.HorizontalOptions = LayoutOptions.Center;
