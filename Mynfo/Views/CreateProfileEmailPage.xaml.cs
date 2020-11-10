@@ -1,5 +1,7 @@
 ﻿namespace Mynfo.Views
 {
+    using Mynfo.Helpers;
+    using Mynfo.Services;
     using Mynfo.ViewModels;
     using System;
     using System.Data.SqlClient;
@@ -10,10 +12,11 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateProfileEmailPage : ContentPage
     {
+        ApiService apiService;
         public CreateProfileEmailPage(bool _boxDefault = false, int _boxId = 0)
         {
             InitializeComponent();
-
+            apiService = new ApiService();
             if (_boxId == 0)
             {
                 SaveWBox.IsVisible = false;
@@ -28,8 +31,49 @@
             SaveWBox.Clicked += new EventHandler((sender, e) => backToAssignProfiles(sender, e, _boxId, ProfileName.Text, ProfileMail.Text, _boxDefault));
             BackButtonBox.Clicked += new EventHandler((sender, e) => BackBox_Clicked(sender, e, _boxId, _boxDefault));
         }
-        private void backToAssignProfiles(object sender, EventArgs e, int _BoxId, string _profileName, string _profileMail, bool _boxDefault)
+        private async void backToAssignProfiles(object sender, EventArgs e, int _BoxId, string _profileName, string _profileMail, bool _boxDefault)
         {
+            if (string.IsNullOrEmpty(this.ProfileName.Text))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NameValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (string.IsNullOrEmpty(this.ProfileMail.Text))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.EmailValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (!RegexUtilities.IsValidEmail(this.ProfileMail.Text))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.EmailValidation2,
+                    Languages.Accept);
+                return;
+            }
+
+            ActivityIn.IsRunning = true;
+            Save.IsEnabled = false;
+            BackButton.IsEnabled = false;
+
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess)
+            {
+                ActivityIn.IsRunning = false;
+                Save.IsEnabled = true;
+                BackButton.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
             string query = "insert into dbo.ProfileEmails( Name, Email, UserId)" +
                             "Values('" + _profileName + "', '" + _profileMail + "', " + MainViewModel.GetInstance().User.UserId + ")";
 
@@ -57,6 +101,10 @@
                     }
                 }
             }
+
+            ActivityIn.IsRunning = false;
+            Save.IsEnabled = true;
+            BackButton.IsEnabled = true;
 
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Email", _boxDefault));
         }
