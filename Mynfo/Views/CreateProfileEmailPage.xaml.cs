@@ -38,15 +38,23 @@
 
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
+                StringBuilder errorMessages = new StringBuilder();
                 sb = new System.Text.StringBuilder();
                 sb.Append(query);
                 string sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (SqlException ex)
+                    {
+                        DisplayAlert("Atención", "El correo que se desea guardar ya se guardó previamente", "Ok");
+                    }
                 }
             }
 

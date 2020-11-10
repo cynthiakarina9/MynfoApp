@@ -39,6 +39,7 @@
 
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
+                StringBuilder errorMessages = new StringBuilder();
                 sb = new System.Text.StringBuilder();
                 sb.Append(query);
                 string sql = sb.ToString();
