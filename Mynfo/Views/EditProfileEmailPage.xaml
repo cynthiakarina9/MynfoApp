@@ -37,12 +37,12 @@
             BindingContext = "{Binding EditProfileEmail}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height = "70"/>
+                    <RowDefinition Height = "80"/>
                     <RowDefinition Height = "160"/>
-                    <RowDefinition Height = "110"/>
-                    <RowDefinition Height = "110"/>
+                    <RowDefinition Height = "120"/>
+                    <RowDefinition Height = "80"/>
                     <RowDefinition />
-                    <RowDefinition Height = "50"/>
+                    <RowDefinition Height = "120"/>
                 </Grid.RowDefinitions>
                 <Label 
                     FontAttributes = "Bold"
@@ -107,7 +107,7 @@
                     </ActivityIndicator>
                 </StackLayout>
                 <StackLayout
-                    Grid.Row = "5"
+                    Grid.Row = "4"
                     Orientation = "Horizontal"
                     Padding = "40">
                     <Button 
@@ -116,7 +116,6 @@
                         Clicked="Save_Clicked"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
-                        IsEnabled = "True"
                         Text = "{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"

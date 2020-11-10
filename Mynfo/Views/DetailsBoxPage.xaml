@@ -30,7 +30,7 @@
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
                         Padding="10,10,0,0"
-                        x:Name="DeleteButton" />
+                        x:Name="HomeButton" />
 
                     <!--Botón para volver a home-->
                     <StackLayout 
@@ -38,7 +38,7 @@
                         HorizontalOptions="End"
                         VerticalOptions="Center"
                         Padding="0,10,10,0"
-                        x:Name="HomeButton" />
+                        x:Name="DeleteButton" />
 
                     <!--Nombre de la box -->
                     <!--El nombre de la box será variable-->
