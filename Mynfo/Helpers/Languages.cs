@@ -546,5 +546,9 @@
         {
             get { return Resource.Delete;}
         }
+        public static string LinkValidation
+        {
+            get { return Resource.LinkValidation; }
+        }
     }
 }

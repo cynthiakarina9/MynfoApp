@@ -504,4 +504,7 @@
   <data name="Delete" xml:space="preserve">
     <value>Borrar</value>
   </data>
+  <data name="LinkValidation" xml:space="preserve">
+    <value>Debe ingresar un url</value>
+  </data>
 </root>

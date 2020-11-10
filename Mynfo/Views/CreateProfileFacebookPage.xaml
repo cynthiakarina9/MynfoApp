@@ -103,8 +103,9 @@
                     Grid.Row = "4"
                     VerticalOptions = "CenterAndExpand">
                     <ActivityIndicator
-                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions = "CenterAndExpand">
+                        IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                        VerticalOptions = "CenterAndExpand"
+                        x:Name= "ActivityIn">
                     </ActivityIndicator>
                 </Grid>
                 <Button 

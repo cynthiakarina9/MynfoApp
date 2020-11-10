@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.HomePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
@@ -13,15 +12,19 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label
-                Grid.Column = "0"
-                Text = "{Binding User.FullName, Mode = TwoWay}" 
-                TextColor="White"
-                VerticalOptions = "Center"/>
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Grid.ColumnSpan = "3"
+                Margin = "40,0,0,0"
+                HorizontalOptions = "Center"
+                VerticalOptions = "Center"
+                WidthRequest = "75"
+                x:Name="ButtonBox"/>
             <ImageButton  
                 BackgroundColor = "Transparent"
                 Clicked = "ForeingBoxes_Clicked"
-                Grid.Column = "2" 
+                Grid.Column = "3" 
+                Margin = "50,0,0,0"
                 HeightRequest = "30"
                 Source = "Conections"
                 VerticalOptions = "End"

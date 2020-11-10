@@ -700,6 +700,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a url.
+        /// </summary>
+        public static string LinkValidation {
+            get {
+                return ResourceManager.GetString("LinkValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {

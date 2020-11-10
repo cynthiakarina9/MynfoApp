@@ -73,7 +73,7 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    Languages.EmailValidation,
+                    Languages.LinkValidation,
                     Languages.Accept);
                 return;
             }

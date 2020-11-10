@@ -14,7 +14,9 @@
     {
         public HomePage()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
 
             System.Text.StringBuilder sb;
             string      userId = MainViewModel.GetInstance().User.UserId.ToString();
@@ -909,6 +911,17 @@
                     }
                 }
 
+            }
+        }
+        private void ChangeBoxbool(object sender, EventArgs e, bool pressed)
+        {
+            if (pressed == true)
+            {
+                ButtonBox.Source = "logo_superior.png";
+            }
+            else
+            {
+                ButtonBox.Source = "logo_superior2.png";
             }
         }
 

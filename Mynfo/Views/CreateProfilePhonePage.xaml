@@ -114,8 +114,9 @@
                     Grid.Row = "4"
                     VerticalOptions = "CenterAndExpand">
                     <ActivityIndicator
-                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions = "CenterAndExpand">
+                        IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                        VerticalOptions = "CenterAndExpand"
+                        x:Name= "ActivityIn">
                     </ActivityIndicator>
                 </Grid>
                 <Button 
@@ -137,6 +138,7 @@
                     BorderRadius="23"
                     HeightRequest="50"
                     Grid.Row = "5"
+                    IsEnabled = "True"
                     Text = "{i18n:Translate Save}"
                     TextColor = "{StaticResource Dark_FontColor}"
                     VerticalOptions = "Center"

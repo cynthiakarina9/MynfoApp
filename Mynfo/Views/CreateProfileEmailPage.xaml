@@ -11,7 +11,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image 
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,10,0"
                 HorizontalOptions = "Center"
@@ -109,14 +111,17 @@
                         WidthRequest = "300" 
                         x:Name="ProfileMail"/>
                 </StackLayout>
-                <ActivityIndicator
+                <Grid
                     Grid.Row = "4"
-                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
                     VerticalOptions = "CenterAndExpand">
-                </ActivityIndicator>
+                    <ActivityIndicator
+                        IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                        VerticalOptions = "CenterAndExpand"
+                        x:Name= "ActivityIn">
+                    </ActivityIndicator>
+                </Grid>
                 <StackLayout
-                    Grid.Row = "5"
-                    Padding = "40">
+                    Grid.Row = "5">
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
