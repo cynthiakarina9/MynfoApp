@@ -9,45 +9,48 @@
         <ScrollView
             BindingContext = "{Binding Login}">
             <StackLayout
-                Padding = "15">
-                <Image
-                    Source = "logo"
-                    WidthRequest = "120"/>
-                <Image
-                    Source = "tipography"
-                    WidthRequest = "180"/>
-                <Label 
-                    FontAttributes = "Bold"
-                    FontFamily = "Avenir Next LT Pro Demi"
-                    FontSize = "30"
-                    HorizontalOptions = "Center"
-                    Text = "{i18n:Translate Login}"
-                    TextColor = "{StaticResource MainFountyColor}"/>
+                Padding = "15,0,15,15">
+                <StackLayout
+                    HorizontalOptions = "CenterAndExpand"
+                    VerticalOptions = "FillAndExpand">
+                    <Image
+                        Source = "logo"
+                        Scale = "0.7"/>
+                    <Label 
+                        FontAttributes = "Bold"
+                        FontSize = "30"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate Login}"
+                        TextColor = "{StaticResource MainFountyColor}"/>
+                </StackLayout>
                 
-                <StackLayout HorizontalOptions = "CenterAndExpand">
+                
+                <StackLayout 
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "FillAndExpand">
                     <Label
+                        HorizontalOptions = "Center"
                         Text = "{i18n:Translate EMail}"
                         TextColor = "{StaticResource FontColor}"
-                        VerticalTextAlignment = "Center"
-                        HorizontalOptions = "CenterAndExpand"/>
+                        VerticalTextAlignment = "Center"/>
                     <Entry
                         BackgroundColor = "{StaticResource LoginEntryColor}"
-                        HeightRequest = "40"
                         Keyboard = "Email"
                         Text = "{Binding Email, Mode = TwoWay}"
                         TextColor = "{StaticResource BackgroundColor}"
                         WidthRequest = "300"/>
                 </StackLayout>
                 
-                <StackLayout HorizontalOptions = "CenterAndExpand">
+                <StackLayout 
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "FillAndExpand">
                         <Label
-                            HorizontalOptions = "CenterAndExpand"
+                            HorizontalOptions = "Center"
                             Text = "{i18n:Translate Password}"
                             TextColor = "{StaticResource FontColor}"
                             VerticalOptions = "CenterAndExpand"/>
                         <Entry
                             BackgroundColor = "{StaticResource LoginEntryColor}"
-                            HeightRequest = "40"
                             IsPassword = "True"
                             Text = "{Binding Password, Mode = TwoWay}"
                             TextColor = "{StaticResource BackgroundColor}"
@@ -60,9 +63,10 @@
                 </ActivityIndicator>
                 
                 <StackLayout
-                    Margin = "10,0"
+                    Padding = "20,0"
                     Orientation = "Horizontal"
-                    VerticalOptions = "FillAndExpand">
+                    VerticalOptions = "FillAndExpand"
+                    HorizontalOptions = "FillAndExpand">
                     <Label
                         HorizontalOptions = "StartAndExpand"
                         Text = "{i18n:Translate Rememberme}" 
@@ -71,28 +75,31 @@
                     <Switch
                         IsToggled = "{Binding IsRemembered, Mode = TwoWay}"
                         HorizontalOptions = "End"/>
-                </StackLayout>
+                </StackLayout >
                 <!--<Label
                     HorizontalOptions = "Center"
                     Text = "{i18n:Translate Forgot}"
                     TextColor = "{StaticResource AccentColor}"
                     VerticalOptions = "FillAndExpand"/>-->
-                <Label Text = " "/>
-                <Button
+                <StackLayout
+                    VerticalOptions = "FillAndExpand">
+                    <Button
                     BackgroundColor = "{StaticResource MainColor}"
                     BorderRadius = "23"
                     Command = "{Binding LoginCommand}"
-                    HeightRequest = "46"
+                    Scale = "1"
                     HorizontalOptions = "Center"
                     IsEnabled = "{Binding IsEnabled,Mode = TwoWay}"
                     Text = "{i18n:Translate Login}"
                     TextColor = "{StaticResource Dark_FontColor}"
                     WidthRequest = "150"/>
-                <Label Text = " "/>
+                </StackLayout>
+                
                 <Label
                     HorizontalOptions = "Center"
                     FontAttributes = "Bold"
                     FontSize = "20"
+                    Margin = "15"
                     Text = "{i18n:Translate Register}"
                     TextColor = "{StaticResource MainFountyColor}"
                     VerticalOptions = "FillAndExpand">
@@ -100,7 +107,6 @@
                         <TapGestureRecognizer Command = "{Binding RegisterCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Text = " "/>
                 <StackLayout
                     HorizontalOptions = "Center"
                     Orientation = "Horizontal"

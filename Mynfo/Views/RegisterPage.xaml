@@ -6,21 +6,22 @@
              x:Class="Mynfo.Views.RegisterPage"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "20">
+        <Grid>
             <StackLayout 
                 HorizontalOptions="Start">
                 <Label 
                     FontAttributes = "Bold"
-                    FontSize = "18"
+                    FontSize = "20"
                     HorizontalOptions = "Start"
                     Text = "{i18n:Translate Register}"
-                    TextColor = "{StaticResource Dark_FontColor}"/>
+                    TextColor = "{StaticResource Dark_FontColor}"
+                    VerticalOptions = "Center"/>
             </StackLayout>
             <StackLayout
-                HorizontalOptions = "End">
+                HorizontalOptions = "End"
+                Padding = "0,0,5,0">
                 <Image 
-                    HeightRequest = "20"
+                    Scale = "0.8"
                     HorizontalOptions = "End"
                     Source = "logo_superior.png" 
                     WidthRequest = "75" >
@@ -34,128 +35,170 @@
             <StackLayout
                 Padding = "15"
                 VerticalOptions="Center">
-                <controls:CircleImage 
-                    HeightRequest = "200"
-                    Source = "{Binding ImageSource}">
-                    <controls:CircleImage.GestureRecognizers>
-                        <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />
-                    </controls:CircleImage.GestureRecognizers>
-                </controls:CircleImage>
-                <Label
-                    FontFamily = "Avenir Next LT Pro Demi"
-                    FontSize = "Small"
-                    HorizontalOptions = "Center"
-                    Padding="0,0,0,20"
-                    Text = "{i18n:Translate ChangeImage}" />
-                <StackLayout 
-                    HorizontalOptions = "CenterAndExpand">
-                    <Label
-                        FontFamily = "Avenir Next LT Pro Demi"
-                        FontSize = "18"
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "85"/>
+                        <ColumnDefinition Width = "200"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height = "Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout 
+                        Grid.ColumnSpan = "3"
+                        Grid.Row = "0">
+                        <controls:CircleImage 
+                            HeightRequest = "180"
+                            Source = "{Binding ImageSource}">
+                            <controls:CircleImage.GestureRecognizers>
+                                <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />
+                            </controls:CircleImage.GestureRecognizers>
+                        </controls:CircleImage>
+                        <Label
+                            FontSize = "Small"
+                            HorizontalOptions = "CenterAndExpand"
+                            Text = "{i18n:Translate ChangeImage}"
+                            VerticalOptions = "StartAndExpand"/>
+                    </StackLayout>
+                
+                
+                    <StackLayout 
+                        Grid.Row = "1"
+                        Grid.ColumnSpan = "3"
                         HorizontalOptions = "CenterAndExpand"
-                        Text = "{i18n:Translate FirstNameLabel}"
-                        TextColor = "{StaticResource FontColor}"
-                        VerticalTextAlignment = "Center" />
-                    <Entry
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
-                        ClearButtonVisibility="WhileEditing"
-                        HeightRequest = "40"
+                        Orientation = "Horizontal"
+                        Padding = "5">
+                        <Label
+                            FontSize = "18"
+                            Grid.Column = "0"
+                            HorizontalOptions = "CenterAndExpand"
+                            Text = "{i18n:Translate FirstNameLabel}"
+                            TextColor = "{StaticResource FontColor}"
+                            VerticalTextAlignment = "Center" />
+                        <Entry
+                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            ClearButtonVisibility="WhileEditing"
+                            Grid.ColumnSpan = "2"
+                            HeightRequest = "40"
+                            HorizontalOptions = "CenterAndExpand"
+                            Text = "{Binding FirstName}"
+                            WidthRequest = "200" />
+                    </StackLayout>
+                    <StackLayout 
+                        Grid.ColumnSpan = "3"
+                        Grid.Row = "2"
                         HorizontalOptions = "CenterAndExpand"
-                        Text = "{Binding FirstName}"
-                        TextColor = "{StaticResource BackgroundColor}"
-                        WidthRequest = "300" />
-                </StackLayout>
-                <StackLayout 
-                    HorizontalOptions = "CenterAndExpand">
-                    <Label
-                        FontFamily = "Avenir Next LT Pro Demi"
-                        FontSize = "18"
+                        Orientation = "Horizontal"
+                        Padding = "5">
+                        <Label
+                            FontSize = "18"
+                            Grid.Column = "0"
+                            HorizontalOptions = "CenterAndExpand"
+                            Text = "{i18n:Translate LastNameLabel}"
+                            TextColor = "{StaticResource FontColor}" 
+                            VerticalTextAlignment = "Center" />
+                        <Entry
+                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            ClearButtonVisibility="WhileEditing"
+                            Grid.ColumnSpan = "2"
+                            HeightRequest = "40"
+                            HorizontalOptions = "CenterAndExpand"
+                            Text = "{Binding LastName}"
+                            WidthRequest = "200" />
+                    </StackLayout>
+                    <StackLayout 
+                        Grid.ColumnSpan = "3"
+                        Grid.Row = "3"
                         HorizontalOptions = "CenterAndExpand"
-                        Text = "{i18n:Translate LastNameLabel}"
-                        TextColor = "{StaticResource FontColor}" 
-                        VerticalTextAlignment = "Center" />
-                    <Entry
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
-                        ClearButtonVisibility="WhileEditing"
-                        HeightRequest = "40"
+                        Orientation = "Horizontal"
+                        Padding = "5">
+                        <Label
+                            FontSize = "18"
+                            Grid.Column = "0"
+                            HorizontalOptions = "CenterAndExpand"
+                            WidthRequest = "85"
+                            Text = "{i18n:Translate EMail}"
+                            TextColor = "{StaticResource FontColor}"
+                            VerticalTextAlignment = "Center" />
+                        <Entry
+                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            ClearButtonVisibility="WhileEditing"
+                            Grid.ColumnSpan = "2"
+                            HorizontalOptions = "CenterAndExpand"
+                            Keyboard = "Email"
+                            Text="{Binding Email}"
+                            WidthRequest = "200" />
+                    </StackLayout>
+                    <StackLayout 
+                        Grid.ColumnSpan = "3"
+                        Grid.Row = "4"
                         HorizontalOptions = "CenterAndExpand"
-                        Text = "{Binding LastName}"
-                        WidthRequest = "300" />
-                </StackLayout>
-                <StackLayout 
-                    HorizontalOptions = "CenterAndExpand">
-                    <Label
-                        FontFamily = "Avenir Next LT Pro Demi"
-                        FontSize = "18"
+                        Orientation = "Horizontal"
+                        Padding = "5">
+                        <Label
+                            FontSize = "18"
+                            HorizontalOptions = "CenterAndExpand"
+                            Grid.Column = "0"
+                            Text = "{i18n:Translate Password}"
+                            TextColor = "{StaticResource FontColor}"
+                            VerticalTextAlignment = "Center" 
+                            WidthRequest = "85"/>
+                        <Entry
+                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            ClearButtonVisibility="WhileEditing"
+                            Grid.ColumnSpan = "2"
+                            HorizontalOptions = "CenterAndExpand"
+                            IsPassword = "True"
+                            Text = "{Binding Password}"
+                            WidthRequest = "200" />
+                    </StackLayout>
+                    <StackLayout 
+                        Grid.ColumnSpan = "3"
+                        Grid.Row = "5"
                         HorizontalOptions = "CenterAndExpand"
-                        Text = "{i18n:Translate EMail}"
-                        TextColor = "{StaticResource FontColor}"
-                        VerticalTextAlignment = "Center" />
-                    <Entry
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
-                        ClearButtonVisibility="WhileEditing"
-                        HeightRequest = "40"
-                        HorizontalOptions = "CenterAndExpand"
-                        Keyboard = "Email"
-                        Text="{Binding Email}"
-                        WidthRequest = "300" />
-                </StackLayout>
-                <StackLayout 
-                    HorizontalOptions = "CenterAndExpand">
-                    <Label
-                        FontFamily = "Avenir Next LT Pro Demi"
-                        FontSize = "18"
-                        HorizontalOptions = "CenterAndExpand"
-                        Text = "{i18n:Translate Password}"
-                        TextColor = "{StaticResource FontColor}"
-                        VerticalTextAlignment = "Center" />
-                    <Entry
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
-                        ClearButtonVisibility="WhileEditing"
-                        HeightRequest = "40"
-                        HorizontalOptions = "CenterAndExpand"
-                        IsPassword = "True"
-                        Text = "{Binding Password}"
-                        WidthRequest = "300" />
-                </StackLayout>
-                <StackLayout 
-                    HorizontalOptions = "CenterAndExpand">
-                    <Label
-                        FontFamily = "Avenir Next LT Pro Demi"
-                        FontSize = "18"
-                        HorizontalOptions = "CenterAndExpand"
-                        Text = "{i18n:Translate ConfirmLabel}"
-                        TextColor = "{StaticResource FontColor}"
-                        VerticalTextAlignment = "Center"/>
-                    <Entry
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
-                        ClearButtonVisibility="WhileEditing"
-                        HeightRequest = "40"
-                        HorizontalOptions = "CenterAndExpand"
-                        IsPassword = "True"
-                        Text = "{Binding Confirm}"
-                        WidthRequest = "300" />
-                </StackLayout>
+                        Orientation = "Horizontal"
+                        Padding = "5">
+                        <Label
+                            FontSize = "18"
+                            HorizontalOptions = "CenterAndExpand"
+                            Grid.Column = "0"
+                            Text = "{i18n:Translate ConfirmLabel}"
+                            TextColor = "{StaticResource FontColor}"
+                            VerticalTextAlignment = "Center"
+                            WidthRequest = "85"/>
+                        <Entry
+                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            ClearButtonVisibility="WhileEditing"
+                            Grid.ColumnSpan = "2"
+                            HorizontalOptions = "CenterAndExpand"
+                            IsPassword = "True"
+                            Text = "{Binding Confirm}"
+                            WidthRequest = "200" />
+                    </StackLayout>
+                
                 <ActivityIndicator
+                    Grid.ColumnSpan = "3"
+                    Grid.Row = "0"
                     IsRunning = "{Binding IsRunning}"
-                    VerticalOptions = "CenterAndExpand">
+                    VerticalOptions = "EndAndExpand">
                 </ActivityIndicator>
                 <StackLayout
                     HorizontalOptions="CenterAndExpand"
-                    Margin="10,0"
-                    Orientation="Horizontal">
+                    Grid.ColumnSpan = "3"
+                    Grid.Row = "6"
+                    Orientation="Horizontal"
+                    Padding = "5">
                     <Button
-                        FontFamily = "Avenir Next LT Pro Demi"
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
                         Command = "{Binding RegisterCommand}"
-                        HeightRequest = "46"
                         HorizontalOptions = "Center"
                         IsEnabled = "{Binding IsEnabled}"
                         Text = "{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}" 
+                        Scale = "1"
                         WidthRequest = "150"/>
                 </StackLayout>
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
