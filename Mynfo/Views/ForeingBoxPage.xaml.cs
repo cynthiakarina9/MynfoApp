@@ -17,7 +17,7 @@
         public string data = Data_ntc.data_value;
         #endregion
         #region Constructor
-        public ForeingBoxPage(ForeingBox _foreingBox)
+        public ForeingBoxPage(ForeingBox _foreingBox, bool isAfterReceiving = false)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
@@ -28,7 +28,7 @@
             bxBtnBack.Source = "back.png";
             bxBtnBack.WidthRequest = 50;
             bxBtnBack.HeightRequest = 50;
-            bxBtnBack.Clicked += Back_Clicked;
+            bxBtnBack.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, isAfterReceiving));
             BackButton.Children.Add(bxBtnBack);
             #endregion
 
@@ -166,9 +166,16 @@
         #endregion
 
         #region Command
-        private void Back_Clicked(object sender, EventArgs e)
+        private void Back_Clicked(object sender, EventArgs e, bool isAfterReceiving)
         {
-            Navigation.PopAsync();
+            if(isAfterReceiving == true)
+            {
+                Application.Current.MainPage = new MasterPage();
+            }
+            else
+            {
+                Navigation.PopAsync();
+            }
         }
 
         async private void GoToProfile(object sender, EventArgs e, string _profileType, string _profileValue)
