@@ -139,11 +139,13 @@
                         BorderRadius = "23"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
-                        Text = "{i18n:Translate Save}"
+                        Text="Test"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
                         WidthRequest = "150" 
                         x:Name="SaveWBox"/>
+
+                    <!--Text = "{i18n:Translate Save}"-->
                 </StackLayout>
             </Grid>
         </ScrollView>
