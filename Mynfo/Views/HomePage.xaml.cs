@@ -406,7 +406,7 @@
 
         public void get_box()
         {
-            string json;
+            string json = "";
             try
             {
                 var Profile = new ProfileLocal();
@@ -479,7 +479,7 @@
                 Console.Write(exx);
                 json = null;
             }
-
+            Data_ntc.data_value = null;
             Data_ntc.data_value = json;
         }        
 

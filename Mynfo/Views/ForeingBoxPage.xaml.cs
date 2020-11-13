@@ -170,7 +170,8 @@
         {
             if(isAfterReceiving == true)
             {
-                Application.Current.MainPage = new MasterPage();
+                
+                Application.Current.MainPage = new NavigationPage(new ListForeignBoxPage());
             }
             else
             {

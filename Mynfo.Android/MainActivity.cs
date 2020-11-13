@@ -115,6 +115,7 @@
         {
             try
             {
+                json = null;
                 var Profile = new ProfileLocal();
                 var Profile_1 = new ProfileLocal();
                 var Box_Local = new BoxLocal();
