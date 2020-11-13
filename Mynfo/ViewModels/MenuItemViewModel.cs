@@ -10,6 +10,9 @@
 
     public class MenuItemViewModel : BaseViewModel
     {
+        #region Attributs
+        private UserLocal user;
+        #endregion
         #region Properties
         public string Icon { get; set; }
         public string Title { get; set; }
@@ -17,7 +20,6 @@
         #endregion
 
         #region Commands
-
         public ICommand NavigateCommand
         {
             get
@@ -27,12 +29,12 @@
         }
         private void Navigate()
         {
-            App.Master.IsPresented = false;
+            App.Master.IsPresented = true;
             var mainViewModal = MainViewModel.GetInstance();
+            
             if (this.PageName == "LoginPage")
             {
                 Settings.IsRemembered = "false";
-                //var mainViewModal = MainViewModel.GetInstance();
                 mainViewModal.Token = null;
                 mainViewModal.User = null;
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
@@ -47,6 +49,7 @@
             }
             else if (this.PageName == "MyProfilePage")
             {
+                App.Navigator.PushAsync(new TestCPage());
                 var user = MainViewModel.GetInstance().User;
                 if (user.UserTypeId == 1)
                 {
@@ -58,7 +61,7 @@
                     MainViewModel.GetInstance().MyExternalProfile = new MyExternalProfileViewModel();
                     App.Navigator.PushAsync(new MyExternalProfilePage());
                 }
-                
+
             }
 
             else if (this.PageName == "ProfilesPage")
