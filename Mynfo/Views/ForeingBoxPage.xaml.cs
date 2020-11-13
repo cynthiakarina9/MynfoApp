@@ -16,6 +16,7 @@
         #region Properties
         public string data = Data_ntc.data_value;
         #endregion
+
         #region Constructor
         public ForeingBoxPage(ForeingBox _foreingBox, bool isAfterReceiving = false)
         {

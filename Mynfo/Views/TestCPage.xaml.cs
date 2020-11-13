@@ -1,13 +1,15 @@
 ﻿namespace Mynfo.Views
 {
-    using ViewModels;
-    using System;
+
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
+    using ViewModels;
+    using System;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyProfilePage : ContentPage
+    public partial class TestCPage : ContentPage
     {
-        public MyProfilePage()
+        public TestCPage()
         {
             InitializeComponent();
         }

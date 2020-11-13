@@ -58,6 +58,7 @@
                     {
                         conn.CreateTable<UserLocal>();
                         user = conn.Table<UserLocal>().FirstOrDefault();
+                        int a = conn.Table<UserLocal>().Count();
                     }
                     var mainViewModel = MainViewModel.GetInstance();
                     mainViewModel.Token = token;

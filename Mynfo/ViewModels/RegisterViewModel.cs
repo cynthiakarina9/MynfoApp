@@ -225,15 +225,15 @@
                 Languages.ConfirmLabel,
                 Languages.UserRegisteredMessage,
                 Languages.Accept);
-            var mainViewModel = new MainViewModel();
+            var mainViewModel = MainViewModel.GetInstance().User;
+            await Application.Current.MainPage.Navigation.PopAsync();
+
             this.Email = string.Empty;
             this.FirstName = string.Empty;
             this.LastName = string.Empty;
             this.Password = string.Empty;
             this.Confirm = string.Empty;
             this.ImageSource = "no_image";
-            await Application.Current.MainPage.Navigation.PopAsync();
-
         }
 
         public ICommand ChangeImageCommand

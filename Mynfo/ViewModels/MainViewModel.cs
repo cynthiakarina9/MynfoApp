@@ -164,7 +164,11 @@
             get;
             set;
         }
-
+        public TestCViewModel TestC
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructors
