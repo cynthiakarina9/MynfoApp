@@ -49,7 +49,6 @@
             }
             else if (this.PageName == "MyProfilePage")
             {
-                App.Navigator.PushAsync(new TestCPage());
                 var user = MainViewModel.GetInstance().User;
                 if (user.UserTypeId == 1)
                 {

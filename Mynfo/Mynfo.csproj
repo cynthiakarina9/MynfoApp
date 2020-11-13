@@ -66,6 +66,9 @@
     <Compile Update="Views\ProfilesPage.xaml.cs">
       <DependentUpon>ProfilesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\TabbedPage1.xaml.cs">
+      <DependentUpon>TabbedPage1.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TestCPage.xaml.cs">
       <DependentUpon>TestCPage.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TabbedPage1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TestCPage.xaml">
