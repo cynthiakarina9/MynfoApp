@@ -13,6 +13,7 @@
         #region Services
         private ApiService apiService;
         #endregion
+
         #region Attributes
         private string email;
         private string password;
@@ -189,7 +190,12 @@
             }
 
             mainViewModel.Home = new HomeViewModel();
+            mainViewModel.MyProfile = new MyProfileViewModel();
+            mainViewModel.Profiles = new ProfilesViewModel();
+            mainViewModel.Settings = new SettingsViewModel();
+            mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
             Application.Current.MainPage = new MasterPage();
+            //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
 
             this.IsRunning = false;
             this.isEnabled = true;

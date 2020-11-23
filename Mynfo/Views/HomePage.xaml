@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.HomePage"
+             Title = "Home"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
+        
         <Grid 
             Padding = "0" 
             BackgroundColor = "Transparent">
@@ -129,7 +131,7 @@
                 <ImageButton
                     BackgroundColor = "Transparent"
                     Clicked = "CreateBox_Clicked"
-                    Grid.ColumnSpan = "3"
+                    Grid.Column = "1"
                     Grid.Row = "4"
                     HeightRequest = "60"
                     HorizontalOptions ="Center"
@@ -137,10 +139,6 @@
                     VerticalOptions = "Center"
                     WidthRequest = "60"
                     x:Name="CreateBoxBtn"/>
-                <Label
-                    x:Name="Test">
-                    
-                </Label>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

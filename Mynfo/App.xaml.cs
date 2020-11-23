@@ -64,7 +64,13 @@
                     mainViewModel.Token = token;
                     mainViewModel.User = user;//sqlite
                     mainViewModel.Home = new HomeViewModel();
+                    mainViewModel.MyProfile = new MyProfileViewModel();
+                    mainViewModel.Profiles = new ProfilesViewModel();
+                    mainViewModel.Settings = new SettingsViewModel();
+                    mainViewModel.ChangePassword = new ChangePasswordViewModel();
+                    mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
                     Application.Current.MainPage = new MasterPage();
+                    //Application.Current.MainPage = new NavigationPage(new MasterPage());
                 }
                 else
                 {
@@ -143,11 +149,17 @@
             mainViewModel.Token = token;
             mainViewModel.User = userLocal;
             mainViewModel.Home = new HomeViewModel();
+            mainViewModel.MyProfile = new MyProfileViewModel();
+            mainViewModel.Profiles = new ProfilesViewModel();
+            mainViewModel.Settings = new SettingsViewModel();
+            mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
             Application.Current.MainPage = new MasterPage();
+            //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
             Settings.IsRemembered = "true";
 
-            mainViewModel.Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.Home = new HomeViewModel();
+            ////Application.Current.MainPage = new MasterPage();
+            //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
         }
 
         protected override void OnStart()

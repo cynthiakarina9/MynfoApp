@@ -2,14 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.ProfilesByFacebookPage">
+             x:Class="Mynfo.Views.ProfilesByFacebookPage"
+             BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
             <ImageButton
                 BackgroundColor = "Transparent"
                 Clicked = "BackHome_Clicked"
@@ -19,21 +15,11 @@
                 Source = "logo_superior.png" 
                 VerticalOptions = "Center"
                 WidthRequest = "85"/>
-            <ImageButton 
-                BackgroundColor = "Transparent"
-                Clicked = "Back_Clicked"
-                Grid.Column = "0"
-                HeightRequest = "40"
-                HorizontalOptions = "Start"
-                Source = "ic_navigation_arrow_back"
-                VerticalOptions = "Start"
-                WidthRequest = "40"
-                x:Name="BackButton"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <ScrollView>
+            <ScrollView >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
@@ -42,7 +28,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Titulo-->
-
+                        
                     <Label 
                         Grid.Row = "0" 
                         Text = "{i18n:Translate FacebookProfileList}"
@@ -53,11 +39,47 @@
                         VerticalOptions = "EndAndExpand"  
                         Margin = "0,5,0,15"/>
                     <!-- Lista de correos -->
-                    <StackLayout 
+                    <!--<StackLayout 
                         Grid.Row="1"
                         HorizontalOptions="FillAndExpand"
                         Padding="25"
-                        x:Name="FacebookList" />
+                        x:Name="FacebookList" />-->
+                    <ListView 
+                        ItemsSource="{Binding profileSM2}"
+                        Grid.Row="1"
+                        HasUnevenRows="true">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image 
+                                            Grid.Column="0"
+                                            Source="facebook2"
+                                            HeightRequest="60"
+                                            HorizontalOptions="End"
+                                            Margin="70,0,20,0"
+                                            VerticalOptions="Center"
+                                            WidthRequest="60" />
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
             </ScrollView>
             <!-- Botón de nuevo correo -->

@@ -17,31 +17,25 @@
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByPhone = new ProfilesByPhoneViewModel();
-            Application.Current.MainPage = new NavigationPage (new ProfilesByPhonePage());
+            Navigation.PushAsync(new ProfilesByPhonePage());
         }
         private void EmailProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByEmail = new ProfilesByEmailViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
+            Navigation.PushAsync(new ProfilesByEmailPage());
         }
         private void FacebookProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByFacebook = new ProfilesByFacebookViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfilesByFacebookPage());
+            Navigation.PushAsync(new ProfilesByFacebookPage());
         }
-
-        private void Back_Clicked(object sender, EventArgs e)
+        private void WhatsAppProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
-        private void BackHome_Clicked(object sender, EventArgs e)
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
+            //mainViewModel.ProfilesByFacebook = new ProfilesByWhatsAppViewModel();
+            Navigation.PushAsync(new ProfilesByWhatsAppPage());
         }
     }
 }

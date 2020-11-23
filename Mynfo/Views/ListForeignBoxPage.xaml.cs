@@ -2,9 +2,7 @@
 {
     using Mynfo.Models;
     using Mynfo.ViewModels;
-    using SQLite;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;

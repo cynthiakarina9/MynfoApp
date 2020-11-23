@@ -53,7 +53,9 @@
         #region Constructors
         public ChangePasswordViewModel()
         {
+
             this.apiService = new ApiService();
+            var User = MainViewModel.GetInstance().User;
             this.IsEnabled = true;
         }
         #endregion

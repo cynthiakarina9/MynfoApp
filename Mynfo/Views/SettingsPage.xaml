@@ -3,39 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.SettingsPage"
+             Title = "{i18n:Translate Settings}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "25">
-            <StackLayout 
-                HorizontalOptions="Start">
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "18"
-                    HorizontalOptions = "Start"
-                    Text = "{i18n:Translate Settings}"
-                    TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions = "End">
-                <ImageButton
-                    BackgroundColor = "Transparent"
-                    Clicked = "BackHome_Clicked"
-                    HeightRequest = "20"
-                    HorizontalOptions = "End"
-                    Source = "logo_superior.png" 
-                    WidthRequest = "75" >
-                </ImageButton>
-            </StackLayout>
-        </Grid>
-    </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
-            BindingContext="{Binding Settings}">
-            <StackLayout>
-                <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <ScrollView>
+            <StackLayout 
+                HorizontalOptions = "Center">
+                <BoxView 
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="2" 
+                    BackgroundColor="Transparent"/>
+                <Label 
+                    Grid.Row = "0" 
+                    Grid.ColumnSpan = "2" 
+                    Text = "{i18n:Translate Settings}"
+                    FontSize = "25"
+                    FontAttributes="Bold"
+                    TextColor = "{StaticResource MainColor}"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"  
+                    Margin = "0,0,0,90"/>
+                
+                <ListView 
+                    ItemsSource = "{Binding Menus}"
+                    HasUnevenRows = "True"
+                    SeparatorVisibility = "None"
+                    HorizontalOptions = "CenterAndExpand"
+                    Grid.Row = "1" 
+                    Grid.ColumnSpan = "3"
+                    Margin = "80,0,0,0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command = "{Binding NavigateCommand}" />
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width = "*"></ColumnDefinition>
+                                        <ColumnDefinition Width = "2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height = "Auto"></RowDefinition>
+                                        <RowDefinition Height = "*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image 
+                                    Grid.Column = "0"
+                                    HeightRequest = "50"
+                                    Source = "{Binding Icon}"
+                                    WidthRequest = "50" />
+                                    <Label 
+                                    FontSize = "17"
+                                    Grid.Column = "1"
+                                    Text = "{Binding Title}"
+                                    TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor},Light = {StaticResource Light_FontColor}}"
+                                    VerticalOptions = "Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
