@@ -24,10 +24,23 @@ namespace Mynfo.API.Controllers
         }
 
         // GET: api/ProfileSMs/5
+        //[ResponseType(typeof(ProfileSM))]
+        //public async Task<IHttpActionResult> GetProfileSM(int id)
+        //{
+        //    ProfileSM profileSM = await db.ProfileSMs.FindAsync(id);
+        //    if (profileSM == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(profileSM);
+        //}
+        // GET: api/ProfileSMs/5
         [ResponseType(typeof(ProfileSM))]
-        public async Task<IHttpActionResult> GetProfileSM(int id)
+        public async Task<IHttpActionResult> GetProfileSMByUser(int id)
         {
-            ProfileSM profileSM = await db.ProfileSMs.FindAsync(id);
+            
+            var profileSM = await  GetProfileSMs().Where(u => u.UserId == id).ToListAsync();
             if (profileSM == null)
             {
                 return NotFound();

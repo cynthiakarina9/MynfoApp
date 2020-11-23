@@ -77,9 +77,17 @@
         public RegisterViewModel()
         {
             this.apiService = new ApiService();
-
-            this.IsEnabled = true;
             this.ImageSource = "no_image";
+
+            if (MainViewModel.GetInstance().User.UserTypeId == 1)
+            {
+                this.IsEnabled = true;
+            }
+            else
+            {
+                this.IsEnabled = false;
+            }
+            
         }
         #endregion
 
@@ -280,6 +288,7 @@
                 {
                     this.file = await CrossMedia.Current.PickPhotoAsync();
                 }
+                return;
             }
 
             else
@@ -295,6 +304,7 @@
                     return stream;
                 });
             }
+            return;
         }
         #endregion
     }

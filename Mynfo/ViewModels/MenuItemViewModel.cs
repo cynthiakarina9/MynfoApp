@@ -29,7 +29,7 @@
         }
         private void Navigate()
         {
-            App.Master.IsPresented = true;
+            App.Master.IsPresented = false;
             var mainViewModal = MainViewModel.GetInstance();
             
             if (this.PageName == "LoginPage")
@@ -49,17 +49,17 @@
             }
             else if (this.PageName == "MyProfilePage")
             {
-                var user = MainViewModel.GetInstance().User;
-                if (user.UserTypeId == 1)
-                {
-                    MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+                //var user = MainViewModel.GetInstance().User;
+                //if (user.UserTypeId == 1)
+                //{
+                   MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
                     App.Navigator.PushAsync(new MyProfilePage());
-                }
-                else
-                {
-                    MainViewModel.GetInstance().MyExternalProfile = new MyExternalProfileViewModel();
-                    App.Navigator.PushAsync(new MyExternalProfilePage());
-                }
+                //}
+                //else
+                //{
+                //    MainViewModel.GetInstance().MyExternalProfile = new MyExternalProfileViewModel();
+                //    App.Navigator.PushAsync(new MyExternalProfilePage());
+                //}
 
             }
 

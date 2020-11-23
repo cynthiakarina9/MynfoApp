@@ -31,5 +31,7 @@
         public System.Data.Entity.DbSet<Mynfo.Domain.ProfileSM> ProfileSMs { get; set; }
 
         public System.Data.Entity.DbSet<Mynfo.Domain.RedSocial> RedSocials { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.ProfileWhatsapp> ProfileWhatsapps { get; set; }
     }
 }

@@ -250,7 +250,7 @@
     <value>Menu</value>
   </data>
   <data name="MyAccount" xml:space="preserve">
-    <value>Minha conta</value>
+    <value>Conta</value>
   </data>
   <data name="Statics" xml:space="preserve">
     <value>Estatísticas</value>
@@ -361,7 +361,7 @@
     <value>A senha não pode ser alterada, tente mais tarde.</value>
   </data>
   <data name="MyProfiles" xml:space="preserve">
-    <value>Meus perfis</value>
+    <value>Perfis</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Configurações</value>
@@ -499,7 +499,7 @@
     <value>Lista de perfis do Facebook.</value>
   </data>
   <data name="ReceivedBoxes" xml:space="preserve">
-    <value>Boxes recebidas.</value>
+    <value>Recepções</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Excluir</value>
@@ -507,5 +507,8 @@
   <data name="LinkValidation" xml:space="preserve">
     <value>Você deve inserir um url
 Você deve inserir um url</value>
+  </data>
+  <data name="ProfileELabel" xml:space="preserve">
+    <value>Seu usuário foi criado por uma rede social, para fazer uma mudança você deve fazer a partir dessa mesma rede social.</value>
   </data>
 </root>

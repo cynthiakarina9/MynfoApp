@@ -59,6 +59,7 @@
     <Compile Include="Box_ProfileEmail.cs" />
     <Compile Include="Box_ProfileSM.cs" />
     <Compile Include="Box_ProfileSMMap.cs" />
+    <Compile Include="Box_ProfileWhatsapp.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="FacebookResponse.cs" />
     <Compile Include="ProfileEmail.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserType.cs" />
+    <Compile Include="ProfileWhatsapp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

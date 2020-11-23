@@ -3,9 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.BoxRegisterPage"
-             Title="{i18n:Translate NewBox}"
-             Icon="Logo"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
+            
     <NavigationPage.TitleView>
         <Grid
             HeightRequest = "20">
@@ -17,17 +16,6 @@
                     HorizontalOptions = "Start"
                     Text = "{i18n:Translate NewBox}"
                     TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions = "End">
-                <ImageButton 
-                    BackgroundColor = "Transparent"
-                    Clicked = "BackHome_Clicked"
-                    HeightRequest = "20"
-                    HorizontalOptions = "End"
-                    Source = "logo_superior.png" 
-                    WidthRequest = "75" >
-                </ImageButton>
             </StackLayout>
         </Grid>
     </NavigationPage.TitleView>

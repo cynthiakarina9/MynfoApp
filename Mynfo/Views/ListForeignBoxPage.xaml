@@ -31,15 +31,28 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Margin="10,35,10,20">
-                <ListView ItemsSource="{Binding foreingBox}"
-                            HasUnevenRows="true"
-                            ItemSelected="OnListViewItemSelected"
-                            ItemTapped="OnListViewItemTapped">
+            <StackLayout>
+                <StackLayout>
+                    <Label 
+                        Text = "Boxes"
+                        FontSize = "25"
+                        FontAttributes="Bold"
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center"  
+                        Margin = "0,15,0,0"/>
+                </StackLayout>
+                <ListView 
+                    ItemsSource="{Binding foreingBox}"
+                    HasUnevenRows="true"
+                    ItemSelected="OnListViewItemSelected"
+                    ItemTapped="OnListViewItemTapped"
+                    Margin="10,35,10,20">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Padding="10">
+                                <Grid 
+                                    Padding="10">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="100"/>
                                     </Grid.RowDefinitions>
@@ -84,4 +97,4 @@
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
-</ContentPage>
+</ContentPage>  

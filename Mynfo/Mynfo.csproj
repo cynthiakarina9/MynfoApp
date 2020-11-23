@@ -64,6 +64,9 @@
     <Compile Update="Views\ProfilesByFacebookPage.xaml.cs">
       <DependentUpon>ProfilesByFacebookPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ProfilesByWhatsAppPage.xaml.cs">
+      <DependentUpon>ProfilesByWhatsAppPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ProfilesPage.xaml.cs">
       <DependentUpon>ProfilesPage.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CreateProfilePhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CreateProfileWhatsAppPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DetailsBoxPage.xaml">
@@ -147,6 +153,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilesByPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProfilesByWhatsAppPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilesPage.xaml">

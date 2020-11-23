@@ -6,7 +6,8 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor = "{StaticResource Menu_BackgroundColor}"
-             Title = "{i18n:Translate Menu}">
+             Title = "{i18n:Translate Menu}"
+             IconImageSource = "back.png">
     <ContentPage.Content>
         <StackLayout
             Padding = "20,30,5,5">

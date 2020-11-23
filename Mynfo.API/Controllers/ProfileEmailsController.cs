@@ -23,11 +23,23 @@ namespace Mynfo.API.Controllers
             return db.ProfileEmails;
         }
 
+        //// GET: api/ProfileEmails/5
+        //[ResponseType(typeof(ProfileEmail))]
+        //public async Task<IHttpActionResult> GetProfileEmail(int id)
+        //{
+        //    ProfileEmail profileEmail = await db.ProfileEmails.FindAsync(id);
+        //    if (profileEmail == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(profileEmail);
+        //}
         // GET: api/ProfileEmails/5
         [ResponseType(typeof(ProfileEmail))]
-        public async Task<IHttpActionResult> GetProfileEmail(int id)
+        public async Task<IHttpActionResult> GetProfileEmailByUser(int id)
         {
-            ProfileEmail profileEmail = await db.ProfileEmails.FindAsync(id);
+            var profileEmail = await GetProfileEmails().Where(u => u.UserId == id).ToListAsync();
             if (profileEmail == null)
             {
                 return NotFound();

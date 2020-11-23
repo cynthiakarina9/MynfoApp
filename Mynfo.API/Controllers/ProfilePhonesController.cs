@@ -23,11 +23,23 @@ namespace Mynfo.API.Controllers
             return db.ProfilePhones;
         }
 
+        //// GET: api/ProfilePhones/5
+        //[ResponseType(typeof(ProfilePhone))]
+        //public async Task<IHttpActionResult> GetProfilePhone(int id)
+        //{
+        //    ProfilePhone profilePhone = await db.ProfilePhones.FindAsync(id);
+        //    if (profilePhone == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(profilePhone);
+        //}
         // GET: api/ProfilePhones/5
         [ResponseType(typeof(ProfilePhone))]
-        public async Task<IHttpActionResult> GetProfilePhone(int id)
+        public async Task<IHttpActionResult> GetProfilePhoneByUser(int id)
         {
-            ProfilePhone profilePhone = await db.ProfilePhones.FindAsync(id);
+            var profilePhone = await GetProfilePhones().Where(u => u.UserId == id).ToListAsync();
             if (profilePhone == null)
             {
                 return NotFound();
@@ -35,6 +47,7 @@ namespace Mynfo.API.Controllers
 
             return Ok(profilePhone);
         }
+
 
         // PUT: api/ProfilePhones/5
         [ResponseType(typeof(void))]
