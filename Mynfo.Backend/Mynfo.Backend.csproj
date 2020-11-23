@@ -174,11 +174,13 @@
     <Compile Include="Controllers\Box_ProfileEmailController.cs" />
     <Compile Include="Controllers\Box_ProfilePhoneController.cs" />
     <Compile Include="Controllers\Box_ProfileSMController.cs" />
+    <Compile Include="Controllers\Box_ProfileWhatsappController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileEmailsController.cs" />
     <Compile Include="Controllers\ProfilePhonesController.cs" />
     <Compile Include="Controllers\ProfileSMsController.cs" />
+    <Compile Include="Controllers\ProfileWhatsappsController.cs" />
     <Compile Include="Controllers\RedSocialsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserTypesController.cs" />
@@ -305,6 +307,16 @@
     <Content Include="Views\Boxes\Details.cshtml" />
     <Content Include="Views\Boxes\Edit.cshtml" />
     <Content Include="Views\Boxes\Index.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Create.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Delete.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Details.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Edit.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Index.cshtml" />
+    <Content Include="Views\Box_ProfileWhatsapp\Create.cshtml" />
+    <Content Include="Views\Box_ProfileWhatsapp\Delete.cshtml" />
+    <Content Include="Views\Box_ProfileWhatsapp\Details.cshtml" />
+    <Content Include="Views\Box_ProfileWhatsapp\Edit.cshtml" />
+    <Content Include="Views\Box_ProfileWhatsapp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -754,7 +754,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Account.
+        ///   Looks up a localized string similar to Account.
         /// </summary>
         public static string MyAccount {
             get {
@@ -781,7 +781,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Profiles.
+        ///   Looks up a localized string similar to Profiles.
         /// </summary>
         public static string MyProfiles {
             get {
@@ -1024,6 +1024,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your user was created by a social network, to make a change you must make it from that same social network..
+        /// </summary>
+        public static string ProfileELabel {
+            get {
+                return ResourceManager.GetString("ProfileELabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile name.
         /// </summary>
         public static string ProfileName {
@@ -1051,7 +1060,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Received Boxes..
+        ///   Looks up a localized string similar to Received..
         /// </summary>
         public static string ReceivedBoxes {
             get {

@@ -64,7 +64,14 @@
                 this.ImageSource = this.User.ImageFullPath;
             }   
             
-            this.isEnabled = true;
+            if(User.UserTypeId ==1)
+            {
+                this.isEnabled = true;
+            }
+            else
+            {
+                this.isEnabled = false;
+            }
         }
         #endregion
 
@@ -77,10 +84,12 @@
             }
         }
 
-        private async void ChangePassword()
+        private void ChangePassword()
         {
-            MainViewModel.GetInstance().ChangePassword = new ChangePasswordViewModel();
-            await App.Navigator.PushAsync(new ChangePasswordPage());
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ChangePassword = new ChangePasswordViewModel();
+            //await App.Navigator.PushAsync(new ChangePasswordPage());
+            App.Navigator.PushAsync(new ChangePasswordPage());
         }
 
         public ICommand ChangeImageCommand
@@ -250,7 +259,9 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            await App.Navigator.PopAsync();
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Home = new HomeViewModel();
+            Application.Current.MainPage = new NavigationPage(new TabbedPage1());
         }
         #endregion
     }

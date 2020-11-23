@@ -6,38 +6,22 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
             <ImageButton
                 BackgroundColor = "Transparent"
                 Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,10,0"
+                Margin = "0,0,80,0"
                 HorizontalOptions = "Center"
                 Source = "logo_superior.png" 
                 VerticalOptions = "Center"
                 WidthRequest = "85"/>
-            <ImageButton 
-                BackgroundColor = "Transparent"
-                Clicked = "Back_Clicked"
-                Grid.Column = "0"
-                HeightRequest = "40"
-                HorizontalOptions = "Start"
-                Source = "ic_navigation_arrow_back"
-                VerticalOptions = "Start"
-                WidthRequest = "40"
-                x:Name="BackButton"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
             <RefreshView IsRefreshing="{Binding IsRefreshing}"
                  Command="{Binding RefreshCommand}"> 
-                <ScrollView
-                    BindingContext = "{Binding ProfilesByEmail}">
+                <ScrollView>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="80" />
@@ -60,11 +44,53 @@
                         <!--End Titulo-->
 
                         <!-- Lista de correos -->
-                        <StackLayout 
+                        <!--<StackLayout 
                             Grid.Row="1"
                             HorizontalOptions="FillAndExpand"
                             Padding="25"
-                            x:Name="EmailList" />
+                            x:Name="EmailList" />-->
+                        <ListView 
+                        ItemsSource="{Binding profileEmail}"
+                        Grid.Row="1"
+                        HasUnevenRows="true">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100" />
+                                                <ColumnDefinition Width="180" />
+                                                <ColumnDefinition Width="30" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label 
+                                                Grid.Column="0"
+                                                Text="{Binding Name}"
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <Label 
+                                                Grid.Column="1"
+                                                Text="{Binding Email}"
+                                                FontSize="15"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Center"/>
+                                            <ImageButton 
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="2"
+                                                HeightRequest="25"
+                                                HorizontalOptions="Center"
+                                                Source="edit2"
+                                                VerticalOptions="Center"
+                                                WidthRequest="25"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </Grid>
                 </ScrollView>
             </RefreshView>

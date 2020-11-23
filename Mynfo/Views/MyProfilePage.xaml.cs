@@ -10,6 +10,22 @@
         public MyProfilePage()
         {
             InitializeComponent();
+            var user = MainViewModel.GetInstance().User;
+
+            if (user.UserTypeId == 1)
+            {
+                ExtProfile.IsVisible = false;
+            }
+            else
+            {
+                ButtonSave.IsVisible = false;
+                ButtonChangePassw.IsVisible = false;
+                Email.IsVisible = false;
+                FirstNameEntry.IsReadOnly = true;
+                LastNameEntry.IsReadOnly = true;
+                ExtProfile.IsVisible = true;
+                ChangeImage.IsVisible = false;
+            }
         }
         private void BackHome_Clicked(object sender, EventArgs e)
         {

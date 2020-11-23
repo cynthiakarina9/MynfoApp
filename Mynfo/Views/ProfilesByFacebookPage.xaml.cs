@@ -1,82 +1,126 @@
 ﻿namespace Mynfo.Views
 {
+    using Mynfo.Domain;
+    using Mynfo.Helpers;
+    using Mynfo.Services;
     using System;
-    using System.Data.SqlClient;
-    using System.Threading.Tasks;
-    using System.Windows.Input;
+    using System.Collections.Generic;
     using ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesByFacebookPage : ContentPage
     {
+        #region Services
+        ApiService apiService;
+        #endregion
+
+        #region Attributes
+        public IList<ProfileSM> profileSM2 { get; private set; }
+        #endregion
+
         #region Constructors
         public ProfilesByFacebookPage()
         {
+            apiService = new ApiService();
+            SetList();
             InitializeComponent();
-            int UserId = MainViewModel.GetInstance().User.UserId;
-            string queryGetFacebookByUser = "select * from dbo.ProfileSMs  where dbo.ProfileSMs.UserId = " + UserId +"and RedSocialId = 1";
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            System.Text.StringBuilder sb;
+            //int UserId = MainViewModel.GetInstance().User.UserId;
+            //string queryGetFacebookByUser = "select * from dbo.ProfileSMs  where dbo.ProfileSMs.UserId = " + UserId +"and RedSocialId = 1";
+            //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            //System.Text.StringBuilder sb;
 
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(queryGetFacebookByUser);
-                string sql = sb.ToString();
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    sb = new System.Text.StringBuilder();
+            //    sb.Append(queryGetFacebookByUser);
+            //    string sql = sb.ToString();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var FacebookProfile = new Label();
-                            var emailAddress = new Label();
-                            //var deleteProfile = new Button();
-                            var editProfile = new ImageButton();
-                            var Line = new BoxView();
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        using (SqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                var FacebookProfile = new Label();
+            //                var emailAddress = new Label();
+            //                //var deleteProfile = new Button();
+            //                var editProfile = new ImageButton();
+            //                var Line = new BoxView();
 
-                            FacebookProfile.Text = (string)reader["ProfileName"];
-                            FacebookProfile.FontSize = 25;
-                            FacebookProfile.FontAttributes = FontAttributes.Bold;
+            //                FacebookProfile.Text = (string)reader["ProfileName"];
+            //                FacebookProfile.FontSize = 25;
+            //                FacebookProfile.FontAttributes = FontAttributes.Bold;
 
-                            /*deleteProfile.Text = "B";
-                            deleteProfile.TextColor = Color.Black;
-                            deleteProfile.FontSize = 10;
-                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
-                            deleteProfile.CornerRadius = 15;
-                            deleteProfile.HeightRequest = 30;
-                            deleteProfile.WidthRequest = 30;
-                            deleteProfile.HorizontalOptions = LayoutOptions.End;
-                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
-                            //int FacebookId = (int)reader["ProfileMSId"];
-                            editProfile.Source = "facebook2";
-                            editProfile.BackgroundColor = Color.Transparent;
-                            editProfile.CornerRadius = 20;
-                            editProfile.HeightRequest = 40;
-                            editProfile.WidthRequest = 40;
-                            editProfile.HorizontalOptions = LayoutOptions.Start;
-                            //editProfile.Clicked += new EventHandler((sender, e) => EditProfileEmail(sender, e, EmailId));
+            //                /*deleteProfile.Text = "B";
+            //                deleteProfile.TextColor = Color.Black;
+            //                deleteProfile.FontSize = 10;
+            //                deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
+            //                deleteProfile.CornerRadius = 15;
+            //                deleteProfile.HeightRequest = 30;
+            //                deleteProfile.WidthRequest = 30;
+            //                deleteProfile.HorizontalOptions = LayoutOptions.End;
+            //                deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
+            //                //int FacebookId = (int)reader["ProfileMSId"];
+            //                editProfile.Source = "facebook2";
+            //                editProfile.BackgroundColor = Color.Transparent;
+            //                editProfile.CornerRadius = 20;
+            //                editProfile.HeightRequest = 40;
+            //                editProfile.WidthRequest = 40;
+            //                editProfile.HorizontalOptions = LayoutOptions.Start;
+            //                //editProfile.Clicked += new EventHandler((sender, e) => EditProfileEmail(sender, e, EmailId));
 
-                            Line.HeightRequest = 1;
-                            Line.Color = Color.FromHex("#FF5521");
+            //                Line.HeightRequest = 1;
+            //                Line.Color = Color.FromHex("#FF5521");
 
-                            FacebookList.Children.Add(editProfile);
-                            FacebookList.Children.Add(FacebookProfile);
-                            //FacebookList.Children.Add(emailAddress);
-                            //EmailList.Children.Add(deleteProfile);
-                            FacebookList.Children.Add(Line);
-                        }
-                    }
-                    connection.Close();
-                }
-            }
+            //                FacebookList.Children.Add(editProfile);
+            //                FacebookList.Children.Add(FacebookProfile);
+            //                //FacebookList.Children.Add(emailAddress);
+            //                //EmailList.Children.Add(deleteProfile);
+            //                FacebookList.Children.Add(Line);
+            //            }
+            //        }
+            //        connection.Close();
+            //    }
+            //}
+           
         }
         #endregion
 
         #region Commands
+        
+        private async void SetList()
+        {
+            //this.IsRunning = true;
+            //this.isEnabled = false;
+
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                //this.IsRunning = false;
+                //this.isEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                return;
+            }
+
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+
+            profileSM2 = new List<ProfileSM>();
+            profileSM2 = await this.apiService.GetListByUser<ProfileSM>(
+                apiSecurity,
+                "/api",
+                "/ProfileSMs",
+                MainViewModel.GetInstance().User.UserId);
+            
+            var Lista = profileSM2;
+            BindingContext = this;
+        }
+
         private void NewProfileFacebook_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();

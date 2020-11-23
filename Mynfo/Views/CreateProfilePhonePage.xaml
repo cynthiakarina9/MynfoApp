@@ -20,25 +20,6 @@
                 Source = "logo_superior.png" 
                 VerticalOptions = "Center"
                 WidthRequest = "85"/>
-            <ImageButton 
-                BackgroundColor = "Transparent"
-                Clicked = "Back_Clicked"
-                Grid.Column = "0"
-                HeightRequest = "40"
-                HorizontalOptions = "Start"
-                Source = "ic_navigation_arrow_back"
-                VerticalOptions = "Start"
-                WidthRequest = "40"
-                x:Name="BackButton"/>
-            <ImageButton 
-                BackgroundColor = "Transparent"
-                Grid.Column = "0"
-                HeightRequest = "40"
-                HorizontalOptions = "Start"
-                Source = "ic_navigation_arrow_back"
-                VerticalOptions = "Start"
-                WidthRequest = "40"
-                x:Name="BackButtonBox"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -122,7 +103,7 @@
                 <Button 
                     BackgroundColor="{StaticResource MainColor}"
                     BorderRadius="23"
-                    Command = "{Binding SaveProfilePhoneCommand}"
+                    Command = "{Binding SaveProfileWhatsAppCommand}"
                     HeightRequest="50"
                     Grid.Row = "5"
                     Text = "{i18n:Translate Save}"

@@ -81,6 +81,12 @@
             set;
         }
 
+        public CreateProfileWhatsAppViewModel CreateProfileWhatsApp
+        {
+            get;
+            set;
+        }
+
         public DetailsBoxViewModel DetailsBox
         {
             get;

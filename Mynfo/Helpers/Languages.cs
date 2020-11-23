@@ -550,5 +550,10 @@
         {
             get { return Resource.LinkValidation; }
         }
+        
+        public static string ProfileELabel
+        {
+            get { return Resource.ProfileELabel; }
+        }
     }
 }

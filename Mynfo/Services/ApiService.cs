@@ -150,39 +150,6 @@
             }
         }
 
-        //public async Task<ProfileEmail> Get(
-        //string urlBase,
-        //string servicePrefix,
-        //string controller,
-        //int id)
-        //{
-        //    try
-        //    {
-        //        var model = new ProfileEmail();
-
-        //        var request = JsonConvert.SerializeObject(model);
-        //        var content = new StringContent(
-        //            request,
-        //            Encoding.UTF8,
-        //            "application/json");
-        //        var client = new HttpClient();
-        //        client.BaseAddress = new Uri(urlBase);
-        //        var url = string.Format("{0}{1}", servicePrefix, controller);
-        //        var response = await client.PostAsync(url, content);
-
-        //        if (!response.IsSuccessStatusCode)
-        //        {
-        //            return null;
-        //        }
-        //        var result = await response.Content.ReadAsStringAsync();
-        //        return JsonConvert.DeserializeObject<ProfileEmail>(result);
-        //    }
-        //    catch
-        //    {
-        //        return null;
-        //    }
-        //}
-
         public async Task<Response> ChangePassword(
             string urlBase,
             string servicePrefix,
@@ -272,6 +239,7 @@
             }
         }
 
+
         public async Task<Response> GetList<T>(
             string urlBase,
             string servicePrefix,
@@ -309,6 +277,34 @@
                     IsSuccess = false,
                     Message = ex.Message,
                 };
+            }
+        }
+
+        public async Task<List<T>> GetListByUser<T>(
+           string urlBase,
+           string servicePrefix,
+           string controller,
+           int id)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}/{2}", servicePrefix, controller, id);
+                var response = await client.GetAsync(url);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+                List<T> list = JsonConvert.DeserializeObject<List<T>>(result);
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
 

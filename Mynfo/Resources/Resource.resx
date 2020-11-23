@@ -250,7 +250,7 @@
     <value>Menu</value>
   </data>
   <data name="MyAccount" xml:space="preserve">
-    <value>My Account</value>
+    <value>Account</value>
   </data>
   <data name="Statics" xml:space="preserve">
     <value>Statics</value>
@@ -361,7 +361,7 @@
     <value>The password can't be changed, please try latter.</value>
   </data>
   <data name="MyProfiles" xml:space="preserve">
-    <value>My Profiles</value>
+    <value>Profiles</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -499,12 +499,15 @@
     <value>List of Facebook profiles.</value>
   </data>
   <data name="ReceivedBoxes" xml:space="preserve">
-    <value>Received Boxes.</value>
+    <value>Received.</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="LinkValidation" xml:space="preserve">
     <value>You must enter a url</value>
+  </data>
+  <data name="ProfileELabel" xml:space="preserve">
+    <value>Your user was created by a social network, to make a change you must make it from that same social network.</value>
   </data>
 </root>

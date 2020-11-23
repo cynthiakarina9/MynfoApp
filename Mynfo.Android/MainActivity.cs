@@ -7,7 +7,7 @@
     using Android.Nfc.Tech;
     using Android.OS;
     using Android.Runtime;
-    using Mynfo.Models;
+    using Models;
     using Newtonsoft.Json;
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
@@ -16,13 +16,13 @@
     using System;
     using System.IO;
     using System.Text;
-    using Mynfo.Models;
     using Mynfo.ViewModels;
     using System.Collections.Generic;
     using Newtonsoft.Json.Linq;
     using SQLite;
+    using Android.Graphics.Drawables;
 
-    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop)]
+    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait)]
     [IntentFilter(new[] { NfcAdapter.ActionNdefDiscovered }, 
     Categories = new[] { Intent.CategoryDefault }, 
     DataMimeType = "application/com.mynfo",
@@ -32,6 +32,7 @@
 
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+
         #region Singleton
         private static MainActivity instance;
 
@@ -52,6 +53,7 @@
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            
             //Set DB root
             string dbName = "Mynfo.db3";
             string dbBinder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);

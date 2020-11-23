@@ -1,8 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Mynfo" 
-             x:Class="Mynfo.Views.TabbedPage1">
-    <TabbedPage.Children>
-    </TabbedPage.Children>
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:Mynfo.Views" 
+            x:Class="Mynfo.Views.TabbedPage1"
+            BarBackgroundColor = "#F2F2F2"
+            BarTextColor="#000000"
+            SelectedTabColor="#FF5521"
+            UnselectedTabColor="#000000">
+    <NavigationPage.TitleView>
+        <Grid>
+            <StackLayout
+                Padding = "0,0,70,0">
+                <ImageButton
+                    BackgroundColor = "Transparent"
+                    Source = "logo_superior.png" 
+                    WidthRequest = "100" />
+            </StackLayout>
+        </Grid>
+    </NavigationPage.TitleView>
 </TabbedPage>
