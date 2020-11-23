@@ -17,6 +17,7 @@
             InitializeComponent();
 
             ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
+            //GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
 
             System.Text.StringBuilder sb;
             string      userId = MainViewModel.GetInstance().User.UserId.ToString();
@@ -923,6 +924,11 @@
             {
                 ButtonBox.Source = "logo_superior2.png";
             }
+        }
+
+        private void GoToTestPage()
+        {
+            Application.Current.MainPage = new NavigationPage(new Testing());
         }
 
     }

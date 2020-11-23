@@ -61,7 +61,10 @@
             ToolbarResource = Resource.Layout.Toolbar;
             
             mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
-            
+
+            //popups
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+
             //Color de tema
             Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
             base.OnCreate(savedInstanceState);
