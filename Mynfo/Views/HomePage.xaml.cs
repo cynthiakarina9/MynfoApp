@@ -17,6 +17,7 @@
             InitializeComponent();
 
             ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
+            //GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
 
             System.Text.StringBuilder sb;
             string      userId = MainViewModel.GetInstance().User.UserId.ToString();
@@ -417,11 +418,14 @@
                     Profile_1 = conn.Table<ProfileLocal>().FirstOrDefault();
                     Box_Local = conn.Table<BoxLocal>().FirstOrDefault();
                     int coun = conn.Table<ProfileLocal>().Count();
-                    string json_header = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+                    string json_header = null;
+                    string json_body = null;
+                    string json_value = null;
 
-                           "¡";
-                    string json_body;
-                    string json_value = "{"
+                    json_header = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+
+                           "¡";                    
+                    json_value = "{"
                               + @"""BoxId"":""" + Box_Local.BoxId + @""",
                                 ""Name"":""" + Box_Local.Name + @""",
                                 ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
@@ -737,6 +741,8 @@
                     //La vacíamos para colocar los nuevos valores
                     conn.DeleteAll<BoxLocal>();
 
+                    conn.DeleteAll<ProfileLocal>();
+
                     //Validamos que esté vacía
                     int a = conn.Table<BoxLocal>().Count();
 
@@ -927,6 +933,11 @@
             {
                 //ButtonBox.Source = "logo_superior2.png";
             }
+        }
+
+        private void GoToTestPage()
+        {
+            Application.Current.MainPage = new NavigationPage(new Testing());
         }
 
     }
