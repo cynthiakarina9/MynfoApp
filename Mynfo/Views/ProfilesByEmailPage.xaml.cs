@@ -24,9 +24,12 @@
         public ProfilesByEmailPage()
         {
             apiService = new ApiService();
+            profileEmail = new List<ProfileEmail>();
             SetList();
+
             InitializeComponent();
-            
+            //BindingContext = new ProfilesByEmailViewModel();
+            #region LastViewList
             //int UserId = MainViewModel.GetInstance().User.UserId;
             //string queryGetEmailByUser = "select * from dbo.ProfileEmails where dbo.ProfileEmails.UserId = " + UserId;
             //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
@@ -90,11 +93,12 @@
             //        connection.Close();
             //    }
             //}
-         }
+            #endregion
+        }
         #endregion
 
         #region Commands
-        private async void SetList()
+        public async void SetList()
         {
             //this.IsRunning = true;
             //this.isEnabled = false;
@@ -114,7 +118,7 @@
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
-            profileEmail = new List<ProfileEmail>();
+            
             profileEmail = await this.apiService.GetListByUser<ProfileEmail>(
                 apiSecurity,
                 "/api",
@@ -136,12 +140,6 @@
         //    mainViewModel.EditProfileEmail = new EditProfileEmailViewModel();
         //    Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage(_ProfileEmailId));
         //}
-        private async void EditProfileEmail_Clicked()
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.EditProfileEmail = new EditProfileEmailViewModel();
-            Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage(0));
-        }
         private void Back_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
@@ -152,6 +150,16 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+        void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            ProfileEmail selectedItem = e.SelectedItem as ProfileEmail;
+        }
+
+        void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ProfileEmail tappedItem = e.Item as ProfileEmail;
+            Navigation.PushAsync(new EditProfileEmailPage(tappedItem.ProfileEmailId));
         }
         #endregion
     }

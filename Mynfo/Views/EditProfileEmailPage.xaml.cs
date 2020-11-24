@@ -125,7 +125,10 @@
                     connection.Close();
                 }
             }
-            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
+
+            MainViewModel.GetInstance().ProfilesByEmail = new ProfilesByEmailViewModel();
+            MainViewModel.GetInstance().ProfilesByEmail.SetList();
+            await App.Navigator.PopAsync();
         }
         private async void Delete_Clicked(object sender, EventArgs e)
         {
