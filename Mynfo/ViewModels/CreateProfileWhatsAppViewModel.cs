@@ -2,6 +2,7 @@
 using Mynfo.Domain;
 using Mynfo.Helpers;
 using Mynfo.Services;
+using Mynfo.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -138,7 +139,8 @@ namespace Mynfo.ViewModels
             this.Name = string.Empty;
             this.Number = string.Empty;
 
-            await App.Navigator.PopAsync();
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

@@ -137,7 +137,8 @@
             this.Name = string.Empty;
             this.Number = string.Empty;
 
-            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }
