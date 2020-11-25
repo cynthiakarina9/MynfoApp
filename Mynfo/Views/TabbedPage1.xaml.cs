@@ -24,11 +24,12 @@
             mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
 
             On<Windows>().SetHeaderIconsEnabled(true);
-            On<Windows>().SetHeaderIconsSize(new Size(24, 24));
+            On<Windows>().SetHeaderIconsSize(new Size(100, 100));
 
-            Children.Add(new HomePage { Title = Languages.Home, IconImageSource = "home1.png" });
-            Children.Add(new ProfilesPage { Title = Languages.MyProfiles, IconImageSource = "perfiles.png" });
-            Children.Add(new ListForeignBoxPage { Title = Languages.ReceivedBoxes, IconImageSource = "Conections.png" });
+            Children.Add(new ProfilesPage {IconImageSource = "networks_icon.png" });
+            Children.Add(new HomePage {IconImageSource = "home_icon.png"});
+            Children.Add(new ListForeignBoxPage {IconImageSource = "connections_icon.png"});
+            CurrentPage = Children[1];
         }
     }
 }

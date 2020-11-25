@@ -61,7 +61,7 @@
             instance = this;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            
+            onCreate();
             mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
 
             //popups
@@ -74,7 +74,7 @@
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //ShortcutBadger.ApplyCount();
-            onCreate();
+            
             LoadApplication(new App(dbRoot));
             
         }
@@ -182,7 +182,7 @@
                                 ""value"":""" + Profile.value + @""",
                                 ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
                                 }";
-
+                             
                             json_value = json_value + ",\n" + json_body;
                         }
                         json_value = "[" +json_value + "]";
@@ -230,12 +230,10 @@
             {
                 return;
             }
-
             if (NfcAdapter.ExtraTag.Contains("nfc"))
             {
                 HandleNFC(intent, true);
             }
-
         }
 
         protected override void OnPause()
