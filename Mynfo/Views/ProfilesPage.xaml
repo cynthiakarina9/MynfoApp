@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title = "{i18n:Translate MyProfiles}"
              x:Class="Mynfo.Views.ProfilesPage">
     <ContentPage.Content>
         <ScrollView
@@ -11,29 +10,25 @@
             <Grid>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*"/>
-                        <RowDefinition Height = "150"/>
-                        <RowDefinition Height = "150"/>
-                        <RowDefinition />
-                        <RowDefinition />
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="100" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width=".12*" />
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".06*"/>
+                        <ColumnDefinition Width=".35*"/>
+                        <ColumnDefinition Width=".12*" />
                     </Grid.ColumnDefinitions>
 
                     <!--Titulo-->
 
-                    <BoxView 
-                        Grid.Row="0" 
-                        Grid.ColumnSpan="2" 
-                        BackgroundColor="Transparent"/>
-
                     <Label 
                         Grid.Row = "0" 
-                        Grid.ColumnSpan = "2" 
+                        Grid.ColumnSpan = "5" 
                         Text = "{i18n:Translate ChooseTypeProfile}"
-                        FontSize = "25"
+                        FontSize = "30"
                         FontAttributes="Bold"
                         TextColor = "{StaticResource MainColor}"
                         HorizontalOptions = "Center"
@@ -44,12 +39,9 @@
 
                     <!--BoxView 1-->
 
-                    <BoxView 
-                        Grid.Row="1" 
-                        Color="Transparent" />
-
                     <ImageButton 
                         Grid.Row = "1"   
+                        Grid.Column = "1"
                         BackgroundColor = "Transparent"
                         Source = "mail1.png"   
                         HorizontalOptions = "Center"
@@ -60,14 +52,9 @@
 
                     <!--BoxView 2-->
 
-                    <BoxView 
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Color="Transparent" />
-
                     <ImageButton 
                         Grid.Row = "1" 
-                        Grid.Column = "1"
+                        Grid.Column = "3"
                         BackgroundColor = "Transparent"
                         HeightRequest = "150"
                         Source = "tel1.png"
@@ -78,14 +65,9 @@
 
                     <!--BoxView 3-->
 
-                    <BoxView 
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Color="Transparent" />
-
                     <ImageButton 
                         Grid.Row = "2" 
-                        Grid.Column = "0"
+                        Grid.Column = "1"
                         BackgroundColor = "Transparent"
                         HeightRequest = "150"
                         Source = "facebook1.png"
@@ -93,18 +75,13 @@
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
                         WidthRequest = "150"/>
-                    
-                    <BoxView 
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Color="Transparent" />
 
                     <ImageButton 
                         Grid.Row = "2" 
-                        Grid.Column = "1"
+                        Grid.Column = "3"
                         BackgroundColor = "Transparent"
                         HeightRequest = "150"
-                        Source = "whatsapp2.png"
+                        Source = "whatsapp1.png"
                         Clicked = "WhatsAppProfile_Clicked"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
