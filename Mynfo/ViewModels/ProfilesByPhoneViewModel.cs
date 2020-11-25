@@ -15,7 +15,6 @@
 
         #region Attributes
         private bool isRunning;
-        private bool isEnabled;
         private List<ProfilePhone> profilePhone;
         #endregion
 
@@ -25,12 +24,6 @@
         {
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
-        }
-
-        public bool IsEnabled
-        {
-            get { return this.isEnabled; }
-            set { SetValue(ref this.isEnabled, value); }
         }
         public List<ProfilePhone> Profilephone
         {
@@ -50,14 +43,12 @@
         private async Task<List<ProfilePhone>> GetList()
         {
             this.IsRunning = true;
-            this.isEnabled = false;
 
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
                 this.IsRunning = false;
-                this.isEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     connection.Message,
@@ -73,6 +64,8 @@
                 "/api",
                 "/ProfilePhones",
                 MainViewModel.GetInstance().User.UserId);
+
+            this.IsRunning = false;
 
             return Profilephone;
         }

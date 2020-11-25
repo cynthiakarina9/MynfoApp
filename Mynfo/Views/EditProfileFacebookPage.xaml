@@ -1,12 +1,110 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mynfo.Views.EditProfileFacebookPage">
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.EditProfileFacebookPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Clicked = "BackHome_Clicked"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,10,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "85"/>
+        </Grid>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView
+            BindingContext = "{Binding EditProfileFacebook}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "80"/>
+                    <RowDefinition Height = "160"/>
+                    <RowDefinition Height = "120"/>
+                    <RowDefinition Height = "80"/>
+                    <RowDefinition />
+                    <RowDefinition Height = "120"/>
+                </Grid.RowDefinitions>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "25"
+                    Grid.ColumnSpan ="1"
+                    Grid.Row = "0"
+                    HorizontalOptions = "Center"
+                    HorizontalTextAlignment = "Center"
+                    Text = "{i18n:Translate EditEmail}"
+                    TextColor = "{StaticResource MainColor}"
+                    VerticalOptions = "Center"/>
+                <Image
+                    HeightRequest = "180"
+                    Source = "facebook2"
+                    Grid.Row = "1"
+                    WidthRequest = "180"/>
+                <StackLayout 
+                    Grid.Row = "2"
+                    Padding = "20">
+                    <Label 
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate NameProfile}" 
+                        VerticalOptions = "Center"/>
+                    <Entry 
+                        BackgroundColor = "{StaticResource LoginEntryColor}"
+                        Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
+                        FontSize = "21"
+                        HorizontalTextAlignment = "Center"
+                        HeightRequest = "46"
+                        HorizontalOptions = "Center"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300" 
+                        x:Name = "EntryName"/>
+                </StackLayout>
+                <StackLayout
+                    Grid.Row = "4"
+                    VerticalOptions = "CenterAndExpand">
+                    <ActivityIndicator
+                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions = "CenterAndExpand">
+                    </ActivityIndicator>
+                </StackLayout>
+                <StackLayout
+                    Grid.Row = "4"
+                    Orientation = "Horizontal"
+                    Padding = "40">
+                    <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Command="{Binding SaveCommand}"
+                        HeightRequest = "50"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate Save}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" 
+                        x:Name = "ButtonSave"/>
+                    <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        HeightRequest = "50"
+                        HorizontalOptions = "Center"
+                        IsEnabled = "True"
+                        Text = "{i18n:Translate Delete}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" 
+                        x:Name = "ButtonDelete"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

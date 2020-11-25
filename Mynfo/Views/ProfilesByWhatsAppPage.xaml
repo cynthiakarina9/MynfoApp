@@ -40,6 +40,13 @@
                         VerticalOptions = "EndAndExpand"  
                         Margin = "0,5,0,15"/>
 
+                    <ActivityIndicator
+                        Grid.Row = "1"
+                        IsRunning = "{Binding IsRunning}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions="StartAndExpand">
+                    </ActivityIndicator>
+
                     <!--End Titulo-->
 
                     <!-- Lista de correos -->

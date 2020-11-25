@@ -19,7 +19,6 @@
 
         #region Attributes
         private bool isRunning;
-        private bool isEnabled;
         private List<ProfileWhatsapp> profileWhatsapp;
         #endregion
 
@@ -32,11 +31,6 @@
                 SetValue(ref profileWhatsapp, value);
 
             }
-        }
-        public bool IsEnabled
-        {
-            get { return this.isEnabled; }
-            set { SetValue(ref this.isEnabled, value); }
         }
 
         public bool IsRunning
@@ -58,14 +52,12 @@
         public async Task<List<ProfileWhatsapp>> GetList()
         {
             this.IsRunning = true;
-            this.isEnabled = false;
 
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
                 this.IsRunning = false;
-                this.isEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     connection.Message,
@@ -81,6 +73,9 @@
                 "/api",
                 "/ProfileWhatsapps",
                 MainViewModel.GetInstance().User.UserId);
+
+            this.IsRunning = false;
+
             return profileWhatsApp;
 
         }
