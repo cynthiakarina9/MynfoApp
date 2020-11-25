@@ -50,18 +50,18 @@
         private NdefMessage ndefMessage;
         public NfcAdapter mNfcAdapter;
         public static string json;
-        
+        public NfcAdapter NFCdevice;
+        public NfcForms x;
+
         protected override void OnCreate(Bundle savedInstanceState)
-        {
-            
+        {            
             //Set DB root
             string dbName = "Mynfo.db3";
             string dbBinder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string dbRoot = Path.Combine(dbBinder, dbName);
             instance = this;
             TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
-            onCreate();
+            ToolbarResource = Resource.Layout.Toolbar;            
             mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
 
             //popups
@@ -74,9 +74,14 @@
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //ShortcutBadger.ApplyCount();
-            
-            LoadApplication(new App(dbRoot));
-            
+
+            NfcManager NfcManager = (NfcManager)Android.App.Application.Context.GetSystemService(Context.NfcService);
+            NFCdevice = NfcManager.DefaultAdapter;
+
+            Xamarin.Forms.DependencyService.Register<INfcForms, NfcForms>();
+            x = Xamarin.Forms.DependencyService.Get<INfcForms>() as NfcForms;
+            onCreate();
+            LoadApplication(new App(dbRoot));            
         }
 
         //List<Get_nfc> nfcData = null;
@@ -200,7 +205,7 @@
         }        
            
         protected override void OnResume()
-        {
+        {   
             base.OnResume();
             try
             {
@@ -210,16 +215,16 @@
                     var tagDetectednDef = new IntentFilter(NfcAdapter.ActionNdefDiscovered);
                     var tagDetectedtech = new IntentFilter(NfcAdapter.ActionTechDiscovered);
                     var filters = new[] { tagDetected, tagDetectednDef, tagDetectedtech };
-                    var intent = new Intent(this, this.GetType()).AddFlags(ActivityFlags.SingleTop);
+                    var intent = new Intent(this, GetType()).AddFlags(ActivityFlags.SingleTop);
                     var pendingIntent = PendingIntent.GetActivity(this, 0, intent, 0);
-                    mNfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);
-                }
+                    mNfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);                   
+                }                             
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-            get_box();
+            get_box(); 
         }              
 
         protected override void OnNewIntent(Intent intent)
@@ -251,13 +256,10 @@
             PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-        
-        protected void onCreate()
-        {                         
-            DateTime time = DateTime.Now;
-            var text = ("Beam me up!\n\n" +
-                            "Beam Time: " + time.ToString("DD/MM/YYYY HH:mm:ss"));
-             get_box();
+                
+
+        public void onCreate()
+        {                                        
             try 
             {
                 if (json == null) 
@@ -267,24 +269,19 @@
                 NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { CreateMimeRecord (
                 "application/com.example.android.beam", Encoding.UTF8.GetBytes(json.ToString()))
-
-                });
-
-                ndefMessage = msg;
+                });                
 
                 NfcAdapter nfcAdapter = NfcAdapter.GetDefaultAdapter(this);
                 if (nfcAdapter == null) return;  // NFC not available on this device
-                nfcAdapter.SetNdefPushMessage(ndefMessage, this);
+                nfcAdapter.SetNdefPushMessage(msg, this);
 
                 nfcAdapter.SetNdefPushMessageCallback(null, this);
-
-
             }
             catch (Exception ex) 
             {
                 Console.WriteLine(ex);
             }            
-        }
+        }                     
 
         public NdefRecord CreateMimeRecord(String mimeType, byte[] payload)
         {
