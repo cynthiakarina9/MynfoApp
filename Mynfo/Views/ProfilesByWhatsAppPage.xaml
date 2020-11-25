@@ -63,15 +63,16 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="100" />
-                                                <ColumnDefinition Width="150" />
+                                                <ColumnDefinition Width="180" />
                                                 <ColumnDefinition Width="30" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
+                                                Margin="10"
                                                 Source="whatsapp2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
                                                 Grid.Column="1"
                                                 Text="{Binding Name}"
@@ -85,14 +86,6 @@
                                                 FontSize="15"
                                                 VerticalOptions="Center"
                                                 HorizontalTextAlignment = "Center"/>
-                                            <ImageButton 
-                                                BackgroundColor="Transparent"
-                                                Grid.Column="3"
-                                                HeightRequest="25"
-                                                HorizontalOptions="Center"
-                                                Source="edit2"
-                                                VerticalOptions="Center"
-                                                WidthRequest="25"/>
                                         </Grid>
                                     </ViewCell>
                                 </DataTemplate>

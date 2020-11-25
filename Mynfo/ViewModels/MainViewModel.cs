@@ -98,6 +98,11 @@
             get;
             set;
         }
+        public EditProfileEmailViewModel EditProfileEmail
+        {
+            get;
+            set;
+        }
 
         public ForeingBoxViewModel ForeingBox
         { 

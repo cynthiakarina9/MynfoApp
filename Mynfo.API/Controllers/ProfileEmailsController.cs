@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Mynfo.Domain;
-
-namespace Mynfo.API.Controllers
+﻿namespace Mynfo.API.Controllers
 {
+    using Mynfo.Domain;
+    using Newtonsoft.Json.Linq;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+
+    [RoutePrefix("api/ProfileEmails")]
     public class ProfileEmailsController : ApiController
     {
         private DataContext db = new DataContext();
@@ -25,7 +24,7 @@ namespace Mynfo.API.Controllers
 
         //// GET: api/ProfileEmails/5
         //[ResponseType(typeof(ProfileEmail))]
-        //public async Task<IHttpActionResult> GetProfileEmail(int id)
+        //public async Task<IHttpActionResult> GetP(int id)
         //{
         //    ProfileEmail profileEmail = await db.ProfileEmails.FindAsync(id);
         //    if (profileEmail == null)
@@ -35,6 +34,30 @@ namespace Mynfo.API.Controllers
 
         //    return Ok(profileEmail);
         //}
+        // GET: api/ProfileEmails/5
+        [HttpPost]
+        [Route("GetProfileEmail")]
+        public async Task<IHttpActionResult> GetProfileEmail(JObject form)
+        {
+            int id ;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.ProfileEmailId;
+            }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+            var profileEmail = await GetProfileEmails().
+                Where(u =>  u.ProfileEmailId == id).FirstOrDefaultAsync();
+            if (profileEmail == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(profileEmail);
+        }
         // GET: api/ProfileEmails/5
         [ResponseType(typeof(ProfileEmail))]
         public async Task<IHttpActionResult> GetProfileEmailByUser(int id)

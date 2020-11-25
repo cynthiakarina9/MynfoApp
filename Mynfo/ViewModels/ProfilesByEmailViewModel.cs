@@ -4,8 +4,12 @@
     using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.Views;
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
     public class ProfilesByEmailViewModel : BaseViewModel
     {
@@ -16,6 +20,7 @@
         #region Attributes
         private bool isRunning;
         private bool isEnabled;
+        private List<ProfileEmail> profilemail;
         #endregion
 
         #region Properties
@@ -29,7 +34,20 @@
             get;
             set;
         }
-        public IList<ProfileEmail> profileEmail { get; private set; }
+        public List<ProfileEmail> profileEmail 
+        {
+            get { return profilemail; } 
+            private set 
+            {
+                SetValue(ref profilemail, value);
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this,
+                        new PropertyChangedEventArgs(""));// Throw!!
+                }
+            }
+        }
+
         public bool IsEnabled
         {
             get { return this.isEnabled; }
@@ -47,13 +65,12 @@
         public ProfilesByEmailViewModel()
         {
             apiService = new ApiService();
-            profileEmail = new List<ProfileEmail>();
             SetList();
         }
         #endregion
 
         #region Commands
-        public async void SetList()
+        public async Task<List<ProfileEmail>> SetList()
         {
             this.IsRunning = true;
             this.isEnabled = false;
@@ -68,30 +85,24 @@
                     Languages.Error,
                     connection.Message,
                     Languages.Accept);
-                return;
+                return null;
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
-
+            profileEmail = new List<ProfileEmail>();
             profileEmail = await this.apiService.GetListByUser<ProfileEmail>(
                 apiSecurity,
                 "/api",
                 "/ProfileEmails",
                 MainViewModel.GetInstance().User.UserId);
-            
+            return profileEmail;
 
         }
-
-        void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            ProfileEmail selectedItem = e.SelectedItem as ProfileEmail;
-        }
-
-        void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            ProfileEmail tappedItem = e.Item as ProfileEmail;
-            App.Navigator.PushAsync(new EditProfileEmailPage(tappedItem.ProfileEmailId));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }

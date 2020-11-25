@@ -19,7 +19,8 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <ScrollView>
+            <ScrollView 
+                BindingContext="{Binding ProfilesByEmail}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80" />
@@ -62,20 +63,28 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="100" />
                                             <ColumnDefinition Width="180" />
                                             <ColumnDefinition Width="30" />
                                         </Grid.ColumnDefinitions>
-                                        <Label 
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
                                             Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="gmail2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
                                             Text="{Binding Name, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding Email}"
+                                            Grid.Column="2"
+                                            Text="{Binding Email, Mode=TwoWay}"
                                             FontSize="15"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>

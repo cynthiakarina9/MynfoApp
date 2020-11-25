@@ -59,31 +59,31 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="100" />
                                             <ColumnDefinition Width="180" />
                                             <ColumnDefinition Width="30" />
                                         </Grid.ColumnDefinitions>
-                                        <Label 
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
                                             Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="10"
+                                            Source="tel2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
                                             Text="{Binding Name}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
-                                            Grid.Column="1"
+                                            Grid.Column="2"
                                             Text="{Binding Number}"
                                             FontSize="15"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
-                                        <ImageButton 
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="2"
-                                            HeightRequest="25"
-                                            HorizontalOptions="Center"
-                                            Source="edit2"
-                                            VerticalOptions="Center"
-                                            WidthRequest="25"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

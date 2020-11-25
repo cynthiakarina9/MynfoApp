@@ -70,6 +70,7 @@
                         VerticalOptions = "Center"/>
                     <Entry 
                         BackgroundColor = "{StaticResource LoginEntryColor}"
+                        Text="{Binding profileEmail.Name, Mode=TwoWay}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
@@ -89,6 +90,7 @@
                         Text = "{i18n:Translate EMail}" />
                     <Entry 
                         BackgroundColor = "{StaticResource LoginEntryColor}"
+                        Text="{Binding profileEmail.Email, Mode=TwoWay}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
@@ -113,7 +115,7 @@
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
-                        Clicked="Save_Clicked"
+                        Command="{Binding SaveCommand}"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
                         Text = "{i18n:Translate Save}"

@@ -54,25 +54,25 @@
                                     <Grid Padding="10">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <Image 
                                             Grid.Column="0"
                                             Source="facebook2"
-                                            HeightRequest="60"
+                                            HeightRequest="40"
                                             HorizontalOptions="End"
                                             Margin="70,0,20,0"
                                             VerticalOptions="Center"
-                                            WidthRequest="60" />
+                                            WidthRequest="50" />
                                         <Label 
                                             Grid.Column="1"
                                             Text="{Binding ProfileName}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Margin="0,0,10,0"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                     </Grid>
