@@ -439,7 +439,7 @@
     <value>Phone or cell number</value>
   </data>
   <data name="ChooseTypeProfile" xml:space="preserve">
-    <value>Choose type of profile</value>
+    <value>Networks</value>
   </data>
   <data name="ProfilePhone" xml:space="preserve">
     <value>Phone profile</value>
@@ -499,7 +499,7 @@
     <value>List of Facebook profiles.</value>
   </data>
   <data name="ReceivedBoxes" xml:space="preserve">
-    <value>Received.</value>
+    <value>Conections</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>

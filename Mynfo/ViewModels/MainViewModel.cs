@@ -201,13 +201,13 @@
                 PageName = "MyProfilePage",
                 Title = Languages.MyAccount,
             });
-            //this.Menus.Add(new MenuItemViewModel
-            //{
-            //    Icon = "perfiles",
-            //    PageName = "ProfilesPage",
-            //    Title = Languages.MyProfiles,
-            //});
-           /* this.Menus.Add(new MenuItemViewModel
+            /*this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "perfiles",
+                PageName = "ProfilesPage",
+                Title = Languages.MyProfiles,
+            });
+            this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "configuraciones",
                 PageName = "SettingsPage",

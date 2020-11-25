@@ -13,7 +13,7 @@
                 Padding = "0,0,70,0">
                 <ImageButton
                     BackgroundColor = "Transparent"
-                    Source = "logo_superior.png" 
+                    Source = "logo_superior3.png" 
                     WidthRequest = "100" />
             </StackLayout>
         </Grid>

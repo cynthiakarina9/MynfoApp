@@ -6,13 +6,13 @@
         <Grid 
             Padding = "0" 
             BackgroundColor = "Transparent">
-            <ImageButton
+           <!-- <ImageButton
                 BackgroundColor = "Transparent"
                 HorizontalOptions = "Start"
                 VerticalOptions = "Center"
                 WidthRequest = "50"
                 Source="back"
-                x:Name="BackButton"/>
+                x:Name="BackButton"/>-->
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>

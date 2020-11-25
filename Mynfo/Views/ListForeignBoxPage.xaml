@@ -34,8 +34,8 @@
             <StackLayout>
                 <StackLayout>
                     <Label 
-                        Text = "Boxes"
-                        FontSize = "25"
+                        Text = "{i18n:Translate ReceivedBoxes}"
+                        FontSize = "30"
                         FontAttributes="Bold"
                         TextColor = "{StaticResource MainColor}"
                         HorizontalOptions = "Center"
