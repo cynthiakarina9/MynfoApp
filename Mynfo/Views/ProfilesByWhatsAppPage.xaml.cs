@@ -79,7 +79,7 @@
         {
             var mainViewModel = MainViewModel.GetInstance();
             //mainViewModel.EditProfileEmail = new EditProfileWhatsAppViewModel();
-            Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage(0));
+            Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage());
         }
         private void Back_Clicked(object sender, EventArgs e)
         {

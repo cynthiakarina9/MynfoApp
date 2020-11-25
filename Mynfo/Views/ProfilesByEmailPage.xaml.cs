@@ -13,22 +13,17 @@
     public partial class ProfilesByEmailPage : ContentPage
     {
         #region Services
-        ApiService apiService;
+        //ApiService apiService;
         #endregion
 
         #region Attributes
-        public IList<ProfileEmail> profileEmail { get; private set; }
+        //public IList<ProfileEmail> profileEmail { get; private set; }
         #endregion
 
         #region Constructors
         public ProfilesByEmailPage()
         {
-            apiService = new ApiService();
-            profileEmail = new List<ProfileEmail>();
-            SetList();
-
             InitializeComponent();
-            //BindingContext = new ProfilesByEmailViewModel();
             #region LastViewList
             //int UserId = MainViewModel.GetInstance().User.UserId;
             //string queryGetEmailByUser = "select * from dbo.ProfileEmails where dbo.ProfileEmails.UserId = " + UserId;
@@ -98,36 +93,36 @@
         #endregion
 
         #region Commands
-        public async void SetList()
-        {
-            //this.IsRunning = true;
-            //this.isEnabled = false;
+        //public async void SetList()
+        //{
+        //    //this.IsRunning = true;
+        //    //this.isEnabled = false;
 
-            var connection = await this.apiService.CheckConnection();
+        //    //var connection = await this.apiService.CheckConnection();
 
-            if (!connection.IsSuccess)
-            {
-                //this.IsRunning = false;
-                //this.isEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    connection.Message,
-                    Languages.Accept);
-                return;
-            }
+        //    //if (!connection.IsSuccess)
+        //    //{
+        //    //    //this.IsRunning = false;
+        //    //    //this.isEnabled = true;
+        //    //    await Application.Current.MainPage.DisplayAlert(
+        //    //        Languages.Error,
+        //    //        connection.Message,
+        //    //        Languages.Accept);
+        //    //    return;
+        //    //}
 
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+        //    var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
             
-            profileEmail = await this.apiService.GetListByUser<ProfileEmail>(
-                apiSecurity,
-                "/api",
-                "/ProfileEmails",
-                MainViewModel.GetInstance().User.UserId);
+        //    profileEmail = await this.apiService.GetListByUser<ProfileEmail>(
+        //        apiSecurity,
+        //        "/api",
+        //        "/ProfileEmails",
+        //        MainViewModel.GetInstance().User.UserId);
 
-            var Lista = profileEmail;
-            BindingContext = this;
-        }
+        //    var Lista = profileEmail;
+        //    BindingContext = this;
+        //}
         private void NewProfileEmail_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
@@ -158,8 +153,11 @@
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
+            
             ProfileEmail tappedItem = e.Item as ProfileEmail;
-            Navigation.PushAsync(new EditProfileEmailPage(tappedItem.ProfileEmailId));
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(tappedItem.ProfileEmailId);
+            App.Navigator.PushAsync(new EditProfileEmailPage());
         }
         #endregion
     }
