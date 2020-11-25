@@ -21,8 +21,7 @@
         }
         private void EmailProfile_Clicked(object sender, EventArgs e)
         {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.ProfilesByEmail = new ProfilesByEmailViewModel();
+            MainViewModel.GetInstance().ProfilesByEmail = new ProfilesByEmailViewModel();
             Navigation.PushAsync(new ProfilesByEmailPage());
         }
         private void FacebookProfile_Clicked(object sender, EventArgs e)

@@ -4,7 +4,9 @@
     using Mynfo.Helpers;
     using Mynfo.Services;
     using System;
+    using System.ComponentModel;
     using System.Data.SqlClient;
+    using System.Runtime.CompilerServices;
     using System.Text;
     using ViewModels;
     using Xamarin.Forms;
@@ -23,109 +25,116 @@
         #endregion
 
         #region Construtor
-        public EditProfileEmailPage(int _ProfileEmailId)
+        public EditProfileEmailPage()
         {
             //var mainViewModel = MainViewModel.GetInstance();
             //mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(_ProfileEmailId);
             InitializeComponent();
+            #region LastCode
             //apiService
-            apiService = new ApiService();
-            System.Text.StringBuilder sb;
-            string consultaEmail = "select * from dbo.ProfileEmails where dbo.ProfileEmails.ProfileEmailId =" + _ProfileEmailId +"and dbo.ProfileEmails.UserId = "+ UserID;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            
+            //    apiService = new ApiService();
+            //    System.Text.StringBuilder sb;
+            //    string consultaEmail = "select * from dbo.ProfileEmails where dbo.ProfileEmails.ProfileEmailId =" + _ProfileEmailId +"and dbo.ProfileEmails.UserId = "+ UserID;
+            //    string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
-            //Seleccionar ProfileEmail
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(consultaEmail);
 
-                string sql = sb.ToString();
+            //    //Seleccionar ProfileEmail
+            //    using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //    {
+            //        sb = new System.Text.StringBuilder();
+            //        sb.Append(consultaEmail);
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            profileEmail.UserId = (int)reader["UserId"];
-                            profileEmail.ProfileEmailId = (int)reader["ProfileEmailId"];
-                            profileEmail.Name = (string)reader["Name"];
-                            profileEmail.Email = (string)reader["Email"];
-                        }
-                    }
+            //        string sql = sb.ToString();
 
-                    connection.Close();
-                }
+            //        using (SqlCommand command = new SqlCommand(sql, connection))
+            //        {
+            //            connection.Open();
+            //            using (SqlDataReader reader = command.ExecuteReader())
+            //            {
+            //                while (reader.Read())
+            //                {
+            //                    profileEmail.UserId = (int)reader["UserId"];
+            //                    profileEmail.ProfileEmailId = (int)reader["ProfileEmailId"];
+            //                    profileEmail.Name = (string)reader["Name"];
+            //                    profileEmail.Email = (string)reader["Email"];
+            //                }
+            //            }
 
-                EntryEmail.Text = profileEmail.Email;
-                EntryName.Text = profileEmail.Name;
-            }
+            //            connection.Close();
+            //        }
+
+            //        EntryEmail.Text = profileEmail.Email;
+            //        EntryName.Text = profileEmail.Name;
+            //    }
+            #endregion
+
         }
         #endregion
 
         #region Commands
+
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            ButtonSave.IsEnabled = false;
-            ButtonDelete.IsEnabled = false;
-            if (string.IsNullOrEmpty(EntryName.Text))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.NameProfile,
-                    Languages.Accept);
-                return;
-            }
-            if (string.IsNullOrEmpty(EntryEmail.Text))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.EmailValidation,
-                    Languages.Accept);
-                return;
-            }
+            //ButtonSave.IsEnabled = false;
+            //ButtonDelete.IsEnabled = false;
+            //if (string.IsNullOrEmpty(EntryName.Text))
+            //{
+            //    await Application.Current.MainPage.DisplayAlert(
+            //        Languages.Error,
+            //        Languages.NameProfile,
+            //        Languages.Accept);
+            //    return;
+            //}
+            //if (string.IsNullOrEmpty(EntryEmail.Text))
+            //{
+            //    await Application.Current.MainPage.DisplayAlert(
+            //        Languages.Error,
+            //        Languages.EmailValidation,
+            //        Languages.Accept);
+            //    return;
+            //}
 
-            if (!RegexUtilities.IsValidEmail(EntryEmail.Text))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.EmailValidation2,
-                    Languages.Accept);
-                return;
-            }
-            var checkConnetion = await this.apiService.CheckConnection();
-            if (!checkConnetion.IsSuccess)
-            {
-                //this.IsRunning = false;
-                ButtonSave.IsEnabled = true;
-                ButtonDelete.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    checkConnetion.Message,
-                    Languages.Accept);
-                return;
-            }
+            //if (!RegexUtilities.IsValidEmail(EntryEmail.Text))
+            //{
+            //    await Application.Current.MainPage.DisplayAlert(
+            //        Languages.Error,
+            //        Languages.EmailValidation2,
+            //        Languages.Accept);
+            //    return;
+            //}
+            //var checkConnetion = await this.apiService.CheckConnection();
+            //if (!checkConnetion.IsSuccess)
+            //{
+            //    //this.IsRunning = false;
+            //    ButtonSave.IsEnabled = true;
+            //    ButtonDelete.IsEnabled = true;
+            //    await Application.Current.MainPage.DisplayAlert(
+            //        Languages.Error,
+            //        checkConnetion.Message,
+            //        Languages.Accept);
+            //    return;
+            //}
 
-            string queryUpdateProfileEmail = "update dbo.ProfileEmails set Name = '" + EntryName.Text + "', Email = '" + EntryEmail.Text + "' where dbo.ProfileEmails.ProfileEmailId = " + profileEmail.ProfileEmailId + " and dbo.ProfileEmails.UserId = " + profileEmail.UserId;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(queryUpdateProfileEmail);
-                string sql = sb.ToString();
+            //string queryUpdateProfileEmail = "update dbo.ProfileEmails set Name = '" + EntryName.Text + "', Email = '" + EntryEmail.Text + "' where dbo.ProfileEmails.ProfileEmailId = " + profileEmail.ProfileEmailId + " and dbo.ProfileEmails.UserId = " + profileEmail.UserId;
+            //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            //StringBuilder sb;
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    sb = new System.Text.StringBuilder();
+            //    sb.Append(queryUpdateProfileEmail);
+            //    string sql = sb.ToString();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-            }
-            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        command.ExecuteNonQuery();
+            //        connection.Close();
+            //    }
+            //}
+
+            //MainViewModel.GetInstance().ProfilesByEmail = new ProfilesByEmailViewModel();
+            //await MainViewModel.GetInstance().ProfilesByEmail.SetList();
+            //await App.Navigator.PopAsync();
         }
         private async void Delete_Clicked(object sender, EventArgs e)
         {
@@ -186,6 +195,11 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }

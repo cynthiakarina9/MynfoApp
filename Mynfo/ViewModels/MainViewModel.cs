@@ -93,6 +93,11 @@
             set;
         }
 
+        public EditProfileWhatsAppViewModel EditProfileWhatsApp
+        {
+            get;
+            set;
+        }
         public EditProfileEmailViewModel EditProfileEmail
         {
             get;
@@ -196,12 +201,12 @@
                 PageName = "MyProfilePage",
                 Title = Languages.MyAccount,
             });
-            this.Menus.Add(new MenuItemViewModel
-            {
-                Icon = "perfiles",
-                PageName = "ProfilesPage",
-                Title = Languages.MyProfiles,
-            });
+            //this.Menus.Add(new MenuItemViewModel
+            //{
+            //    Icon = "perfiles",
+            //    PageName = "ProfilesPage",
+            //    Title = Languages.MyProfiles,
+            //});
            /* this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "configuraciones",

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.EditProfileEmailPage"
+             x:Class="Mynfo.Views.EditProfileWhatsAppPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>
@@ -13,28 +13,17 @@
             </Grid.ColumnDefinitions>
             <ImageButton
                 BackgroundColor = "Transparent"
-                Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,10,0"
                 HorizontalOptions = "Center"
                 Source = "logo_superior.png" 
                 VerticalOptions = "Center"
                 WidthRequest = "85"/>
-            <ImageButton 
-                BackgroundColor = "Transparent"
-                Clicked = "Back_Clicked"
-                Grid.Column = "0"
-                HeightRequest = "40"
-                HorizontalOptions = "Start"
-                Source = "ic_navigation_arrow_back"
-                VerticalOptions = "Start"
-                WidthRequest = "40"
-                x:Name="BackButton"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView
-            BindingContext = "{Binding EditProfileEmail}">
+            BindingContext = "{Binding EditProfileWhatsApp}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height = "80"/>
@@ -50,14 +39,13 @@
                     Grid.ColumnSpan ="1"
                     Grid.Row = "0"
                     HorizontalOptions = "Center"
-                    HorizontalTextAlignment = "Center"
-                    Text = "{i18n:Translate EditEmail}"
+                    Text = "{i18n:Translate EditPhone}"
                     TextColor = "{StaticResource MainColor}"
                     VerticalOptions = "Center"/>
                 <Image
-                    HeightRequest = "180"
-                    Source = "mail2"
                     Grid.Row = "1"
+                    HeightRequest = "180"
+                    Source = "tel2"
                     WidthRequest = "180"/>
                 <StackLayout 
                     Grid.Row = "2"
@@ -66,67 +54,57 @@
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
-                        Text = "{i18n:Translate NameProfile}" 
-                        VerticalOptions = "Center"/>
+                        VerticalOptions = "Center"
+                        Text = "{i18n:Translate NameProfile}"/>
                     <Entry 
                         BackgroundColor = "{StaticResource LoginEntryColor}"
-                        Text="{Binding profileEmail.Name, Mode=TwoWay}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
-                        HeightRequest = "46"
                         HorizontalOptions = "Center"
                         MaxLength = "10"
+                        Text = "{Binding Name}"
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name = "EntryName"/>
                 </StackLayout>
                 <StackLayout 
-                        Grid.Row = "3">
+                    Grid.Row = "3">
                     <Label 
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
-                        VerticalOptions = "Center" 
-                        Text = "{i18n:Translate EMail}" />
+                        Text = "{i18n:Translate NumberPhone}" 
+                        VerticalOptions = "Center" />
                     <Entry 
                         BackgroundColor = "{StaticResource LoginEntryColor}"
-                        Text="{Binding profileEmail.Email, Mode=TwoWay}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
-                        HeightRequest = "46"
                         HorizontalOptions = "Center"
-                        Keyboard = "Email"
+                        Keyboard = "Telephone"
+                        MaxLength = "10"
+                        Text = "{Binding Number}"
                         VerticalOptions = "Center" 
                         WidthRequest = "300"
-                        x:Name = "EntryEmail"/>
+                        x:Name = "EntryPhone"/>
                 </StackLayout>
                 <StackLayout
-                    Grid.Row = "4"
-                    VerticalOptions = "CenterAndExpand">
-                    <ActivityIndicator
-                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions = "CenterAndExpand">
-                    </ActivityIndicator>
-                </StackLayout>
-                <StackLayout
-                    Grid.Row = "4"
-                    Orientation = "Horizontal"
-                    Padding = "40">
+                        Grid.Row = "4"
+                        Orientation = "Horizontal"
+                        Padding = "40">
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
-                        Command="{Binding SaveCommand}"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
+                        Grid.Row = "5"
                         Text = "{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
-                        WidthRequest = "150" 
+                        WidthRequest = "150"
                         x:Name = "ButtonSave"/>
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
-                        Clicked = "Delete_Clicked"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
                         IsEnabled = "True"

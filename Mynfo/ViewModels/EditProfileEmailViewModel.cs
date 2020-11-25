@@ -1,135 +1,99 @@
 ﻿namespace Mynfo.ViewModels
 {
-    using Domain;
-    using GalaSoft.MvvmLight.Command;
-    using Helpers;
-    using Services;
     using System;
-    using System.Data.SqlClient;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
     using System.Text;
+    using System.Threading.Tasks;
     using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
+    using Mynfo.Domain;
+    using Mynfo.Helpers;
+    using Services;
     using Xamarin.Forms;
 
     public class EditProfileEmailViewModel : BaseViewModel
     {
-
         #region Services
-        private ApiService apiService;
+        ApiService apiService;
         #endregion
 
         #region Attributes
-        private bool isRunning;
-        private bool isEnabled;
+        private ProfileEmail profilemail;
         #endregion
 
         #region Properties
         public ProfileEmail profileEmail
         {
-            get;
-            set;
-        }
-        public bool IsEnabled
-        {
-            get { return this.isEnabled; }
-            set { SetValue(ref this.isEnabled, value); }
+            get { return profilemail; }
+            private set
+            {
+                SetValue(ref profilemail, value);
+            }
         }
 
-        public bool IsRunning
-        {
-            get { return this.isRunning; }
-            set { SetValue(ref this.isRunning, value); }
-        }
         #endregion
 
         #region Constructor
-        public EditProfileEmailViewModel( int _ProfileEmailId = 0)
+        public EditProfileEmailViewModel(int _ProfileEmailId)
         {
-            //var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            //ProfileEmail EmailProfile = new ProfileEmail();
-            //EmailProfile.ProfileEmailId = _ProfileEmailId;
-            //var EmailProfile2 = this.apiService.Get(
-            //    apiSecurity,
-            //    "/api",
-            //    "/ProfileEmails",
-            //    MainViewModel.GetInstance().Token.TokenType,
-            //    MainViewModel.GetInstance().Token.AccessToken,
-            //    EmailProfile.ProfileEmailId);// profileEmail.ProfileEmailId);
-            //ProfileEmail EmailLocal = EmailProfile;
-            this.apiService = new ApiService();
-            this.isEnabled = true;
+            apiService = new ApiService();
+            GetProfileEmail( _ProfileEmailId);
         }
         #endregion
 
         #region Commands
-
-        public ICommand DeleteProfileCommand
+        private async Task<ProfileEmail> GetProfileEmail(int _ProfileEmailId)
+        {
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            profileEmail = new ProfileEmail();
+            profileEmail = await this.apiService.GetProfileEmail(
+               apiSecurity,
+               "/api",
+               "/ProfileEmails/GetProfileEmail",
+               _ProfileEmailId);
+            return profileEmail;
+        }
+        
+        public ICommand SaveCommand
         {
             get
             {
-                return new RelayCommand(DeleteProfile);
+                return new RelayCommand(Save);
             }
         }
-
-        private async void DeleteProfile()
+        private async void Save()
         {
-
-            this.IsRunning = true;
-            this.IsEnabled = false;
-
+            //ButtonSave.IsEnabled = false;
+            //ButtonDelete.IsEnabled = false;
             var checkConnetion = await this.apiService.CheckConnection();
             if (!checkConnetion.IsSuccess)
             {
-                this.IsRunning = false;
-                this.IsEnabled = true;
+                //this.IsRunning = false;
+                //ButtonSave.IsEnabled = true;
+                //ButtonDelete.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     checkConnetion.Message,
                     Languages.Accept);
                 return;
             }
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            string SelectBoxEmail = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.ProfileEmailId = " + profileEmail.ProfileEmailId;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(SelectBoxEmail);
-                string sql = sb.ToString();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-            }
-            
-            var response = await this.apiService.Delete(
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var response = await this.apiService.Put(
                 apiSecurity,
                 "/api",
-                "/ProfileEmails",
-                MainViewModel.GetInstance().Token.TokenType,
-                MainViewModel.GetInstance().Token.AccessToken,
-                profileEmail);
-
-            if (!response.IsSuccess)
-            {
-                this.IsRunning = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    response.Message,
-                    Languages.Accept);
-                return;
-            }
-
-            this.IsRunning = false;
-            this.IsEnabled = true;
-
+                "/Users",
+                profileEmail.ProfileEmailId);
             await App.Navigator.PopAsync();
         }
-        #endregion
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }

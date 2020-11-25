@@ -28,7 +28,7 @@
             return db.Users;
         }
 
-        // : api/Users/ejemplo@ejemplo.com
+        // POST: api/Users/ejemplo@ejemplo.com
         [HttpPost]
         [Authorize]
         [Route("GetUserByEmail")]
