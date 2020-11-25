@@ -2,47 +2,54 @@
 {
     using Mynfo.Domain;
     using Mynfo.Helpers;
-    using Services;
+    using Mynfo.Services;
+    using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+    using System.Text;
     using System.Threading.Tasks;
     using Xamarin.Forms;
 
-    public class ProfilesByFacebookViewModel : BaseViewModel
+    public class ProfilesByWhatsAppViewModel : BaseViewModel
     {
         #region Services
-        private ApiService apiService;
+        ApiService apiService;
         #endregion
 
         #region Attributes
         private bool isRunning;
-        private List<ProfileSM> profilesM;
+        private List<ProfileWhatsapp> profileWhatsapp;
         #endregion
 
         #region Properties
+        public List<ProfileWhatsapp> profileWhatsApp
+        {
+            get { return profileWhatsapp; }
+            private set
+            {
+                SetValue(ref profileWhatsapp, value);
+
+            }
+        }
 
         public bool IsRunning
         {
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-        public List<ProfileSM> profileSM
-        {
-            get { return profilesM; }
-            private set
-            {
-                SetValue(ref profilesM, value);
-            }
-        }
         #endregion
 
-        #region Constructor
-        public ProfilesByFacebookViewModel()
+        #region Constructors
+        public ProfilesByWhatsAppViewModel()
         {
             apiService = new ApiService();
             GetList();
         }
-        
-        private async Task<List<ProfileSM>> GetList()
+        #endregion
+
+        #region Commands
+        public async Task<List<ProfileWhatsapp>> GetList()
         {
             this.IsRunning = true;
 
@@ -60,18 +67,23 @@
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
-            profileSM = new List<ProfileSM>();
-            profileSM = await this.apiService.GetListByUser<ProfileSM>(
+            profileWhatsApp = new List<ProfileWhatsapp>();
+            profileWhatsApp = await this.apiService.GetListByUser<ProfileWhatsapp>(
                 apiSecurity,
                 "/api",
-                "/ProfileSMs",
+                "/ProfileWhatsapps",
                 MainViewModel.GetInstance().User.UserId);
-            
+
             this.IsRunning = false;
 
-            return profileSM;
-        }
-            #endregion
+            return profileWhatsApp;
 
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }

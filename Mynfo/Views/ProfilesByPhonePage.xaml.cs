@@ -23,9 +23,8 @@
 
         public ProfilesByPhonePage()
         {
-            apiService = new ApiService();
-            SetList();
             InitializeComponent();
+            #region LastCode
             //int UserId = MainViewModel.GetInstance().User.UserId;
             //string queryGetPhoneByUser = "select * from dbo.ProfilePhones where dbo.ProfilePhones.UserId = " + UserId;
             //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
@@ -89,51 +88,14 @@
             //        connection.Close();
             //    }
             //}
+            #endregion
         }
-
-        private async void SetList()
-        {
-            //this.IsRunning = true;
-            //this.isEnabled = false;
-
-            var connection = await this.apiService.CheckConnection();
-
-            if (!connection.IsSuccess)
-            {
-                //this.IsRunning = false;
-                //this.isEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    connection.Message,
-                    Languages.Accept);
-                return;
-            }
-
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-
-            profilePhone = new List<ProfilePhone>();
-            profilePhone = await this.apiService.GetListByUser<ProfilePhone>(
-                apiSecurity,
-                "/api",
-                "/ProfilePhones",
-                MainViewModel.GetInstance().User.UserId);
-
-            var Lista = profilePhone;
-            BindingContext = this;
-        }
-
         private void NewProfilePhone_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
             Application.Current.MainPage = new NavigationPage(new CreateProfilePhonePage());
         }
-
-        private void EditProfilePhone(object sender, EventArgs e, int _ProfilePhoneId)
-        {
-            Application.Current.MainPage = new NavigationPage(new EditProfilePhonePage(_ProfilePhoneId));
-        }
-
         #region Methods  
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -147,7 +109,19 @@
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+        void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            ProfilePhone selectedItem = e.SelectedItem as ProfilePhone;
+        }
 
+        void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+            ProfilePhone tappedItem = e.Item as ProfilePhone;
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.EditProfilePhone = new EditProfilePhoneViewModel();
+            App.Navigator.PushAsync(new EditProfilePhonePage(tappedItem.ProfilePhoneId));
+        }
         #endregion
     }
 }

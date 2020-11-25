@@ -169,10 +169,10 @@
         #region Command
         private void Back_Clicked(object sender, EventArgs e, bool isAfterReceiving)
         {
-            if(isAfterReceiving == true)
+            if (isAfterReceiving == true)
             {
-                
-                Application.Current.MainPage = new NavigationPage(new ListForeignBoxPage());
+
+                Application.Current.MainPage = new NavigationPage(new MasterPage());
             }
             else
             {

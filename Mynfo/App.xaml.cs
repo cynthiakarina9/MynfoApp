@@ -64,6 +64,7 @@
                     mainViewModel.Token = token;
                     mainViewModel.User = user;//sqlite
                     mainViewModel.Home = new HomeViewModel();
+                    mainViewModel.Register = new RegisterViewModel();
                     mainViewModel.MyProfile = new MyProfileViewModel();
                     mainViewModel.Profiles = new ProfilesViewModel();
                     mainViewModel.Settings = new SettingsViewModel();
@@ -149,6 +150,7 @@
             mainViewModel.Token = token;
             mainViewModel.User = userLocal;
             mainViewModel.Home = new HomeViewModel();
+            mainViewModel.Register = new RegisterViewModel();
             mainViewModel.MyProfile = new MyProfileViewModel();
             mainViewModel.Profiles = new ProfilesViewModel();
             mainViewModel.Settings = new SettingsViewModel();

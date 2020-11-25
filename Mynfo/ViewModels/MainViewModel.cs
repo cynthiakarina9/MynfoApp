@@ -92,7 +92,16 @@
             get;
             set;
         }
-
+        public EditProfileFacebookViewModel EditProfileFacebook
+        {
+            get;
+            set;
+        }
+        public EditProfilePhoneViewModel EditProfilePhone
+        {
+            get;
+            set;
+        }
         public EditProfileWhatsAppViewModel EditProfileWhatsApp
         {
             get;
@@ -160,6 +169,11 @@
             set;
         }
         public ProfilesByFacebookViewModel ProfilesByFacebook
+        {
+            get;
+            set;
+        }
+        public ProfilesByWhatsAppViewModel ProfilesByWhatsApp
         {
             get;
             set;

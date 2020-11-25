@@ -572,6 +572,78 @@
                 return null;
             }
         }
+        public async Task<ProfileSM> GetProfileSM(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfileSM
+                {
+                    ProfileMSId = id,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ProfileSM>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<ProfileWhatsapp> GetProfileWhatsApp(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfileWhatsapp
+                {
+                    ProfileWhatsappId = id,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ProfileWhatsapp>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         public async Task<Response> Put<T>(
             string urlBase,

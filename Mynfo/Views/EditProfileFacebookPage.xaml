@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.EditProfilePhonePage"
+             x:Class="Mynfo.Views.EditProfileFacebookPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>
@@ -15,7 +15,7 @@
                 BackgroundColor = "Transparent"
                 Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,80,0"
+                Margin = "0,0,10,0"
                 HorizontalOptions = "Center"
                 Source = "logo_superior.png" 
                 VerticalOptions = "Center"
@@ -24,7 +24,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView
-            BindingContext = "{Binding CreateProfilePhone}">
+            BindingContext = "{Binding EditProfileFacebook}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height = "80"/>
@@ -40,13 +40,14 @@
                     Grid.ColumnSpan ="1"
                     Grid.Row = "0"
                     HorizontalOptions = "Center"
-                    Text = "{i18n:Translate EditPhone}"
+                    HorizontalTextAlignment = "Center"
+                    Text = "{i18n:Translate EditEmail}"
                     TextColor = "{StaticResource MainColor}"
                     VerticalOptions = "Center"/>
                 <Image
-                    Grid.Row = "1"
                     HeightRequest = "180"
-                    Source = "tel2"
+                    Source = "facebook2"
+                    Grid.Row = "1"
                     WidthRequest = "180"/>
                 <StackLayout 
                     Grid.Row = "2"
@@ -55,59 +56,45 @@
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        Text = "{i18n:Translate NameProfile}"/>
+                        Text = "{i18n:Translate NameProfile}" 
+                        VerticalOptions = "Center"/>
                     <Entry 
                         BackgroundColor = "{StaticResource LoginEntryColor}"
+                        Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
+                        HeightRequest = "46"
                         HorizontalOptions = "Center"
-                        MaxLength = "10"
-                        Text = "{Binding Name}"
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name = "EntryName"/>
                 </StackLayout>
-                <StackLayout 
-                    Grid.Row = "3">
-                    <Label 
-                        FontSize = "24" 
-                        FontAttributes="Bold"
-                        HorizontalOptions = "Center"
-                        Text = "{i18n:Translate NumberPhone}" 
-                        VerticalOptions = "Center" />
-                    <Entry 
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
-                        FontSize = "21"
-                        HorizontalTextAlignment = "Center"
-                        HorizontalOptions = "Center"
-                        Keyboard = "Telephone"
-                        MaxLength = "10"
-                        Text = "{Binding Number}"
-                        VerticalOptions = "Center" 
-                        WidthRequest = "300"
-                        x:Name = "EntryPhone"/>
+                <StackLayout
+                    Grid.Row = "4"
+                    VerticalOptions = "CenterAndExpand">
+                    <ActivityIndicator
+                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions = "CenterAndExpand">
+                    </ActivityIndicator>
                 </StackLayout>
                 <StackLayout
-                        Grid.Row = "4"
-                        Orientation = "Horizontal"
-                        Padding = "40">
+                    Grid.Row = "4"
+                    Orientation = "Horizontal"
+                    Padding = "40">
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
-                        Clicked = "Save_Clicked"
+                        Command="{Binding SaveCommand}"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
-                        Grid.Row = "5"
                         Text = "{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
-                        WidthRequest = "150"
+                        WidthRequest = "150" 
                         x:Name = "ButtonSave"/>
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
-                        Clicked = "Delete_Clicked"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
                         IsEnabled = "True"

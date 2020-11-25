@@ -11,20 +11,11 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesByFacebookPage : ContentPage
     {
-        #region Services
-        ApiService apiService;
-        #endregion
-
-        #region Attributes
-        public IList<ProfileSM> profileSM2 { get; private set; }
-        #endregion
-
         #region Constructors
         public ProfilesByFacebookPage()
         {
-            apiService = new ApiService();
-            SetList();
             InitializeComponent();
+            #region LastCode
             //int UserId = MainViewModel.GetInstance().User.UserId;
             //string queryGetFacebookByUser = "select * from dbo.ProfileSMs  where dbo.ProfileSMs.UserId = " + UserId +"and RedSocialId = 1";
             //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
@@ -84,43 +75,11 @@
             //        connection.Close();
             //    }
             //}
-           
+            #endregion
+
         }
         #endregion
-
         #region Commands
-        
-        private async void SetList()
-        {
-            //this.IsRunning = true;
-            //this.isEnabled = false;
-
-            var connection = await this.apiService.CheckConnection();
-
-            if (!connection.IsSuccess)
-            {
-                //this.IsRunning = false;
-                //this.isEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    connection.Message,
-                    Languages.Accept);
-                return;
-            }
-
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-
-            profileSM2 = new List<ProfileSM>();
-            profileSM2 = await this.apiService.GetListByUser<ProfileSM>(
-                apiSecurity,
-                "/api",
-                "/ProfileSMs",
-                MainViewModel.GetInstance().User.UserId);
-            
-            var Lista = profileSM2;
-            BindingContext = this;
-        }
-
         private void NewProfileFacebook_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
@@ -138,6 +97,19 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+        void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            ProfileEmail selectedItem = e.SelectedItem as ProfileEmail;
+        }
+
+        void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+            ProfileSM tappedItem = e.Item as ProfileSM;
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.EditProfileFacebook = new EditProfileFacebookViewModel(tappedItem.ProfileMSId);
+            App.Navigator.PushAsync(new EditProfileFacebookPage());
         }
         #endregion
     }

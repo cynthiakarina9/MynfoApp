@@ -7,6 +7,7 @@
     using System;
     using System.Data.SqlClient;
     using System.Text;
+    using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -20,13 +21,17 @@
         #region Attributes
         private bool isRunning;
         private bool isEnabled;
+        private ProfileWhatsapp profilewhats;
         #endregion
 
         #region Properties
-        public ProfileEmail profileEmail
+        public ProfileWhatsapp profileWhats
         {
-            get;
-            set;
+            get { return profilewhats; }
+            private set
+            {
+                SetValue(ref profilewhats, value);
+            }
         }
         public bool IsEnabled
         {
@@ -42,91 +47,54 @@
         #endregion
 
         #region Constructor
-        public EditProfileWhatsAppViewModel( int _ProfileEmailId = 0)
+        public EditProfileWhatsAppViewModel( int _ProfileMSId)
         {
-            //var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            //ProfileEmail EmailProfile = new ProfileEmail();
-            //EmailProfile.ProfileEmailId = _ProfileEmailId;
-            //var EmailProfile2 = this.apiService.Get(
-            //    apiSecurity,
-            //    "/api",
-            //    "/ProfileEmails",
-            //    MainViewModel.GetInstance().Token.TokenType,
-            //    MainViewModel.GetInstance().Token.AccessToken,
-            //    EmailProfile.ProfileEmailId);// profileEmail.ProfileEmailId);
-            //ProfileEmail EmailLocal = EmailProfile;
             this.apiService = new ApiService();
+            GetProfile(_ProfileMSId);
             this.isEnabled = true;
         }
         #endregion
 
         #region Commands
+        private async Task<ProfileWhatsapp> GetProfile(int _ProfileMSId)
+        {
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            profileWhats = new ProfileWhatsapp();
+            profileWhats = await this.apiService.GetProfileWhatsApp(
+               apiSecurity,
+               "/api",
+               "/ProfileWhatsapps/GetProfileWhatsApp",
+               _ProfileMSId);
+            return profileWhats;
+        }
 
-        public ICommand DeleteProfileCommand
+        public ICommand SaveCommand
         {
             get
             {
-                return new RelayCommand(DeleteProfile);
+                return new RelayCommand(Save);
             }
         }
 
-        private async void DeleteProfile()
+        private async void Save()
         {
 
-            this.IsRunning = true;
-            this.IsEnabled = false;
 
-            var checkConnetion = await this.apiService.CheckConnection();
-            if (!checkConnetion.IsSuccess)
-            {
-                this.IsRunning = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    checkConnetion.Message,
-                    Languages.Accept);
-                return;
-            }
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            string SelectBoxEmail = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.ProfileEmailId = " + profileEmail.ProfileEmailId;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(SelectBoxEmail);
-                string sql = sb.ToString();
+            await App.Navigator.PopAsync();
+        }
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return new RelayCommand(Delete);
             }
+        }
+
+        private async void Delete()
+        {
+
             
-            var response = await this.apiService.Delete(
-                apiSecurity,
-                "/api",
-                "/ProfileEmails",
-                MainViewModel.GetInstance().Token.TokenType,
-                MainViewModel.GetInstance().Token.AccessToken,
-                profileEmail);
-
-            if (!response.IsSuccess)
-            {
-                this.IsRunning = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    response.Message,
-                    Languages.Accept);
-                return;
-            }
-
-            this.IsRunning = false;
-            this.IsEnabled = true;
-
             await App.Navigator.PopAsync();
         }
         #endregion

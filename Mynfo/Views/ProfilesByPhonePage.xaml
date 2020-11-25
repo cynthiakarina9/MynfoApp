@@ -19,7 +19,8 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <ScrollView>
+            <ScrollView
+                BindingContext="{Binding ProfilesByPhone}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80" />
@@ -38,7 +39,12 @@
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions = "EndAndExpand"  
                         Margin = "0,5,0,15"/>
-
+                    <ActivityIndicator
+                        Grid.Row = "1"
+                        IsRunning = "{Binding IsRunning}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions="StartAndExpand">
+                    </ActivityIndicator>
                     <!--End Titulo-->
 
                     <!--Lista de Teléfonos-->
@@ -48,8 +54,10 @@
                         Padding="25"
                         x:Name="PhoneList" />-->
                     <ListView 
-                        ItemsSource="{Binding profilePhone}"
+                        ItemsSource="{Binding Profilephone}"
                         Grid.Row="1"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemTapped="OnListViewItemTapped"
                         HasUnevenRows="true">
                         <ListView.ItemTemplate>
                             <DataTemplate>
