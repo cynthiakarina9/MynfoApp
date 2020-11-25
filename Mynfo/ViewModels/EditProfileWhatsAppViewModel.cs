@@ -10,7 +10,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class EditProfileEmailViewModel : BaseViewModel
+    public class EditProfileWhatsAppViewModel : BaseViewModel
     {
 
         #region Services
@@ -42,7 +42,7 @@
         #endregion
 
         #region Constructor
-        public EditProfileEmailViewModel( int _ProfileEmailId = 0)
+        public EditProfileWhatsAppViewModel( int _ProfileEmailId = 0)
         {
             //var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             //ProfileEmail EmailProfile = new ProfileEmail();

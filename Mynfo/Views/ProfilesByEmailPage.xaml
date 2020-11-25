@@ -19,19 +19,17 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <RefreshView IsRefreshing="{Binding IsRefreshing}"
-                 Command="{Binding RefreshCommand}"> 
-                <ScrollView>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="80" />
-                            <RowDefinition />
-                            <RowDefinition Height="120"/>
-                        </Grid.RowDefinitions>
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition />
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
 
-                        <!--Titulo-->
+                    <!--Titulo-->
 
-                        <Label 
+                    <Label 
                             Grid.Row = "0" 
                             Text = "{i18n:Translate EmailProfileList}"
                             FontSize = "25"
@@ -41,59 +39,53 @@
                             VerticalOptions = "EndAndExpand"  
                             Margin = "0,5,0,15"/>
 
-                        <!--End Titulo-->
+                    <!--End Titulo-->
 
-                        <!-- Lista de correos -->
-                        <!--<StackLayout 
+                    <!-- Lista de correos -->
+                    <!--<StackLayout 
                             Grid.Row="1"
                             HorizontalOptions="FillAndExpand"
                             Padding="25"
                             x:Name="EmailList" />-->
-                        <ListView 
-                        ItemsSource="{Binding profileEmail}"
+                    <ListView 
+                        ItemsSource="{Binding profileEmail, Mode=TwoWay}"
                         Grid.Row="1"
-                        HasUnevenRows="true">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Grid Padding="20">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="100" />
-                                                <ColumnDefinition Width="180" />
-                                                <ColumnDefinition Width="30" />
-                                            </Grid.ColumnDefinitions>
-                                            <Label 
-                                                Grid.Column="0"
-                                                Text="{Binding Name}"
-                                                FontSize="18"
-                                                FontAttributes="Bold" 
-                                                VerticalOptions="Center"
-                                                HorizontalTextAlignment = "Start"/>
-                                            <Label 
-                                                Grid.Column="1"
-                                                Text="{Binding Email}"
-                                                FontSize="15"
-                                                VerticalOptions="Center"
-                                                HorizontalTextAlignment = "Center"/>
-                                            <ImageButton 
-                                                BackgroundColor="Transparent"
-                                                Grid.Column="2"
-                                                HeightRequest="25"
-                                                HorizontalOptions="Center"
-                                                Source="edit2"
-                                                VerticalOptions="Center"
-                                                WidthRequest="25"/>
-                                        </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
-                </ScrollView>
-            </RefreshView>
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="180" />
+                                            <ColumnDefinition Width="30" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label 
+                                            Grid.Column="0"
+                                            Text="{Binding Name, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding Email}"
+                                            FontSize="15"
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Center"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </ScrollView>
             <!-- Botón de nuevo correo -->
             <ImageButton
                 Grid.Row="0"

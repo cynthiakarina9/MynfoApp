@@ -93,7 +93,7 @@
             set;
         }
 
-        public EditProfileEmailViewModel EditProfileEmail
+        public EditProfileWhatsAppViewModel EditProfileWhatsApp
         {
             get;
             set;

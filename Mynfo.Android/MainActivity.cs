@@ -49,7 +49,7 @@
                 
         private NdefMessage ndefMessage;
         public NfcAdapter mNfcAdapter;
-        public string json = Data_ntc.data_value;
+        public static string json;
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -129,11 +129,15 @@
                     Profile_1 = conn.Table<ProfileLocal>().FirstOrDefault();                    
                     Box_Local = conn.Table<BoxLocal>().FirstOrDefault();
                     int coun = conn.Table<ProfileLocal>().Count();
-                    string json_header = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+                    string json_header = null;
+                    string json_body = null;
+                    string json_value = null;
 
+
+                    json_header = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
                            "¡";
-                    string json_body;
-                    string json_value = "{"
+                    
+                    json_value = "{"
                               + @"""BoxId"":""" + Box_Local.BoxId + @""",
                                 ""Name"":""" + Box_Local.Name + @""",
                                 ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
@@ -255,7 +259,7 @@
             DateTime time = DateTime.Now;
             var text = ("Beam me up!\n\n" +
                             "Beam Time: " + time.ToString("DD/MM/YYYY HH:mm:ss"));
-            get_box();
+             get_box();
             try 
             {
                 if (json == null) 
