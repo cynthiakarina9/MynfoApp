@@ -496,7 +496,7 @@
     <value>Editar perfil de teléfono.</value>
   </data>
   <data name="FacebookProfileList" xml:space="preserve">
-    <value>Lista de perfiles de Facebook.</value>
+    <value>Lista de perfiles de Facebook</value>
   </data>
   <data name="ReceivedBoxes" xml:space="preserve">
     <value>Conexiones</value>
@@ -509,5 +509,8 @@
   </data>
   <data name="ProfileELabel" xml:space="preserve">
     <value>Su usuario fue creado por una red social, para realizar algún cambio deberá realizarlo desde esa misma red social.</value>
+  </data>
+  <data name="WhatsappProfileList" xml:space="preserve">
+    <value>Lista de perfiles de Whatsapp</value>
   </data>
 </root>

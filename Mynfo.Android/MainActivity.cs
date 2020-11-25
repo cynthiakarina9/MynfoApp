@@ -210,7 +210,8 @@
                     var tagDetectednDef = new IntentFilter(NfcAdapter.ActionNdefDiscovered);
                     var tagDetectedtech = new IntentFilter(NfcAdapter.ActionTechDiscovered);
                     var filters = new[] { tagDetected, tagDetectednDef, tagDetectedtech };
-                    var intent = new Intent(this, this.GetType()).AddFlags(ActivityFlags.SingleTop);                    
+                    var intent = new Intent(this, this.GetType()).AddFlags(ActivityFlags.SingleTop);
+                    var pendingIntent = PendingIntent.GetActivity(this, 0, intent, 0);
                     mNfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);
                 }
             }

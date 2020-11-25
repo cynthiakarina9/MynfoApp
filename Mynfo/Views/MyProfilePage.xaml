@@ -30,11 +30,13 @@
             </StackLayout>
         </Grid>
     </NavigationPage.TitleView>
+    
     <ContentPage.Content>
         <ScrollView  
             BindingContext = "{Binding MyProfile}">
             <StackLayout
                 Padding = "15">
+                <!--Imagen de perfil-->
                 <controls:CircleImage 
                     HeightRequest = "180"
                     Source = "{Binding ImageSource}">
@@ -50,60 +52,61 @@
                         Padding = "0,0,0,19"
                         Text = "{i18n:Translate ChangeImage}" />
                 </StackLayout>
+                
                 <Grid 
                     HorizontalOptions = "Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "Auto"/>
                         <ColumnDefinition Width = "50"/>
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height = "20" />
-                    </Grid.RowDefinitions>
                     <StackLayout 
                         HorizontalOptions = "Center"
                         Orientation = "Vertical" >
-                        <StackLayout 
-                            Orientation = "Horizontal">
+                        <!--Nombre-->
+                        <StackLayout
+                            HorizontalOptions="Center">
                             <Label
-                                FontSize = "18"
+                                FontSize = "17"
                                 Grid.Column = "0"
                                 HorizontalOptions = "End"
                                 HorizontalTextAlignment = "Start"
                                 Text = "{i18n:Translate FirstNameLabel}"
-                                TextColor = "{AppThemeBinding Light={StaticResource FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                TextColor = "{StaticResource MainFountyColor}"
                                 VerticalOptions = "Center" />
-                            <Entry 
-                                BackgroundColor = "{StaticResource LoginEntryColor}"
-                                FontSize = "20"
-                                Grid.ColumnSpan = "2"
-                                HorizontalOptions = "Center"
-                                Placeholder = "{i18n:Translate FirstNamePlaceHolder}" 
-                                Text = "{Binding User.FirstName, Mode = TwoWay}" 
-                                TextColor = "{StaticResource BackgroundColor}"
-                                HorizontalTextAlignment = "Center"  
-                                x:Name = "FirstNameEntry"/>
                         </StackLayout>
                         <StackLayout
-                            Orientation = "Horizontal">
-                            <Label 
-                                FontSize = "18"
-                                Grid.Column = "0"
-                                HorizontalOptions = "Center"
-                                HorizontalTextAlignment = "Start"
-                                TextColor = "{AppThemeBinding Light={StaticResource FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                Text = "{i18n:Translate LastNameLabel}" 
-                                VerticalOptions = "Center" />
+                            Padding="0,-10,0,0">
                             <Entry 
-                                BackgroundColor = "{StaticResource LoginEntryColor}"
-                                FontSize = "20"
-                                Grid.Column = "1" 
-                                HorizontalOptions = "Center"
+                                FontSize = "23"
+                                Placeholder = "{i18n:Translate FirstNamePlaceHolder}" 
+                                Text = "{Binding User.FirstName, Mode = TwoWay}" 
+                                TextColor = "{StaticResource FontColor}"
+                                HorizontalTextAlignment = "Center" 
+                                x:Name = "FirstNameEntry"/>
+                        </StackLayout>
+                        <!--Apellidos-->
+                        <StackLayout
+                            HorizontalOptions="Center">
+                            <Label
+                                FontSize = "17"
+                                Grid.Column = "0"
+                                HorizontalOptions = "End"
+                                HorizontalTextAlignment = "Start"
+                                Text = "{i18n:Translate LastNameLabel}" 
+                                TextColor = "{StaticResource MainFountyColor}"
+                                VerticalOptions = "Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Padding="0,-10,0,0">
+                            <Entry 
+                                FontSize = "23" 
                                 HorizontalTextAlignment = "Center" 
                                 Placeholder = "{i18n:Translate LastNamePlaceHolder}" 
                                 Text = "{Binding User.LastName, Mode=TwoWay}"
-                                TextColor = "{StaticResource BackgroundColor}"
+                                TextColor = "{StaticResource FontColor}"
                                 x:Name = "LastNameEntry"/>
                         </StackLayout>
+                        <!--Correo-->
                         <StackLayout
                             Orientation = "Horizontal"
                             x:Name = "Email">
@@ -135,6 +138,7 @@
                     IsRunning = "{Binding IsRunning, Mode = TwoWay}"
                     VerticalOptions = "CenterAndExpand">
                 </ActivityIndicator>
+                <!-- Botones de acciones -->
                 <StackLayout
                     Orientation = "Horizontal"
                     VerticalOptions = "End">
