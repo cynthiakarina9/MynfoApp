@@ -127,7 +127,7 @@
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-            Application.Current.MainPage = new NavigationPage(new CreateProfileEmailPage());
+            App.Navigator.PushAsync(new CreateProfileEmailPage());
         }
         //private async void EditProfileEmail(object sender, EventArgs e, int _ProfileEmailId)
         //{

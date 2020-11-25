@@ -84,7 +84,7 @@
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
-            Application.Current.MainPage = new NavigationPage(new CreateProfileFacebookPage());
+            App.Navigator.PushAsync(new CreateProfileFacebookPage());
         }
 
         private void Back_Clicked(object sender, EventArgs e)

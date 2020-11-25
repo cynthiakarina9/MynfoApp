@@ -21,16 +21,16 @@
             if (_boxId == 0)
             {
                 SaveWBox.IsVisible = false;
-                BackButtonBox.IsVisible = false;
+                //BackButtonBox.IsVisible = false;
             }
             else
             {
                 Save.IsVisible = false;
-                BackButton.IsVisible = false;
+                //BackButton.IsVisible = false;
             }
 
             SaveWBox.Clicked += new EventHandler((sender, e) => backToAssignProfiles(sender, e, _boxId, ProfileName.Text, ProfileLink.Text, _BoxDefault));
-            BackButtonBox.Clicked += new EventHandler((sender, e) => BackBox_Clicked(sender, e, _boxId, _BoxDefault));
+           //BackButtonBox.Clicked += new EventHandler((sender, e) => BackBox_Clicked(sender, e, _boxId, _BoxDefault));
         }
         private async void backToAssignProfiles(object sender, EventArgs e, int _BoxId, string _profileName, string _profileLink, bool _BoxDefault)
         {
@@ -53,14 +53,14 @@
 
             ActivityIn.IsRunning = true;
             Save.IsEnabled = false;
-            BackButton.IsEnabled = false;
+            //BackButton.IsEnabled = false;
 
             var checkConnetion = await this.apiService.CheckConnection();
             if (!checkConnetion.IsSuccess)
             {
                 ActivityIn.IsRunning = false;
                 Save.IsEnabled = true;
-                BackButton.IsEnabled = true;
+                //BackButton.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     checkConnetion.Message,
@@ -89,7 +89,7 @@
 
             ActivityIn.IsRunning = false;
             Save.IsEnabled = true;
-            BackButton.IsEnabled = true;
+            //BackButton.IsEnabled = true;
 
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Facebook", _BoxDefault));
         }

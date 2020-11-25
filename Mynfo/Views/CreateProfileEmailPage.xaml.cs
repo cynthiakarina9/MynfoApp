@@ -20,16 +20,16 @@
             if (_boxId == 0)
             {
                 SaveWBox.IsVisible = false;
-                BackButtonBox.IsVisible = false;
+                //BackButtonBox.IsVisible = false;
             }
             else
             {
                 Save.IsVisible = false;
-                BackButton.IsVisible = false;
+                //BackButton.IsVisible = false;
             }
 
             SaveWBox.Clicked += new EventHandler((sender, e) => backToAssignProfiles(sender, e, _boxId, ProfileName.Text, ProfileMail.Text, _boxDefault));
-            BackButtonBox.Clicked += new EventHandler((sender, e) => BackBox_Clicked(sender, e, _boxId, _boxDefault));
+            //BackButtonBox.Clicked += new EventHandler((sender, e) => BackBox_Clicked(sender, e, _boxId, _boxDefault));
         }
         private async void backToAssignProfiles(object sender, EventArgs e, int _BoxId, string _profileName, string _profileMail, bool _boxDefault)
         {
@@ -60,14 +60,14 @@
 
             ActivityIn.IsRunning = true;
             Save.IsEnabled = false;
-            BackButton.IsEnabled = false;
+            //BackButton.IsEnabled = false;
 
             var checkConnetion = await this.apiService.CheckConnection();
             if (!checkConnetion.IsSuccess)
             {
                 ActivityIn.IsRunning = false;
                 Save.IsEnabled = true;
-                BackButton.IsEnabled = true;
+                //BackButton.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     checkConnetion.Message,
@@ -104,7 +104,7 @@
 
             ActivityIn.IsRunning = false;
             Save.IsEnabled = true;
-            BackButton.IsEnabled = true;
+            //BackButton.IsEnabled = true;
 
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Email", _boxDefault));
         }
