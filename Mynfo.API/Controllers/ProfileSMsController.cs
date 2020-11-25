@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Mynfo.Domain;
-
-namespace Mynfo.API.Controllers
+﻿namespace Mynfo.API.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using Mynfo.Domain;
+    using Newtonsoft.Json.Linq;
+
+    [RoutePrefix("api/ProfileSMs")]
     public class ProfileSMsController : ApiController
     {
         private DataContext db = new DataContext();
@@ -35,6 +37,32 @@ namespace Mynfo.API.Controllers
 
         //    return Ok(profileSM);
         //}
+
+        // GET: api/ProfileEmails/5
+        [HttpPost]
+        [Route("GetProfileSM")]
+        public async Task<IHttpActionResult> GetProfileSM(JObject form)
+        {
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.ProfileMSId;
+            }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+            var profileMS = await GetProfileSMs().
+                Where(u => u.ProfileMSId == id).FirstOrDefaultAsync();
+            if (profileMS == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(profileMS);
+        }
+
         // GET: api/ProfileSMs/5
         [ResponseType(typeof(ProfileSM))]
         public async Task<IHttpActionResult> GetProfileSMByUser(int id)

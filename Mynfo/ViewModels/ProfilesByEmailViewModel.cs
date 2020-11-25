@@ -24,16 +24,6 @@
         #endregion
 
         #region Properties
-        public string Name
-        {
-            get;
-            set;
-        }
-        public string Email
-        {
-            get;
-            set;
-        }
         public List<ProfileEmail> profileEmail 
         {
             get { return profilemail; } 
@@ -48,11 +38,6 @@
             }
         }
 
-        public bool IsEnabled
-        {
-            get { return this.isEnabled; }
-            set { SetValue(ref this.isEnabled, value); }
-        }
 
         public bool IsRunning
         {
@@ -65,29 +50,27 @@
         public ProfilesByEmailViewModel()
         {
             apiService = new ApiService();
-            SetList();
+            GetList();
         }
         #endregion
 
         #region Commands
-        public async Task<List<ProfileEmail>> SetList()
+        public async Task<List<ProfileEmail>> GetList()
         {
             this.IsRunning = true;
-            this.isEnabled = false;
 
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
                 this.IsRunning = false;
-                this.isEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     connection.Message,
                     Languages.Accept);
                 return null;
             }
-
+            
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
             profileEmail = new List<ProfileEmail>();
@@ -96,8 +79,9 @@
                 "/api",
                 "/ProfileEmails",
                 MainViewModel.GetInstance().User.UserId);
+            this.IsRunning = false;
             return profileEmail;
-
+            
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Mynfo.Domain;
-
-namespace Mynfo.API.Controllers
+﻿namespace Mynfo.API.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using Mynfo.Domain;
+    using Newtonsoft.Json.Linq;
+
+    [RoutePrefix("api/ProfileWhatsapps")]
     public class ProfileWhatsappsController : ApiController
     {
         private DataContext db = new DataContext();
@@ -35,6 +37,31 @@ namespace Mynfo.API.Controllers
 
         //    return Ok(profileWhatsapp);
         //}
+
+        // POST: api/ProfileWhatsapps/5
+        [HttpPost]
+        [Route("GetProfileWhatsApp")]
+        public async Task<IHttpActionResult> GetProfileWhatsApp(JObject form)
+        {
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.ProfileWhatsappId;
+            }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+            var profileWhats = await GetProfileWhatsapps().
+                Where(u => u.ProfileWhatsappId == id).FirstOrDefaultAsync();
+            if (profileWhats == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(profileWhats);
+        }
         // GET: api/ProfileWhatsapps/5
         [ResponseType(typeof(ProfileWhatsapp))]
         public async Task<IHttpActionResult> GetProfileWhatsapp(int id)

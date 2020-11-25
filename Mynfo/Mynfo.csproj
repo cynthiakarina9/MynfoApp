@@ -61,6 +61,9 @@
     <Compile Update="Views\CreateProfilePage.xaml.cs">
       <DependentUpon>CreateProfilePage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\EditProfileFacebookPage.xaml.cs">
+      <DependentUpon>EditProfileFacebookPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\EditProfileEmailPage.xaml.cs">
       <DependentUpon>EditProfileEmailPage.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DetailsProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EditProfileFacebookPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EditProfileEmailPage.xaml">

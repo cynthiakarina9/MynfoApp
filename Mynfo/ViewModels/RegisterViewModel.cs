@@ -78,16 +78,7 @@
         {
             this.apiService = new ApiService();
             this.ImageSource = "no_image";
-
-            if (MainViewModel.GetInstance().User.UserTypeId == 1)
-            {
-                this.IsEnabled = true;
-            }
-            else
-            {
-                this.IsEnabled = false;
-            }
-            
+            this.IsEnabled = true;
         }
         #endregion
 
@@ -288,7 +279,6 @@
                 {
                     this.file = await CrossMedia.Current.PickPhotoAsync();
                 }
-                return;
             }
 
             else

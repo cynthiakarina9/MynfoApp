@@ -496,7 +496,7 @@
     <value>Valor</value>
   </data>
   <data name="FacebookProfileList" xml:space="preserve">
-    <value>Lista de perfis do Facebook.</value>
+    <value>Lista de perfis do Facebook</value>
   </data>
   <data name="ReceivedBoxes" xml:space="preserve">
     <value>Conexões</value>
@@ -510,5 +510,8 @@ Você deve inserir um url</value>
   </data>
   <data name="ProfileELabel" xml:space="preserve">
     <value>Seu usuário foi criado por uma rede social, para fazer uma mudança você deve fazer a partir dessa mesma rede social.</value>
+  </data>
+  <data name="WhatsappProfileList" xml:space="preserve">
+    <value>Lista de perfis do Whatsapp</value>
   </data>
 </root>

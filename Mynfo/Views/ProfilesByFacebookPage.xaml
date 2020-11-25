@@ -10,7 +10,7 @@
                 BackgroundColor = "Transparent"
                 Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,10,0"
+                Margin = "0,0,80,0"
                 HorizontalOptions = "Center"
                 Source = "logo_superior.png" 
                 VerticalOptions = "Center"
@@ -19,7 +19,8 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <ScrollView >
+            <ScrollView 
+                BindingContext="{Binding ProfilesByFacebook}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
@@ -38,6 +39,12 @@
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions = "EndAndExpand"  
                         Margin = "0,5,0,15"/>
+                    <ActivityIndicator
+                        Grid.Row = "1"
+                        IsRunning = "{Binding IsRunning}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions="StartAndExpand">
+                    </ActivityIndicator>
                     <!-- Lista de correos -->
                     <!--<StackLayout 
                         Grid.Row="1"
@@ -45,8 +52,10 @@
                         Padding="25"
                         x:Name="FacebookList" />-->
                     <ListView 
-                        ItemsSource="{Binding profileSM2}"
+                        ItemsSource="{Binding profileSM}"
                         Grid.Row="1"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemTapped="OnListViewItemTapped"
                         HasUnevenRows="true">
                         <ListView.ItemTemplate>
                             <DataTemplate>

@@ -26,8 +26,8 @@
         #region Constructors
         public ProfilesByWhatsAppPage()
         {
-            apiService = new ApiService();
-            SetList();
+            //apiService = new ApiService();
+            //SetList();
             InitializeComponent();
         }
         #endregion

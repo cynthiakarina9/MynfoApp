@@ -29,7 +29,12 @@
                     </Grid.RowDefinitions>
 
                     <!--Titulo-->
-
+                    <ActivityIndicator
+                        Grid.Row = "1"
+                        IsRunning = "{Binding IsRunning}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions="StartAndExpand">
+                    </ActivityIndicator>
                     <Label 
                             Grid.Row = "0" 
                             Text = "{i18n:Translate EmailProfileList}"

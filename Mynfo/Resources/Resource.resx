@@ -496,7 +496,7 @@
     <value>Value</value>
   </data>
   <data name="FacebookProfileList" xml:space="preserve">
-    <value>List of Facebook profiles.</value>
+    <value>List of Facebook profiles</value>
   </data>
   <data name="ReceivedBoxes" xml:space="preserve">
     <value>Conections</value>
@@ -509,5 +509,8 @@
   </data>
   <data name="ProfileELabel" xml:space="preserve">
     <value>Your user was created by a social network, to make a change you must make it from that same social network.</value>
+  </data>
+  <data name="WhatsappProfileList" xml:space="preserve">
+    <value>List of Whatsapp profiles</value>
   </data>
 </root>

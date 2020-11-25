@@ -10,50 +10,47 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
-
-    public class EditProfileEmailViewModel : BaseViewModel
+    public class EditProfileFacebookViewModel : BaseViewModel
     {
         #region Services
         ApiService apiService;
         #endregion
 
         #region Attributes
-        private ProfileEmail profilemail;
+        private ProfileSM profileSm;
         #endregion
 
         #region Properties
-        public ProfileEmail profileEmail
+        public ProfileSM profileSM
         {
-            get { return profilemail; }
+            get { return profileSm; }
             private set
             {
-                SetValue(ref profilemail, value);
+                SetValue(ref profileSm, value);
             }
         }
-
         #endregion
-
         #region Constructor
-        public EditProfileEmailViewModel(int _ProfileEmailId)
+        public EditProfileFacebookViewModel(int _ProfileMSId)
         {
             apiService = new ApiService();
-            GetProfileEmail( _ProfileEmailId);
+            GetProfile(_ProfileMSId);
         }
         #endregion
 
         #region Commands
-        private async Task<ProfileEmail> GetProfileEmail(int _ProfileEmailId)
+        private async Task<ProfileSM> GetProfile(int _ProfileMSId)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            profileEmail = new ProfileEmail();
-            profileEmail = await this.apiService.GetProfileEmail(
+            profileSM = new ProfileSM();
+            profileSM = await this.apiService.GetProfileSM(
                apiSecurity,
                "/api",
-               "/ProfileEmails/GetProfileEmail",
-               _ProfileEmailId);
-            return profileEmail;
+               "/ProfileSMs/GetProfileSM",
+               _ProfileMSId);
+            return profileSM;
         }
-        
+
         public ICommand SaveCommand
         {
             get
@@ -82,8 +79,8 @@
             var response = await this.apiService.Put(
                 apiSecurity,
                 "/api",
-                "/Users",
-                profileEmail.ProfileEmailId);
+                "/ProfileSMs",
+                profileSM.ProfileMSId);
             await App.Navigator.PopAsync();
         }
 
