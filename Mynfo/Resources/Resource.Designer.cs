@@ -538,7 +538,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a List of Facebook profiles..
+        ///   Busca una cadena traducida similar a List of Facebook profiles.
         /// </summary>
         public static string FacebookProfileList {
             get {
@@ -1227,6 +1227,15 @@ namespace Mynfo.Resources {
         public static string Warning {
             get {
                 return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a List of Whatsapp profiles.
+        /// </summary>
+        public static string WhatsappProfileList {
+            get {
+                return ResourceManager.GetString("WhatsappProfileList", resourceCulture);
             }
         }
         
