@@ -61,7 +61,7 @@
             instance = this;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            
+            onCreate();
             mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
 
             //popups
@@ -74,7 +74,7 @@
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //ShortcutBadger.ApplyCount();
-            onCreate();
+            
             LoadApplication(new App(dbRoot));
             
         }
@@ -182,7 +182,7 @@
                                 ""value"":""" + Profile.value + @""",
                                 ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
                                 }";
-
+                             
                             json_value = json_value + ",\n" + json_body;
                         }
                         json_value = "[" +json_value + "]";
@@ -210,8 +210,7 @@
                     var tagDetectednDef = new IntentFilter(NfcAdapter.ActionNdefDiscovered);
                     var tagDetectedtech = new IntentFilter(NfcAdapter.ActionTechDiscovered);
                     var filters = new[] { tagDetected, tagDetectednDef, tagDetectedtech };
-                    var intent = new Intent(this, this.GetType()).AddFlags(ActivityFlags.SingleTop);
-                    var pendingIntent = PendingIntent.GetActivity(this, 0, intent, 0);
+                    var intent = new Intent(this, this.GetType()).AddFlags(ActivityFlags.SingleTop);                    
                     mNfcAdapter.EnableForegroundDispatch(this, pendingIntent, filters, null);
                 }
             }
@@ -230,12 +229,10 @@
             {
                 return;
             }
-
             if (NfcAdapter.ExtraTag.Contains("nfc"))
             {
                 HandleNFC(intent, true);
             }
-
         }
 
         protected override void OnPause()
