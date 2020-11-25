@@ -4,6 +4,7 @@
     using Mynfo.Helpers;
     using Services;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
 
     public class ProfilesByFacebookViewModel : BaseViewModel
@@ -15,6 +16,7 @@
         #region Attributes
         private bool isRunning;
         private bool isEnabled;
+        private List<ProfileSM> profilesM;
         #endregion
 
         #region Properties
@@ -30,17 +32,24 @@
             get { return this.isEnabled; }
             set { SetValue(ref this.isEnabled, value); }
         }
-        public IList<ProfileSM> profileSM { get; private set; }
+        public List<ProfileSM> profileSM
+        {
+            get { return profilesM; }
+            private set
+            {
+                SetValue(ref profilesM, value);
+            }
+        }
         #endregion
 
         #region Constructor
         public ProfilesByFacebookViewModel()
         {
             apiService = new ApiService();
-            Login();
+            GetList();
         }
         
-        private async void Login()
+        private async Task<List<ProfileSM>> GetList()
         {
             this.IsRunning = true;
             this.isEnabled = false;
@@ -55,7 +64,7 @@
                     Languages.Error,
                     connection.Message,
                     Languages.Accept);
-                return;
+                return null;
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -66,7 +75,7 @@
                 "/api",
                 "/ProfileSMs",
                 MainViewModel.GetInstance().User.UserId);
-            var Lista = profileSM;
+            return profileSM;
         }
             #endregion
 

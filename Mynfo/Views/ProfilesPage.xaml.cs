@@ -33,7 +33,7 @@
         private void WhatsAppProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            //mainViewModel.ProfilesByFacebook = new ProfilesByWhatsAppViewModel();
+            mainViewModel.ProfilesByWhatsApp = new ProfilesByWhatsAppViewModel();
             Navigation.PushAsync(new ProfilesByWhatsAppPage());
         }
     }

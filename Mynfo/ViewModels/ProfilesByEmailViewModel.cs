@@ -65,12 +65,12 @@
         public ProfilesByEmailViewModel()
         {
             apiService = new ApiService();
-            SetList();
+            GetList();
         }
         #endregion
 
         #region Commands
-        public async Task<List<ProfileEmail>> SetList()
+        public async Task<List<ProfileEmail>> GetList()
         {
             this.IsRunning = true;
             this.isEnabled = false;

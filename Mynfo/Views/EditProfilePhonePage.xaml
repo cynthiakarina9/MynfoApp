@@ -15,7 +15,7 @@
                 BackgroundColor = "Transparent"
                 Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,10,0"
+                Margin = "0,0,80,0"
                 HorizontalOptions = "Center"
                 Source = "logo_superior.png" 
                 VerticalOptions = "Center"

@@ -3,11 +3,15 @@
     using Mynfo.Domain;
     using Mynfo.Helpers;
     using Mynfo.Services;
+    using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+    using System.Text;
     using System.Threading.Tasks;
     using Xamarin.Forms;
 
-    public class ProfilesByPhoneViewModel : BaseViewModel
+    public class ProfilesByWhatsAppViewModel : BaseViewModel
     {
         #region Services
         ApiService apiService;
@@ -16,38 +20,42 @@
         #region Attributes
         private bool isRunning;
         private bool isEnabled;
-        private List<ProfilePhone> profilePhone;
+        private List<ProfileWhatsapp> profileWhatsapp;
         #endregion
 
         #region Properties
+        public List<ProfileWhatsapp> profileWhatsApp
+        {
+            get { return profileWhatsapp; }
+            private set
+            {
+                SetValue(ref profileWhatsapp, value);
+
+            }
+        }
+        public bool IsEnabled
+        {
+            get { return this.isEnabled; }
+            set { SetValue(ref this.isEnabled, value); }
+        }
 
         public bool IsRunning
         {
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-
-        public bool IsEnabled
-        {
-            get { return this.isEnabled; }
-            set { SetValue(ref this.isEnabled, value); }
-        }
-        public List<ProfilePhone> Profilephone
-        {
-            get { return profilePhone; }
-            private set
-            {
-                SetValue(ref profilePhone, value);
-            }
-        }
         #endregion
-        #region Constructor
-        public ProfilesByPhoneViewModel()
+
+        #region Constructors
+        public ProfilesByWhatsAppViewModel()
         {
             apiService = new ApiService();
             GetList();
         }
-        private async Task<List<ProfilePhone>> GetList()
+        #endregion
+
+        #region Commands
+        public async Task<List<ProfileWhatsapp>> GetList()
         {
             this.IsRunning = true;
             this.isEnabled = false;
@@ -67,14 +75,19 @@
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
-            Profilephone = new List<ProfilePhone>();
-            Profilephone = await this.apiService.GetListByUser<ProfilePhone>(
+            profileWhatsApp = new List<ProfileWhatsapp>();
+            profileWhatsApp = await this.apiService.GetListByUser<ProfileWhatsapp>(
                 apiSecurity,
                 "/api",
-                "/ProfilePhones",
+                "/ProfileWhatsapps",
                 MainViewModel.GetInstance().User.UserId);
+            return profileWhatsApp;
 
-            return Profilephone;
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }

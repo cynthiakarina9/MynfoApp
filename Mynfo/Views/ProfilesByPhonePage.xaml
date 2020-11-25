@@ -19,7 +19,8 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid>
-            <ScrollView>
+            <ScrollView
+                BindingContext="{Binding ProfilesByPhone}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80" />
@@ -48,8 +49,10 @@
                         Padding="25"
                         x:Name="PhoneList" />-->
                     <ListView 
-                        ItemsSource="{Binding profilePhone}"
+                        ItemsSource="{Binding Profilephone}"
                         Grid.Row="1"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemTapped="OnListViewItemTapped"
                         HasUnevenRows="true">
                         <ListView.ItemTemplate>
                             <DataTemplate>

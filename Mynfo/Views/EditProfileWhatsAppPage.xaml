@@ -14,7 +14,7 @@
             <ImageButton
                 BackgroundColor = "Transparent"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,10,0"
+                Margin = "0,0,80,0"
                 HorizontalOptions = "Center"
                 Source = "logo_superior.png" 
                 VerticalOptions = "Center"
@@ -45,7 +45,7 @@
                 <Image
                     Grid.Row = "1"
                     HeightRequest = "180"
-                    Source = "tel2"
+                    Source = "whatsapp2"
                     WidthRequest = "180"/>
                 <StackLayout 
                     Grid.Row = "2"
@@ -62,7 +62,7 @@
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
                         MaxLength = "10"
-                        Text = "{Binding Name}"
+                        Text = "{Binding profileWhats.Name}"
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name = "EntryName"/>
@@ -82,7 +82,7 @@
                         HorizontalOptions = "Center"
                         Keyboard = "Telephone"
                         MaxLength = "10"
-                        Text = "{Binding Number}"
+                        Text = "{Binding profileWhats.Number}"
                         VerticalOptions = "Center" 
                         WidthRequest = "300"
                         x:Name = "EntryPhone"/>

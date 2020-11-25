@@ -26,10 +26,11 @@
         {
             //var mainViewModel = MainViewModel.GetInstance();
             //mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(_ProfileEmailId);
+            apiService = new ApiService();
             InitializeComponent();
             
             //apiService
-            apiService = new ApiService();
+            
             System.Text.StringBuilder sb;
             string consultaPhone = "select * from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId =" + _ProfilePhoneId + "and dbo.ProfilePhones.UserId = " + UserID;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
@@ -115,7 +116,7 @@
                     connection.Close();
                 }
             }
-            Application.Current.MainPage = new NavigationPage(new ProfilesByPhonePage());
+            await App.Navigator.PopAsync();
         }
 
         private async void Delete_Clicked(object sender, EventArgs e)

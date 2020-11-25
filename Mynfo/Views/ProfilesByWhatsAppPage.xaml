@@ -18,82 +18,82 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid>
-            <RefreshView IsRefreshing="{Binding IsRefreshing}"
-                 Command="{Binding RefreshCommand}">
-                <ScrollView>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="80" />
-                            <RowDefinition />
-                            <RowDefinition Height="120"/>
-                        </Grid.RowDefinitions>
+        <Grid
+            BindingContext="{Binding ProfilesByWhatsApp}">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition />
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
 
-                        <!--Titulo-->
+                    <!--Titulo-->
 
-                        <Label 
-                            Grid.Row = "0" 
-                            Text = "{i18n:Translate EmailProfileList}"
-                            FontSize = "25"
-                            FontAttributes="Bold"
-                            TextColor = "{StaticResource MainColor}"
-                            HorizontalOptions = "CenterAndExpand"
-                            VerticalOptions = "EndAndExpand"  
-                            Margin = "0,5,0,15"/>
+                    <Label 
+                        Grid.Row = "0" 
+                        Text = "{i18n:Translate EmailProfileList}"
+                        FontSize = "25"
+                        FontAttributes="Bold"
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions = "EndAndExpand"  
+                        Margin = "0,5,0,15"/>
 
-                        <!--End Titulo-->
+                    <!--End Titulo-->
 
-                        <!-- Lista de correos -->
-                        <!--<StackLayout 
+                    <!-- Lista de correos -->
+                    <!--<StackLayout 
                             Grid.Row="1"
                             HorizontalOptions="FillAndExpand"
                             Padding="25"
                             x:Name="EmailList" />-->
-                        <ListView 
-                        ItemsSource="{Binding profileWhatsapp}"
+                    <ListView 
+                        ItemsSource="{Binding profileWhatsApp}"
                         Grid.Row="1"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemTapped="OnListViewItemTapped"
                         HasUnevenRows="true">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Grid Padding="20">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="100" />
-                                                <ColumnDefinition Width="180" />
-                                                <ColumnDefinition Width="30" />
-                                            </Grid.ColumnDefinitions>
-                                            <ImageButton
-                                                BackgroundColor="Transparent"
-                                                Grid.Column="0"
-                                                HeightRequest="40"
-                                                Margin="10"
-                                                Source="whatsapp2"
-                                                WidthRequest="40"/>
-                                            <Label 
-                                                Grid.Column="1"
-                                                Text="{Binding Name}"
-                                                FontSize="18"
-                                                FontAttributes="Bold" 
-                                                VerticalOptions="Center"
-                                                HorizontalTextAlignment = "Start"/>
-                                            <Label 
-                                                Grid.Column="2"
-                                                Text="{Binding Number}"
-                                                FontSize="15"
-                                                VerticalOptions="Center"
-                                                HorizontalTextAlignment = "Center"/>
-                                        </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
-                </ScrollView>
-            </RefreshView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="180" />
+                                            <ColumnDefinition Width="30" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="40"
+                                            Margin="10"
+                                            Source="whatsapp2"
+                                            WidthRequest="40"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding Name}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <Label 
+                                            Grid.Column="2"
+                                            Text="{Binding Number}"
+                                            FontSize="15"
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Center"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </ScrollView>
             <!-- Botón de nuevo correo -->
             <ImageButton
                 Grid.Row="0"
