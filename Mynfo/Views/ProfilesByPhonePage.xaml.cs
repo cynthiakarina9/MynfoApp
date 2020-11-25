@@ -94,7 +94,7 @@
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
-            Application.Current.MainPage = new NavigationPage(new CreateProfilePhonePage());
+            App.Navigator.PushAsync(new CreateProfilePhonePage());
         }
         #region Methods  
 

@@ -136,7 +136,8 @@
             this.Name = string.Empty;
             this.Email = string.Empty;
 
-            Application.Current.MainPage = new NavigationPage(new ProfilesByEmailPage());
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

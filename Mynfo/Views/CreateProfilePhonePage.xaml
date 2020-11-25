@@ -103,7 +103,7 @@
                 <Button 
                     BackgroundColor="{StaticResource MainColor}"
                     BorderRadius="23"
-                    Command = "{Binding SaveProfileWhatsAppCommand}"
+                    Command = "{Binding SaveProfilePhoneCommand}"
                     HeightRequest="50"
                     Grid.Row = "5"
                     Text = "{i18n:Translate Save}"
@@ -112,20 +112,6 @@
                     HorizontalOptions = "Center"
                     WidthRequest ="150" 
                     x:Name="Save"/>
-                    
-            <!-- Botón si viene de agregar perfiles a box -->
-                <Button 
-                    BackgroundColor="{StaticResource MainColor}"
-                    BorderRadius="23"
-                    HeightRequest="50"
-                    Grid.Row = "5"
-                    IsEnabled = "True"
-                    Text = "{i18n:Translate Save}"
-                    TextColor = "{StaticResource Dark_FontColor}"
-                    VerticalOptions = "Center"
-                    HorizontalOptions = "Center"
-                    WidthRequest ="150"
-                    x:Name="SaveWBox"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

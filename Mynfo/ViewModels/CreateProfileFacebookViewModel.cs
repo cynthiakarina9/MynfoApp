@@ -127,7 +127,8 @@
             this.Name = string.Empty;
             this.Link = string.Empty;
 
-            Application.Current.MainPage = new NavigationPage(new ProfilesByFacebookPage());
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }
