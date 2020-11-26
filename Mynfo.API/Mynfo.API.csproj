@@ -209,6 +209,10 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BoxesController.cs" />
+    <Compile Include="Controllers\Box_ProfileEmailController.cs" />
+    <Compile Include="Controllers\Box_ProfilePhoneController.cs" />
+    <Compile Include="Controllers\Box_ProfileSMController.cs" />
+    <Compile Include="Controllers\Box_ProfileWhatsappController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileEmailsController.cs" />
     <Compile Include="Controllers\ProfilePhonesController.cs" />

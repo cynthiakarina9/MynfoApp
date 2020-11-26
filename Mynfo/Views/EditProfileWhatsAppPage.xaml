@@ -88,6 +88,14 @@
                         x:Name = "EntryPhone"/>
                 </StackLayout>
                 <StackLayout
+                    Grid.Row = "5"
+                    VerticalOptions = "CenterAndExpand">
+                    <ActivityIndicator
+                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions = "CenterAndExpand">
+                    </ActivityIndicator>
+                </StackLayout>
+                <StackLayout
                         Grid.Row = "4"
                         Orientation = "Horizontal"
                         Padding = "40">
@@ -106,6 +114,7 @@
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
+                        Command="{Binding DeleteCommand}"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
                         IsEnabled = "True"

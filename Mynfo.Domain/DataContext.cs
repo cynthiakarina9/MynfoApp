@@ -33,5 +33,13 @@
         public System.Data.Entity.DbSet<Mynfo.Domain.RedSocial> RedSocials { get; set; }
 
         public System.Data.Entity.DbSet<Mynfo.Domain.ProfileWhatsapp> ProfileWhatsapps { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.Box_ProfileEmail> Box_ProfileEmail { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.Box_ProfilePhone> Box_ProfilePhone { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.Box_ProfileSM> Box_ProfileSM { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.Box_ProfileWhatsapp> Box_ProfileWhatsapp { get; set; }
     }
 }

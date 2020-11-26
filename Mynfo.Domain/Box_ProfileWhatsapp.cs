@@ -11,7 +11,7 @@
         [JsonIgnore]
         public virtual Box Box { get; set; }
 
-        public int ProfilePhoneId { get; set; }
+        public int ProfileWhatsappId { get; set; }
 
         [JsonIgnore]
         public virtual ProfileWhatsapp ProfileWhatsapp { get; set; }
