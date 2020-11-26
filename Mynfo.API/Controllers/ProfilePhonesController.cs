@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Mynfo.Domain;
-
-namespace Mynfo.API.Controllers
+﻿namespace Mynfo.API.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using Mynfo.Domain;
+    using Newtonsoft.Json.Linq;
+
+    [RoutePrefix("api/ProfilePhones")]
     public class ProfilePhonesController : ApiController
     {
         private DataContext db = new DataContext();
@@ -35,6 +37,30 @@ namespace Mynfo.API.Controllers
 
         //    return Ok(profilePhone);
         //}
+        // GET: api/ProfileEmails/5
+        [HttpPost]
+        [Route("GetProfilePhone")]
+        public async Task<IHttpActionResult> GetProfilePhone(JObject form)
+        {
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.ProfilePhoneId;
+            }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+            var profilePhone = await GetProfilePhones().
+                Where(u => u.ProfilePhoneId == id).FirstOrDefaultAsync();
+            if (profilePhone == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(profilePhone);
+        }
         // GET: api/ProfilePhones/5
         [ResponseType(typeof(ProfilePhone))]
         public async Task<IHttpActionResult> GetProfilePhoneByUser(int id)
@@ -48,6 +74,50 @@ namespace Mynfo.API.Controllers
             return Ok(profilePhone);
         }
 
+        // PUT: api/ProfilePhones/PutProfilePhone
+        [ResponseType(typeof(void))]
+        [Route("PutProfilePhone")]
+        public async Task<IHttpActionResult> PutProfilePhone(ProfilePhone form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.ProfilePhoneId;
+            }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+
+
+            db.Entry(form).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProfilePhoneExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            var profilePhone = await GetProfilePhones().
+               Where(u => u.ProfilePhoneId == id).FirstOrDefaultAsync();
+
+            return Ok(profilePhone);
+        }
 
         // PUT: api/ProfilePhones/5
         [ResponseType(typeof(void))]

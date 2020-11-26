@@ -78,7 +78,30 @@
 
         private async void Save()
         {
+            this.IsRunning = true;
+            this.IsEnabled = false;
 
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
+
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var response = await this.apiService.PutProfile(
+                apiSecurity,
+                "/api",
+                "/ProfileWhatsapps/PutProfileWhatsapp",
+                profileWhats);
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
 
             await App.Navigator.PopAsync();
         }

@@ -18,6 +18,8 @@
 
         #region Attributes
         private ProfileSM profileSm;
+        private bool isRunning;
+        private bool isEnabled;
         #endregion
 
         #region Properties
@@ -28,6 +30,17 @@
             {
                 SetValue(ref profileSm, value);
             }
+        }
+        public bool IsEnabled
+        {
+            get { return this.isEnabled; }
+            set { SetValue(ref this.isEnabled, value); }
+        }
+
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set { SetValue(ref this.isRunning, value); }
         }
         #endregion
         #region Constructor
@@ -60,14 +73,13 @@
         }
         private async void Save()
         {
-            //ButtonSave.IsEnabled = false;
-            //ButtonDelete.IsEnabled = false;
+            this.IsRunning = true;
+            this.IsEnabled = false;
             var checkConnetion = await this.apiService.CheckConnection();
             if (!checkConnetion.IsSuccess)
             {
-                //this.IsRunning = false;
-                //ButtonSave.IsEnabled = true;
-                //ButtonDelete.IsEnabled = true;
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
                     checkConnetion.Message,
@@ -76,11 +88,15 @@
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Put(
+            var response = await this.apiService.PutProfile(
                 apiSecurity,
                 "/api",
-                "/ProfileSMs",
-                profileSM.ProfileMSId);
+                "/ProfileSMs/PutProfileSM",
+                profileSM);
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
+
             await App.Navigator.PopAsync();
         }
 

@@ -91,7 +91,7 @@
                         x:Name = "EntryEmail"/>
                 </StackLayout>
                 <StackLayout
-                    Grid.Row = "4"
+                    Grid.Row = "5"
                     VerticalOptions = "CenterAndExpand">
                     <ActivityIndicator
                     IsRunning = "{Binding IsRunning, Mode=TwoWay}"

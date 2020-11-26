@@ -32,6 +32,7 @@
             App.Master.IsPresented = false;
             var mainViewModal = MainViewModel.GetInstance();
             
+            //Logout
             if (this.PageName == "LoginPage")
             {
                 Settings.IsRemembered = "false";
@@ -44,6 +45,16 @@
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
                     conn.DeleteAll<TokenResponse>();
+                }
+                //Borrar la box local
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.DeleteAll<BoxLocal>();
+                }
+                //Borrar perfiles locales
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.DeleteAll<ProfileLocal>();
                 }
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
