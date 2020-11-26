@@ -11,7 +11,7 @@
     using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
     using Xamarin.Forms;
-    public class ProfilesByEmailViewModel : BaseViewModel
+    public class ProfilesByEmailViewModel : BaseViewModel    
     {
         #region Services
         ApiService apiService;
@@ -19,30 +19,41 @@
 
         #region Attributes
         private bool isRunning;
-        private bool isEnabled;
         private List<ProfileEmail> profilemail;
         #endregion
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         #region Properties
         public List<ProfileEmail> profileEmail 
         {
             get { return profilemail; } 
             private set 
             {
+                
+                //if (PropertyChanged != null)
+                //{
+                //    PropertyChanged(this,
+                //        new PropertyChangedEventArgs(""));// Throw!!
+                //}
                 SetValue(ref profilemail, value);
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this,
-                        new PropertyChangedEventArgs(""));// Throw!!
-                }
+                //profileEmail = value;
             }
         }
 
 
         public bool IsRunning
         {
-            get { return this.isRunning; }
-            set { SetValue(ref this.isRunning, value); }
+            get 
+            { 
+                return this.isRunning; 
+            }
+            set 
+            { 
+                SetValue(ref this.isRunning, value); 
+            }
         }
         #endregion
 
@@ -83,11 +94,8 @@
             return profileEmail;
             
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
+        
         #endregion
     }
 }

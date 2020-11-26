@@ -94,6 +94,7 @@
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
+                        Command="{Binding SaveCommand}"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
                         Grid.Row = "5"

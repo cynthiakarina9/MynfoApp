@@ -24,7 +24,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView
-            BindingContext = "{Binding CreateProfilePhone}">
+            BindingContext = "{Binding EditProfilePhone}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height = "80"/>
@@ -63,7 +63,7 @@
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
                         MaxLength = "10"
-                        Text = "{Binding Name}"
+                        Text = "{Binding profilePhone.Name}"
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name = "EntryName"/>
@@ -83,7 +83,7 @@
                         HorizontalOptions = "Center"
                         Keyboard = "Telephone"
                         MaxLength = "10"
-                        Text = "{Binding Number}"
+                        Text = "{Binding profilePhone.Number}"
                         VerticalOptions = "Center" 
                         WidthRequest = "300"
                         x:Name = "EntryPhone"/>
@@ -95,7 +95,7 @@
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
-                        Clicked = "Save_Clicked"
+                        Command="{Binding SaveCommand}"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
                         Grid.Row = "5"

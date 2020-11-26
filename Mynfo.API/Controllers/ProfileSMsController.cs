@@ -77,6 +77,51 @@
             return Ok(profileSM);
         }
 
+        // PUT: api/ProfileEmails/5
+        [ResponseType(typeof(void))]
+        [Route("PutProfileSM")]
+        public async Task<IHttpActionResult> PutProfileSM(ProfileEmail form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.ProfileMSId;
+            }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+
+
+            db.Entry(form).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProfileSMExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            var profileSM = await GetProfileSMs().
+               Where(u => u.ProfileMSId == id).FirstOrDefaultAsync();
+
+            return Ok(profileSM);
+        }
+
         // PUT: api/ProfileSMs/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProfileSM(int id, ProfileSM profileSM)
