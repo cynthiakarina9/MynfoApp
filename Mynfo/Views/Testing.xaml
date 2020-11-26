@@ -17,7 +17,21 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Hola mundo" x:Name="AbrirPopUp"/>
+            <!--<Button Text="Hola mundo" x:Name="AbrirPopUp"/>-->
+            <Label 
+                FontSize = "30" 
+                FontAttributes="Bold"
+                HorizontalOptions = "Center"
+                VerticalOptions = "Center"
+                TextColor="Red"
+                Text="Nom box"
+                x:Name="boxLocalName"/>
+            <Label 
+                Padding="0,25,0,0"
+                FontSize = "15" 
+                HorizontalOptions = "Center"
+                VerticalOptions = "Center"
+                x:Name="networksLocalNames"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
