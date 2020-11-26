@@ -95,7 +95,7 @@
             var response = await this.apiService.PutProfile(
                 apiSecurity,
                 "/api",
-                "/ProfileEmails/PutProfilePhone",
+                "/ProfilePhones/PutProfilePhone",
                 profilePhone);
 
             this.IsRunning = false;

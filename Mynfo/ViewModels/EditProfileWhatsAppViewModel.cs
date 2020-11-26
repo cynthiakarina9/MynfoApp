@@ -97,7 +97,7 @@
             var response = await this.apiService.PutProfile(
                 apiSecurity,
                 "/api",
-                "/ProfileEmails/PutProfileWhatsapps",
+                "/ProfileWhatsapps/PutProfileWhatsapp",
                 profileWhats);
 
             this.IsRunning = false;

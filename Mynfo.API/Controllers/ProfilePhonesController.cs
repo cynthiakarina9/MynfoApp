@@ -74,10 +74,10 @@
             return Ok(profilePhone);
         }
 
-        // PUT: api/ProfileEmails/5
+        // PUT: api/ProfilePhones/PutProfilePhone
         [ResponseType(typeof(void))]
-        [Route("PutProfileEmail")]
-        public async Task<IHttpActionResult> PutProfileEmail(ProfileEmail form)
+        [Route("PutProfilePhone")]
+        public async Task<IHttpActionResult> PutProfilePhone(ProfilePhone form)
         {
             if (!ModelState.IsValid)
             {
@@ -88,7 +88,7 @@
             dynamic jsonObject = form;
             try
             {
-                id = jsonObject.ProfileEmailId;
+                id = jsonObject.ProfilePhoneId;
             }
             catch
             {

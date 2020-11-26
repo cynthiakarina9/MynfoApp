@@ -77,8 +77,8 @@
 
         // PUT: api/ProfileEmails/
         [ResponseType(typeof(void))]
-        [Route("PutProfileWhatsapps")]
-        public async Task<IHttpActionResult> PutProfileWhatsapps(ProfileWhatsapp form)
+        [Route("PutProfileWhatsapp")]
+        public async Task<IHttpActionResult> PutProfileWhatsapp(ProfileWhatsapp form)
         {
             if (!ModelState.IsValid)
             {
