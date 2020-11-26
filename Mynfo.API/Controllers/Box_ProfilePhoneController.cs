@@ -1,0 +1,119 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Description;
+using Mynfo.Domain;
+
+namespace Mynfo.API.Controllers
+{
+    public class Box_ProfilePhoneController : ApiController
+    {
+        private DataContext db = new DataContext();
+
+        // GET: api/Box_ProfilePhone
+        public IQueryable<Box_ProfilePhone> GetBox_ProfilePhone()
+        {
+            return db.Box_ProfilePhone;
+        }
+
+        // GET: api/Box_ProfilePhone/5
+        [ResponseType(typeof(Box_ProfilePhone))]
+        public async Task<IHttpActionResult> GetBox_ProfilePhone(int id)
+        {
+            Box_ProfilePhone box_ProfilePhone = await db.Box_ProfilePhone.FindAsync(id);
+            if (box_ProfilePhone == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(box_ProfilePhone);
+        }
+
+        // PUT: api/Box_ProfilePhone/5
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PutBox_ProfilePhone(int id, Box_ProfilePhone box_ProfilePhone)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != box_ProfilePhone.Box_ProfilePhoneId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(box_ProfilePhone).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!Box_ProfilePhoneExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/Box_ProfilePhone
+        [ResponseType(typeof(Box_ProfilePhone))]
+        public async Task<IHttpActionResult> PostBox_ProfilePhone(Box_ProfilePhone box_ProfilePhone)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Box_ProfilePhone.Add(box_ProfilePhone);
+            await db.SaveChangesAsync();
+
+            return CreatedAtRoute("DefaultApi", new { id = box_ProfilePhone.Box_ProfilePhoneId }, box_ProfilePhone);
+        }
+
+        // DELETE: api/Box_ProfilePhone/5
+        [ResponseType(typeof(Box_ProfilePhone))]
+        public async Task<IHttpActionResult> DeleteBox_ProfilePhone(int id)
+        {
+            var box_ProfilePhone = await GetBox_ProfilePhone().Where(u => u.ProfilePhoneId == id).ToListAsync();
+            if (box_ProfilePhone == null)
+            {
+                return NotFound();
+            }
+
+            db.Box_ProfilePhone.RemoveRange(box_ProfilePhone);
+            await db.SaveChangesAsync();
+
+            return Ok(box_ProfilePhone);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool Box_ProfilePhoneExists(int id)
+        {
+            return db.Box_ProfilePhone.Count(e => e.Box_ProfilePhoneId == id) > 0;
+        }
+    }
+}

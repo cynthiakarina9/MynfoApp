@@ -132,18 +132,47 @@
             await App.Navigator.PopAsync();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        //private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        public ICommand DeleteCommand
         {
-            if (PropertyChanged != null)
+            get
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                return new RelayCommand(Delete);
             }
         }
-        #endregion
+        private async void Delete()
+        {
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var response = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileEmail",
+                profileEmail.ProfileEmailId);
+
+            var response2 = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/ProfileEmails",
+                profileEmail.ProfileEmailId);
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
+
+            await App.Navigator.PopAsync();
+        }
+            #endregion
     }
 }
