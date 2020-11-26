@@ -73,8 +73,8 @@
 
         #region Commands
 
-        private async void Save_Clicked(object sender, EventArgs e)
-        {
+        //private async void Save_Clicked(object sender, EventArgs e)
+        //{
             //ButtonSave.IsEnabled = false;
             //ButtonDelete.IsEnabled = false;
             //if (string.IsNullOrEmpty(EntryName.Text))
@@ -135,7 +135,7 @@
             //MainViewModel.GetInstance().ProfilesByEmail = new ProfilesByEmailViewModel();
             //await MainViewModel.GetInstance().ProfilesByEmail.SetList();
             //await App.Navigator.PopAsync();
-        }
+        //}
         private async void Delete_Clicked(object sender, EventArgs e)
         {
             ButtonSave.IsEnabled = false;

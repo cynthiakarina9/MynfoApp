@@ -94,8 +94,8 @@
                     Grid.Row = "5"
                     VerticalOptions = "CenterAndExpand">
                     <ActivityIndicator
-                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions = "CenterAndExpand">
+                        IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                        VerticalOptions = "CenterAndExpand">
                     </ActivityIndicator>
                 </StackLayout>
                 <StackLayout
@@ -116,7 +116,7 @@
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
-                        Clicked = "Delete_Clicked"
+                        Command="{Binding DeleteCommand}"
                         HeightRequest = "50"
                         HorizontalOptions = "Center"
                         IsEnabled = "True"
