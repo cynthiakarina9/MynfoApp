@@ -72,7 +72,7 @@
                                             <ColumnDefinition Width="180" />
                                             <ColumnDefinition Width="30" />
                                         </Grid.ColumnDefinitions>
-                                        <ImageButton
+                                        <Image
                                             BackgroundColor="Transparent"
                                             Grid.Column="0"
                                             HeightRequest="30"
