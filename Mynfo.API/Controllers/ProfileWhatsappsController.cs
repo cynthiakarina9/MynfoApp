@@ -75,6 +75,51 @@
             return Ok(profileWhatsapp);
         }
 
+        // PUT: api/ProfileEmails/
+        [ResponseType(typeof(void))]
+        [Route("PutProfileWhatsapps")]
+        public async Task<IHttpActionResult> PutProfileWhatsapps(ProfileWhatsapp form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.ProfileWhatsappId;
+            }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+
+
+            db.Entry(form).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProfileWhatsappExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            var profileWhatsapp = await GetProfileWhatsapps().
+               Where(u => u.ProfileWhatsappId == id).FirstOrDefaultAsync();
+
+            return Ok(profileWhatsapp);
+        }
+
         // PUT: api/ProfileWhatsapps/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProfileWhatsapp(int id, ProfileWhatsapp profileWhatsapp)

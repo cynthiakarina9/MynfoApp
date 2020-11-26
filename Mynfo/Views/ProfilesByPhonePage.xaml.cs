@@ -119,7 +119,7 @@
 
             ProfilePhone tappedItem = e.Item as ProfilePhone;
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.EditProfilePhone = new EditProfilePhoneViewModel();
+            mainViewModel.EditProfilePhone = new EditProfilePhoneViewModel(tappedItem.ProfilePhoneId);
             App.Navigator.PushAsync(new EditProfilePhonePage(tappedItem.ProfilePhoneId));
         }
         #endregion

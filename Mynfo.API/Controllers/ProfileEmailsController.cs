@@ -73,19 +73,27 @@
 
         // PUT: api/ProfileEmails/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProfileEmail(int id, ProfileEmail profileEmail)
+        [Route("PutProfileEmail")]
+        public async Task<IHttpActionResult> PutProfileEmail(ProfileEmail form)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != profileEmail.ProfileEmailId)
+            int id;
+            dynamic jsonObject = form;
+            try
             {
-                return BadRequest();
+                id = jsonObject.ProfileEmailId;
             }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+            
 
-            db.Entry(profileEmail).State = EntityState.Modified;
+            db.Entry(form).State = EntityState.Modified;
 
             try
             {
@@ -102,8 +110,10 @@
                     throw;
                 }
             }
+            var profileEmail = await GetProfileEmails().
+               Where(u => u.ProfileEmailId == id).FirstOrDefaultAsync();
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(profileEmail);
         }
 
         // POST: api/ProfileEmails
