@@ -46,12 +46,10 @@
             return instance;
         }
         #endregion  
-                
-        private NdefMessage ndefMessage;
+                        
         public NfcAdapter mNfcAdapter;
         public static string json;
-        public NfcAdapter NFCdevice;
-        public NfcForms x;
+        public NfcAdapter NFCdevice;        
 
         protected override void OnCreate(Bundle savedInstanceState)
         {            
@@ -259,6 +257,26 @@
             }
             if (NfcAdapter.ExtraTag.Contains("nfc"))
             {
+                try
+                {
+                    get_box();
+                    var Messaje = get_box();
+
+                    NdefMessage msg = new NdefMessage(
+                    new NdefRecord[] { CreateMimeRecord (
+                    "application/com.example.android.beam", Encoding.UTF8.GetBytes (Messaje))
+                    });
+
+                    NfcAdapter nfcAdapter = NfcAdapter.GetDefaultAdapter(this);
+                    if (nfcAdapter == null) return;  // NFC not available on this device
+                    nfcAdapter.SetNdefPushMessage(msg, this);
+
+                    nfcAdapter.SetNdefPushMessageCallback(null, this);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
                 HandleNFC(intent, true);
             }
         }
