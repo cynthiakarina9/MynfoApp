@@ -90,13 +90,13 @@ namespace Mynfo.API.Controllers
         [ResponseType(typeof(Box_ProfileWhatsapp))]
         public async Task<IHttpActionResult> DeleteBox_ProfileWhatsapp(int id)
         {
-            var box_ProfileWhatsapp = await GetBox_ProfileWhatsapp().Where(u => u.ProfileWhatsappId == id).ToListAsync();
+            Box_ProfileWhatsapp box_ProfileWhatsapp = await db.Box_ProfileWhatsapp.FindAsync(id);
             if (box_ProfileWhatsapp == null)
             {
                 return NotFound();
             }
 
-            db.Box_ProfileWhatsapp.RemoveRange(box_ProfileWhatsapp);
+            db.Box_ProfileWhatsapp.Remove(box_ProfileWhatsapp);
             await db.SaveChangesAsync();
 
             return Ok(box_ProfileWhatsapp);

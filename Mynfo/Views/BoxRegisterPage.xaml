@@ -4,19 +4,18 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.BoxRegisterPage"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
-            
+
     <NavigationPage.TitleView>
-        <Grid
-            HeightRequest = "20">
-            <StackLayout 
-                HorizontalOptions="Start">
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "19"
-                    HorizontalOptions = "Start"
-                    Text = "{i18n:Translate NewBox}"
-                    TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
+        <Grid>
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Clicked = "BackHome_Clicked"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,70,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior3.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "100"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
