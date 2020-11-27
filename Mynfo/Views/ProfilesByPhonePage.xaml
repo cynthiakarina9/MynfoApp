@@ -33,7 +33,7 @@
 
                     <Label 
                         Grid.Row = "0" 
-                        Text = "{i18n:Translate PhoneProfileList}"
+                        Text = "{i18n:Translate NetworkList}"
                         FontSize = "25"
                         FontAttributes="Bold"
                         TextColor = "{StaticResource MainColor}"

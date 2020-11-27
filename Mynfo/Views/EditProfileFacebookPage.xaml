@@ -11,11 +11,11 @@
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,10,0"
+                Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
-                Source = "logo_superior.png" 
+                Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "85"/>
+                WidthRequest = "100"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -30,32 +30,47 @@
                     <RowDefinition />
                     <RowDefinition Height = "120"/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7.5*" />
+                    <ColumnDefinition Width="2.5*" />
+                </Grid.ColumnDefinitions>
                 <Label 
                     FontAttributes = "Bold"
                     FontSize = "25"
-                    Grid.ColumnSpan ="1"
+                    Grid.ColumnSpan ="2"
                     Grid.Row = "0"
                     HorizontalOptions = "Center"
                     HorizontalTextAlignment = "Center"
-                    Text = "{i18n:Translate EditEmail}"
+                    Text = "{i18n:Translate EditNetwork}"
                     TextColor = "{StaticResource MainColor}"
                     VerticalOptions = "Center"/>
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Command="{Binding DeleteCommand}"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Scale=".6"
+                    Source="trash2"
+                    VerticalOptions="Start"
+                    x:Name = "ButtonDelete"/>
                 <Image
                     HeightRequest = "180"
                     Source = "facebook2"
                     Grid.Row = "1"
+                    Grid.ColumnSpan ="2"
                     WidthRequest = "180"/>
                 <StackLayout 
                     Grid.Row = "2"
+                    Grid.ColumnSpan ="2"
                     Padding = "20">
                     <Label 
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
                         Text = "{i18n:Translate NameProfile}" 
+                        TextColor = "{StaticResource MainColor}"
                         VerticalOptions = "Center"/>
                     <Entry 
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
                         Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
@@ -68,29 +83,29 @@
                 </StackLayout>
                 <StackLayout
                     Grid.Row = "4"
+                    Grid.ColumnSpan ="2"
                     VerticalOptions = "CenterAndExpand">
                     <ActivityIndicator
                     IsRunning = "{Binding IsRunning, Mode=TwoWay}"
                     VerticalOptions = "CenterAndExpand">
                     </ActivityIndicator>
                 </StackLayout>
-                <StackLayout
-                    Grid.Row = "4"
-                    Orientation = "Horizontal"
+                <!--<StackLayout
+                    Grid.Row = "6"
                     Padding = "40">
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
                         Command="{Binding DeleteCommand}"
                         HeightRequest = "50"
-                        HorizontalOptions = "Center"
+                        HorizontalOptions = "Fill"
                         IsEnabled = "True"
                         Text = "{i18n:Translate Delete}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
                         WidthRequest = "150" 
                         x:Name = "ButtonDelete"/>
-                </StackLayout>
+                </StackLayout>-->
             </Grid>
         </ScrollView>
     </ContentPage.Content>

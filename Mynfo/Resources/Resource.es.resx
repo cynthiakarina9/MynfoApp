@@ -513,4 +513,13 @@
   <data name="WhatsappProfileList" xml:space="preserve">
     <value>Lista de perfiles de Whatsapp</value>
   </data>
+  <data name="AddNetwork" xml:space="preserve">
+    <value>Añadir network</value>
+  </data>
+  <data name="EditNetwork" xml:space="preserve">
+    <value>Editar network</value>
+  </data>
+  <data name="NetworkList" xml:space="preserve">
+    <value>Lista de networks</value>
+  </data>
 </root>

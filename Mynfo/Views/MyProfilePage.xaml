@@ -109,10 +109,11 @@
                                 VerticalOptions = "Center" 
                                 x:Name = "EmailLabel"/>
                             <Entry 
-                                FontSize = "23"
+                                FontSize = "21"
                                 Text = "{Binding User.Email, Mode = TwoWay}" 
                                 TextColor = "{StaticResource FontColor}"
                                 HorizontalTextAlignment = "Center" 
+                                WidthRequest="300"
                                 x:Name = "EmailEntry"/>
                         </StackLayout>
                     </StackLayout>

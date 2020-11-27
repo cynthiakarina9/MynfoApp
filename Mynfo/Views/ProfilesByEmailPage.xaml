@@ -38,8 +38,8 @@
                     </ActivityIndicator>
                     <Label 
                             Grid.Row = "0" 
-                            Text = "{i18n:Translate EmailProfileList}"
-                            FontSize = "25"
+                            Text = "{i18n:Translate NetworkList}"
+                            FontSize = "30"
                             FontAttributes="Bold"
                             TextColor = "{StaticResource MainColor}"
                             HorizontalOptions = "CenterAndExpand"
