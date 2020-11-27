@@ -46,7 +46,7 @@
                 <Image
                     Grid.Row = "1"
                     HeightRequest = "180"
-                    Source = "tel2"
+                    Source = "tel1"
                     WidthRequest = "180"/>
                 <StackLayout 
                     Grid.Row = "2"

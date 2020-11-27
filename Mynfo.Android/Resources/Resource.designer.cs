@@ -11347,7 +11347,7 @@ namespace Mynfo.Droid
 			public const int mail1 = 2131165339;
 			
 			// aapt resource value: 0x7F07009C
-			public const int mail2 = 2131165340;
+			public const int mail3 = 2131165340;
 			
 			// aapt resource value: 0x7F07009D
 			public const int messenger_bubble_large_blue = 2131165341;
@@ -11443,7 +11443,7 @@ namespace Mynfo.Droid
 			public const int tel1 = 2131165371;
 			
 			// aapt resource value: 0x7F0700BC
-			public const int tel2 = 2131165372;
+			public const int tel3 = 2131165372;
 			
 			// aapt resource value: 0x7F0700BD
 			public const int time = 2131165373;

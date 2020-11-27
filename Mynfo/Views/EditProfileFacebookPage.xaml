@@ -81,6 +81,7 @@
                 <StackLayout
                     Grid.Row = "4"
                     Orientation = "Horizontal"
+                    HorizontalOptions="Center"
                     Padding = "40">
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"

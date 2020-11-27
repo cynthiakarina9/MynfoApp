@@ -266,9 +266,6 @@
     <AndroidResource Include="Resources\drawable\logo_superior2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\mail2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\mail1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -295,7 +292,10 @@
     <AndroidResource Include="Resources\drawable\connections_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\tel2.png" />
+    <AndroidResource Include="Resources\drawable\mail3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\tel3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

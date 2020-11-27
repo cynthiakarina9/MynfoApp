@@ -217,7 +217,7 @@ namespace Mynfo.Views
                             int PhoneId = (int)reader["ProfilePhoneId"];
                             var space = new BoxView();
 
-                            phoneIcon.Source = "tel2.png";
+                            phoneIcon.Source = "tel1.png";
                             phoneIcon.WidthRequest = 50;
                             phoneIcon.HeightRequest = 50;
                             phoneIcon.HorizontalOptions = LayoutOptions.Center;
@@ -321,7 +321,7 @@ namespace Mynfo.Views
                             int EmailId = (int)reader["ProfileEmailId"];
                             var space = new BoxView();
 
-                            emailIcon.Source = "mail2.png";
+                            emailIcon.Source = "mail1.png";
                             emailIcon.WidthRequest = 50;
                             emailIcon.HeightRequest = 50;
                             emailIcon.HorizontalOptions = LayoutOptions.Center;

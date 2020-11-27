@@ -46,7 +46,7 @@
                     VerticalOptions = "Center"/>
                 <Image
                     HeightRequest = "180"
-                    Source = "mail2"
+                    Source = "mail1"
                     Grid.Row = "1"
                     WidthRequest = "180"/>
                 <StackLayout 
