@@ -75,23 +75,7 @@
         //    mainViewModel.EditProfileEmail = new EditProfileEmailViewModel();
         //    Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage(_ProfileEmailId));
         //}
-        private async void EditProfileEmail_Clicked()
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            //mainViewModel.EditProfileEmail = new EditProfileWhatsAppViewModel();
-            Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage());
-        }
-        private void Back_Clicked(object sender, EventArgs e)
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Profiles = new ProfilesViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfilesPage());
-        }
-        private void BackHome_Clicked(object sender, EventArgs e)
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
+        
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ProfileWhatsapp selectedItem = e.SelectedItem as ProfileWhatsapp;

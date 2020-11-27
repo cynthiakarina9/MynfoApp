@@ -49,8 +49,8 @@
 
                     <!-- Listado de perfiles -->
                     <Grid
-                    Grid.Row="3"
-                    Grid.ColumnSpan="3">
+                        Grid.Row="3"
+                        Grid.ColumnSpan="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
@@ -58,19 +58,19 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout 
-                        HorizontalOptions="FillAndExpand"
-                        Padding="5,35"
-                        x:Name="ProfilesList1" />
+                            HorizontalOptions="FillAndExpand"
+                            Padding="5,35"
+                            x:Name="ProfilesList1" />
                         <StackLayout 
-                        Grid.Column="1"
-                        HorizontalOptions="FillAndExpand"
-                        Padding="5,35"
-                        x:Name="ProfilesList2" />
+                            Grid.Column="1"
+                            HorizontalOptions="FillAndExpand"
+                            Padding="5,35"
+                            x:Name="ProfilesList2" />
                         <StackLayout 
-                        Grid.Column="2"
-                        HorizontalOptions="FillAndExpand"
-                        Padding="5,35"
-                        x:Name="ProfilesList3" />
+                            Grid.Column="2"
+                            HorizontalOptions="FillAndExpand"
+                            Padding="5,35"
+                            x:Name="ProfilesList3" />
                     </Grid>
                 </Grid>
             </Grid>

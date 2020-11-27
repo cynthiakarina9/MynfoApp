@@ -5,15 +5,11 @@
              x:Class="Mynfo.Views.CreateProfileFacebookPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid
+            BindingContext="{Binding CreateProfileFacebook}">
             <ImageButton 
                 BackgroundColor = "Transparent"
-                Clicked = "BackHome_Clicked"
+                Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,10,0"
                 HorizontalOptions = "Center"

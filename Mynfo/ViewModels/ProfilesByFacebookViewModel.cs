@@ -1,10 +1,13 @@
 ﻿namespace Mynfo.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
     using Mynfo.Helpers;
+    using Mynfo.Views;
     using Services;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using System.Windows.Input;
     using Xamarin.Forms;
 
     public class ProfilesByFacebookViewModel : BaseViewModel
@@ -71,7 +74,20 @@
 
             return profileSM;
         }
-            #endregion
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
+        #endregion
 
     }
 }

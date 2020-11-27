@@ -3,6 +3,7 @@
     using GalaSoft.MvvmLight.Command;
     using Helpers;
     using Models;
+    using Mynfo.Views;
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -192,5 +193,19 @@
             await App.Navigator.PopAsync();
         }
         #endregion
+
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
     }
 }

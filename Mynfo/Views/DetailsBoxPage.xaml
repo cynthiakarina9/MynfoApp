@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <Grid>
             <ScrollView 
-            BindingContext = "{Binding DetailsBox}">
+                BindingContext = "{Binding DetailsBox}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70"/>
@@ -57,22 +57,22 @@
 
                     <!-- Box predeterminada-->
                     <StackLayout 
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    VerticalOptions="Center"
-                    x:Name="BoxDefaultCheckBox" />
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        x:Name="BoxDefaultCheckBox" />
 
                     <Label 
-                    Grid.Row="2" 
-                    Grid.Column="2" 
-                    Text="{i18n:Translate DefaultBox}" 
-                    TextColor="Black"
-                    VerticalOptions="Center"/>
+                        Grid.Row="2" 
+                        Grid.Column="2" 
+                        Text="{i18n:Translate DefaultBox}" 
+                        TextColor="Black"
+                        VerticalOptions="Center"/>
 
                     <!-- Listado de perfiles -->
                     <Grid
-                    Grid.Row="3"
-                    Grid.ColumnSpan="4">
+                        Grid.Row="3"
+                        Grid.ColumnSpan="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
@@ -80,19 +80,19 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout 
-                        HorizontalOptions="FillAndExpand"
-                        Padding="5,35"
-                        x:Name="ProfilesList1" />
+                            HorizontalOptions="FillAndExpand"
+                            Padding="5,35"
+                            x:Name="ProfilesList1" />
                         <StackLayout 
-                        Grid.Column="1"
-                        HorizontalOptions="FillAndExpand"
-                        Padding="5,35"
-                        x:Name="ProfilesList2" />
+                            Grid.Column="1"
+                            HorizontalOptions="FillAndExpand"
+                            Padding="5,35"
+                            x:Name="ProfilesList2" />
                         <StackLayout 
-                        Grid.Column="2"
-                        HorizontalOptions="FillAndExpand"
-                        Padding="5,35"
-                        x:Name="ProfilesList3" />
+                            Grid.Column="2"
+                            HorizontalOptions="FillAndExpand"
+                            Padding="5,35"
+                            x:Name="ProfilesList3" />
                     </Grid>
                 </Grid>
             </ScrollView>

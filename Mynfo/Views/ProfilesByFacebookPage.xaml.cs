@@ -1,10 +1,12 @@
 ﻿namespace Mynfo.Views
 {
+    using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
     using Mynfo.Helpers;
     using Mynfo.Services;
     using System;
     using System.Collections.Generic;
+    using System.Windows.Input;
     using ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
@@ -110,6 +112,19 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileFacebook = new EditProfileFacebookViewModel(tappedItem.ProfileMSId);
             App.Navigator.PushAsync(new EditProfileFacebookPage());
+        }
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

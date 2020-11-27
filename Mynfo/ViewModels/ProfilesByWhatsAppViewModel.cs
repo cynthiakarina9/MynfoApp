@@ -1,14 +1,17 @@
 ﻿namespace Mynfo.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
     using Mynfo.Helpers;
     using Mynfo.Services;
+    using Mynfo.Views;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows.Input;
     using Xamarin.Forms;
 
     public class ProfilesByWhatsAppViewModel : BaseViewModel
@@ -83,6 +86,19 @@
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }
