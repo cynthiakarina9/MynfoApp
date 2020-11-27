@@ -15,11 +15,11 @@
                 BackgroundColor = "Transparent"
                 Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,80,0"
+                Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
-                Source = "logo_superior.png" 
+                Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "85"/>
+                WidthRequest = "100"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -34,31 +34,46 @@
                     <RowDefinition />
                     <RowDefinition Height = "120"/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7.5*" />
+                    <ColumnDefinition Width="2.5*" />
+                </Grid.ColumnDefinitions>
                 <Label 
                     FontAttributes = "Bold"
                     FontSize = "25"
-                    Grid.ColumnSpan ="1"
+                    Grid.ColumnSpan ="2"
                     Grid.Row = "0"
                     HorizontalOptions = "Center"
-                    Text = "{i18n:Translate EditPhone}"
+                    Text = "{i18n:Translate EditNetwork}"
                     TextColor = "{StaticResource MainColor}"
                     VerticalOptions = "Center"/>
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Command="{Binding DeleteCommand}"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Scale=".6"
+                    Source="trash2"
+                    VerticalOptions="Start"
+                    x:Name = "ButtonDelete"/>
                 <Image
                     Grid.Row = "1"
+                    Grid.ColumnSpan ="2"
                     HeightRequest = "180"
-                    Source = "tel1"
+                    Source = "tel2"
                     WidthRequest = "180"/>
                 <StackLayout 
                     Grid.Row = "2"
+                    Grid.ColumnSpan ="2"
                     Padding = "20">
                     <Label 
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        Text = "{i18n:Translate NameProfile}"/>
+                        Text = "{i18n:Translate NameProfile}"
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalOptions = "Center"/>
                     <Entry 
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
@@ -69,15 +84,16 @@
                         x:Name = "EntryName"/>
                 </StackLayout>
                 <StackLayout 
-                    Grid.Row = "3">
+                    Grid.Row = "3"
+                    Grid.ColumnSpan ="2">
                     <Label 
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
+                        VerticalOptions = "Center" 
                         Text = "{i18n:Translate NumberPhone}" 
-                        VerticalOptions = "Center" />
+                        TextColor = "{StaticResource MainColor}"/>
                     <Entry 
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HorizontalOptions = "Center"
@@ -90,6 +106,7 @@
                 </StackLayout>
                 <StackLayout
                     Grid.Row = "5"
+                    Grid.ColumnSpan ="2"
                     VerticalOptions = "CenterAndExpand">
                     <ActivityIndicator
                     IsRunning = "{Binding IsRunning, Mode=TwoWay}"
@@ -97,22 +114,22 @@
                     </ActivityIndicator>
                 </StackLayout>
                 <StackLayout
-                        Grid.Row = "4"
-                        Orientation = "Horizontal"
+                        Grid.Row = "6"
+                        Grid.ColumnSpan ="2"
                         Padding = "40">
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
                         Command="{Binding SaveCommand}"
                         HeightRequest = "50"
-                        HorizontalOptions = "Center"
+                        HorizontalOptions = "Fill"
                         Grid.Row = "5"
                         Text = "{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
                         WidthRequest = "150"
                         x:Name = "ButtonSave"/>
-                    <Button 
+                    <!--<Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
                         Command="{Binding DeleteCommand}"
@@ -123,7 +140,7 @@
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
                         WidthRequest = "150" 
-                        x:Name = "ButtonDelete"/>
+                        x:Name = "ButtonDelete"/>-->
                 </StackLayout>
             </Grid>
         </ScrollView>

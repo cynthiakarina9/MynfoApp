@@ -37,8 +37,8 @@
                     </ActivityIndicator>
                     <Label 
                             Grid.Row = "0" 
-                            Text = "{i18n:Translate EmailProfileList}"
-                            FontSize = "25"
+                            Text = "{i18n:Translate NetworkList}"
+                            FontSize = "30"
                             FontAttributes="Bold"
                             TextColor = "{StaticResource MainColor}"
                             HorizontalOptions = "CenterAndExpand"
@@ -78,7 +78,7 @@
                                             Grid.Column="0"
                                             HeightRequest="30"
                                             Margin="5"
-                                            Source="mail1"
+                                            Source="mail2"
                                             WidthRequest="30"/>
                                         <Label 
                                             Grid.Column="1"
