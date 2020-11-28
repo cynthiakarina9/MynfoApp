@@ -14,8 +14,8 @@
                     HorizontalOptions = "CenterAndExpand"
                     VerticalOptions = "FillAndExpand">
                     <Image
-                        Source = "logo"
-                        Scale = "0.7"/>
+                        Source = "Logo_sin_relleno"
+                        Scale = "0.3"/>
                     <Label 
                         FontAttributes = "Bold"
                         FontSize = "30"
