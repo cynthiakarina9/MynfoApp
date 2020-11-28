@@ -86,7 +86,8 @@
                     TextColor = "{StaticResource AccentColor}"
                     VerticalOptions = "FillAndExpand"/>-->
                 <StackLayout
-                    Orientation="Horizontal">
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
                     <Button
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
