@@ -5,10 +5,11 @@
              x:Class="Mynfo.Views.ProfilesByEmailPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid>
+        <Grid
+            BindingContext="{Binding ProfilesByEmail}">
             <ImageButton
                 BackgroundColor = "Transparent"
-                Clicked = "BackHome_Clicked"
+                Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,70,0"
                 HorizontalOptions = "Center"

@@ -261,8 +261,21 @@
 
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Home = new HomeViewModel();
-            Application.Current.MainPage = new NavigationPage(new TabbedPage1());
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
     }
 }

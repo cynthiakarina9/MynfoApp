@@ -5,9 +5,11 @@
              x:Class="Mynfo.Views.CreateProfileWhatsAppPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid>
+        <Grid
+            BindingContext = "{Binding CreateProfileWhatsApp}">
             <ImageButton
                 BackgroundColor = "Transparent"
+                Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,70,0"
                 HorizontalOptions = "Center"

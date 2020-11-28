@@ -7,47 +7,41 @@
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>
-            <StackLayout 
-                HorizontalOptions="Start">
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "20"
-                    HorizontalOptions = "Start"
-                    Text = "{i18n:Translate Register}"
-                    TextColor = "{StaticResource Dark_FontColor}"
-                    VerticalOptions = "Center"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions = "End"
-                Padding = "0,0,5,0">
-                <Image 
-                    Scale = "0.8"
-                    HorizontalOptions = "End"
-                    Source = "logo_superior.png" 
-                    WidthRequest = "75" >
-                </Image>
-            </StackLayout>
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Command="{Binding BackHomeCommand}"
+                Margin = "0,0,70,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior3.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "100"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
+        <Grid
             BindingContext = "{Binding Register}">
+            <ScrollView>
             <StackLayout
-                Padding = "15"
-                VerticalOptions="Center">
+                Padding = "15">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "85"/>
-                        <ColumnDefinition Width = "200"/>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height = "60"/>
+                        <RowDefinition Height = "170"/>
                         <RowDefinition Height = "Auto"/>
                     </Grid.RowDefinitions>
+                    <Label 
+                        FontAttributes = "Bold"
+                        FontSize = "30"
+                        Grid.Row = "0"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate Register}"
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalOptions="Center"/>
                     <StackLayout 
-                        Grid.ColumnSpan = "3"
-                        Grid.Row = "0">
+                        Grid.Row = "1"
+                        VerticalOptions="Center">
                         <controls:CircleImage 
-                            HeightRequest = "180"
+                            HeightRequest = "120"
                             Source = "{Binding ImageSource}">
                             <controls:CircleImage.GestureRecognizers>
                                 <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />
@@ -59,147 +53,116 @@
                             Text = "{i18n:Translate ChangeImage}"
                             VerticalOptions = "StartAndExpand"/>
                     </StackLayout>
-                
-                
                     <StackLayout 
-                        Grid.Row = "1"
-                        Grid.ColumnSpan = "3"
+                        Grid.Row = "2">
+                    <Label
+                        FontSize = "18"
                         HorizontalOptions = "CenterAndExpand"
-                        Orientation = "Horizontal"
-                        Padding = "5">
-                        <Label
-                            FontSize = "18"
-                            Grid.Column = "0"
-                            HorizontalOptions = "CenterAndExpand"
-                            Text = "{i18n:Translate FirstNameLabel}"
-                            TextColor = "{StaticResource FontColor}"
-                            VerticalTextAlignment = "Center" />
-                        <Entry
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
-                            ClearButtonVisibility="WhileEditing"
-                            Grid.ColumnSpan = "2"
-                            HeightRequest = "40"
-                            HorizontalOptions = "CenterAndExpand"
-                            Text = "{Binding FirstName}"
-                            WidthRequest = "200" />
+                        Text = "{i18n:Translate FirstNameLabel}"
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalTextAlignment = "Center" />
+                    <Entry
+                        ClearButtonVisibility="WhileEditing"
+                        HeightRequest = "40"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions = "CenterAndExpand"
+                        Margin = "0,-10,0,0"
+                        Text = "{Binding FirstName}"
+                        VerticalTextAlignment="Center"
+                        WidthRequest = "300" />
                     </StackLayout>
                     <StackLayout 
-                        Grid.ColumnSpan = "3"
-                        Grid.Row = "2"
-                        HorizontalOptions = "CenterAndExpand"
-                        Orientation = "Horizontal"
-                        Padding = "5">
+                        Grid.Row = "3">
                         <Label
                             FontSize = "18"
-                            Grid.Column = "0"
                             HorizontalOptions = "CenterAndExpand"
                             Text = "{i18n:Translate LastNameLabel}"
-                            TextColor = "{StaticResource FontColor}" 
+                            TextColor = "{StaticResource MainColor}" 
                             VerticalTextAlignment = "Center" />
                         <Entry
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
                             ClearButtonVisibility="WhileEditing"
-                            Grid.ColumnSpan = "2"
                             HeightRequest = "40"
+                            HorizontalTextAlignment="Center"
                             HorizontalOptions = "CenterAndExpand"
+                            Margin = "0,-10,0,0"
                             Text = "{Binding LastName}"
-                            WidthRequest = "200" />
+                            VerticalTextAlignment="Center"
+                            WidthRequest = "300" />
                     </StackLayout>
                     <StackLayout 
-                        Grid.ColumnSpan = "3"
-                        Grid.Row = "3"
-                        HorizontalOptions = "CenterAndExpand"
-                        Orientation = "Horizontal"
-                        Padding = "5">
+                        Grid.Row = "4">
                         <Label
                             FontSize = "18"
-                            Grid.Column = "0"
                             HorizontalOptions = "CenterAndExpand"
-                            WidthRequest = "85"
                             Text = "{i18n:Translate EMail}"
-                            TextColor = "{StaticResource FontColor}"
+                            TextColor = "{StaticResource MainColor}"
                             VerticalTextAlignment = "Center" />
                         <Entry
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
                             ClearButtonVisibility="WhileEditing"
-                            Grid.ColumnSpan = "2"
+                            HorizontalTextAlignment="Center"
                             HorizontalOptions = "CenterAndExpand"
                             Keyboard = "Email"
+                            Margin = "0,-10,0,0"
+                            VerticalTextAlignment="Center"
                             Text="{Binding Email}"
-                            WidthRequest = "200" />
+                            WidthRequest = "300" />
                     </StackLayout>
                     <StackLayout 
-                        Grid.ColumnSpan = "3"
-                        Grid.Row = "4"
-                        HorizontalOptions = "CenterAndExpand"
-                        Orientation = "Horizontal"
-                        Padding = "5">
+                        Grid.Row = "5">
                         <Label
-                            FontSize = "18"
+                            FontSize = "17"
                             HorizontalOptions = "CenterAndExpand"
-                            Grid.Column = "0"
                             Text = "{i18n:Translate Password}"
-                            TextColor = "{StaticResource FontColor}"
-                            VerticalTextAlignment = "Center" 
-                            WidthRequest = "85"/>
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalTextAlignment = "Center"/>
                         <Entry
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
+                            FontSize = "23"
                             ClearButtonVisibility="WhileEditing"
-                            Grid.ColumnSpan = "2"
+                            HorizontalTextAlignment="Center"
                             HorizontalOptions = "CenterAndExpand"
                             IsPassword = "True"
+                            Margin = "0,-10,0,0"
                             Text = "{Binding Password}"
-                            WidthRequest = "200" />
+                            WidthRequest = "300" />
                     </StackLayout>
                     <StackLayout 
-                        Grid.ColumnSpan = "3"
-                        Grid.Row = "5"
-                        HorizontalOptions = "CenterAndExpand"
-                        Orientation = "Horizontal"
-                        Padding = "5">
+                        Grid.Row = "6">
                         <Label
                             FontSize = "18"
                             HorizontalOptions = "CenterAndExpand"
-                            Grid.Column = "0"
                             Text = "{i18n:Translate ConfirmLabel}"
-                            TextColor = "{StaticResource FontColor}"
-                            VerticalTextAlignment = "Center"
-                            WidthRequest = "85"/>
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalTextAlignment = "Center"/>
                         <Entry
-                            BackgroundColor = "{StaticResource LoginEntryColor}"
                             ClearButtonVisibility="WhileEditing"
-                            Grid.ColumnSpan = "2"
+                            HorizontalTextAlignment="Center"
                             HorizontalOptions = "CenterAndExpand"
                             IsPassword = "True"
+                            Margin = "0,-10,0,0"
                             Text = "{Binding Confirm}"
-                            WidthRequest = "200" />
+                            WidthRequest = "300" />
                     </StackLayout>
-                
-                <ActivityIndicator
-                    Grid.ColumnSpan = "3"
-                    Grid.Row = "0"
-                    IsRunning = "{Binding IsRunning}"
-                    VerticalOptions = "EndAndExpand">
-                </ActivityIndicator>
-                <StackLayout
-                    HorizontalOptions="CenterAndExpand"
-                    Grid.ColumnSpan = "3"
-                    Grid.Row = "6"
-                    Orientation="Horizontal"
-                    Padding = "5">
-                    <Button
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
-                        Command = "{Binding RegisterCommand}"
-                        HorizontalOptions = "Center"
-                        IsEnabled = "{Binding IsEnabled}"
-                        Text = "{i18n:Translate Save}"
-                        TextColor = "{StaticResource Dark_FontColor}" 
-                        Scale = "1"
-                        WidthRequest = "150"/>
-                </StackLayout>
                 </Grid>
             </StackLayout>
         </ScrollView>
+            <ActivityIndicator
+                Grid.Row = "0"
+                HorizontalOptions="Center"
+                IsRunning = "{Binding IsRunning}"
+                VerticalOptions = "Center">
+            </ActivityIndicator>
+            <Button
+                Grid.Row = "0"
+                BackgroundColor = "{StaticResource MainColor}"
+                BorderRadius = "23"
+                Command = "{Binding RegisterCommand}"
+                HorizontalOptions = "Center"
+                IsEnabled = "{Binding IsEnabled}"
+                Margin="15"
+                Text = "{i18n:Translate Save}"
+                TextColor = "{StaticResource Dark_FontColor}" 
+                VerticalOptions="End"
+                WidthRequest = "150"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

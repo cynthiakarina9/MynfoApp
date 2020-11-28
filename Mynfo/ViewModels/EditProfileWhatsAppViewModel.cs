@@ -4,9 +4,7 @@
     using GalaSoft.MvvmLight.Command;
     using Helpers;
     using Services;
-    using System;
-    using System.Data.SqlClient;
-    using System.Text;
+    using Views;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -147,6 +145,20 @@
             this.IsEnabled = true;
 
             await App.Navigator.PopAsync();
+        }
+
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
 
