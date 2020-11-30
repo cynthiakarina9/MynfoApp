@@ -318,6 +318,12 @@
             ForeingBox      foreingBox;
             ForeingProfile  foreingProfile;
 
+            //Validar que la box no exista
+           /* using(var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+            {
+                connSQLite.FindWithQuery<ForeingBox>("")
+            }*/
+
             //Inicializar la box foranea
             foreingBox = new ForeingBox
             {
