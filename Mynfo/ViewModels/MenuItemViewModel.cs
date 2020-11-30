@@ -56,6 +56,15 @@
                 {
                     conn.DeleteAll<ProfileLocal>();
                 }
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.DeleteAll<ForeingBox>();
+                }
+                //Borrar perfiles locales
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.DeleteAll<ForeingProfile>();
+                }
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
             else if (this.PageName == "MyProfilePage")

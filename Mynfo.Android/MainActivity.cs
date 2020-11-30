@@ -142,6 +142,7 @@
                     string json_header = null;
                     string json_body = null;
                     string json_value = null;
+                    string json_fantasma = null;
 
 
                     json_header = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
@@ -166,8 +167,28 @@
                                 ""value"":""" + Profile_1.value + @""",
                                 ""ProfileType"":""" + Profile_1.ProfileType + @"""                                                              
                                 }";
+                    
+                    json_fantasma = "{"
+                              + @"""BoxId"":""-"",
+                                ""Name"":""" + Box_Local.Name + @""",
+                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
+                                ""UserId"":""" + Box_Local.UserId + @""",
+                                ""Time"":""" + Box_Local.Time + @""",
+                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
+                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
+                                ""FirstName"":""" + Box_Local.FirstName + @""",
+                                ""LastName"":""" + Box_Local.LastName + @""",
+                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
+                                ""FullName"":""" + Box_Local.FullName + @""",
+                                ""ProfileLocalId"":""" + Profile_1.ProfileLocalId + @""",
+                                ""IdBox"":""" + Profile_1.IdBox + @""",
+                                ""UserId_p"":""" + Profile_1.UserId + @""",
+                                ""ProfileName"":""" + Profile_1.ProfileName + @""",
+                                ""value"":""" + Profile_1.value + @""",
+                                ""ProfileType"":""" + Profile_1.ProfileType + @"""                                                              
+                                }";
 
-                    if (coun > 1) 
+                    if (coun > 1)
                     {
                         for (int i = 1; i < coun; i++)
                         {
@@ -192,12 +213,18 @@
                                 ""value"":""" + Profile.value + @""",
                                 ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
                                 }";
-                             
+
                             json_value = json_value + ",\n" + json_body;
                         }
-                        json_value = "¬[" + json_value + "]";
-                    }                    
-                    json = json_value;                   
+                        json_value = "[" + json_value + "]";
+                    }
+                    else 
+                    {
+                        json_value = "[" + json_value + ",\n" + json_fantasma + "]";
+                    }
+                    
+                    
+                    json = "¬" + json_value;                   
                 }
             } 
             catch (Exception exx)
@@ -345,20 +372,23 @@
             //Recorrer la lista de perfiles para insertarlos
             foreach(Get_nfc get_nfc in nfcData)
             {
-                foreingProfile = new ForeingProfile
+                if (get_nfc.boxId != "-") 
                 {
-                    BoxId = Convert.ToInt32(get_nfc.boxId),
-                    UserId = Convert.ToInt32(get_nfc.userId),
-                    ProfileName = get_nfc.profileName,
-                    value = get_nfc.value,
-                    ProfileType = get_nfc.ProfileType
-                };
+                    foreingProfile = new ForeingProfile
+                    {
+                        BoxId = Convert.ToInt32(get_nfc.boxId),
+                        UserId = Convert.ToInt32(get_nfc.userId),
+                        ProfileName = get_nfc.profileName,
+                        value = get_nfc.value,
+                        ProfileType = get_nfc.ProfileType
+                    };
 
-                //Insertar la box foranea
-                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-                {
-                    connSQLite.Insert(foreingProfile);
-                }
+                    //Insertar la box foranea
+                    using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                    {
+                        connSQLite.Insert(foreingProfile);
+                    }
+                }                
             }
             //Enviar a detalles de la box foranea cuando se inserta
             App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));
