@@ -97,7 +97,7 @@
                         Text = "{i18n:Translate Login}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         WidthRequest = "150"/>
-                    <!--<Label
+                        <!--<Label
                         HorizontalOptions = "Center"
                         FontAttributes = "Bold"
                         FontSize = "20"
@@ -105,14 +105,14 @@
                         Text = "{i18n:Translate Register}"
                         TextColor = "{StaticResource MainFountyColor}"
                         VerticalOptions = "FillAndExpand">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command = "{Binding RegisterCommand}" />
-                        </Label.GestureRecognizers>
-                    </Label>-->
-                    <Button
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command = "{Binding RegisterCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>-->
+                        <Button
                         BackgroundColor="Transparent"
                         BorderRadius = "23"
-                        Command="{Binding Register}"
+                        Command="{Binding RegisterCommand}"
                         HorizontalOptions="Center"
                         Text="{i18n:Translate Register}"
                         TextColor="{StaticResource MainColor}"
@@ -120,7 +120,7 @@
                         BorderColor="{StaticResource MainColor}"
                         VerticalOptions="FillAndExpand"
                         WidthRequest="150"/>
-                </StackLayout>
+                    </StackLayout>
                 <StackLayout
                     HorizontalOptions = "Center"
                     Orientation = "Horizontal"

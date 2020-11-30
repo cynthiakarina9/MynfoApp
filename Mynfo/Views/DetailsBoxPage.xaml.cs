@@ -28,6 +28,7 @@ namespace Mynfo.Views
             string queryGetPhones;
             string queryGetEmails;
             string queryGetSMProfiles;
+            string queryGetWhatsapp;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             System.Text.StringBuilder sb;
             String BoxName = "";
@@ -84,6 +85,11 @@ namespace Mynfo.Views
                                     "join dbo.ProfileSMs on(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
                                     "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
                                     "where dbo.Box_ProfileSM.BoxId = " + _boxId;
+            queryGetWhatsapp = "select dbo.Boxes.BoxId, dbo.ProfileWhatsapps.ProfileWhatsappId, dbo.ProfileWhatsapps.Name, " +
+                                        "dbo.ProfileWhatsapps.Number from dbo.Box_ProfileWhatsapp Join dbo.Boxes " +
+                                        "on(dbo.Boxes.BoxId = dbo.Box_ProfileWhatsapp.BoxId) " +
+                                        "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfilePhoneId) " +
+                                        "where dbo.Boxes.BoxId =" + _boxId;
 
             //Consulta para obtener Box
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -519,6 +525,110 @@ namespace Mynfo.Views
                 }
             }
 
+            //Consulta para obtener Whatsapp
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryGetWhatsapp);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var whatsappIcon = new ImageButton();
+                            var whatsappName = new Label();
+                            //var deleteProfile = new ImageButton();
+                            var Line = new BoxView();
+                            int WhatsappId = (int)reader["ProfileWhatsappId"];
+                            var space = new BoxView();
+
+                            whatsappIcon.Source = "whatsapp2.png";
+                            whatsappIcon.WidthRequest = 50;
+                            whatsappIcon.HeightRequest = 50;
+                            whatsappIcon.HorizontalOptions = LayoutOptions.Center;
+                            whatsappIcon.IsEnabled = true;
+                            whatsappIcon.Clicked += new EventHandler((sender, e) => DeleteBoxWhatsapp(sender, e, BoxId, WhatsappId));
+
+                            whatsappName.Text = (string)reader["Name"];
+                            whatsappName.FontSize = 15;
+                            whatsappName.HorizontalTextAlignment = TextAlignment.Center;
+                            whatsappName.FontAttributes = FontAttributes.Bold;
+                            whatsappName.TextColor = Color.Black;
+
+                            space.HeightRequest = 30;
+
+                            /*deleteProfile.Source = "trash2.png";
+                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
+                            deleteProfile.CornerRadius = 15;
+                            deleteProfile.HeightRequest = 30;
+                            deleteProfile.WidthRequest = 30;
+                            deleteProfile.HorizontalOptions = LayoutOptions.End;
+                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));*/
+
+                            //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
+                            if (BoxDefault == true)
+                            {
+                                // deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+                                whatsappIcon.BackgroundColor = Color.FromHex("#FFAB8F");
+                            }
+                            else
+                            {
+                                //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
+                                whatsappIcon.BackgroundColor = Color.FromHex("#AAAAAA");
+                            }
+
+                            //Asignación de caja en columnas
+                            switch (listProfileNum)
+                            {
+                                case 0:
+                                    listProfileNum = 2;
+
+                                    ProfilesList1.Children.Add(whatsappIcon);
+                                    ProfilesList1.Children.Add(whatsappName);
+                                    ProfilesList1.Children.Add(space);
+                                    //ProfilesList1.Children.Add(deleteProfile);
+                                    break;
+
+                                case 1:
+                                    listProfileNum = 2;
+
+                                    ProfilesList1.Children.Add(whatsappIcon);
+                                    ProfilesList1.Children.Add(whatsappName);
+                                    ProfilesList1.Children.Add(space);
+                                    // ProfilesList1.Children.Add(deleteProfile);
+                                    break;
+
+                                case 2:
+                                    listProfileNum = 3;
+
+                                    ProfilesList2.Children.Add(whatsappIcon);
+                                    ProfilesList2.Children.Add(whatsappName);
+                                    ProfilesList2.Children.Add(space);
+                                    //ProfilesList2.Children.Add(deleteProfile);
+                                    break;
+
+                                case 3:
+                                    listProfileNum = 1;
+
+                                    ProfilesList3.Children.Add(whatsappIcon);
+                                    ProfilesList3.Children.Add(whatsappName);
+                                    ProfilesList3.Children.Add(space);
+                                    //ProfilesList3.Children.Add(deleteProfile);
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
             //Marcar o desmarcar la box predeterminada
             void CheckDefaultBox(object sender, EventArgs e)
             {
@@ -535,6 +645,9 @@ namespace Mynfo.Views
                                                 "(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
                                                 "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
                                                 "where dbo.Box_ProfileSM.BoxId = " + _boxId;
+                string queryGetBoxWhatsapp = "select * from dbo.ProfileWhatsapps join dbo.Box_ProfileWhatsapp on " +
+                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfilePhoneId) " +
+                                                "where dbo.Box_ProfileWhatsapp.BoxId = " + _boxId;
 
                 //Borrar box predeterminada anterior
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
@@ -666,6 +779,41 @@ namespace Mynfo.Views
                     }
                 }
 
+                //Consulta para obtener perfiles de whatsapp
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryGetBoxWhatsapp);
+
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProfileLocal whatsappProfile = new ProfileLocal
+                                {
+                                    IdBox = _boxId,
+                                    UserId = (int)reader["UserId"],
+                                    ProfileName = (string)reader["Name"],
+                                    value = (string)reader["Number"],
+                                    ProfileType = "Whatsapp"
+                                };
+                                //Crear perfil de teléfono de box local predeterminada
+                                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                {
+                                    conn.Insert(whatsappProfile);
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+
                 //Consulta para predeterminar la box actual
                 using (SqlConnection connection = new SqlConnection(cadenaConexion))
                 {
@@ -712,6 +860,7 @@ namespace Mynfo.Views
             string  sqlDeleteEmails = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId, 
                     sqlDeletePhones = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId, 
                     sqlDeleteSMProfiles = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId, 
+                    sqlDeleteWhatsappProfiles = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId,
                     sqlDeleteBox = "delete from dbo.Boxes where dbo.boxes.BoxId = " + _BoxId;
             string  cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
@@ -750,6 +899,18 @@ namespace Mynfo.Views
                     //Borrar perfiles de redes sociales de la box
                     sb = new System.Text.StringBuilder();
                     sb.Append(sqlDeleteSMProfiles);
+                    sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    //Borrar perfiles de whatsapp de la box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeleteWhatsappProfiles);
                     sql = sb.ToString();
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
@@ -867,6 +1028,9 @@ namespace Mynfo.Views
                                                             "(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
                                                             "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
                                                             "where dbo.Box_ProfileSM.BoxId = " + boxIdLocal;
+                            string queryGetBoxWhatsappProfiles = "select * from dbo.ProfileWhatsapps join dbo.Box_ProfileWhatsapp on " +
+                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfilePhoneId) " +
+                                                "where dbo.Box_ProfileWhatsapp.BoxId = " + boxIdLocal;
 
                             //Consulta para obtener perfiles email
                             using (SqlConnection conn = new SqlConnection(cadenaConexion))
@@ -965,6 +1129,41 @@ namespace Mynfo.Views
                                             using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
                                             {
                                                 connSQLite.Insert(smProfile);
+                                            }
+                                        }
+                                    }
+
+                                    conn.Close();
+                                }
+                            }
+
+                            //Consulta para obtener perfiles whatsapp
+                            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                            {
+                                sb = new System.Text.StringBuilder();
+                                sb.Append(queryGetBoxWhatsappProfiles);
+
+                                sql = sb.ToString();
+
+                                using (SqlCommand command = new SqlCommand(sql, conn))
+                                {
+                                    conn.Open();
+                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            ProfileLocal whatsappProfile = new ProfileLocal
+                                            {
+                                                IdBox = boxIdLocal,
+                                                UserId = (int)reader["UserId"],
+                                                ProfileName = (string)reader["Name"],
+                                                value = (string)reader["Number"],
+                                                ProfileType = "Whatsapp"
+                                            };
+                                            //Crear perfil de whatsapp de box local predeterminada
+                                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                            {
+                                                connSQLite.Insert(whatsappProfile);
                                             }
                                         }
                                     }
@@ -1106,6 +1305,34 @@ namespace Mynfo.Views
                 }
                 //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
                 Navigation.PushAsync(new DetailsBoxPage(_BoxId));
+            }
+        }
+
+        async private void DeleteBoxWhatsapp(object sender, EventArgs e, int _BoxId, int _WhatsappId)
+        {
+            //Borrar la relación de la box con el teléfono
+            string queryDeleteBoxWhatsapp = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId + " and dbo.Box_ProfileWhatsapp.ProfilePhoneId = " + _WhatsappId;
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            StringBuilder sb;
+
+            bool response = await DisplayAlert("Atención", "¿Desea borrar el perfil de la box permanentemente?", "Si", "No");
+
+            if (response == true)
+            {
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryDeleteBoxWhatsapp);
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
             }
         }
 
