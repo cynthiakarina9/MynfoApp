@@ -439,7 +439,7 @@
     <value>Número de telefone ou celular</value>
   </data>
   <data name="ChooseTypeProfile" xml:space="preserve">
-    <value>Networks</value>
+    <value>Redes</value>
   </data>
   <data name="ProfilePhone" xml:space="preserve">
     <value>Perfil de telefone</value>
@@ -515,12 +515,12 @@ Você deve inserir um url</value>
     <value>Lista de perfis do Whatsapp</value>
   </data>
   <data name="EditNetwork" xml:space="preserve">
-    <value>Editar network</value>
+    <value>Editar rede</value>
   </data>
   <data name="NetworkList" xml:space="preserve">
     <value>Lista de networks</value>
   </data>
   <data name="AddNetwork" xml:space="preserve">
-    <value>Adicionar network</value>
+    <value>Adicionar rede</value>
   </data>
 </root>

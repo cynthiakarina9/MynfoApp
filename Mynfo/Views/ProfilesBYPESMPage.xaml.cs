@@ -22,6 +22,7 @@ namespace Mynfo.Views
             string queryGetEmailProfiles;
             string queryGetPhoneProfiles;
             string queryGetFacebookProfiles;
+            string queryGetWhatsappProfiles;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb, sb2;
 
@@ -43,7 +44,11 @@ namespace Mynfo.Views
                                             " EXCEPT SELECT " +
                                             "dbo.Box_ProfileSM.ProfileMSId FROM dbo.Box_ProfileSM " +
                                             "where dbo.Box_ProfileSM.BoxId = " + BoxId;
-
+            queryGetWhatsappProfiles = "SELECT dbo.ProfileWhatsapps.ProfileWhatsappId FROM dbo.ProfileWhatsapps " +
+                                            "where dbo.ProfileWhatsapps.UserId = " + UserId +
+                                            " EXCEPT SELECT " +
+                                            "dbo.Box_ProfileWhatsapp.ProfilePhoneId FROM dbo.Box_ProfileWhatsapp " +
+                                            "where dbo.Box_ProfileWhatsapp.BoxId = " + BoxId;
             #endregion
 
             #region Commands
@@ -266,6 +271,73 @@ namespace Mynfo.Views
                         }
                     }
                     break;
+
+                case "Whatsapp":
+                    //Consulta para obtener Whatsapp
+                    using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                    {
+                        sb = new System.Text.StringBuilder();
+                        sb.Append(queryGetWhatsappProfiles);
+                        string sql = sb.ToString();
+
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            connection.Open();
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    int ProfileWhatsappId = (int)reader["ProfileWhatsappId"];
+                                    string queryGetProfile = "select * from dbo.ProfileWhatsapps where dbo.ProfileWhatsapps.ProfileWhatsappId = " + ProfileWhatsappId;
+
+                                    //Validamos los valores que obtenemos
+                                    using (SqlConnection connection2 = new SqlConnection(cadenaConexion))
+                                    {
+                                        sb2 = new System.Text.StringBuilder();
+                                        sb2.Append(queryGetProfile);
+                                        string sql2 = sb2.ToString();
+
+                                        using (SqlCommand command2 = new SqlCommand(sql2, connection2))
+                                        {
+                                            connection2.Open();
+                                            using (SqlDataReader reader2 = command2.ExecuteReader())
+                                            {
+                                                while (reader2.Read())
+                                                {
+                                                    var WAProfile = new Label();
+                                                    var CreateRelation = new ImageButton();
+                                                    var Line = new BoxView();
+
+                                                    WAProfile.Text = (string)reader2["Name"];
+                                                    WAProfile.FontSize = 25;
+                                                    WAProfile.FontAttributes = FontAttributes.Bold;
+                                                    WAProfile.HorizontalTextAlignment = TextAlignment.Center;
+
+                                                    CreateRelation.BackgroundColor = Color.Transparent;
+                                                    CreateRelation.CornerRadius = 15;
+                                                    CreateRelation.HeightRequest = 30;
+                                                    CreateRelation.WidthRequest = 30;
+                                                    CreateRelation.HorizontalOptions = LayoutOptions.End;
+                                                    CreateRelation.Source = "enter1";
+                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxWhatsappRelation(sender, e, BoxId, ProfileWhatsappId, _BoxDefault));
+
+                                                    Line.HeightRequest = 1;
+                                                    Line.Color = Color.FromHex("#FF5521");
+
+                                                    ProfileList.Children.Add(WAProfile);
+                                                    ProfileList.Children.Add(CreateRelation);
+                                                    ProfileList.Children.Add(Line);
+                                                }
+                                            }
+                                            connection2.Close();
+                                        }
+                                    }
+                                }
+                            }
+                            connection.Close();
+                        }
+                    }
+                    break;
                 default:
                     break;
             }
@@ -290,6 +362,10 @@ namespace Mynfo.Views
                 case "Facebook":
                     mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
                     Application.Current.MainPage= new NavigationPage(new CreateProfileFacebookPage(_BoxDefault, _boxId));
+                    break;
+                case "Whatsapp":
+                    mainViewModel.CreateProfileWhatsApp = new CreateProfileWhatsAppViewModel();
+                    Application.Current.MainPage = new NavigationPage(new CreateProfileWhatsAppPage());
                     break;
                 default:
                     break;
@@ -485,6 +561,69 @@ namespace Mynfo.Views
                 }
             }
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Facebook", _boxDefault));
+        }
+
+        private void CreateBoxWhatsappRelation(object sender, EventArgs e, int _BoxId, int _WhatsappId, bool _BoxDefault)
+        {
+            //Crear la relación de la box con Whatsapp
+            string queryCreateSMRelation = "insert into dbo.Box_ProfileWhatsapp (BoxId, ProfilePhoneId) " +
+                                         "VALUES(" + _BoxId + "," + _WhatsappId + ")";
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            StringBuilder sb;
+
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryCreateSMRelation);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            //Agregar perfil local si la box es predeterminada
+            if (_BoxDefault == true)
+            {
+                string queryGetBoxEmail = "select * from dbo.ProfileWhatsapps where dbo.ProfileWhatsapps.ProfileWhatsappId = " + _WhatsappId;
+
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(queryGetBoxEmail);
+
+                    string sql = sb.ToString();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ProfileLocal whatsAppProfile = new ProfileLocal
+                                {
+                                    IdBox = _BoxId,
+                                    UserId = (int)reader["UserId"],
+                                    ProfileName = (string)reader["Name"],
+                                    value = (string)reader["Number"],
+                                    ProfileType = "Whatsapp"
+                                };
+                                //Crear perfil de correo de box local predeterminada
+                                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                {
+                                    conn.Insert(whatsAppProfile);
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }
+            }
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Whatsapp", _BoxDefault));
         }
         private void Back_Clicked(object sender, EventArgs e, int _BoxId,bool _boxDefault)
         {

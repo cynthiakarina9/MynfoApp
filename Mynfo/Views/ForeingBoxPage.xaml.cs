@@ -113,6 +113,25 @@
                         space.HeightRequest = 30;
                         break;
 
+                    case "Whatsapp":
+
+                        profileIcon.Source = "whatsapp2.png";
+                        profileIcon.WidthRequest = 50;
+                        profileIcon.HeightRequest = 50;
+                        profileIcon.HorizontalOptions = LayoutOptions.Center;
+                        profileIcon.IsEnabled = true;
+                        profileIcon.BackgroundColor = Color.Transparent;
+                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
+
+                        profileName.Text = foreingProfileValue.ProfileName;
+                        profileName.FontSize = 15;
+                        profileName.HorizontalTextAlignment = TextAlignment.Center;
+                        profileName.FontAttributes = FontAttributes.Bold;
+                        profileName.TextColor = Color.Black;
+
+                        space.HeightRequest = 30;
+                        break;
+
                     default:
                         break;
                 }
@@ -184,7 +203,7 @@
         {
             switch(_profileType)
             {
-                case "Phone":
+                case "Whatsapp":
 
                     try
                     {

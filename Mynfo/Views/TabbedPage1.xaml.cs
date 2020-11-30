@@ -17,10 +17,10 @@
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.MyProfile = new MyProfileViewModel();
-            mainViewModel.ChangePassword = new ChangePasswordViewModel();
+            //mainViewModel.MyProfile = new MyProfileViewModel();
+            //mainViewModel.ChangePassword = new ChangePasswordViewModel();
             mainViewModel.Profiles = new ProfilesViewModel();
-            mainViewModel.Settings = new SettingsViewModel();
+            //mainViewModel.Settings = new SettingsViewModel();
             mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
 
             On<Windows>().SetHeaderIconsEnabled(true);

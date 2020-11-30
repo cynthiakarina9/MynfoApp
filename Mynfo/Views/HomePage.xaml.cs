@@ -111,8 +111,8 @@
             {
                 //Agregamos botón con el nombre de la box
                 //Default.Text = DefaultBoxName;
-                Default.BackgroundColor = Color.FromHex("#f9a589");
-                Default.CornerRadius = 10;
+                Default.BackgroundColor = Color.FromHex("#FF5521");
+                Default.CornerRadius = 25;
                 Default.FontAttributes = FontAttributes.Bold;
                 Default.FontSize = 20;
                 Default.HeightRequest = 140;
@@ -158,7 +158,7 @@
             {
                 //Agregamos botón con el nombre de la box
                 Box2.BackgroundColor = Color.LightGray;
-                Box2.CornerRadius = 5;
+                Box2.CornerRadius = 15;
                 Box2.FontAttributes = FontAttributes.Bold;
                 Box2.FontSize = 12;
                 Box2.HeightRequest = 80;
@@ -174,11 +174,11 @@
                 LayoutBox2.Children.Add(Box2);
                 LayoutBox2.Children.Add(Label2);
             }
-            else
+            /*else
             {
                 //Agregamos botón sin nombre y desactivado
                 Box2.BackgroundColor = Color.Gray;
-                Box2.CornerRadius = 5;
+                Box2.CornerRadius = 15;
                 Box2.HeightRequest = 80;
                 Box2.WidthRequest = 80;
                 Box2.IsEnabled = false;
@@ -187,14 +187,14 @@
 
                 LayoutBox2.Children.Add(Box2);
                 LayoutBox2.Children.Add(Label2);
-            }
+            }*/
 
             //Box 3
             if (boxes[1] != null)
             {
                 //Agregamos botón con el nombre de la box
                 Box3.BackgroundColor = Color.LightGray;
-                Box3.CornerRadius = 5;
+                Box3.CornerRadius = 15;
                 Box3.FontAttributes = FontAttributes.Bold;
                 Box3.FontSize = 12;
                 Box3.HeightRequest = 80;
@@ -210,11 +210,11 @@
                 LayoutBox3.Children.Add(Box3);
                 LayoutBox3.Children.Add(Label3);
             }
-            else
+            /*else
             {
                 //Agregamos botón sin nombre y desactivado
                 Box3.BackgroundColor = Color.Gray;
-                Box3.CornerRadius = 5;
+                Box3.CornerRadius = 15;
                 Box3.HeightRequest = 80;
                 Box3.WidthRequest = 80;
                 Box3.IsEnabled = false;
@@ -223,14 +223,14 @@
 
                 LayoutBox3.Children.Add(Box3);
                 LayoutBox3.Children.Add(Label3);
-            }
+            }*/
 
             //Box 4
             if (boxes[2] != null)
             {
                 //Agregamos botón con el nombre de la box
                 Box4.BackgroundColor = Color.LightGray;
-                Box4.CornerRadius = 5;
+                Box4.CornerRadius = 15;
                 Box4.FontAttributes = FontAttributes.Bold;
                 Box4.FontSize = 12;
                 Box4.HeightRequest = 80;
@@ -246,11 +246,11 @@
                 LayoutBox4.Children.Add(Box4);
                 LayoutBox4.Children.Add(Label4);
             }
-            else
+            /*else
             {
                 //Agregamos botón sin nombre y desactivado
                 Box4.BackgroundColor = Color.Gray;
-                Box4.CornerRadius = 5;
+                Box4.CornerRadius = 15;
                 Box4.HeightRequest = 80;
                 Box4.WidthRequest = 80;
                 Box4.IsEnabled = false;
@@ -259,14 +259,14 @@
 
                 LayoutBox4.Children.Add(Box4);
                 LayoutBox4.Children.Add(Label4);
-            }
+            }*/
 
             //Box 5
             if (boxes[3] != null)
             {
                 //Agregamos botón con el nombre de la box
                 Box5.BackgroundColor = Color.LightGray;
-                Box5.CornerRadius = 5;
+                Box5.CornerRadius = 15;
                 Box5.FontAttributes = FontAttributes.Bold;
                 Box5.FontSize = 12;
                 Box5.HeightRequest = 80;
@@ -282,11 +282,11 @@
                 LayoutBox5.Children.Add(Box5);
                 LayoutBox5.Children.Add(Label5);
             }
-            else
+            /*else
             {
                 //Agregamos botón sin nombre y desactivado
                 Box5.BackgroundColor = Color.Gray;
-                Box5.CornerRadius = 5;
+                Box5.CornerRadius = 15;
                 Box5.HeightRequest = 80;
                 Box5.WidthRequest = 80;
                 Box5.IsEnabled = false;
@@ -295,14 +295,14 @@
 
                 LayoutBox5.Children.Add(Box5);
                 LayoutBox5.Children.Add(Label5);
-            }
+            }*/
 
             //Box 6
             if (boxes[4] != null)
             {
                 //Agregamos botón con el nombre de la box
                 Box6.BackgroundColor = Color.LightGray;
-                Box6.CornerRadius = 5;
+                Box6.CornerRadius = 15;
                 Box6.FontAttributes = FontAttributes.Bold;
                 Box6.FontSize = 12;
                 Box6.HeightRequest = 80;
@@ -318,11 +318,11 @@
                 LayoutBox6.Children.Add(Box6);
                 LayoutBox6.Children.Add(Label6);
             }
-            else
+            /*else
             {
                 //Agregamos botón sin nombre y desactivado
                 Box6.BackgroundColor = Color.Gray;
-                Box6.CornerRadius = 5;
+                Box6.CornerRadius = 15;
                 Box6.HeightRequest = 80;
                 Box6.WidthRequest = 80;
                 Box6.IsEnabled = false;
@@ -331,14 +331,14 @@
 
                 LayoutBox6.Children.Add(Box6);
                 LayoutBox6.Children.Add(Label6);
-            }
+            }*/
 
             //Box 7
             if (boxes[5] != null)
             {
                 //Agregamos botón con el nombre de la box
                 Box7.BackgroundColor = Color.LightGray;
-                Box7.CornerRadius = 5;
+                Box7.CornerRadius = 15;
                 Box7.FontAttributes = FontAttributes.Bold;
                 Box7.FontSize = 12;
                 Box7.HeightRequest = 80;
@@ -354,11 +354,11 @@
                 LayoutBox7.Children.Add(Box7);
                 LayoutBox7.Children.Add(Label7);
             }
-            else
+            /*else
             {
                 //Agregamos botón sin nombre y desactivado
                 Box7.BackgroundColor = Color.Gray;
-                Box7.CornerRadius = 5;
+                Box7.CornerRadius = 15;
                 Box7.HeightRequest = 80;
                 Box7.WidthRequest = 80;
                 Box7.IsEnabled = false;
@@ -367,14 +367,14 @@
 
                 LayoutBox7.Children.Add(Box7);
                 LayoutBox7.Children.Add(Label7);
-            }
+            }*/
 
             //Box 8
             if (boxes[6] != null)
             {
                 //Agregamos botón con el nombre de la box
                 Box8.BackgroundColor = Color.LightGray;
-                Box8.CornerRadius = 5;
+                Box8.CornerRadius = 15;
                 Box8.FontAttributes = FontAttributes.Bold;
                 Box8.FontSize = 12;
                 Box8.HeightRequest = 80;
@@ -390,11 +390,11 @@
                 LayoutBox8.Children.Add(Box8);
                 LayoutBox8.Children.Add(Label8);
             }
-            else
+            /*else
             {
                 //Agregamos botón sin nombre y desactivado
                 Box8.BackgroundColor = Color.Gray;
-                Box8.CornerRadius = 5;
+                Box8.CornerRadius = 15;
                 Box8.HeightRequest = 80;
                 Box8.WidthRequest = 80;
                 Box8.IsEnabled = false;
@@ -403,14 +403,14 @@
 
                 LayoutBox8.Children.Add(Box8);
                 LayoutBox8.Children.Add(Label8);
-            }
+            }*/
 
             //Box 9
             if (boxes[7] != null)
             {
                 //Agregamos botón con el nombre de la box
                 Box9.BackgroundColor = Color.LightGray;
-                Box9.CornerRadius = 5;
+                Box9.CornerRadius = 15;
                 Box9.FontAttributes = FontAttributes.Bold;
                 Box9.FontSize = 12;
                 Box9.HeightRequest = 80;
@@ -426,11 +426,11 @@
                 LayoutBox9.Children.Add(Box9);
                 LayoutBox9.Children.Add(Label9);
             }
-            else
+            /*else
             {
                 //Agregamos botón sin nombre y desactivado
                 Box9.BackgroundColor = Color.Gray;
-                Box9.CornerRadius = 5;
+                Box9.CornerRadius = 15;
                 Box9.HeightRequest = 80;
                 Box9.WidthRequest = 80;
                 Box9.IsEnabled = false;
@@ -439,14 +439,14 @@
 
                 LayoutBox9.Children.Add(Box9);
                 LayoutBox9.Children.Add(Label9);
-            }
+            }*/
 
             //Box 10
             if (boxes[8] != null)
             {
                 //Agregamos botón con el nombre de la box
                 Box10.BackgroundColor = Color.LightGray;
-                Box10.CornerRadius = 5;
+                Box10.CornerRadius = 15;
                 Box10.FontAttributes = FontAttributes.Bold;
                 Box10.FontSize = 12;
                 Box10.HeightRequest = 80;
@@ -462,11 +462,11 @@
                 LayoutBox10.Children.Add(Box10);
                 LayoutBox10.Children.Add(Label10);
             }
-            else
+            /*else
             {
                 //Agregamos botón sin nombre y desactivado
                 Box10.BackgroundColor = Color.Gray;
-                Box10.CornerRadius = 5;
+                Box10.CornerRadius = 15;
                 Box10.HeightRequest = 80;
                 Box10.WidthRequest = 80;
                 Box10.IsEnabled = false;
@@ -475,7 +475,7 @@
 
                 LayoutBox10.Children.Add(Box10);
                 LayoutBox10.Children.Add(Label10);
-            }
+            }*/
 
             //Validamos que podamos crear boxes nuevas
             if(BoxNum == 10)

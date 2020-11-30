@@ -22,6 +22,7 @@ namespace Mynfo.Views
             ProfilesEmail.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Email", _boxDefault));
             ProfilesPhone.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Phone", _boxDefault));
             ProfilesFacebook.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Facebook", _boxDefault));
+            ProfilesWhatsapp.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Whatsapp", _boxDefault));
         }
         private void Back_Clicked(object sender, EventArgs e, int _BoxId)
         {

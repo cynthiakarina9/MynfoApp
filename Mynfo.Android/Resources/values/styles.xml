@@ -7,6 +7,11 @@
     </style>
     <!--Splash Screen-->
   
+  <!--<style name="Theme.Splash" parent="android:Theme">
+    <item name="android:windowNoTitle">false</item>
+    <item name="android:colorBackground">@android:color/white</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>-->
   <style name="Theme.Splash" parent="android:Theme">
     <item name="android:windowBackground">@drawable/SS</item>
     <item name="android:windowNoTitle">true</item>
