@@ -5,21 +5,17 @@
              x:Class="Mynfo.Views.CreateProfileEmailPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid
+            BindingContext="{Binding CreateProfileEmail}">
             <ImageButton
                 BackgroundColor = "Transparent"
-                Clicked = "BackHome_Clicked"
+                Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,10,0"
+                Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
-                Source = "logo_superior.png" 
+                Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "85"/>
+                WidthRequest = "100"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -31,8 +27,8 @@
                     <RowDefinition Height = "160"/>
                     <RowDefinition Height = "110"/>
                     <RowDefinition Height = "110"/>
-                    <RowDefinition Height = "40"/>
-                    <RowDefinition Height = "50"/>
+                    <RowDefinition />
+                    <RowDefinition Height = "120"/>
                 </Grid.RowDefinitions>
                 <Label 
                     FontAttributes = "Bold"
@@ -41,7 +37,7 @@
                     Grid.Row = "0"
                     HorizontalOptions = "Center"
                     HorizontalTextAlignment = "Center"
-                    Text = "{i18n:Translate CreateProfileEmail}"
+                    Text = "{i18n:Translate AddNetwork}"
                     TextColor = "{StaticResource MainColor}"
                     VerticalOptions = "Center"/>
                 <Image
@@ -57,9 +53,9 @@
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
                         Text = "{i18n:Translate NameProfile}" 
+                        TextColor = "{StaticResource MainColor}"
                         VerticalOptions = "Center"/>
                     <Entry 
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
@@ -78,9 +74,9 @@
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center" 
-                        Text = "{i18n:Translate EMail}" />
+                        Text = "{i18n:Translate EMail}"
+                        TextColor = "{StaticResource MainColor}" />
                     <Entry 
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
@@ -102,13 +98,14 @@
                     </ActivityIndicator>
                 </Grid>
                 <StackLayout
-                    Grid.Row = "5">
+                    Grid.Row = "6"
+                    Padding="20">
                     <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
                         Command = "{Binding SaveProfileEmailCommand}"
                         HeightRequest = "50"
-                        HorizontalOptions = "Center"
+                        HorizontalOptions = "Fill"
                         Text = "{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
@@ -119,14 +116,12 @@
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
                         HeightRequest = "50"
-                        HorizontalOptions = "Center"
-                        Text="Test"
+                        HorizontalOptions = "Fill"
+                        Text="{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
                         WidthRequest = "150" 
                         x:Name="SaveWBox"/>
-
-                    <!--Text = "{i18n:Translate Save}"-->
                 </StackLayout>
             </Grid>
         </ScrollView>

@@ -17,9 +17,9 @@
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,10,0"
                 HorizontalOptions = "Center"
-                Source = "logo_superior.png" 
+                Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "85"/>
+                WidthRequest = "100"/>
             <ImageButton 
                 BackgroundColor = "Transparent"
                 Grid.Column = "0"

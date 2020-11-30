@@ -214,11 +214,22 @@
             this.Name = string.Empty;
             mainViewModel.DetailsBox = new DetailsBoxViewModel();
             Application.Current.MainPage = new NavigationPage(new DetailsBoxPage());
+        }
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
 
-
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
 
-       
+
     }
 }

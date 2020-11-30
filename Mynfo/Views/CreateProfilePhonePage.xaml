@@ -5,21 +5,17 @@
              x:Class="Mynfo.Views.CreateProfilePhonePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid
+            BindingContext = "{Binding CreateProfilePhone}">
             <ImageButton
                 BackgroundColor = "Transparent"
-                Clicked = "BackHome_Clicked"
+                Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,10,0"
+                Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
-                Source = "logo_superior.png" 
+                Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "85"/>
+                WidthRequest = "100"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -31,8 +27,8 @@
                     <RowDefinition Height = "160"/>
                     <RowDefinition Height = "110"/>
                     <RowDefinition Height = "110"/>
-                    <RowDefinition Height = "40"/>
-                    <RowDefinition Height = "50"/>
+                    <RowDefinition />
+                    <RowDefinition Height = "120"/>
                 </Grid.RowDefinitions>
             <Label 
                 FontAttributes = "Bold"
@@ -40,7 +36,7 @@
                 Grid.ColumnSpan ="1"
                 Grid.Row = "0"
                 HorizontalOptions = "Center"
-                Text = "{i18n:Translate CreateProfilePhone}"
+                Text = "{i18n:Translate AddNetwork}"
                 TextColor = "{StaticResource MainColor}"
                 VerticalOptions = "Center"/>    
             <Image
@@ -51,14 +47,14 @@
             <StackLayout 
                 Grid.Row = "2"
                 Padding = "20">
-                <Label 
-                    FontSize = "24" 
-                    FontAttributes="Bold"
-                    HorizontalOptions = "Center"
-                    VerticalOptions = "Center"
-                    Text = "{i18n:Translate NameProfile}"/>
+                    <Label 
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate NameProfile}"
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalOptions = "Center"/>
                 <Entry 
-                    BackgroundColor = "{StaticResource LoginEntryColor}"
                     FontSize = "21"
                     HeightRequest = "46"
                     HorizontalTextAlignment = "Center"
@@ -77,9 +73,9 @@
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
                         Text = "{i18n:Translate NumberPhone}" 
-                        VerticalOptions = "Center" />
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalOptions = "Center"/>
                     <Entry 
-                        BackgroundColor = "{StaticResource LoginEntryColor}"
                         FontSize = "21"
                         HeightRequest = "46"
                         HorizontalTextAlignment = "Center"
@@ -87,6 +83,7 @@
                         Keyboard = "Telephone"
                         MaxLength = "10"
                         Text = "{Binding Number}"
+                        Placeholder = "xxx-xxx-xxxx"
                         VerticalOptions = "Center" 
                         WidthRequest = "300"
                         x:Name="ProfileNumber"/>
@@ -100,18 +97,22 @@
                         x:Name= "ActivityIn">
                     </ActivityIndicator>
                 </Grid>
-                <Button 
+                <StackLayout
+                    Grid.Row="6"
+                    Padding="20">
+                    <Button 
                     BackgroundColor="{StaticResource MainColor}"
                     BorderRadius="23"
                     Command = "{Binding SaveProfilePhoneCommand}"
                     HeightRequest="50"
-                    Grid.Row = "5"
                     Text = "{i18n:Translate Save}"
                     TextColor = "{StaticResource Dark_FontColor}"
                     VerticalOptions = "Center"
-                    HorizontalOptions = "Center"
+                    HorizontalOptions = "Fill"
                     WidthRequest ="150" 
                     x:Name="Save"/>
+                </StackLayout>
+                
             </Grid>
         </ScrollView>
     </ContentPage.Content>

@@ -3,6 +3,7 @@
     using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
     using Mynfo.Helpers;
+    using Mynfo.Views;
     using Services;
     using System;
     using System.ComponentModel;
@@ -140,6 +141,19 @@
             this.IsEnabled = true;
 
             await App.Navigator.PopAsync();
+        }
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

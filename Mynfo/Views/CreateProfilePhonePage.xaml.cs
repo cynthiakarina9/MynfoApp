@@ -115,10 +115,5 @@
         {
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Phone", _boxDefault));
         }
-        private void BackHome_Clicked(object sender, EventArgs e)
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
     }
 }

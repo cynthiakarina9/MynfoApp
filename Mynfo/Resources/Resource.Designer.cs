@@ -88,6 +88,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Add network.
+        /// </summary>
+        public static string AddNetwork {
+            get {
+                return ResourceManager.GetString("AddNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Add profiles to Box.
         /// </summary>
         public static string AddPBox {
@@ -444,6 +453,15 @@ namespace Mynfo.Resources {
         public static string EditEmail {
             get {
                 return ResourceManager.GetString("EditEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edti network.
+        /// </summary>
+        public static string EditNetwork {
+            get {
+                return ResourceManager.GetString("EditNetwork", resourceCulture);
             }
         }
         
@@ -813,6 +831,15 @@ namespace Mynfo.Resources {
         public static string NativeName {
             get {
                 return ResourceManager.GetString("NativeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Networks list.
+        /// </summary>
+        public static string NetworksList {
+            get {
+                return ResourceManager.GetString("NetworksList", resourceCulture);
             }
         }
         

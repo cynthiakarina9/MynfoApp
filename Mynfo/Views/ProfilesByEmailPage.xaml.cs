@@ -141,11 +141,6 @@
             mainViewModel.Profiles = new ProfilesViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesPage());
         }
-        private void BackHome_Clicked(object sender, EventArgs e)
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ProfileEmail selectedItem = e.SelectedItem as ProfileEmail;

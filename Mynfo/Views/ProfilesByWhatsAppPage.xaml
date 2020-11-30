@@ -5,16 +5,17 @@
              x:Class="Mynfo.Views.ProfilesByWhatsAppPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid>
+        <Grid
+            BindingContext="{Binding ProfilesByWhatsApp}">
             <ImageButton
                 BackgroundColor = "Transparent"
-                Clicked = "BackHome_Clicked"
+                Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,80,0"
+                Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
-                Source = "logo_superior.png" 
+                Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "85"/>
+                WidthRequest = "100"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -32,7 +33,7 @@
 
                     <Label 
                         Grid.Row = "0" 
-                        Text = "{i18n:Translate EmailProfileList}"
+                        Text = "{i18n:Translate NetworkList}"
                         FontSize = "25"
                         FontAttributes="Bold"
                         TextColor = "{StaticResource MainColor}"

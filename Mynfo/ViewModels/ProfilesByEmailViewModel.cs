@@ -1,5 +1,6 @@
 ﻿namespace Mynfo.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
     using Mynfo.Helpers;
     using Mynfo.Services;
@@ -10,6 +11,7 @@
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
+    using System.Windows.Input;
     using Xamarin.Forms;
     public class ProfilesByEmailViewModel : BaseViewModel    
     {
@@ -94,8 +96,20 @@
             return profileEmail;
             
         }
-        
-        
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
+
         #endregion
     }
 }

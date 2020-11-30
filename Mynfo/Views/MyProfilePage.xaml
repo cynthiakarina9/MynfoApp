@@ -7,27 +7,17 @@
              Title = "{i18n:Translate MyAccount}"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid>
-            <StackLayout 
-                HorizontalOptions="Start">
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "18"
-                    HorizontalOptions = "Start"
-                    Text = "{i18n:Translate MyAccount}"
-                    TextColor = "{StaticResource Dark_FontColor}"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions = "End">
-                <ImageButton
-                    BackgroundColor = "Transparent"
-                    Clicked = "BackHome_Clicked"
-                    HeightRequest = "20"
-                    HorizontalOptions = "End"
-                    Source = "logo_superior.png" 
-                    WidthRequest = "75" >
-                </ImageButton>
-            </StackLayout>
+        <Grid
+            BindingContext="{Binding MyProfile}">
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Command="{Binding BackHomeCommand}"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,70,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior3.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "100"/>
         </Grid>
     </NavigationPage.TitleView>
     
@@ -57,7 +47,6 @@
                     HorizontalOptions = "Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "Auto"/>
-                        <ColumnDefinition Width = "50"/>
                     </Grid.ColumnDefinitions>
                     <StackLayout 
                         HorizontalOptions = "Center"
@@ -108,28 +97,23 @@
                         </StackLayout>
                         <!--Correo-->
                         <StackLayout
-                            Orientation = "Horizontal"
+                            HorizontalOptions="Center"
                             x:Name = "Email">
-                            <Label 
-                                FontSize = "18"
+                            <Label
+                                FontSize = "17"
                                 Grid.Column = "0"
                                 HorizontalOptions = "Center"
                                 HorizontalTextAlignment = "Start"
-                                TextColor = "{AppThemeBinding Light={StaticResource FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 Text = "{i18n:Translate EMail}" 
+                                TextColor = "{StaticResource MainFountyColor}"
                                 VerticalOptions = "Center" 
-                                WidthRequest = "87"
                                 x:Name = "EmailLabel"/>
                             <Entry 
-                                BackgroundColor = "{StaticResource LoginEntryColor}"
-                                FontSize = "20"
-                                Grid.Column = "1"
-                                HorizontalOptions = "Center"
+                                FontSize = "21"
+                                Text = "{Binding User.Email, Mode = TwoWay}" 
+                                TextColor = "{StaticResource FontColor}"
                                 HorizontalTextAlignment = "Center" 
-                                IsReadOnly="true"
-                                Placeholder = "{i18n:Translate LastNamePlaceHolder}" 
-                                Text = "{Binding User.Email, Mode = TwoWay}"
-                                TextColor = "{StaticResource BackgroundColor}"
+                                WidthRequest="300"
                                 x:Name = "EmailEntry"/>
                         </StackLayout>
                     </StackLayout>
