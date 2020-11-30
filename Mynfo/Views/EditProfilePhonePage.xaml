@@ -15,7 +15,7 @@
                 HorizontalOptions = "Center"
                 Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "100"/>
+                WidthRequest = "100"/>-->
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
