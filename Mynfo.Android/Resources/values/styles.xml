@@ -7,17 +7,17 @@
     </style>
     <!--Splash Screen-->
   
-  <style name="Theme.Splash" parent="android:Theme">
+  <!--<style name="Theme.Splash" parent="android:Theme">
     <item name="android:windowNoTitle">false</item>
     <item name="android:colorBackground">@android:color/white</item>
     <item name="android:windowFullscreen">true</item>
-  </style>
-  <!---<style name="Theme.Splash" parent="android:Theme">
+  </style>-->
+  <style name="Theme.Splash" parent="android:Theme">
     <item name="android:windowBackground">@drawable/SS</item>
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowFullscreen">true</item>
     <item name="colorPrimaryDark">#AAAAAA</item>
-  </style>-->
+  </style>
   <!--<style name="Theme.Splash" parent="@android:style/Theme.Light">
     <item name="android:colorBackground">@android:color/white</item>
     <item name="android:windowNoTitle">true</item>
