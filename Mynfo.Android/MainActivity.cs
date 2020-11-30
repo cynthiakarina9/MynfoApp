@@ -73,13 +73,17 @@
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             //ShortcutBadger.ApplyCount();            
 
-            if (mNfcAdapter != null) 
+            try
             {
                 mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
                 mNfcAdapter.SetNdefPushMessageCallback(this, this);
-                mNfcAdapter.SetOnNdefPushCompleteCallback(this, this);
+                mNfcAdapter.SetOnNdefPushCompleteCallback(this, this);                
             }
-            
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex);
+            }
+                        
             LoadApplication(new App(dbRoot));            
         }
 

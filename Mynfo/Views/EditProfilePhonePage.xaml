@@ -9,15 +9,7 @@
             BindingContext = "{Binding EditProfilePhone}">
             <ImageButton
                 BackgroundColor = "Transparent"
-                Grid.ColumnSpan = "3"
-                Margin = "0,0,70,0"
-                HorizontalOptions = "Center"
-                Source = "logo_superior3.png" 
-                VerticalOptions = "Center"
-                WidthRequest = "100"/>
-            <!--<ImageButton
-                BackgroundColor = "Transparent"
-                Clicked = "BackHome_Clicked"
+                Command = "{Binding ChangePasswordCommand}"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
