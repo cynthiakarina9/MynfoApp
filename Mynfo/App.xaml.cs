@@ -9,7 +9,9 @@
     using ViewModels;
     using Views;
     using Xamarin.Forms;
-    public partial class App : Application
+    using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+
+    public partial class App : Xamarin.Forms.Application
     {
         #region Variables
         public static string root_db;
@@ -33,6 +35,7 @@
         public App(string root_DB)
         {
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+            Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
             //MainPage = new NavigationPage(new HomePage());
             InitializeComponent();
 
@@ -70,7 +73,7 @@
                     mainViewModel.Settings = new SettingsViewModel();
                     mainViewModel.ChangePassword = new ChangePasswordViewModel();
                     mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
-                    Application.Current.MainPage = new MasterPage();
+                    Xamarin.Forms.Application.Current.MainPage = new MasterPage();
                     //Application.Current.MainPage = new NavigationPage(new MasterPage());
                 }
                 else
@@ -92,7 +95,7 @@
         {
             get
             {
-                return new Action(() => Application.Current.MainPage =
+                return new Action(() => Xamarin.Forms.Application.Current.MainPage =
                                   new NavigationPage(new LoginPage()));
             }
         }
@@ -101,13 +104,13 @@
         {
             if (profile == null)
             {
-                Application.Current.MainPage = new NavigationPage(new LoginPage());
+                Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new LoginPage());
                 return;
             }
 
             var apiService = new ApiService();
 
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var apiSecurity = Xamarin.Forms.Application.Current.Resources["APISecurity"].ToString();
             var token = await apiService.LoginFacebook(
                 apiSecurity,
                 "/api",
@@ -116,7 +119,7 @@
 
             if (token == null)
             {
-                Application.Current.MainPage = new NavigationPage(new LoginPage());
+                Xamarin.Forms.Application.Current.MainPage = new NavigationPage(new LoginPage());
                 return;
             }
 
@@ -155,7 +158,7 @@
             mainViewModel.Profiles = new ProfilesViewModel();
             mainViewModel.Settings = new SettingsViewModel();
             mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
-            Application.Current.MainPage = new MasterPage();
+            Xamarin.Forms.Application.Current.MainPage = new MasterPage();
             //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
             Settings.IsRemembered = "true";
 
