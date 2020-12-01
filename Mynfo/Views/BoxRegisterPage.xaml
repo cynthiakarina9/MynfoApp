@@ -36,7 +36,6 @@
                     Text = "{i18n:Translate BoxName}" 
                     VerticalOptions = "Center" />
                 <Entry 
-                    BackgroundColor = "{StaticResource LoginEntryColor}"
                     FontSize = "18"
                     Grid.Row = "2"
                     HeightRequest = "50"
