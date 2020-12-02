@@ -58,7 +58,7 @@
                         ItemsSource="{Binding profileEmail, Mode=TwoWay}"
                         Grid.Row="1"
                         HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
+                        SelectedItem="{Binding selectedProfile}"
                         ItemTapped="OnListViewItemTapped"
                         Margin="10,35,10,20">
                         <ListView.ItemTemplate>

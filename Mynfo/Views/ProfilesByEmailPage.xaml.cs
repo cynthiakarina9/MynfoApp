@@ -141,10 +141,6 @@
             mainViewModel.Profiles = new ProfilesViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesPage());
         }
-        void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            ProfileEmail selectedItem = e.SelectedItem as ProfileEmail;
-        }
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
