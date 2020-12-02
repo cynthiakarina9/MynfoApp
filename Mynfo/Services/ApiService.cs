@@ -401,6 +401,41 @@
             }
         }
 
+        public async Task<Box> GetBox(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    id);
+                var response = await client.GetAsync(url);
+
+
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Box();
+                }
+
+
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Box>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public async Task<Response> Post<T>(
             string urlBase,
             string servicePrefix,

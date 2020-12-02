@@ -522,4 +522,16 @@
   <data name="AddNetwork" xml:space="preserve">
     <value>Add network</value>
   </data>
+  <data name="AskDeleteNetworkFromBox" xml:space="preserve">
+    <value>Do you want to delete the network permanently from the box?</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="NetworkAdded" xml:space="preserve">
+    <value>Network added to the box </value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success!</value>
+  </data>
 </root>
