@@ -59,6 +59,7 @@
                     <ListView 
                         ItemsSource="{Binding profileWhatsApp}"
                         Grid.Row="1"
+                        SelectedItem="{Binding selectedProfile}"
                         ItemSelected="OnListViewItemSelected"
                         ItemTapped="OnListViewItemTapped"
                         HasUnevenRows="true">

@@ -140,6 +140,8 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
+            MainViewModel.GetInstance().ProfilesByFacebook.removeProfile();
+
             await App.Navigator.PopAsync();
         }
         public ICommand BackHomeCommand

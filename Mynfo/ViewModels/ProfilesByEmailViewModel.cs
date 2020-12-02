@@ -21,15 +21,12 @@
 
         #region Attributes
         private bool isRunning;
-        private List<ProfileEmail> profilemail;
+        private ObservableCollection<ProfileEmail> profilemail;
+        //private List<ProfileEmail> profilemail;
         #endregion
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
         #region Properties
-        public List<ProfileEmail> profileEmail 
+        public /*List<ProfileEmail>*/ ObservableCollection<ProfileEmail> profileEmail 
         {
             get { return profilemail; } 
             private set 
@@ -57,6 +54,8 @@
                 SetValue(ref this.isRunning, value); 
             }
         }
+
+        public ProfileEmail selectedProfile { get; set; }
         #endregion
 
         #region Constructor
@@ -68,9 +67,10 @@
         #endregion
 
         #region Commands
-        public async Task<List<ProfileEmail>> GetList()
+        public async /*Task<List<ProfileEmail>>*/ Task<ObservableCollection<ProfileEmail>> GetList()
         {
             this.IsRunning = true;
+            List<ProfileEmail> listEmail;
 
             var connection = await this.apiService.CheckConnection();
 
@@ -85,13 +85,18 @@
             }
             
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-
-            profileEmail = new List<ProfileEmail>();
-            profileEmail = await this.apiService.GetListByUser<ProfileEmail>(
+            
+            //profileEmail = new List<ProfileEmail>();
+            profileEmail = new ObservableCollection<ProfileEmail>();
+            listEmail = await this.apiService.GetListByUser<ProfileEmail>(
                 apiSecurity,
                 "/api",
                 "/ProfileEmails",
                 MainViewModel.GetInstance().User.UserId);
+
+            foreach (ProfileEmail profEmail in listEmail)
+                profileEmail.Add(profEmail);
+
             this.IsRunning = false;
             return profileEmail;
             
@@ -110,6 +115,25 @@
             Application.Current.MainPage = new MasterPage();
         }
 
+        //Actualizar listas
+        public void addProfile(ProfileEmail _profileEmail)
+        {
+            profileEmail.Add(_profileEmail);
+        }
+
+        public void removeProfile()
+        {
+            profileEmail.Remove(selectedProfile);
+        }
+
+        public void updateProfile(ProfileEmail _profileEmail)
+        {
+            int newIndex = profileEmail.IndexOf(selectedProfile);
+            profileEmail.Remove(selectedProfile);
+
+            profileEmail.Insert(newIndex, _profileEmail);
+
+        }
         #endregion
     }
 }

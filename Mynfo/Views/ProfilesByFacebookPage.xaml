@@ -55,6 +55,7 @@
                     <ListView 
                         ItemsSource="{Binding profileSM}"
                         Grid.Row="1"
+                        SelectedItem="{Binding selectedProfile}"
                         ItemSelected="OnListViewItemSelected"
                         ItemTapped="OnListViewItemTapped"
                         HasUnevenRows="true">

@@ -5,6 +5,7 @@
     using Helpers;
     using Mynfo.Views;
     using Services;
+    using System.Data.SqlClient;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -136,8 +137,42 @@
             this.Name = string.Empty;
             this.Email = string.Empty;
 
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
+            string consultaDefault = "SELECT Top 1 * FROM dbo.ProfileEmails where dbo.ProfileEmails.UserId = "
+                                        + MainViewModel.GetInstance().User.UserId +
+                                        " ORDER BY dbo.ProfileEmails.ProfileEmailId DESC";
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            ProfileEmail _profileEmail = new ProfileEmail();
+
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.Append(consultaDefault);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            _profileEmail.ProfileEmailId = (int)reader["ProfileEmailId"];
+                            _profileEmail.Name = (string)reader["Name"];
+                            _profileEmail.UserId = (int)reader["UserId"];
+                            _profileEmail.Email = (string)reader["Email"];
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            //Agregar a la lista
+            MainViewModel.GetInstance().ProfilesByEmail.addProfile(_profileEmail);
+
+            await App.Navigator.PopAsync(); 
+
+            /*MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();*/
         }
 
         public ICommand BackHomeCommand

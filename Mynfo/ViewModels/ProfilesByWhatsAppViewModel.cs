@@ -7,6 +7,7 @@
     using Mynfo.Views;
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
     using System.Text;
@@ -22,11 +23,11 @@
 
         #region Attributes
         private bool isRunning;
-        private List<ProfileWhatsapp> profileWhatsapp;
+        private ObservableCollection<ProfileWhatsapp> profileWhatsapp;
         #endregion
 
         #region Properties
-        public List<ProfileWhatsapp> profileWhatsApp
+        public ObservableCollection<ProfileWhatsapp> profileWhatsApp
         {
             get { return profileWhatsapp; }
             private set
@@ -41,6 +42,8 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
+
+        public ProfileWhatsapp selectedProfile { get; set; }
         #endregion
 
         #region Constructors
@@ -52,9 +55,11 @@
         #endregion
 
         #region Commands
-        public async Task<List<ProfileWhatsapp>> GetList()
+        public async Task<ObservableCollection<ProfileWhatsapp>> GetList()
         {
             this.IsRunning = true;
+
+            List<ProfileWhatsapp> listWhats;
 
             var connection = await this.apiService.CheckConnection();
 
@@ -70,14 +75,17 @@
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
-            profileWhatsApp = new List<ProfileWhatsapp>();
-            profileWhatsApp = await this.apiService.GetListByUser<ProfileWhatsapp>(
+            profileWhatsApp = new ObservableCollection<ProfileWhatsapp>();
+            listWhats = await this.apiService.GetListByUser<ProfileWhatsapp>(
                 apiSecurity,
                 "/api",
                 "/ProfileWhatsapps",
                 MainViewModel.GetInstance().User.UserId);
 
             this.IsRunning = false;
+
+            foreach (ProfileWhatsapp profWhatsapp in listWhats)
+                profileWhatsApp.Add(profWhatsapp);
 
             return profileWhatsApp;
 
@@ -99,6 +107,26 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+
+        //Actualizar listas
+        public void addProfile(ProfileWhatsapp _profileWhatsapp)
+        {
+            profileWhatsApp.Add(_profileWhatsapp);
+        }
+
+        public void removeProfile()
+        {
+            profileWhatsApp.Remove(selectedProfile);
+        }
+
+        public void updateProfile(ProfileWhatsapp _profileWhatsapp)
+        {
+            int newIndex = profileWhatsApp.IndexOf(selectedProfile);
+            profileWhatsApp.Remove(selectedProfile);
+
+            profileWhatsApp.Insert(newIndex, _profileWhatsapp);
+
         }
         #endregion
     }
