@@ -3,7 +3,6 @@
              xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n = "clr-namespace:Mynfo.Helpers"
              x:Class = "Mynfo.Views.LoginPage"
-             BackgroundColor = "{StaticResource BackgroundColor}"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <Grid
@@ -17,7 +16,7 @@
                     Margin="5">
                     <Image
                         HeightRequest="120"
-                        Source = "logo2"
+                        Source = "logo3"
                         WidthRequest="120"/>
                     <Label 
                         FontAttributes = "Bold"
@@ -80,11 +79,15 @@
                         IsToggled = "{Binding IsRemembered, Mode = TwoWay}"
                         HorizontalOptions = "End"/>
                 </StackLayout >
-                <!--<Label
+                    <Label
                     HorizontalOptions = "Center"
                     Text = "{i18n:Translate Forgot}"
-                    TextColor = "{StaticResource AccentColor}"
-                    VerticalOptions = "FillAndExpand"/>-->
+                    TextColor = "{StaticResource MainColor}"
+                    VerticalOptions = "FillAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 <StackLayout
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
@@ -97,7 +100,7 @@
                         Text = "{i18n:Translate Login}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         WidthRequest = "150"/>
-                        <!--<Label
+                    <!--<Label
                         HorizontalOptions = "Center"
                         FontAttributes = "Bold"
                         FontSize = "20"
@@ -108,8 +111,8 @@
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command = "{Binding RegisterCommand}" />
                             </Label.GestureRecognizers>
-                        </Label>-->
-                        <Button
+                    </Label>-->
+                    <Button
                         BackgroundColor="Transparent"
                         BorderRadius = "23"
                         Command="{Binding RegisterCommand}"
@@ -120,7 +123,7 @@
                         BorderColor="{StaticResource MainColor}"
                         VerticalOptions="FillAndExpand"
                         WidthRequest="150"/>
-                    </StackLayout>
+                </StackLayout>
                 <StackLayout
                     HorizontalOptions = "Center"
                     Orientation = "Horizontal"
