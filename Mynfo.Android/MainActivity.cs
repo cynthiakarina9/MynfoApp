@@ -21,7 +21,8 @@
     using Newtonsoft.Json.Linq;
     using SQLite;
     using Android.Graphics.Drawables;
-     
+    using System.Globalization;
+
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait)]
     [IntentFilter(new[] { NfcAdapter.ActionNdefDiscovered }, 
     Categories = new[] { Intent.CategoryDefault }, 
@@ -29,6 +30,8 @@
     DataScheme = "vnd.android.nfc", 
     DataPathPrefix = "/com.mynfo:letypetype", 
     DataHost = "ext")]   
+
+
 
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, NfcAdapter.ICreateNdefMessageCallback, NfcAdapter.IOnNdefPushCompleteCallback
     {
@@ -49,7 +52,8 @@
                         
         public NfcAdapter mNfcAdapter;
         public static string json;
-        public NfcAdapter NFCdevice;        
+        public NfcAdapter NFCdevice;
+        public Activity activity;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {            
@@ -76,7 +80,7 @@
             try
             {
                 mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
-                mNfcAdapter.SetNdefPushMessageCallback(this, this);
+                mNfcAdapter.SetNdefPushMessageCallback(this, this);               
                 mNfcAdapter.SetOnNdefPushCompleteCallback(this, this);                
             }
             catch (Exception ex) 
@@ -85,7 +89,7 @@
             }
                         
             LoadApplication(new App(dbRoot));            
-        }
+        }                       
 
         //List<Get_nfc> nfcData = null;
         public List<Get_nfc> nfcData = new List<Get_nfc>();
@@ -143,7 +147,11 @@
                     string json_body = null;
                     string json_value = null;
                     string json_fantasma = null;
+                    
 
+                    var finaldate = Box_Local.Time.ToString("MM/dd/yyyy hh:mm:ss tt", CultureInfo.CreateSpecificCulture("es-MX"));
+
+                    //11/30/2020 6:09:07 p. m.
 
                     json_header = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
                            "¡";
@@ -237,14 +245,15 @@
         }
 
         public NdefMessage CreateNdefMessage(NfcEvent e)
-        {
-            NdefMessage message = null;
+        {           
+            NdefMessage message = null;            
             try
             {
                 get_box();
                 var Messaje = get_box();
-                NdefRecord Record = NdefRecord.CreateTextRecord(null,Messaje);
-                message = new NdefMessage(new[] { Record });                                               
+                NdefRecord Record = NdefRecord.CreateTextRecord(null,Messaje);                
+                message = new NdefMessage(new[] { Record });
+                
             }
             catch (Exception ex)
             {
@@ -252,6 +261,10 @@
                 message = null;
             }
             return message;
+        }
+
+        private void InvokeBeam(Activity activity)
+        {            
         }
 
         public void OnNdefPushComplete(NfcEvent e)
@@ -350,11 +363,17 @@
             {
                 BoxId = Convert.ToInt32(nfcData[0].boxId),
                 UserId = Convert.ToInt32(nfcData[0].userId),
-                Time = Convert.ToDateTime(nfcData[0].time),
+                //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),
+                Time = DateTime.Now,
                 ImagePath = nfcData[0].imagePath,
                 UserTypeId = Convert.ToInt32(nfcData[0].userTypeId),
                 FirstName = nfcData[0].firstName,
                 LastName = nfcData[0].lastName
+                //11/30/2020 6:09:07 p. m.
+                //11/9/2020 6:57:29 p. m.
+                //11/30/2020 7:56:29 p. m.
+                //11/30/2020 7:56:29 p. m.
+                //11-23-2020 11:55:16 p. m.
             };
 
             //Insertar la box foranea
