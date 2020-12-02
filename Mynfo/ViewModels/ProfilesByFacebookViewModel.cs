@@ -6,6 +6,7 @@
     using Mynfo.Views;
     using Services;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -18,7 +19,7 @@
 
         #region Attributes
         private bool isRunning;
-        private List<ProfileSM> profilesM;
+        private ObservableCollection<ProfileSM> profilesM;
         #endregion
 
         #region Properties
@@ -28,7 +29,7 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-        public List<ProfileSM> profileSM
+        public ObservableCollection<ProfileSM> profileSM
         {
             get { return profilesM; }
             private set
@@ -36,6 +37,8 @@
                 SetValue(ref profilesM, value);
             }
         }
+
+        public ProfileSM selectedProfile { get; set; }
         #endregion
 
         #region Constructor
@@ -45,9 +48,11 @@
             GetList();
         }
         
-        private async Task<List<ProfileSM>> GetList()
+        private async Task<ObservableCollection<ProfileSM>> GetList()
         {
             this.IsRunning = true;
+
+            List<ProfileSM> profileSocialMedia;
 
             var connection = await this.apiService.CheckConnection();
 
@@ -63,14 +68,17 @@
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
-            profileSM = new List<ProfileSM>();
-            profileSM = await this.apiService.GetListByUser<ProfileSM>(
+            profileSM = new ObservableCollection<ProfileSM>();
+            profileSocialMedia = await this.apiService.GetListByUser<ProfileSM>(
                 apiSecurity,
                 "/api",
                 "/ProfileSMs",
                 MainViewModel.GetInstance().User.UserId);
             
             this.IsRunning = false;
+
+            foreach (ProfileSM profSM in profileSocialMedia)
+                profileSM.Add(profSM);
 
             return profileSM;
         }
@@ -89,5 +97,19 @@
         }
         #endregion
 
+        #region Methods
+
+        //Actualizar listas
+        public void addProfile(ProfileSM _profileSM)
+        {
+            profileSM.Add(_profileSM);
+        }
+
+        public void removeProfile()
+        {
+            profileSM.Remove(selectedProfile);
+        }
+
+        #endregion
     }
 }

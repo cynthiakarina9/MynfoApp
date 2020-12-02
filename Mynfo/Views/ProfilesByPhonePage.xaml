@@ -55,8 +55,9 @@
                         Padding="25"
                         x:Name="PhoneList" />-->
                     <ListView 
-                        ItemsSource="{Binding Profilephone}"
+                        ItemsSource="{Binding profilephone}"
                         Grid.Row="1"
+                        SelectedItem="{Binding selectedProfile}"
                         ItemSelected="OnListViewItemSelected"
                         ItemTapped="OnListViewItemTapped"
                         HasUnevenRows="true">

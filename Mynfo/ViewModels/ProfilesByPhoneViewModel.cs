@@ -6,6 +6,7 @@
     using Mynfo.Services;
     using Mynfo.Views;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -18,7 +19,7 @@
 
         #region Attributes
         private bool isRunning;
-        private List<ProfilePhone> profilePhone;
+        private ObservableCollection<ProfilePhone> profilePhone;
         #endregion
 
         #region Properties
@@ -28,7 +29,7 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-        public List<ProfilePhone> Profilephone
+        public /*List<ProfilePhone>*/ ObservableCollection<ProfilePhone> profilephone
         {
             get { return profilePhone; }
             private set
@@ -36,16 +37,20 @@
                 SetValue(ref profilePhone, value);
             }
         }
+
+        public ProfilePhone selectedProfile { get; set; }
         #endregion
+
         #region Constructor
         public ProfilesByPhoneViewModel()
         {
             apiService = new ApiService();
             GetList();
         }
-        private async Task<List<ProfilePhone>> GetList()
+        private async /*Task<List<ProfilePhone>>*/ Task<ObservableCollection<ProfilePhone>> GetList()
         {
             this.IsRunning = true;
+            List<ProfilePhone> listPhone;
 
             var connection = await this.apiService.CheckConnection();
 
@@ -61,17 +66,25 @@
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
-            Profilephone = new List<ProfilePhone>();
-            Profilephone = await this.apiService.GetListByUser<ProfilePhone>(
+            //Profilephone = new List<ProfilePhone>();
+            profilephone = new ObservableCollection<ProfilePhone>();
+            listPhone = await this.apiService.GetListByUser<ProfilePhone>(
                 apiSecurity,
                 "/api",
                 "/ProfilePhones",
                 MainViewModel.GetInstance().User.UserId);
 
+            foreach (ProfilePhone profPhone in listPhone)
+                profilephone.Add(profPhone);
+
             this.IsRunning = false;
 
-            return Profilephone;
+            return profilephone;
         }
+
+        #endregion
+
+        #region Commands
         public ICommand BackHomeCommand
         {
             get
@@ -84,6 +97,26 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+
+        //Actualizar listas
+        public void addProfile(ProfilePhone _profilePhone)
+        {
+            profilephone.Add(_profilePhone);
+        }
+
+        public void removeProfile()
+        {
+            profilephone.Remove(selectedProfile);
+        }
+
+        public void updateProfile(ProfilePhone _profilePhone)
+        {
+            int newIndex = profilephone.IndexOf(selectedProfile);
+            profilephone.Remove(selectedProfile);
+
+            profilephone.Insert(newIndex, _profilePhone);
+
         }
         #endregion
     }
