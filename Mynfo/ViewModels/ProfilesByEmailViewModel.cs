@@ -23,25 +23,13 @@
         private bool isRunning;
         private List<ProfileEmail> profilemail;
         #endregion
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         #region Properties
         public List<ProfileEmail> profileEmail 
         {
             get { return profilemail; } 
             private set 
             {
-                
-                //if (PropertyChanged != null)
-                //{
-                //    PropertyChanged(this,
-                //        new PropertyChangedEventArgs(""));// Throw!!
-                //}
                 SetValue(ref profilemail, value);
-                //profileEmail = value;
             }
         }
 

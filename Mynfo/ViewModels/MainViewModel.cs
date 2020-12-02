@@ -146,7 +146,11 @@
             get; 
             set; 
         }
-
+        public PasswordRecoveryViewModel PasswordRecovery 
+        { 
+            get; 
+            set; 
+        }
         public ProfilesViewModel Profiles
         {
             get;

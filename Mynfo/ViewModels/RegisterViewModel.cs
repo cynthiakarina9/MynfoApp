@@ -9,6 +9,8 @@
     using Plugin.Media.Abstractions;
     using Services;
     using Xamarin.Forms;
+    using System;
+    using System.Text.RegularExpressions;
 
     public class RegisterViewModel : BaseViewModel
     {
@@ -123,7 +125,6 @@
                     Languages.Accept);
                 return;
             }
-
             if (!RegexUtilities.IsValidEmail(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
