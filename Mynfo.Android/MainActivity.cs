@@ -35,7 +35,6 @@
 
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, NfcAdapter.ICreateNdefMessageCallback, NfcAdapter.IOnNdefPushCompleteCallback
     {
-
         #region Singleton
         private static MainActivity instance;
 
@@ -48,12 +47,14 @@
 
             return instance;
         }
-        #endregion  
-                        
+        #endregion
+
+        #region Variables NFC
         public NfcAdapter mNfcAdapter;
         public static string json;
         public NfcAdapter NFCdevice;
         public Activity activity;
+        #endregion Variables NFC
 
         protected override void OnCreate(Bundle savedInstanceState)
         {            
@@ -91,189 +92,9 @@
             ToggleAccelerometer();
 
             LoadApplication(new App(dbRoot));            
-        }                       
-
-        //List<Get_nfc> nfcData = null;
-        public List<Get_nfc> nfcData = new List<Get_nfc>();
-
-        protected void HandleNFC(Intent intent, Boolean inForeground)
-        {
-            try 
-            {
-                NdefMessage[] msgs = null;
-                IParcelable[] rawMsgs = intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
-
-                if (rawMsgs != null)
-                {
-                    Get_nfc get_nfc = null;                    
-                    NdefMessage msg = (NdefMessage)rawMsgs[0];
-                    var text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
-
-                    string[] Json_parse = text.ToString().Split('¬');
-                    string Json_value = Json_parse[1];
-
-                    //nfcData almasena todo en una lista cuando obtiene los datos del telefono servidor 
-                    nfcData = (List<Get_nfc>)JsonConvert.DeserializeObject(Json_value, typeof(List<Get_nfc>));
-
-                    if(nfcData != null)
-                    {
-                        //Insertar método para poblar tabla de boxes foraneas
-                        this.InsertForeignData();
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("No message");
-                }
-            }
-            catch (Exception exep) 
-            {
-                Console.WriteLine(exep);
-            }            
         }
 
-        public string get_box() 
-        {
-            try
-            {
-                json = null;
-                var Profile = new ProfileLocal();
-                var Profile_1 = new ProfileLocal();
-                var Box_Local = new BoxLocal();
-                using (var conn = new SQLite.SQLiteConnection(App.root_db))
-                {                                        
-                    Profile_1 = conn.Table<ProfileLocal>().FirstOrDefault();                    
-                    Box_Local = conn.Table<BoxLocal>().FirstOrDefault();
-                    int coun = conn.Table<ProfileLocal>().Count();
-                    string json_header = null;
-                    string json_body = null;
-                    string json_value = null;
-                    string json_fantasma = null;
-                    
-
-                    var finaldate = Box_Local.Time.ToString("MM/dd/yyyy hh:mm:ss tt", CultureInfo.CreateSpecificCulture("es-MX"));
-
-                    //11/30/2020 6:09:07 p. m.
-
-                    json_header = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
-                           "¡";
-                    
-                    json_value = "{"
-                              + @"""BoxId"":""" + Box_Local.BoxId + @""",
-                                ""Name"":""" + Box_Local.Name + @""",
-                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
-                                ""UserId"":""" + Box_Local.UserId + @""",
-                                ""Time"":""" + Box_Local.Time + @""",
-                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
-                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
-                                ""FirstName"":""" + Box_Local.FirstName + @""",
-                                ""LastName"":""" + Box_Local.LastName + @""",
-                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
-                                ""FullName"":""" + Box_Local.FullName + @""",
-                                ""ProfileLocalId"":""" + Profile_1.ProfileLocalId + @""",
-                                ""IdBox"":""" + Profile_1.IdBox + @""",
-                                ""UserId_p"":""" + Profile_1.UserId + @""",
-                                ""ProfileName"":""" + Profile_1.ProfileName + @""",
-                                ""value"":""" + Profile_1.value + @""",
-                                ""ProfileType"":""" + Profile_1.ProfileType + @"""                                                              
-                                }";
-                    
-                    json_fantasma = "{"
-                              + @"""BoxId"":""-"",
-                                ""Name"":""" + Box_Local.Name + @""",
-                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
-                                ""UserId"":""" + Box_Local.UserId + @""",
-                                ""Time"":""" + Box_Local.Time + @""",
-                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
-                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
-                                ""FirstName"":""" + Box_Local.FirstName + @""",
-                                ""LastName"":""" + Box_Local.LastName + @""",
-                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
-                                ""FullName"":""" + Box_Local.FullName + @""",
-                                ""ProfileLocalId"":""" + Profile_1.ProfileLocalId + @""",
-                                ""IdBox"":""" + Profile_1.IdBox + @""",
-                                ""UserId_p"":""" + Profile_1.UserId + @""",
-                                ""ProfileName"":""" + Profile_1.ProfileName + @""",
-                                ""value"":""" + Profile_1.value + @""",
-                                ""ProfileType"":""" + Profile_1.ProfileType + @"""                                                              
-                                }";
-
-                    if (coun > 1)
-                    {
-                        for (int i = 1; i < coun; i++)
-                        {
-                            Profile = conn.Table<ProfileLocal>().ElementAt(i);
-
-                            json_body = "{"
-                              + @"""BoxId"":""" + Box_Local.BoxId + @""",
-                                ""Name"":""" + Box_Local.Name + @""",
-                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
-                                ""UserId"":""" + Box_Local.UserId + @""",
-                                ""Time"":""" + Box_Local.Time + @""",
-                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
-                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
-                                ""FirstName"":""" + Box_Local.FirstName + @""",
-                                ""LastName"":""" + Box_Local.LastName + @""",
-                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
-                                ""FullName"":""" + Box_Local.FullName + @""",
-                                ""ProfileLocalId"":""" + Profile.ProfileLocalId + @""",
-                                ""IdBox"":""" + Profile.IdBox + @""",
-                                ""UserId_p"":""" + Profile.UserId + @""",
-                                ""ProfileName"":""" + Profile.ProfileName + @""",
-                                ""value"":""" + Profile.value + @""",
-                                ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
-                                }";
-
-                            json_value = json_value + ",\n" + json_body;
-                        }
-                        json_value = "[" + json_value + "]";
-                    }
-                    else 
-                    {
-                        json_value = "[" + json_value + ",\n" + json_fantasma + "]";
-                    }
-                    
-                    
-                    json = "¬" + json_value;                   
-                }
-            } 
-            catch (Exception exx)
-            {
-                Console.Write(exx);
-                json = null;
-            }
-            var message = json;
-            return message;
-        }
-
-        public NdefMessage CreateNdefMessage(NfcEvent e)
-        {           
-            NdefMessage message = null;            
-            try
-            {
-                get_box();
-                var Messaje = get_box();
-                NdefRecord Record = NdefRecord.CreateTextRecord(null,Messaje);                
-                message = new NdefMessage(new[] { Record });
-                
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                message = null;
-            }
-            return message;
-        }
-        [Android.Runtime.Register("invokeBeam", "(Landroid/app/Activity;)Z", "", ApiSince = 21)]
-        [Android.Runtime.RequiresPermission("android.permission.NFC")]
-        public void InvokeBeam(Activity activity)
-        {}
-
-        public void OnNdefPushComplete(NfcEvent e)
-        {
-            Console.WriteLine("ok");
-        }
-
+        #region Status App NFC
         protected override void OnResume()
         {   
             base.OnResume();
@@ -296,7 +117,6 @@
             }
             
         }              
-
         protected override void OnNewIntent(Intent intent)
         {            
             var tag = intent.GetParcelableExtra(NfcAdapter.ExtraTag) as Tag;
@@ -330,7 +150,6 @@
                 HandleNFC(intent, true);
             }
         }
-
         protected override void OnPause()
         {
             base.OnPause();
@@ -340,21 +159,14 @@
             }
             catch (Exception ex) { Console.WriteLine(ex); }
         }
+        #endregion Status App NFC
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }                                          
-
-        public NdefRecord CreateMimeRecord(String mimeType, byte[] payload)
-        {
-            byte[] mimeBytes = Encoding.UTF8.GetBytes(mimeType);
-            NdefRecord mimeRecord = new NdefRecord(
-                NdefRecord.TnfMimeMedia, mimeBytes, new byte[0], payload);
-            return mimeRecord;
-        }       
-
+        }                                                 
         public void InsertForeignData()
         {
             ForeingBox      foreingBox;
@@ -415,13 +227,188 @@
             App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));
         }
 
+        #region NFC Code
+        public List<Get_nfc> nfcData = new List<Get_nfc>();
+        public NdefMessage CreateNdefMessage(NfcEvent e)
+        {
+            NdefMessage message = null;
+            try
+            {
+                get_box();
+                var Messaje = get_box();
+                NdefRecord Record = NdefRecord.CreateTextRecord(null, Messaje);
+                message = new NdefMessage(new[] { Record });
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                message = null;
+            }
+            return message;
+        }
+        public NdefRecord CreateMimeRecord(String mimeType, byte[] payload)
+        {
+            byte[] mimeBytes = Encoding.UTF8.GetBytes(mimeType);
+            NdefRecord mimeRecord = new NdefRecord(
+                NdefRecord.TnfMimeMedia, mimeBytes, new byte[0], payload);
+            return mimeRecord;
+        }
+        protected void HandleNFC(Intent intent, Boolean inForeground)
+        {
+            try
+            {
+                NdefMessage[] msgs = null;
+                IParcelable[] rawMsgs = intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
+
+                if (rawMsgs != null)
+                {
+                    Get_nfc get_nfc = null;
+                    NdefMessage msg = (NdefMessage)rawMsgs[0];
+                    var text = Encoding.UTF8.GetString(msg.GetRecords()[0].GetPayload());
+
+                    string[] Json_parse = text.ToString().Split('¬');
+                    string Json_value = Json_parse[1];
+
+                    //nfcData almasena todo en una lista cuando obtiene los datos del telefono servidor 
+                    nfcData = (List<Get_nfc>)JsonConvert.DeserializeObject(Json_value, typeof(List<Get_nfc>));
+
+                    if (nfcData != null)
+                    {
+                        //Insertar método para poblar tabla de boxes foraneas
+                        this.InsertForeignData();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No message");
+                }
+            }
+            catch (Exception exep)
+            {
+                Console.WriteLine(exep);
+            }
+        }
+        public string get_box()
+        {
+            try
+            {
+                json = null;
+                var Profile = new ProfileLocal();
+                var Profile_1 = new ProfileLocal();
+                var Box_Local = new BoxLocal();
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    Profile_1 = conn.Table<ProfileLocal>().FirstOrDefault();
+                    Box_Local = conn.Table<BoxLocal>().FirstOrDefault();
+                    int coun = conn.Table<ProfileLocal>().Count();
+                    string json_header = null;
+                    string json_body = null;
+                    string json_value = null;
+                    string json_fantasma = null;
 
 
+                    var finaldate = Box_Local.Time.ToString("MM/dd/yyyy hh:mm:ss tt", CultureInfo.CreateSpecificCulture("es-MX"));
+
+                    //11/30/2020 6:09:07 p. m.
+
+                    json_header = "Box recibida correctamente!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+                           "¡";
+
+                    json_value = "{"
+                              + @"""BoxId"":""" + Box_Local.BoxId + @""",
+                                ""Name"":""" + Box_Local.Name + @""",
+                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
+                                ""UserId"":""" + Box_Local.UserId + @""",
+                                ""Time"":""" + Box_Local.Time + @""",
+                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
+                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
+                                ""FirstName"":""" + Box_Local.FirstName + @""",
+                                ""LastName"":""" + Box_Local.LastName + @""",
+                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
+                                ""FullName"":""" + Box_Local.FullName + @""",
+                                ""ProfileLocalId"":""" + Profile_1.ProfileLocalId + @""",
+                                ""IdBox"":""" + Profile_1.IdBox + @""",
+                                ""UserId_p"":""" + Profile_1.UserId + @""",
+                                ""ProfileName"":""" + Profile_1.ProfileName + @""",
+                                ""value"":""" + Profile_1.value + @""",
+                                ""ProfileType"":""" + Profile_1.ProfileType + @"""                                                              
+                                }";
+
+                    json_fantasma = "{"
+                              + @"""BoxId"":""-"",
+                                ""Name"":""" + Box_Local.Name + @""",
+                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
+                                ""UserId"":""" + Box_Local.UserId + @""",
+                                ""Time"":""" + Box_Local.Time + @""",
+                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
+                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
+                                ""FirstName"":""" + Box_Local.FirstName + @""",
+                                ""LastName"":""" + Box_Local.LastName + @""",
+                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
+                                ""FullName"":""" + Box_Local.FullName + @""",
+                                ""ProfileLocalId"":""" + Profile_1.ProfileLocalId + @""",
+                                ""IdBox"":""" + Profile_1.IdBox + @""",
+                                ""UserId_p"":""" + Profile_1.UserId + @""",
+                                ""ProfileName"":""" + Profile_1.ProfileName + @""",
+                                ""value"":""" + Profile_1.value + @""",
+                                ""ProfileType"":""" + Profile_1.ProfileType + @"""                                                              
+                                }";
+
+                    if (coun > 1)
+                    {
+                        for (int i = 1; i < coun; i++)
+                        {
+                            Profile = conn.Table<ProfileLocal>().ElementAt(i);
+
+                            json_body = "{"
+                              + @"""BoxId"":""" + Box_Local.BoxId + @""",
+                                ""Name"":""" + Box_Local.Name + @""",
+                                ""BoxDefault"":""" + Box_Local.BoxDefault + @""",
+                                ""UserId"":""" + Box_Local.UserId + @""",
+                                ""Time"":""" + Box_Local.Time + @""",
+                                ""ImagePath"":""" + Box_Local.ImagePath + @""",
+                                ""UserTypeId"":""" + Box_Local.UserTypeId + @""",
+                                ""FirstName"":""" + Box_Local.FirstName + @""",
+                                ""LastName"":""" + Box_Local.LastName + @""",
+                                ""ImageFullPath"":""" + Box_Local.ImageFullPath + @""",
+                                ""FullName"":""" + Box_Local.FullName + @""",
+                                ""ProfileLocalId"":""" + Profile.ProfileLocalId + @""",
+                                ""IdBox"":""" + Profile.IdBox + @""",
+                                ""UserId_p"":""" + Profile.UserId + @""",
+                                ""ProfileName"":""" + Profile.ProfileName + @""",
+                                ""value"":""" + Profile.value + @""",
+                                ""ProfileType"":""" + Profile.ProfileType + @"""                                                              
+                                }";
+
+                            json_value = json_value + ",\n" + json_body;
+                        }
+                        json_value = "[" + json_value + "]";
+                    }
+                    else
+                    {
+                        json_value = "[" + json_value + ",\n" + json_fantasma + "]";
+                    }
 
 
+                    json = "¬" + json_value;
+                }
+            }
+            catch (Exception exx)
+            {
+                Console.Write(exx);
+                json = null;
+            }
+            var message = json;
+            return message;
+        }
+        public void OnNdefPushComplete(NfcEvent e)
+        {
+            Console.WriteLine("ok");
+        }
+        #endregion NFC Code
 
-
-
+        #region Trigger nfc
         // Set speed delay for monitoring changes.
         Xamarin.Essentials.SensorSpeed speed = Xamarin.Essentials.SensorSpeed.Game;
 
@@ -430,12 +417,10 @@
             // Register for reading changes, be sure to unsubscribe when finished
             Xamarin.Essentials.Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
         }
-
         void Accelerometer_ShakeDetected(object sender, EventArgs e)
         {
             // Process shake event
-            mNfcAdapter.InvokeBeam(this);
-            Console.WriteLine("jala");
+            mNfcAdapter.InvokeBeam(this);           
         }      
 
         public void ToggleAccelerometer()
@@ -458,5 +443,10 @@
                 Console.WriteLine("falla");
             }
         }
+        [Android.Runtime.Register("invokeBeam", "(Landroid/app/Activity;)Z", "", ApiSince = 21)]
+        [Android.Runtime.RequiresPermission("android.permission.NFC")]
+        public void InvokeBeam(Activity activity)
+        { }
+        #endregion Trigger nfc
     }
 }
