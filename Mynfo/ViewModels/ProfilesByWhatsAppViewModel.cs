@@ -23,6 +23,7 @@
 
         #region Attributes
         private bool isRunning;
+        private bool isVisible;
         private ObservableCollection<ProfileWhatsapp> profileWhatsapp;
         #endregion
 
@@ -42,6 +43,12 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
+        public bool IsVisible
+        {
+            get { return this.isVisible; }
+            set { SetValue(ref this.isVisible, value); }
+        }
+        public string NoNetworks { get; set; }
 
         public ProfileWhatsapp selectedProfile { get; set; }
         #endregion

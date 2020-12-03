@@ -20,7 +20,8 @@ namespace Mynfo.Droid.Implementations
             var activity = Context as Activity;
 
             var auth = new OAuth2Authenticator(
-                clientId: "694367591430475",
+                /*clientId: "694367591430475",*/
+                clientId: "312649343163059",
                 scope: "email",
                 authorizeUrl: new Uri("https://www.facebook.com/dialog/oauth/"),
                 redirectUrl: new Uri("https://www.facebook.com/connect/login_success.html"));

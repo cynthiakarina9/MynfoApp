@@ -555,5 +555,23 @@
         {
             get { return Resource.ProfileELabel; }
         }
+
+        public static string Success
+        {
+            get { return Resource.Success; }
+        }
+        public static string NetworkAdded
+        {
+            get { return Resource.NetworkAdded; }
+        }
+        public static string Close
+        {
+            get { return Resource.Close; }
+        }
+
+        public static string AskDeleteNetworkFromBox
+        {
+            get { return Resource.AskDeleteNetworkFromBox; }
+        }
     }
 }

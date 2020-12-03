@@ -1,4 +1,5 @@
-﻿using Mynfo.Models;
+﻿using Mynfo.Helpers;
+using Mynfo.Models;
 using Mynfo.Resources;
 using Mynfo.ViewModels;
 using System;
@@ -14,6 +15,8 @@ namespace Mynfo.Views
     {
 
         public Entry BxNameEntry = new Entry();
+
+        public String BoxName;
         public DetailsBoxPage(int _boxId = 0)
         {
             InitializeComponent();
@@ -31,7 +34,7 @@ namespace Mynfo.Views
             string queryGetWhatsapp;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             System.Text.StringBuilder sb;
-            String BoxName = "";
+            BoxName = "";
             bool BoxDefault = false;
             int UserId = 0;
             DateTime boxcreation = DateTime.Now;
@@ -145,7 +148,7 @@ namespace Mynfo.Views
 
 
             //Navegación a ventana de perfiles
-            BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault));
+            BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault, BoxName));
 
             //Creación del botón para volver a home
             bxBtnHome.BackgroundColor = Color.Transparent;
@@ -1183,13 +1186,13 @@ namespace Mynfo.Views
             }
         }
 
-        private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault)
+        private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {
             /*var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));*/
             
-            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault));
+            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)
@@ -1221,6 +1224,7 @@ namespace Mynfo.Views
                 }
                 BxNameEntry.IsReadOnly = true;
                 BxNameEntry.TextColor = Color.FromHex("#FF5521");
+                BoxName = _name;
             }
         }
         async private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)
@@ -1230,7 +1234,7 @@ namespace Mynfo.Views
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
 
-            bool response = await DisplayAlert("Atención", "¿Desea borrar el perfil de la box permanentemente?", "Si", "No");
+            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
 
             if(response == true)
             {
@@ -1257,7 +1261,7 @@ namespace Mynfo.Views
             string queryDeleteBoxEmail = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId + " and dbo.Box_ProfileEmail.ProfileEmailId = " + _EmailId;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
-            bool response = await DisplayAlert("Atención", "¿Desea borrar el perfil de la box permanentemente?", "Si", "No");
+            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
 
             if (response == true)
             {
@@ -1285,7 +1289,7 @@ namespace Mynfo.Views
             string queryDeleteBoxSM = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId + " and dbo.Box_ProfileSM.ProfileMSId = " + _SMId;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
-            bool response = await DisplayAlert("Atención", "¿Desea borrar el perfil de la box permanentemente?", "Si", "No");
+            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
 
             if (response == true)
             {
@@ -1315,7 +1319,7 @@ namespace Mynfo.Views
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
 
-            bool response = await DisplayAlert("Atención", "¿Desea borrar el perfil de la box permanentemente?", "Si", "No");
+            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
 
             if (response == true)
             {

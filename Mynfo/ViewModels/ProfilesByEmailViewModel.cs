@@ -31,14 +31,7 @@
             get { return profilemail; } 
             private set 
             {
-                
-                //if (PropertyChanged != null)
-                //{
-                //    PropertyChanged(this,
-                //        new PropertyChangedEventArgs(""));// Throw!!
-                //}
                 SetValue(ref profilemail, value);
-                //profileEmail = value;
             }
         }
 

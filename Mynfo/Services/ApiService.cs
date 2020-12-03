@@ -190,6 +190,49 @@
             }
         }
 
+        public async Task<Response> PasswordRecovery(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string email)
+        {
+            try
+            {
+                var userRequest = new UserRequest { Email = email, };
+                var request = JsonConvert.SerializeObject(userRequest);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
         public async Task<Response> Get<T>(
             string urlBase,
             string servicePrefix,
@@ -398,6 +441,41 @@
                     IsSuccess = false,
                     Message = ex.Message,
                 };
+            }
+        }
+
+        public async Task<Box> GetBox(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    id);
+                var response = await client.GetAsync(url);
+
+
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Box();
+                }
+
+
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Box>(result);
+            }
+            catch
+            {
+                return null;
             }
         }
 

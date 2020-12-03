@@ -523,4 +523,16 @@ Você deve inserir um url</value>
   <data name="AddNetwork" xml:space="preserve">
     <value>Adicionar rede</value>
   </data>
+  <data name="AskDeleteNetworkFromBox" xml:space="preserve">
+    <value>Você deseja excluir a rede permanentemente da box?</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="NetworkAdded" xml:space="preserve">
+    <value>Rede adicionada à caixa </value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Sucesso!</value>
+  </data>
 </root>
