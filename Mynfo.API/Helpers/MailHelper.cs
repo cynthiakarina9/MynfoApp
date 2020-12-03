@@ -23,8 +23,7 @@
                 var credential = new NetworkCredential
                 {
                     UserName = WebConfigurationManager.AppSettings["AdminUser"],
-                    Password = WebConfigurationManager.AppSettings["AdminPassWord"],
-                    Domain = WebConfigurationManager.AppSettings["UserDomain"]
+                    Password = WebConfigurationManager.AppSettings["AdminPassWord"]
                 };
                 smtp.Credentials = credential;
                 smtp.Host = WebConfigurationManager.AppSettings["SMTPName"];
