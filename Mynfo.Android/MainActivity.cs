@@ -87,7 +87,9 @@
             {
                 Console.WriteLine(ex);
             }
-                        
+            DetectShakeTest();
+            ToggleAccelerometer();
+
             LoadApplication(new App(dbRoot));            
         }                       
 
@@ -262,10 +264,10 @@
             }
             return message;
         }
-
-        private void InvokeBeam(Activity activity)
-        {            
-        }
+        [Android.Runtime.Register("invokeBeam", "(Landroid/app/Activity;)Z", "", ApiSince = 21)]
+        [Android.Runtime.RequiresPermission("android.permission.NFC")]
+        public void InvokeBeam(Activity activity)
+        {}
 
         public void OnNdefPushComplete(NfcEvent e)
         {
@@ -411,6 +413,50 @@
             }
             //Enviar a detalles de la box foranea cuando se inserta
             App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));
-        }       
+        }
+
+
+
+
+
+
+
+
+        // Set speed delay for monitoring changes.
+        Xamarin.Essentials.SensorSpeed speed = Xamarin.Essentials.SensorSpeed.Game;
+
+        public void DetectShakeTest()
+        {
+            // Register for reading changes, be sure to unsubscribe when finished
+            Xamarin.Essentials.Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+        }
+
+        void Accelerometer_ShakeDetected(object sender, EventArgs e)
+        {
+            // Process shake event
+            mNfcAdapter.InvokeBeam(this);
+            Console.WriteLine("jala");
+        }      
+
+        public void ToggleAccelerometer()
+        {
+            try
+            {
+                if (Xamarin.Essentials.Accelerometer.IsMonitoring)
+                    Xamarin.Essentials.Accelerometer.Stop();
+                else
+                    Xamarin.Essentials.Accelerometer.Start(speed);
+            }
+            catch (Xamarin.Essentials.FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+                Console.WriteLine("falla");
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+                Console.WriteLine("falla");
+            }
+        }
     }
 }
