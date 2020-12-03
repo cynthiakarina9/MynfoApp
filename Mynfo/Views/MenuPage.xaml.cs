@@ -24,6 +24,6 @@ namespace Mynfo.Views
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
             MenuItemViewModel tappedItem = e.Item as MenuItemViewModel;
-        }
+        }        
     }
 }

@@ -151,6 +151,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Do you want to delete the network permanently from the box?.
+        /// </summary>
+        public static string AskDeleteNetworkFromBox {
+            get {
+                return ResourceManager.GetString("AskDeleteNetworkFromBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Back.
         /// </summary>
         public static string Back {
@@ -255,6 +264,15 @@ namespace Mynfo.Resources {
         public static string CIOC {
             get {
                 return ResourceManager.GetString("CIOC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
             }
         }
         
@@ -835,6 +853,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Network added to the box .
+        /// </summary>
+        public static string NetworkAdded {
+            get {
+                return ResourceManager.GetString("NetworkAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Networks list.
         /// </summary>
         public static string NetworksList {
@@ -1200,6 +1227,15 @@ namespace Mynfo.Resources {
         public static string Subregion {
             get {
                 return ResourceManager.GetString("Subregion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Success!.
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
             }
         }
         

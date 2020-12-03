@@ -522,4 +522,16 @@
   <data name="NetworkList" xml:space="preserve">
     <value>Lista de redes</value>
   </data>
+  <data name="AskDeleteNetworkFromBox" xml:space="preserve">
+    <value>¿Desea borrar el perfil permanentemente de la box?</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="NetworkAdded" xml:space="preserve">
+    <value>Red agregada a la box </value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>¡Éxito!</value>
+  </data>
 </root>

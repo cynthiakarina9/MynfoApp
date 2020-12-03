@@ -1,4 +1,7 @@
-﻿using Mynfo.Models;
+﻿using Mynfo.Domain;
+using Mynfo.Helpers;
+using Mynfo.Models;
+using Mynfo.Services;
 using Mynfo.ViewModels;
 using System;
 using System.Data.SqlClient;
@@ -13,9 +16,10 @@ namespace Mynfo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesBYPESMPage : ContentPage
     {
-        public ProfilesBYPESMPage(int _BoxId, string _ProfileType, bool _BoxDefault)
+        public ProfilesBYPESMPage(int _BoxId, string _ProfileType, bool _BoxDefault, string _boxName = "")
         {
             InitializeComponent();
+
             #region Variables
             int BoxId = _BoxId;
             int UserId = MainViewModel.GetInstance().User.UserId;
@@ -30,7 +34,7 @@ namespace Mynfo.Views
 
             #region Queries
 
-            queryGetEmailProfiles = "select dbo.ProfileEmails.ProfileEmailId from dbo.ProfileEmails " +
+        queryGetEmailProfiles = "select dbo.ProfileEmails.ProfileEmailId from dbo.ProfileEmails " +
                                             "where dbo.ProfileEmails.UserId = " + UserId + " except select " +
                                             "dbo.Box_ProfileEmail.ProfileEmailId from dbo.Box_ProfileEmail " +
                                             "where dbo.Box_ProfileEmail.BoxId = " + BoxId;
@@ -53,7 +57,7 @@ namespace Mynfo.Views
 
             #region Commands
 
-            BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId, _BoxDefault));
+            BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId, _BoxDefault, _boxName));
             
             GoToProfiles.Clicked += new EventHandler((sender, e) => GoToProfiles_Clicked(sender, e, _BoxId,_ProfileType, _BoxDefault));
 
@@ -114,7 +118,7 @@ namespace Mynfo.Views
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
                                                     CreateRelation.Source = "enter1";
-                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxPhoneRelation(sender, e, BoxId, ProfilePhoneId, _BoxDefault));
+                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxPhoneRelation(sender, e, BoxId, ProfilePhoneId, _BoxDefault, _boxName));
 
                                                     Line.HeightRequest = 1;
                                                     Line.Color = Color.FromHex("#FF5521");
@@ -185,7 +189,7 @@ namespace Mynfo.Views
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
                                                     CreateRelation.Source = "enter1";
-                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxEmailRelation(sender, e, BoxId, ProfileEmailId, _BoxDefault));
+                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxEmailRelation(sender, e, BoxId, ProfileEmailId, _BoxDefault, _boxName));
 
                                                     Line.HeightRequest = 1;
                                                     Line.Color = Color.FromHex("#FF5521");
@@ -252,7 +256,7 @@ namespace Mynfo.Views
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
                                                     CreateRelation.Source = "enter1";
-                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxSMRelation(sender, e, BoxId, ProfileSMId, _BoxDefault));
+                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxSMRelation(sender, e, BoxId, ProfileSMId, _BoxDefault, _boxName));
 
                                                     Line.HeightRequest = 1;
                                                     Line.Color = Color.FromHex("#FF5521");
@@ -319,7 +323,7 @@ namespace Mynfo.Views
                                                     CreateRelation.WidthRequest = 30;
                                                     CreateRelation.HorizontalOptions = LayoutOptions.End;
                                                     CreateRelation.Source = "enter1";
-                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxWhatsappRelation(sender, e, BoxId, ProfileWhatsappId, _BoxDefault));
+                                                    CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxWhatsappRelation(sender, e, BoxId, ProfileWhatsappId, _BoxDefault, _boxName));
 
                                                     Line.HeightRequest = 1;
                                                     Line.Color = Color.FromHex("#FF5521");
@@ -372,7 +376,7 @@ namespace Mynfo.Views
             }
         }
 
-        private void CreateBoxEmailRelation(object sender, EventArgs e, int _BoxId, int _EmailId, bool _boxDefault)
+        private void CreateBoxEmailRelation(object sender, EventArgs e, int _BoxId, int _EmailId, bool _boxDefault, string _boxName)
         {
             //Crear la relación de la box con el correo
             string queryCreateEmailRelation = "INSERT INTO dbo.Box_ProfileEmail ( BoxId, ProfileEmailId) " +
@@ -434,10 +438,12 @@ namespace Mynfo.Views
                 }
             }
 
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Email", _boxDefault));
+            DisplayAlert(Languages.Success, Languages.NetworkAdded + "'" +  _boxName + "'", Languages.Close);
+
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Email", _boxDefault, _boxName));
         }
 
-        private void CreateBoxPhoneRelation(object sender, EventArgs e, int _BoxId, int _PhoneId, bool _boxDefault)
+        private void CreateBoxPhoneRelation(object sender, EventArgs e, int _BoxId, int _PhoneId, bool _boxDefault, string _boxName)
         {
             //Crear la relación de la box con el teléfono
             string queryCreatePhoneRelation = "INSERT INTO dbo.Box_ProfilePhone ( BoxId, ProfilePhoneId) " +
@@ -497,10 +503,13 @@ namespace Mynfo.Views
                     }
                 }
             }
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Phone", _boxDefault));
+
+            DisplayAlert(Languages.Success, Languages.NetworkAdded + "'" + _boxName + "'", Languages.Close);
+
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Phone", _boxDefault, _boxName));
         }
 
-        private void CreateBoxSMRelation(object sender, EventArgs e, int _BoxId, int _SMId, bool _boxDefault)
+        private void CreateBoxSMRelation(object sender, EventArgs e, int _BoxId, int _SMId, bool _boxDefault, string _boxName)
         {
             //Crear la relación de la box con Facebook
             string queryCreateSMRelation = "INSERT INTO dbo.Box_ProfileSM ( BoxId, ProfileMSId) " +
@@ -560,10 +569,13 @@ namespace Mynfo.Views
                     }
                 }
             }
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Facebook", _boxDefault));
+
+            DisplayAlert(Languages.Success, Languages.NetworkAdded + "'" + _boxName + "'", Languages.Close);
+
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Facebook", _boxDefault, _boxName));
         }
 
-        private void CreateBoxWhatsappRelation(object sender, EventArgs e, int _BoxId, int _WhatsappId, bool _BoxDefault)
+        private void CreateBoxWhatsappRelation(object sender, EventArgs e, int _BoxId, int _WhatsappId, bool _BoxDefault, string _boxName)
         {
             //Crear la relación de la box con Whatsapp
             string queryCreateSMRelation = "insert into dbo.Box_ProfileWhatsapp (BoxId, ProfilePhoneId) " +
@@ -623,12 +635,15 @@ namespace Mynfo.Views
                     }
                 }
             }
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Whatsapp", _BoxDefault));
+
+            DisplayAlert(Languages.Success, Languages.NetworkAdded + "'" + _boxName + "'", Languages.Close);
+
+            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Whatsapp", _BoxDefault, _boxName));
         }
-        private void Back_Clicked(object sender, EventArgs e, int _BoxId,bool _boxDefault)
+        private void Back_Clicked(object sender, EventArgs e, int _BoxId,bool _boxDefault, string _boxName)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault));
+            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
         }
         private void BackHome_Clicked(object sender, EventArgs e)
         {
