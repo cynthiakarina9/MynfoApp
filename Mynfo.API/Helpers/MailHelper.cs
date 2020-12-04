@@ -19,12 +19,12 @@
 
             using (var smtp = new SmtpClient())
             {
-                smtp.UseDefaultCredentials = false;
                 var credential = new NetworkCredential
                 {
                     UserName = WebConfigurationManager.AppSettings["AdminUser"],
                     Password = WebConfigurationManager.AppSettings["AdminPassWord"]
                 };
+                smtp.UseDefaultCredentials = false;
                 smtp.Credentials = credential;
                 smtp.Host = WebConfigurationManager.AppSettings["SMTPName"];
                 smtp.Port = int.Parse(WebConfigurationManager.AppSettings["SMTPPort"]);

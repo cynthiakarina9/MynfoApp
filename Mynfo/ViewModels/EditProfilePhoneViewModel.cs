@@ -92,7 +92,7 @@
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.PutProfile(
+            var profile = await this.apiService.PutProfile(
                 apiSecurity,
                 "/api",
                 "/ProfilePhones/PutProfilePhone",
@@ -101,36 +101,39 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            string consultaDefault = "select * from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId = "
-                                        + profilephone.ProfilePhoneId;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            #region LastCode2
+            //string consultaDefault = "select * from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId = "
+            //                            + profilephone.ProfilePhoneId;
+            //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
-            ProfilePhone _profilePhone = new ProfilePhone();
+            //ProfilePhone _profilePhone = new ProfilePhone();
 
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append(consultaDefault);
-                string sql = sb.ToString();
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            //    sb.Append(consultaDefault);
+            //    string sql = sb.ToString();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            _profilePhone.ProfilePhoneId = (int)reader["ProfilePhoneId"];
-                            _profilePhone.Name = (string)reader["Name"];
-                            _profilePhone.UserId = (int)reader["UserId"];
-                            _profilePhone.Number = (string)reader["Number"];
-                        }
-                    }
-                    connection.Close();
-                }
-            }
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        using (SqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                _profilePhone.ProfilePhoneId = (int)reader["ProfilePhoneId"];
+            //                _profilePhone.Name = (string)reader["Name"];
+            //                _profilePhone.UserId = (int)reader["UserId"];
+            //                _profilePhone.Number = (string)reader["Number"];
+            //            }
+            //        }
+            //        connection.Close();
+            //    }
+            //}
+            #endregion
 
-            MainViewModel.GetInstance().ProfilesByPhone.updateProfile(_profilePhone);
+
+            MainViewModel.GetInstance().ProfilesByPhone.updateProfile(profile);
 
             await App.Navigator.PopAsync();
         }
