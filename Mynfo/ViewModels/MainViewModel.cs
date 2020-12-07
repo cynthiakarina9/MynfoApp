@@ -217,7 +217,8 @@
             {
                 Icon = "account",
                 PageName = "MyProfilePage",
-                Title = Languages.MyAccount,
+                Title = "Test"
+                /*Title = Languages.MyAccount,*/
             });
             /*this.Menus.Add(new MenuItemViewModel
             {
@@ -235,7 +236,8 @@
             {
                 Icon = "logout",
                 PageName = "LoginPage",
-                Title = Languages.LogOut,
+                Title = "Test"
+                /*Title = Languages.LogOut,*/
             });
         }
         #endregion

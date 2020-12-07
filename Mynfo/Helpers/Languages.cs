@@ -3,14 +3,23 @@
     using Xamarin.Forms;
     using Interfaces;
     using Resources;
+    using System.Globalization;
 
     public static class Languages
     {
         static Languages()
         {
-            var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
-            Resource.Culture = ci;
-            DependencyService.Get<ILocalize>().SetLocale(ci);
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                Resource.Culture = CultureInfo.CurrentCulture;
+            }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                Resource.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+            }
+
+            DependencyService.Get<ILocalize>().SetLocale(Resource.Culture);
         }
 
         public static string Accept
