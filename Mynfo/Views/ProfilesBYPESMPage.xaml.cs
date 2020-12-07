@@ -357,19 +357,23 @@ namespace Mynfo.Views
             {
                 case "Phone":
                     mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
-                    Application.Current.MainPage = new NavigationPage(new CreateProfilePhonePage(_BoxDefault,_boxId));
+                    //Application.Current.MainPage = new NavigationPage(new CreateProfilePhonePage(_BoxDefault,_boxId));
+                    Application.Current.MainPage.Navigation.PushAsync(new CreateProfilePhonePage(_BoxDefault, _boxId));
                     break;
                 case "Email":
                     mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-                    Application.Current.MainPage = new NavigationPage(new CreateProfileEmailPage(_BoxDefault,_boxId));
+                    //Application.Current.MainPage = new NavigationPage(new CreateProfileEmailPage(_BoxDefault,_boxId));
+                    Application.Current.MainPage.Navigation.PushAsync(new CreateProfileEmailPage(_BoxDefault, _boxId));
                     break;
                 case "Facebook":
                     mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
-                    Application.Current.MainPage= new NavigationPage(new CreateProfileFacebookPage(_BoxDefault, _boxId));
+                    //Application.Current.MainPage= new NavigationPage(new CreateProfileFacebookPage(_BoxDefault, _boxId));
+                    Application.Current.MainPage.Navigation.PushAsync(new CreateProfileFacebookPage(_BoxDefault, _boxId));
                     break;
                 case "Whatsapp":
                     mainViewModel.CreateProfileWhatsApp = new CreateProfileWhatsAppViewModel();
-                    Application.Current.MainPage = new NavigationPage(new CreateProfileWhatsAppPage());
+                    //Application.Current.MainPage = new NavigationPage(new CreateProfileWhatsAppPage());
+                    Application.Current.MainPage.Navigation.PushAsync(new CreateProfileWhatsAppPage());
                     break;
                 default:
                     break;
@@ -438,7 +442,7 @@ namespace Mynfo.Views
                 }
             }
 
-            DisplayAlert(Languages.Success, Languages.NetworkAdded + "'" +  _boxName + "'", Languages.Close);
+            //DisplayAlert(Languages.Success, Languages.NetworkAdded + "'" +  _boxName + "'", Languages.Close);
 
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Email", _boxDefault, _boxName));
         }
@@ -504,7 +508,7 @@ namespace Mynfo.Views
                 }
             }
 
-            DisplayAlert(Languages.Success, Languages.NetworkAdded + "'" + _boxName + "'", Languages.Close);
+            //DisplayAlert(Languages.Success, Languages.NetworkAdded + "'" + _boxName + "'", Languages.Close);
 
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, "Phone", _boxDefault, _boxName));
         }

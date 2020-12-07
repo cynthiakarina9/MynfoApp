@@ -97,7 +97,7 @@
                     }
                     catch (SqlException ex)
                     {
-                        DisplayAlert("Atención", "El correo que se desea guardar ya se guardó previamente", "Ok");
+                        await DisplayAlert("Atención", "El correo que se desea guardar ya se guardó previamente", "Ok");
                     }
                 }
             }

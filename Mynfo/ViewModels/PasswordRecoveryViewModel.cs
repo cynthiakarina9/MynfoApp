@@ -111,14 +111,15 @@ namespace Mynfo.ViewModels
                 return;
             }
 
-            await Application.Current.MainPage.DisplayAlert(
-                "Confirm",
-                "Your new password has been sent to your email!",
-                "OK");
-
             IsRunning = false;
             IsEnabled = true;
-            return;
+
+            await Application.Current.MainPage.DisplayAlert(
+                Languages.ConfirmLabel,
+                "Your new password has been sent to your email!",
+                Languages.Accept);
+
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
         #endregion
     }

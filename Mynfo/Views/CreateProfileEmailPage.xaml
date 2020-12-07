@@ -19,18 +19,19 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
-                BindingContext = "{Binding CreateProfileEmail}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height = "70"/>
-                    <RowDefinition Height = "160"/>
-                    <RowDefinition Height = "110"/>
-                    <RowDefinition Height = "110"/>
-                    <RowDefinition />
-                    <RowDefinition Height = "120"/>
-                </Grid.RowDefinitions>
-                <Label 
+        <Grid
+            BindingContext = "{Binding CreateProfileEmail}">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height = "70"/>
+                        <RowDefinition Height = "160"/>
+                        <RowDefinition Height = "110"/>
+                        <RowDefinition Height = "110"/>
+                        <RowDefinition />
+                        <RowDefinition Height = "120"/>
+                    </Grid.RowDefinitions>
+                    <Label 
                     FontAttributes = "Bold"
                     FontSize = "25"
                     Grid.ColumnSpan ="1"
@@ -40,22 +41,22 @@
                     Text = "{i18n:Translate AddNetwork}"
                     TextColor = "{StaticResource MainColor}"
                     VerticalOptions = "Center"/>
-                <Image
+                    <Image
                     HeightRequest = "180"
                     Source = "mail2"
                     Grid.Row = "1"
                     WidthRequest = "180"/>
-                <StackLayout 
+                    <StackLayout 
                     Grid.Row = "2"
                     Padding = "20">
-                    <Label 
+                        <Label 
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
                         Text = "{i18n:Translate NameProfile}" 
                         TextColor = "{StaticResource MainColor}"
                         VerticalOptions = "Center"/>
-                    <Entry 
+                        <Entry 
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
@@ -66,17 +67,17 @@
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name="ProfileName"/>
-                </StackLayout>
-                <StackLayout 
+                    </StackLayout>
+                    <StackLayout 
                         Grid.Row = "3">
-                    <Label 
+                        <Label 
                         FontSize = "24" 
                         FontAttributes="Bold"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center" 
                         Text = "{i18n:Translate EMail}"
                         TextColor = "{StaticResource MainColor}" />
-                    <Entry 
+                        <Entry 
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
@@ -87,43 +88,41 @@
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name="ProfileMail"/>
-                </StackLayout>
-                <Grid
+                    </StackLayout>
+                    <Grid
                     Grid.Row = "4"
                     VerticalOptions = "CenterAndExpand">
-                    <ActivityIndicator
+                        <ActivityIndicator
                         IsRunning = "{Binding IsRunning, Mode=TwoWay}"
                         VerticalOptions = "CenterAndExpand"
                         x:Name= "ActivityIn">
-                    </ActivityIndicator>
+                        </ActivityIndicator>
+                    </Grid>
                 </Grid>
-                <StackLayout
-                    Grid.Row = "6"
-                    Padding="20">
-                    <Button 
+            </ScrollView>
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Margin="20"
+                VerticalOptions="End">
+                <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
                         Command = "{Binding SaveProfileEmailCommand}"
                         HeightRequest = "50"
-                        HorizontalOptions = "Fill"
                         Text = "{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
-                        WidthRequest = "150" 
                         x:Name="Save"/>
-                    <!-- Botón si viene de agregar perfiles a box -->
-                    <Button 
+                <!-- Botón si viene de agregar perfiles a box -->
+                <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
                         HeightRequest = "50"
-                        HorizontalOptions = "Fill"
                         Text="{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"
                         VerticalOptions = "Center"
-                        WidthRequest = "150" 
                         x:Name="SaveWBox"/>
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

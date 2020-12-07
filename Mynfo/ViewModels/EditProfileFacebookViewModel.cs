@@ -44,6 +44,7 @@
             set { SetValue(ref this.isRunning, value); }
         }
         #endregion
+
         #region Constructor
         public EditProfileFacebookViewModel(int _ProfileMSId)
         {
