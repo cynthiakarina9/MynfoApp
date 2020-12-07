@@ -107,6 +107,19 @@
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+        public ICommand NewProfileEmailCommand
+        {
+            get
+            {
+                return new RelayCommand(NewProfileEmail);
+            }
+        }
+        private void NewProfileEmail()
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
+            App.Navigator.PushAsync(new CreateProfileEmailPage());
+        }
 
         //Actualizar listas
         public void addProfile(ProfileEmail _profileEmail)

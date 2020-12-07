@@ -493,7 +493,8 @@
         //Ir hacia detalles de la box
         private void BoxDetailsView(object sender, EventArgs e, int _BoxId)
         {
-            Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+            //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+            App.Navigator.PushAsync(new DetailsBoxPage(_BoxId));
         }
 
         private async void CreateBox_Clicked(object sender, EventArgs e)

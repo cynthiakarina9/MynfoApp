@@ -18,7 +18,7 @@
             InitializeComponent();
             apiService = new ApiService();
 
-            /*if(_boxId == 0)
+            if(_boxId == 0)
             {
                 SaveWBox.IsVisible = false;
                 //BackButtonBox.IsVisible = false;
@@ -26,12 +26,12 @@
             else
             {
                 Save.IsVisible = false;
-                BackButton.IsVisible = false;
+                //BackButton.IsVisible = false;
             }
 
             SaveWBox.Clicked += new EventHandler((sender, e) => backToAssignProfiles(sender, e, _boxId,ProfileName.Text,ProfileNumber.Text, _boxDefault));
-            BackButtonBox.Clicked += new EventHandler((sender, e) => BackBox_Clicked(sender, e, _boxId, _boxDefault));
-        */
+            //BackButtonBox.Clicked += new EventHandler((sender, e) => BackBox_Clicked(sender, e, _boxId, _boxDefault));
+        
         }
 
         private async void backToAssignProfiles(object sender, EventArgs e, int _BoxId, string _profileName, string _profileNumber,bool _boxDefault)

@@ -1186,13 +1186,13 @@ namespace Mynfo.Views
             }
         }
 
-        private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
+        private void  BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {
-            /*var mainViewModel = MainViewModel.GetInstance();
+            var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));*/
-            
+
             Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
+            //Application.Current.MainPage.Navigation.PushModalAsync(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)

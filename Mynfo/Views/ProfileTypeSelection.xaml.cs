@@ -36,6 +36,7 @@ namespace Mynfo.Views
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.DetailsBox = new DetailsBoxViewModel();
             Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault, _boxName));
+            //Application.Current.MainPage.Navigation.PushAsync(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault, _boxName));
         }
         private void BackHome_Clicked(object sender, EventArgs e)
         {

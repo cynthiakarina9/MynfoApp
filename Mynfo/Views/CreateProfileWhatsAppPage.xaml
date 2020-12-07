@@ -19,111 +19,108 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
+        <Grid
             BindingContext = "{Binding CreateProfileWhatsApp}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height = "70"/>
-                    <RowDefinition Height = "160"/>
-                    <RowDefinition Height = "110"/>
-                    <RowDefinition Height = "110"/>
-                    <RowDefinition />
-                    <RowDefinition Height = "120"/>
-                </Grid.RowDefinitions>
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "25"
-                    Grid.ColumnSpan ="1"
-                    Grid.Row = "0"
-                    HorizontalOptions = "Center"
-                    Text = "{i18n:Translate AddNetwork}"
-                    TextColor = "{StaticResource MainColor}"
-                    VerticalOptions = "Center"/>
-                <Image
-                    Grid.Row = "1"
-                    HeightRequest = "180"
-                    Source = "whatsapp2"
-                    WidthRequest = "180"/>
-                <StackLayout 
-                    Grid.Row = "2"
-                    Padding = "20">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height = "70"/>
+                        <RowDefinition Height = "160"/>
+                        <RowDefinition Height = "110"/>
+                        <RowDefinition Height = "110"/>
+                        <RowDefinition />
+                        <RowDefinition Height = "120"/>
+                    </Grid.RowDefinitions>
                     <Label 
-                        FontSize = "24" 
-                        FontAttributes="Bold"
+                        FontAttributes = "Bold"
+                        FontSize = "25"
+                        Grid.ColumnSpan ="1"
+                        Grid.Row = "0"
                         HorizontalOptions = "Center"
-                        Text = "{i18n:Translate NameProfile}" 
+                        Text = "{i18n:Translate AddNetwork}"
                         TextColor = "{StaticResource MainColor}"
                         VerticalOptions = "Center"/>
-                    <Entry 
-                        FontSize = "21"
-                        HeightRequest = "46"
-                        HorizontalTextAlignment = "Center"
-                        HorizontalOptions = "Center"
-                        MaxLength = "10"
-                        Placeholder = "{i18n:Translate NProfilePlaceH}"
-                        Text = "{Binding Name}"
-                        VerticalOptions = "Center" 
-                        WidthRequest = "300"
-                        x:Name="ProfileName"/>
-                </StackLayout>
-                <StackLayout 
-                    Grid.Row = "3">
-                    <Label 
-                        FontSize = "24" 
-                        FontAttributes="Bold"
-                        HorizontalOptions = "Center"
-                        Text = "{i18n:Translate NumberPhone}" 
-                        TextColor = "{StaticResource MainColor}"
-                        VerticalOptions = "Center"/>
-                    <Entry 
-                        FontSize = "21"
-                        HeightRequest = "46"
-                        HorizontalTextAlignment = "Center"
-                        HorizontalOptions = "Center"
-                        Keyboard = "Telephone"
-                        MaxLength = "10"
-                        Text = "{Binding Number}"
-                        Placeholder = "xxx-xxx-xxxx"
-                        VerticalOptions = "Center" 
-                        WidthRequest = "300"
-                        x:Name="ProfileNumber"/>
-                </StackLayout>
-                <Grid
-                    Grid.Row = "4"
-                    VerticalOptions = "CenterAndExpand">
-                    <ActivityIndicator
-                        IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                        VerticalOptions = "CenterAndExpand"
-                        x:Name= "ActivityIn">
-                    </ActivityIndicator>
+                    <Image
+                        Grid.Row = "1"
+                        HeightRequest = "180"
+                        Source = "whatsapp2"
+                        WidthRequest = "180"/>
+                    <StackLayout 
+                        Grid.Row = "2"
+                        Padding = "20">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NameProfile}" 
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Entry 
+                            FontSize = "21"
+                            HeightRequest = "46"
+                            HorizontalTextAlignment = "Center"
+                            HorizontalOptions = "Center"
+                            MaxLength = "10"
+                            Placeholder = "{i18n:Translate NProfilePlaceH}"
+                            Text = "{Binding Name}"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300"
+                            x:Name="ProfileName"/>
+                    </StackLayout>
+                    <StackLayout 
+                        Grid.Row = "3">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NumberPhone}" 
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Entry 
+                            FontSize = "21"
+                            HeightRequest = "46"
+                            HorizontalTextAlignment = "Center"
+                            HorizontalOptions = "Center"
+                            Keyboard = "Telephone"
+                            MaxLength = "10"
+                            Text = "{Binding Number}"
+                            Placeholder = "xxx-xxx-xxxx"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300"
+                            x:Name="ProfileNumber"/>
+                    </StackLayout>
+                    <Grid
+                        Grid.Row = "4"
+                        VerticalOptions = "CenterAndExpand">
+                        <ActivityIndicator
+                            IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                            VerticalOptions = "CenterAndExpand"
+                            x:Name= "ActivityIn">
+                        </ActivityIndicator>
+                    </Grid>
                 </Grid>
-                <StackLayout
-                    Grid.Row = "6"
-                    Padding="20">
-                    <Button 
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
-                        Command = "{Binding SaveProfileWhatsAppCommand}"
-                        HeightRequest = "50"
-                        HorizontalOptions = "Fill"
-                        Text = "{i18n:Translate Save}"
-                        TextColor = "{StaticResource Dark_FontColor}"
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" 
-                        x:Name="Save"/>
-                    <!-- Botón si viene de agregar perfiles a box -->
-                    <!--<Button 
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
-                        HeightRequest = "50"
-                        HorizontalOptions = "Fill"
-                        Text="{i18n:Translate Save}"
-                        TextColor = "{StaticResource Dark_FontColor}"
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" 
-                        x:Name="SaveWBox"/>-->
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+            </ScrollView>
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Margin="20"
+                VerticalOptions="End">
+                <Button 
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    Command = "{Binding SaveProfileWhatsAppCommand}"
+                    HeightRequest = "50"
+                    Text = "{i18n:Translate Save}"
+                    TextColor = "{StaticResource Dark_FontColor}"
+                    x:Name="Save"/>
+                <!-- Botón si viene de agregar perfiles a box -->
+                <!--<Button 
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    HeightRequest = "50"
+                    Text="{i18n:Translate Save}"
+                    TextColor = "{StaticResource Dark_FontColor}"
+                    x:Name="SaveWBox"/>-->
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
