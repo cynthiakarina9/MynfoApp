@@ -3,7 +3,9 @@ using Mynfo.Models;
 using Mynfo.Resources;
 using Mynfo.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,6 +23,7 @@ namespace Mynfo.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
             int BoxId = _boxId;
             var boxLocal = new BoxLocal();
             int UserID = MainViewModel.GetInstance().User.UserId;
@@ -529,108 +532,108 @@ namespace Mynfo.Views
             }
 
             //Consulta para obtener Whatsapp
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(queryGetWhatsapp);
-                string sql = sb.ToString();
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    sb = new System.Text.StringBuilder();
+            //    sb.Append(queryGetWhatsapp);
+            //    string sql = sb.ToString();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var whatsappIcon = new ImageButton();
-                            var whatsappName = new Label();
-                            //var deleteProfile = new ImageButton();
-                            var Line = new BoxView();
-                            int WhatsappId = (int)reader["ProfileWhatsappId"];
-                            var space = new BoxView();
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        using (SqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                var whatsappIcon = new ImageButton();
+            //                var whatsappName = new Label();
+            //                //var deleteProfile = new ImageButton();
+            //                var Line = new BoxView();
+            //                int WhatsappId = (int)reader["ProfileWhatsappId"];
+            //                var space = new BoxView();
 
-                            whatsappIcon.Source = "whatsapp2.png";
-                            whatsappIcon.WidthRequest = 50;
-                            whatsappIcon.HeightRequest = 50;
-                            whatsappIcon.HorizontalOptions = LayoutOptions.Center;
-                            whatsappIcon.IsEnabled = true;
-                            whatsappIcon.Clicked += new EventHandler((sender, e) => DeleteBoxWhatsapp(sender, e, BoxId, WhatsappId));
+            //                whatsappIcon.Source = "whatsapp2.png";
+            //                whatsappIcon.WidthRequest = 50;
+            //                whatsappIcon.HeightRequest = 50;
+            //                whatsappIcon.HorizontalOptions = LayoutOptions.Center;
+            //                whatsappIcon.IsEnabled = true;
+            //                whatsappIcon.Clicked += new EventHandler((sender, e) => DeleteBoxWhatsapp(sender, e, BoxId, WhatsappId));
 
-                            whatsappName.Text = (string)reader["Name"];
-                            whatsappName.FontSize = 15;
-                            whatsappName.HorizontalTextAlignment = TextAlignment.Center;
-                            whatsappName.FontAttributes = FontAttributes.Bold;
-                            whatsappName.TextColor = Color.Black;
+            //                whatsappName.Text = (string)reader["Name"];
+            //                whatsappName.FontSize = 15;
+            //                whatsappName.HorizontalTextAlignment = TextAlignment.Center;
+            //                whatsappName.FontAttributes = FontAttributes.Bold;
+            //                whatsappName.TextColor = Color.Black;
 
-                            space.HeightRequest = 30;
+            //                space.HeightRequest = 30;
 
-                            /*deleteProfile.Source = "trash2.png";
-                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
-                            deleteProfile.CornerRadius = 15;
-                            deleteProfile.HeightRequest = 30;
-                            deleteProfile.WidthRequest = 30;
-                            deleteProfile.HorizontalOptions = LayoutOptions.End;
-                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));*/
+            //                /*deleteProfile.Source = "trash2.png";
+            //                deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
+            //                deleteProfile.CornerRadius = 15;
+            //                deleteProfile.HeightRequest = 30;
+            //                deleteProfile.WidthRequest = 30;
+            //                deleteProfile.HorizontalOptions = LayoutOptions.End;
+            //                deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));*/
 
-                            //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
-                            if (BoxDefault == true)
-                            {
-                                // deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
-                                whatsappIcon.BackgroundColor = Color.FromHex("#FFAB8F");
-                            }
-                            else
-                            {
-                                //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                whatsappIcon.BackgroundColor = Color.FromHex("#AAAAAA");
-                            }
+            //                //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
+            //                if (BoxDefault == true)
+            //                {
+            //                    // deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+            //                    whatsappIcon.BackgroundColor = Color.FromHex("#FFAB8F");
+            //                }
+            //                else
+            //                {
+            //                    //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
+            //                    whatsappIcon.BackgroundColor = Color.FromHex("#AAAAAA");
+            //                }
 
-                            //Asignación de caja en columnas
-                            switch (listProfileNum)
-                            {
-                                case 0:
-                                    listProfileNum = 2;
+            //                //Asignación de caja en columnas
+            //                switch (listProfileNum)
+            //                {
+            //                    case 0:
+            //                        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(whatsappIcon);
-                                    ProfilesList1.Children.Add(whatsappName);
-                                    ProfilesList1.Children.Add(space);
-                                    //ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+            //                        ProfilesList1.Children.Add(whatsappIcon);
+            //                        ProfilesList1.Children.Add(whatsappName);
+            //                        ProfilesList1.Children.Add(space);
+            //                        //ProfilesList1.Children.Add(deleteProfile);
+            //                        break;
 
-                                case 1:
-                                    listProfileNum = 2;
+            //                    case 1:
+            //                        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(whatsappIcon);
-                                    ProfilesList1.Children.Add(whatsappName);
-                                    ProfilesList1.Children.Add(space);
-                                    // ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+            //                        ProfilesList1.Children.Add(whatsappIcon);
+            //                        ProfilesList1.Children.Add(whatsappName);
+            //                        ProfilesList1.Children.Add(space);
+            //                        // ProfilesList1.Children.Add(deleteProfile);
+            //                        break;
 
-                                case 2:
-                                    listProfileNum = 3;
+            //                    case 2:
+            //                        listProfileNum = 3;
 
-                                    ProfilesList2.Children.Add(whatsappIcon);
-                                    ProfilesList2.Children.Add(whatsappName);
-                                    ProfilesList2.Children.Add(space);
-                                    //ProfilesList2.Children.Add(deleteProfile);
-                                    break;
+            //                        ProfilesList2.Children.Add(whatsappIcon);
+            //                        ProfilesList2.Children.Add(whatsappName);
+            //                        ProfilesList2.Children.Add(space);
+            //                        //ProfilesList2.Children.Add(deleteProfile);
+            //                        break;
 
-                                case 3:
-                                    listProfileNum = 1;
+            //                    case 3:
+            //                        listProfileNum = 1;
 
-                                    ProfilesList3.Children.Add(whatsappIcon);
-                                    ProfilesList3.Children.Add(whatsappName);
-                                    ProfilesList3.Children.Add(space);
-                                    //ProfilesList3.Children.Add(deleteProfile);
-                                    break;
+            //                        ProfilesList3.Children.Add(whatsappIcon);
+            //                        ProfilesList3.Children.Add(whatsappName);
+            //                        ProfilesList3.Children.Add(space);
+            //                        //ProfilesList3.Children.Add(deleteProfile);
+            //                        break;
 
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-                    connection.Close();
-                }
-            }
+            //                    default:
+            //                        break;
+            //                }
+            //            }
+            //        }
+            //        connection.Close();
+            //    }
+            //}
 
             //Marcar o desmarcar la box predeterminada
             void CheckDefaultBox(object sender, EventArgs e)
@@ -1188,11 +1191,9 @@ namespace Mynfo.Views
 
         private void  BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
-
-            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
-            //Application.Current.MainPage.Navigation.PushModalAsync(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
+            MainViewModel.GetInstance().ProfileTypeSelection = new ProfileTypeSelectionViewModel();
+            //Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
+            App.Navigator.PushAsync(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)

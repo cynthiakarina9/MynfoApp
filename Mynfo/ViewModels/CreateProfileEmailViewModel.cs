@@ -114,19 +114,19 @@
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Post(
+            var profileemail = await this.apiService.Post(
                 apiSecurity,
                 "/api",
                 "/ProfileEmails",
                 profileEmail);
 
-            if (!response.IsSuccess)
+            if (profileemail == default)
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    response.Message,
+                    Languages.ErrorAddProfile,
                     Languages.Accept);
                 return;
             }
@@ -134,45 +134,21 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
+            //Agregar a la lista
+            if (mainViewModel.ProfilesBYPESM != null)
+            {
+                mainViewModel.ProfilesBYPESM.addProfileEmail(profileemail);
+                mainViewModel.ProfilesBYPESM = null;
+            }
+            else
+            {
+                mainViewModel.ProfilesByEmail.addProfile(profileemail);
+            }
+
             this.Name = string.Empty;
             this.Email = string.Empty;
 
-            string consultaDefault = "SELECT Top 1 * FROM dbo.ProfileEmails where dbo.ProfileEmails.UserId = "
-                                        + MainViewModel.GetInstance().User.UserId +
-                                        " ORDER BY dbo.ProfileEmails.ProfileEmailId DESC";
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            ProfileEmail _profileEmail = new ProfileEmail();
-
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append(consultaDefault);
-                string sql = sb.ToString();
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            _profileEmail.ProfileEmailId = (int)reader["ProfileEmailId"];
-                            _profileEmail.Name = (string)reader["Name"];
-                            _profileEmail.UserId = (int)reader["UserId"];
-                            _profileEmail.Email = (string)reader["Email"];
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-
-            //Agregar a la lista
-            MainViewModel.GetInstance().ProfilesByEmail.addProfile(_profileEmail);
-
             await App.Navigator.PopAsync(); 
-
-            /*MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();*/
         }
 
         public ICommand BackHomeCommand
@@ -183,7 +159,7 @@
             }
         }
 
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();

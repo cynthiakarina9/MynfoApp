@@ -24,5 +24,8 @@
 
         [JsonIgnore]
         public virtual ICollection<Box_ProfileWhatsapp> Box_ProfileWhatsapp { get; set; }
+
+        [JsonIgnore]
+        public virtual bool Exist { get; set; }
     }
 }

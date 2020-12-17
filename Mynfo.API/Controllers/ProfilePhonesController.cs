@@ -25,6 +25,7 @@
             return db.ProfilePhones;
         }
 
+
         //// GET: api/ProfilePhones/5
         //[ResponseType(typeof(ProfilePhone))]
         //public async Task<IHttpActionResult> GetProfilePhone(int id)
@@ -37,7 +38,8 @@
 
         //    return Ok(profilePhone);
         //}
-        // GET: api/ProfileEmails/5
+
+        // GET: api/ProfilePhones/5
         [HttpPost]
         [Route("GetProfilePhone")]
         public async Task<IHttpActionResult> GetProfilePhone(JObject form)
@@ -61,6 +63,7 @@
 
             return Ok(profilePhone);
         }
+
         // GET: api/ProfilePhones/5
         [ResponseType(typeof(ProfilePhone))]
         public async Task<IHttpActionResult> GetProfilePhoneByUser(int id)
@@ -74,7 +77,7 @@
             return Ok(profilePhone);
         }
 
-        // PUT: api/ProfilePhones/PutProfilePhone
+        // PUT: api/ProfilePhones/5
         [ResponseType(typeof(void))]
         [Route("PutProfilePhone")]
         public async Task<IHttpActionResult> PutProfilePhone(ProfilePhone form)
@@ -94,7 +97,6 @@
             {
                 return BadRequest("Missing parameter.");
             }
-
 
             db.Entry(form).State = EntityState.Modified;
 
@@ -119,49 +121,14 @@
             return Ok(profilePhone);
         }
 
-        // PUT: api/ProfilePhones/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProfilePhone(int id, ProfilePhone profilePhone)
+        // POST: api/ProfilePhones
+        [ResponseType(typeof(ProfilePhone))]
+        public async Task<IHttpActionResult> PostProfilePhone(ProfilePhone profilePhone)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            if (id != profilePhone.ProfilePhoneId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(profilePhone).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProfilePhoneExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/ProfilePhones
-        [ResponseType(typeof(ProfilePhone))]
-        public async Task<IHttpActionResult> PostProfilePhone(ProfilePhone profilePhone)
-        {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
 
             db.ProfilePhones.Add(profilePhone);
             await db.SaveChangesAsync();

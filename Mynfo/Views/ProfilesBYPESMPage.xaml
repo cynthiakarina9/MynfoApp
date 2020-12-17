@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesBYPESMPage"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>
@@ -15,26 +16,18 @@
                 BackgroundColor = "Transparent"
                 Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,10,0"
+                Margin = "0,0,80,0"
                 HorizontalOptions = "Center"
                 Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
                 WidthRequest = "100"/>
-            <ImageButton 
-                BackgroundColor = "Transparent"
-                Grid.Column = "0"
-                HeightRequest = "40"
-                HorizontalOptions = "Start"
-                Source = "ic_navigation_arrow_back"
-                VerticalOptions = "Start"
-                WidthRequest = "40"
-                x:Name="BackDetails"/>
+            
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid>
-            <ScrollView
+        <Grid
             BindingContext = "{Binding ProfilesBYPESM}">
+            <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80" />
@@ -57,11 +50,212 @@
                     <!--End Titulo-->
 
                     <!--Lista de Perfiles-->
-                    <StackLayout 
+                    <!--<StackLayout 
                         Grid.Row="1"
                         HorizontalOptions="FillAndExpand"
                         Padding="25"
-                        x:Name="ProfileList" />
+                        x:Name="ProfileList" />-->
+                    <!-- Lista de perfiles Email -->
+                    <ActivityIndicator
+                        Grid.Row = "1"
+                        IsRunning = "{Binding IsRunning}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions="StartAndExpand" />
+                    <ListView  
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileEmail, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileEmail}"
+                        x:Name="ProfileListEmail">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="mail2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding Name, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <Label 
+                                            Grid.Column="2"
+                                            Text="{Binding Email, Mode=TwoWay}"
+                                            FontSize="10"
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Center"/>
+                                        <CheckBox
+                                            Grid.Column="3"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <!-- Lista de perfiles de teléfono -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemsSource="{Binding ProfilePhone, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfilePhone, Mode=TwoWay}"
+                        x:Name="ProfileListPhone">
+                        <ListView.ItemTemplate>
+                            <DataTemplate >
+                                <ViewCell>
+                                    <Grid Padding="15">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="tel2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding Name, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <Label 
+                                            Grid.Column="2"
+                                            Text="{Binding Number, Mode=TwoWay}"
+                                            FontSize="15"
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Center"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <!-- Lista de MS -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListSM">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="facebook2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <CheckBox
+                                            Grid.Column="3"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de WhatsApp -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileWhatsapp, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileWhatsapp}"
+                        x:Name="ProfileListWhatsapp">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="whatsapp2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding Name, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <Label 
+                                            Grid.Column="2"
+                                            Text="{Binding Number, Mode=TwoWay}"
+                                            FontSize="15"
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Center"/>
+                                        <CheckBox
+                                            Grid.Column="3"
+                                            x:Name="CkeckBoxWhatsapp"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
             </ScrollView>
             <!--Botón para agregar nuevas cuentas-->

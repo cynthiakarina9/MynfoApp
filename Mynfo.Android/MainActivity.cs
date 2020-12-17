@@ -73,6 +73,7 @@
             //Color de tema
             Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
             base.OnCreate(savedInstanceState);
+            Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

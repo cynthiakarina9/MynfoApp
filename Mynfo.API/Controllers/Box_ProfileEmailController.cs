@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Mynfo.Domain;
-
-namespace Mynfo.API.Controllers
+﻿namespace Mynfo.API.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using Mynfo.Domain;
+    using Newtonsoft.Json.Linq;
+
+    [RoutePrefix("api/Box_ProfileEmail")]
     public class Box_ProfileEmailController : ApiController
     {
         private DataContext db = new DataContext();
@@ -37,16 +39,70 @@ namespace Mynfo.API.Controllers
         //}
 
         // GET: api/Box_ProfileEmail/5
-        [ResponseType(typeof(Box_ProfileEmail))]
-        public async Task<IHttpActionResult> GetBox_ProfileEmail(int id)
+        [HttpPost]
+        [Route("GetBox_ProfileEmail")]
+        public async Task<IHttpActionResult> GetBox_ProfileEmail(JObject form)
         {
-            var box_ProfileEmail = await GetBox_ProfileEmail().Where(u => u.ProfileEmailId == id).ToListAsync();
-            if (box_ProfileEmail == null)
+            try
             {
-                return NotFound();
-            }
+                int idBox = 0;
+                int idEmail = 0;
+                dynamic jsonObject = form;
 
-            return Ok(box_ProfileEmail);
+                try
+                {
+                    idBox = jsonObject.BoxId;
+                    idEmail = jsonObject.ProfileEmailId;
+                }
+                catch
+                {
+                    return BadRequest("Incorrect call.");
+                }
+                var box_ProfilePhone = GetBox_ProfileEmail().Where(u => u.BoxId == idBox && u.ProfileEmailId == idEmail);
+                if (box_ProfilePhone.Count() == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok(box_ProfilePhone);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("GetBox_ProfileEmailId")]
+        public IQueryable<Box_ProfileEmail> GetBox_ProfileEmailId(JObject form)
+        {
+            try
+            {
+                int idBox = 0;
+                int idEmail = 0;
+                dynamic jsonObject = form;
+
+                try
+                {
+                    idBox = jsonObject.BoxId;
+                    idEmail = jsonObject.ProfileEmailId;
+                }
+                catch
+                {
+                    return null;
+                }
+                var box_ProfileEmail = db.Box_ProfileEmail.Where(u => u.BoxId == idBox && u.ProfileEmailId == idEmail);
+                if (box_ProfileEmail.Count() == 0)
+                {
+                    return null;
+                }
+
+                return box_ProfileEmail;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         // PUT: api/Box_ProfileEmail/5
@@ -103,14 +159,14 @@ namespace Mynfo.API.Controllers
         [ResponseType(typeof(Box_ProfileEmail))]
         public async Task<IHttpActionResult> DeleteBox_ProfileEmail(int id)
         {
-            var box_ProfileEmail = await GetBox_ProfileEmail().Where(u => u.ProfileEmailId == id).ToListAsync();
+            var box_ProfileEmail = GetBox_ProfileEmail().Where(u => u.ProfileEmailId == id).FirstOrDefault();
             if (box_ProfileEmail == null)
             {
                 return NotFound();
             }
 
             //db.Box_ProfileEmail.Remove(List<box_ProfileEmail>);
-            db.Box_ProfileEmail.RemoveRange(box_ProfileEmail);
+            db.Box_ProfileEmail.Remove(box_ProfileEmail);
             await db.SaveChangesAsync();
 
             return Ok(box_ProfileEmail);
