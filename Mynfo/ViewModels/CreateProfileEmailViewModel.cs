@@ -111,6 +111,7 @@
                 Name = this.Name,
                 Email = this.Email,
                 UserId = mainViewModel.User.UserId,
+                Exist = false
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -138,7 +139,6 @@
             if (mainViewModel.ProfilesBYPESM != null)
             {
                 mainViewModel.ProfilesBYPESM.addProfileEmail(profileemail);
-                mainViewModel.ProfilesBYPESM = null;
             }
             else
             {

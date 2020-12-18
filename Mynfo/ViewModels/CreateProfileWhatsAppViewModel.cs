@@ -114,6 +114,7 @@ namespace Mynfo.ViewModels
                 Name = this.Name,
                 Number = this.Number,
                 UserId = mainViewModel.User.UserId,
+                Exist = false
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -141,7 +142,6 @@ namespace Mynfo.ViewModels
             if (mainViewModel.ProfilesBYPESM != null)
             {
                 mainViewModel.ProfilesBYPESM.addProfileWhatsapp(profileWhatsapp);
-                mainViewModel.ProfilesBYPESM = null;
             }
             else
             {

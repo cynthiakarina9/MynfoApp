@@ -103,8 +103,10 @@
                                             FontSize="10"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
-                                        <CheckBox
-                                            Grid.Column="3"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
@@ -197,8 +199,10 @@
                                             FontAttributes="Bold" 
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
-                                        <CheckBox
-                                            Grid.Column="3"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
@@ -224,8 +228,8 @@
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="3*" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <ImageButton
@@ -248,9 +252,10 @@
                                             FontSize="15"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
-                                        <CheckBox
+                                        <input:CheckBox 
+                                            IsEnabled="False"
                                             Grid.Column="3"
-                                            x:Name="CkeckBoxWhatsapp"/>
+                                            IsChecked="{Binding Exist}" />
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

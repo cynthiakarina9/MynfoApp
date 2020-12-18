@@ -160,7 +160,7 @@
         [ResponseType(typeof(Box_ProfileWhatsapp))]
         public async Task<IHttpActionResult> DeleteBox_ProfileWhatsapp(int id)
         {
-            Box_ProfileWhatsapp box_ProfileWhatsapp = await db.Box_ProfileWhatsapp.FindAsync(id);
+            var box_ProfileWhatsapp = GetBox_ProfileWhatsapp().Where(u => u.Box_ProfileWhatsappId == id).FirstOrDefault();
             if (box_ProfileWhatsapp == null)
             {
                 return NotFound();

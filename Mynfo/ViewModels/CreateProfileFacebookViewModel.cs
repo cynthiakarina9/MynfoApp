@@ -101,7 +101,8 @@
                 ProfileName = this.Name,
                 link = this.Link,
                 UserId = mainViewModel.User.UserId,
-                RedSocialId = 1,
+                Exist = false,
+                RedSocialId = 1
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -129,7 +130,6 @@
             if(mainViewModel.ProfilesBYPESM != null)
             {
                 mainViewModel.ProfilesBYPESM.addProfileSM(profileSM);
-                mainViewModel.ProfilesBYPESM = null;
             }
             else
             {

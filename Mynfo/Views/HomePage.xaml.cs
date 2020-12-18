@@ -494,6 +494,7 @@
         private void BoxDetailsView(object sender, EventArgs e, int _BoxId)
         {
             //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
             App.Navigator.PushAsync(new DetailsBoxPage(_BoxId));
         }
 

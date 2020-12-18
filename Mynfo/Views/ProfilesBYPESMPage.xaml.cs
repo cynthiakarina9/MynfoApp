@@ -1,18 +1,16 @@
-﻿using Mynfo.Domain;
-using Mynfo.Helpers;
-using Mynfo.Models;
-using Mynfo.Services;
-using Mynfo.ViewModels;
-using System;
-using System.Data.SqlClient;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Mynfo.Views
+﻿namespace Mynfo.Views
 {
+    using Mynfo.Domain;
+    using Mynfo.Helpers;
+    using Mynfo.Models;
+    using Mynfo.Services;
+    using Mynfo.ViewModels;
+    using System;
+    using System.Data.SqlClient;
+    using System.Text;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesBYPESMPage : ContentPage
     {
@@ -28,18 +26,15 @@ namespace Mynfo.Views
         #region Properties
         public Box Box { get; set; }
         public ProfilePhone selectedProfilePhone { get; set; }
-        public bool IsCheck
-        {
-            get { return this.isCheck; }
-            set { this.isCheck = value; }
-        }
-
+        public ProfileEmail selectedItemEmail { get; set; }
+        public ProfileSM selectedItemSM { get; set; }
+        public ProfileWhatsapp selectedItemWhatsapp { get; set; }
         #endregion
+
+        #region Constructor
         public ProfilesBYPESMPage(int _BoxId, string _ProfileType, bool _BoxDefault, string _boxName = "")
         {
             apiService = new ApiService();
-            Box = new Box();
-            Box.BoxId = _BoxId;
             InitializeComponent();
 
             #region Variables
@@ -56,10 +51,10 @@ namespace Mynfo.Views
 
             #region Queries
 
-        queryGetEmailProfiles = "select dbo.ProfileEmails.ProfileEmailId from dbo.ProfileEmails " +
-                                            "where dbo.ProfileEmails.UserId = " + UserId + " except select " +
-                                            "dbo.Box_ProfileEmail.ProfileEmailId from dbo.Box_ProfileEmail " +
-                                            "where dbo.Box_ProfileEmail.BoxId = " + BoxId;
+            queryGetEmailProfiles = "select dbo.ProfileEmails.ProfileEmailId from dbo.ProfileEmails " +
+                                                "where dbo.ProfileEmails.UserId = " + UserId + " except select " +
+                                                "dbo.Box_ProfileEmail.ProfileEmailId from dbo.Box_ProfileEmail " +
+                                                "where dbo.Box_ProfileEmail.BoxId = " + BoxId;
             queryGetPhoneProfiles = "SELECT dbo.ProfilePhones.ProfilePhoneId FROM dbo.ProfilePhones " +
                                             "where dbo.ProfilePhones.UserId = " + UserId + " EXCEPT SELECT " +
                                             "dbo.Box_ProfilePhone.ProfilePhoneId FROM dbo.Box_ProfilePhone " +
@@ -80,14 +75,13 @@ namespace Mynfo.Views
             #region Commands
 
             //BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId, _BoxDefault, _boxName));
-            
-            GoToProfiles.Clicked += new EventHandler((sender, e) => GoToProfiles_Clicked(sender, e, _BoxId,_ProfileType, _BoxDefault));
+
+            GoToProfiles.Clicked += new EventHandler((sender, e) => GoToProfiles_Clicked(sender, e, _BoxId, _ProfileType, _BoxDefault));
 
 
 
             #endregion
 
-            
             switch (_ProfileType)
             {
 
@@ -118,8 +112,9 @@ namespace Mynfo.Views
                 default:
                     break;
 
-                    
+
             }
+
             #region Consultas
 
             //switch (_ProfileType)
@@ -405,8 +400,8 @@ namespace Mynfo.Views
 
             #endregion
 
-            
         }
+        #endregion
 
         #region Methods
         private void GoToProfiles_Clicked(object sender, EventArgs e, int _boxId, string _profileType, bool _BoxDefault)
@@ -716,10 +711,10 @@ namespace Mynfo.Views
 
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            ProfileEmail selectedItemEmail = e.SelectedItem as ProfileEmail;
+            selectedItemEmail = e.SelectedItem as ProfileEmail;
             selectedProfilePhone = e.SelectedItem as ProfilePhone;
-            ProfileSM selectedItemSM = e.SelectedItem as ProfileSM;
-            ProfileWhatsapp selectedItemWhatsapp = e.SelectedItem as ProfileWhatsapp;
+            selectedItemSM = e.SelectedItem as ProfileSM;
+            selectedItemWhatsapp = e.SelectedItem as ProfileWhatsapp;
         }
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
@@ -728,14 +723,24 @@ namespace Mynfo.Views
             ProfilePhone tappedItemPhone = e.Item as ProfilePhone;
             ProfileSM tappedItemSM = e.Item as ProfileSM;
             ProfileWhatsapp tappedItemWhatsapp = e.Item as ProfileWhatsapp;
-            var mainViewModel = MainViewModel.GetInstance();
-            
+
             if (tappedItemEmail != null)
             {
-                
-                PostProfilePhone(Box.BoxId, tappedItemPhone.ProfilePhoneId);
+                if (tappedItemEmail.Exist == false)
+                {
+                    PostProfileEmail(Box.BoxId, tappedItemEmail.ProfileEmailId);
+                    tappedItemEmail.Exist = true;
+                    MainViewModel.GetInstance().ProfilesBYPESM.updateProfileEmail(tappedItemEmail);
+                }
+                else
+                {
+                    DeleteProfileEmail(Box.BoxId, tappedItemEmail.ProfileEmailId);
+                    tappedItemEmail.Exist = false;
+                    MainViewModel.GetInstance().ProfilesBYPESM.updateProfileEmail(tappedItemEmail);
+                }
             }
-            if (tappedItemPhone != null)
+
+            else if (tappedItemPhone != null)
             {
                 if(tappedItemPhone.Exist == false)
                 {
@@ -750,12 +755,113 @@ namespace Mynfo.Views
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfilePhone(tappedItemPhone);
                 }
             }
+
+            else if (tappedItemSM != null)
+            {
+                if (tappedItemSM.Exist == false)
+                {
+                    PostProfileSM(Box.BoxId, tappedItemSM.ProfileMSId);
+                    tappedItemSM.Exist = true;
+                    MainViewModel.GetInstance().ProfilesBYPESM.updateProfileSM(tappedItemSM);
+                }
+                else
+                {
+                    DeleteProfileSM(Box.BoxId, tappedItemSM.ProfileMSId);
+                    tappedItemSM.Exist = false;
+                    MainViewModel.GetInstance().ProfilesBYPESM.updateProfileSM(tappedItemSM);
+                }
+            }
+
+            else if (tappedItemWhatsapp != null)
+            {
+                if (tappedItemWhatsapp.Exist == false)
+                {
+                    PostProfileWhatsapp(Box.BoxId, tappedItemWhatsapp.ProfileWhatsappId);
+                    tappedItemWhatsapp.Exist = true;
+                    MainViewModel.GetInstance().ProfilesBYPESM.updateProfileWhatsapp(tappedItemWhatsapp);
+                }
+                else
+                {
+                    DeleteProfileWhatsapp(Box.BoxId, tappedItemWhatsapp.ProfileWhatsappId);
+                    tappedItemWhatsapp.Exist = false;
+                    MainViewModel.GetInstance().ProfilesBYPESM.updateProfileWhatsapp(tappedItemWhatsapp);
+                }
+            }
         }
 
+        #region Email
+        public async void DeleteProfileEmail(int _box, int _profileEmailId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileEmail box_ProfileEmail = new Box_ProfileEmail
+            {
+                BoxId = _box,
+                ProfileEmailId = _profileEmailId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_Email = await this.apiService.GetIdRelation(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileEmail/GetBox_ProfileEmail",
+                box_ProfileEmail);
+
+            var profileEmail = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileEmail",
+                idBox_Email.Box_ProfileEmailId);
+        }
+
+        public async void PostProfileEmail(int _box, int _profileEmailId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileEmail box_ProfileEmail = new Box_ProfileEmail
+            {
+                BoxId = _box,
+                ProfileEmailId = _profileEmailId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var profileEmail = await this.apiService.Post2(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileEmail",
+                box_ProfileEmail);
+        }
+        #endregion
+
+        #region Phone
         public async void PostProfilePhone(int _box, int _profilePhoneId)
         {
-            Box_ProfilePhone box_ProfilePhone = new Box_ProfilePhone 
-            { 
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfilePhone box_ProfilePhone = new Box_ProfilePhone
+            {
                 BoxId = _box,
                 ProfilePhoneId = _profilePhoneId
             };
@@ -766,9 +872,17 @@ namespace Mynfo.Views
                 "/Box_ProfilePhone",
                 box_ProfilePhone);
         }
-
         public async void DeleteProfilePhone(int _box, int _profilePhoneId)
         {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
 
             Box_ProfilePhone box_ProfilePhone = new Box_ProfilePhone
             {
@@ -789,7 +903,121 @@ namespace Mynfo.Views
                 idBox_Phone.Box_ProfilePhoneId);
         }
         #endregion
+
+        #region SM
+        public async void PostProfileSM(int _box, int _profileSMId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileSM box_ProfileSM = new Box_ProfileSM
+            {
+                BoxId = _box,
+                ProfileMSId = _profileSMId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var profileSM = await this.apiService.Post2(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileSM",
+                box_ProfileSM);
+        }
+        public async void DeleteProfileSM(int _box, int _profileSMId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileSM box_ProfileSM = new Box_ProfileSM
+            {
+                BoxId = _box,
+                ProfileMSId = _profileSMId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_SM = await this.apiService.GetIdRelation(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileSM/GetBox_ProfileSM",
+                box_ProfileSM);
+
+            var profileSM = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileSM",
+                idBox_SM.Box_ProfileSMId);
+        }
+        #endregion
+
+        #region Whatsapp
+        public async void PostProfileWhatsapp(int _box, int _profileWhatsappId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileWhatsapp box_ProfileWhatsapp = new Box_ProfileWhatsapp
+            {
+                BoxId = _box,
+                ProfileWhatsappId = _profileWhatsappId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var profileSM = await this.apiService.Post2(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileWhatsapp",
+                box_ProfileWhatsapp);
+        }
+        public async void DeleteProfileWhatsapp(int _box, int _profileWhatsappId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileWhatsapp box_ProfileWhatsapp = new Box_ProfileWhatsapp
+            {
+                BoxId = _box,
+                ProfileWhatsappId = _profileWhatsappId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_Whatsapp = await this.apiService.GetIdRelation(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileWhatsapp/GetBox_ProfileWhatsapp",
+                box_ProfileWhatsapp);
+
+            var profileWhatsapp = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileWhatsapp",
+                idBox_Whatsapp.Box_ProfileWhatsappId);
+        }
+        #endregion
+
+        #endregion
     }
-
-
 }

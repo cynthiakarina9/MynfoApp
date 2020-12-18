@@ -159,7 +159,7 @@
         [ResponseType(typeof(Box_ProfileEmail))]
         public async Task<IHttpActionResult> DeleteBox_ProfileEmail(int id)
         {
-            var box_ProfileEmail = GetBox_ProfileEmail().Where(u => u.ProfileEmailId == id).FirstOrDefault();
+            var box_ProfileEmail = GetBox_ProfileEmail().Where(u => u.Box_ProfileEmailId == id).FirstOrDefault();
             if (box_ProfileEmail == null)
             {
                 return NotFound();

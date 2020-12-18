@@ -39,6 +39,7 @@
         //}
 
         // GET: api/Box_ProfilePhone/GetBox_ProfilePhone
+
         [HttpPost]
         [Route("GetBox_ProfilePhone")]
         public async Task<IHttpActionResult> GetBox_ProfilePhone(JObject form)
@@ -72,7 +73,6 @@
             }
         }
 
-
         [HttpPost]
         [Route("GetBox_ProfilePhoneId")]
         public IQueryable<Box_ProfilePhone> GetBox_ProfilePhoneId(JObject form)
@@ -104,6 +104,18 @@
             {
                 return null;
             }
+        }
+
+        [HttpPost]
+        [Route("GetBox_Relations")]
+        public async Task<IHttpActionResult> GetBox_Relations(int boxid)
+        {
+            var box_ProfilePhone = db.Box_ProfilePhone.Where(u => u.BoxId == boxid).ToList();
+            if (box_ProfilePhone == null)
+            {
+                return NotFound();
+            }
+            return Ok(box_ProfilePhone);
         }
 
         // PUT: api/Box_ProfilePhone/5

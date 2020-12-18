@@ -27,7 +27,7 @@ namespace Mynfo.Views
         private void Back_Clicked(object sender, EventArgs e, int _BoxId)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.DetailsBox = new DetailsBoxViewModel();
+            mainViewModel.DetailsBox = new DetailsBoxViewModel(_BoxId);
             Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
         }
 

@@ -3,7 +3,6 @@
     using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
     using Mynfo.Helpers;
-    using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.Views;
     using System.Collections.Generic;
@@ -11,7 +10,6 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
-
 
     public class ProfilesBYPESMViewModel : BaseViewModel
     {
@@ -86,22 +84,23 @@
             switch(_ProfileType)
             {
                 case "Email":
-                    GetListEmail();
+                    GetListEmail(_BoxId);
                     break;
                 case "Phone":
                     GetListPhone(_BoxId);
                     break;
                 case "Facebook":
-                    GetListSM();
+                    GetListSM(_BoxId);
                     break;
                 case "Whatsapp":
-                    GetListWhatsapp();
+                    GetListWhatsapp(_BoxId);
                     break;
                 default:
                     break;
             }
 
         }
+
         #endregion
 
         #region Commands
@@ -118,40 +117,13 @@
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
-
-        public ICommand OnCheckBoxCheckedCommand
-        {
-            get
-            {
-                return new RelayCommand(OnCheckBoxChecked);
-            }
-        }
-
-        private void OnCheckBoxChecked()
-        {
-           if(selectedProfilePhone.Exist == true)
-            {
-                selectedProfilePhone.Exist = false;
-
-            }
-            else
-            {
-                var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-
-                var listPhone = this.apiService.GetListByUser<ProfilePhone>(
-                    apiSecurity,
-                    "/api",
-                    "/ProfilePhones",
-                    MainViewModel.GetInstance().User.UserId);
-            }
-        }
-
         #endregion
 
         #region Methods
+
         #region Lista Email
         //Obtener Lista Email
-        private async Task<ObservableCollection<ProfileEmail>> GetListEmail()
+        private async Task<ObservableCollection<ProfileEmail>> GetListEmail(int _BoxId)
         {
             this.IsRunning = true;
             List<ProfileEmail> listEmail;
@@ -177,11 +149,38 @@
                 "/ProfileEmails",
                 MainViewModel.GetInstance().User.UserId);
 
+            if (listEmail.Count == 0)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Warning,
+                    "Aun no ha creado ningún perfil de este tipo",
+                    Languages.Accept);
+                return null;
+            }
+
+            foreach (ProfileEmail ItemEmail in listEmail)
+            {
+                Box_ProfileEmail RelationEmail;
+                RelationEmail = new Box_ProfileEmail
+                {
+                    BoxId = _BoxId,
+                    ProfileEmailId = ItemEmail.ProfileEmailId
+                };
+                
+                var response = await this.apiService.Get(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfileEmail/GetBox_ProfileEmail",
+                    RelationEmail);
+
+                ItemEmail.Exist = response.IsSuccess;
+            }
+
             foreach (ProfileEmail profEmail in listEmail)
                 ProfileEmail.Add(profEmail);
 
             this.IsRunning = false;
-
             return ProfileEmail;
         }
         //Actualizar lista Email
@@ -232,7 +231,7 @@
                 "/ProfilePhones",
                 MainViewModel.GetInstance().User.UserId);
 
-            if(listPhone == null)
+            if(listPhone.Count == 0)
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
@@ -289,7 +288,7 @@
 
         #region Lista SM
         //Obtener lista SM
-        private async Task<ObservableCollection<ProfileSM>> GetListSM()
+        private async Task<ObservableCollection<ProfileSM>> GetListSM(int _BoxId)
         {
             this.IsRunning = true;
             List<ProfileSM> listSM;
@@ -315,11 +314,38 @@
                 "/ProfileSMs",
                 MainViewModel.GetInstance().User.UserId);
 
+            if (listSM.Count == 0)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Warning,
+                    "Aun no ha creado ningún perfil de este tipo",
+                    Languages.Accept);
+                return null;
+            }
+
+            foreach (ProfileSM ItemSM in listSM)
+            {
+                Box_ProfileSM RelationSM;
+                RelationSM = new Box_ProfileSM
+                {
+                    BoxId = _BoxId,
+                    ProfileMSId = ItemSM.ProfileMSId
+                };
+
+                var response = await this.apiService.Get(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfileSM/GetBox_ProfileSM",
+                    RelationSM);
+
+                ItemSM.Exist = response.IsSuccess;
+            }
+
             foreach (ProfileSM profSM in listSM)
                 ProfileSM.Add(profSM);
 
             this.IsRunning = false;
-
             return ProfileSM;
         }
 
@@ -345,7 +371,7 @@
 
         #region Lista Whatsapp
         //Obtener lista Whatsapp
-        private async Task<ObservableCollection<ProfileWhatsapp>> GetListWhatsapp()
+        private async Task<ObservableCollection<ProfileWhatsapp>> GetListWhatsapp(int _BoxId)
         {
             this.IsRunning = true;
             List<ProfileWhatsapp> listWhastapp;
@@ -371,11 +397,38 @@
                 "/ProfileWhatsapps",
                 MainViewModel.GetInstance().User.UserId);
 
+            if (listWhastapp.Count == 0)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Warning,
+                    "Aun no ha creado ningún perfil de este tipo",
+                    Languages.Accept);
+                return null;
+            }
+
+            foreach (ProfileWhatsapp ItemWhatsapp in listWhastapp)
+            {
+                Box_ProfileWhatsapp RelationWhatsapp;
+                RelationWhatsapp = new Box_ProfileWhatsapp
+                {
+                    BoxId = _BoxId,
+                    ProfileWhatsappId = ItemWhatsapp.ProfileWhatsappId
+                };
+                apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+                var response = await this.apiService.Get(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfileWhatsapp/GetBox_ProfileWhatsapp",
+                    RelationWhatsapp);
+
+                ItemWhatsapp.Exist = response.IsSuccess;
+            }
+
             foreach (ProfileWhatsapp profWhatsapp in listWhastapp)
                 ProfileWhatsapp.Add(profWhatsapp);
 
             this.IsRunning = false;
-
             return ProfileWhatsapp;
         }
 
@@ -400,6 +453,5 @@
         #endregion
 
         #endregion
-
     }
 }

@@ -140,6 +140,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfBadgeView">
       <Version>16.4.0.54</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfListView">
+      <Version>18.4.0.30</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugin.Badge">
       <Version>1.0.0</Version>
     </PackageReference>
