@@ -33,13 +33,41 @@
             };
         }
 
-        public static ProfileEmail ToProfileLocal(ProfileLocal profile)
+        public static ProfileLocal ToProfileLocalE(ProfileEmail profile)
         {
-            return new ProfileEmail
+            return new ProfileLocal
             {
-                Name = profile.ProfileName,
-                Email = profile.value,
+                ProfileName = profile.Name,
+                value = profile.Email,
             };
         }
+
+        public static ProfileLocal ToProfileLocalP(ProfilePhone profile)
+        {
+            return new ProfileLocal
+            {
+                ProfileName = profile.Name,
+                value = profile.Number,
+            };
+        }
+
+        public static ProfileLocal ToProfileLocalSM(ProfileSM profile)
+        {
+            return new ProfileLocal
+            {
+                ProfileName = profile.ProfileName,
+                value = profile.link,
+            };
+        }
+
+        public static ProfileLocal ToProfileLocalW(ProfileWhatsapp profile)
+        {
+            return new ProfileLocal
+            {
+                ProfileName = profile.Name,
+                value = profile.Number,
+            };
+        }
+
     }
 }

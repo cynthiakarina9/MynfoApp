@@ -35,6 +35,8 @@
         public ProfilesBYPESMPage(int _BoxId, string _ProfileType, bool _BoxDefault, string _boxName = "")
         {
             apiService = new ApiService();
+            Box = new Box();
+            Box.BoxId = _BoxId;
             InitializeComponent();
 
             #region Variables

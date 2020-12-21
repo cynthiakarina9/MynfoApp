@@ -7,9 +7,9 @@
              x:Name="FullBackGround"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
-        <Grid>
-            <ScrollView 
-                BindingContext = "{Binding DetailsBox}">
+        <Grid
+            BindingContext = "{Binding DetailsBox}">
+            <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70"/>
@@ -94,6 +94,33 @@
                             HorizontalOptions="FillAndExpand"
                             Padding="5,35"
                             x:Name="ProfilesList3" />
+                    </Grid>
+                    <Grid>
+                        <ListView
+                            ItemsSource="{Binding ProfilePerfiles, Mode=TwoWay}"
+                            Grid.Row="0"
+                            HasUnevenRows="true"
+                            SelectedItem="{Binding selectedProfile}"
+                            Margin="10,35,10,20">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="100" />
+                                                <ColumnDefinition Width="180" />
+                                                <ColumnDefinition Width="30" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding BoxLocal.ProfileName}"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </Grid>
                 </Grid>
             </ScrollView>
