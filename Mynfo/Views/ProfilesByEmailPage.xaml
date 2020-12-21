@@ -19,9 +19,9 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid>
-            <ScrollView 
-                BindingContext="{Binding ProfilesByEmail}">
+        <Grid
+            BindingContext="{Binding ProfilesByEmail}">
+            <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80" />
@@ -38,7 +38,7 @@
                     </ActivityIndicator>
                     <Label 
                             Grid.Row = "0" 
-                            Text = "{i18n:Translate NetworkList}"
+                            Text = "NetworkList"
                             FontSize = "30"
                             FontAttributes="Bold"
                             TextColor = "{StaticResource MainColor}"
@@ -105,7 +105,7 @@
             <ImageButton
                 Grid.Row="0"
                 BackgroundColor = "Transparent"
-                Clicked = "NewProfileEmail_Clicked"
+                Command = "{Binding NewProfileEmailCommand}"
                 HeightRequest = "60"
                 HorizontalOptions ="Center"
                 Margin = "15"

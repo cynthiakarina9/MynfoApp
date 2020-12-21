@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.DetailsBoxPage"
              x:Name="FullBackGround"
@@ -40,8 +41,8 @@
                         Padding="0,10,10,0"
                         x:Name="DeleteButton" />
 
-                    <!--Nombre de la box -->
-                    <!--El nombre de la box será variable-->
+                    <!--Nombre de la box 
+                    El nombre de la box será variable-->
                     <StackLayout 
                         Grid.ColumnSpan="4"
                         Grid.Row="1"
@@ -55,7 +56,7 @@
                         VerticalOptions="Center"
                         x:Name="BoxUpdateBtn" />
 
-                    <!-- Box predeterminada-->
+                     <!--Box predeterminada-->
                     <StackLayout 
                         Grid.Row="2"
                         Grid.Column="1"
@@ -69,7 +70,7 @@
                         TextColor="Black"
                         VerticalOptions="Center"/>
 
-                    <!-- Listado de perfiles -->
+                     <!--Listado de perfiles--> 
                     <Grid
                         Grid.Row="3"
                         Grid.ColumnSpan="4">
@@ -96,7 +97,7 @@
                     </Grid>
                 </Grid>
             </ScrollView>
-            <!-- Agregar perfiles -->
+             <!--Agregar perfiles--> 
             <ImageButton
                 Grid.Row = "0"
                 WidthRequest = "70"

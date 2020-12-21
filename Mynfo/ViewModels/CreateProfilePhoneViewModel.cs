@@ -109,25 +109,26 @@
 
             var profilePhone = new ProfilePhone
             {
+                Exist = false,
                 Name = this.Name,
                 Number = this.Number,
                 UserId = mainViewModel.User.UserId,
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Post(
+            var profilephone = await this.apiService.Post(
                 apiSecurity,
                 "/api",
                 "/ProfilePhones",
                 profilePhone);
 
-            if (!response.IsSuccess)
+            if (profilephone == default)
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    response.Message,
+                    Languages.ErrorAddProfile,
                     Languages.Accept);
                 return;
             }
@@ -135,45 +136,21 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
+            //Agregar a lista
+            if (mainViewModel.ProfilesBYPESM != null)
+            {
+                mainViewModel.ProfilesBYPESM.addProfilePhone(profilephone);
+                //mainViewModel.ProfilesBYPESM = null;
+            }
+            else
+            {
+                mainViewModel.ProfilesByPhone.addProfile(profilephone);
+            }
+
             this.Name = string.Empty;
             this.Number = string.Empty;
 
-            //Agregar a lista
-            string consultaDefault = "SELECT Top 1 * FROM dbo.ProfilePhones where dbo.ProfilePhones.UserId = "
-                                        + MainViewModel.GetInstance().User.UserId +
-                                        " ORDER BY dbo.ProfilePhones.ProfilePhoneId DESC";
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            ProfilePhone _profilePhone = new ProfilePhone();
-
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append(consultaDefault);
-                string sql = sb.ToString();
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            _profilePhone.ProfilePhoneId = (int)reader["ProfilePhoneId"];
-                            _profilePhone.Name = (string)reader["Name"];
-                            _profilePhone.UserId = (int)reader["UserId"];
-                            _profilePhone.Number = (string)reader["Number"];
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-
-            MainViewModel.GetInstance().ProfilesByPhone.addProfile(_profilePhone);
-
             await App.Navigator.PopAsync();
-
-            /*MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();*/
         }
 
         public ICommand BackHomeCommand
@@ -184,7 +161,7 @@
             }
         }
 
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();

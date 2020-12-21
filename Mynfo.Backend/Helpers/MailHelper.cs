@@ -19,6 +19,7 @@
 
             using (var smtp = new SmtpClient())
             {
+                smtp.UseDefaultCredentials = false;
                 var credential = new NetworkCredential
                 {
                     UserName = WebConfigurationManager.AppSettings["AdminUser"],

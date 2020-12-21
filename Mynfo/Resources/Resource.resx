@@ -534,4 +534,7 @@
   <data name="Success" xml:space="preserve">
     <value>Success!</value>
   </data>
+  <data name="ErrorAddProfile" xml:space="preserve">
+    <value>An error has occurred, please try again later.</value>
+  </data>
 </root>

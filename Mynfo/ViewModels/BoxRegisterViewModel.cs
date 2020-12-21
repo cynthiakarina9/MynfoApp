@@ -138,7 +138,7 @@
 
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Post(
+            var response = await this.apiService.Post2(
                 apiSecurity,
                 "/api",
                 "/Boxes",
@@ -212,8 +212,10 @@
             }
 
             this.Name = string.Empty;
-            mainViewModel.DetailsBox = new DetailsBoxViewModel();
-            Application.Current.MainPage = new NavigationPage(new DetailsBoxPage());
+            //mainViewModel.DetailsBox = new DetailsBoxViewModel();
+            //await App.Navigator.PushAsync(new DetailsBoxPage());
+            mainViewModel.Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         public ICommand BackHomeCommand
         {

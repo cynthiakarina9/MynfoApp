@@ -535,4 +535,7 @@ Você deve inserir um url</value>
   <data name="Success" xml:space="preserve">
     <value>Sucesso!</value>
   </data>
+  <data name="ErrorAddProfile" xml:space="preserve">
+    <value>Ocorreu um erro, tente novamente mais tarde.</value>
+  </data>
 </root>

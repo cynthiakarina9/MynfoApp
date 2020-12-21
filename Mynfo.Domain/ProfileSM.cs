@@ -25,5 +25,8 @@
 
         [JsonIgnore]
         public virtual ICollection<Box_ProfileSM> Box_ProfileSM { get; set; }
+
+        [JsonIgnore]
+        public virtual bool Exist { get; set; }
     }
 }

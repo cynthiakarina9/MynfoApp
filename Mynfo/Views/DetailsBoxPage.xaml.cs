@@ -1,26 +1,29 @@
-﻿using Mynfo.Helpers;
-using Mynfo.Models;
-using Mynfo.Resources;
-using Mynfo.ViewModels;
-using System;
-using System.Data.SqlClient;
-using System.Text;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Mynfo.Views
+﻿namespace Mynfo.Views
 {
+    using Mynfo.Helpers;
+    using Mynfo.Models;
+    using Mynfo.Resources;
+    using Mynfo.ViewModels;
+    using System;
+    using System.Data.SqlClient;
+    using System.Text;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsBoxPage : ContentPage
     {
-
+        #region Properties
         public Entry BxNameEntry = new Entry();
-
         public String BoxName;
+        #endregion
+
+        #region Constructor
         public DetailsBoxPage(int _boxId = 0)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
             int BoxId = _boxId;
             var boxLocal = new BoxLocal();
             int UserID = MainViewModel.GetInstance().User.UserId;
@@ -74,10 +77,10 @@ namespace Mynfo.Views
             consultaDefault = "select * from dbo.Boxes where dbo.Boxes.BoxId = " + BoxId;
             queryUpdatesetDefault = "update dbo.Boxes set BoxDefault = 1 where dbo.Boxes.UserId =" + UserID + " and dbo.Boxes.BoxId =" + BoxId;
             queryUpdateTakeOffDefault = "update dbo.Boxes set BoxDefault = 0 where dbo.Boxes.UserId =" + UserID + " and dbo.Boxes.BoxDefault = 1 and dbo.Boxes.BoxId !=" + BoxId;
-            queryGetPhones = "select dbo.Boxes.BoxId, dbo.ProfilePhones.ProfilePhoneId, dbo.ProfilePhones.Name, " + 
+            queryGetPhones = "select dbo.Boxes.BoxId, dbo.ProfilePhones.ProfilePhoneId, dbo.ProfilePhones.Name, " +
                              "dbo.ProfilePhones.Number from dbo.Box_ProfilePhone Join dbo.Boxes " +
-                             "on(dbo.Boxes.BoxId = dbo.Box_ProfilePhone.BoxId) "+
-                             "Join dbo.ProfilePhones on(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) "+
+                             "on(dbo.Boxes.BoxId = dbo.Box_ProfilePhone.BoxId) " +
+                             "Join dbo.ProfilePhones on(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) " +
                              "where dbo.Boxes.BoxId = " + BoxId;
             queryGetEmails = "select dbo.Boxes.BoxId, dbo.ProfileEmails.ProfileEmailId, dbo.ProfileEmails.Name, " +
                               "dbo.ProfileEmails.Email from dbo.Box_ProfileEmail " +
@@ -91,7 +94,7 @@ namespace Mynfo.Views
             queryGetWhatsapp = "select dbo.Boxes.BoxId, dbo.ProfileWhatsapps.ProfileWhatsappId, dbo.ProfileWhatsapps.Name, " +
                                         "dbo.ProfileWhatsapps.Number from dbo.Box_ProfileWhatsapp Join dbo.Boxes " +
                                         "on(dbo.Boxes.BoxId = dbo.Box_ProfileWhatsapp.BoxId) " +
-                                        "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfilePhoneId) " +
+                                        "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                         "where dbo.Boxes.BoxId =" + _boxId;
 
             //Consulta para obtener Box
@@ -99,7 +102,7 @@ namespace Mynfo.Views
             {
                 sb = new System.Text.StringBuilder();
                 sb.Append(consultaDefault);
-                
+
                 string sql = sb.ToString();
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
@@ -133,17 +136,17 @@ namespace Mynfo.Views
             //Definir color de fondo con respecto a si la box es predeterminada
             if (BoxDefault == true)
             {
-                FullBackGround.BackgroundColor = Color.FromHex("#FFAB8F");
-                bxBtnHome.BackgroundColor = Color.FromHex("#FFAB8F");
-                BxSaveName.BackgroundColor = Color.FromHex("#FFAB8F");
-                BxBtnDelete.BackgroundColor = Color.FromHex("#FFAB8F");
+                FullBackGround.BackgroundColor = Color.FromHex("#FEBDA8");
+                bxBtnHome.BackgroundColor = Color.FromHex("#FEBDA8");
+                BxSaveName.BackgroundColor = Color.FromHex("#FEBDA8");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#FEBDA8");
             }
             else
             {
-                FullBackGround.BackgroundColor = Color.FromHex("#AAAAAA");
-                bxBtnHome.BackgroundColor = Color.FromHex("#AAAAAA");
-                BxSaveName.BackgroundColor = Color.FromHex("#AAAAAA");
-                BxBtnDelete.BackgroundColor = Color.FromHex("#AAAAAA");
+                FullBackGround.BackgroundColor = Color.FromHex("#D6D3D3");
+                bxBtnHome.BackgroundColor = Color.FromHex("#D6D3D3");
+                BxSaveName.BackgroundColor = Color.FromHex("#D6D3D3");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#D6D3D3");
             }
 
 
@@ -189,7 +192,7 @@ namespace Mynfo.Views
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
-            if(BoxDefault == true)
+            if (BoxDefault == true)
             {
                 BxDefaultCheckBox.IsEnabled = false;
             }
@@ -252,17 +255,17 @@ namespace Mynfo.Views
                             //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
                             if (BoxDefault == true)
                             {
-                               // deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
-                                phoneIcon.BackgroundColor = Color.FromHex("#FFAB8F");
+                                // deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+                                phoneIcon.BackgroundColor = Color.FromHex("#FEBDA8");
                             }
                             else
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                phoneIcon.BackgroundColor = Color.FromHex("#AAAAAA");
+                                phoneIcon.BackgroundColor = Color.FromHex("#D6D3D3");
                             }
 
                             //Asignación de caja en columnas
-                            switch(listProfileNum)
+                            switch (listProfileNum)
                             {
                                 case 0:
                                     listProfileNum = 2;
@@ -279,7 +282,7 @@ namespace Mynfo.Views
                                     ProfilesList1.Children.Add(phoneIcon);
                                     ProfilesList1.Children.Add(phoneName);
                                     ProfilesList1.Children.Add(space);
-                                   // ProfilesList1.Children.Add(deleteProfile);
+                                    // ProfilesList1.Children.Add(deleteProfile);
                                     break;
 
                                 case 2:
@@ -357,12 +360,12 @@ namespace Mynfo.Views
                             if (BoxDefault == true)
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
-                                emailIcon.BackgroundColor = Color.FromHex("#FFAB8F");
+                                emailIcon.BackgroundColor = Color.FromHex("#FEBDA8");
                             }
                             else
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                emailIcon.BackgroundColor = Color.FromHex("#AAAAAA");
+                                emailIcon.BackgroundColor = Color.FromHex("#D6D3D3");
                             }
 
                             //Asignación de caja en columnas
@@ -472,12 +475,12 @@ namespace Mynfo.Views
                             if (BoxDefault == true)
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
-                                SMIcon.BackgroundColor = Color.FromHex("#FFAB8F");
+                                SMIcon.BackgroundColor = Color.FromHex("#FEBDA8");
                             }
                             else
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                SMIcon.BackgroundColor = Color.FromHex("#AAAAAA");
+                                SMIcon.BackgroundColor = Color.FromHex("#D6D3D3");
                             }
 
                             //Asignación de caja en columnas
@@ -576,12 +579,12 @@ namespace Mynfo.Views
                             if (BoxDefault == true)
                             {
                                 // deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
-                                whatsappIcon.BackgroundColor = Color.FromHex("#FFAB8F");
+                                whatsappIcon.BackgroundColor = Color.FromHex("#FEBDA8");
                             }
                             else
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                whatsappIcon.BackgroundColor = Color.FromHex("#AAAAAA");
+                                whatsappIcon.BackgroundColor = Color.FromHex("#D6D3D3");
                             }
 
                             //Asignación de caja en columnas
@@ -637,11 +640,11 @@ namespace Mynfo.Views
             {
                 string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
                                             "join dbo.Box_ProfileEmail on" +
-                                            "(dbo.ProfileEmails.ProfileEmailId = dbo.Box_ProfileEmail.ProfileEmailId) "+
+                                            "(dbo.ProfileEmails.ProfileEmailId = dbo.Box_ProfileEmail.ProfileEmailId) " +
                                             "where dbo.Box_ProfileEmail.BoxId = " + _boxId;
                 string queryGetBoxPhone = "select * from dbo.ProfilePhones " +
                                             "join dbo.Box_ProfilePhone on" +
-                                            "(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) "+
+                                            "(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) " +
                                             "where dbo.Box_ProfilePhone.BoxId = " + _boxId;
                 string queryGetBoxSMProfiles = "select * from dbo.ProfileSMs " +
                                                 "join dbo.Box_ProfileSM on" +
@@ -649,7 +652,7 @@ namespace Mynfo.Views
                                                 "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
                                                 "where dbo.Box_ProfileSM.BoxId = " + _boxId;
                 string queryGetBoxWhatsapp = "select * from dbo.ProfileWhatsapps join dbo.Box_ProfileWhatsapp on " +
-                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfilePhoneId) " +
+                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                                 "where dbo.Box_ProfileWhatsapp.BoxId = " + _boxId;
 
                 //Borrar box predeterminada anterior
@@ -850,7 +853,9 @@ namespace Mynfo.Views
                 BxDefaultCheckBox.IsEnabled = false;
             }
         }
+        #endregion
 
+        #region Methods
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
@@ -860,18 +865,18 @@ namespace Mynfo.Views
 
         async void deleteBox(object sender, EventArgs e, int _BoxId, int _UserId, bool _BoxDefault)
         {
-            string  sqlDeleteEmails = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId, 
-                    sqlDeletePhones = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId, 
-                    sqlDeleteSMProfiles = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId, 
+            string sqlDeleteEmails = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId,
+                    sqlDeletePhones = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId,
+                    sqlDeleteSMProfiles = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId,
                     sqlDeleteWhatsappProfiles = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId,
                     sqlDeleteBox = "delete from dbo.Boxes where dbo.boxes.BoxId = " + _BoxId;
-            string  cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
             string sql;
 
             bool answer = await DisplayAlert(Resource.Warning, Resource.DeleteBoxNotification, Resource.Yes, Resource.No);
 
-            if(answer == true)
+            if (answer == true)
             {
                 using (SqlConnection connection = new SqlConnection(cadenaConexion))
                 {
@@ -936,7 +941,7 @@ namespace Mynfo.Views
                     }
 
                     //Si la box era predeterminada
-                    if(_BoxDefault == true)
+                    if (_BoxDefault == true)
                     {
                         //Borrar box predeterminada anterior
                         using (var conn = new SQLite.SQLiteConnection(App.root_db))
@@ -967,8 +972,8 @@ namespace Mynfo.Views
                         }
 
 
-                        string sqlGetNewDefault = "select * from dbo.Boxes " + 
-                                                    "where dbo.Boxes.UserId = " + _UserId  +
+                        string sqlGetNewDefault = "select * from dbo.Boxes " +
+                                                    "where dbo.Boxes.UserId = " + _UserId +
                                                     "and dbo.Boxes.BoxDefault = 1";
 
                         //Definir nueva box default
@@ -1015,7 +1020,7 @@ namespace Mynfo.Views
                         }
 
                         //Si se creo la box local, procedo a crear los perfiles locales
-                        if(boxLocalExists == true)
+                        if (boxLocalExists == true)
                         {
                             //Creación de perfiles locales de box local
                             string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
@@ -1032,7 +1037,7 @@ namespace Mynfo.Views
                                                             "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
                                                             "where dbo.Box_ProfileSM.BoxId = " + boxIdLocal;
                             string queryGetBoxWhatsappProfiles = "select * from dbo.ProfileWhatsapps join dbo.Box_ProfileWhatsapp on " +
-                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfilePhoneId) " +
+                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                                 "where dbo.Box_ProfileWhatsapp.BoxId = " + boxIdLocal;
 
                             //Consulta para obtener perfiles email
@@ -1188,16 +1193,14 @@ namespace Mynfo.Views
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {
-            /*var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId));*/
-            
-            Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
+            MainViewModel.GetInstance().ProfileTypeSelection = new ProfileTypeSelectionViewModel();
+            //Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
+            App.Navigator.PushAsync(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)
         {
-            if(disabled == true)
+            if (disabled == true)
             {
                 BxNameEntry.IsReadOnly = false;
                 BxNameEntry.TextColor = Color.Black;
@@ -1227,6 +1230,7 @@ namespace Mynfo.Views
                 BoxName = _name;
             }
         }
+
         async private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)
         {
             //Borrar la relación de la box con el teléfono
@@ -1236,7 +1240,7 @@ namespace Mynfo.Views
 
             bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
 
-            if(response == true)
+            if (response == true)
             {
                 using (SqlConnection connection = new SqlConnection(cadenaConexion))
                 {
@@ -1251,6 +1255,7 @@ namespace Mynfo.Views
                         connection.Close();
                     }
                 }
+                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
                 Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
             }
         }
@@ -1279,6 +1284,7 @@ namespace Mynfo.Views
                         connection.Close();
                     }
                 }
+                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
                 Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
             }
         }
@@ -1308,14 +1314,16 @@ namespace Mynfo.Views
                     }
                 }
                 //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-                Navigation.PushAsync(new DetailsBoxPage(_BoxId));
+                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
+                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+                //await Navigation.PushAsync(new DetailsBoxPage(_BoxId));
             }
         }
 
         async private void DeleteBoxWhatsapp(object sender, EventArgs e, int _BoxId, int _WhatsappId)
         {
             //Borrar la relación de la box con el teléfono
-            string queryDeleteBoxWhatsapp = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId + " and dbo.Box_ProfileWhatsapp.ProfilePhoneId = " + _WhatsappId;
+            string queryDeleteBoxWhatsapp = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId + " and dbo.Box_ProfileWhatsapp.ProfileWhatsappId = " + _WhatsappId;
             string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
 
@@ -1336,9 +1344,10 @@ namespace Mynfo.Views
                         connection.Close();
                     }
                 }
+                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
                 Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
             }
         }
-
+        #endregion
     }
 }

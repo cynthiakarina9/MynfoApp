@@ -123,24 +123,24 @@
         //    var Lista = profileEmail;
         //    BindingContext = this;
         //}
-        private void NewProfileEmail_Clicked(object sender, EventArgs e)
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-            App.Navigator.PushAsync(new CreateProfileEmailPage());
-        }
+        //private void NewProfileEmail_Clicked(object sender, EventArgs e)
+        //{
+        //    var mainViewModel = MainViewModel.GetInstance();
+        //    mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
+        //    App.Navigator.PushAsync(new CreateProfileEmailPage());
+        //}
         //private async void EditProfileEmail(object sender, EventArgs e, int _ProfileEmailId)
         //{
         //    var mainViewModel = MainViewModel.GetInstance();
         //    mainViewModel.EditProfileEmail = new EditProfileEmailViewModel();
         //    Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage(_ProfileEmailId));
         //}
-        private void Back_Clicked(object sender, EventArgs e)
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Profiles = new ProfilesViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfilesPage());
-        }
+        //private void Back_Clicked(object sender, EventArgs e)
+        //{
+        //    var mainViewModel = MainViewModel.GetInstance();
+        //    mainViewModel.Profiles = new ProfilesViewModel();
+        //    Application.Current.MainPage = new NavigationPage(new ProfilesPage());
+        //}
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
