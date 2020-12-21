@@ -15491,6 +15491,12 @@ namespace Mynfo.Droid
 			// aapt resource value: 0x7F0D0045
 			public const int common_google_play_services_unknown_issue = 2131558469;
 			
+			// aapt resource value: 0x7F0D0045
+			public const int common_google_play_services_unknown_issue = 2131558469;
+			
+			// aapt resource value: 0x7F0D0045
+			public const int common_google_play_services_unknown_issue = 2131558469;
+			
 			// aapt resource value: 0x7F0D002E
 			public const int com_facebook_device_auth_instructions = 2131558446;
 			
