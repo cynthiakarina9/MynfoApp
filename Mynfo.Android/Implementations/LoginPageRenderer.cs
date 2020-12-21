@@ -9,6 +9,7 @@ namespace Mynfo.Droid.Implementations
     using Android.App;
     using Android.Content;
     using Models;
+    using Mynfo.Services;
     using Services;
     using Xamarin.Auth;
     using Xamarin.Forms.Platform.Android;
