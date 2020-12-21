@@ -582,5 +582,14 @@
         {
             get { return Resource.AskDeleteNetworkFromBox; }
         }
+        public static string ErrorAddProfile
+        {
+            get { return Resource.ErrorAddProfile; }
+        }
+
+        public static string NetworksList
+        {
+            get { return Resource.NetworksList; }
+        }
     }
 }

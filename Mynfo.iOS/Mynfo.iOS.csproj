@@ -53,7 +53,8 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>Apple Development: Nicolas Blanco Storz (F698L64449)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignEntitlements>
+    </CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <MtouchI18n>west</MtouchI18n>
@@ -166,6 +167,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfBadgeView">
       <Version>16.4.0.54</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfListView">
+      <Version>18.4.0.30</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugin.Badge">
       <Version>1.0.0</Version>
     </PackageReference>
@@ -186,6 +190,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Forms.InputKit">
+      <Version>3.4.4</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms.OpenWhatsApp">
       <Version>1.0.1</Version>
     </PackageReference>

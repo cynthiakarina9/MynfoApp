@@ -11,6 +11,7 @@
         public string Name { get; set; }
 
         #endregion
+
         #region Commands
         
         #endregion
@@ -18,6 +19,7 @@
         #region Contructor
         
         #endregion
+
         #region Methods
         
 

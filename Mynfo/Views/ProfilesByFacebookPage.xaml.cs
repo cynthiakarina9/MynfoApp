@@ -113,19 +113,6 @@
             mainViewModel.EditProfileFacebook = new EditProfileFacebookViewModel(tappedItem.ProfileMSId);
             App.Navigator.PushAsync(new EditProfileFacebookPage());
         }
-        public ICommand BackHomeCommand
-        {
-            get
-            {
-                return new RelayCommand(BackHome);
-            }
-        }
-
-        private async void BackHome()
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
         #endregion
     }
 }

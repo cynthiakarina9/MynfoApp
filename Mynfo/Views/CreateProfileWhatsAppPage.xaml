@@ -112,14 +112,6 @@
                     Text = "{i18n:Translate Save}"
                     TextColor = "{StaticResource Dark_FontColor}"
                     x:Name="Save"/>
-                <!-- Botón si viene de agregar perfiles a box -->
-                <!--<Button 
-                    BackgroundColor = "{StaticResource MainColor}"
-                    BorderRadius = "23"
-                    HeightRequest = "50"
-                    Text="{i18n:Translate Save}"
-                    TextColor = "{StaticResource Dark_FontColor}"
-                    x:Name="SaveWBox"/>-->
             </StackLayout>
         </Grid>
     </ContentPage.Content>

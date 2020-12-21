@@ -53,7 +53,6 @@
             this.IsRunning = true;
 
             List<ProfileSM> profileSocialMedia;
-
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
@@ -69,6 +68,7 @@
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
             profileSM = new ObservableCollection<ProfileSM>();
+           
             profileSocialMedia = await this.apiService.GetListByUser<ProfileSM>(
                 apiSecurity,
                 "/api",

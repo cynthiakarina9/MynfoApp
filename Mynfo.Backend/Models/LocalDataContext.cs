@@ -26,5 +26,7 @@
         public System.Data.Entity.DbSet<Mynfo.Domain.ProfileWhatsapp> ProfileWhatsapps { get; set; }
 
         public System.Data.Entity.DbSet<Mynfo.Domain.Box_ProfileWhatsapp> Box_ProfileWhatsapp { get; set; }
+
+        public System.Data.Entity.DbSet<Mynfo.Domain.UserTags> UserTags { get; set; }
     }
 }

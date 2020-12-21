@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Mynfo.Domain;
-
-namespace Mynfo.API.Controllers
+﻿namespace Mynfo.API.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using Mynfo.Domain;
+    using Newtonsoft.Json.Linq;
+
+    [RoutePrefix("api/Box_ProfileSM")]
     public class Box_ProfileSMController : ApiController
     {
         private DataContext db = new DataContext();
@@ -23,17 +25,85 @@ namespace Mynfo.API.Controllers
             return db.Box_ProfileSM;
         }
 
-        // GET: api/Box_ProfileSM/5
-        [ResponseType(typeof(Box_ProfileSM))]
-        public async Task<IHttpActionResult> GetBox_ProfileSM(int id)
-        {
-            Box_ProfileSM box_ProfileSM = await db.Box_ProfileSM.FindAsync(id);
-            if (box_ProfileSM == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/Box_ProfileSM/5
+        //[ResponseType(typeof(Box_ProfileSM))]
+        //public async Task<IHttpActionResult> GetBox_ProfileSM(int id)
+        //{
+        //    Box_ProfileSM box_ProfileSM = await db.Box_ProfileSM.FindAsync(id);
+        //    if (box_ProfileSM == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(box_ProfileSM);
+        //    return Ok(box_ProfileSM);
+        //}
+
+        // GET: api/Box_ProfileSM/GetBox_ProfileSM
+        [HttpPost]
+        [Route("GetBox_ProfileSM")]
+        public async Task<IHttpActionResult> GetBox_ProfileSM(JObject form)
+        {
+            try
+            {
+                int idBox = 0;
+                int idSM = 0;
+                dynamic jsonObject = form;
+
+                try
+                {
+                    idBox = jsonObject.BoxId;
+                    idSM = jsonObject.ProfileMSId;
+                }
+                catch
+                {
+                    return BadRequest("Incorrect call.");
+                }
+                var box_ProfileSM = GetBox_ProfileSM().Where(u => u.BoxId == idBox && u.ProfileMSId == idSM);
+                if (box_ProfileSM.Count() == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok(box_ProfileSM);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // GET: api/Box_ProfileSM/GetBox_ProfileSM
+        [HttpPost]
+        [Route("GetBox_ProfileSMId")]
+        public IQueryable<Box_ProfileSM> GetBox_ProfileSMId(JObject form)
+        {
+            try
+            {
+                int idBox = 0;
+                int idSM = 0;
+                dynamic jsonObject = form;
+
+                try
+                {
+                    idBox = jsonObject.BoxId;
+                    idSM = jsonObject.ProfileMSId;
+                }
+                catch
+                {
+                    return null;
+                }
+                var box_ProfileSM = GetBox_ProfileSM().Where(u => u.BoxId == idBox && u.ProfileMSId == idSM);
+                if (box_ProfileSM.Count() == 0)
+                {
+                    return null;
+                }
+
+                return box_ProfileSM;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         // PUT: api/Box_ProfileSM/5
@@ -90,13 +160,13 @@ namespace Mynfo.API.Controllers
         [ResponseType(typeof(Box_ProfileSM))]
         public async Task<IHttpActionResult> DeleteBox_ProfileSM(int id)
         {
-            var box_ProfileSM = await GetBox_ProfileSM().Where(u => u.ProfileMSId == id).ToListAsync();
+            var box_ProfileSM = GetBox_ProfileSM().Where(u => u.Box_ProfileSMId == id).FirstOrDefault();
             if (box_ProfileSM == null)
             {
                 return NotFound();
             }
 
-            db.Box_ProfileSM.RemoveRange(box_ProfileSM);
+            db.Box_ProfileSM.Remove(box_ProfileSM);
             await db.SaveChangesAsync();
 
             return Ok(box_ProfileSM);

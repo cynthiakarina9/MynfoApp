@@ -134,6 +134,12 @@
             set;
         }
 
+        public ProfileTypeSelectionViewModel ProfileTypeSelection
+        {
+            get;
+            set;
+        }
+
         public MyExternalProfileViewModel MyExternalProfile
         {
             get;

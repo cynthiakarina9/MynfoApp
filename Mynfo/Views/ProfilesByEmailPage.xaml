@@ -38,7 +38,7 @@
                     </ActivityIndicator>
                     <Label 
                             Grid.Row = "0" 
-                            Text = "{i18n:Translate NetworkList}"
+                            Text = "NetworkList"
                             FontSize = "30"
                             FontAttributes="Bold"
                             TextColor = "{StaticResource MainColor}"

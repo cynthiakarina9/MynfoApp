@@ -26,7 +26,7 @@
         #endregion
         
         #region Properties
-        public /*List<ProfileEmail>*/ ObservableCollection<ProfileEmail> profileEmail 
+        public ObservableCollection<ProfileEmail> profileEmail 
         {
             get { return profilemail; } 
             private set 
@@ -60,7 +60,7 @@
         #endregion
 
         #region Commands
-        public async /*Task<List<ProfileEmail>>*/ Task<ObservableCollection<ProfileEmail>> GetList()
+        public async Task<ObservableCollection<ProfileEmail>> GetList()
         {
             this.IsRunning = true;
             List<ProfileEmail> listEmail;
@@ -102,7 +102,7 @@
             }
         }
 
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
