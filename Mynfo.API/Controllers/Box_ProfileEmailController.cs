@@ -172,6 +172,23 @@
             return Ok(box_ProfileEmail);
         }
 
+        // DELETE: api/Box_ProfileEmail/5
+        [HttpPost]
+        [Route("DeleteBox_ProfileEmailRelation")]
+        public async Task<IHttpActionResult> DeleteBox_ProfileEmailRelation(int id)
+        {
+            var box_ProfileEmail = GetBox_ProfileEmail().Where(u => u.ProfileEmailId == id).ToList();
+            if (box_ProfileEmail == null)
+            {
+                return NotFound();
+            }
+
+            //db.Box_ProfileEmail.Remove(List<box_ProfileEmail>);
+            db.Box_ProfileEmail.RemoveRange(box_ProfileEmail);
+            await db.SaveChangesAsync();
+
+            return Ok(box_ProfileEmail);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -160,7 +160,7 @@
         [ResponseType(typeof(Box_ProfileSM))]
         public async Task<IHttpActionResult> DeleteBox_ProfileSM(int id)
         {
-            var box_ProfileSM = GetBox_ProfileSM().Where(u => u.ProfileMSId == id).FirstOrDefault();
+            var box_ProfileSM = GetBox_ProfileSM().Where(u => u.Box_ProfileSMId == id).FirstOrDefault();
             if (box_ProfileSM == null)
             {
                 return NotFound();

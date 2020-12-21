@@ -143,10 +143,10 @@
             }
             else
             {
-                FullBackGround.BackgroundColor = Color.FromHex("#D6D3D3");
-                bxBtnHome.BackgroundColor = Color.FromHex("#D6D3D3");
-                BxSaveName.BackgroundColor = Color.FromHex("#D6D3D3");
-                BxBtnDelete.BackgroundColor = Color.FromHex("#D6D3D3");
+                FullBackGround.BackgroundColor = Color.FromHex("#FFFFFF");
+                bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
+                BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
             }
 
 
@@ -261,7 +261,7 @@
                             else
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                phoneIcon.BackgroundColor = Color.FromHex("#D6D3D3");
+                                phoneIcon.BackgroundColor = Color.FromHex("#FFFFFF");
                             }
 
                             //Asignación de caja en columnas
@@ -365,7 +365,7 @@
                             else
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                emailIcon.BackgroundColor = Color.FromHex("#D6D3D3");
+                                emailIcon.BackgroundColor = Color.FromHex("#FFFFFF");
                             }
 
                             //Asignación de caja en columnas
@@ -480,7 +480,7 @@
                             else
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                SMIcon.BackgroundColor = Color.FromHex("#D6D3D3");
+                                SMIcon.BackgroundColor = Color.FromHex("#FFFFFF");
                             }
 
                             //Asignación de caja en columnas
@@ -584,7 +584,8 @@
                             else
                             {
                                 //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                whatsappIcon.BackgroundColor = Color.FromHex("#D6D3D3");
+                                whatsappIcon.BackgroundColor = Color.FromHex("#FFFFFF" +
+                                    "");
                             }
 
                             //Asignación de caja en columnas

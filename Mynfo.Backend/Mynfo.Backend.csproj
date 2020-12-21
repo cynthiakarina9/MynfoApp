@@ -182,6 +182,7 @@
     <Compile Include="Controllers\ProfileWhatsappsController.cs" />
     <Compile Include="Controllers\RedSocialsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\UserTagsController.cs" />
     <Compile Include="Controllers\UserTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -316,6 +317,11 @@
     <Content Include="Views\ProfileWhatsapps\Details.cshtml" />
     <Content Include="Views\ProfileWhatsapps\Edit.cshtml" />
     <Content Include="Views\ProfileWhatsapps\Index.cshtml" />
+    <Content Include="Views\UserTags\Create.cshtml" />
+    <Content Include="Views\UserTags\Delete.cshtml" />
+    <Content Include="Views\UserTags\Details.cshtml" />
+    <Content Include="Views\UserTags\Edit.cshtml" />
+    <Content Include="Views\UserTags\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
