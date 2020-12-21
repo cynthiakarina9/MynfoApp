@@ -2,12 +2,9 @@
 {
     using Mynfo.Models;
     using Mynfo.ViewModels;
-    using SQLite;
     using System;
     using System.Data.SqlClient;
-    using System.IO;
     using System.Text;
-    using Xamarin.Essentials;
     using Xamarin.Forms;
 
     public partial class HomePage : ContentPage
@@ -17,7 +14,7 @@
             InitializeComponent();
 
             ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
-            //GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
+            GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
 
             System.Text.StringBuilder sb;
             string      userId = MainViewModel.GetInstance().User.UserId.ToString();
@@ -941,8 +938,8 @@
 
         private void GoToTestPage()
         {
+            MainViewModel.GetInstance().Testing = new TestingViewModel();
             Navigation.PushAsync(new Testing());
-            //Application.Current.MainPage = new NavigationPage(new Testing());
         }
 
     }

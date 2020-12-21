@@ -91,7 +91,7 @@ namespace Mynfo.Views
             queryGetWhatsapp = "select dbo.Boxes.BoxId, dbo.ProfileWhatsapps.ProfileWhatsappId, dbo.ProfileWhatsapps.Name, " +
                                         "dbo.ProfileWhatsapps.Number from dbo.Box_ProfileWhatsapp Join dbo.Boxes " +
                                         "on(dbo.Boxes.BoxId = dbo.Box_ProfileWhatsapp.BoxId) " +
-                                        "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfilePhoneId) " +
+                                        "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                         "where dbo.Boxes.BoxId =" + _boxId;
 
             //Consulta para obtener Box
@@ -176,6 +176,7 @@ namespace Mynfo.Views
             BxNameEntry.TextColor = Color.FromHex("#FF5521");
             BxNameEntry.FontAttributes = FontAttributes.Bold;
             BxNameEntry.IsReadOnly = true;
+            BxNameEntry.BackgroundColor = Color.Transparent;
 
             BoxNameEntry.Children.Add(BxNameEntry);
 
@@ -649,7 +650,7 @@ namespace Mynfo.Views
                                                 "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
                                                 "where dbo.Box_ProfileSM.BoxId = " + _boxId;
                 string queryGetBoxWhatsapp = "select * from dbo.ProfileWhatsapps join dbo.Box_ProfileWhatsapp on " +
-                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfilePhoneId) " +
+                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                                 "where dbo.Box_ProfileWhatsapp.BoxId = " + _boxId;
 
                 //Borrar box predeterminada anterior
@@ -1032,7 +1033,7 @@ namespace Mynfo.Views
                                                             "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
                                                             "where dbo.Box_ProfileSM.BoxId = " + boxIdLocal;
                             string queryGetBoxWhatsappProfiles = "select * from dbo.ProfileWhatsapps join dbo.Box_ProfileWhatsapp on " +
-                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfilePhoneId) " +
+                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                                 "where dbo.Box_ProfileWhatsapp.BoxId = " + boxIdLocal;
 
                             //Consulta para obtener perfiles email

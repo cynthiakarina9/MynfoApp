@@ -4,24 +4,17 @@
     using Android.Content;
     using Android.Content.PM;
     using Android.Nfc;
-    using Android.Nfc.Tech;
     using Android.OS;
     using Android.Runtime;
     using Models;
     using Newtonsoft.Json;
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
-    using Poz1.NFCForms.Abstract;
-    using Poz1.NFCForms.Droid;
     using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Text;
-    using Mynfo.ViewModels;
-    using System.Collections.Generic;
-    using Newtonsoft.Json.Linq;
-    using SQLite;
-    using Android.Graphics.Drawables;
-    using System.Globalization;
 
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait)]
     [IntentFilter(new[] { NfcAdapter.ActionNdefDiscovered }, 
@@ -72,6 +65,7 @@
 
             //Color de tema
             Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
+            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             base.OnCreate(savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

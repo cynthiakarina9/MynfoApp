@@ -1,37 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mynfo.Views.Testing">
-    <NavigationPage.TitleView>
-        <Grid 
-            Padding = "0" 
-            BackgroundColor = "Transparent">
-           <!-- <ImageButton
-                BackgroundColor = "Transparent"
-                HorizontalOptions = "Start"
-                VerticalOptions = "Center"
-                WidthRequest = "50"
-                Source="back"
-                x:Name="BackButton"/>-->
-        </Grid>
-    </NavigationPage.TitleView>
+             x:Class="Mynfo.Views.Testing"
+             BindingContext = "{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
-        <StackLayout>
-            <!--<Button Text="Hola mundo" x:Name="AbrirPopUp"/>-->
+        <Grid
+            BindingContext="{Binding Testing}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--Titulo-->
+
             <Label 
-                FontSize = "30" 
+                Grid.Row = "0" 
+                Text = "Test de Grid"
+                FontSize = "25"
                 FontAttributes="Bold"
-                HorizontalOptions = "Center"
-                VerticalOptions = "Center"
-                TextColor="Red"
-                Text="Nom box"
-                x:Name="boxLocalName"/>
-            <Label 
-                Padding="0,25,0,0"
-                FontSize = "15" 
-                HorizontalOptions = "Center"
-                VerticalOptions = "Center"
-                x:Name="networksLocalNames"/>
-        </StackLayout>
+                TextColor = "{StaticResource MainColor}"
+                HorizontalOptions = "CenterAndExpand"
+                VerticalOptions = "EndAndExpand"  
+                Margin = "0,5,0,15"/>
+            <!--End Titulo-->
+            <CollectionView 
+                ItemsSource="{Binding ListOfNetworks}"
+                Grid.Row="1">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                    Span="3" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+                            <ImageButton
+                                BackgroundColor="Transparent"
+                                Grid.Column="0"
+                                HeightRequest="40"
+                                Margin="10"
+                                Source="whatsapp2"
+                                WidthRequest="40"/>
+                            <Label Grid.Row="0"
+                                Text="{Binding Name}"
+                                FontAttributes="Bold"
+                                TextColor="DarkRed" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

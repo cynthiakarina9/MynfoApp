@@ -105,7 +105,7 @@
                 HorizontalOptions = "Center"
                 BackgroundColor = "Transparent"
                 Margin = "15"
-                Source = "plus"   
+                Source = "Plus"   
                 x:Name="BoxProfiles"/>
         </Grid>
     </ContentPage.Content>
