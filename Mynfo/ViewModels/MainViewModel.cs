@@ -3,7 +3,6 @@
     using Models;
     using Mynfo.Domain;
     using Mynfo.Helpers;
-    using Mynfo.Views;
     using System.Collections.ObjectModel;
 
     public class MainViewModel : BaseViewModel
@@ -135,6 +134,12 @@
             set;
         }
 
+        public ProfileTypeSelectionViewModel ProfileTypeSelection
+        {
+            get;
+            set;
+        }
+
         public MyExternalProfileViewModel MyExternalProfile
         {
             get;
@@ -194,6 +199,12 @@
             set;
         }
         public TestCViewModel TestC
+        {
+            get;
+            set;
+        }
+
+        public TestingViewModel Testing
         {
             get;
             set;

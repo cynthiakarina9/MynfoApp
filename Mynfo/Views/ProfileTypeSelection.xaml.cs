@@ -16,7 +16,7 @@ namespace Mynfo.Views
         public ProfileTypeSelection(int _BoxId, bool _boxDefault, string _boxName)
         {
             InitializeComponent();
-            BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId));
+            //BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId));
 
             //Botones de redes sociales
             ProfilesEmail.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Email", _boxDefault, _boxName));
@@ -27,15 +27,17 @@ namespace Mynfo.Views
         private void Back_Clicked(object sender, EventArgs e, int _BoxId)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.DetailsBox = new DetailsBoxViewModel();
+            mainViewModel.DetailsBox = new DetailsBoxViewModel(_BoxId);
             Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
         }
 
         private void ProfilesList_Clicked(object sender, EventArgs e, int _BoxId, string _profileType, bool _BoxDefault, string _boxName)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.DetailsBox = new DetailsBoxViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault, _boxName));
+            //mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel(_BoxId, _profileType, _BoxDefault, _boxName);
+            mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel(_BoxId, _profileType, _BoxDefault, _boxName);
+            //Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault, _boxName));
+            App.Navigator.PushAsync(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault, _boxName));
         }
         private void BackHome_Clicked(object sender, EventArgs e)
         {

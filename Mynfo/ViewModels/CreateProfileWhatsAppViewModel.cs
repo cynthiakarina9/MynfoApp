@@ -114,22 +114,23 @@ namespace Mynfo.ViewModels
                 Name = this.Name,
                 Number = this.Number,
                 UserId = mainViewModel.User.UserId,
+                Exist = false
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Post(
+            var profileWhatsapp = await this.apiService.Post(
                 apiSecurity,
                 "/api",
                 "/ProfileWhatsapps",
                 profileWhatsApp);
 
-            if (!response.IsSuccess)
+            if (profileWhatsapp == default)
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    response.Message,
+                    Languages.ErrorAddProfile,
                     Languages.Accept);
                 return;
             }
@@ -137,45 +138,20 @@ namespace Mynfo.ViewModels
             this.IsRunning = false;
             this.IsEnabled = true;
 
+            //Agregar a la lista
+            if (mainViewModel.ProfilesBYPESM != null)
+            {
+                mainViewModel.ProfilesBYPESM.addProfileWhatsapp(profileWhatsapp);
+            }
+            else
+            {
+                mainViewModel.ProfilesByWhatsApp.addProfile(profileWhatsapp);
+            }
+
             this.Name = string.Empty;
             this.Number = string.Empty;
 
-            string consultaDefault = "SELECT Top 1 * FROM dbo.ProfileWhatsapps where dbo.ProfileWhatsapps.UserId = "
-                                        + MainViewModel.GetInstance().User.UserId +
-                                        " ORDER BY dbo.ProfileWhatsapps.ProfileWhatsappId DESC";
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            ProfileWhatsapp _profileWhatsapp = new ProfileWhatsapp();
-
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append(consultaDefault);
-                string sql = sb.ToString();
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            _profileWhatsapp.ProfileWhatsappId = (int)reader["ProfileWhatsappId"];
-                            _profileWhatsapp.Name = (string)reader["Name"];
-                            _profileWhatsapp.UserId = (int)reader["UserId"];
-                            _profileWhatsapp.Number = (string)reader["Number"];
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-
-            //Agregar a la lista
-            MainViewModel.GetInstance().ProfilesByWhatsApp.addProfile(_profileWhatsapp);
-
             await App.Navigator.PopAsync();
-
-            /*MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();*/
         }
         public ICommand BackHomeCommand
         {
@@ -184,8 +160,7 @@ namespace Mynfo.ViewModels
                 return new RelayCommand(BackHome);
             }
         }
-
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();

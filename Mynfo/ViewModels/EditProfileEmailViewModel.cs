@@ -119,7 +119,7 @@
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.PutProfile(
+            var profile = await this.apiService.PutProfile(
                 apiSecurity,
                 "/api",
                 "/ProfileEmails/PutProfileEmail",
@@ -128,38 +128,40 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            string consultaDefault = "select * from dbo.ProfileEmails where dbo.ProfileEmails.ProfileEmailId = "
-                                        + profileEmail.ProfileEmailId ;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            
-            ProfileEmail _profileEmail = new ProfileEmail();
+            #region LastCode2
+            //string consultaDefault = "select * from dbo.ProfileEmails where dbo.ProfileEmails.ProfileEmailId = "
+            //                            + profileEmail.ProfileEmailId ;
+            //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append(consultaDefault);
-                string sql = sb.ToString();
+            //ProfileEmail _profileEmail = new ProfileEmail();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            _profileEmail.ProfileEmailId = (int)reader["ProfileEmailId"];
-                            _profileEmail.Name = (string)reader["Name"];
-                            _profileEmail.UserId = (int)reader["UserId"];
-                            _profileEmail.Email = (string)reader["Email"];
-                        }
-                    }
-                    connection.Close();
-                }
-            }
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            //    sb.Append(consultaDefault);
+            //    string sql = sb.ToString();
+
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        using (SqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                _profileEmail.ProfileEmailId = (int)reader["ProfileEmailId"];
+            //                _profileEmail.Name = (string)reader["Name"];
+            //                _profileEmail.UserId = (int)reader["UserId"];
+            //                _profileEmail.Email = (string)reader["Email"];
+            //            }
+            //        }
+            //        connection.Close();
+            //    }
+            //}
+            #endregion
+
 
             //Agregar a la lista
-            MainViewModel.GetInstance().ProfilesByEmail.updateProfile(_profileEmail);
-
+            MainViewModel.GetInstance().ProfilesByEmail.updateProfile(profile);
             await App.Navigator.PopAsync();
         }
 
@@ -187,10 +189,10 @@
                 return;
             }
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Delete(
+            var response = await this.apiService.Delete3(
                 apiSecurity,
                 "/api",
-                "/Box_ProfileEmail",
+                "/Box_ProfileEmail/DeleteBox_ProfileEmailRelation",
                 profileEmail.ProfileEmailId);
 
             var response2 = await this.apiService.Delete(

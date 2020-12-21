@@ -29,7 +29,7 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-        public /*List<ProfilePhone>*/ ObservableCollection<ProfilePhone> profilephone
+        public ObservableCollection<ProfilePhone> profilephone
         {
             get { return profilePhone; }
             private set
@@ -47,7 +47,7 @@
             apiService = new ApiService();
             GetList();
         }
-        private async /*Task<List<ProfilePhone>>*/ Task<ObservableCollection<ProfilePhone>> GetList()
+        private async Task<ObservableCollection<ProfilePhone>> GetList()
         {
             this.IsRunning = true;
             List<ProfilePhone> listPhone;

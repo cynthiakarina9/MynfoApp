@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -47,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -183,6 +182,7 @@
     <Compile Include="Controllers\ProfileWhatsappsController.cs" />
     <Compile Include="Controllers\RedSocialsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\UserTagsController.cs" />
     <Compile Include="Controllers\UserTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,7 +210,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\MynfoBackend - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\MynfoBack - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -272,21 +272,6 @@
     <Content Include="Views\RedSocials\Details.cshtml" />
     <Content Include="Views\RedSocials\Edit.cshtml" />
     <Content Include="Views\RedSocials\Index.cshtml" />
-    <Content Include="Views\ProfilePhones\Create.cshtml" />
-    <Content Include="Views\ProfilePhones\Delete.cshtml" />
-    <Content Include="Views\ProfilePhones\Details.cshtml" />
-    <Content Include="Views\ProfilePhones\Edit.cshtml" />
-    <Content Include="Views\ProfilePhones\Index.cshtml" />
-    <Content Include="Views\ProfileEmails\Create.cshtml" />
-    <Content Include="Views\ProfileEmails\Delete.cshtml" />
-    <Content Include="Views\ProfileEmails\Details.cshtml" />
-    <Content Include="Views\ProfileEmails\Edit.cshtml" />
-    <Content Include="Views\ProfileEmails\Index.cshtml" />
-    <Content Include="Views\ProfileSMs\Create.cshtml" />
-    <Content Include="Views\ProfileSMs\Delete.cshtml" />
-    <Content Include="Views\ProfileSMs\Details.cshtml" />
-    <Content Include="Views\ProfileSMs\Edit.cshtml" />
-    <Content Include="Views\ProfileSMs\Index.cshtml" />
     <Content Include="Views\Box_ProfileSM\Create.cshtml" />
     <Content Include="Views\Box_ProfileSM\Delete.cshtml" />
     <Content Include="Views\Box_ProfileSM\Details.cshtml" />
@@ -307,16 +292,36 @@
     <Content Include="Views\Boxes\Details.cshtml" />
     <Content Include="Views\Boxes\Edit.cshtml" />
     <Content Include="Views\Boxes\Index.cshtml" />
-    <Content Include="Views\ProfileWhatsapps\Create.cshtml" />
-    <Content Include="Views\ProfileWhatsapps\Delete.cshtml" />
-    <Content Include="Views\ProfileWhatsapps\Details.cshtml" />
-    <Content Include="Views\ProfileWhatsapps\Edit.cshtml" />
-    <Content Include="Views\ProfileWhatsapps\Index.cshtml" />
     <Content Include="Views\Box_ProfileWhatsapp\Create.cshtml" />
     <Content Include="Views\Box_ProfileWhatsapp\Delete.cshtml" />
     <Content Include="Views\Box_ProfileWhatsapp\Details.cshtml" />
     <Content Include="Views\Box_ProfileWhatsapp\Edit.cshtml" />
     <Content Include="Views\Box_ProfileWhatsapp\Index.cshtml" />
+    <Content Include="Views\ProfilePhones\Create.cshtml" />
+    <Content Include="Views\ProfilePhones\Delete.cshtml" />
+    <Content Include="Views\ProfilePhones\Details.cshtml" />
+    <Content Include="Views\ProfilePhones\Edit.cshtml" />
+    <Content Include="Views\ProfilePhones\Index.cshtml" />
+    <Content Include="Views\ProfileEmails\Create.cshtml" />
+    <Content Include="Views\ProfileEmails\Delete.cshtml" />
+    <Content Include="Views\ProfileEmails\Details.cshtml" />
+    <Content Include="Views\ProfileEmails\Edit.cshtml" />
+    <Content Include="Views\ProfileEmails\Index.cshtml" />
+    <Content Include="Views\ProfileSMs\Create.cshtml" />
+    <Content Include="Views\ProfileSMs\Delete.cshtml" />
+    <Content Include="Views\ProfileSMs\Details.cshtml" />
+    <Content Include="Views\ProfileSMs\Edit.cshtml" />
+    <Content Include="Views\ProfileSMs\Index.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Create.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Delete.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Details.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Edit.cshtml" />
+    <Content Include="Views\ProfileWhatsapps\Index.cshtml" />
+    <Content Include="Views\UserTags\Create.cshtml" />
+    <Content Include="Views\UserTags\Delete.cshtml" />
+    <Content Include="Views\UserTags\Details.cshtml" />
+    <Content Include="Views\UserTags\Edit.cshtml" />
+    <Content Include="Views\UserTags\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,10 +374,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

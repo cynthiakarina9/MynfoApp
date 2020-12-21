@@ -4,16 +4,15 @@
     using Android.Content;
     using Android.Content.PM;
     using Android.Nfc;
-    using Android.Nfc.Tech;
     using Android.OS;
     using Android.Runtime;
     using Models;
     using Newtonsoft.Json;
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
-    using Poz1.NFCForms.Abstract;
-    using Poz1.NFCForms.Droid;
     using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Text;
     using Mynfo.ViewModels;
@@ -66,7 +65,9 @@
 
             //Color de tema
             Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");
+            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             base.OnCreate(savedInstanceState);
+            Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

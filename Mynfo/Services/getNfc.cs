@@ -61,7 +61,7 @@ namespace Mynfo.Services
                     //name bxl
                     //BoxDefault
                     //time
-                    //UserTypeId
+                    //UserTypeId 
                     //ImageFullPath
                     //FullName
 

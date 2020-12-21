@@ -1,9 +1,11 @@
 ﻿namespace Mynfo.iOS
 {
     using Foundation;
+    using Mynfo.Interfaces;
     using System;
     using System.IO;
-    using UIKit; 
+    using UIKit;
+    using Xamarin.Forms;
 
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
@@ -22,12 +24,12 @@
         {
             //Set DB root
             string dbName = "Mynfo.db3";
-            string dbBinder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library", "Databases");
+            string dbBinder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal));//, "..", "Library", "Databases");
             string dbRoot = Path.Combine(dbBinder, dbName);
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(dbRoot));
-
+            DependencyService.Register<ILocalize>();
             return base.FinishedLaunching(app, options);
         }
     }
