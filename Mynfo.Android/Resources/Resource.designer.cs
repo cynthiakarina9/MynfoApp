@@ -15491,9 +15491,6 @@ namespace Mynfo.Droid
 			// aapt resource value: 0x7F0D0045
 			public const int common_google_play_services_unknown_issue = 2131558469;
 			
-			// aapt resource value: 0x7F0D0045
-			public const int common_google_play_services_unknown_issue = 2131558469;
-			
 			// aapt resource value: 0x7F0D002E
 			public const int com_facebook_device_auth_instructions = 2131558446;
 			
@@ -20250,19 +20247,13 @@ namespace Mynfo.Droid
 		{
 			
 			// aapt resource value: 0x7F100000
-			public const int aid_list = 2131755008;
+			public const int file_paths = 2131755008;
 			
 			// aapt resource value: 0x7F100001
-			public const int file_paths = 2131755009;
+			public const int nfc = 2131755009;
 			
 			// aapt resource value: 0x7F100002
-			public const int nfc = 2131755010;
-			
-			// aapt resource value: 0x7F100003
-			public const int techlist = 2131755011;
-			
-			// aapt resource value: 0x7F100004
-			public const int xamarin_essentials_fileprovider_file_paths = 2131755012;
+			public const int xamarin_essentials_fileprovider_file_paths = 2131755010;
 			
 			static Xml()
 			{
