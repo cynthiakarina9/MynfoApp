@@ -159,6 +159,10 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mynfo.Domain\Mynfo.Domain.csproj">
+      <Project>{7F1D0B63-D7AB-4EB9-8AED-570874360454}</Project>
+      <Name>Mynfo.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mynfo\Mynfo.csproj">
       <Project>{179A505F-9046-4674-AD1F-A5E836ACF5FA}</Project>
       <Name>Mynfo</Name>
