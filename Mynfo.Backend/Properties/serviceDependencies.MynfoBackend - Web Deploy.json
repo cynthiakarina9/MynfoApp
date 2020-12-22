@@ -1,10 +1,10 @@
 {
   "dependencies": {
     "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/serverappmyinfonfc/databases/Mynfo",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/serverappmynfo/databases/mynfo",
       "type": "mssql.azure",
       "connectionId": "DefaultConnection",
-      "secretStore": "AzureAppSettings"
+      "secretStore": null
     }
   }
 }
