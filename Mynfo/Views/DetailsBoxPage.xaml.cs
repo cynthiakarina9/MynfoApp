@@ -179,6 +179,7 @@
             BxNameEntry.TextColor = Color.FromHex("#FF5521");
             BxNameEntry.FontAttributes = FontAttributes.Bold;
             BxNameEntry.IsReadOnly = true;
+            BxNameEntry.BackgroundColor = Color.Transparent;
 
             BoxNameEntry.Children.Add(BxNameEntry);
 

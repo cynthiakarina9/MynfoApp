@@ -16,7 +16,7 @@
                         Margin="5">
                         <Image
                             HeightRequest="120"
-                            Source = "logo3"
+                            Source = "Logo3"
                             WidthRequest="120"/>
                         <Label 
                             FontAttributes = "Bold"
@@ -117,7 +117,6 @@
                     <StackLayout
                             HorizontalOptions = "Center"
                             Orientation = "Horizontal"
-                            Padding="0,50,0,0"
                             VerticalOptions = "EndAndExpand">
                         <Image
                             Source = "facebook2"

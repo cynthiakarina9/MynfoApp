@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using ViewModels;
     using Views;
+    using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
@@ -42,6 +43,8 @@
             //Set root SQLite
             root_db = root_DB;
 
+            Preferences.Set("key1", Guid.NewGuid().ToString());
+            Preferences.Set("IsEnabled", true);
 
             if (Settings.IsRemembered == "true")
             {
@@ -166,6 +169,16 @@
             ////Application.Current.MainPage = new MasterPage();
             //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
         }
+
+        /*public static async Task DisplayAlertAsync(string msg) =>
+            await Xamarin.Forms.Device.InvokeOnMainThreadAsync(async () => await Current.MainPage.DisplayAlert("message from service", msg, "ok"));*/
+
+
+        public static async Task DisplayAlertAsync(string msg) =>
+            await Xamarin.Forms.Device.InvokeOnMainThreadAsync(async () => await Current.MainPage.DisplayAlert("message from service", msg, "ok"));
+
+
+
 
         protected override void OnStart()
         {

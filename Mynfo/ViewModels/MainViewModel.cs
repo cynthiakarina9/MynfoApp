@@ -3,7 +3,6 @@
     using Models;
     using Mynfo.Domain;
     using Mynfo.Helpers;
-    using Mynfo.Views;
     using System.Collections.ObjectModel;
 
     public class MainViewModel : BaseViewModel
@@ -204,6 +203,12 @@
             get;
             set;
         }
+
+        public TestingViewModel Testing
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructors
@@ -223,8 +228,7 @@
             {
                 Icon = "account",
                 PageName = "MyProfilePage",
-                Title = "Test"
-                /*Title = Languages.MyAccount,*/
+                Title = Languages.MyAccount,
             });
             /*this.Menus.Add(new MenuItemViewModel
             {
@@ -242,8 +246,7 @@
             {
                 Icon = "logout",
                 PageName = "LoginPage",
-                Title = "Test"
-                /*Title = Languages.LogOut,*/
+                Title = Languages.LogOut,
             });
         }
         #endregion
