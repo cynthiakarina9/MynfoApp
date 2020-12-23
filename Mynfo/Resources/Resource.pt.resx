@@ -541,4 +541,7 @@ Você deve inserir um url</value>
   <data name="WrongEmail" xml:space="preserve">
     <value>Já existe uma conta com esse e-mail, tente novamente com outra</value>
   </data>
+  <data name="ProfileNull" xml:space="preserve">
+    <value>Você ainda não criou nenhum perfil deste tipo.</value>
+  </data>
 </root>

@@ -56,6 +56,18 @@
             return Ok(user);
         }
 
+        [ResponseType(typeof(User))]
+        public async Task<IHttpActionResult> GetUser(int id)
+        {
+            var user = await db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
         [HttpPost]
         [Route("LoginFacebook")]
         public async Task<IHttpActionResult> LoginFacebook(FacebookResponse profile)

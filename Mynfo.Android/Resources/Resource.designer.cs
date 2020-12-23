@@ -20732,9 +20732,6 @@ namespace Mynfo.Droid
 			// aapt resource value: 1
 			public const int TextAppearance_android_typeface = 1;
 			
-			// aapt resource value: 11
-			public const int TextAppearance_fontFamily = 11;
-			
 			// aapt resource value: 12
 			public const int TextAppearance_fontFamily = 12;
 			

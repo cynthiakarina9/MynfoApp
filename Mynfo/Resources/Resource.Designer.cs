@@ -1105,6 +1105,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You have not created any profile of this type yet..
+        /// </summary>
+        public static string ProfileNull {
+            get {
+                return ResourceManager.GetString("ProfileNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Phone profile.
         /// </summary>
         public static string ProfilePhone {
