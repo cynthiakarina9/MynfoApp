@@ -63,6 +63,32 @@
             return Ok(profileMS);
         }
 
+        [HttpPost]
+        [Route("GetProfileByNetWorkT")]
+        public async Task<IHttpActionResult> GetProfileByNetWorkT(JObject form)
+        {
+            int id;
+            int RedSocialId;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.UserId;
+                RedSocialId = jsonObject.RedSocialId;
+            }
+            catch
+            {
+                return BadRequest("Missing parameter.");
+            }
+            var profileMS = await GetProfileSMs().
+                Where(u => u.UserId == id && u.RedSocialId == RedSocialId).ToListAsync();
+            if (profileMS == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(profileMS);
+        }
+
         // GET: api/ProfileSMs/5
         [ResponseType(typeof(ProfileSM))]
         public async Task<IHttpActionResult> GetProfileSMByUser(int id)
