@@ -3,6 +3,7 @@ using Android.Nfc;
 using Android.Nfc.Tech;
 using Mynfo.Models;
 using Mynfo.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -31,42 +32,42 @@ namespace Mynfo.Droid.Services
             IsoDep isoDep = IsoDep.Get(tag);      
             
                 
-            /*
             
-            NfcA nfcA = NfcA.Get(tag);
+            
+//            NfcA nfcA = NfcA.Get(tag);
           
-            //byte[] response = nfcA.Transceive(new byte[] { (byte)0x30, (byte)0x00 });
+//            //byte[] response = nfcA.Transceive(new byte[] { (byte)0x30, (byte)0x00 });
 
-            nfcA.Connect();            
+//            nfcA.Connect();            
 
-            var aidLength2 = (byte)(SAMPLE_LOYALTY_CARD_AID.Length / 2);
-            var aidBytes2 = StringToByteArray(SAMPLE_LOYALTY_CARD_AID);          
-            var command2 = SELECT_APDU_HEADER
-                        .Concat(new byte[] { aidLength2 })
-                        .Concat(aidBytes2)
-                        .ToArray();
+//            var aidLength2 = (byte)(SAMPLE_LOYALTY_CARD_AID.Length / 2);
+//            var aidBytes2 = StringToByteArray(SAMPLE_LOYALTY_CARD_AID);          
+//            var command2 = SELECT_APDU_HEADER
+//                        .Concat(new byte[] { aidLength2 })
+//                        .Concat(aidBytes2)
+//                        .ToArray();
 
-            var result2 = nfcA.Transceive(new byte[] {
-  (byte)0x30,  /* CMD = READ */
-/*  (byte)0x10   /* PAGE = 16  */
-/*});
+//            var result2 = nfcA.Transceive(new byte[] {
+//  (byte)0x30,  /* CMD = READ */
+//  (byte)0x10   /* PAGE = 16  */
+//});
 
-            string TagUid = ByteArrayToString(result2);
+//            string TagUid = ByteArrayToString(result2);
 
-            var resultLength2 = result2.Length;
-            byte[] statusWord2 = { result2[resultLength2 - 2], result2[resultLength2 - 1] };
-            var payload2 = new byte[resultLength2 - 2];
-            Array.Copy(result2, payload2, resultLength2 - 2);
-            var arrayEquals2 = SELECT_OK_SW.Length == statusWord2.Length;
-            var msg2 = Encoding.UTF8.GetString(payload2);
-            if (Enumerable.SequenceEqual(SELECT_OK_SW, statusWord2))
-            {
-                var msg = Encoding.UTF8.GetString(payload2);
-                await App.DisplayAlertAsync(msg);
-            }  
+//            var resultLength2 = result2.Length;
+//            byte[] statusWord2 = { result2[resultLength2 - 2], result2[resultLength2 - 1] };
+//            var payload2 = new byte[resultLength2 - 2];
+//            Array.Copy(result2, payload2, resultLength2 - 2);
+//            var arrayEquals2 = SELECT_OK_SW.Length == statusWord2.Length;
+//            var msg2 = Encoding.UTF8.GetString(payload2);
+//            if (Enumerable.SequenceEqual(SELECT_OK_SW, statusWord2))
+//            {
+//                var msg = Encoding.UTF8.GetString(payload2);
+//                await App.DisplayAlertAsync(msg);
+//            }  
       
 
-            */
+            
               
             if (isoDep != null)
             {
@@ -94,7 +95,9 @@ namespace Mynfo.Droid.Services
                        
                         try 
                         {
-                            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+
+                            
+                            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                             string queryLastBoxCreated = 
 
                             "select dbo.Users.FirstName, dbo.Users.LastName, dbo.Users.ImagePath, dbo.Boxes.BoxId from dbo.Users " +
@@ -123,14 +126,18 @@ namespace Mynfo.Droid.Services
                                             string get_ImagePath = reader["ImagePath"].ToString();
                                             int get_box_id = (int)reader["BoxId"];
 
-                                            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-                                            var BoxId = await this.apiService.GetBox(
-                                            apiSecurity,
-                                            "/api",
-                                            "/Boxes",
-                                            get_box_id);
+
+
+                                                
+
+
 
                                             //consulta-api
+                                            //Json_value string 
+
+
+                                            nfcData = (List<Get_nfc>)JsonConvert.DeserializeObject("", typeof(List<Get_nfc>));
+
 
                                             InsertForeignData();
                                         }
