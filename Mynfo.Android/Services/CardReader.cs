@@ -67,7 +67,7 @@ namespace Mynfo.Droid.Services
       
 
             */
-
+              
             if (isoDep != null)
             {
                 try
