@@ -303,11 +303,6 @@
     <Content Include="Views\ProfilePhones\Details.cshtml" />
     <Content Include="Views\ProfilePhones\Edit.cshtml" />
     <Content Include="Views\ProfilePhones\Index.cshtml" />
-    <Content Include="Views\ProfileEmails\Create.cshtml" />
-    <Content Include="Views\ProfileEmails\Delete.cshtml" />
-    <Content Include="Views\ProfileEmails\Details.cshtml" />
-    <Content Include="Views\ProfileEmails\Edit.cshtml" />
-    <Content Include="Views\ProfileEmails\Index.cshtml" />
     <Content Include="Views\ProfileSMs\Create.cshtml" />
     <Content Include="Views\ProfileSMs\Delete.cshtml" />
     <Content Include="Views\ProfileSMs\Details.cshtml" />
@@ -323,6 +318,11 @@
     <Content Include="Views\UserTags\Details.cshtml" />
     <Content Include="Views\UserTags\Edit.cshtml" />
     <Content Include="Views\UserTags\Index.cshtml" />
+    <Content Include="Views\ProfileEmails\Create.cshtml" />
+    <Content Include="Views\ProfileEmails\Delete.cshtml" />
+    <Content Include="Views\ProfileEmails\Details.cshtml" />
+    <Content Include="Views\ProfileEmails\Edit.cshtml" />
+    <Content Include="Views\ProfileEmails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
