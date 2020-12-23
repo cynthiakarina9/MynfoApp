@@ -2,11 +2,13 @@
 using Android.Nfc;
 using Android.Nfc.Tech;
 using Mynfo.Models;
+using Mynfo.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Mynfo.Droid.Services
 {
@@ -22,19 +24,20 @@ namespace Mynfo.Droid.Services
         // "OK" status word sent in response to SELECT AID command (0x9000)
         private static readonly byte[] SELECT_OK_SW = new byte[] { 0x90, 0x00 };
 
+        ApiService apiService = new ApiService();
+
         public async void OnTagDiscovered(Tag tag)
         {
-            IsoDep isoDep = IsoDep.Get(tag);           
-            /*
-            NfcA nfcA = NfcA.Get(tag);
-
+            IsoDep isoDep = IsoDep.Get(tag);      
             
-
+                
+            /*
+            
+            NfcA nfcA = NfcA.Get(tag);
+          
             //byte[] response = nfcA.Transceive(new byte[] { (byte)0x30, (byte)0x00 });
 
-            nfcA.Connect();
-
-            
+            nfcA.Connect();            
 
             var aidLength2 = (byte)(SAMPLE_LOYALTY_CARD_AID.Length / 2);
             var aidBytes2 = StringToByteArray(SAMPLE_LOYALTY_CARD_AID);          
@@ -43,7 +46,10 @@ namespace Mynfo.Droid.Services
                         .Concat(aidBytes2)
                         .ToArray();
 
-            var result2 = nfcA.Transceive(command2);
+            var result2 = nfcA.Transceive(new byte[] {
+  (byte)0x30,  /* CMD = READ */
+/*  (byte)0x10   /* PAGE = 16  */
+/*});
 
             string TagUid = ByteArrayToString(result2);
 
@@ -57,8 +63,11 @@ namespace Mynfo.Droid.Services
             {
                 var msg = Encoding.UTF8.GetString(payload2);
                 await App.DisplayAlertAsync(msg);
-            }
-      */
+            }  
+      
+
+            */
+
             if (isoDep != null)
             {
                 try
@@ -114,6 +123,12 @@ namespace Mynfo.Droid.Services
                                             string get_ImagePath = reader["ImagePath"].ToString();
                                             int get_box_id = (int)reader["BoxId"];
 
+                                            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+                                            var BoxId = await this.apiService.GetBox(
+                                            apiSecurity,
+                                            "/api",
+                                            "/Boxes",
+                                            get_box_id);
 
                                             //consulta-api
 
