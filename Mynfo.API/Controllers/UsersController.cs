@@ -57,15 +57,15 @@
         }
 
         [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> GetUser(int id)
+        public async Task<User> GetUser(int id)
         {
             var user = await db.Users.FindAsync(id);
             if (user == null)
             {
-                return NotFound();
+                return  null;
             }
 
-            return Ok(user);
+            return user;
         }
 
         [HttpPost]
