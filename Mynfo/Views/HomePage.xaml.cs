@@ -14,7 +14,7 @@
             InitializeComponent();
 
             ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
-            GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
+            //GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
 
             System.Text.StringBuilder sb;
             string      userId = MainViewModel.GetInstance().User.UserId.ToString();
@@ -22,7 +22,7 @@
             string      consultaDefault = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 1";
             string      consultaBoxes = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 0";
             string      consultaGetBoxesNum = "select * from dbo.Boxes where Boxes.UserId = " + userId;
-            string      cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string      cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             var         Default = new Button();
             var         LabelDefault = new Label();
             var         Box2 = new Button();
@@ -527,7 +527,7 @@
 
             using (var conn = new SQLite.SQLiteConnection(App.root_db))
             {
-                string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+                string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                 string queryToGetBoxDefault = "select * from dbo.Boxes where dbo.boxes.UserId = " 
                                                 + MainViewModel.GetInstance().User.UserId
                                                 + " and dbo.Boxes.BoxDefault = 1";
