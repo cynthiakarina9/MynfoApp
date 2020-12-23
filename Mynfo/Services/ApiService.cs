@@ -27,7 +27,9 @@
 
             var isReachable = await CrossConnectivity.Current.IsRemoteReachable(
                 "http://portal.azure.com");
-            if (!isReachable)
+            var isReachable2 = await CrossConnectivity.Current.IsRemoteReachable(
+                "http://google.com");
+            if (!isReachable || !isReachable2)
             {
                 return new Response
                 {
@@ -673,6 +675,42 @@
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue(tokenType, accessToken);
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<User>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<User> GetUserByEmail(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string email)
+        {
+            try
+            {
+                var model = new UserRequest
+                {
+                    Email = email,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
                 var url = string.Format("{0}{1}", servicePrefix, controller);
                 var response = await client.PostAsync(url, content);
