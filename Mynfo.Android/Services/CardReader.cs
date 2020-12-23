@@ -63,7 +63,7 @@ namespace Mynfo.Droid.Services
             {
                 var msg = Encoding.UTF8.GetString(payload2);
                 await App.DisplayAlertAsync(msg);
-            }
+            }  
       
 
             */
