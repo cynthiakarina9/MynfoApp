@@ -537,4 +537,7 @@
   <data name="ErrorAddProfile" xml:space="preserve">
     <value>An error has occurred, please try again later.</value>
   </data>
+  <data name="WrongEmail" xml:space="preserve">
+    <value>It already exists an account with that email, try again with one different.</value>
+  </data>
 </root>

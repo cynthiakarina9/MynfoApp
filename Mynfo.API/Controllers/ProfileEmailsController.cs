@@ -39,7 +39,7 @@
         [Route("GetProfileEmail")]
         public async Task<IHttpActionResult> GetProfileEmail(JObject form)
         {
-            int id ;
+            int id;
             dynamic jsonObject = form;
             try
             {
@@ -50,7 +50,7 @@
                 return BadRequest("Missing parameter.");
             }
             var profileEmail = await GetProfileEmails().
-                Where(u =>  u.ProfileEmailId == id).FirstOrDefaultAsync();
+                Where(u => u.ProfileEmailId == id).FirstOrDefaultAsync();
             if (profileEmail == null)
             {
                 return NotFound();
@@ -91,7 +91,7 @@
             {
                 return BadRequest("Missing parameter.");
             }
-            
+
 
             db.Entry(form).State = EntityState.Modified;
 

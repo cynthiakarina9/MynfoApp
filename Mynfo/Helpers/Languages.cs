@@ -591,5 +591,10 @@
         {
             get { return Resource.NetworksList; }
         }
+
+        public static string WrongEmail
+        {
+            get { return Resource.WrongEmail;  }
+        }
     }
 }

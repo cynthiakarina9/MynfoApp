@@ -201,6 +201,24 @@
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+
+            var exists = await this.apiService.GetUserByEmail(
+                apiSecurity,
+                "/api",
+                "/Users/GetUserByEmail",
+                this.Email);
+
+            if(exists != null)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.WrongEmail,
+                    Languages.Accept);
+                return;
+            }
+
             var response = await this.apiService.Post2(
                 apiSecurity,
                 "/api",
