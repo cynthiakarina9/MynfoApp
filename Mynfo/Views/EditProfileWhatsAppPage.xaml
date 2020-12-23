@@ -11,7 +11,7 @@
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
-                Margin = "0,0,70,0"
+                Margin = "0,0,80,0"
                 HorizontalOptions = "Center"
                 Source = "logo_superior3.png" 
                 VerticalOptions = "Center"

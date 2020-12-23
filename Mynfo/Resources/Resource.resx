@@ -540,4 +540,7 @@
   <data name="WrongEmail" xml:space="preserve">
     <value>It already exists an account with that email, try again with one different.</value>
   </data>
+  <data name="ProfileNull" xml:space="preserve">
+    <value>You have not created any profile of this type yet.</value>
+  </data>
 </root>

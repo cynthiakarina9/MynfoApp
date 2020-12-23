@@ -30,7 +30,7 @@
 
         // POST: api/Users/ejemplo@ejemplo.com
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         [Route("GetUserByEmail")]
         public async Task<IHttpActionResult> GetUserByEmail(JObject form)
         {
@@ -48,6 +48,18 @@
             var user = await db.Users.
                 Where(u => u.Email.ToLower() == email.ToLower()).
                 FirstOrDefaultAsync();
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+        [ResponseType(typeof(User))]
+        public async Task<IHttpActionResult> GetUser(int id)
+        {
+            var user = await db.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();

@@ -151,6 +151,38 @@
                 return null;
             }
         }
+
+        public async Task<User> GetUserId(
+           string urlBase,
+           string servicePrefix,
+           string controller,
+           int id)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    id);
+                var response = await client.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<User>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public async Task<Response> Get<T>(
             string urlBase,
             string servicePrefix,
