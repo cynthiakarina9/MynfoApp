@@ -175,7 +175,7 @@
                 }
 
                 var result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<User>(result);
+                return JsonConvert.DeserializeObject<User>(result);                
             }
             catch
             {

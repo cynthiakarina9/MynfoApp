@@ -1,14 +1,17 @@
 ﻿using Android.Content;
 using Android.Nfc;
 using Android.Nfc.Tech;
+using Mynfo.Domain;
 using Mynfo.Models;
 using Mynfo.Services;
+using Mynfo.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Mynfo.Droid.Services
@@ -124,22 +127,26 @@ namespace Mynfo.Droid.Services
                                             string get_FirstName = (string)reader["FirstName"];
                                             string  get_LastName = (string)reader["LastName"];
                                             string get_ImagePath = reader["ImagePath"].ToString();
-                                            int get_box_id = (int)reader["BoxId"];
+                                            int get_box_id = (int)reader["BoxId"];                                                                                                                              
 
+                                            //nfcData = (List<Get_nfc>)JsonConvert.DeserializeObject("", typeof(List<Get_nfc>));
+                                         
+                                            ForeingBox foreingBox;
 
+                                            foreingBox = new ForeingBox
+                                            {
+                                                TagID = 001,
+                                                UserId = Convert.ToInt32(msg),
+                                                Time = DateTime.Now,
+                                                BoxId = get_box_id,
+                                                FirstName = get_FirstName,
+                                                LastName = get_LastName,
+                                                ImagePath = get_ImagePath,
+                                                UserTypeId = 1
+                                                //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),                                               
+                                            };
 
-                                                
-
-
-
-                                            //consulta-api
-                                            //Json_value string 
-
-
-                                            nfcData = (List<Get_nfc>)JsonConvert.DeserializeObject("", typeof(List<Get_nfc>));
-
-
-                                            InsertForeignData();
+                                            MainViewModel.GetInstance();
                                         }
                                     }
 
@@ -183,60 +190,70 @@ namespace Mynfo.Droid.Services
 
         public List<Get_nfc> nfcData = new List<Get_nfc>();
 
-        public void InsertForeignData()
-        {
-            ForeingBox foreingBox;
-            ForeingProfile foreingProfile;
+        //public async void InsertForeignData(string user_id, int box_id)
+        //{
+        //    var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+        //    User box_detail = new User();
+        //    box_detail = await apiService.GetUserId(apiSecurity,
+        //                                        "/api",
+        //                                        "/Users",
+        //                                        Convert.ToInt32(user_id));
+            
 
-            //Validar que la box no exista
-            //using(var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-            //{
-            //    connSQLite.FindWithQuery<ForeingBox>("")
-            //}
+        //    ForeingBox foreingBox;
+        //    ForeingProfile foreingProfile;
 
-            //Inicializar la box foranea
-            foreingBox = new ForeingBox
-            {
-                BoxId = Convert.ToInt32(nfcData[0].boxId),
-                UserId = Convert.ToInt32(nfcData[0].userId),
-                //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),
-                Time = DateTime.Now,
-                ImagePath = nfcData[0].imagePath,
-                UserTypeId = Convert.ToInt32(nfcData[0].userTypeId),
-                FirstName = nfcData[0].firstName,
-                LastName = nfcData[0].lastName
+        //    //Validar que la box no exista
+        //    //using(var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+        //    //{
+        //    //    connSQLite.FindWithQuery<ForeingBox>("")
+        //    //}
 
-            };
+        //    //Inicializar la box foranea
+        //    foreingBox = new ForeingBox
+        //    {
+        //        BoxId = box_id,
+        //        UserId = Convert.ToInt32(user_id),
+        //        //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),
+        //        Time = DateTime.Now,
+        //        ImagePath = box_detail.ImagePath,
+        //        UserTypeId = box_detail.UserTypeId,
+        //        FirstName = box_detail.FirstName,
+        //        LastName = box_detail.LastName
 
-            //Insertar la box foranea
-            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-            {
-                connSQLite.Insert(foreingBox);
-            }
+        //    };
 
-            //Recorrer la lista de perfiles para insertarlos
-            foreach (Get_nfc get_nfc in nfcData)
-            {
-                if (get_nfc.boxId != "-")
-                {
-                    foreingProfile = new ForeingProfile
-                    {
-                        BoxId = Convert.ToInt32(get_nfc.boxId),
-                        UserId = Convert.ToInt32(get_nfc.userId),
-                        ProfileName = get_nfc.profileName,
-                        value = get_nfc.value,
-                        ProfileType = get_nfc.ProfileType
-                    };
+        //    //Insertar la box foranea
+        //    using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+        //    {
+        //        connSQLite.Insert(foreingBox);
+        //    }
 
-                    //Insertar la box foranea
-                    using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-                    {
-                        connSQLite.Insert(foreingProfile);
-                    }
-                }
-            }
-            //Enviar a detalles de la box foranea cuando se inserta
-            App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));
-        }
+        //    <
+
+        //    //Recorrer la lista de perfiles para insertarlos
+        //    foreach (Get_nfc get_nfc in nfcData)
+        //    {
+        //        if (get_nfc.boxId != "-")
+        //        {
+        //            foreingProfile = new ForeingProfile
+        //            {
+        //                BoxId = box_id,
+        //                UserId = Convert.ToInt32(user_id),
+        //                ProfileName = get_nfc.profileName,
+        //                value = get_nfc.value,
+        //                ProfileType = get_nfc.ProfileType
+        //            };
+
+        //            //Insertar la box foranea
+        //            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+        //            {
+        //                connSQLite.Insert(foreingProfile);
+        //            }
+        //        }
+        //    }
+        //    //Enviar a detalles de la box foranea cuando se inserta
+        //    App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));
+        //}
     }
 }
