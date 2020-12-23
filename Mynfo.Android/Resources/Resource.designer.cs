@@ -15483,139 +15483,139 @@ namespace Mynfo.Droid
 			public const int bottom_sheet_behavior = 2131558443;
 			
 			// aapt resource value: 0x7F0D002C
-			public const int character_counter_content_description = 2131558444;
+			public const int card_title = 2131558444;
 			
 			// aapt resource value: 0x7F0D002D
-			public const int character_counter_pattern = 2131558445;
-			
-			// aapt resource value: 0x7F0D0045
-			public const int common_google_play_services_unknown_issue = 2131558469;
-			
-			// aapt resource value: 0x7F0D0045
-			public const int common_google_play_services_unknown_issue = 2131558469;
-			
-			// aapt resource value: 0x7F0D0045
-			public const int common_google_play_services_unknown_issue = 2131558469;
+			public const int character_counter_content_description = 2131558445;
 			
 			// aapt resource value: 0x7F0D002E
-			public const int com_facebook_device_auth_instructions = 2131558446;
-			
-			// aapt resource value: 0x7F0D002F
-			public const int com_facebook_image_download_unknown_error = 2131558447;
-			
-			// aapt resource value: 0x7F0D0030
-			public const int com_facebook_internet_permission_error_message = 2131558448;
-			
-			// aapt resource value: 0x7F0D0031
-			public const int com_facebook_internet_permission_error_title = 2131558449;
-			
-			// aapt resource value: 0x7F0D0032
-			public const int com_facebook_like_button_liked = 2131558450;
-			
-			// aapt resource value: 0x7F0D0033
-			public const int com_facebook_like_button_not_liked = 2131558451;
-			
-			// aapt resource value: 0x7F0D0034
-			public const int com_facebook_loading = 2131558452;
-			
-			// aapt resource value: 0x7F0D0035
-			public const int com_facebook_loginview_cancel_action = 2131558453;
-			
-			// aapt resource value: 0x7F0D003B
-			public const int com_facebook_loginview_logged_in_as = 2131558459;
-			
-			// aapt resource value: 0x7F0D003C
-			public const int com_facebook_loginview_logged_in_using_facebook = 2131558460;
-			
-			// aapt resource value: 0x7F0D0036
-			public const int com_facebook_loginview_log_in_button = 2131558454;
-			
-			// aapt resource value: 0x7F0D0037
-			public const int com_facebook_loginview_log_in_button_continue = 2131558455;
-			
-			// aapt resource value: 0x7F0D0038
-			public const int com_facebook_loginview_log_in_button_long = 2131558456;
-			
-			// aapt resource value: 0x7F0D0039
-			public const int com_facebook_loginview_log_out_action = 2131558457;
-			
-			// aapt resource value: 0x7F0D003A
-			public const int com_facebook_loginview_log_out_button = 2131558458;
-			
-			// aapt resource value: 0x7F0D003D
-			public const int com_facebook_send_button_text = 2131558461;
-			
-			// aapt resource value: 0x7F0D003E
-			public const int com_facebook_share_button_text = 2131558462;
-			
-			// aapt resource value: 0x7F0D003F
-			public const int com_facebook_smart_device_instructions = 2131558463;
-			
-			// aapt resource value: 0x7F0D0040
-			public const int com_facebook_smart_device_instructions_or = 2131558464;
-			
-			// aapt resource value: 0x7F0D0041
-			public const int com_facebook_smart_login_confirmation_cancel = 2131558465;
-			
-			// aapt resource value: 0x7F0D0042
-			public const int com_facebook_smart_login_confirmation_continue_as = 2131558466;
-			
-			// aapt resource value: 0x7F0D0043
-			public const int com_facebook_smart_login_confirmation_title = 2131558467;
-			
-			// aapt resource value: 0x7F0D0044
-			public const int com_facebook_tooltip_default = 2131558468;
+			public const int character_counter_pattern = 2131558446;
 			
 			// aapt resource value: 0x7F0D0046
-			public const int fab_transformation_scrim_behavior = 2131558470;
+			public const int common_google_play_services_unknown_issue = 2131558470;
+			
+			// aapt resource value: 0x7F0D002F
+			public const int com_facebook_device_auth_instructions = 2131558447;
+			
+			// aapt resource value: 0x7F0D0030
+			public const int com_facebook_image_download_unknown_error = 2131558448;
+			
+			// aapt resource value: 0x7F0D0031
+			public const int com_facebook_internet_permission_error_message = 2131558449;
+			
+			// aapt resource value: 0x7F0D0032
+			public const int com_facebook_internet_permission_error_title = 2131558450;
+			
+			// aapt resource value: 0x7F0D0033
+			public const int com_facebook_like_button_liked = 2131558451;
+			
+			// aapt resource value: 0x7F0D0034
+			public const int com_facebook_like_button_not_liked = 2131558452;
+			
+			// aapt resource value: 0x7F0D0035
+			public const int com_facebook_loading = 2131558453;
+			
+			// aapt resource value: 0x7F0D0036
+			public const int com_facebook_loginview_cancel_action = 2131558454;
+			
+			// aapt resource value: 0x7F0D003C
+			public const int com_facebook_loginview_logged_in_as = 2131558460;
+			
+			// aapt resource value: 0x7F0D003D
+			public const int com_facebook_loginview_logged_in_using_facebook = 2131558461;
+			
+			// aapt resource value: 0x7F0D0037
+			public const int com_facebook_loginview_log_in_button = 2131558455;
+			
+			// aapt resource value: 0x7F0D0038
+			public const int com_facebook_loginview_log_in_button_continue = 2131558456;
+			
+			// aapt resource value: 0x7F0D0039
+			public const int com_facebook_loginview_log_in_button_long = 2131558457;
+			
+			// aapt resource value: 0x7F0D003A
+			public const int com_facebook_loginview_log_out_action = 2131558458;
+			
+			// aapt resource value: 0x7F0D003B
+			public const int com_facebook_loginview_log_out_button = 2131558459;
+			
+			// aapt resource value: 0x7F0D003E
+			public const int com_facebook_send_button_text = 2131558462;
+			
+			// aapt resource value: 0x7F0D003F
+			public const int com_facebook_share_button_text = 2131558463;
+			
+			// aapt resource value: 0x7F0D0040
+			public const int com_facebook_smart_device_instructions = 2131558464;
+			
+			// aapt resource value: 0x7F0D0041
+			public const int com_facebook_smart_device_instructions_or = 2131558465;
+			
+			// aapt resource value: 0x7F0D0042
+			public const int com_facebook_smart_login_confirmation_cancel = 2131558466;
+			
+			// aapt resource value: 0x7F0D0043
+			public const int com_facebook_smart_login_confirmation_continue_as = 2131558467;
+			
+			// aapt resource value: 0x7F0D0044
+			public const int com_facebook_smart_login_confirmation_title = 2131558468;
+			
+			// aapt resource value: 0x7F0D0045
+			public const int com_facebook_tooltip_default = 2131558469;
 			
 			// aapt resource value: 0x7F0D0047
-			public const int fab_transformation_sheet_behavior = 2131558471;
+			public const int fab_transformation_scrim_behavior = 2131558471;
 			
 			// aapt resource value: 0x7F0D0048
-			public const int fcm_fallback_notification_channel_label = 2131558472;
+			public const int fab_transformation_sheet_behavior = 2131558472;
+			
+			// aapt resource value: 0x7F0D0049
+			public const int fcm_fallback_notification_channel_label = 2131558473;
 			
 			// aapt resource value: 0x7F0D0001
 			public const int Hello = 2131558401;
 			
-			// aapt resource value: 0x7F0D0049
-			public const int hide_bottom_view_on_scroll_behavior = 2131558473;
+			// aapt resource value: 0x7F0D004A
+			public const int hide_bottom_view_on_scroll_behavior = 2131558474;
 			
 			// aapt resource value: 0x7F0D0002
 			public const int Load_More = 2131558402;
 			
-			// aapt resource value: 0x7F0D004A
-			public const int messenger_send_button_text = 2131558474;
-			
 			// aapt resource value: 0x7F0D004B
-			public const int mtrl_chip_close_icon_content_description = 2131558475;
+			public const int messenger_send_button_text = 2131558475;
 			
 			// aapt resource value: 0x7F0D004C
-			public const int overflow_tab_title = 2131558476;
+			public const int mtrl_chip_close_icon_content_description = 2131558476;
 			
 			// aapt resource value: 0x7F0D004D
-			public const int password_toggle_content_description = 2131558477;
+			public const int overflow_tab_title = 2131558477;
 			
 			// aapt resource value: 0x7F0D004E
-			public const int path_password_eye = 2131558478;
+			public const int password_toggle_content_description = 2131558478;
 			
 			// aapt resource value: 0x7F0D004F
-			public const int path_password_eye_mask_strike_through = 2131558479;
+			public const int path_password_eye = 2131558479;
 			
 			// aapt resource value: 0x7F0D0050
-			public const int path_password_eye_mask_visible = 2131558480;
+			public const int path_password_eye_mask_strike_through = 2131558480;
 			
 			// aapt resource value: 0x7F0D0051
-			public const int path_password_strike_through = 2131558481;
+			public const int path_password_eye_mask_visible = 2131558481;
 			
 			// aapt resource value: 0x7F0D0052
-			public const int search_menu_title = 2131558482;
+			public const int path_password_strike_through = 2131558482;
 			
 			// aapt resource value: 0x7F0D0053
-			public const int status_bar_notification_info_overflow = 2131558483;
+			public const int search_menu_title = 2131558483;
 			
 			// aapt resource value: 0x7F0D0054
-			public const int title_activity_webview = 2131558484;
+			public const int service_name = 2131558484;
+			
+			// aapt resource value: 0x7F0D0055
+			public const int status_bar_notification_info_overflow = 2131558485;
+			
+			// aapt resource value: 0x7F0D0056
+			public const int title_activity_webview = 2131558486;
 			
 			static String()
 			{
@@ -20253,13 +20253,19 @@ namespace Mynfo.Droid
 		{
 			
 			// aapt resource value: 0x7F100000
-			public const int file_paths = 2131755008;
+			public const int aid_list = 2131755008;
 			
 			// aapt resource value: 0x7F100001
-			public const int nfc = 2131755009;
+			public const int file_paths = 2131755009;
 			
 			// aapt resource value: 0x7F100002
-			public const int xamarin_essentials_fileprovider_file_paths = 2131755010;
+			public const int nfc = 2131755010;
+			
+			// aapt resource value: 0x7F100003
+			public const int techlist = 2131755011;
+			
+			// aapt resource value: 0x7F100004
+			public const int xamarin_essentials_fileprovider_file_paths = 2131755012;
 			
 			static Xml()
 			{
