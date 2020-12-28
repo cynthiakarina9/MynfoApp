@@ -277,9 +277,9 @@ namespace Mynfo.Droid.Services
                             {
                                 while (reader.Read())
                                 {
-                                    Profile_get emailProfile = new Profile_get
+                                    foreingProfile = new ForeingProfile
                                     {
-                                        IdBox = box_id,
+                                        BoxId = box_id,
                                         UserId = (int)reader["UserId"],
                                         ProfileName = (string)reader["Name"],
                                         value = (string)reader["Email"],
@@ -288,7 +288,7 @@ namespace Mynfo.Droid.Services
                                     //Crear perfil de correo de box local predeterminada
                                     using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
                                     {
-                                        connSQLite.Insert(emailProfile);
+                                        connSQLite.Insert(foreingProfile);
                                     }
                                 }
                             }
@@ -312,9 +312,9 @@ namespace Mynfo.Droid.Services
                             {
                                 while (reader.Read())
                                 {
-                                    Profile_get phoneProfile = new Profile_get
+                                    foreingProfile = new ForeingProfile
                                     {
-                                        IdBox = box_id,
+                                        BoxId = box_id,
                                         UserId = (int)reader["UserId"],
                                         ProfileName = (string)reader["Name"],
                                         value = (string)reader["Number"],
@@ -323,7 +323,7 @@ namespace Mynfo.Droid.Services
                                     //Crear perfil de teléfono de box local predeterminada
                                     using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
                                     {
-                                        connSQLite.Insert(phoneProfile);
+                                        connSQLite.Insert(foreingProfile);
                                     }
                                 }
                             }
@@ -347,9 +347,9 @@ namespace Mynfo.Droid.Services
                             {
                                 while (reader.Read())
                                 {
-                                    Profile_get smProfile = new Profile_get
+                                    foreingProfile = new ForeingProfile
                                     {
-                                        IdBox = box_id,
+                                        BoxId = box_id,
                                         UserId = (int)reader["UserId"],
                                         ProfileName = (string)reader["ProfileName"],
                                         value = (string)reader["link"],
@@ -358,7 +358,7 @@ namespace Mynfo.Droid.Services
                                     //Crear perfil de teléfono de box local predeterminada
                                     using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
                                     {
-                                        connSQLite.Insert(smProfile);
+                                        connSQLite.Insert(foreingProfile);
                                     }
                                 }
                             }
@@ -369,7 +369,7 @@ namespace Mynfo.Droid.Services
                 }
                 //Recorrer la lista de perfiles para insertarlos
 
-                int coun = 0;
+                /*int coun = 0;
                 var Profile = new Profile_get();
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {
@@ -393,7 +393,7 @@ namespace Mynfo.Droid.Services
                             connSQLite.Insert(foreingProfile);
                         }
                     }
-                }
+                }*/
 
 
                 MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel();
