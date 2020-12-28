@@ -68,14 +68,15 @@
             </ScrollView>
             <!-- Botón de nuevo perfil de twitter -->
             <ImageButton
-                        Grid.Row="0"
-                        BackgroundColor = "Transparent"
-                        HeightRequest = "60"
-                        HorizontalOptions ="Center"
-                        Margin = "15"
-                        Source = "Plus"
-                        VerticalOptions = "End"
-                        WidthRequest = "60" />
+                Grid.Row="0"
+                Clicked="NewProfileTwitter_Clicked"
+                BackgroundColor = "Transparent"
+                HeightRequest = "60"
+                HorizontalOptions ="Center"
+                Margin = "15"
+                Source = "Plus"
+                VerticalOptions = "End"
+                WidthRequest = "60" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
