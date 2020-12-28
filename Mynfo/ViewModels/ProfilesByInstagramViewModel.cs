@@ -1,16 +1,16 @@
-﻿using Mynfo.Domain;
-using Mynfo.Helpers;
-using Mynfo.Services;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-
-namespace Mynfo.ViewModels
+﻿namespace Mynfo.ViewModels
 {
-    public class ProfilesByTwitterViewModel: BaseViewModel
+    using GalaSoft.MvvmLight.Command;
+    using Mynfo.Domain;
+    using Mynfo.Helpers;
+    using Mynfo.Views;
+    using Services;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Threading.Tasks;
+    using System.Windows.Input;
+    using Xamarin.Forms;
+    public class ProfilesByInstagramViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -22,6 +22,7 @@ namespace Mynfo.ViewModels
         #endregion
 
         #region Properties
+
         public bool IsRunning
         {
             get { return this.isRunning; }
@@ -40,10 +41,27 @@ namespace Mynfo.ViewModels
         #endregion
 
         #region Constructor
-        public ProfilesByTwitterViewModel()
+        public ProfilesByInstagramViewModel()
         {
             apiService = new ApiService();
             GetList();
+        }
+        #endregion
+
+        #region Commands
+
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
 
@@ -68,7 +86,7 @@ namespace Mynfo.ViewModels
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
             profileSM = new ObservableCollection<ProfileSM>();
-            int IdNetwork = 3;
+            int IdNetwork = 2;
             profileSocialMedia = await this.apiService.GetProfileByNetWork(
                 apiSecurity,
                 "/api",

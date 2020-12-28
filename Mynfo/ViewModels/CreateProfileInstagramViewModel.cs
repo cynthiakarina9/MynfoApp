@@ -8,7 +8,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class CreateProfileFacebookViewModel : BaseViewModel
+    public class CreateProfileInstagramViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -44,22 +44,22 @@
         #endregion
 
         #region Constructor
-        public CreateProfileFacebookViewModel()
+        public CreateProfileInstagramViewModel()
         {
             this.apiService = new ApiService();
         }
         #endregion
 
         #region Commands
-        public ICommand SaveProfileFacebookCommand
+        public ICommand SaveProfileInstagramCommand
         {
             get
             {
-                return new RelayCommand(SaveProfileFacebook);
+                return new RelayCommand(SaveProfileInstagram);
             }
         }
 
-        private async void SaveProfileFacebook()
+        private async void SaveProfileInstagram()
         {
             if (string.IsNullOrEmpty(this.Name))
             {
@@ -95,13 +95,13 @@
 
             var mainViewModel = MainViewModel.GetInstance();
 
-            var profileFB = new ProfileSM
+            var profileInstagram = new ProfileSM
             {
                 ProfileName = this.Name,
                 link = this.Link,
                 UserId = mainViewModel.User.UserId,
                 Exist = false,
-                RedSocialId = 1
+                RedSocialId = 2
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -109,7 +109,7 @@
                 apiSecurity,
                 "/api",
                 "/ProfileSMs",
-                profileFB);
+                profileInstagram);
 
             if (profileSM == default)
             {
@@ -126,16 +126,16 @@
             this.IsEnabled = true;
 
             //Agregar a la lista
-            if(mainViewModel.ProfilesBYPESM != null)
+            if (mainViewModel.ProfilesBYPESM != null)
             {
                 mainViewModel.ProfilesBYPESM.addProfileSM(profileSM);
             }
             else
             {
-                mainViewModel.ProfilesByFacebook.addProfile(profileSM);
+                mainViewModel.ProfilesByInstagram.addProfile(profileSM);
             }
-            
-            
+
+
             this.Name = string.Empty;
             this.Link = string.Empty;
 

@@ -1,12 +1,7 @@
 ﻿namespace Mynfo.Views
 {
-    using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
-    using Mynfo.Helpers;
-    using Mynfo.Services;
     using System;
-    using System.Collections.Generic;
-    using System.Windows.Input;
     using ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
@@ -81,6 +76,7 @@
 
         }
         #endregion
+
         #region Commands
         private void NewProfileFacebook_Clicked(object sender, EventArgs e)
         {
@@ -102,7 +98,7 @@
         }
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            ProfileEmail selectedItem = e.SelectedItem as ProfileEmail;
+            ProfileSM selectedItem = e.SelectedItem as ProfileSM;
         }
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)

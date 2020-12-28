@@ -764,6 +764,45 @@
             }
         }
 
+        public async Task<List<ProfileSM>> GetProfileByNetWork(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int User,
+            int RedSocial)
+        {
+            try
+            {
+                var model = new ProfileSM
+                {
+                    UserId = User,
+                    RedSocialId = RedSocial
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<ProfileSM>>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public async Task<User> GetUserByEmail(
             string urlBase,
             string servicePrefix,

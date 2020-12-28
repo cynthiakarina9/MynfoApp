@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.ProfilesByFacebookPage"
+             x:Class="Mynfo.Views.ProfilesByInstagramPage"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
-            BindingContext="{Binding ProfilesByFacebook}">
+            BindingContext="{Binding ProfilesByInstagram}">
             <ImageButton
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
@@ -21,7 +21,7 @@
     <ContentPage.Content>
         <Grid>
             <ScrollView 
-                BindingContext="{Binding ProfilesByFacebook}">
+                BindingContext="{Binding ProfilesByInstagram}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
@@ -72,7 +72,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Image 
                                             Grid.Column="0"
-                                            Source="facebook2"
+                                            Source="instagramlogo2"
                                             HeightRequest="40"
                                             HorizontalOptions="End"
                                             Margin="70,0,20,0"
@@ -97,7 +97,7 @@
             <ImageButton
                 Grid.Row="0"
                 BackgroundColor = "Transparent"
-                Clicked = "NewProfileFacebook_Clicked"
+                Clicked = "NewProfileInstagram_Clicked"
                 HeightRequest = "60"
                 HorizontalOptions ="Center"
                 Margin = "15"

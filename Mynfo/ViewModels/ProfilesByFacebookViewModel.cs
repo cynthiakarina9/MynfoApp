@@ -47,7 +47,26 @@
             apiService = new ApiService();
             GetList();
         }
+        #endregion
+
+        #region Commands
         
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
+        #endregion
+
+        #region Methods
         private async Task<ObservableCollection<ProfileSM>> GetList()
         {
             this.IsRunning = true;
@@ -68,13 +87,14 @@
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
             profileSM = new ObservableCollection<ProfileSM>();
-           
-            profileSocialMedia = await this.apiService.GetListByUser<ProfileSM>(
+            int IdNetwork = 1;
+            profileSocialMedia = await this.apiService.GetProfileByNetWork(
                 apiSecurity,
                 "/api",
-                "/ProfileSMs",
-                MainViewModel.GetInstance().User.UserId);
-            
+                "/ProfileSMs/GetProfileByNetWorkT",
+                MainViewModel.GetInstance().User.UserId,
+                IdNetwork);
+
             this.IsRunning = false;
 
             foreach (ProfileSM profSM in profileSocialMedia)
@@ -82,22 +102,6 @@
 
             return profileSM;
         }
-        public ICommand BackHomeCommand
-        {
-            get
-            {
-                return new RelayCommand(BackHome);
-            }
-        }
-
-        private async void BackHome()
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
-        #endregion
-
-        #region Methods
 
         //Actualizar listas
         public void addProfile(ProfileSM _profileSM)

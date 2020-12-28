@@ -185,6 +185,14 @@
             }
             using (var conn = new SQLite.SQLiteConnection(App.root_db))
             {
+                conn.CreateTable<ForeingProfile>();
+            }
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.CreateTable<ForeingBox>();
+            }
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
                 conn.CreateTable<TokenResponse>();
                 conn.Insert(token);
             }

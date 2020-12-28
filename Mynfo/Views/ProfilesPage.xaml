@@ -93,6 +93,7 @@
                     <!--BoxView 5-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
+                        Clicked = "InstagramProfile_Clicked"
                         Grid.Column = "1"
                         Grid.Row = "3" 
                         HeightRequest = "150"

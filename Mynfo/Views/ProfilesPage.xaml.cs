@@ -30,6 +30,13 @@
             mainViewModel.ProfilesByFacebook = new ProfilesByFacebookViewModel();
             Navigation.PushAsync(new ProfilesByFacebookPage());
         }
+        private void InstagramProfile_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByInstagram = new ProfilesByInstagramViewModel();
+            Navigation.PushAsync(new ProfilesByInstagramPage());
+        }
+
         private void WhatsAppProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();

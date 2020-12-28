@@ -14654,6 +14654,9 @@ namespace Mynfo.Droid
 			// aapt resource value: 0x7F0700C8
 			public const int logout = 2131165384;
 			
+			// aapt resource value: 0x7F0700C8
+			public const int logout = 2131165384;
+			
 			// aapt resource value: 0x7F0700C4
 			public const int Logo_sin_relleno = 2131165380;
 			
