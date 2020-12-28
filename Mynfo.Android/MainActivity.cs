@@ -28,9 +28,6 @@
     Categories = new[] { "android.intent.category.DEFAULT" })]
     [MetaData("android.nfc.action.TECH_DISCOVERED", Resource = "@xml/techlist")]
 
-
-
-
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public string json;
