@@ -14840,19 +14840,22 @@ namespace Mynfo.Droid
 			public const int twitterlogo1 = 2131165442;
 			
 			// aapt resource value: 0x7F070103
-			public const int wechat1 = 2131165443;
+			public const int twitterlogo2 = 2131165443;
 			
 			// aapt resource value: 0x7F070104
-			public const int whatsapp1 = 2131165444;
+			public const int wechat1 = 2131165444;
 			
 			// aapt resource value: 0x7F070105
-			public const int whatsapp2 = 2131165445;
+			public const int whatsapp1 = 2131165445;
 			
 			// aapt resource value: 0x7F070106
-			public const int yammer1 = 2131165446;
+			public const int whatsapp2 = 2131165446;
 			
 			// aapt resource value: 0x7F070107
-			public const int youtube1 = 2131165447;
+			public const int yammer1 = 2131165447;
+			
+			// aapt resource value: 0x7F070108
+			public const int youtube1 = 2131165448;
 			
 			static Drawable()
 			{
