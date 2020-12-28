@@ -74,6 +74,12 @@
             set;
         }
 
+        public CreateProfileInstagramViewModel CreateProfileInstagram
+        {
+            get;
+            set;
+        }
+
         public CreateProfilePhoneViewModel CreateProfilePhone
         {
             get;
@@ -96,6 +102,13 @@
             get;
             set;
         }
+
+        public EditProfileInstagramViewModel EditProfileInstagram
+        {
+            get;
+            set;
+        }
+
         public EditProfilePhoneViewModel EditProfilePhone
         {
             get;
@@ -162,6 +175,12 @@
             set;
         }
         public ProfilesByEmailViewModel ProfilesByEmail
+        {
+            get;
+            set;
+        }
+
+        public ProfilesByInstagramViewModel ProfilesByInstagram
         {
             get;
             set;

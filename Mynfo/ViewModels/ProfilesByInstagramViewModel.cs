@@ -10,8 +10,7 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
-
-    public class ProfilesByFacebookViewModel : BaseViewModel
+    public class ProfilesByInstagramViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -42,7 +41,7 @@
         #endregion
 
         #region Constructor
-        public ProfilesByFacebookViewModel()
+        public ProfilesByInstagramViewModel()
         {
             apiService = new ApiService();
             GetList();
@@ -50,7 +49,7 @@
         #endregion
 
         #region Commands
-        
+
         public ICommand BackHomeCommand
         {
             get
@@ -87,7 +86,7 @@
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
             profileSM = new ObservableCollection<ProfileSM>();
-            int IdNetwork = 1;
+            int IdNetwork = 2;
             profileSocialMedia = await this.apiService.GetProfileByNetWork(
                 apiSecurity,
                 "/api",

@@ -8,7 +8,7 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
-    public class EditProfileFacebookViewModel : BaseViewModel
+    public class EditProfileInstagramViewModel : BaseViewModel
     {
         #region Services
         ApiService apiService;
@@ -43,7 +43,7 @@
         #endregion
 
         #region Constructor
-        public EditProfileFacebookViewModel(int _ProfileMSId)
+        public EditProfileInstagramViewModel(int _ProfileMSId)
         {
             apiService = new ApiService();
             GetProfile(_ProfileMSId);
@@ -138,7 +138,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            MainViewModel.GetInstance().ProfilesByFacebook.removeProfile();
+            MainViewModel.GetInstance().ProfilesByInstagram.removeProfile();
 
             await App.Navigator.PopAsync();
         }

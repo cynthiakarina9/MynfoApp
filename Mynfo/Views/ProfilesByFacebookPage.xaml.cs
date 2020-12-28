@@ -81,6 +81,7 @@
 
         }
         #endregion
+
         #region Commands
         private void NewProfileFacebook_Clicked(object sender, EventArgs e)
         {
