@@ -1,4 +1,4 @@
-﻿namespace Mynfo.Models
+﻿/*namespace Mynfo.Models
 {
     using SQLite;
     using System;
@@ -48,7 +48,7 @@
 
 
 
-/*
+*/
 namespace Mynfo.Models
 {
     using SQLite;
@@ -108,4 +108,3 @@ namespace Mynfo.Models
         }
     }
 }
-*/
