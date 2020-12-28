@@ -5,6 +5,7 @@ using Mynfo.Domain;
 using Mynfo.Models;
 using Mynfo.Services;
 using Mynfo.ViewModels;
+using Mynfo.Views;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -145,8 +146,9 @@ namespace Mynfo.Droid.Services
                                                 UserTypeId = 1
                                                 //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),                                               
                                             };
-
-                                            MainViewModel.GetInstance();
+                                            int IdUSer = Convert.ToInt32(msg);
+                                            MainViewModel.GetInstance().ListForeignBox = new ListForeignBoxViewModel(IdUSer);
+                                            MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel();
                                         }
                                     }
 
