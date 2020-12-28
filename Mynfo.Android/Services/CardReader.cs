@@ -403,7 +403,7 @@ namespace Mynfo.Droid.Services
             catch (Exception ex) 
             {
                 Console.WriteLine(ex);
-            }
+            } 
 
            
 
