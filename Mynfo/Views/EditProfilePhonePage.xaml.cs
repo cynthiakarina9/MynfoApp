@@ -33,7 +33,7 @@
             
             System.Text.StringBuilder sb;
             string consultaPhone = "select * from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId =" + _ProfilePhoneId + "and dbo.ProfilePhones.UserId = " + UserID;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
 
             //Seleccionar ProfileEmail
@@ -101,7 +101,7 @@
             }
 
             string queryUpdateProfileEmail = "update dbo.ProfilePhones set Name = '" + EntryName.Text + "', Number = '" + EntryPhone.Text + "' where dbo.ProfilePhones.ProfilePhoneId = " + profilePhone.ProfilePhoneId + " and dbo.ProfilePhones.UserId = " + profilePhone.UserId;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
@@ -138,7 +138,7 @@
 
             string SelectBoxPhone = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.ProfilePhoneId = " + profilePhone.ProfilePhoneId;
             string SelectProfilePhone = "delete from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId = " + profilePhone.ProfilePhoneId;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             StringBuilder sb;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {

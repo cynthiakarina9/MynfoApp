@@ -154,7 +154,7 @@
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Warning,
-                    "Aun no ha creado ningún perfil de este tipo",
+                    Languages.ProfileNull,
                     Languages.Accept);
                 return null;
             }
@@ -236,7 +236,7 @@
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Warning,
-                    "Aun no ha creado ningún perfil de este tipo",
+                    Languages.ProfileNull,
                     Languages.Accept);
                 return null;
             }
@@ -319,7 +319,7 @@
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Warning,
-                    "Aun no ha creado ningún perfil de este tipo",
+                    Languages.ProfileNull,
                     Languages.Accept);
                 return null;
             }
@@ -402,7 +402,7 @@
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Warning,
-                    "Aun no ha creado ningún perfil de este tipo",
+                    Languages.ProfileNull,
                     Languages.Accept);
                 return null;
             }

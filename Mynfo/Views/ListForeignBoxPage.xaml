@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="Mynfo.Views.ListForeignBoxPage">
     <NavigationPage.TitleView>
         <Grid
@@ -30,7 +31,8 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding ListForeignBox}">
             <StackLayout>
                 <StackLayout>
                     <Label 

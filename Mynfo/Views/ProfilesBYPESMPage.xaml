@@ -14,7 +14,6 @@
             </Grid.ColumnDefinitions>
             <ImageButton
                 BackgroundColor = "Transparent"
-                Clicked = "BackHome_Clicked"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,80,0"
                 HorizontalOptions = "Center"

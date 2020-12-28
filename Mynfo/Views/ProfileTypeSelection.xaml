@@ -12,7 +12,7 @@
                 HorizontalOptions = "Center"
                 Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "85"/>
+                WidthRequest = "100"/>
             <!--<ImageButton 
                 BackgroundColor = "Transparent"
                 Grid.Column = "0"

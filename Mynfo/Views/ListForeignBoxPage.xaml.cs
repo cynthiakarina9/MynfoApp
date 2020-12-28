@@ -12,24 +12,14 @@
     {
         #region Contructor
 
-        public IList<ForeingBox> foreingBox { private set; get; }
+        
         public ListForeignBoxPage()
         {           
             InitializeComponent();
-            List<ForeingBox> foreignBoxList = new List<ForeingBox>();
-            foreingBox = new List<ForeingBox>();
 
-            using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            {
-                int a = conn.Table<ForeingProfile>().Count();
 
-                foreignBoxList = conn.Table<ForeingBox>().ToList();
-            }
 
-            foreach (ForeingBox foreingBoxValue in foreignBoxList)
-            {
-                foreingBox.Add(foreingBoxValue);
-            }
+           
 
             BindingContext = this;
         }

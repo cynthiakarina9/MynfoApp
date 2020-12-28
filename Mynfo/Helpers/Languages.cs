@@ -596,5 +596,9 @@
         {
             get { return Resource.WrongEmail;  }
         }
+        public static string ProfileNull
+        {
+            get { return Resource.ProfileNull; }
+        }
     }
 }
