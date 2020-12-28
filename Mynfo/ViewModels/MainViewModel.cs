@@ -114,6 +114,13 @@
             get;
             set;
         }
+
+        public EditProfileTwitterViewModel EditProfileTwitter
+        {
+            get;
+            set;
+        }
+
         public EditProfileWhatsAppViewModel EditProfileWhatsApp
         {
             get;

@@ -62,23 +62,39 @@ namespace Mynfo.ViewModels
                     Languages.Error,
                     connection.Message,
                     Languages.Accept);
-
                 return null;
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
             profileSM = new ObservableCollection<ProfileSM>();
-
-            profileSocialMedia = await this.apiService.GetListByUser<ProfileSM>(
+            int IdNetwork = 3;
+            profileSocialMedia = await this.apiService.GetProfileByNetWork(
                 apiSecurity,
                 "/api",
-                "/ProfileSMs",
-                MainViewModel.GetInstance().User.UserId);
+                "/ProfileSMs/GetProfileByNetWorkT",
+                MainViewModel.GetInstance().User.UserId,
+                IdNetwork);
 
             this.IsRunning = false;
-            return new ObservableCollection<ProfileSM>();
+
+            foreach (ProfileSM profSM in profileSocialMedia)
+                profileSM.Add(profSM);
+
+            return profileSM;
         }
+
+        //Actualizar listas
+        public void addProfile(ProfileSM _profileSM)
+        {
+            profileSM.Add(_profileSM);
+        }
+
+        public void removeProfile()
+        {
+            profileSM.Remove(selectedProfile);
+        }
+
         #endregion
     }
 }

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.EditProfileTwitterPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Grid
+            BindingContext = "{Binding EditProfileTwitter}">
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Command="{Binding BackHomeCommand}"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,80,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior3.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "100"/>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext = "{Binding EditProfileTwitter}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "80"/>
+                    <RowDefinition Height = "160"/>
+                    <RowDefinition Height = "120"/>
+                    <RowDefinition Height = "80"/>
+                    <RowDefinition />
+                    <RowDefinition Height = "120"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7.5*" />
+                    <ColumnDefinition Width="2.5*" />
+                </Grid.ColumnDefinitions>
+                <Label 
+                    FontAttributes = "Bold"
+                    FontSize = "25"
+                    Grid.ColumnSpan ="2"
+                    Grid.Row = "0"
+                    HorizontalOptions = "Center"
+                    HorizontalTextAlignment = "Center"
+                    Text = "{i18n:Translate EditNetwork}"
+                    TextColor = "{StaticResource MainColor}"
+                    VerticalOptions = "Center"/>
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Command="{Binding DeleteCommand}"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Scale=".6"
+                    Source="trash2"
+                    VerticalOptions="Start"
+                    x:Name = "ButtonDelete"/>
+                <Image
+                    HeightRequest = "180"
+                    Source = "twitterlogo2"
+                    Grid.Row = "1"
+                    Grid.ColumnSpan ="2"
+                    WidthRequest = "180"/>
+                <StackLayout 
+                    Grid.Row = "2"
+                    Grid.ColumnSpan ="2"
+                    Padding = "20">
+                    <Label 
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate NameProfile}" 
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalOptions = "Center"/>
+                    <Entry 
+                        Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
+                        FontSize = "21"
+                        HorizontalTextAlignment = "Center"
+                        HeightRequest = "46"
+                        HorizontalOptions = "Center"
+                        IsReadOnly="true"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300" 
+                        x:Name = "EntryName"/>
+                </StackLayout>
+                <StackLayout
+                    Grid.Row = "4"
+                    Grid.ColumnSpan ="2"
+                    VerticalOptions = "CenterAndExpand">
+                    <ActivityIndicator
+                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions = "CenterAndExpand">
+                    </ActivityIndicator>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
