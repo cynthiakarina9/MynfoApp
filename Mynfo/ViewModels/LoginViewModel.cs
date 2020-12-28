@@ -90,7 +90,7 @@
 
         private async void Login()
         {
-            if(string.IsNullOrEmpty(this.Email))
+            if (string.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -113,7 +113,7 @@
 
             var connection = await this.apiService.CheckConnection();
 
-            if(!connection.IsSuccess)
+            if (!connection.IsSuccess)
             {
                 this.IsRunning = false;
                 this.isEnabled = true;
@@ -126,8 +126,8 @@
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var token = await this.apiService.GetToken(
-                apiSecurity, 
-                this.Email, 
+                apiSecurity,
+                this.Email,
                 this.Password);
 
             if (token == null)
@@ -168,7 +168,7 @@
             mainViewModel.Token = token;
             mainViewModel.User = userLocal;
 
-            if(this.IsRemembered)
+            if (this.IsRemembered)
             {
                 Settings.IsRemembered = "true";
             }
@@ -187,6 +187,11 @@
             {
                 conn.CreateTable<TokenResponse>();
                 conn.Insert(token);
+            }
+            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+            {
+                connSQLite.CreateTable<ForeingBox>();
+                connSQLite.CreateTable<ForeingProfile>();
             }
 
             mainViewModel.Home = new HomeViewModel();
