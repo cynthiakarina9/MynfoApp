@@ -187,6 +187,11 @@
             get;
             set;
         }
+        public ProfilesByTwitterViewModel ProfilesByTwitter
+        {
+            get;
+            set;
+        }
         public RegisterViewModel Register
         {
             get;
@@ -209,6 +214,7 @@
             get;
             set;
         }
+
         #endregion
 
         #region Constructors

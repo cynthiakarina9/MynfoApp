@@ -36,5 +36,12 @@
             mainViewModel.ProfilesByWhatsApp = new ProfilesByWhatsAppViewModel();
             Navigation.PushAsync(new ProfilesByWhatsAppPage());
         }
+
+        private void TwitterProfile_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByTwitter = new ProfilesByTwitterViewModel();
+            Navigation.PushAsync(new ProfilesByTwitterPage());
+        }
     }
 }
