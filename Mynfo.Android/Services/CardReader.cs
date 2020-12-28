@@ -396,9 +396,9 @@ namespace Mynfo.Droid.Services
                 }
 
 
-                MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel();
-                //Application.Current.MainPage.Navigation.PushAsync(new ForeingBoxPage(foreingBox, true));
-                App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
+                //MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel();
+                Application.Current.MainPage.Navigation.PushAsync(new ForeingBoxPage(foreingBox, true));
+                //App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true)); 
             }
             catch (Exception ex) 
             {
