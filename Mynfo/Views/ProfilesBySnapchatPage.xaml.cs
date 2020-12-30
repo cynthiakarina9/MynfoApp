@@ -1,27 +1,26 @@
 ﻿namespace Mynfo.Views
 {
     using Mynfo.Domain;
-    using Mynfo.ViewModels;
     using System;
+    using ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilesByTwitterPage : ContentPage
+    public partial class ProfilesBySnapchatPage : ContentPage
     {
         #region Constructor
-        public ProfilesByTwitterPage()
+        public ProfilesBySnapchatPage()
         {
             InitializeComponent();
         }
         #endregion
 
-        #region Methods
-        private void NewProfileTwitter_Clicked(object sender, EventArgs e)
+        #region Commands
+        private void NewProfileSnapchat_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileTwitter = new CreateProfileTwitterViewModel();
-            App.Navigator.PushAsync(new CreateProfileTwitterPage());
+            mainViewModel.CreateProfileSnapchat = new CreateProfileSnapchatViewModel();
+            App.Navigator.PushAsync(new CreateProfileSnapchatPage());
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -42,10 +41,11 @@
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
+
             ProfileSM tappedItem = e.Item as ProfileSM;
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.EditProfileTwitter = new EditProfileTwitterViewModel(tappedItem.ProfileMSId);
-            App.Navigator.PushAsync(new EditProfileTwitterPage());
+            mainViewModel.EditProfileSnapchat = new EditProfileSnapchatViewModel(tappedItem.ProfileMSId);
+            App.Navigator.PushAsync(new EditProfileSnapchatPage());
         }
         #endregion
     }

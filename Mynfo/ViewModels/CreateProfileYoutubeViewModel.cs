@@ -7,7 +7,8 @@
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
-    public class CreateProfileTwitterViewModel: BaseViewModel
+
+    public class CreateProfileYoutubeViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -42,23 +43,16 @@
         }
         #endregion
 
-        #region Constructor
-        public CreateProfileTwitterViewModel()
-        {
-            this.apiService = new ApiService();
-        }
-        #endregion
-
         #region Commands
-        public ICommand SaveProfileTwitterCommand
+        public ICommand SaveProfileYoutubeCommand
         {
             get
             {
-                return new RelayCommand(SaveProfileTwitter);
+                return new RelayCommand(SaveProfileYouTube);
             }
         }
 
-        private async void SaveProfileTwitter()
+        private async void SaveProfileYouTube()
         {
             if (string.IsNullOrEmpty(this.Name))
             {
@@ -94,13 +88,13 @@
 
             var mainViewModel = MainViewModel.GetInstance();
 
-            var profileTwitter = new ProfileSM
+            var profileYoutube = new ProfileSM
             {
                 ProfileName = this.Name,
                 link = this.Link,
                 UserId = mainViewModel.User.UserId,
                 Exist = false,
-                RedSocialId = 3
+                RedSocialId = 7
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -108,7 +102,7 @@
                 apiSecurity,
                 "/api",
                 "/ProfileSMs",
-                profileTwitter);
+                profileYoutube);
 
             if (profileSM == default)
             {
@@ -131,7 +125,7 @@
             }
             else
             {
-                mainViewModel.ProfilesByTwitter.addProfile(profileSM);
+                mainViewModel.ProfilesByYoutube.addProfile(profileSM);
             }
 
 
@@ -153,6 +147,5 @@
             Application.Current.MainPage = new MasterPage();
         }
         #endregion
-
     }
 }

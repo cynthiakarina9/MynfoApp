@@ -2,11 +2,10 @@
 {
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreateProfileTwitterPage : ContentPage
+    public partial class EditProfileSnapchatPage : ContentPage
     {
-        public CreateProfileTwitterPage()
+        public EditProfileSnapchatPage()
         {
             InitializeComponent();
         }

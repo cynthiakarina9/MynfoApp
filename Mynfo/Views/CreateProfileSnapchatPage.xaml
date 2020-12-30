@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.CreateProfileTwitterPage"
+             x:Class="Mynfo.Views.CreateProfileSnapchatPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
-            BindingContext="{Binding CreateProfileTwitter}">
+            BindingContext="{Binding CreateProfileSnapchat}">
             <ImageButton 
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
@@ -20,7 +20,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid
-            BindingContext = "{Binding CreateProfileTwitter}">
+            BindingContext = "{Binding CreateProfileSnapchat}">
             <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -44,7 +44,7 @@
                     <Image 
                         Grid.Row = "1" 
                         HeightRequest = "180"
-                        Source ="twitterlogo2"
+                        Source ="snapchat2"
                         WidthRequest = "180"/>
                     <StackLayout 
                         Grid.Row = "2"
@@ -84,7 +84,7 @@
                             HorizontalOptions = "Center"
                             Text = "{Binding Link}"
                             VerticalOptions = "Center" 
-                            Placeholder = "https://www.twitter.com/user"
+                            Placeholder = "https://www.facebook.com/user"
                             WidthRequest = "300" 
                             x:Name="ProfileLink"/>
                     </StackLayout>
@@ -106,7 +106,7 @@
                 <Button 
                         BackgroundColor = "{StaticResource MainColor}"
                         BorderRadius = "23"
-                        Command = "{Binding SaveProfileTwitterCommand}"
+                        Command = "{Binding SaveProfileSnapchatCommand}"
                         HeightRequest = "50"
                         Text = "{i18n:Translate Save}"
                         TextColor = "{StaticResource Dark_FontColor}"

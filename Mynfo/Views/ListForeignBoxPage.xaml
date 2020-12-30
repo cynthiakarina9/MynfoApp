@@ -31,8 +31,7 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
-            BindingContext="{Binding ListForeignBox}">
+        <ScrollView>
             <StackLayout>
                 <StackLayout>
                     <Label 

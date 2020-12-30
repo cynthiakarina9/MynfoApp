@@ -80,13 +80,49 @@
             set;
         }
 
+        public CreateProfileLinkedinViewModel CreateProfileLinkedin
+        {
+            get;
+            set;
+        }
+
         public CreateProfilePhoneViewModel CreateProfilePhone
         {
             get;
             set;
         }
 
+        public CreateProfileSnapchatViewModel CreateProfileSnapchat
+        {
+            get;
+            set;
+        }
+
+        public CreateProfileTiktokViewModel CreateProfileTiktok
+        {
+            get;
+            set;
+        }
+
+        public CreateProfileTiwtchViewModel CreateProfileTiwtch
+        {
+            get;
+            set;
+        }
+
+        public CreateProfileTwitterViewModel CreateProfileTwitter
+        {
+            get;
+            set;
+        }
+
         public CreateProfileWhatsAppViewModel CreateProfileWhatsApp
+        {
+            get;
+            set;
+        }
+
+        public CreateProfileYoutubeViewModel CreateProfileYoutube
         {
             get;
             set;
@@ -109,7 +145,31 @@
             set;
         }
 
+        public EditProfileLinkedinViewModel EditProfileLinkedin
+        {
+            get;
+            set;
+        }
+
         public EditProfilePhoneViewModel EditProfilePhone
+        {
+            get;
+            set;
+        }
+
+        public EditProfileSnapchatViewModel EditProfileSnapchat
+        {
+            get;
+            set;
+        }
+
+        public EditProfileTiktokViewModel EditProfileTiktok
+        {
+            get;
+            set;
+        }
+
+        public EditProfileTiwtchViewModel EditProfileTiwtch
         {
             get;
             set;
@@ -121,11 +181,18 @@
             set;
         }
 
-        public EditProfileWhatsAppViewModel EditProfileWhatsApp
+        public EditProfileYoutubeViewModel EditProfileWhatsApp
         {
             get;
             set;
         }
+
+        public EditProfileYoutubeViewModel EditProfileYoutube
+        {
+            get;
+            set;
+        }
+
         public EditProfileEmailViewModel EditProfileEmail
         {
             get;
@@ -149,12 +216,6 @@
             set;
         }
         public LoginViewModel Login
-        {
-            get;
-            set;
-        }
-
-        public ProfileTypeSelectionViewModel ProfileTypeSelection
         {
             get;
             set;
@@ -208,16 +269,54 @@
             get;
             set;
         }
-        public ProfilesByWhatsAppViewModel ProfilesByWhatsApp
+        public ProfilesByLinkedinViewModel ProfilesByLinkedin
         {
             get;
             set;
         }
+
+        public ProfilesBySnapchatViewModel ProfilesBySnapchat
+        {
+            get;
+            set;
+        }
+
+        public ProfilesByTiktokViewModel ProfilesByTiktok
+        {
+            get;
+            set;
+        }
+
+        public ProfilesByTiwtchViewModel ProfilesByTiwtch
+        {
+            get;
+            set;
+        }
+
         public ProfilesByTwitterViewModel ProfilesByTwitter
         {
             get;
             set;
         }
+
+        public ProfilesByYoutubeViewModel ProfilesByWhatsApp
+        {
+            get;
+            set;
+        }
+
+        public ProfilesByYoutubeViewModel ProfilesByYoutube
+        {
+            get;
+            set;
+        }
+
+        public ProfileTypeSelectionViewModel ProfileTypeSelection
+        {
+            get;
+            set;
+        }
+
         public RegisterViewModel Register
         {
             get;

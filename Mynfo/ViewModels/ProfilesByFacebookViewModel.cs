@@ -97,6 +97,16 @@
 
             this.IsRunning = false;
 
+            if (profileSocialMedia.Count == 0)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ProfileNull,
+                    Languages.Accept);
+                return null;
+            }
+
             foreach (ProfileSM profSM in profileSocialMedia)
                 profileSM.Add(profSM);
 

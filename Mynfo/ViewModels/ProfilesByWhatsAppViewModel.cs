@@ -10,7 +10,6 @@
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
-    using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -90,6 +89,16 @@
                 MainViewModel.GetInstance().User.UserId);
 
             this.IsRunning = false;
+
+            if (listWhats.Count == 0)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ProfileNull,
+                    Languages.Accept);
+                return null;
+            }
 
             foreach (ProfileWhatsapp profWhatsapp in listWhats)
                 profileWhatsApp.Add(profWhatsapp);

@@ -7,7 +7,8 @@
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
-    public class CreateProfileTwitterViewModel: BaseViewModel
+
+    public class CreateProfileTiwtchViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -43,22 +44,22 @@
         #endregion
 
         #region Constructor
-        public CreateProfileTwitterViewModel()
+        public CreateProfileTiwtchViewModel()
         {
             this.apiService = new ApiService();
         }
         #endregion
 
         #region Commands
-        public ICommand SaveProfileTwitterCommand
+        public ICommand SaveProfileTiwtchCommand
         {
             get
             {
-                return new RelayCommand(SaveProfileTwitter);
+                return new RelayCommand(SaveProfileTiwtch);
             }
         }
 
-        private async void SaveProfileTwitter()
+        private async void SaveProfileTiwtch()
         {
             if (string.IsNullOrEmpty(this.Name))
             {
@@ -94,13 +95,13 @@
 
             var mainViewModel = MainViewModel.GetInstance();
 
-            var profileTwitter = new ProfileSM
+            var profileTiwtch = new ProfileSM
             {
                 ProfileName = this.Name,
                 link = this.Link,
                 UserId = mainViewModel.User.UserId,
                 Exist = false,
-                RedSocialId = 3
+                RedSocialId = 9
             };
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -108,7 +109,7 @@
                 apiSecurity,
                 "/api",
                 "/ProfileSMs",
-                profileTwitter);
+                profileTiwtch);
 
             if (profileSM == default)
             {
@@ -131,7 +132,7 @@
             }
             else
             {
-                mainViewModel.ProfilesByTwitter.addProfile(profileSM);
+                mainViewModel.ProfilesByTiwtch.addProfile(profileSM);
             }
 
 
@@ -153,6 +154,5 @@
             Application.Current.MainPage = new MasterPage();
         }
         #endregion
-
     }
 }

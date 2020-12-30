@@ -74,10 +74,20 @@
                 "/ProfilePhones",
                 MainViewModel.GetInstance().User.UserId);
 
+            this.IsRunning = false;
+
+            if (listPhone.Count == 0)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ProfileNull,
+                    Languages.Accept);
+                return null;
+            }
+
             foreach (ProfilePhone profPhone in listPhone)
                 profilephone.Add(profPhone);
-
-            this.IsRunning = false;
 
             return profilephone;
         }

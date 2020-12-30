@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.ProfilesByTwitterPage"
+             x:Class="Mynfo.Views.ProfilesBySnapchatPage"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
-            BindingContext="{Binding ProfilesByTwitter}">
+            BindingContext="{Binding ProfilesBySnapchat}">
             <ImageButton
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
@@ -21,7 +21,7 @@
     <ContentPage.Content>
         <Grid>
             <ScrollView 
-                BindingContext="{Binding ProfilesByTwitter}">
+                BindingContext="{Binding ProfilesBySnapchat}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
@@ -46,12 +46,6 @@
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions="StartAndExpand">
                     </ActivityIndicator>
-                    <!-- Lista de correos -->
-                    <!--<StackLayout 
-                        Grid.Row="1"
-                        HorizontalOptions="FillAndExpand"
-                        Padding="25"
-                        x:Name="FacebookList" />-->
                     <ListView 
                         ItemsSource="{Binding profileSM}"
                         Grid.Row="1"
@@ -72,7 +66,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Image 
                                             Grid.Column="0"
-                                            Source="twitterlogo2"
+                                            Source="snapchat2"
                                             HeightRequest="40"
                                             HorizontalOptions="End"
                                             Margin="70,0,20,0"
@@ -97,7 +91,7 @@
             <ImageButton
                 Grid.Row="0"
                 BackgroundColor = "Transparent"
-                Clicked = "NewProfileTwitter_Clicked"
+                Clicked = "NewProfileSnapchat_Clicked"
                 HeightRequest = "60"
                 HorizontalOptions ="Center"
                 Margin = "15"

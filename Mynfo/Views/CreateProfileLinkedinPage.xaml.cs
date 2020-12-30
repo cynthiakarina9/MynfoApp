@@ -4,9 +4,9 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreateProfileTwitterPage : ContentPage
+    public partial class CreateProfileLinkedinPage : ContentPage
     {
-        public CreateProfileTwitterPage()
+        public CreateProfileLinkedinPage()
         {
             InitializeComponent();
         }

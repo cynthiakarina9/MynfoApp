@@ -1,11 +1,14 @@
-﻿using Mynfo.Domain;
+﻿using GalaSoft.MvvmLight.Command;
+using Mynfo.Domain;
 using Mynfo.Helpers;
 using Mynfo.Services;
+using Mynfo.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Mynfo.ViewModels
@@ -47,6 +50,23 @@ namespace Mynfo.ViewModels
         }
         #endregion
 
+        #region Commands
+
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
+        #endregion
+
         #region Methods
         private async Task<ObservableCollection<ProfileSM>> GetList()
         {
@@ -77,6 +97,16 @@ namespace Mynfo.ViewModels
                 IdNetwork);
 
             this.IsRunning = false;
+
+            if (profileSocialMedia == null)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ProfileNull,
+                    Languages.Accept);
+                return null;
+            }
 
             foreach (ProfileSM profSM in profileSocialMedia)
                 profileSM.Add(profSM);

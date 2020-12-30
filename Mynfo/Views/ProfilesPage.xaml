@@ -117,6 +117,7 @@
                     <!-- BoxView 7 -->
                     <ImageButton 
                         BackgroundColor = "Transparent"
+                        Clicked="LinkedinProfile_Clicked"
                         Grid.Column = "1"
                         Grid.Row = "4" 
                         HeightRequest = "150"
@@ -139,6 +140,7 @@
                     <!--BoxView 9-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
+                        Clicked ="SnapchatProfile_Clicked"
                         Grid.Column = "1"
                         Grid.Row = "5" 
                         HeightRequest = "150"

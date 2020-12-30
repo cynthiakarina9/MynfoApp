@@ -87,10 +87,22 @@
                 "/ProfileEmails",
                 MainViewModel.GetInstance().User.UserId);
 
+            this.IsRunning = false;
+
+            if (listEmail.Count == 0)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ProfileNull,
+                    Languages.Accept);
+                return null;
+            }
+
             foreach (ProfileEmail profEmail in listEmail)
                 profileEmail.Add(profEmail);
 
-            this.IsRunning = false;
+            
             return profileEmail;
             
         }
