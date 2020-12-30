@@ -28,9 +28,6 @@
     Categories = new[] { "android.intent.category.DEFAULT" })]
     [MetaData("android.nfc.action.TECH_DISCOVERED", Resource = "@xml/techlist")]
 
-
-
-
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public string json;
@@ -49,6 +46,8 @@
             return instance;
         }
         #endregion       
+
+
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -97,14 +96,28 @@
 
         private void EnableReaderMode()
         {
-            var nfc = NfcAdapter.GetDefaultAdapter(this);
-            if (nfc != null) nfc.EnableReaderMode(this, cardReader, READER_FLAGS, null);
+            try
+            {
+                var nfc = NfcAdapter.GetDefaultAdapter(this);
+                if (nfc != null) nfc.EnableReaderMode(this, cardReader, READER_FLAGS, null);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }            
         }
 
         private void DisableReaderMode()
         {
-            var nfc = NfcAdapter.GetDefaultAdapter(this);
-            if (nfc != null) nfc.DisableReaderMode(this);
+            try 
+            {
+                var nfc = NfcAdapter.GetDefaultAdapter(this);
+                if (nfc != null) nfc.DisableReaderMode(this);
+            }
+            catch(Exception ex) 
+            {
+                Console.WriteLine(ex);
+            }            
         }
 
 
@@ -114,28 +127,33 @@
         protected override void OnResume()
         {
             base.OnResume();
-            /*
-            if (NfcAdapter.ActionTechDiscovered.Equals(Intent.Action))
+
+            try 
             {
-                //Get the NFC ID
-                var myTag = Intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
-
-                var msg = (NdefMessage)myTag[0];
-                var record = msg.GetRecords()[0];
-                //If the NFC Card ID is not null
-                if (record != null)
+                if (NfcAdapter.ActionTechDiscovered.Equals(Intent.Action))
                 {
-                    if (record.Tnf == NdefRecord.TnfWellKnown) // The data is defined by the Record Type Definition (RTD) specification available from http://members.nfc-forum.org/specs/spec_list/
-                    {
-                        // Get the transfered data
-                        var data = Encoding.ASCII.GetString(record.GetPayload());                      
+                    //Get the NFC ID
+                    var myTag = Intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
 
+                    var msg = (NdefMessage)myTag[0];
+                    var record = msg.GetRecords()[0];
+                    //If the NFC Card ID is not null
+                    if (record != null)
+                    {
+                        if (record.Tnf == NdefRecord.TnfWellKnown) // The data is defined by the Record Type Definition (RTD) specification available from http://members.nfc-forum.org/specs/spec_list/
+                        {
+                            // Get the transfered data
+                            var data = Encoding.ASCII.GetString(record.GetPayload());
+                            string result = data.Substring(3);
+                            Imprime_box.Consulta_user(result);
+                        }
                     }
                 }
-            }*/
-
-
-
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex);
+            }           
         }
     
 

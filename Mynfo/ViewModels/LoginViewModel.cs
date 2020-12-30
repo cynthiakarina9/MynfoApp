@@ -4,6 +4,7 @@
     using Helpers;
     using Mynfo.Models;
     using Services;
+    using System;
     using System.Windows.Input;
     using Views;
     using Xamarin.Forms;
@@ -178,11 +179,19 @@
             }
 
             //Save Local User in SQLite
-            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            try
             {
-                conn.CreateTable<UserLocal>();
-                conn.Insert(userLocal);
+                using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    conn.CreateTable<UserLocal>();
+                    conn.Insert(userLocal);
+                }
             }
+            catch(Exception es)
+            {
+                Console.WriteLine(es);
+            }
+            
             using (var conn = new SQLite.SQLiteConnection(App.root_db))
             {
                 conn.CreateTable<ForeingProfile>();
