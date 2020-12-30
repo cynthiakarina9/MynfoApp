@@ -18,5 +18,5 @@
 	<uses-feature android:name="FEATURE_NFC_HOST_CARD_EMULATION" />
 	<uses-permission android:name="android.permission.NFC" />
 	<uses-permission android:name="android.permission.BIND_NFC_SERVICE" />
-	<uses-sdk android:minSdkVersion="24" />
+	<uses-sdk android:minSdkVersion="23" />
 </manifest>
