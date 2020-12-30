@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="Services\CardReader.cs" />
     <Compile Include="Services\CardService.cs" />
+    <Compile Include="Services\Imprime_box.cs" />
     <Compile Include="Services\MessageReceiver.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="Implementations\Localize.cs" />

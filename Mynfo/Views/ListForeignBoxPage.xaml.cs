@@ -28,7 +28,10 @@
             GetUSer(_ForeignUserId);
             GetList();
 
-            BindingContext = this;
+            foreach (ForeingBox foreingBoxValue in foreignBoxList)
+            {
+                foreingBox.Add(foreingBoxValue);
+            }
         }
         #endregion
 
