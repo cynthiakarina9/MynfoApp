@@ -15,11 +15,7 @@
         
         public ListForeignBoxPage()
         {           
-            InitializeComponent();
-
-
-
-           
+            InitializeComponent();           
 
             BindingContext = this;
         }
