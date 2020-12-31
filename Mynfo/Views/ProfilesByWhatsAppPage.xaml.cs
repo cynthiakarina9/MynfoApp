@@ -84,8 +84,8 @@
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
             ProfileWhatsapp tappedItem = e.Item as ProfileWhatsapp;
-            MainViewModel.GetInstance().EditProfileWhatsApp = new EditProfileWhatsAppViewModel(tappedItem.ProfileWhatsappId);
-            Navigation.PushAsync(new EditProfileWhatsAppPage());
+            //MainViewModel.GetInstance().EditProfileWhatsApp = new EditProfileWhatsAppViewModel(tappedItem.ProfileWhatsappId);
+            //Navigation.PushAsync(new EditProfileWhatsAppPage());
         }
         #endregion
     }

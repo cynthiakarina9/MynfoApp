@@ -135,7 +135,7 @@
 
 
             //Agregar a la lista
-            MainViewModel.GetInstance().ProfilesByWhatsApp.updateProfile(profile);
+            //MainViewModel.GetInstance().ProfilesByWhatsApp.updateProfile(profile);
 
             await App.Navigator.PopAsync();
         }

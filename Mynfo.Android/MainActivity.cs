@@ -126,7 +126,7 @@
 
         protected override void OnResume()
         {
-            base.OnResume();
+            base.OnResume(); 
 
             try 
             {

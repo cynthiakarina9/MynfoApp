@@ -145,7 +145,7 @@ namespace Mynfo.ViewModels
             }
             else
             {
-                mainViewModel.ProfilesByWhatsApp.addProfile(profileWhatsapp);
+                //mainViewModel.ProfilesByWhatsApp.addProfile(profileWhatsapp);
             }
 
             this.Name = string.Empty;
