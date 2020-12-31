@@ -531,10 +531,10 @@
                         Grid.Row="1"
                         HasUnevenRows="true"
                         ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileWhatsapp, Mode=TwoWay}"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
                         ItemTapped="OnListViewItemTapped"
                         Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileWhatsapp}"
+                        SelectedItem="{Binding selectedProfileSM}"
                         x:Name="ProfileListWebPage">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -546,7 +546,6 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="3*" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <ImageButton
@@ -554,21 +553,15 @@
                                             Grid.Column="0"
                                             HeightRequest="30"
                                             Margin="5"
-                                            Source="whatsapp2"
+                                            Source="gmail2"
                                             WidthRequest="30"/>
                                         <Label 
                                             Grid.Column="1"
-                                            Text="{Binding Name, Mode=TwoWay}"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
-                                        <Label 
-                                            Grid.Column="2"
-                                            Text="{Binding Number, Mode=TwoWay}"
-                                            FontSize="15"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Center"/>
                                         <input:CheckBox 
                                             IsEnabled="False"
                                             Grid.Column="3"
@@ -637,10 +630,10 @@
                         Grid.Row="1"
                         HasUnevenRows="true"
                         ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileWhatsapp, Mode=TwoWay}"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
                         ItemTapped="OnListViewItemTapped"
                         Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileWhatsapp}"
+                        SelectedItem="{Binding selectedProfileSM}"
                         x:Name="ProfileListYoutube">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -652,7 +645,6 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="3*" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <ImageButton
@@ -664,17 +656,11 @@
                                             WidthRequest="30"/>
                                         <Label 
                                             Grid.Column="1"
-                                            Text="{Binding Name, Mode=TwoWay}"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
-                                        <Label 
-                                            Grid.Column="2"
-                                            Text="{Binding Number, Mode=TwoWay}"
-                                            FontSize="15"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Center"/>
                                         <input:CheckBox 
                                             IsEnabled="False"
                                             Grid.Column="3"
