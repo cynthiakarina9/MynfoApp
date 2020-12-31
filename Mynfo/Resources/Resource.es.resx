@@ -543,4 +543,10 @@
   <data name="ProfileNull" xml:space="preserve">
     <value>Aun no ha creado ningún perfil de este tipo.</value>
   </data>
+  <data name="NickName" xml:space="preserve">
+    <value>Nombre de usuario</value>
+  </data>
+  <data name="NickNamePH" xml:space="preserve">
+    <value>user</value>
+  </data>
 </root>

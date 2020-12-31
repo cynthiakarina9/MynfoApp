@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.ProfilesBySpotifyPage"
+             BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Grid
+            BindingContext="{Binding ProfilesBySpotify}">
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Command="{Binding BackHomeCommand}"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,70,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior3.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "100"/>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView 
+                BindingContext="{Binding ProfilesBySpotify}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition />
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Titulo-->
+
+                    <Label 
+                        Grid.Row = "0" 
+                        Text = "{i18n:Translate NetworkList}"
+                        FontSize = "25"
+                        FontAttributes="Bold"
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions = "EndAndExpand"  
+                        Margin = "0,5,0,15"/>
+                    <ActivityIndicator
+                        Grid.Row = "1"
+                        IsRunning = "{Binding IsRunning}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions="StartAndExpand">
+                    </ActivityIndicator>
+                    <ListView 
+                        ItemsSource="{Binding profileSM}"
+                        Grid.Row="1"
+                        SelectedItem="{Binding selectedProfile}"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemTapped="OnListViewItemTapped"
+                        HasUnevenRows="true">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image 
+                                            Grid.Column="0"
+                                            Source="spotify2"
+                                            HeightRequest="40"
+                                            HorizontalOptions="End"
+                                            Margin="70,0,20,0"
+                                            VerticalOptions="Center"
+                                            WidthRequest="50" />
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            Margin="0,0,10,0"
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </ScrollView>
+            <!-- Botón de nuevo correo -->
+            <ImageButton
+                Grid.Row="0"
+                BackgroundColor = "Transparent"
+                Clicked = "NewProfileSpotify_Clicked"
+                HeightRequest = "60"
+                HorizontalOptions ="Center"
+                Margin = "15"
+                Source = "Plus"
+                VerticalOptions = "End"
+                WidthRequest = "60" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

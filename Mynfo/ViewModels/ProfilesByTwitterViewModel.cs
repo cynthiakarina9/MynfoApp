@@ -98,11 +98,11 @@ namespace Mynfo.ViewModels
 
             this.IsRunning = false;
 
-            if (profileSocialMedia == null)
+            if (profileSocialMedia.Count == 0)
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
+                    Languages.Information,
                     Languages.ProfileNull,
                     Languages.Accept);
                 return null;

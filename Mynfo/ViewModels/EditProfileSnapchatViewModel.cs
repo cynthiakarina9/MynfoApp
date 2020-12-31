@@ -138,7 +138,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            MainViewModel.GetInstance().ProfilesByFacebook.removeProfile();
+            MainViewModel.GetInstance().ProfilesBySnapchat.removeProfile();
 
             await App.Navigator.PopAsync();
         }

@@ -100,7 +100,7 @@
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
+                    Languages.Information,
                     Languages.ProfileNull,
                     Languages.Accept);
                 return null;

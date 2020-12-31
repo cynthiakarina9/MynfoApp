@@ -8,7 +8,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class CreateProfileTiwtchViewModel : BaseViewModel
+    public class CreateProfileTwitchViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -44,22 +44,22 @@
         #endregion
 
         #region Constructor
-        public CreateProfileTiwtchViewModel()
+        public CreateProfileTwitchViewModel()
         {
             this.apiService = new ApiService();
         }
         #endregion
 
         #region Commands
-        public ICommand SaveProfileTiwtchCommand
+        public ICommand SaveProfileTwitchCommand
         {
             get
             {
-                return new RelayCommand(SaveProfileTiwtch);
+                return new RelayCommand(SaveProfileTwitch);
             }
         }
 
-        private async void SaveProfileTiwtch()
+        private async void SaveProfileTwitch()
         {
             if (string.IsNullOrEmpty(this.Name))
             {
@@ -98,7 +98,7 @@
             var profileTiwtch = new ProfileSM
             {
                 ProfileName = this.Name,
-                link = this.Link,
+                link = "https://www.twitch.tv/" + this.Link,
                 UserId = mainViewModel.User.UserId,
                 Exist = false,
                 RedSocialId = 9
@@ -132,7 +132,7 @@
             }
             else
             {
-                mainViewModel.ProfilesByTiwtch.addProfile(profileSM);
+                mainViewModel.ProfilesByTwitch.addProfile(profileSM);
             }
 
 

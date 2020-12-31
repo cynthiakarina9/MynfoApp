@@ -97,7 +97,7 @@
             var profileTwitter = new ProfileSM
             {
                 ProfileName = this.Name,
-                link = this.Link,
+                link = "https://twitter.com/" + this.Link,
                 UserId = mainViewModel.User.UserId,
                 Exist = false,
                 RedSocialId = 3

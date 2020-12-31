@@ -17,6 +17,7 @@
                         <RowDefinition Height="100" />
                         <RowDefinition Height="100" />
                         <RowDefinition Height="100" />
+                        <RowDefinition Height="100" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width=".12*" />
@@ -129,6 +130,7 @@
                     <!--BoxView 8-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
+                        Clicked = "TiktokProfile_Clicked"
                         Grid.Column = "3"
                         Grid.Row = "4"   
                         HeightRequest = "150"
@@ -152,6 +154,7 @@
                     <!--BoxView 10-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
+                        Clicked = "SpotifyProfile_Clicked"
                         Grid.Column = "3"
                         Grid.Row = "5"   
                         HeightRequest = "150"
@@ -163,6 +166,7 @@
                     <!--BoxView 11-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
+                        Clicked = "YoutubeProfile_Clicked"
                         Grid.Column = "1"
                         Grid.Row = "6"   
                         HeightRequest = "150"
@@ -174,6 +178,7 @@
                     <!--BoxView 12-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
+                        Clicked = "TwitchProfile_Clicked"
                         Grid.Column = "3"
                         Grid.Row = "6"   
                         HeightRequest = "150"
@@ -185,6 +190,7 @@
                     <!--BoxView 13-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
+                        Clicked = "WebPageProfile_Clicked"
                         Grid.Column = "1"
                         Grid.Row = "7"   
                         HeightRequest = "150"
@@ -203,8 +209,6 @@
                         Source = "skype1.png"   
                         VerticalOptions = "Center"
                         WidthRequest = "150" />
-
-
                 </Grid>
             </Grid>
         </ScrollView>

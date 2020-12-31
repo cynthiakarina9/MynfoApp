@@ -52,11 +52,39 @@
             Navigation.PushAsync(new ProfilesBySnapchatPage());
         }
 
+        private void SpotifyProfile_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesBySpotify = new ProfilesBySpotifyViewModel();
+            Navigation.PushAsync(new ProfilesBySpotifyPage());
+        }
+
+        private void TiktokProfile_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByTiktok = new ProfilesByTiktokViewModel();
+            Navigation.PushAsync(new ProfilesByTiktokPage());
+        }
+
+        private void TwitchProfile_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByTwitch = new ProfilesByTwitchViewModel();
+            Navigation.PushAsync(new ProfilesByTwitchPage());
+        }
+
         private void TwitterProfile_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesByTwitter = new ProfilesByTwitterViewModel();
             Navigation.PushAsync(new ProfilesByTwitterPage());
+        }
+
+        private void WebPageProfile_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByWebPage = new ProfilesByWebPageViewModel();
+            Navigation.PushAsync(new ProfilesByWebPagePage());
         }
 
         private void WhatsAppProfile_Clicked(object sender, EventArgs e)
@@ -66,6 +94,11 @@
             Navigation.PushAsync(new ProfilesByWhatsAppPage());
         }
 
-        
+        private void YoutubeProfile_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.ProfilesByYoutube = new ProfilesByYoutubeViewModel();
+            Navigation.PushAsync(new ProfilesByYoutubePage());
+        }
     }
 }

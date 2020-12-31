@@ -58,7 +58,7 @@
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
+                    Languages.Information,
                     connection.Message,
                     Languages.Accept);
                 return null;

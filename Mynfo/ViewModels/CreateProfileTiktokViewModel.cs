@@ -97,7 +97,7 @@
             var profileTiktok = new ProfileSM
             {
                 ProfileName = this.Name,
-                link = this.Link,
+                link = "https://tiktok.com/@" + this.Link,
                 UserId = mainViewModel.User.UserId,
                 Exist = false,
                 RedSocialId = 6

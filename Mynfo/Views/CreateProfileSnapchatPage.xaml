@@ -74,19 +74,30 @@
                             FontSize = "24" 
                             FontAttributes="Bold"
                             HorizontalOptions = "Center"
-                            Text = "{i18n:Translate Link}"
+                            Text = "{i18n:Translate NickName}"
                             TextColor = "{StaticResource MainColor}"
                             VerticalOptions = "Center"/>
-                        <Entry 
-                            FontSize = "21"
-                            HeightRequest = "46"
-                            HorizontalTextAlignment = "Center"
-                            HorizontalOptions = "Center"
-                            Text = "{Binding Link}"
-                            VerticalOptions = "Center" 
-                            Placeholder = "https://www.facebook.com/user"
-                            WidthRequest = "300" 
-                            x:Name="ProfileLink"/>
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Margin="25,-5,25,0"
+                            Orientation="Horizontal">
+                            <Label
+                                FontSize = "22"
+                                HorizontalOptions = "Center"
+                                Text = "@"
+                                VerticalOptions="Center"
+                                WidthRequest = "50" />
+                            <Entry 
+                                FontSize = "21"
+                                HeightRequest = "46"
+                                HorizontalOptions="Center"
+                                Margin="-40,0,0,0"
+                                Text = "{Binding Link}"
+                                VerticalOptions = "Center" 
+                                Placeholder = "UserName"
+                                WidthRequest = "120" 
+                                x:Name="ProfileLink"/>
+                        </StackLayout>
                     </StackLayout>
                     <Grid
                         Grid.Row = "4"

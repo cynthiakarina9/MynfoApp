@@ -544,4 +544,10 @@ Você deve inserir um url</value>
   <data name="ProfileNull" xml:space="preserve">
     <value>Você ainda não criou nenhum perfil deste tipo.</value>
   </data>
+  <data name="NickName" xml:space="preserve">
+    <value>Nome do usuário</value>
+  </data>
+  <data name="NickNamePH" xml:space="preserve">
+    <value />
+  </data>
 </root>

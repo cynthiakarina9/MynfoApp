@@ -98,7 +98,7 @@
             var profileInstagram = new ProfileSM
             {
                 ProfileName = this.Name,
-                link = this.Link,
+                link = "https://www.instagram.com/" + this.Link,
                 UserId = mainViewModel.User.UserId,
                 Exist = false,
                 RedSocialId = 2
