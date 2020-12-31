@@ -160,7 +160,7 @@
             bxBtnHome.HeightRequest = 50;
             bxBtnHome.Clicked += ToolbarItem_Clicked;
 
-            HomeButton.Children.Add(bxBtnHome);
+            //HomeButton.Children.Add(bxBtnHome);
 
             //Creación de botón para borrar box
             BxBtnDelete.BackgroundColor = Color.Transparent;
