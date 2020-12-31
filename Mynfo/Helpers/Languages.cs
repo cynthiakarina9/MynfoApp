@@ -600,5 +600,13 @@
         {
             get { return Resource.ProfileNull; }
         }
+        public static string NickName
+        {
+            get { return Resource.NickName; }
+        }
+        public static string NickNamePH
+        {
+            get { return Resource.NickNamePH; }
+        }
     }
 }

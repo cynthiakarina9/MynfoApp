@@ -19,7 +19,7 @@
 
         #region Attributes
         private bool isRunning;
-        //private bool isCheck;
+        private int RedSocial;
         private ObservableCollection<ProfileEmail> profileEmail;
         private ObservableCollection<ProfilePhone> profilePhone;
         private ObservableCollection<ProfileWhatsapp> profileWhatsapp;
@@ -70,7 +70,6 @@
             }
         }
 
-
         public ProfileEmail selectedProfileEmail { get; set; }
         public ProfilePhone selectedProfilePhone { get; set; }
         public ProfileWhatsapp selectedProfileWhatsapp { get; set; }
@@ -81,19 +80,56 @@
         public ProfilesBYPESMViewModel(int _BoxId, string _ProfileType, bool _BoxDefault, string _boxName = "")
         {
             apiService = new ApiService();
-            switch(_ProfileType)
+            switch (_ProfileType)
             {
                 case "Email":
                     GetListEmail(_BoxId);
                     break;
+                case "Facebook":
+                    RedSocial = 1;
+                    GetListSM(_BoxId);
+                    break;
+                case "Instagram":
+                    RedSocial = 2;
+                    GetListSM(_BoxId);
+                    break;
+                case "LinkedIn":
+                    RedSocial = 5;
+                    GetListSM(_BoxId);
+                    break;
                 case "Phone":
                     GetListPhone(_BoxId);
                     break;
-                case "Facebook":
+                case "Snapchat":
+                    RedSocial = 4;
+                    GetListSM(_BoxId);
+                    break;
+                case "Spotify":
+                    RedSocial = 8;
+                    GetListSM(_BoxId);
+                    break;
+                case "TikTok":
+                    RedSocial = 6;
+                    GetListSM(_BoxId);
+                    break;
+                case "Twitch":
+                    RedSocial = 9;
+                    GetListSM(_BoxId);
+                    break;
+                case "Twitter":
+                    RedSocial = 3;
+                    GetListSM(_BoxId);
+                    break;
+                case "WebPage":
+                    RedSocial = 10;
                     GetListSM(_BoxId);
                     break;
                 case "Whatsapp":
                     GetListWhatsapp(_BoxId);
+                    break;
+                case "Youtube":
+                    RedSocial = 7;
+                    GetListSM(_BoxId);
                     break;
                 default:
                     break;
@@ -153,7 +189,7 @@
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Warning,
+                    Languages.Information,
                     Languages.ProfileNull,
                     Languages.Accept);
                 return null;
@@ -235,7 +271,7 @@
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Warning,
+                    Languages.Information,
                     Languages.ProfileNull,
                     Languages.Accept);
                 return null;
@@ -308,17 +344,18 @@
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
             ProfileSM = new ObservableCollection<ProfileSM>();
-            listSM = await this.apiService.GetListByUser<ProfileSM>(
+            listSM = await this.apiService.GetProfileByNetWork(
                 apiSecurity,
                 "/api",
-                "/ProfileSMs",
-                MainViewModel.GetInstance().User.UserId);
+                "/ProfileSMs/GetProfileByNetWorkT",
+                MainViewModel.GetInstance().User.UserId,
+                RedSocial);
 
             if (listSM.Count == 0)
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Warning,
+                    Languages.Information,
                     Languages.ProfileNull,
                     Languages.Accept);
                 return null;
@@ -401,7 +438,7 @@
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Warning,
+                    Languages.Information,
                     Languages.ProfileNull,
                     Languages.Accept);
                 return null;

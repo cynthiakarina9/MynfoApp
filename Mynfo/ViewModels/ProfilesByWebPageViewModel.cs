@@ -10,7 +10,7 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
-    public class ProfilesByTiwtchViewModel : BaseViewModel
+    public class ProfilesByWebPageViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -41,7 +41,7 @@
         #endregion
 
         #region Constructor
-        public ProfilesByTiwtchViewModel()
+        public ProfilesByWebPageViewModel()
         {
             apiService = new ApiService();
             GetList();
@@ -86,7 +86,7 @@
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
             profileSM = new ObservableCollection<ProfileSM>();
-            int IdNetwork = 9;
+            int IdNetwork = 10;
             profileSocialMedia = await this.apiService.GetProfileByNetWork(
                 apiSecurity,
                 "/api",
@@ -100,7 +100,7 @@
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
+                    Languages.Information,
                     Languages.ProfileNull,
                     Languages.Accept);
                 return null;

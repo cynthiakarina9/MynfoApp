@@ -97,7 +97,7 @@
             var profileSnapchat = new ProfileSM
             {
                 ProfileName = this.Name,
-                link = this.Link,
+                link = "https://www.snapchat.com/add/" + this.Link,
                 UserId = mainViewModel.User.UserId,
                 Exist = false,
                 RedSocialId = 4

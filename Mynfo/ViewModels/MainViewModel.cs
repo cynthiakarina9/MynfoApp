@@ -98,19 +98,31 @@
             set;
         }
 
+        public CreateProfileSpotifyViewModel CreateProfileSpotify
+        {
+            get;
+            set;
+        }
+
         public CreateProfileTiktokViewModel CreateProfileTiktok
         {
             get;
             set;
         }
 
-        public CreateProfileTiwtchViewModel CreateProfileTiwtch
+        public CreateProfileTwitchViewModel CreateProfileTwitch
         {
             get;
             set;
         }
 
         public CreateProfileTwitterViewModel CreateProfileTwitter
+        {
+            get;
+            set;
+        }
+
+        public CreateProfileWebViewModel CreateProfileWebPage
         {
             get;
             set;
@@ -163,13 +175,19 @@
             set;
         }
 
+        public EditProfileSpotifyViewModel EditProfileSpotify
+        {
+            get;
+            set;
+        }
+
         public EditProfileTiktokViewModel EditProfileTiktok
         {
             get;
             set;
         }
 
-        public EditProfileTiwtchViewModel EditProfileTiwtch
+        public EditProfileTwitchViewModel EditProfileTwitch
         {
             get;
             set;
@@ -181,7 +199,13 @@
             set;
         }
 
-        public EditProfileYoutubeViewModel EditProfileWhatsApp
+        public EditProfileWebPageViewModel EditProfileWebPage
+        {
+            get;
+            set;
+        }
+
+        public EditProfileWhatsAppViewModel EditProfileWhatsApp
         {
             get;
             set;
@@ -281,13 +305,19 @@
             set;
         }
 
+        public ProfilesBySpotifyViewModel ProfilesBySpotify
+        {
+            get;
+            set;
+        }
+
         public ProfilesByTiktokViewModel ProfilesByTiktok
         {
             get;
             set;
         }
 
-        public ProfilesByTiwtchViewModel ProfilesByTiwtch
+        public ProfilesByTwitchViewModel ProfilesByTwitch
         {
             get;
             set;
@@ -299,7 +329,13 @@
             set;
         }
 
-        public ProfilesByYoutubeViewModel ProfilesByWhatsApp
+        public ProfilesByWebPageViewModel ProfilesByWebPage
+        {
+            get;
+            set;
+        }
+
+        public ProfilesByWhatsAppViewModel ProfilesByWhatsApp
         {
             get;
             set;

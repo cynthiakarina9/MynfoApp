@@ -5,11 +5,8 @@
     using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.Views;
-    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -93,7 +90,7 @@
             {
                 this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
+                    Languages.Information,
                     Languages.ProfileNull,
                     Languages.Accept);
                 return null;

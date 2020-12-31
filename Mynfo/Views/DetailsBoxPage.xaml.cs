@@ -96,7 +96,7 @@
                                         "on(dbo.Boxes.BoxId = dbo.Box_ProfileWhatsapp.BoxId) " +
                                         "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                         "where dbo.Boxes.BoxId =" + _boxId;
-
+            
             //Consulta para obtener Box
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
@@ -160,7 +160,7 @@
             bxBtnHome.HeightRequest = 50;
             bxBtnHome.Clicked += ToolbarItem_Clicked;
 
-            HomeButton.Children.Add(bxBtnHome);
+            //HomeButton.Children.Add(bxBtnHome);
 
             //Creación de botón para borrar box
             BxBtnDelete.BackgroundColor = Color.Transparent;
@@ -457,7 +457,132 @@
                                     SMProfileName.FontAttributes = FontAttributes.Bold;
                                     SMProfileName.TextColor = Color.Black;
                                     break;
+                                case "Twitter":
+                                    SMIcon.Source = "twitter2.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = true;
+                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
+                                case "Instagram":
+                                    SMIcon.Source = "instagramlogo2.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = true;
+                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
+                                case "Snapchat":
+                                    SMIcon.Source = "snapchat2.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = true;
+                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
+                                case "LinkedIn":
+                                    SMIcon.Source = "linkedin2.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = true;
+                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
+                                case "TikTok":
+                                    SMIcon.Source = "tiktok2.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = true;
+                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
+                                case "Youtube":
+                                    SMIcon.Source = "youtube2.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = true;
+                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
+                                case "Spotify":
+                                    SMIcon.Source = "spotify2.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = true;
+                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
+                                case "Twitch":
+                                    SMIcon.Source = "twitch2.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = true;
+                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
+                                case "WebPage":
+                                    SMIcon.Source = "networks_icon.png";
+                                    SMIcon.WidthRequest = 50;
+                                    SMIcon.HeightRequest = 50;
+                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
+                                    SMIcon.IsEnabled = true;
+                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+
+                                    SMProfileName.Text = (string)reader["ProfileName"];
+                                    SMProfileName.FontSize = 15;
+                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                                    SMProfileName.FontAttributes = FontAttributes.Bold;
+                                    SMProfileName.TextColor = Color.Black;
+                                    break;
                                 default:
                                     break;
                             }
@@ -1349,6 +1474,12 @@
                 MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
                 Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
             }
+        }
+
+        async private void BackHome (object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

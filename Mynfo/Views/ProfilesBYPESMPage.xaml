@@ -47,19 +47,13 @@
                         Margin = "0,5,0,15"/>
 
                     <!--End Titulo-->
-
-                    <!--Lista de Perfiles-->
-                    <!--<StackLayout 
-                        Grid.Row="1"
-                        HorizontalOptions="FillAndExpand"
-                        Padding="25"
-                        x:Name="ProfileList" />-->
-                    <!-- Lista de perfiles Email -->
                     <ActivityIndicator
                         Grid.Row = "1"
                         IsRunning = "{Binding IsRunning}"
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions="StartAndExpand" />
+                    
+                    <!-- Lista de perfiles de email -->
                     <ListView  
                         Grid.Row="1"
                         HasUnevenRows="true"
@@ -111,6 +105,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    
                     <!-- Lista de perfiles de teléfono -->
                     <ListView 
                         Grid.Row="1"
@@ -162,7 +157,8 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <!-- Lista de MS -->
+                    
+                    <!-- Lista de Facebook -->
                     <ListView 
                         Grid.Row="1"
                         HasUnevenRows="true"
@@ -171,7 +167,7 @@
                         ItemTapped="OnListViewItemTapped"
                         Margin="10,35,10,20"
                         SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListSM">
+                        x:Name="ProfileListFacebook">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -190,6 +186,374 @@
                                             HeightRequest="30"
                                             Margin="5"
                                             Source="facebook2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de Instagram -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListInstagram">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="instagramlogo2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de Linkedin -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListLinkedin">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="linkedin2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de Snapchat -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListSnapchat">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="snapchat2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de Spotify -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListSpotify">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="spotify2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de Tiktok -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListTiktok">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="tiktok2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de Twitch -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListTwitch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="twitch2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de Twitter -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListTwitter">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="twitter2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de WebPage -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListWebPage">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="gmail2"
                                             WidthRequest="30"/>
                                         <Label 
                                             Grid.Column="1"
@@ -251,6 +615,52 @@
                                             FontSize="15"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Lista de Youtube -->
+                    <ListView 
+                        Grid.Row="1"
+                        HasUnevenRows="true"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                        ItemTapped="OnListViewItemTapped"
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileSM}"
+                        x:Name="ProfileListYoutube">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="youtube2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
                                             IsEnabled="False"
                                             Grid.Column="3"

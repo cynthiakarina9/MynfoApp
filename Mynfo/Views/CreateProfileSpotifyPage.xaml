@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.CreateProfileSpotifyPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Grid
+            BindingContext="{Binding CreateProfileSpotify}">
+            <ImageButton 
+                BackgroundColor = "Transparent"
+                Command="{Binding BackHomeCommand}"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,70,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior3.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "100"/>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid
+            BindingContext = "{Binding CreateProfileSpotify}">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height = "70"/>
+                        <RowDefinition Height = "160"/>
+                        <RowDefinition Height = "110"/>
+                        <RowDefinition Height = "110"/>
+                        <RowDefinition />
+                        <RowDefinition Height = "120"/>
+                    </Grid.RowDefinitions>
+                    <Label 
+                        FontAttributes = "Bold"
+                        FontSize = "25"
+                        Grid.ColumnSpan ="1"
+                        Grid.Row = "0"
+                        HorizontalOptions = "Center"
+                        HorizontalTextAlignment = "Center"
+                        Text = "{i18n:Translate AddNetwork}"
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalOptions = "Center"/>
+                    <Image 
+                        Grid.Row = "1" 
+                        HeightRequest = "180"
+                        Source ="spotify2"
+                        WidthRequest = "180"/>
+                    <StackLayout 
+                        Grid.Row = "2"
+                        Padding = "20">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NameProfile}"
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Entry 
+                            FontSize = "21"
+                            HeightRequest = "46"
+                            HorizontalTextAlignment = "Center"
+                            HorizontalOptions = "Center"
+                            MaxLength = "10"
+                            Placeholder = "{i18n:Translate NProfilePlaceH}"
+                            Text = "{Binding Name}"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300" 
+                            x:Name="ProfileName"/>
+                    </StackLayout>
+                    <StackLayout 
+                        Grid.Row = "3">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate Link}"
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Entry 
+                            FontSize = "21"
+                            HeightRequest = "46"
+                            HorizontalTextAlignment = "Center"
+                            HorizontalOptions = "Center"
+                            Text = "{Binding Link}"
+                            VerticalOptions = "Center" 
+                            Placeholder = "https://www.spotify.com/user"
+                            WidthRequest = "300" 
+                            x:Name="ProfileLink"/>
+                    </StackLayout>
+                    <Grid
+                        Grid.Row = "4"
+                        VerticalOptions = "CenterAndExpand">
+                        <ActivityIndicator
+                            IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                            VerticalOptions = "CenterAndExpand"
+                            x:Name= "ActivityIn">
+                        </ActivityIndicator>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Margin="20"
+                VerticalOptions="End">
+                <Button 
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Command = "{Binding SaveProfileSpotifyCommand}"
+                        HeightRequest = "50"
+                        Text = "{i18n:Translate Save}"
+                        TextColor = "{StaticResource Dark_FontColor}"
+                        VerticalOptions = "Center"
+                        x:Name="Save"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

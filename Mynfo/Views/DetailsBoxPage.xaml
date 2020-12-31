@@ -26,12 +26,12 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Botón para borrar box-->
-                    <StackLayout 
+                    <!--<StackLayout 
                         Grid.Column="0"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
                         Padding="10,10,0,0"
-                        x:Name="HomeButton" />
+                        x:Name="HomeButton" />-->
 
                     <!--Botón para volver a home-->
                     <StackLayout 

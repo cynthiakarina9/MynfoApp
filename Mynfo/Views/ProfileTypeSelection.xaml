@@ -13,15 +13,6 @@
                 Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
                 WidthRequest = "100"/>
-            <!--<ImageButton 
-                BackgroundColor = "Transparent"
-                Grid.Column = "0"
-                HeightRequest = "40"
-                HorizontalOptions = "Start"
-                Source = "ic_navigation_arrow_back"
-                VerticalOptions = "Start"
-                WidthRequest = "40"
-                x:Name="BackDetails"/>-->
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -31,12 +22,6 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="75"/>
-                        <RowDefinition Height="100" />
-                        <RowDefinition Height="100" />
-                        <RowDefinition Height="100" />
-                        <RowDefinition Height="100" />
-                        <RowDefinition Height="100" />
-                        <RowDefinition Height="100" />
                         <RowDefinition Height="100" />
                         <RowDefinition Height="100" />
                         <RowDefinition Height="100" />
@@ -94,20 +79,8 @@
 
                     <!--BoxView 3-->
                     <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "1"
-                        Grid.Row = "2" 
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "facebook1.png"
-                        VerticalOptions = "Center"
-                        WidthRequest = "150"
-                        x:Name="ProfilesFacebook"/>
-
-                    <!--BoxView 4-->
-                    <ImageButton 
                        BackgroundColor = "Transparent"
-                        Grid.Column = "3"
+                        Grid.Column = "1"
                         Grid.Row = "2" 
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
@@ -116,27 +89,41 @@
                         WidthRequest = "150"
                         x:Name="ProfilesWhatsapp"/>
 
+                    <!--BoxView 4-->
+                    <ImageButton 
+                        BackgroundColor = "Transparent"
+                        Grid.Column = "3"
+                        Grid.Row = "2" 
+                        HeightRequest = "150"
+                        HorizontalOptions = "Center"
+                        Source = "facebook1.png"
+                        VerticalOptions = "Center"
+                        WidthRequest = "150"
+                        x:Name="ProfilesFacebook"/>
+
                     <!--BoxView 5-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "1"
-                        Grid.Row = "3"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "gmail1.png" 
-                        VerticalOptions = "Center"
-                        WidthRequest = "150"/>
-
-                    <!--BoxView 6-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "3"
                         Grid.Row = "3" 
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
                         Source = "instagramlogo1.png"
                         VerticalOptions = "Center"
-                        WidthRequest = "150"/>
+                        WidthRequest = "150"
+                        x:Name="ProfilesInstagram"/>
+
+                    <!--BoxView 6-->
+                    <ImageButton 
+                        BackgroundColor = "Transparent"
+                        Grid.Column = "3"
+                        Grid.Row = "3"   
+                        HeightRequest = "150"
+                        HorizontalOptions = "Center"
+                        Source = "twitterlogo1.png"   
+                        VerticalOptions = "Center"
+                        WidthRequest = "150" 
+                        x:Name="ProfilesTwitter"/>
 
                     <!--BoxView 7-->
                     <ImageButton 
@@ -145,183 +132,91 @@
                         Grid.Row = "4" 
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
-                        Source = "line1.png"
+                        Source = "linkedin1.png"
                         VerticalOptions = "Center"
-                        WidthRequest = "150"/>
+                        WidthRequest = "150"
+                        x:Name="ProfilesLinkedin"/>
 
                     <!--BoxView 8-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "3"
-                        Grid.Row = "4" 
+                        Grid.Row = "4"   
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
-                        Source = "linkedin1.png"
+                        Source = "tiktok1.png"   
                         VerticalOptions = "Center"
-                        WidthRequest = "150"/>
+                        WidthRequest = "150" 
+                        x:Name="ProfilesTiktok"/>
 
                     <!--BoxView 9-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "1"
-                        Grid.Row = "5"   
+                        Grid.Row = "5" 
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
-                        Source = "pinterest1.png" 
+                        Source = "snapchat1.png"
                         VerticalOptions = "Center"
-                        WidthRequest = "150"/>
+                        WidthRequest = "150" 
+                        x:Name="ProfilesSnapchat"/>
 
                     <!--BoxView 10-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "3"
-                        Grid.Row = "5" 
+                        Grid.Row = "5"   
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
-                        Source = "reddit1.png"
+                        Source = "spotify1.png"   
                         VerticalOptions = "Center"
-                        WidthRequest = "150"/>
+                        WidthRequest = "150" 
+                        x:Name="ProfilesSpotify"/>
 
                     <!--BoxView 11-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "1"
-                        Grid.Row = "6" 
+                        Grid.Row = "6"   
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
-                        Source = "skype1.png"
+                        Source = "youtube1.png"   
                         VerticalOptions = "Center"
-                        WidthRequest = "150" />
+                        WidthRequest = "150" 
+                        x:Name="ProfilesYoutube"/>
 
                     <!--BoxView 12-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "3"
-                        Grid.Row = "6" 
+                        Grid.Row = "6"   
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
-                        Source = "snapchat1.png"
+                        Source = "twitch1.png"   
                         VerticalOptions = "Center"
-                        WidthRequest = "150" />
+                        WidthRequest = "150" 
+                        x:Name="ProfilesTwitch"/>
 
                     <!--BoxView 13-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "1"
-                        Grid.Row = "7"   
+                        Grid.Row = "7" 
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
-                        Source = "spotify1.png"   
+                        Source = "gmail1.png"
                         VerticalOptions = "Center"
-                        WidthRequest = "150" />
+                        WidthRequest = "150"
+                        x:Name="ProfilesWebPage"/>
 
                     <!--BoxView 14-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "3"
-                        Grid.Row = "7"   
+                        Grid.Row = "7" 
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
-                        Source = "teams1.png"   
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" />
-
-                    <!--BoxView 15-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "1"
-                        Grid.Row = "8"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "telegram1.png"   
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" />
-
-                    <!--BoxView 16-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "3"
-                        Grid.Row = "8"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "tiktok1.png"   
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" />
-
-                    <!--BoxView 17-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "1"
-                        Grid.Row = "9"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "tumblr1.png"   
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" />
-
-                    <!--BoxView 18-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "3"
-                        Grid.Row = "9"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "twitch1.png"   
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" />
-
-                    <!--BoxView 19-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "1"
-                        Grid.Row = "10"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "twitterlogo1.png"   
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" />
-
-                    <!--BoxView 20-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "3"
-                        Grid.Row = "10"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "wechat1.png"   
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" />
-
-                    <!--BoxView 21-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "1"
-                        Grid.Row = "11"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "yammer1.png"   
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" />
-
-                    <!--BoxView 22-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "3"
-                        Grid.Row = "11"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "youtube1.png"   
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" />
-
-                    <!--BoxView 23-->
-                    <ImageButton 
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "1"
-                        Grid.Row = "12"   
-                        HeightRequest = "150"
-                        HorizontalOptions = "Center"
-                        Source = "nikerunclub1.png"   
+                        Source = "skype1.png"
                         VerticalOptions = "Center"
                         WidthRequest = "150" />
                 </Grid>

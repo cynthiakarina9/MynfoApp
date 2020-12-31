@@ -14715,70 +14715,70 @@ namespace Mynfo.Droid
 			public const int networks_icon = 2131165400;
 			
 			// aapt resource value: 0x7F0700D9
-			public const int nikerunclub1 = 2131165401;
-			
-			// aapt resource value: 0x7F0700DA
-			public const int no = 2131165402;
-			
-			// aapt resource value: 0x7F0700DC
-			public const int notification_action_background = 2131165404;
-			
-			// aapt resource value: 0x7F0700DD
-			public const int notification_bg = 2131165405;
-			
-			// aapt resource value: 0x7F0700DE
-			public const int notification_bg_low = 2131165406;
-			
-			// aapt resource value: 0x7F0700DF
-			public const int notification_bg_low_normal = 2131165407;
-			
-			// aapt resource value: 0x7F0700E0
-			public const int notification_bg_low_pressed = 2131165408;
-			
-			// aapt resource value: 0x7F0700E1
-			public const int notification_bg_normal = 2131165409;
-			
-			// aapt resource value: 0x7F0700E2
-			public const int notification_bg_normal_pressed = 2131165410;
-			
-			// aapt resource value: 0x7F0700E3
-			public const int notification_icon_background = 2131165411;
-			
-			// aapt resource value: 0x7F0700E4
-			public const int notification_template_icon_bg = 2131165412;
-			
-			// aapt resource value: 0x7F0700E5
-			public const int notification_template_icon_low_bg = 2131165413;
-			
-			// aapt resource value: 0x7F0700E6
-			public const int notification_tile_bg = 2131165414;
-			
-			// aapt resource value: 0x7F0700E7
-			public const int notify_panel_notification_icon_bg = 2131165415;
+			public const int no = 2131165401;
 			
 			// aapt resource value: 0x7F0700DB
-			public const int no_image = 2131165403;
+			public const int notification_action_background = 2131165403;
+			
+			// aapt resource value: 0x7F0700DC
+			public const int notification_bg = 2131165404;
+			
+			// aapt resource value: 0x7F0700DD
+			public const int notification_bg_low = 2131165405;
+			
+			// aapt resource value: 0x7F0700DE
+			public const int notification_bg_low_normal = 2131165406;
+			
+			// aapt resource value: 0x7F0700DF
+			public const int notification_bg_low_pressed = 2131165407;
+			
+			// aapt resource value: 0x7F0700E0
+			public const int notification_bg_normal = 2131165408;
+			
+			// aapt resource value: 0x7F0700E1
+			public const int notification_bg_normal_pressed = 2131165409;
+			
+			// aapt resource value: 0x7F0700E2
+			public const int notification_icon_background = 2131165410;
+			
+			// aapt resource value: 0x7F0700E3
+			public const int notification_template_icon_bg = 2131165411;
+			
+			// aapt resource value: 0x7F0700E4
+			public const int notification_template_icon_low_bg = 2131165412;
+			
+			// aapt resource value: 0x7F0700E5
+			public const int notification_tile_bg = 2131165413;
+			
+			// aapt resource value: 0x7F0700E6
+			public const int notify_panel_notification_icon_bg = 2131165414;
+			
+			// aapt resource value: 0x7F0700DA
+			public const int no_image = 2131165402;
+			
+			// aapt resource value: 0x7F0700E7
+			public const int perfiles = 2131165415;
 			
 			// aapt resource value: 0x7F0700E8
-			public const int perfiles = 2131165416;
+			public const int pinterest1 = 2131165416;
 			
 			// aapt resource value: 0x7F0700E9
-			public const int pinterest1 = 2131165417;
+			public const int Plus = 2131165417;
 			
 			// aapt resource value: 0x7F0700EA
-			public const int Plus = 2131165418;
+			public const int skype1 = 2131165418;
 			
 			// aapt resource value: 0x7F0700EB
-			public const int reddit1 = 2131165419;
+			public const int snapchat1 = 2131165419;
 			
 			// aapt resource value: 0x7F0700EC
-			public const int skype1 = 2131165420;
+			public const int snapchat2 = 2131165420;
 			
 			// aapt resource value: 0x7F0700ED
-			public const int snapchat1 = 2131165421;
+			public const int spotify1 = 2131165421;
 			
 			// aapt resource value: 0x7F0700EE
-			public const int spotify1 = 2131165422;
+			public const int spotify2 = 2131165422;
 			
 			// aapt resource value: 0x7F0700EF
 			public const int SS = 2131165423;
@@ -14802,52 +14802,55 @@ namespace Mynfo.Droid
 			public const int tiktok1 = 2131165429;
 			
 			// aapt resource value: 0x7F0700F6
-			public const int time = 2131165430;
+			public const int tiktok2 = 2131165430;
 			
 			// aapt resource value: 0x7F0700F7
-			public const int tooltip_frame_dark = 2131165431;
+			public const int time = 2131165431;
 			
 			// aapt resource value: 0x7F0700F8
-			public const int tooltip_frame_light = 2131165432;
+			public const int tooltip_frame_dark = 2131165432;
 			
 			// aapt resource value: 0x7F0700F9
-			public const int trash = 2131165433;
+			public const int tooltip_frame_light = 2131165433;
 			
 			// aapt resource value: 0x7F0700FA
-			public const int trash2 = 2131165434;
+			public const int trash = 2131165434;
 			
 			// aapt resource value: 0x7F0700FB
-			public const int trashIcon1 = 2131165435;
+			public const int trash2 = 2131165435;
 			
 			// aapt resource value: 0x7F0700FC
-			public const int tumblr1 = 2131165436;
+			public const int trashIcon1 = 2131165436;
 			
 			// aapt resource value: 0x7F0700FD
-			public const int twitch1 = 2131165437;
+			public const int tumblr1 = 2131165437;
 			
 			// aapt resource value: 0x7F0700FE
-			public const int twitter1 = 2131165438;
+			public const int twitch1 = 2131165438;
 			
 			// aapt resource value: 0x7F0700FF
-			public const int twitterlogo1 = 2131165439;
+			public const int twitch2 = 2131165439;
 			
 			// aapt resource value: 0x7F070100
-			public const int twitterlogo2 = 2131165440;
+			public const int twitter2 = 2131165440;
 			
 			// aapt resource value: 0x7F070101
-			public const int wechat1 = 2131165441;
+			public const int twitterlogo1 = 2131165441;
 			
 			// aapt resource value: 0x7F070102
-			public const int whatsapp1 = 2131165442;
+			public const int twitterlogo2 = 2131165442;
 			
 			// aapt resource value: 0x7F070103
-			public const int whatsapp2 = 2131165443;
+			public const int whatsapp1 = 2131165443;
 			
 			// aapt resource value: 0x7F070104
-			public const int yammer1 = 2131165444;
+			public const int whatsapp2 = 2131165444;
 			
 			// aapt resource value: 0x7F070105
 			public const int youtube1 = 2131165445;
+			
+			// aapt resource value: 0x7F070106
+			public const int youtube2 = 2131165446;
 			
 			static Drawable()
 			{

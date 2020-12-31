@@ -90,26 +90,197 @@
                 case "Email":
                     ProfileListEmail.IsVisible = true;
                     ProfileListPhone.IsVisible = false;
-                    ProfileListSM.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
                     ProfileListWhatsapp.IsVisible = false;
-                    break;
-                case "Phone":
-                    ProfileListEmail.IsVisible = false;
-                    ProfileListPhone.IsVisible = true;
-                    ProfileListSM.IsVisible = false;
-                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
                     break;
                 case "Facebook":
                     ProfileListEmail.IsVisible = false;
                     ProfileListPhone.IsVisible = false;
-                    ProfileListSM.IsVisible = true;
+                    ProfileListFacebook.IsVisible = true;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
                     ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "Instagram":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = true;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "LinkedIn":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = true;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "Phone":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = true;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "Snapchat":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = true;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "Spotify":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = true;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "TikTok":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = true;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "Twitch":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = true;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "Twitter":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = true;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "WebPage":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = true;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
                     break;
                 case "Whatsapp":
                     ProfileListEmail.IsVisible = false;
                     ProfileListPhone.IsVisible = false;
-                    ProfileListSM.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
                     ProfileListWhatsapp.IsVisible = true;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "Youtube":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = true;
                     break;
                 default:
                     break;
@@ -413,23 +584,55 @@
             {
                 case "Phone":
                     mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
-                    //Application.Current.MainPage = new NavigationPage(new CreateProfilePhonePage(_BoxDefault,_boxId));
                     App.Navigator.PushAsync(new CreateProfilePhonePage());
                     break;
                 case "Email":
                     mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-                    //Application.Current.MainPage = new NavigationPage(new CreateProfileEmailPage(_BoxDefault,_boxId));
                     App.Navigator.PushAsync(new CreateProfileEmailPage());
                     break;
                 case "Facebook":
                     mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
-                    //Application.Current.MainPage= new NavigationPage(new CreateProfileFacebookPage(_BoxDefault, _boxId));
                     App.Navigator.PushAsync(new CreateProfileFacebookPage());
+                    break;
+                case "Instagram":
+                    mainViewModel.CreateProfileInstagram = new CreateProfileInstagramViewModel();
+                    App.Navigator.PushAsync(new CreateProfileInstagramPage());
+                    break;
+                case "LinkedIn":
+                    mainViewModel.CreateProfileLinkedin = new CreateProfileLinkedinViewModel();
+                    App.Navigator.PushAsync(new CreateProfileLinkedinPage());
+                    break;
+                case "Spotify":
+                    mainViewModel.CreateProfileSpotify = new CreateProfileSpotifyViewModel();
+                    App.Navigator.PushAsync(new CreateProfileSpotifyPage());
+                    break;
+                case "Snapchat":
+                    mainViewModel.CreateProfileSnapchat = new CreateProfileSnapchatViewModel();
+                    App.Navigator.PushAsync(new CreateProfileSnapchatPage());
+                    break;
+                case "Twitch":
+                    mainViewModel.CreateProfileTwitch = new CreateProfileTwitchViewModel();
+                    App.Navigator.PushAsync(new CreateProfileTwitchPage());
+                    break;
+                case "TikTok":
+                    mainViewModel.CreateProfileTiktok = new CreateProfileTiktokViewModel();
+                    App.Navigator.PushAsync(new CreateProfileTiktokPage());
+                    break;
+                case "Twitter":
+                    mainViewModel.CreateProfileTwitter = new CreateProfileTwitterViewModel();
+                    App.Navigator.PushAsync(new CreateProfileTwitterPage());
+                    break;
+                case "WebPage":
+                    mainViewModel.CreateProfileWebPage = new CreateProfileWebViewModel();
+                    App.Navigator.PushAsync(new CreateProfileWebPagePage());
                     break;
                 case "Whatsapp":
                     mainViewModel.CreateProfileWhatsApp = new CreateProfileWhatsAppViewModel();
-                    //Application.Current.MainPage = new NavigationPage(new CreateProfileWhatsAppPage());
                     App.Navigator.PushAsync(new CreateProfileWhatsAppPage());
+                    break;
+                case "Youtube":
+                    mainViewModel.CreateProfileYoutube = new CreateProfileYoutubeViewModel();
+                    App.Navigator.PushAsync(new CreateProfileYoutubePage());
                     break;
                 default:
                     break;
