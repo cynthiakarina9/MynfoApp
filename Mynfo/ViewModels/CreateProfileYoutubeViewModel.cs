@@ -43,6 +43,13 @@
         }
         #endregion
 
+        #region Constructor
+        public CreateProfileYoutubeViewModel()
+        {
+            this.apiService = new ApiService();
+        }
+        #endregion
+
         #region Commands
         public ICommand SaveProfileYoutubeCommand
         {

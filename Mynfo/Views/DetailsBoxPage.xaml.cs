@@ -96,7 +96,7 @@
                                         "on(dbo.Boxes.BoxId = dbo.Box_ProfileWhatsapp.BoxId) " +
                                         "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                         "where dbo.Boxes.BoxId =" + _boxId;
-
+            
             //Consulta para obtener Box
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
@@ -1474,6 +1474,12 @@
                 MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
                 Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
             }
+        }
+
+        async private void BackHome (object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

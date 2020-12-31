@@ -195,7 +195,7 @@
                         Grid.Row = "7"   
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
-                        Source = "line1.png"   
+                        Source = "gmail1.png"   
                         VerticalOptions = "Center"
                         WidthRequest = "150" />
 
