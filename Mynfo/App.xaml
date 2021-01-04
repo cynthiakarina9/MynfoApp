@@ -11,7 +11,7 @@
             <infra:InstanceLocator x:Key="Locator"/>
 
             <!-- Parameters -->
-            <x:String x:Key="APISecurity">https://mynfoapi.azurewebsites.net</x:String>
+            <x:String x:Key="APISecurity">https://mynfoapi1.azurewebsites.net</x:String>
 
             <!--Colors -->
             <Color x:Key="AccentColor">#192DB3</Color>

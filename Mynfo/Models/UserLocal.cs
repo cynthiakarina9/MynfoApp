@@ -31,7 +31,7 @@
                 if (this.UserTypeId == 1)
                 {
                     return string.Format(
-                        "https://mynfoapi.azurewebsites.net/{0}",
+                        "https://mynfoapi1.azurewebsites.net/{0}",
                         ImagePath.Substring(1));
                 }
 
