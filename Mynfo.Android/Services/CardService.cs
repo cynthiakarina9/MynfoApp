@@ -34,28 +34,35 @@ namespace Mynfo.Droid.Services
 
         public override byte[] ProcessCommandApdu(byte[] commandApdu, Bundle extras)
         {
-            var IsEnabled = Preferences.Get("IsEnabled", false);
-            if (!IsEnabled) return UNKNOWN_CMD_SW;
-
-            if (commandApdu.Length >= SELECT_APDU_HEADER.Length
-                && Enumerable.SequenceEqual(commandApdu.Take(SELECT_APDU_HEADER.Length), SELECT_APDU_HEADER))
+            try
             {
-                var hexString = string.Join("", Array.ConvertAll(commandApdu, b => b.ToString("X2")));
+                var IsEnabled = Preferences.Get("IsEnabled", false);
+                if (!IsEnabled) return UNKNOWN_CMD_SW;
 
-                //StartActivity(typeof(MainActivity));
-                var intent = new Intent(this, typeof(MainActivity));
+                if (commandApdu.Length >= SELECT_APDU_HEADER.Length
+                    && Enumerable.SequenceEqual(commandApdu.Take(SELECT_APDU_HEADER.Length), SELECT_APDU_HEADER))
+                {
+                    var hexString = string.Join("", Array.ConvertAll(commandApdu, b => b.ToString("X2")));
 
-                //intent.SetFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);               
+                    //StartActivity(typeof(MainActivity));
+                    var intent = new Intent(this, typeof(MainActivity));
 
-                intent.PutExtra("MSG_DATA", $"data for application - {hexString}");                               
+                    //intent.SetFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);               
 
-                SendMessageToActivity($"Recieved message from reader: {hexString}");                               
+                    intent.PutExtra("MSG_DATA", $"data for application - {hexString}");
 
-                var messageToReader = getNfc.get_box();
+                    SendMessageToActivity($"Recieved message from reader: {hexString}");
 
-                var messageToReaderBytes = Encoding.UTF8.GetBytes(messageToReader);
-                return messageToReaderBytes.Concat(SELECT_OK_SW).ToArray();
+                    var messageToReader = getNfc.get_box();
+
+                    var messageToReaderBytes = Encoding.UTF8.GetBytes(messageToReader);
+                    return messageToReaderBytes.Concat(SELECT_OK_SW).ToArray();
+                }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }            
 
             return UNKNOWN_CMD_SW;
         }

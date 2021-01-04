@@ -246,7 +246,7 @@
         void Accelerometer_ShakeDetected(object sender, EventArgs e)
         {
             EnableReaderMode();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             DisableReaderMode();
         }      
 
