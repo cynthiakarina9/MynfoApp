@@ -47,6 +47,8 @@
         public CreateProfileYoutubeViewModel()
         {
             this.apiService = new ApiService();
+
+            this.IsEnabled = true;
         }
         #endregion
 

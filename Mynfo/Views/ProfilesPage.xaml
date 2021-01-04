@@ -188,7 +188,7 @@
                         WidthRequest = "150" />
 
                     <!--BoxView 13-->
-                    <ImageButton 
+                    <!--<ImageButton 
                         BackgroundColor = "Transparent"
                         Clicked = "WebPageProfile_Clicked"
                         Grid.Column = "1"
@@ -197,10 +197,10 @@
                         HorizontalOptions = "Center"
                         Source = "gmail1.png"   
                         VerticalOptions = "Center"
-                        WidthRequest = "150" />
+                        WidthRequest = "150" />-->
 
                     <!--BoxView 14-->
-                    <ImageButton 
+                    <!--<ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "3"
                         Grid.Row = "7"   
@@ -208,7 +208,7 @@
                         HorizontalOptions = "Center"
                         Source = "skype1.png"   
                         VerticalOptions = "Center"
-                        WidthRequest = "150" />
+                        WidthRequest = "150" />-->
                 </Grid>
             </Grid>
         </ScrollView>
