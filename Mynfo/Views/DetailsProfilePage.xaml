@@ -69,6 +69,35 @@
                 HorizontalTextAlignment="Center"
                 HorizontalOptions="Center"
                 VerticalOptions="Center" />
+            <CollectionView 
+                ItemsSource="{Binding ListOfNetworks}"
+                Grid.Row="1">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                    Span="3" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+                            <ImageButton
+                                BackgroundColor="Transparent"
+                                Grid.Column="0"
+                                HeightRequest="40"
+                                Margin="10"
+                                Source="whatsapp2"
+                                WidthRequest="40"/>
+                            <Label Grid.Row="0"
+                                Text="{Binding Name}"
+                                FontAttributes="Bold"
+                                TextColor="DarkRed" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
             <Button 
                 Grid.Row="5"
                 Text="{i18n:Translate Update}"
