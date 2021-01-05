@@ -27,7 +27,7 @@ namespace Mynfo.Droid.Services
             IsoDep isoDep = IsoDep.Get(tag);      
             
                 
-              
+               
             
 //            NfcA nfcA = NfcA.Get(tag);
           
