@@ -27,7 +27,7 @@ namespace Mynfo.Droid.Services
             IsoDep isoDep = IsoDep.Get(tag);      
             
                 
-             
+               
             
 //            NfcA nfcA = NfcA.Get(tag);
           
@@ -97,7 +97,7 @@ namespace Mynfo.Droid.Services
                 }
             }
         }
-
+         
         private static string ByteArrayToString(byte[] ba)
         {
             var hex = new StringBuilder(ba.Length * 2);
