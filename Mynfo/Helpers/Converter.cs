@@ -39,6 +39,7 @@
             {
                 ProfileName = profile.Name,
                 value = profile.Email,
+                Logo = "mail2"
             };
         }
 
@@ -48,15 +49,55 @@
             {
                 ProfileName = profile.Name,
                 value = profile.Number,
+                Logo = "tel2"
             };
         }
 
         public static ProfileLocal ToProfileLocalSM(ProfileSM profile)
         {
+            string LogoSM = null;
+            switch(profile.RedSocialId)
+            {
+                case 1:
+                    LogoSM = "facebook2";
+                    break;
+                case 2:
+                    LogoSM = "instagramlogo2";
+                    break;
+                case 3:
+                    LogoSM = "twitterlogo2";
+                    break;
+                case 4:
+                    LogoSM = "snapchat2";
+                    break;
+                case 5:
+                    LogoSM = "linkedin2";
+                    break;
+                case 6:
+                    LogoSM = "tiktok2";
+                    break;
+                case 7:
+                    LogoSM = "youtube2";
+                    break;
+                case 8:
+                    LogoSM = "spotify2";
+                    break;
+                case 9:
+                    LogoSM = "twitch2";
+                    break;
+                case 10:
+                    LogoSM = "gmail2";
+                    break;
+                default:
+                    break;
+            }
+
             return new ProfileLocal
             {
                 ProfileName = profile.ProfileName,
                 value = profile.link,
+                RedSocialId = profile.RedSocialId,
+                Logo = LogoSM,
             };
         }
 
@@ -66,6 +107,7 @@
             {
                 ProfileName = profile.Name,
                 value = profile.Number,
+                Logo = "whatsapp2"
             };
         }
 

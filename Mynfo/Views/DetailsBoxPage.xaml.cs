@@ -97,7 +97,7 @@
                                         "on(dbo.Boxes.BoxId = dbo.Box_ProfileWhatsapp.BoxId) " +
                                         "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                         "where dbo.Boxes.BoxId =" + _boxId;
-            
+
             //Consulta para obtener Box
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
             {
@@ -161,7 +161,7 @@
             bxBtnHome.HeightRequest = 50;
             bxBtnHome.Clicked += ToolbarItem_Clicked;
 
-            //HomeButton.Children.Add(bxBtnHome);
+            HomeButton.Children.Add(bxBtnHome);
 
             //Creación de botón para borrar box
             BxBtnDelete.BackgroundColor = Color.Transparent;
@@ -267,47 +267,47 @@
                             }
 
                             //Asignación de caja en columnas
-                            switch (listProfileNum)
-                            {
-                                case 0:
-                                    listProfileNum = 2;
+                            //switch (listProfileNum)
+                            //{
+                            //    case 0:
+                            //        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(phoneIcon);
-                                    ProfilesList1.Children.Add(phoneName);
-                                    ProfilesList1.Children.Add(space);
-                                    //ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList1.Children.Add(phoneIcon);
+                            //        ProfilesList1.Children.Add(phoneName);
+                            //        ProfilesList1.Children.Add(space);
+                            //        //ProfilesList1.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 1:
-                                    listProfileNum = 2;
+                            //    case 1:
+                            //        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(phoneIcon);
-                                    ProfilesList1.Children.Add(phoneName);
-                                    ProfilesList1.Children.Add(space);
-                                    // ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList1.Children.Add(phoneIcon);
+                            //        ProfilesList1.Children.Add(phoneName);
+                            //        ProfilesList1.Children.Add(space);
+                            //        // ProfilesList1.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 2:
-                                    listProfileNum = 3;
+                            //    case 2:
+                            //        listProfileNum = 3;
 
-                                    ProfilesList2.Children.Add(phoneIcon);
-                                    ProfilesList2.Children.Add(phoneName);
-                                    ProfilesList2.Children.Add(space);
-                                    //ProfilesList2.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList2.Children.Add(phoneIcon);
+                            //        ProfilesList2.Children.Add(phoneName);
+                            //        ProfilesList2.Children.Add(space);
+                            //        //ProfilesList2.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 3:
-                                    listProfileNum = 1;
+                            //    case 3:
+                            //        listProfileNum = 1;
 
-                                    ProfilesList3.Children.Add(phoneIcon);
-                                    ProfilesList3.Children.Add(phoneName);
-                                    ProfilesList3.Children.Add(space);
-                                    //ProfilesList3.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList3.Children.Add(phoneIcon);
+                            //        ProfilesList3.Children.Add(phoneName);
+                            //        ProfilesList3.Children.Add(space);
+                            //        //ProfilesList3.Children.Add(deleteProfile);
+                            //        break;
 
-                                default:
-                                    break;
-                            }
+                            //    default:
+                            //        break;
+                            //}
                         }
                     }
                     connection.Close();
@@ -371,47 +371,47 @@
                             }
 
                             //Asignación de caja en columnas
-                            switch (listProfileNum)
-                            {
-                                case 0:
-                                    listProfileNum = 2;
+                            //switch (listProfileNum)
+                            //{
+                            //    case 0:
+                            //        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(emailIcon);
-                                    ProfilesList1.Children.Add(emailProfile);
-                                    ProfilesList1.Children.Add(space);
-                                    //ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList1.Children.Add(emailIcon);
+                            //        ProfilesList1.Children.Add(emailProfile);
+                            //        ProfilesList1.Children.Add(space);
+                            //        //ProfilesList1.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 1:
-                                    listProfileNum = 2;
+                            //    case 1:
+                            //        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(emailIcon);
-                                    ProfilesList1.Children.Add(emailProfile);
-                                    ProfilesList1.Children.Add(space);
-                                    //ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList1.Children.Add(emailIcon);
+                            //        ProfilesList1.Children.Add(emailProfile);
+                            //        ProfilesList1.Children.Add(space);
+                            //        //ProfilesList1.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 2:
-                                    listProfileNum = 3;
+                            //    case 2:
+                            //        listProfileNum = 3;
 
-                                    ProfilesList2.Children.Add(emailIcon);
-                                    ProfilesList2.Children.Add(emailProfile);
-                                    ProfilesList2.Children.Add(space);
-                                    //ProfilesList2.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList2.Children.Add(emailIcon);
+                            //        ProfilesList2.Children.Add(emailProfile);
+                            //        ProfilesList2.Children.Add(space);
+                            //        //ProfilesList2.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 3:
-                                    listProfileNum = 1;
+                            //    case 3:
+                            //        listProfileNum = 1;
 
-                                    ProfilesList3.Children.Add(emailIcon);
-                                    ProfilesList3.Children.Add(emailProfile);
-                                    ProfilesList3.Children.Add(space);
-                                    //ProfilesList3.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList3.Children.Add(emailIcon);
+                            //        ProfilesList3.Children.Add(emailProfile);
+                            //        ProfilesList3.Children.Add(space);
+                            //        //ProfilesList3.Children.Add(deleteProfile);
+                            //        break;
 
-                                default:
-                                    break;
-                            }
+                            //    default:
+                            //        break;
+                            //}
                         }
                     }
                     connection.Close();
@@ -611,47 +611,47 @@
                             }
 
                             //Asignación de caja en columnas
-                            switch (listProfileNum)
-                            {
-                                case 0:
-                                    listProfileNum = 2;
+                            //switch (listProfileNum)
+                            //{
+                            //    case 0:
+                            //        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(SMIcon);
-                                    ProfilesList1.Children.Add(SMProfileName);
-                                    ProfilesList1.Children.Add(space);
-                                    //ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList1.Children.Add(SMIcon);
+                            //        ProfilesList1.Children.Add(SMProfileName);
+                            //        ProfilesList1.Children.Add(space);
+                            //        //ProfilesList1.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 1:
-                                    listProfileNum = 2;
+                            //    case 1:
+                            //        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(SMIcon);
-                                    ProfilesList1.Children.Add(SMProfileName);
-                                    ProfilesList1.Children.Add(space);
-                                    //ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList1.Children.Add(SMIcon);
+                            //        ProfilesList1.Children.Add(SMProfileName);
+                            //        ProfilesList1.Children.Add(space);
+                            //        //ProfilesList1.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 2:
-                                    listProfileNum = 3;
+                            //    case 2:
+                            //        listProfileNum = 3;
 
-                                    ProfilesList2.Children.Add(SMIcon);
-                                    ProfilesList2.Children.Add(SMProfileName);
-                                    ProfilesList2.Children.Add(space);
-                                    //ProfilesList2.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList2.Children.Add(SMIcon);
+                            //        ProfilesList2.Children.Add(SMProfileName);
+                            //        ProfilesList2.Children.Add(space);
+                            //        //ProfilesList2.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 3:
-                                    listProfileNum = 1;
+                            //    case 3:
+                            //        listProfileNum = 1;
 
-                                    ProfilesList3.Children.Add(SMIcon);
-                                    ProfilesList3.Children.Add(SMProfileName);
-                                    ProfilesList3.Children.Add(space);
-                                    //ProfilesList3.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList3.Children.Add(SMIcon);
+                            //        ProfilesList3.Children.Add(SMProfileName);
+                            //        ProfilesList3.Children.Add(space);
+                            //        //ProfilesList3.Children.Add(deleteProfile);
+                            //        break;
 
-                                default:
-                                    break;
-                            }
+                            //    default:
+                            //        break;
+                            //}
                         }
                     }
                     connection.Close();
@@ -705,7 +705,7 @@
                             //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
                             if (BoxDefault == true)
                             {
-                                // deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+                                //deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
                                 whatsappIcon.BackgroundColor = Color.FromHex("#FEBDA8");
                             }
                             else
@@ -716,47 +716,47 @@
                             }
 
                             //Asignación de caja en columnas
-                            switch (listProfileNum)
-                            {
-                                case 0:
-                                    listProfileNum = 2;
+                            //switch (listProfileNum)
+                            //{
+                            //    case 0:
+                            //        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(whatsappIcon);
-                                    ProfilesList1.Children.Add(whatsappName);
-                                    ProfilesList1.Children.Add(space);
-                                    //ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList1.Children.Add(whatsappIcon);
+                            //        ProfilesList1.Children.Add(whatsappName);
+                            //        ProfilesList1.Children.Add(space);
+                            //        //ProfilesList1.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 1:
-                                    listProfileNum = 2;
+                            //    case 1:
+                            //        listProfileNum = 2;
 
-                                    ProfilesList1.Children.Add(whatsappIcon);
-                                    ProfilesList1.Children.Add(whatsappName);
-                                    ProfilesList1.Children.Add(space);
-                                    // ProfilesList1.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList1.Children.Add(whatsappIcon);
+                            //        ProfilesList1.Children.Add(whatsappName);
+                            //        ProfilesList1.Children.Add(space);
+                            //        // ProfilesList1.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 2:
-                                    listProfileNum = 3;
+                            //    case 2:
+                            //        listProfileNum = 3;
 
-                                    ProfilesList2.Children.Add(whatsappIcon);
-                                    ProfilesList2.Children.Add(whatsappName);
-                                    ProfilesList2.Children.Add(space);
-                                    //ProfilesList2.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList2.Children.Add(whatsappIcon);
+                            //        ProfilesList2.Children.Add(whatsappName);
+                            //        ProfilesList2.Children.Add(space);
+                            //        //ProfilesList2.Children.Add(deleteProfile);
+                            //        break;
 
-                                case 3:
-                                    listProfileNum = 1;
+                            //    case 3:
+                            //        listProfileNum = 1;
 
-                                    ProfilesList3.Children.Add(whatsappIcon);
-                                    ProfilesList3.Children.Add(whatsappName);
-                                    ProfilesList3.Children.Add(space);
-                                    //ProfilesList3.Children.Add(deleteProfile);
-                                    break;
+                            //        ProfilesList3.Children.Add(whatsappIcon);
+                            //        ProfilesList3.Children.Add(whatsappName);
+                            //        ProfilesList3.Children.Add(space);
+                            //        //ProfilesList3.Children.Add(deleteProfile);
+                            //        break;
 
-                                default:
-                                    break;
-                            }
+                            //    default:
+                            //        break;
+                            //}
                         }
                     }
                     connection.Close();

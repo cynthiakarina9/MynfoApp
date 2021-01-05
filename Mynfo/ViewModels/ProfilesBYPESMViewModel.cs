@@ -134,7 +134,6 @@
                 default:
                     break;
             }
-
         }
 
         #endregion
@@ -380,8 +379,11 @@
             }
 
             foreach (ProfileSM profSM in listSM)
+            {
                 ProfileSM.Add(profSM);
-
+            }
+                
+            
             this.IsRunning = false;
             return ProfileSM;
         }

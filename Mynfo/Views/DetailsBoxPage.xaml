@@ -25,15 +25,15 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <!--Botón para borrar box-->
-                    <!--<StackLayout 
+                    <!--Botón para volver a home-->
+                    <StackLayout 
                         Grid.Column="0"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
                         Padding="10,10,0,0"
-                        x:Name="HomeButton" />-->
+                        x:Name="HomeButton" />
 
-                    <!--Botón para volver a home-->
+                    <!--Botón para borrar box-->
                     <StackLayout 
                         Grid.Column ="3"
                         HorizontalOptions="End"
@@ -70,7 +70,7 @@
                         TextColor="Black"
                         VerticalOptions="Center"/>
 
-                     <!--Listado de perfiles--> 
+                     <!--Listado de perfiles--><!-- 
                     <Grid
                         Grid.Row="3"
                         Grid.ColumnSpan="4">
@@ -121,19 +121,67 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </Grid>
+                    </Grid>-->
+                    <CollectionView 
+                        ItemsSource="{Binding ProfilePerfiles}"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="4">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"
+                                    Span="3" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="35" />
+                                        <RowDefinition Height="35" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout
+                                        HorizontalOptions="Center">
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="50"
+                                            Source="{Binding Logo}"
+                                            WidthRequest="50"/>
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding ProfileName}"
+                                            FontAttributes="Bold"
+                                            TextColor="DarkRed" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <ContentView>
+                                <StackLayout 
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label 
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        HorizontalOptions="Fill"
+                                        HorizontalTextAlignment="Center" 
+                                        Margin="10,0,10,280"
+                                        Text="{i18n:Translate EmptyBox}"
+                                        VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </ContentView>
+                        </CollectionView.EmptyView>
+                    </CollectionView>
                 </Grid>
             </ScrollView>
              <!--Agregar perfiles--> 
             <ImageButton
-                Grid.Row = "0"
-                WidthRequest = "70"
-                HeightRequest = "70"
-                VerticalOptions = "End"
-                HorizontalOptions = "Center"
-                BackgroundColor = "Transparent"
-                Margin = "15"
-                Source = "Plus"   
+                BackgroundColor="Transparent"
+                Grid.Row="0"
+                HeightRequest="70"
+                HorizontalOptions="Center"
+                Margin="15"
+                Source="Plus" 
+                VerticalOptions="End"
+                WidthRequest="70"
                 x:Name="BoxProfiles"/>
         </Grid>
     </ContentPage.Content>

@@ -28,7 +28,6 @@
         #endregion
 
         #region Properties
-
         public bool IsRunning
         {
             get { return this.isRunning; }
@@ -80,14 +79,14 @@
             }
         }
 
-        
-        public ProfilePhone selectedProfile { get; set; }
+
+        public ProfileSM selectedProfileSM { get; set; }
         #endregion
 
         #region Constructor
         public DetailsBoxViewModel(int _BoxId)
         {
-            
+
             apiService = new ApiService();
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
             GetListEmail(_BoxId);
@@ -98,13 +97,8 @@
         #endregion
 
         #region Methods
-        public void ConverterToProfileLocal (int _BoxId)
-        {
-           
-        }
 
-        
-
+        #region Email
         private async Task<ObservableCollection<ProfileEmail>> GetListEmail(int _BoxId)
         {
             this.IsRunning = true;
@@ -142,7 +136,7 @@
                     RelationEmail);
 
                 ItemEmail.Exist = response.IsSuccess;
-                
+
                 if (ItemEmail.Exist == true)
                 {
                     var Email = Converter.ToProfileLocalE(ItemEmail);
@@ -160,6 +154,29 @@
             return ProfileEmail;
         }
 
+        public void addProfileEmail(ProfileEmail _profileEmail)
+        {
+            var E = Converter.ToProfileLocalE(_profileEmail);
+            ProfilePerfiles.Add(E);
+        }
+
+        public void removeProfileEmail(ProfileEmail _profileEmail)
+        {
+            ProfileLocal E = Converter.ToProfileLocalE(_profileEmail);
+            ProfileLocal Aux = new ProfileLocal();
+            foreach (ProfileLocal PLocal in ProfilePerfiles)
+            {
+                if (E.ProfileName == PLocal.ProfileName && E.value == PLocal.value)
+                {
+                    Aux = PLocal;
+                }
+            }
+            ProfilePerfiles.Remove(Aux);
+            var A = ProfilePerfiles.Count;
+        }
+        #endregion
+
+        #region Phone
         private async Task<ObservableCollection<ProfilePhone>> GetListPhone(int _BoxId)
         {
             this.IsRunning = true;
@@ -215,6 +232,29 @@
             return ProfilePhone;
         }
 
+        public void addProfilePhone(ProfilePhone _profilePhone)
+        {
+            var P = Converter.ToProfileLocalP(_profilePhone);
+            ProfilePerfiles.Add(P);
+        }
+
+        public void removeProfilePhone(ProfilePhone _profilePhone)
+        {
+            ProfileLocal P = Converter.ToProfileLocalP(_profilePhone);
+            ProfileLocal Aux = new ProfileLocal();
+            foreach(ProfileLocal PLocal in ProfilePerfiles)
+            {
+                if(P.ProfileName==PLocal.ProfileName && P.value == PLocal.value)
+                {
+                    Aux = PLocal;
+                }
+            }
+            ProfilePerfiles.Remove(Aux);
+            var A = ProfilePerfiles.Count;
+        }
+        #endregion
+
+        #region SM
         private async Task<ObservableCollection<ProfileSM>> GetListSM(int _BoxId)
         {
             this.IsRunning = true;
@@ -259,17 +299,33 @@
                     ProfilePerfiles.Add(SM);
                 }
             }
-            //foreach (ProfileSM profSM in listSM)
-            //{
-            //    if (profSM.Exist == true)
-            //    {
-            //        ProfileSM.Add(profSM);
-            //    }
-            //}
             this.IsRunning = false;
             return ProfileSM;
         }
 
+        public void addProfileSM(ProfileSM _profileSM)
+        {
+            var SM = Converter.ToProfileLocalSM(_profileSM);
+            ProfilePerfiles.Add(SM);
+        }
+
+        public void removeProfileSM(ProfileSM _profileSM)
+        {
+            ProfileLocal SM = Converter.ToProfileLocalSM(_profileSM);
+            ProfileLocal Aux = new ProfileLocal();
+            foreach (ProfileLocal PLocal in ProfilePerfiles)
+            {
+                if (SM.ProfileName == PLocal.ProfileName && SM.value == PLocal.value)
+                {
+                    Aux = PLocal;
+                }
+            }
+            ProfilePerfiles.Remove(Aux);
+            var A = ProfilePerfiles.Count;
+        }
+        #endregion
+
+        #region Whatsapp
         private async Task<ObservableCollection<ProfileWhatsapp>> GetListWhatsapp(int _BoxId)
         {
             this.IsRunning = true;
@@ -327,6 +383,27 @@
             return ProfileWhatsapp;
         }
 
+        public void addProfileW(ProfileWhatsapp _profileW)
+        {
+            var W = Converter.ToProfileLocalW(_profileW);
+            ProfilePerfiles.Add(W);
+        }
+
+        public void removeProfileW(ProfileWhatsapp _profileW)
+        {
+            ProfileLocal W = Converter.ToProfileLocalW(_profileW);
+            ProfileLocal Aux = new ProfileLocal();
+            foreach (ProfileLocal PLocal in ProfilePerfiles)
+            {
+                if (W.ProfileName == PLocal.ProfileName && W.value == PLocal.value)
+                {
+                    Aux = PLocal;
+                }
+            }
+            ProfilePerfiles.Remove(Aux);
+            var A = ProfilePerfiles.Count;
+        }
+        #endregion
 
         //public async Task<ObservableCollection<object>> PostList(int Box)
         //{
@@ -378,11 +455,11 @@
         //    return ProfilePerfiles;
         //}
 
-        public void FillList ()
-        {
-            
-        }
+        //Actualizar listas
+
         #endregion
+
+        #region Commads
         public ICommand BackHomeCommand
         {
             get
@@ -391,10 +468,11 @@
             }
         }
 
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+        #endregion
     }
 }

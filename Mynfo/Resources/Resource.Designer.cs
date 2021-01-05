@@ -547,6 +547,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You do not have networks added to this box yet..
+        /// </summary>
+        public static string EmptyBox {
+            get {
+                return ResourceManager.GetString("EmptyBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error.
         /// </summary>
         public static string Error {
