@@ -23,6 +23,7 @@
     using System.Globalization;
     using Mynfo.Droid.Services;
     using System.Threading;
+    using Xamarin.Essentials;
 
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },
     Categories = new[] { "android.intent.category.DEFAULT" })]
@@ -245,9 +246,32 @@
         }
         void Accelerometer_ShakeDetected(object sender, EventArgs e)
         {
-            EnableReaderMode();
-            Thread.Sleep(3000);
-            DisableReaderMode();
+            
+
+            try
+            {
+                // Use default vibration length
+                Vibration.Vibrate();
+                // Or use specified time
+                var duration = TimeSpan.FromSeconds(1);
+                Vibration.Vibrate(duration);
+                EnableReaderMode();
+
+                Thread.Sleep(3000);
+
+                DisableReaderMode();
+
+                Vibration.Vibrate();                             
+                Vibration.Vibrate(duration);
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
         }      
 
         public void ToggleAccelerometer()
