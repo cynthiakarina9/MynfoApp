@@ -16,5 +16,9 @@
         public string value { get; set; }
 
         public string ProfileType { get; set; }
+
+        public int RedSocialId { get; set; }
+
+        public string Logo { get; set; }
     }
 }

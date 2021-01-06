@@ -145,6 +145,12 @@
             get;
             set;
         }
+
+        public DetailsBoxEdithViewModel DetailsBoxEdith
+        {
+            get; 
+            set;
+        }
         public EditProfileFacebookViewModel EditProfileFacebook
         {
             get;

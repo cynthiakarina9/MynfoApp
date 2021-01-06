@@ -67,6 +67,9 @@
     <Compile Update="Views\CreateProfileTwitchPage.xaml.cs">
       <DependentUpon>CreateProfileTwitchPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\DetailsBoxEdithPage.xaml.cs">
+      <DependentUpon>DetailsBoxEdithPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\EditProfileFacebookPage.xaml.cs">
       <DependentUpon>EditProfileFacebookPage.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CreateProfileYoutubePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DetailsBoxEdithPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DetailsBoxPage.xaml">

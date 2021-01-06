@@ -608,5 +608,9 @@
         {
             get { return Resource.NickNamePH; }
         }
+        public static string EmptyBox
+        {
+            get { return Resource.EmptyBox; }
+        }
     }
 }

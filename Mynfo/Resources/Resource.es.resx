@@ -549,4 +549,7 @@
   <data name="NickNamePH" xml:space="preserve">
     <value>user</value>
   </data>
+  <data name="EmptyBox" xml:space="preserve">
+    <value>Aún no tiene redes agregadas a ésta box.</value>
+  </data>
 </root>

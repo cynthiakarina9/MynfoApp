@@ -550,4 +550,7 @@ Você deve inserir um url</value>
   <data name="NickNamePH" xml:space="preserve">
     <value />
   </data>
+  <data name="EmptyBox" xml:space="preserve">
+    <value>Você ainda não tem redes adicionadas a esta caixa.</value>
+  </data>
 </root>

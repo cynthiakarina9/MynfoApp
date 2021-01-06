@@ -1,10 +1,10 @@
-﻿using Rg.Plugins.Popup.Services;
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Mynfo.Views
+﻿namespace Mynfo.Views
 {
+    using Rg.Plugins.Popup.Services;
+    using System;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Testing : ContentPage
     {

@@ -357,15 +357,18 @@
                     break;
 
                 case "Instagram":
-                    await Launcher.OpenAsync(new Uri("instagram: //" + _profileValue));
+                    await Launcher.OpenAsync(new Uri( _profileValue));
                     break;
                 case "Facebook":
-                    await Launcher.OpenAsync(new Uri("fb: //"+_profileValue));
+                    await Launcher.OpenAsync(new Uri(_profileValue));
                     break;
                 case "LinkedIn":
                     await Launcher.OpenAsync(new Uri(_profileValue));
                     break;
                 //case "Phone":
+                //    await call.MakePhoneCall();
+                //    break;
+                //case "Snapchat":
                 //    await call.MakePhoneCall();
                 //    break;
                 case "Spotify":
@@ -378,7 +381,7 @@
                     await Launcher.OpenAsync(new Uri(_profileValue));
                     break;
                 case "Twitter":
-                    await Launcher.OpenAsync(new Uri("twitter: //" + _profileValue));
+                    await Launcher.OpenAsync(new Uri(_profileValue));
                     break;
                 case "WebPage":
                     await Launcher.OpenAsync(new Uri(_profileValue));

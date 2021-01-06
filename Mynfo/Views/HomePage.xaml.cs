@@ -5,6 +5,7 @@
     using System;
     using System.Data.SqlClient;
     using System.Text;
+    using Xamarin.Essentials;
     using Xamarin.Forms;
 
     public partial class HomePage : ContentPage
@@ -939,10 +940,12 @@
             }
         }
 
-        private void GoToTestPage()
+        private async void GoToTestPage()
         {
+            /*
             MainViewModel.GetInstance().Testing = new TestingViewModel();
-            Navigation.PushAsync(new Testing());
+            Navigation.PushAsync(new Testing());*/
+            await Launcher.OpenAsync(new Uri("https://www.facebook.com/roy.a.mustang"));
         }
 
     }

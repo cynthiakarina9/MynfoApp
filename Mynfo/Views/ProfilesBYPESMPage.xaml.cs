@@ -2,11 +2,9 @@
 {
     using Mynfo.Domain;
     using Mynfo.Helpers;
-    using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
     using System;
-    using System.Data.SqlClient;
     using System.Text;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
@@ -284,8 +282,6 @@
                     break;
                 default:
                     break;
-
-
             }
 
             #region Consultas
@@ -577,67 +573,7 @@
         #endregion
 
         #region Methods
-        private void GoToProfiles_Clicked(object sender, EventArgs e, int _boxId, string _profileType, bool _BoxDefault)
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            switch (_profileType)
-            {
-                case "Phone":
-                    mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
-                    App.Navigator.PushAsync(new CreateProfilePhonePage());
-                    break;
-                case "Email":
-                    mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-                    App.Navigator.PushAsync(new CreateProfileEmailPage());
-                    break;
-                case "Facebook":
-                    mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
-                    App.Navigator.PushAsync(new CreateProfileFacebookPage());
-                    break;
-                case "Instagram":
-                    mainViewModel.CreateProfileInstagram = new CreateProfileInstagramViewModel();
-                    App.Navigator.PushAsync(new CreateProfileInstagramPage());
-                    break;
-                case "LinkedIn":
-                    mainViewModel.CreateProfileLinkedin = new CreateProfileLinkedinViewModel();
-                    App.Navigator.PushAsync(new CreateProfileLinkedinPage());
-                    break;
-                case "Spotify":
-                    mainViewModel.CreateProfileSpotify = new CreateProfileSpotifyViewModel();
-                    App.Navigator.PushAsync(new CreateProfileSpotifyPage());
-                    break;
-                case "Snapchat":
-                    mainViewModel.CreateProfileSnapchat = new CreateProfileSnapchatViewModel();
-                    App.Navigator.PushAsync(new CreateProfileSnapchatPage());
-                    break;
-                case "Twitch":
-                    mainViewModel.CreateProfileTwitch = new CreateProfileTwitchViewModel();
-                    App.Navigator.PushAsync(new CreateProfileTwitchPage());
-                    break;
-                case "TikTok":
-                    mainViewModel.CreateProfileTiktok = new CreateProfileTiktokViewModel();
-                    App.Navigator.PushAsync(new CreateProfileTiktokPage());
-                    break;
-                case "Twitter":
-                    mainViewModel.CreateProfileTwitter = new CreateProfileTwitterViewModel();
-                    App.Navigator.PushAsync(new CreateProfileTwitterPage());
-                    break;
-                case "WebPage":
-                    mainViewModel.CreateProfileWebPage = new CreateProfileWebViewModel();
-                    App.Navigator.PushAsync(new CreateProfileWebPagePage());
-                    break;
-                case "Whatsapp":
-                    mainViewModel.CreateProfileWhatsApp = new CreateProfileWhatsAppViewModel();
-                    App.Navigator.PushAsync(new CreateProfileWhatsAppPage());
-                    break;
-                case "Youtube":
-                    mainViewModel.CreateProfileYoutube = new CreateProfileYoutubeViewModel();
-                    App.Navigator.PushAsync(new CreateProfileYoutubePage());
-                    break;
-                default:
-                    break;
-            }
-        }
+
         #region LastCode
         //private void CreateBoxEmailRelation(object sender, EventArgs e, int _BoxId, int _EmailId, bool _boxDefault, string _boxName)
         //{
@@ -915,6 +851,69 @@
         //}
         #endregion
 
+        #region Commands
+        private void GoToProfiles_Clicked(object sender, EventArgs e, int _boxId, string _profileType, bool _BoxDefault)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            switch (_profileType)
+            {
+                case "Phone":
+                    mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
+                    App.Navigator.PushAsync(new CreateProfilePhonePage());
+                    break;
+                case "Email":
+                    mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
+                    App.Navigator.PushAsync(new CreateProfileEmailPage());
+                    break;
+                case "Facebook":
+                    mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
+                    App.Navigator.PushAsync(new CreateProfileFacebookPage());
+                    break;
+                case "Instagram":
+                    mainViewModel.CreateProfileInstagram = new CreateProfileInstagramViewModel();
+                    App.Navigator.PushAsync(new CreateProfileInstagramPage());
+                    break;
+                case "LinkedIn":
+                    mainViewModel.CreateProfileLinkedin = new CreateProfileLinkedinViewModel();
+                    App.Navigator.PushAsync(new CreateProfileLinkedinPage());
+                    break;
+                case "Spotify":
+                    mainViewModel.CreateProfileSpotify = new CreateProfileSpotifyViewModel();
+                    App.Navigator.PushAsync(new CreateProfileSpotifyPage());
+                    break;
+                case "Snapchat":
+                    mainViewModel.CreateProfileSnapchat = new CreateProfileSnapchatViewModel();
+                    App.Navigator.PushAsync(new CreateProfileSnapchatPage());
+                    break;
+                case "Twitch":
+                    mainViewModel.CreateProfileTwitch = new CreateProfileTwitchViewModel();
+                    App.Navigator.PushAsync(new CreateProfileTwitchPage());
+                    break;
+                case "TikTok":
+                    mainViewModel.CreateProfileTiktok = new CreateProfileTiktokViewModel();
+                    App.Navigator.PushAsync(new CreateProfileTiktokPage());
+                    break;
+                case "Twitter":
+                    mainViewModel.CreateProfileTwitter = new CreateProfileTwitterViewModel();
+                    App.Navigator.PushAsync(new CreateProfileTwitterPage());
+                    break;
+                case "WebPage":
+                    mainViewModel.CreateProfileWebPage = new CreateProfileWebViewModel();
+                    App.Navigator.PushAsync(new CreateProfileWebPagePage());
+                    break;
+                case "Whatsapp":
+                    mainViewModel.CreateProfileWhatsApp = new CreateProfileWhatsAppViewModel();
+                    App.Navigator.PushAsync(new CreateProfileWhatsAppPage());
+                    break;
+                case "Youtube":
+                    mainViewModel.CreateProfileYoutube = new CreateProfileYoutubeViewModel();
+                    App.Navigator.PushAsync(new CreateProfileYoutubePage());
+                    break;
+                default:
+                    break;
+            }
+        }
+
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             selectedItemEmail = e.SelectedItem as ProfileEmail;
@@ -937,28 +936,32 @@
                     PostProfileEmail(Box.BoxId, tappedItemEmail.ProfileEmailId);
                     tappedItemEmail.Exist = true;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileEmail(tappedItemEmail);
+                    MainViewModel.GetInstance().DetailsBox.addProfileEmail(tappedItemEmail);
                 }
                 else
                 {
                     DeleteProfileEmail(Box.BoxId, tappedItemEmail.ProfileEmailId);
                     tappedItemEmail.Exist = false;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileEmail(tappedItemEmail);
+                    MainViewModel.GetInstance().DetailsBox.removeProfileEmail(tappedItemEmail);
                 }
             }
 
             else if (tappedItemPhone != null)
             {
-                if(tappedItemPhone.Exist == false)
+                if (tappedItemPhone.Exist == false)
                 {
                     PostProfilePhone(Box.BoxId, tappedItemPhone.ProfilePhoneId);
                     tappedItemPhone.Exist = true;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfilePhone(tappedItemPhone);
+                    MainViewModel.GetInstance().DetailsBox.addProfilePhone(tappedItemPhone);
                 }
                 else
                 {
                     DeleteProfilePhone(Box.BoxId, tappedItemPhone.ProfilePhoneId);
                     tappedItemPhone.Exist = false;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfilePhone(tappedItemPhone);
+                    MainViewModel.GetInstance().DetailsBox.removeProfilePhone(tappedItemPhone);
                 }
             }
 
@@ -969,12 +972,14 @@
                     PostProfileSM(Box.BoxId, tappedItemSM.ProfileMSId);
                     tappedItemSM.Exist = true;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileSM(tappedItemSM);
+                    MainViewModel.GetInstance().DetailsBox.addProfileSM(tappedItemSM);
                 }
                 else
                 {
                     DeleteProfileSM(Box.BoxId, tappedItemSM.ProfileMSId);
                     tappedItemSM.Exist = false;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileSM(tappedItemSM);
+                    MainViewModel.GetInstance().DetailsBox.removeProfileSM(tappedItemSM);
                 }
             }
 
@@ -985,15 +990,18 @@
                     PostProfileWhatsapp(Box.BoxId, tappedItemWhatsapp.ProfileWhatsappId);
                     tappedItemWhatsapp.Exist = true;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileWhatsapp(tappedItemWhatsapp);
+                    MainViewModel.GetInstance().DetailsBox.addProfileW(tappedItemWhatsapp);
                 }
                 else
                 {
                     DeleteProfileWhatsapp(Box.BoxId, tappedItemWhatsapp.ProfileWhatsappId);
                     tappedItemWhatsapp.Exist = false;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileWhatsapp(tappedItemWhatsapp);
+                    MainViewModel.GetInstance().DetailsBox.removeProfileW(tappedItemWhatsapp);
                 }
             }
         }
+        #endregion
 
         #region Email
         public async void DeleteProfileEmail(int _box, int _profileEmailId)
@@ -1134,6 +1142,7 @@
                 "/api",
                 "/Box_ProfileSM",
                 box_ProfileSM);
+
         }
         public async void DeleteProfileSM(int _box, int _profileSMId)
         {
