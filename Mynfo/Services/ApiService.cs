@@ -175,7 +175,7 @@
                 }
 
                 var result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<User>(result);                
+                return JsonConvert.DeserializeObject<User>(result);
             }
             catch
             {
@@ -1154,6 +1154,43 @@
                     IsSuccess = false,
                     Message = ex.Message,
                 };
+            }
+        }
+
+        public async Task<Box> PutBox<Box>(
+           string urlBase,
+           string servicePrefix,
+           string controller,
+           Box model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    model.GetHashCode());
+                var response = await client.PutAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return model;
+                }
+
+                var newRecord = JsonConvert.DeserializeObject<Box>(result);
+
+                return newRecord;
+            }
+            catch (Exception ex)
+            {
+                return model;
             }
         }
 

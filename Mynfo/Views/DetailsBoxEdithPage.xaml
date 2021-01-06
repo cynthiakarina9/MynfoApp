@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.DetailsBoxPage"
+             x:Class="Mynfo.Views.DetailsBoxEdithPage"
              x:Name="FullBackGround"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <Grid
-            BindingContext = "{Binding DetailsBox}">
+            BindingContext = "{Binding DetailsBoxEdith}">
             <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -41,22 +40,21 @@
                         Padding="0,10,10,0"
                         x:Name="DeleteButton" />
 
-                    <!--Nombre de la box 
-                    El nombre de la box será variable-->
+                    <!--Nombre de la box -->
                     <StackLayout 
                         Grid.ColumnSpan="4"
                         Grid.Row="1"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
                         x:Name="BoxNameEntry" />
-                    <!--<StackLayout 
+                    <StackLayout 
                         Grid.Column="3"
                         Grid.Row="1"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
-                        x:Name="BoxUpdateBtn" />-->
+                        x:Name="BoxUpdateBtn" />
 
-                     <!--Box predeterminada-->
+                    <!--Box predeterminada-->
                     <StackLayout 
                         Grid.Row="2"
                         Grid.Column="1"
@@ -69,59 +67,6 @@
                         Text="{i18n:Translate DefaultBox}" 
                         TextColor="Black"
                         VerticalOptions="Center"/>
-
-                     <!--Listado de perfiles--><!-- 
-                    <Grid
-                        Grid.Row="3"
-                        Grid.ColumnSpan="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-
-                        <StackLayout 
-                            HorizontalOptions="FillAndExpand"
-                            Padding="5,35"
-                            x:Name="ProfilesList1" />
-                        <StackLayout 
-                            Grid.Column="1"
-                            HorizontalOptions="FillAndExpand"
-                            Padding="5,35"
-                            x:Name="ProfilesList2" />
-                        <StackLayout 
-                            Grid.Column="2"
-                            HorizontalOptions="FillAndExpand"
-                            Padding="5,35"
-                            x:Name="ProfilesList3" />
-                    </Grid>
-                    <Grid>
-                        <ListView
-                            ItemsSource="{Binding ProfilePerfiles, Mode=TwoWay}"
-                            Grid.Row="0"
-                            HasUnevenRows="true"
-                            SelectedItem="{Binding selectedProfile}"
-                            Margin="10,35,10,20">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Grid Padding="20">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="100" />
-                                                <ColumnDefinition Width="180" />
-                                                <ColumnDefinition Width="30" />
-                                            </Grid.ColumnDefinitions>
-                                            <Label Text="{Binding BoxLocal.ProfileName}"/>
-                                        </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>-->
                     <CollectionView 
                         ItemsSource="{Binding ProfilePerfiles}"
                         Grid.Row="3"
@@ -172,8 +117,8 @@
                     </CollectionView>
                 </Grid>
             </ScrollView>
-             <!--Agregar perfiles--> 
-            <ImageButton
+            <!--Agregar perfiles-->
+            <!--<ImageButton
                 BackgroundColor="Transparent"
                 Grid.Row="0"
                 HeightRequest="70"
@@ -182,7 +127,7 @@
                 Source="Plus" 
                 VerticalOptions="End"
                 WidthRequest="70"
-                x:Name="BoxProfiles"/>
+                x:Name="BoxProfiles"/>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

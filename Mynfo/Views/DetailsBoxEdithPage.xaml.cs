@@ -10,8 +10,10 @@
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailsBoxPage : ContentPage
+    public partial class DetailsBoxEdithPage : ContentPage
     {
         #region Properties
         public Entry BxNameEntry = new Entry();
@@ -19,7 +21,7 @@
         #endregion
 
         #region Constructor
-        public DetailsBoxPage(int _boxId = 0)
+        public DetailsBoxEdithPage(int _boxId = 0)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
@@ -152,7 +154,7 @@
 
 
             //Navegación a ventana de perfiles
-            BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault, BoxName));
+            //BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault, BoxName));
 
             //Creación del botón para volver a home
             bxBtnHome.BackgroundColor = Color.Transparent;
@@ -165,7 +167,7 @@
 
             //Creación de botón para borrar box
             BxBtnDelete.BackgroundColor = Color.Transparent;
-            BxBtnDelete.Source = "edit2.png";
+            BxBtnDelete.Source = "trash.png";
             BxBtnDelete.WidthRequest = 50;
             BxBtnDelete.HeightRequest = 50;
             BxBtnDelete.Clicked += new EventHandler((sender, e) => deleteBox(sender, e, BoxId, UserID, BoxDefault));
@@ -185,12 +187,12 @@
             BoxNameEntry.Children.Add(BxNameEntry);
 
             //Creación de botón para actualizar nombre de la Box
-            //BxSaveName.Source = "edit2.png";
-            //BxSaveName.HeightRequest = 25;
-            //BxSaveName.WidthRequest = 25;
-            //BxSaveName.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));
+            BxSaveName.Source = "edit2.png";
+            BxSaveName.HeightRequest = 25;
+            BxSaveName.WidthRequest = 25;
+            BxSaveName.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));
 
-            //BoxUpdateBtn.Children.Add(BxSaveName);
+            BoxUpdateBtn.Children.Add(BxSaveName);
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
@@ -986,348 +988,343 @@
         #region Methods
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
+            Navigation.PopAsync(false);
         }
 
         async void deleteBox(object sender, EventArgs e, int _BoxId, int _UserId, bool _BoxDefault)
         {
-            //string sqlDeleteEmails = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId,
-            //        sqlDeletePhones = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId,
-            //        sqlDeleteSMProfiles = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId,
-            //        sqlDeleteWhatsappProfiles = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId,
-            //        sqlDeleteBox = "delete from dbo.Boxes where dbo.boxes.BoxId = " + _BoxId;
-            //string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            ////string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //StringBuilder sb;
-            //string sql;
+            string sqlDeleteEmails = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId,
+                    sqlDeletePhones = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId,
+                    sqlDeleteSMProfiles = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId,
+                    sqlDeleteWhatsappProfiles = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId,
+                    sqlDeleteBox = "delete from dbo.Boxes where dbo.boxes.BoxId = " + _BoxId;
+            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            StringBuilder sb;
+            string sql;
 
-            //bool answer = await DisplayAlert(Resource.Warning, Resource.DeleteBoxNotification, Resource.Yes, Resource.No);
+            bool answer = await DisplayAlert(Resource.Warning, Resource.DeleteBoxNotification, Resource.Yes, Resource.No);
 
-            //if (answer == true)
-            //{
-            //    using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            //    {
-            //        //Borrar emails de la box
-            //        sb = new System.Text.StringBuilder();
-            //        sb.Append(sqlDeleteEmails);
-            //        sql = sb.ToString();
+            if (answer == true)
+            {
+                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+                {
+                    //Borrar emails de la box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeleteEmails);
+                    sql = sb.ToString();
 
-            //        using (SqlCommand command = new SqlCommand(sql, connection))
-            //        {
-            //            connection.Open();
-            //            command.ExecuteNonQuery();
-            //            connection.Close();
-            //        }
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
 
-            //        //Borrar teléfonos de la box
-            //        sb = new System.Text.StringBuilder();
-            //        sb.Append(sqlDeletePhones);
-            //        sql = sb.ToString();
+                    //Borrar teléfonos de la box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeletePhones);
+                    sql = sb.ToString();
 
-            //        using (SqlCommand command = new SqlCommand(sql, connection))
-            //        {
-            //            connection.Open();
-            //            command.ExecuteNonQuery();
-            //            connection.Close();
-            //        }
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
 
-            //        //Borrar perfiles de redes sociales de la box
-            //        sb = new System.Text.StringBuilder();
-            //        sb.Append(sqlDeleteSMProfiles);
-            //        sql = sb.ToString();
+                    //Borrar perfiles de redes sociales de la box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeleteSMProfiles);
+                    sql = sb.ToString();
 
-            //        using (SqlCommand command = new SqlCommand(sql, connection))
-            //        {
-            //            connection.Open();
-            //            command.ExecuteNonQuery();
-            //            connection.Close();
-            //        }
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
 
-            //        //Borrar perfiles de whatsapp de la box
-            //        sb = new System.Text.StringBuilder();
-            //        sb.Append(sqlDeleteWhatsappProfiles);
-            //        sql = sb.ToString();
+                    //Borrar perfiles de whatsapp de la box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeleteWhatsappProfiles);
+                    sql = sb.ToString();
 
-            //        using (SqlCommand command = new SqlCommand(sql, connection))
-            //        {
-            //            connection.Open();
-            //            command.ExecuteNonQuery();
-            //            connection.Close();
-            //        }
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
 
-            //        //Borrar box
-            //        sb = new System.Text.StringBuilder();
-            //        sb.Append(sqlDeleteBox);
-            //        sql = sb.ToString();
+                    //Borrar box
+                    sb = new System.Text.StringBuilder();
+                    sb.Append(sqlDeleteBox);
+                    sql = sb.ToString();
 
-            //        using (SqlCommand command = new SqlCommand(sql, connection))
-            //        {
-            //            connection.Open();
-            //            command.ExecuteNonQuery();
-            //            connection.Close();
-            //        }
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
 
-            //        //Si la box era predeterminada
-            //        if (_BoxDefault == true)
-            //        {
-            //            //Borrar box predeterminada anterior
-            //            using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            //            {
-            //                conn.DeleteAll<BoxLocal>();
-            //            }
-            //            //Borrar perfiles de box predeterminada anteriores
-            //            using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            //            {
-            //                conn.DeleteAll<ProfileLocal>();
-            //            }
+                    //Si la box era predeterminada
+                    if (_BoxDefault == true)
+                    {
+                        //Borrar box predeterminada anterior
+                        using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                        {
+                            conn.DeleteAll<BoxLocal>();
+                        }
+                        //Borrar perfiles de box predeterminada anteriores
+                        using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                        {
+                            conn.DeleteAll<ProfileLocal>();
+                        }
 
-            //            string sqlUpdateBoxDefault = "update top (1) dbo.Boxes set BoxDefault = 1 where dbo.Boxes.UserId = " + _UserId;
-            //            BoxLocal boxLocal;
-            //            bool boxLocalExists = false;
-            //            int boxIdLocal = 0;
+                        string sqlUpdateBoxDefault = "update top (1) dbo.Boxes set BoxDefault = 1 where dbo.Boxes.UserId = " + _UserId;
+                        BoxLocal boxLocal;
+                        bool boxLocalExists = false;
+                        int boxIdLocal = 0;
 
-            //            //Definir nueva box default
-            //            sb = new System.Text.StringBuilder();
-            //            sb.Append(sqlUpdateBoxDefault);
-            //            sql = sb.ToString();
+                        //Definir nueva box default
+                        sb = new System.Text.StringBuilder();
+                        sb.Append(sqlUpdateBoxDefault);
+                        sql = sb.ToString();
 
-            //            using (SqlCommand command = new SqlCommand(sql, connection))
-            //            {
-            //                connection.Open();
-            //                command.ExecuteNonQuery();
-            //                connection.Close();
-            //            }
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
 
 
-            //            string sqlGetNewDefault = "select * from dbo.Boxes " +
-            //                                        "where dbo.Boxes.UserId = " + _UserId +
-            //                                        "and dbo.Boxes.BoxDefault = 1";
+                        string sqlGetNewDefault = "select * from dbo.Boxes " +
+                                                    "where dbo.Boxes.UserId = " + _UserId +
+                                                    "and dbo.Boxes.BoxDefault = 1";
 
-            //            //Definir nueva box default
-            //            sb = new System.Text.StringBuilder();
-            //            sb.Append(sqlGetNewDefault);
-            //            sql = sb.ToString();
-            //            //Creación de nueva box local
-            //            using (SqlCommand command = new SqlCommand(sql, connection))
-            //            {
-            //                connection.Open();
-            //                using (SqlDataReader reader = command.ExecuteReader())
-            //                {
-            //                    while (reader.Read())
-            //                    {
-            //                        boxLocal = new BoxLocal
-            //                        {
-            //                            BoxId = (int)reader["BoxId"],
-            //                            BoxDefault = true,
-            //                            Name = (String)reader["Name"],
-            //                            UserId = MainViewModel.GetInstance().User.UserId,
-            //                            Time = (DateTime)reader["Time"],
-            //                            FirstName = MainViewModel.GetInstance().User.FirstName,
-            //                            LastName = MainViewModel.GetInstance().User.LastName,
-            //                            ImagePath = MainViewModel.GetInstance().User.ImagePath,
-            //                            UserTypeId = MainViewModel.GetInstance().User.UserTypeId
-            //                        };
-            //                        //Crear box local predeterminada
-            //                        using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            //                        {
-            //                            conn.CreateTable<BoxLocal>();
-            //                            conn.Insert(boxLocal);
-            //                        }
-            //                        //Crear tabla de perfiles de box local predeterminada
-            //                        using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            //                        {
-            //                            conn.CreateTable<ProfileLocal>();
-            //                        }
-            //                        boxLocalExists = true;
-            //                        boxIdLocal = (int)reader["BoxId"];
-            //                    }
-            //                }
+                        //Definir nueva box default
+                        sb = new System.Text.StringBuilder();
+                        sb.Append(sqlGetNewDefault);
+                        sql = sb.ToString();
+                        //Creación de nueva box local
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            connection.Open();
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    boxLocal = new BoxLocal
+                                    {
+                                        BoxId = (int)reader["BoxId"],
+                                        BoxDefault = true,
+                                        Name = (String)reader["Name"],
+                                        UserId = MainViewModel.GetInstance().User.UserId,
+                                        Time = (DateTime)reader["Time"],
+                                        FirstName = MainViewModel.GetInstance().User.FirstName,
+                                        LastName = MainViewModel.GetInstance().User.LastName,
+                                        ImagePath = MainViewModel.GetInstance().User.ImagePath,
+                                        UserTypeId = MainViewModel.GetInstance().User.UserTypeId
+                                    };
+                                    //Crear box local predeterminada
+                                    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                    {
+                                        conn.CreateTable<BoxLocal>();
+                                        conn.Insert(boxLocal);
+                                    }
+                                    //Crear tabla de perfiles de box local predeterminada
+                                    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                                    {
+                                        conn.CreateTable<ProfileLocal>();
+                                    }
+                                    boxLocalExists = true;
+                                    boxIdLocal = (int)reader["BoxId"];
+                                }
+                            }
 
-            //                connection.Close();
-            //            }
+                            connection.Close();
+                        }
 
-            //            //Si se creo la box local, procedo a crear los perfiles locales
-            //            if (boxLocalExists == true)
-            //            {
-            //                //Creación de perfiles locales de box local
-            //                string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
-            //                                "join dbo.Box_ProfileEmail on" +
-            //                                "(dbo.ProfileEmails.ProfileEmailId = dbo.Box_ProfileEmail.ProfileEmailId) " +
-            //                                "where dbo.Box_ProfileEmail.BoxId = " + boxIdLocal;
-            //                string queryGetBoxPhone = "select * from dbo.ProfilePhones " +
-            //                                            "join dbo.Box_ProfilePhone on" +
-            //                                            "(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) " +
-            //                                            "where dbo.Box_ProfilePhone.BoxId = " + boxIdLocal;
-            //                string queryGetBoxSMProfiles = "select * from dbo.ProfileSMs " +
-            //                                                "join dbo.Box_ProfileSM on" +
-            //                                                "(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
-            //                                                "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
-            //                                                "where dbo.Box_ProfileSM.BoxId = " + boxIdLocal;
-            //                string queryGetBoxWhatsappProfiles = "select * from dbo.ProfileWhatsapps join dbo.Box_ProfileWhatsapp on " +
-            //                                    "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
-            //                                    "where dbo.Box_ProfileWhatsapp.BoxId = " + boxIdLocal;
+                        //Si se creo la box local, procedo a crear los perfiles locales
+                        if (boxLocalExists == true)
+                        {
+                            //Creación de perfiles locales de box local
+                            string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
+                                            "join dbo.Box_ProfileEmail on" +
+                                            "(dbo.ProfileEmails.ProfileEmailId = dbo.Box_ProfileEmail.ProfileEmailId) " +
+                                            "where dbo.Box_ProfileEmail.BoxId = " + boxIdLocal;
+                            string queryGetBoxPhone = "select * from dbo.ProfilePhones " +
+                                                        "join dbo.Box_ProfilePhone on" +
+                                                        "(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) " +
+                                                        "where dbo.Box_ProfilePhone.BoxId = " + boxIdLocal;
+                            string queryGetBoxSMProfiles = "select * from dbo.ProfileSMs " +
+                                                            "join dbo.Box_ProfileSM on" +
+                                                            "(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
+                                                            "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
+                                                            "where dbo.Box_ProfileSM.BoxId = " + boxIdLocal;
+                            string queryGetBoxWhatsappProfiles = "select * from dbo.ProfileWhatsapps join dbo.Box_ProfileWhatsapp on " +
+                                                "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
+                                                "where dbo.Box_ProfileWhatsapp.BoxId = " + boxIdLocal;
 
-            //                //Consulta para obtener perfiles email
-            //                using (SqlConnection conn = new SqlConnection(cadenaConexion))
-            //                {
-            //                    sb = new System.Text.StringBuilder();
-            //                    sb.Append(queryGetBoxEmail);
+                            //Consulta para obtener perfiles email
+                            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                            {
+                                sb = new System.Text.StringBuilder();
+                                sb.Append(queryGetBoxEmail);
 
-            //                    sql = sb.ToString();
+                                sql = sb.ToString();
 
-            //                    using (SqlCommand command = new SqlCommand(sql, conn))
-            //                    {
-            //                        conn.Open();
-            //                        using (SqlDataReader reader = command.ExecuteReader())
-            //                        {
-            //                            while (reader.Read())
-            //                            {
-            //                                ProfileLocal emailProfile = new ProfileLocal
-            //                                {
-            //                                    IdBox = boxIdLocal,
-            //                                    UserId = (int)reader["UserId"],
-            //                                    ProfileName = (string)reader["Name"],
-            //                                    value = (string)reader["Email"],
-            //                                    ProfileType = "Email"
-            //                                };
-            //                                //Crear perfil de correo de box local predeterminada
-            //                                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-            //                                {
-            //                                    connSQLite.Insert(emailProfile);
-            //                                }
-            //                            }
-            //                        }
+                                using (SqlCommand command = new SqlCommand(sql, conn))
+                                {
+                                    conn.Open();
+                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            ProfileLocal emailProfile = new ProfileLocal
+                                            {
+                                                IdBox = boxIdLocal,
+                                                UserId = (int)reader["UserId"],
+                                                ProfileName = (string)reader["Name"],
+                                                value = (string)reader["Email"],
+                                                ProfileType = "Email"
+                                            };
+                                            //Crear perfil de correo de box local predeterminada
+                                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                            {
+                                                connSQLite.Insert(emailProfile);
+                                            }
+                                        }
+                                    }
 
-            //                        conn.Close();
-            //                    }
-            //                }
+                                    conn.Close();
+                                }
+                            }
 
-            //                //Consulta para obtener perfiles teléfono
-            //                using (SqlConnection conn = new SqlConnection(cadenaConexion))
-            //                {
-            //                    sb = new System.Text.StringBuilder();
-            //                    sb.Append(queryGetBoxPhone);
+                            //Consulta para obtener perfiles teléfono
+                            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                            {
+                                sb = new System.Text.StringBuilder();
+                                sb.Append(queryGetBoxPhone);
 
-            //                    sql = sb.ToString();
+                                sql = sb.ToString();
 
-            //                    using (SqlCommand command = new SqlCommand(sql, conn))
-            //                    {
-            //                        conn.Open();
-            //                        using (SqlDataReader reader = command.ExecuteReader())
-            //                        {
-            //                            while (reader.Read())
-            //                            {
-            //                                ProfileLocal phoneProfile = new ProfileLocal
-            //                                {
-            //                                    IdBox = boxIdLocal,
-            //                                    UserId = (int)reader["UserId"],
-            //                                    ProfileName = (string)reader["Name"],
-            //                                    value = (string)reader["Number"],
-            //                                    ProfileType = "Phone"
-            //                                };
-            //                                //Crear perfil de teléfono de box local predeterminada
-            //                                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-            //                                {
-            //                                    connSQLite.Insert(phoneProfile);
-            //                                }
-            //                            }
-            //                        }
+                                using (SqlCommand command = new SqlCommand(sql, conn))
+                                {
+                                    conn.Open();
+                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            ProfileLocal phoneProfile = new ProfileLocal
+                                            {
+                                                IdBox = boxIdLocal,
+                                                UserId = (int)reader["UserId"],
+                                                ProfileName = (string)reader["Name"],
+                                                value = (string)reader["Number"],
+                                                ProfileType = "Phone"
+                                            };
+                                            //Crear perfil de teléfono de box local predeterminada
+                                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                            {
+                                                connSQLite.Insert(phoneProfile);
+                                            }
+                                        }
+                                    }
 
-            //                        conn.Close();
-            //                    }
-            //                }
+                                    conn.Close();
+                                }
+                            }
 
-            //                //Consulta para obtener perfiles de redes sociales
-            //                using (SqlConnection conn = new SqlConnection(cadenaConexion))
-            //                {
-            //                    sb = new System.Text.StringBuilder();
-            //                    sb.Append(queryGetBoxSMProfiles);
+                            //Consulta para obtener perfiles de redes sociales
+                            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                            {
+                                sb = new System.Text.StringBuilder();
+                                sb.Append(queryGetBoxSMProfiles);
 
-            //                    sql = sb.ToString();
+                                sql = sb.ToString();
 
-            //                    using (SqlCommand command = new SqlCommand(sql, conn))
-            //                    {
-            //                        conn.Open();
-            //                        using (SqlDataReader reader = command.ExecuteReader())
-            //                        {
-            //                            while (reader.Read())
-            //                            {
-            //                                ProfileLocal smProfile = new ProfileLocal
-            //                                {
-            //                                    IdBox = boxIdLocal,
-            //                                    UserId = (int)reader["UserId"],
-            //                                    ProfileName = (string)reader["ProfileName"],
-            //                                    value = (string)reader["link"],
-            //                                    ProfileType = (string)reader["Name"]
-            //                                };
-            //                                //Crear perfil de teléfono de box local predeterminada
-            //                                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-            //                                {
-            //                                    connSQLite.Insert(smProfile);
-            //                                }
-            //                            }
-            //                        }
+                                using (SqlCommand command = new SqlCommand(sql, conn))
+                                {
+                                    conn.Open();
+                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            ProfileLocal smProfile = new ProfileLocal
+                                            {
+                                                IdBox = boxIdLocal,
+                                                UserId = (int)reader["UserId"],
+                                                ProfileName = (string)reader["ProfileName"],
+                                                value = (string)reader["link"],
+                                                ProfileType = (string)reader["Name"]
+                                            };
+                                            //Crear perfil de teléfono de box local predeterminada
+                                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                            {
+                                                connSQLite.Insert(smProfile);
+                                            }
+                                        }
+                                    }
 
-            //                        conn.Close();
-            //                    }
-            //                }
+                                    conn.Close();
+                                }
+                            }
 
-            //                //Consulta para obtener perfiles whatsapp
-            //                using (SqlConnection conn = new SqlConnection(cadenaConexion))
-            //                {
-            //                    sb = new System.Text.StringBuilder();
-            //                    sb.Append(queryGetBoxWhatsappProfiles);
+                            //Consulta para obtener perfiles whatsapp
+                            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                            {
+                                sb = new System.Text.StringBuilder();
+                                sb.Append(queryGetBoxWhatsappProfiles);
 
-            //                    sql = sb.ToString();
+                                sql = sb.ToString();
 
-            //                    using (SqlCommand command = new SqlCommand(sql, conn))
-            //                    {
-            //                        conn.Open();
-            //                        using (SqlDataReader reader = command.ExecuteReader())
-            //                        {
-            //                            while (reader.Read())
-            //                            {
-            //                                ProfileLocal whatsappProfile = new ProfileLocal
-            //                                {
-            //                                    IdBox = boxIdLocal,
-            //                                    UserId = (int)reader["UserId"],
-            //                                    ProfileName = (string)reader["Name"],
-            //                                    value = (string)reader["Number"],
-            //                                    ProfileType = "Whatsapp"
-            //                                };
-            //                                //Crear perfil de whatsapp de box local predeterminada
-            //                                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-            //                                {
-            //                                    connSQLite.Insert(whatsappProfile);
-            //                                }
-            //                            }
-            //                        }
+                                using (SqlCommand command = new SqlCommand(sql, conn))
+                                {
+                                    conn.Open();
+                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            ProfileLocal whatsappProfile = new ProfileLocal
+                                            {
+                                                IdBox = boxIdLocal,
+                                                UserId = (int)reader["UserId"],
+                                                ProfileName = (string)reader["Name"],
+                                                value = (string)reader["Number"],
+                                                ProfileType = "Whatsapp"
+                                            };
+                                            //Crear perfil de whatsapp de box local predeterminada
+                                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                            {
+                                                connSQLite.Insert(whatsappProfile);
+                                            }
+                                        }
+                                    }
 
-            //                        conn.Close();
-            //                    }
-            //                }
-            //            }
+                                    conn.Close();
+                                }
+                            }
+                        }
 
-            //        }
-            //    }
+                    }
+                }
 
-                ////Regresar a home
-                //var mainViewModel = MainViewModel.GetInstance();
-                //mainViewModel.Home = new HomeViewModel();
-                //Application.Current.MainPage = new MasterPage();
-            //}
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.DetailsBoxEdith = new DetailsBoxEdithViewModel(_BoxId);
-            await Navigation.PushAsync(new DetailsBoxEdithPage(_BoxId));
+                //Regresar a home
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.Home = new HomeViewModel();
+                Application.Current.MainPage = new MasterPage();
+            }
         }
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {
             MainViewModel.GetInstance().ProfileTypeSelection = new ProfileTypeSelectionViewModel();
             //Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
-            App.Navigator.PushAsync(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName),false);
+            App.Navigator.PushAsync(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName), false);
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)
@@ -1486,11 +1483,12 @@
             }
         }
 
-        async private void BackHome (object sender, EventArgs e)
+        async private void BackHome(object sender, EventArgs e)
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
         #endregion
+
     }
 }

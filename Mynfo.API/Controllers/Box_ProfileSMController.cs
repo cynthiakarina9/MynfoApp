@@ -1,18 +1,16 @@
 ﻿namespace Mynfo.API.Controllers
 {
+    using Mynfo.Domain;
+    using Newtonsoft.Json.Linq;
     using System;
-    using System.Collections.Generic;
     using System.Data;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
-    using System.Net.Http;
     using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Description;
-    using Mynfo.Domain;
-    using Newtonsoft.Json.Linq;
 
     [RoutePrefix("api/Box_ProfileSM")]
     public class Box_ProfileSMController : ApiController

@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Mynfo.Domain;
-
-namespace Mynfo.API.Controllers
+﻿namespace Mynfo.API.Controllers
 {
+    using Mynfo.Domain;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+
+    [RoutePrefix("api/Boxes")]
     public class BoxesController : ApiController
     {
         private DataContext db = new DataContext();
@@ -36,18 +33,53 @@ namespace Mynfo.API.Controllers
             return Ok(box);
         }
 
-        // PUT: api/Boxes/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutBox(int id, Box box)
+        //// PUT: api/Boxes/5
+        //[ResponseType(typeof(void))]
+        //public async Task<IHttpActionResult> PutBox(int id, Box box)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    if (id != box.BoxId)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    db.Entry(box).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        await db.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!BoxExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
+
+        // PUT: api/Boxes/PutBox1/5
+        [ResponseType(typeof(Box))]
+        public async Task<Box> PutBox1(int id, Box box)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return null;
             }
 
             if (id != box.BoxId)
             {
-                return BadRequest();
+                return null;
             }
 
             db.Entry(box).State = EntityState.Modified;
@@ -60,7 +92,7 @@ namespace Mynfo.API.Controllers
             {
                 if (!BoxExists(id))
                 {
-                    return NotFound();
+                    return null;
                 }
                 else
                 {
@@ -68,7 +100,7 @@ namespace Mynfo.API.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return box;
         }
 
         // POST: api/Boxes

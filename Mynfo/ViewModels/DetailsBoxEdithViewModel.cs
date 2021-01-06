@@ -11,7 +11,7 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
-    public class DetailsBoxViewModel : BaseViewModel
+    public class DetailsBoxEdithViewModel : BaseViewModel
     {
         #region Services
         ApiService apiService;
@@ -83,7 +83,7 @@
         #endregion
 
         #region Constructor
-        public DetailsBoxViewModel(int _BoxId)
+        public DetailsBoxEdithViewModel(int _BoxId)
         {
             apiService = new ApiService();
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
@@ -101,16 +101,6 @@
         {
             this.IsRunning = true;
             List<ProfileEmail> listEmail;
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             ProfileEmail = new ObservableCollection<ProfileEmail>();
             listEmail = await this.apiService.GetListByUser<ProfileEmail>(
@@ -137,30 +127,23 @@
 
                 if (ItemEmail.Exist == true)
                 {
-                    var Email = Converter.ToProfileLocalE(ItemEmail);
+                    var Email = Converter.ToProfileLocalE1(ItemEmail);
                     ProfilePerfiles.Add(Email);
                 }
             }
-            //foreach (ProfileEmail profEmail in listEmail)
-            //{
-            //    if (profEmail.Exist == true)
-            //    {
-            //        ProfilePerfiles.Add(profEmail);
-            //    }
-            //}
             this.IsRunning = false;
             return ProfileEmail;
         }
 
         public void addProfileEmail(ProfileEmail _profileEmail)
         {
-            var E = Converter.ToProfileLocalE(_profileEmail);
+            var E = Converter.ToProfileLocalE1(_profileEmail);
             ProfilePerfiles.Add(E);
         }
 
         public void removeProfileEmail(ProfileEmail _profileEmail)
         {
-            ProfileLocal E = Converter.ToProfileLocalE(_profileEmail);
+            ProfileLocal E = Converter.ToProfileLocalE1(_profileEmail);
             ProfileLocal Aux = new ProfileLocal();
             foreach (ProfileLocal PLocal in ProfilePerfiles)
             {
@@ -179,17 +162,6 @@
         {
             this.IsRunning = true;
             List<ProfilePhone> listPhone;
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
-
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             ProfilePhone = new ObservableCollection<ProfilePhone>();
             listPhone = await this.apiService.GetListByUser<ProfilePhone>(
@@ -205,7 +177,7 @@
                     BoxId = _BoxId,
                     ProfilePhoneId = ItemPhone.ProfilePhoneId
                 };
-                //apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+                
                 var response = await this.apiService.Get(
                     apiSecurity,
                     "/api",
@@ -215,34 +187,28 @@
                 ItemPhone.Exist = response.IsSuccess;
                 if (ItemPhone.Exist == true)
                 {
-                    var Phone = Converter.ToProfileLocalP(ItemPhone);
+                    var Phone = Converter.ToProfileLocalP1(ItemPhone);
                     ProfilePerfiles.Add(Phone);
                 }
             }
-            //foreach (ProfilePhone profPhone in listPhone)
-            //{
-            //    if (profPhone.Exist == true)
-            //    {
-            //        ProfilePerfiles.Add(profPhone);
-            //    }
-            //}
+
             this.IsRunning = false;
             return ProfilePhone;
         }
 
         public void addProfilePhone(ProfilePhone _profilePhone)
         {
-            var P = Converter.ToProfileLocalP(_profilePhone);
+            var P = Converter.ToProfileLocalP1(_profilePhone);
             ProfilePerfiles.Add(P);
         }
 
         public void removeProfilePhone(ProfilePhone _profilePhone)
         {
-            ProfileLocal P = Converter.ToProfileLocalP(_profilePhone);
+            ProfileLocal P = Converter.ToProfileLocalP1(_profilePhone);
             ProfileLocal Aux = new ProfileLocal();
-            foreach(ProfileLocal PLocal in ProfilePerfiles)
+            foreach (ProfileLocal PLocal in ProfilePerfiles)
             {
-                if(P.ProfileName==PLocal.ProfileName && P.value == PLocal.value)
+                if (P.ProfileName == PLocal.ProfileName && P.value == PLocal.value)
                 {
                     Aux = PLocal;
                 }
@@ -257,16 +223,6 @@
         {
             this.IsRunning = true;
             List<ProfileSM> listSM;
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
@@ -293,7 +249,7 @@
                 ItemSM.Exist = response.IsSuccess;
                 if (ItemSM.Exist == true)
                 {
-                    var SM = Converter.ToProfileLocalSM(ItemSM);
+                    var SM = Converter.ToProfileLocalSM1(ItemSM);
                     ProfilePerfiles.Add(SM);
                 }
             }
@@ -303,13 +259,13 @@
 
         public void addProfileSM(ProfileSM _profileSM)
         {
-            var SM = Converter.ToProfileLocalSM(_profileSM);
+            var SM = Converter.ToProfileLocalSM1(_profileSM);
             ProfilePerfiles.Add(SM);
         }
 
         public void removeProfileSM(ProfileSM _profileSM)
         {
-            ProfileLocal SM = Converter.ToProfileLocalSM(_profileSM);
+            ProfileLocal SM = Converter.ToProfileLocalSM1(_profileSM);
             ProfileLocal Aux = new ProfileLocal();
             foreach (ProfileLocal PLocal in ProfilePerfiles)
             {
@@ -328,18 +284,6 @@
         {
             this.IsRunning = true;
             List<ProfileWhatsapp> listWhatsapp;
-
-            //var connection = await this.apiService.CheckConnection();
-
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             ProfileWhatsapp = new ObservableCollection<ProfileWhatsapp>();
@@ -366,30 +310,23 @@
                 ItemWhatsapp.Exist = response.IsSuccess;
                 if (ItemWhatsapp.Exist == true)
                 {
-                    var W = Converter.ToProfileLocalW(ItemWhatsapp);
+                    var W = Converter.ToProfileLocalW1(ItemWhatsapp);
                     ProfilePerfiles.Add(W);
                 }
             }
-            //foreach (ProfileWhatsapp profWhatsapp in listWhatsapp)
-            //{
-            //    if (profWhatsapp.Exist == true)
-            //    {
-            //        ProfilePerfiles.Add(profWhatsapp);
-            //    }
-            //}
             this.IsRunning = false;
             return ProfileWhatsapp;
         }
 
         public void addProfileW(ProfileWhatsapp _profileW)
         {
-            var W = Converter.ToProfileLocalW(_profileW);
+            var W = Converter.ToProfileLocalW1(_profileW);
             ProfilePerfiles.Add(W);
         }
 
         public void removeProfileW(ProfileWhatsapp _profileW)
         {
-            ProfileLocal W = Converter.ToProfileLocalW(_profileW);
+            ProfileLocal W = Converter.ToProfileLocalW1(_profileW);
             ProfileLocal Aux = new ProfileLocal();
             foreach (ProfileLocal PLocal in ProfilePerfiles)
             {
@@ -403,57 +340,17 @@
         }
         #endregion
 
-        //public async Task<ObservableCollection<object>> PostList(int Box)
-        //{
-        //    //var connection = await this.apiService.CheckConnection();
-
-        //    //if (!connection.IsSuccess)
-        //    //{
-        //    //    this.IsRunning = false;
-        //    //    await Application.Current.MainPage.DisplayAlert(
-        //    //        Languages.Error,
-        //    //        connection.Message,
-        //    //        Languages.Accept);
-        //    //    return null;
-        //    //}
-        //    ProfilePerfiles = new ObservableCollection<Object>();
-        //    var Email = ProfileEmail;
-        //    var Phone = ProfilePhone;
-        //    var SM = ProfileSM;
-        //    var Whatsapp = ProfileWhatsapp;
-        //    foreach (ProfileEmail profEmail in profileEmail)
-        //    {
-        //        if (profEmail.Exist == true)
-        //        {
-        //            ProfilePerfiles.Add(profEmail);
-        //        }
-        //    }
-        //    foreach (ProfilePhone profPhone in Phone)
-        //    {
-        //        if (profPhone.Exist == true)
-        //        {
-        //            ProfilePerfiles.Add(profPhone);
-        //        }
-        //    }
-        //    foreach (ProfileSM profMS in SM)
-        //    {
-        //        if (profMS.Exist == true)
-        //        {
-        //            ProfilePerfiles.Add(profMS);
-        //        }
-        //    }
-        //    foreach (ProfileWhatsapp profWhatsapp in Whatsapp)
-        //    {
-        //        if (profWhatsapp.Exist == true)
-        //        {
-        //            ProfilePerfiles.Add(profWhatsapp);
-        //        }
-        //    }
-
-        //    return ProfilePerfiles;
-        //}
-
-        //Actualizar listas
+        #region Box
+        public async void EdithBox(Box Box)
+        {
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var profile = await this.apiService.PutBox(
+                apiSecurity,
+                "/api",
+                "/Boxes/",
+                profilePhone);
+        }
+        #endregion
 
         #endregion
 

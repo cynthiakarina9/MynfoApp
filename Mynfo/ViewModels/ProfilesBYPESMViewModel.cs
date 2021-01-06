@@ -76,7 +76,7 @@
         public ProfileSM selectedProfileSM { get; set; }
         #endregion
 
-        #region Cosntructor
+        #region Constructor
         public ProfilesBYPESMViewModel(int _BoxId, string _ProfileType, bool _BoxDefault, string _boxName = "")
         {
             apiService = new ApiService();
