@@ -358,7 +358,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Create email profile..
+        ///   Busca una cadena traducida similar a Create email profile.
         /// </summary>
         public static string CreateProfileEmail {
             get {
@@ -367,7 +367,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Create profile phone.
+        ///   Busca una cadena traducida similar a Create phone profile .
         /// </summary>
         public static string CreateProfilePhone {
             get {
@@ -403,7 +403,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter your current password..
+        ///   Busca una cadena traducida similar a Enter your current password.
         /// </summary>
         public static string CurrentPasswordPlaceHolder {
             get {
@@ -466,7 +466,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Edit email profile..
+        ///   Busca una cadena traducida similar a Edit email profile.
         /// </summary>
         public static string EditEmail {
             get {
@@ -484,7 +484,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Edit phone profile..
+        ///   Busca una cadena traducida similar a Edit phone profile.
         /// </summary>
         public static string EditPhone {
             get {
@@ -511,7 +511,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter your email..
+        ///   Busca una cadena traducida similar a Enter your email.
         /// </summary>
         public static string EmailPlaceHolder {
             get {
@@ -529,7 +529,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You must enter an email..
+        ///   Busca una cadena traducida similar a You must enter an email.
         /// </summary>
         public static string EmailValidation {
             get {
@@ -538,7 +538,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You must enter a valid email..
+        ///   Busca una cadena traducida similar a You must enter a valid email.
         /// </summary>
         public static string EmailValidation2 {
             get {
@@ -547,7 +547,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You do not have networks added to this box yet..
+        ///   Busca una cadena traducida similar a You do not have networks added to this box yet.
         /// </summary>
         public static string EmptyBox {
             get {
@@ -565,7 +565,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a An error has occurred, please try again later..
+        ///   Busca una cadena traducida similar a An error has occurred, please try again later.
         /// </summary>
         public static string ErrorAddProfile {
             get {
@@ -574,7 +574,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a The password can&apos;t be changed, please try latter..
+        ///   Busca una cadena traducida similar a The password can&apos;t be changed, please try latter.
         /// </summary>
         public static string ErrorChangingPassword {
             get {
@@ -610,7 +610,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter the first name..
+        ///   Busca una cadena traducida similar a Enter the first name.
         /// </summary>
         public static string FirstNamePlaceHolder {
             get {
@@ -619,7 +619,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You must enter a first name..
+        ///   Busca una cadena traducida similar a You must enter a first name.
         /// </summary>
         public static string FirstNameValidation {
             get {
@@ -736,7 +736,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You must enter a last name..
+        ///   Busca una cadena traducida similar a You must enter a last name.
         /// </summary>
         public static string LastNameValidation {
             get {
@@ -853,7 +853,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You must enter a name..
+        ///   Busca una cadena traducida similar a You must enter a name.
         /// </summary>
         public static string NameValidation {
             get {
@@ -925,7 +925,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nickname.
+        ///   Busca una cadena traducida similar a User name.
         /// </summary>
         public static string NickName {
             get {
@@ -1015,7 +1015,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You must enter a password..
+        ///   Busca una cadena traducida similar a You must enter a password.
         /// </summary>
         public static string PasswordValidation {
             get {
@@ -1024,7 +1024,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a The password must have at least seix (6) characters..
+        ///   Busca una cadena traducida similar a The password must have at least six (6) characters.
         /// </summary>
         public static string PasswordValidation2 {
             get {
@@ -1069,7 +1069,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You must enter a phone..
+        ///   Busca una cadena traducida similar a You must enter a phone number.
         /// </summary>
         public static string PhoneValidation {
             get {
@@ -1078,7 +1078,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a The phone number must contain 10 digits..
+        ///   Busca una cadena traducida similar a The phone number must contain 10 digits.
         /// </summary>
         public static string PhoneValidation2 {
             get {
@@ -1114,7 +1114,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Your user was created by a social network, to make a change you must make it from that same social network..
+        ///   Busca una cadena traducida similar a Your user was created by a social network, to make a change you must make it from that same social network.
         /// </summary>
         public static string ProfileELabel {
             get {
@@ -1132,7 +1132,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You have not created any profile of this type yet..
+        ///   Busca una cadena traducida similar a You have not created any profile of this type yet.
         /// </summary>
         public static string ProfileNull {
             get {
@@ -1159,7 +1159,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Conections.
+        ///   Busca una cadena traducida similar a Connections.
         /// </summary>
         public static string ReceivedBoxes {
             get {
@@ -1231,7 +1231,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Something was wrong, please try later..
+        ///   Busca una cadena traducida similar a Something was wrong, please try again later.
         /// </summary>
         public static string SomethingWrong {
             get {
@@ -1312,7 +1312,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a The user was create, now you can login with this email and password..
+        ///   Busca una cadena traducida similar a The user was created, now you can login with this email and password.
         /// </summary>
         public static string UserRegisteredMessage {
             get {
@@ -1348,7 +1348,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a It already exists an account with that email, try again with one different..
+        ///   Busca una cadena traducida similar a It already exists an account with that email, try again with a different one.
         /// </summary>
         public static string WrongEmail {
             get {

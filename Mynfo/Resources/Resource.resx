@@ -121,22 +121,22 @@
     <value>Accept</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>Enter your email.</value>
+    <value>Enter your email</value>
   </data>
   <data name="EmailValidation" xml:space="preserve">
-    <value>You must enter an email.</value>
+    <value>You must enter an email</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
   <data name="PasswordValidation" xml:space="preserve">
-    <value>You must enter a password.</value>
+    <value>You must enter a password</value>
   </data>
   <data name="Rememberme" xml:space="preserve">
     <value>Rememberme in this device</value>
   </data>
   <data name="SomethingWrong" xml:space="preserve">
-    <value>Something was wrong, please try later.</value>
+    <value>Something was wrong, please try again later</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
@@ -268,10 +268,10 @@
     <value>First Name</value>
   </data>
   <data name="FirstNamePlaceHolder" xml:space="preserve">
-    <value>Enter the first name.</value>
+    <value>Enter the first name</value>
   </data>
   <data name="FirstNameValidation" xml:space="preserve">
-    <value>You must enter a first name.</value>
+    <value>You must enter a first name</value>
   </data>
   <data name="LastNameLabel" xml:space="preserve">
     <value>Last Name</value>
@@ -280,7 +280,7 @@
     <value>Enter the last name...</value>
   </data>
   <data name="LastNameValidation" xml:space="preserve">
-    <value>You must enter a last name.</value>
+    <value>You must enter a last name</value>
   </data>
   <data name="PhoneLabel" xml:space="preserve">
     <value>Phone</value>
@@ -289,7 +289,7 @@
     <value>Enter the phone.</value>
   </data>
   <data name="PhoneValidation" xml:space="preserve">
-    <value>You must enter a phone.</value>
+    <value>You must enter a phone number</value>
   </data>
   <data name="ConfirmLabel" xml:space="preserve">
     <value>Confirm</value>
@@ -301,16 +301,16 @@
     <value>You must enter a confirm.</value>
   </data>
   <data name="EmailValidation2" xml:space="preserve">
-    <value>You must enter a valid email.</value>
+    <value>You must enter a valid email</value>
   </data>
   <data name="PasswordValidation2" xml:space="preserve">
-    <value>The password must have at least seix (6) characters.</value>
+    <value>The password must have at least six (6) characters</value>
   </data>
   <data name="ConfirmValidation2" xml:space="preserve">
     <value>The password and confirm does not match.</value>
   </data>
   <data name="UserRegisteredMessage" xml:space="preserve">
-    <value>The user was create, now you can login with this email and password.</value>
+    <value>The user was created, now you can login with this email and password</value>
   </data>
   <data name="SourceImageQuestion" xml:space="preserve">
     <value>Where do you want to take the image?</value>
@@ -334,7 +334,7 @@
     <value>Current Password</value>
   </data>
   <data name="CurrentPasswordPlaceHolder" xml:space="preserve">
-    <value>Enter your current password.</value>
+    <value>Enter your current password</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
     <value>New Password</value>
@@ -358,7 +358,7 @@
     <value>The current password is incorrect</value>
   </data>
   <data name="ErrorChangingPassword" xml:space="preserve">
-    <value>The password can't be changed, please try latter.</value>
+    <value>The password can't be changed, please try latter</value>
   </data>
   <data name="MyProfiles" xml:space="preserve">
     <value>Profiles</value>
@@ -430,7 +430,7 @@
     <value>Add profiles</value>
   </data>
   <data name="CreateProfilePhone" xml:space="preserve">
-    <value>Create profile phone</value>
+    <value>Create phone profile </value>
   </data>
   <data name="NameProfile" xml:space="preserve">
     <value>Profile name</value>
@@ -445,19 +445,19 @@
     <value>Phone profile</value>
   </data>
   <data name="NameValidation" xml:space="preserve">
-    <value>You must enter a name.</value>
+    <value>You must enter a name</value>
   </data>
   <data name="NumberValidation" xml:space="preserve">
     <value>You must enter a phone number.</value>
   </data>
   <data name="PhoneValidation2" xml:space="preserve">
-    <value>The phone number must contain 10 digits.</value>
+    <value>The phone number must contain 10 digits</value>
   </data>
   <data name="DetailBox" xml:space="preserve">
     <value>Box details</value>
   </data>
   <data name="CreateProfileEmail" xml:space="preserve">
-    <value>Create email profile.</value>
+    <value>Create email profile</value>
   </data>
   <data name="PhoneProfileList" xml:space="preserve">
     <value>Phone profile list</value>
@@ -487,10 +487,10 @@
     <value>Business, Personal, Friends.</value>
   </data>
   <data name="EditEmail" xml:space="preserve">
-    <value>Edit email profile.</value>
+    <value>Edit email profile</value>
   </data>
   <data name="EditPhone" xml:space="preserve">
-    <value>Edit phone profile.</value>
+    <value>Edit phone profile</value>
   </data>
   <data name="Value" xml:space="preserve">
     <value>Value</value>
@@ -499,7 +499,7 @@
     <value>List of Facebook profiles</value>
   </data>
   <data name="ReceivedBoxes" xml:space="preserve">
-    <value>Conections</value>
+    <value>Connections</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
@@ -508,7 +508,7 @@
     <value>You must enter a url</value>
   </data>
   <data name="ProfileELabel" xml:space="preserve">
-    <value>Your user was created by a social network, to make a change you must make it from that same social network.</value>
+    <value>Your user was created by a social network, to make a change you must make it from that same social network</value>
   </data>
   <data name="WhatsappProfileList" xml:space="preserve">
     <value>List of Whatsapp profiles</value>
@@ -535,21 +535,21 @@
     <value>Success!</value>
   </data>
   <data name="ErrorAddProfile" xml:space="preserve">
-    <value>An error has occurred, please try again later.</value>
+    <value>An error has occurred, please try again later</value>
   </data>
   <data name="WrongEmail" xml:space="preserve">
-    <value>It already exists an account with that email, try again with one different.</value>
+    <value>It already exists an account with that email, try again with a different one</value>
   </data>
   <data name="ProfileNull" xml:space="preserve">
-    <value>You have not created any profile of this type yet.</value>
+    <value>You have not created any profile of this type yet</value>
   </data>
   <data name="NickName" xml:space="preserve">
-    <value>Nickname</value>
+    <value>User name</value>
   </data>
   <data name="NickNamePH" xml:space="preserve">
     <value />
   </data>
   <data name="EmptyBox" xml:space="preserve">
-    <value>You do not have networks added to this box yet.</value>
+    <value>You do not have networks added to this box yet</value>
   </data>
 </root>
