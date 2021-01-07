@@ -99,20 +99,17 @@
                     </Grid>
                 </Grid>
             </ScrollView>
-            <StackLayout
-                HorizontalOptions="FillAndExpand"
-                Margin="20"
-                VerticalOptions="End">
-                <Button 
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
-                        Command = "{Binding SaveProfileLinkedinCommand}"
-                        HeightRequest = "50"
-                        Text = "{i18n:Translate Save}"
-                        TextColor = "{StaticResource Dark_FontColor}"
-                        VerticalOptions = "Center"
-                        x:Name="Save"/>
-            </StackLayout>
+            <Button 
+                BackgroundColor = "{StaticResource MainColor}"
+                BorderRadius = "23"
+                Command = "{Binding SaveProfileLinkedinCommand}"
+                HeightRequest = "50"
+                HorizontalOptions="Fill"
+                Margin="15"
+                Text = "{i18n:Translate Save}"
+                TextColor = "{StaticResource Dark_FontColor}"
+                VerticalOptions = "End"
+                x:Name="Save"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -192,7 +192,7 @@
             var response = await this.apiService.Delete3(
                 apiSecurity,
                 "/api",
-                "/Box_ProfileEmail/DeleteBox_ProfileEmailRelation",
+                "/Box_ProfileEmail/DeleteBox_ProfilePhoneRelation",
                 profileEmail.ProfileEmailId);
 
             var response2 = await this.apiService.Delete(

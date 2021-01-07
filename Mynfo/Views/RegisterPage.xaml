@@ -21,7 +21,7 @@
         <Grid
             BindingContext = "{Binding Register}">
             <ScrollView>
-            <StackLayout
+                <StackLayout
                 Padding = "15">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -155,7 +155,7 @@
                             VerticalOptions="EndAndExpand"/>
                     </Grid>
             </StackLayout>
-        </ScrollView>
+            </ScrollView>
             <ActivityIndicator
                 Grid.Row = "0"
                 HorizontalOptions="Center"

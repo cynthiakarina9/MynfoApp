@@ -1,6 +1,8 @@
 ﻿namespace Mynfo.API.Controllers
 {
     using Mynfo.Domain;
+    using Newtonsoft.Json.Linq;
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
@@ -70,7 +72,7 @@
 
         // PUT: api/Boxes/PutBox1/5
         [ResponseType(typeof(Box))]
-        public async Task<Box> PutBox1(int id, Box box)
+        public async Task<Box> PutBox(int id, Box box)
         {
             if (!ModelState.IsValid)
             {
@@ -102,6 +104,56 @@
 
             return box;
         }
+
+        //// PUT: api/Boxes/5
+        //[ResponseType(typeof(void))]
+        //public async Task<IHttpActionResult> PutBoxDefault(JObject form)
+        //{
+        //    try
+        //    {
+        //        int idBox = 0;
+        //        bool def = false;
+        //        dynamic jsonObject = form;
+
+        //        try
+        //        {
+        //            idBox = jsonObject.BoxId;
+        //            def = jsonObject.BoxDefault;
+        //        }
+        //        catch
+        //        {
+        //            return null;
+        //        }
+        //        var boxdefault = GetBoxes().Where(u => u.BoxId == idBox).FirstOrDefault();
+        //        if (boxdefault != null)
+        //        {
+        //            def = boxdefault.BoxDefault;
+        //            db.Entry(boxdefault.BoxDefault = def).State = EntityState.Modified;
+        //        }
+        //        try
+        //        {
+        //            await db.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!BoxExists(idBox))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return Ok(boxdefault);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/Boxes
         [ResponseType(typeof(Box))]

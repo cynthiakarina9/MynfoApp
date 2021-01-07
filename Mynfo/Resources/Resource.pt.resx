@@ -517,7 +517,7 @@ Você deve inserir um url</value>
   <data name="EditNetwork" xml:space="preserve">
     <value>Editar rede</value>
   </data>
-  <data name="NetworkList" xml:space="preserve">
+  <data name="NetworksList" xml:space="preserve">
     <value>Lista de networks</value>
   </data>
   <data name="AddNetwork" xml:space="preserve">

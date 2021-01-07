@@ -24,9 +24,16 @@
         private bool isRunning;
         private bool isVisible;
         private ObservableCollection<ProfileWhatsapp> profileWhatsapp;
+        public bool emptyList;
         #endregion
 
         #region Properties
+        public bool EmptyList
+        {
+            get { return this.emptyList; }
+            set { SetValue(ref this.emptyList, value); }
+        }
+
         public ObservableCollection<ProfileWhatsapp> profileWhatsApp
         {
             get { return profileWhatsapp; }
@@ -56,6 +63,7 @@
         public ProfilesByWhatsAppViewModel()
         {
             apiService = new ApiService();
+            EmptyList = false;
             GetList();
         }
         #endregion
@@ -92,12 +100,7 @@
 
             if (listWhats.Count == 0)
             {
-                this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Information,
-                    Languages.ProfileNull,
-                    Languages.Accept);
-                return null;
+                EmptyList = true;
             }
 
             foreach (ProfileWhatsapp profWhatsapp in listWhats)

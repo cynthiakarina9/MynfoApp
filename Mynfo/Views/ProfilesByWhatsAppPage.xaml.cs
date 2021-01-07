@@ -69,13 +69,7 @@
             mainViewModel.CreateProfileWhatsApp = new CreateProfileWhatsAppViewModel();
             Navigation.PushAsync(new CreateProfileWhatsAppPage());
         }
-        //private async void EditProfileEmail(object sender, EventArgs e, int _ProfileEmailId)
-        //{
-        //    var mainViewModel = MainViewModel.GetInstance();
-        //    mainViewModel.EditProfileEmail = new EditProfileEmailViewModel();
-        //    Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage(_ProfileEmailId));
-        //}
-        
+
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ProfileWhatsapp selectedItem = e.SelectedItem as ProfileWhatsapp;
@@ -84,8 +78,8 @@
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
             ProfileWhatsapp tappedItem = e.Item as ProfileWhatsapp;
-            //MainViewModel.GetInstance().EditProfileWhatsApp = new EditProfileWhatsAppViewModel(tappedItem.ProfileWhatsappId);
-            //Navigation.PushAsync(new EditProfileWhatsAppPage());
+            MainViewModel.GetInstance().EditProfileWhatsApp = new EditProfileWhatsAppViewModel(tappedItem.ProfileWhatsappId);
+            Navigation.PushAsync(new EditProfileWhatsAppPage());
         }
         #endregion
     }
