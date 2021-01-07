@@ -24,10 +24,15 @@
         private ObservableCollection<ProfilePhone> profilePhone;
         private ObservableCollection<ProfileWhatsapp> profileWhatsapp;
         private ObservableCollection<ProfileSM> profileSM;
+        public bool emptyList;
         #endregion
 
         #region Properties
-
+        public bool EmptyList
+        {
+            get { return this.emptyList; }
+            set { SetValue(ref this.emptyList, value); }
+        }
         public bool IsRunning
         {
             get { return this.isRunning; }
@@ -80,6 +85,7 @@
         public ProfilesBYPESMViewModel(int _BoxId, string _ProfileType, bool _BoxDefault, string _boxName = "")
         {
             apiService = new ApiService();
+            EmptyList = false;
             switch (_ProfileType)
             {
                 case "Email":
@@ -186,12 +192,7 @@
 
             if (listEmail.Count == 0)
             {
-                this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Information,
-                    Languages.ProfileNull,
-                    Languages.Accept);
-                return null;
+                EmptyList = true;
             }
 
             foreach (ProfileEmail ItemEmail in listEmail)
@@ -268,12 +269,7 @@
 
             if(listPhone.Count == 0)
             {
-                this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Information,
-                    Languages.ProfileNull,
-                    Languages.Accept);
-                return null;
+                EmptyList = true;
             }
 
             foreach (ProfilePhone ItemPhone in listPhone)
@@ -352,12 +348,7 @@
 
             if (listSM.Count == 0)
             {
-                this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Information,
-                    Languages.ProfileNull,
-                    Languages.Accept);
-                return null;
+                EmptyList = true;
             }
 
             foreach (ProfileSM ItemSM in listSM)
@@ -438,12 +429,7 @@
 
             if (listWhastapp.Count == 0)
             {
-                this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Information,
-                    Languages.ProfileNull,
-                    Languages.Accept);
-                return null;
+                EmptyList = true;
             }
 
             foreach (ProfileWhatsapp ItemWhatsapp in listWhastapp)

@@ -19,7 +19,7 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
+        <Grid
             BindingContext = "{Binding EditProfileLinkedin}">
             <Grid>
                 <Grid.RowDefinitions>
@@ -76,7 +76,7 @@
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
                         HorizontalOptions = "Center"
-                        IsReadOnly="true"
+                        IsEnabled="False"
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name = "EntryName"/>
@@ -91,6 +91,6 @@
                     </ActivityIndicator>
                 </StackLayout>
             </Grid>
-        </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

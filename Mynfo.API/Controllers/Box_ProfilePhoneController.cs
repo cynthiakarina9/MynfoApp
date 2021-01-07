@@ -184,7 +184,22 @@
             return Ok(box_ProfilePhone);
 
         }
+        // DELETE: api/Box_ProfilePhone/5
+        [HttpPost]
+        [Route("DeleteBox_ProfilePhoneRelation")]
+        public async Task<IHttpActionResult> DeleteBox_ProfilePhoneRelation(int id)
+        {
+            var box_ProfilePhone = GetBox_ProfilePhone().Where(u => u.ProfilePhoneId == id).ToList();
+            if (box_ProfilePhone == null)
+            {
+                return NotFound();
+            }
 
+            db.Box_ProfilePhone.RemoveRange(box_ProfilePhone);
+            await db.SaveChangesAsync();
+
+            return Ok(box_ProfilePhone);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

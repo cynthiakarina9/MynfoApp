@@ -1,13 +1,9 @@
 ﻿namespace Mynfo.Views
 {
-    using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
-    using Mynfo.Helpers;
     using Mynfo.Services;
     using System;
     using System.Collections.Generic;
-    using System.Data.SqlClient;
-    using System.Windows.Input;
     using ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
@@ -23,6 +19,7 @@
         public IList<ProfilePhone> profilePhone { get; private set; }
         #endregion
 
+        #region Constructor
         public ProfilesByPhonePage()
         {
             InitializeComponent();
@@ -92,19 +89,14 @@
             //}
             #endregion
         }
+        #endregion
+
+        #region Commands 
         private void NewProfilePhone_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
             App.Navigator.PushAsync(new CreateProfilePhonePage());
-        }
-        #region Methods  
-
-        private void Back_Clicked(object sender, EventArgs e)
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Profiles = new ProfilesViewModel();
-            Application.Current.MainPage = new NavigationPage(new ProfilesPage());
         }
         private void BackHome_Clicked(object sender, EventArgs e)
         {
@@ -118,7 +110,6 @@
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
-
             ProfilePhone tappedItem = e.Item as ProfilePhone;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfilePhone = new EditProfilePhoneViewModel(tappedItem.ProfilePhoneId);

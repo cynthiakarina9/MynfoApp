@@ -20,7 +20,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView
-            BindingContext = "{Binding EditProfileTiwtch}">
+            BindingContext = "{Binding EditProfileTwitch}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height = "80"/>
@@ -55,7 +55,7 @@
                     x:Name = "ButtonDelete"/>
                 <Image
                     HeightRequest = "180"
-                    Source = "tiwtch2"
+                    Source = "twitch2"
                     Grid.Row = "1"
                     Grid.ColumnSpan ="2"
                     WidthRequest = "180"/>
@@ -76,7 +76,7 @@
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
                         HorizontalOptions = "Center"
-                        IsReadOnly="true"
+                        IsEnabled="False"
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name = "EntryName"/>

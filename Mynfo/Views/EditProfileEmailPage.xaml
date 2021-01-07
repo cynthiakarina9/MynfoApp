@@ -19,137 +19,124 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
+        <Grid
             BindingContext = "{Binding EditProfileEmail}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height = "80"/>
-                    <RowDefinition Height = "160"/>
-                    <RowDefinition Height = "120"/>
-                    <RowDefinition Height = "80"/>
-                    <RowDefinition />
-                    <RowDefinition Height = "120"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="7.5*" />
-                    <ColumnDefinition Width="2.5*" />
-                </Grid.ColumnDefinitions>
-                <!-- Título y borrar network-->
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "30"
-                    Grid.ColumnSpan ="2"
-                    Grid.Row = "0"
-                    HorizontalOptions = "Center"
-                    HorizontalTextAlignment = "Center"
-                    Text = "{i18n:Translate EditNetwork}"
-                    TextColor = "{StaticResource MainColor}"
-                    VerticalOptions = "Center"/>
-                <ImageButton
-                    BackgroundColor="Transparent"
-                    Command="{Binding DeleteCommand}"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Scale=".6"
-                    Source="trash2"
-                    VerticalOptions="Start"
-                    x:Name = "ButtonDelete"/>
-                <!-- End de título y borrar network-->
-                
-                <!-- Imagen de network -->
-                <Image
-                    HeightRequest = "180"
-                    Source = "mail2"
-                    Grid.Row = "1"
-                    Grid.ColumnSpan ="2"
-                    WidthRequest = "180"/>
-                <!-- End Imagen de network -->
-                <!-- Nombre de perfil -->
-                <StackLayout 
-                    Grid.Row = "2"
-                    Grid.ColumnSpan ="2"
-                    Padding = "20">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height = "80"/>
+                        <RowDefinition Height = "160"/>
+                        <RowDefinition Height = "120"/>
+                        <RowDefinition Height = "80"/>
+                        <RowDefinition />
+                        <RowDefinition Height = "120"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7.5*" />
+                        <ColumnDefinition Width="2.5*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Título y borrar network-->
                     <Label 
-                        FontSize = "24" 
-                        FontAttributes="Bold"
+                        FontAttributes = "Bold"
+                        FontSize = "30"
+                        Grid.ColumnSpan ="2"
+                        Grid.Row = "0"
                         HorizontalOptions = "Center"
-                        Text = "{i18n:Translate NameProfile}" 
+                        HorizontalTextAlignment = "Center"
+                        Text = "{i18n:Translate EditNetwork}"
                         TextColor = "{StaticResource MainColor}"
                         VerticalOptions = "Center"/>
-                    <Entry 
-                        Text="{Binding profileEmail.Name, Mode=TwoWay}"
-                        FontSize = "21"
-                        HorizontalTextAlignment = "Center"
-                        HeightRequest = "46"
-                        HorizontalOptions = "Center"
-                        MaxLength = "10"
-                        VerticalOptions = "Center" 
-                        WidthRequest = "300" 
-                        x:Name = "EntryName"/>
-                </StackLayout>
-                <!-- Valor de perfil -->
-                <StackLayout 
-                    Grid.Row = "3"
-                    Grid.ColumnSpan ="2">
-                    <Label 
-                        FontSize = "24" 
-                        FontAttributes="Bold"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center" 
-                        Text = "{i18n:Translate EMail}"
-                        TextColor = "{StaticResource MainColor}"/>
-                    <Entry
-                        Text="{Binding profileEmail.Email, Mode=TwoWay}"
-                        FontSize = "21"
-                        HorizontalTextAlignment = "Center"
-                        HeightRequest = "46"
-                        HorizontalOptions = "Center"
-                        Keyboard = "Email"
-                        VerticalOptions = "Center" 
-                        WidthRequest = "300"
-                        x:Name = "EntryEmail"/>
-                </StackLayout>
-                <!-- Círculo de carga -->
-                <StackLayout
-                    Grid.Row = "5"
-                    Grid.ColumnSpan ="2"
-                    VerticalOptions = "CenterAndExpand">
-                    <ActivityIndicator
-                        IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                        VerticalOptions = "CenterAndExpand">
-                    </ActivityIndicator>
-                </StackLayout>
-                <!-- Botón de guardado -->
-                <StackLayout
-                    Grid.Row = "6"
-                    Grid.ColumnSpan ="2"
-                    Padding = "40">
-                    <Button 
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
-                        Command="{Binding SaveCommand}"
-                        HeightRequest = "50"
-                        HorizontalOptions = "Fill"
-                        Text = "{i18n:Translate Save}"
-                        FontSize="15"
-                        FontAttributes="Bold"
-                        TextColor = "{StaticResource Dark_FontColor}"
-                        VerticalOptions = "Center" 
-                        x:Name = "ButtonSave"/>
-                    <!--<Button 
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
+                    <ImageButton
+                        BackgroundColor="Transparent"
                         Command="{Binding DeleteCommand}"
-                        HeightRequest = "50"
-                        HorizontalOptions = "Center"
-                        IsEnabled = "True"
-                        Text = "{i18n:Translate Delete}"
-                        TextColor = "{StaticResource Dark_FontColor}"
-                        VerticalOptions = "Center"
-                        WidthRequest = "150" 
-                        x:Name = "ButtonDelete"/>-->
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Scale=".6"
+                        Source="trash2"
+                        VerticalOptions="Start"
+                        x:Name = "ButtonDelete"/>
+                    <!-- End de título y borrar network-->
+                
+                    <!-- Imagen de network -->
+                    <Image
+                        HeightRequest = "180"
+                        Source = "mail2"
+                        Grid.Row = "1"
+                        Grid.ColumnSpan ="2"
+                        WidthRequest = "180"/>
+                    <!-- End Imagen de network -->
+                    
+                    <!-- Nombre de perfil -->
+                    <StackLayout 
+                        Grid.Row = "2"
+                        Grid.ColumnSpan ="2"
+                        Padding = "20">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NameProfile}" 
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Entry 
+                            Text="{Binding profileEmail.Name, Mode=TwoWay}"
+                            FontSize = "21"
+                            HorizontalTextAlignment = "Center"
+                            HeightRequest = "46"
+                            HorizontalOptions = "Center"
+                            MaxLength = "10"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300" 
+                            x:Name = "EntryName"/>
+                    </StackLayout>
+                    <!-- Valor de perfil -->
+                    <StackLayout 
+                        Grid.Row = "3"
+                        Grid.ColumnSpan ="2">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center" 
+                            Text = "{i18n:Translate EMail}"
+                            TextColor = "{StaticResource MainColor}"/>
+                        <Entry
+                            Text="{Binding profileEmail.Email, Mode=TwoWay}"
+                            FontSize = "21"
+                            HorizontalTextAlignment = "Center"
+                            HeightRequest = "46"
+                            HorizontalOptions = "Center"
+                            Keyboard = "Email"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300"
+                            x:Name = "EntryEmail"/>
+                    </StackLayout>
+                    <!-- Círculo de carga -->
+                    <StackLayout
+                        Grid.Row = "5"
+                        Grid.ColumnSpan ="2"
+                        VerticalOptions = "CenterAndExpand">
+                        <ActivityIndicator
+                            IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                            VerticalOptions = "CenterAndExpand">
+                        </ActivityIndicator>
+                    </StackLayout>
+                </Grid>  
+            </ScrollView>
+            <!-- Botón de guardado -->
+            <Button 
+                BackgroundColor = "{StaticResource MainColor}"
+                BorderRadius = "23"
+                Command="{Binding SaveCommand}"
+                HeightRequest = "50"
+                HorizontalOptions = "Fill"
+                Margin="15"
+                Text = "{i18n:Translate Save}"
+                FontSize="15"
+                FontAttributes="Bold"
+                TextColor = "{StaticResource Dark_FontColor}"
+                VerticalOptions = "End" 
+                x:Name = "ButtonSave"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

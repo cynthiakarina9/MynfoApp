@@ -403,58 +403,6 @@
         }
         #endregion
 
-        //public async Task<ObservableCollection<object>> PostList(int Box)
-        //{
-        //    //var connection = await this.apiService.CheckConnection();
-
-        //    //if (!connection.IsSuccess)
-        //    //{
-        //    //    this.IsRunning = false;
-        //    //    await Application.Current.MainPage.DisplayAlert(
-        //    //        Languages.Error,
-        //    //        connection.Message,
-        //    //        Languages.Accept);
-        //    //    return null;
-        //    //}
-        //    ProfilePerfiles = new ObservableCollection<Object>();
-        //    var Email = ProfileEmail;
-        //    var Phone = ProfilePhone;
-        //    var SM = ProfileSM;
-        //    var Whatsapp = ProfileWhatsapp;
-        //    foreach (ProfileEmail profEmail in profileEmail)
-        //    {
-        //        if (profEmail.Exist == true)
-        //        {
-        //            ProfilePerfiles.Add(profEmail);
-        //        }
-        //    }
-        //    foreach (ProfilePhone profPhone in Phone)
-        //    {
-        //        if (profPhone.Exist == true)
-        //        {
-        //            ProfilePerfiles.Add(profPhone);
-        //        }
-        //    }
-        //    foreach (ProfileSM profMS in SM)
-        //    {
-        //        if (profMS.Exist == true)
-        //        {
-        //            ProfilePerfiles.Add(profMS);
-        //        }
-        //    }
-        //    foreach (ProfileWhatsapp profWhatsapp in Whatsapp)
-        //    {
-        //        if (profWhatsapp.Exist == true)
-        //        {
-        //            ProfilePerfiles.Add(profWhatsapp);
-        //        }
-        //    }
-
-        //    return ProfilePerfiles;
-        //}
-
-        //Actualizar listas
-
         #endregion
 
         #region Commads
