@@ -59,6 +59,7 @@
     <MtouchInterpreter>-all</MtouchInterpreter>
     <MtouchI18n>west</MtouchI18n>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -423,4 +424,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\twitterlogo2.png" />
   </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties TriggeredFromHotReload="False" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
