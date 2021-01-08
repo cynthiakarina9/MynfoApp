@@ -1325,9 +1325,11 @@
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {
-            MainViewModel.GetInstance().ProfileTypeSelection = new ProfileTypeSelectionViewModel();
-            //Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
-            App.Navigator.PushAsync(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName),false);
+            //MainViewModel.GetInstance().ProfileTypeSelection = new ProfileTypeSelectionViewModel();
+            ////Application.Current.MainPage = new NavigationPage(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName));
+            //App.Navigator.PushAsync(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName),false);
+            //MainViewModel.GetInstance().ProfileTypeSelection = new ProfileTypeSelectionViewModel();
+            App.Navigator.PushAsync(new TabbedListOfNetworksPage(_BoxId, _boxDefault, _boxName), false);
         }
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)

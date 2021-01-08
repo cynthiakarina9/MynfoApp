@@ -156,6 +156,42 @@
             return CreatedAtRoute("DefaultApi", new { id = box_ProfileWhatsapp.Box_ProfileWhatsappId }, box_ProfileWhatsapp);
         }
 
+
+        // DELETE: api/Box_ProfileWhatsapp/5
+        [ResponseType(typeof(Box_ProfileWhatsapp))]
+        public async Task<IHttpActionResult> DeleteBox_ProfileWhatsappRelations(JObject form)
+        {
+            try
+            {
+                int id;
+                dynamic jsonObject = form;
+                try
+                {
+                    id = jsonObject.ProfileEmailId;
+                }
+                catch
+                {
+                    return BadRequest("Missing parameter.");
+                }
+                var box_ProfileWhasapp = GetBox_ProfileWhatsapp().Where(u => u.ProfileWhatsappId == id).ToList();
+                if (box_ProfileWhasapp == null)
+                {
+                    return NotFound();
+                }
+
+                db.Box_ProfileWhatsapp.RemoveRange(box_ProfileWhasapp);
+                await db.SaveChangesAsync();
+
+                return Ok(box_ProfileWhasapp);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
         // DELETE: api/Box_ProfileWhatsapp/5
         [ResponseType(typeof(Box_ProfileWhatsapp))]
         public async Task<IHttpActionResult> DeleteBox_ProfileWhatsapp(int id)

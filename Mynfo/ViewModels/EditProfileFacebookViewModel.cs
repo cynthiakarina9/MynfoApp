@@ -50,7 +50,7 @@
         }
         #endregion
 
-        #region Commands
+        #region Methods
         private async Task<ProfileSM> GetProfile(int _ProfileMSId)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -62,7 +62,9 @@
                _ProfileMSId);
             return profileSM;
         }
+        #endregion
 
+        #region Commands
         public ICommand SaveCommand
         {
             get
@@ -126,7 +128,7 @@
             var response = await this.apiService.Delete(
                 apiSecurity,
                 "/api",
-                "/Box_ProfileSM",
+                "/Box_ProfileSM/DeleteBox_ProfileSMRelations",
                 profileSM.ProfileMSId);
 
             var response2 = await this.apiService.Delete(

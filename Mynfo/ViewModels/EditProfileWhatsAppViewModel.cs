@@ -135,7 +135,7 @@
 
 
             //Agregar a la lista
-            //MainViewModel.GetInstance().ProfilesByWhatsApp.updateProfile(profile);
+            MainViewModel.GetInstance().ProfilesByWhatsApp.updateProfile(profile);
 
             await App.Navigator.PopAsync();
         }
@@ -168,7 +168,7 @@
             var response = await this.apiService.Delete(
                 apiSecurity,
                 "/api",
-                "/Box_ProfileWhatsapp",
+                "/Box_ProfileWhatsapp/DeleteBox_ProfileWhatsappRelations",
                 profileWhats.ProfileWhatsappId);
 
             var response2 = await this.apiService.Delete(

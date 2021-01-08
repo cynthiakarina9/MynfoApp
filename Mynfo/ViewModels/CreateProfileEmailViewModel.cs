@@ -139,6 +139,7 @@
             if (mainViewModel.ProfilesBYPESM != null)
             {
                 mainViewModel.ProfilesBYPESM.addProfileEmail(profileemail);
+                mainViewModel.ListOfNetworks.addProfileEmail(profileemail);
             }
             else
             {

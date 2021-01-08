@@ -236,6 +236,7 @@
             ProfileEmail.Remove(selectedProfileEmail);
 
             ProfileEmail.Insert(newIndex, _profileEmail);
+
         }
         #endregion
 
