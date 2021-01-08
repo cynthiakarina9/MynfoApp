@@ -142,10 +142,11 @@ namespace Mynfo.ViewModels
             if (mainViewModel.ProfilesBYPESM != null)
             {
                 mainViewModel.ProfilesBYPESM.addProfileWhatsapp(profileWhatsapp);
+                mainViewModel.ListOfNetworks.addProfileWhatsapp(profileWhatsapp);
             }
             else
             {
-                //mainViewModel.ProfilesByWhatsApp.addProfile(profileWhatsapp);
+                mainViewModel.ProfilesByWhatsApp.addProfile(profileWhatsapp);
             }
 
             this.Name = string.Empty;

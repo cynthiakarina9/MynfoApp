@@ -158,6 +158,8 @@
 
 
         // DELETE: api/Box_ProfileWhatsapp/5
+        [HttpPost]
+        [Route("DeleteBox_ProfileWhatsappRelations")]
         [ResponseType(typeof(Box_ProfileWhatsapp))]
         public async Task<IHttpActionResult> DeleteBox_ProfileWhatsappRelations(JObject form)
         {

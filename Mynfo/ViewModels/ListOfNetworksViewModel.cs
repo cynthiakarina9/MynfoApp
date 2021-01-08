@@ -233,7 +233,7 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
-        public void updateProfileP(ProfilePhone _profileP)
+        public void updateProfilePhone(ProfilePhone _profileP)
         {
             ProfileLocal P = Converter.ToProfileLocalP(_profileP);
             ProfileLocal Aux = new ProfileLocal();
@@ -370,12 +370,12 @@
         }
 
         #region ListaWhatsapp
-        public void addProfileW(ProfileWhatsapp _profileW)
+        public void addProfileWhatsapp(ProfileWhatsapp _profileW)
         {
             var W = Converter.ToProfileLocalW(_profileW);
             ProfilePerfiles.Add(W);
         }
-        public void removeProfileW(ProfileWhatsapp _profileW)
+        public void removeProfileWhatsapp(ProfileWhatsapp _profileW)
         {
             ProfileLocal W = Converter.ToProfileLocalW(_profileW);
             ProfileLocal Aux = new ProfileLocal();
@@ -389,7 +389,7 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
-        public void updateProfileW(ProfileWhatsapp _profileW)
+        public void updateProfileWhatsapp(ProfileWhatsapp _profileW)
         {
             ProfileLocal W = Converter.ToProfileLocalW(_profileW);
             ProfileLocal Aux = new ProfileLocal();

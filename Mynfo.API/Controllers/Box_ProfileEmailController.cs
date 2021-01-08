@@ -156,6 +156,8 @@
         }
 
         // DELETE: api/Box_ProfileEmail/5
+        [HttpPost]
+        [Route("DeleteBox_ProfileEmailRelations")]
         [ResponseType(typeof(Box_ProfileEmail))]
         public async Task<IHttpActionResult> DeleteBox_ProfileEmailRelations(JObject form)
         {
@@ -190,8 +192,6 @@
             {
                 return NotFound();
             }
-            
-
         }
 
         // DELETE: api/Box_ProfileEmail/5

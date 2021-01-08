@@ -125,7 +125,7 @@
                 return;
             }
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Delete(
+            var response = await this.apiService.Delete1(
                 apiSecurity,
                 "/api",
                 "/Box_ProfileSM/DeleteBox_ProfileSMRelations",

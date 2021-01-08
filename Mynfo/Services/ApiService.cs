@@ -1278,7 +1278,7 @@
                 };
             }
         }
-        public async Task<Response> Delete1(
+        public async Task<Response> DeleteEmail(
             string urlBase,
             string servicePrefix,
             string controller,
@@ -1299,11 +1299,124 @@
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
                 var url = string.Format(
-                    "{0}{1}/{2}",
+                    "{0}{1}",
                     servicePrefix,
-                    controller,
-                    id);
-                var response = await client.DeleteAsync(url);
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<Response> Delete1(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfileSM
+                {
+                    ProfileMSId = id,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<Response> DeleteWhatsapp(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfileWhatsapp
+                {
+                    ProfileWhatsappId = id,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<Response> DeleteRelationPhone(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfilePhone
+                {
+                    ProfilePhoneId = id,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
                 var result = await response.Content.ReadAsStringAsync();
 
                 if (!response.IsSuccessStatusCode)

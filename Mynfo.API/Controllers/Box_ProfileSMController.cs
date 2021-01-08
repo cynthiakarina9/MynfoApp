@@ -154,6 +154,8 @@
         }
 
         // DELETE: api/Box_ProfileSM/5
+        [HttpPost]
+        [Route("DeleteBox_ProfileSMRelations")]
         [ResponseType(typeof(Box_ProfileSM))]
         public async Task<IHttpActionResult> DeleteBox_ProfileSMRelations(JObject form)
         {

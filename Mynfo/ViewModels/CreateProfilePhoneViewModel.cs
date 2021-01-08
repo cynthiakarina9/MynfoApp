@@ -140,7 +140,7 @@
             if (mainViewModel.ProfilesBYPESM != null)
             {
                 mainViewModel.ProfilesBYPESM.addProfilePhone(profilephone);
-                //mainViewModel.ProfilesBYPESM = null;
+                mainViewModel.ListOfNetworks.addProfilePhone(profilephone);
             }
             else
             {

@@ -128,6 +128,7 @@
             if (mainViewModel.ProfilesBYPESM != null)
             {
                 mainViewModel.ProfilesBYPESM.addProfileSM(profileSM);
+                mainViewModel.ListOfNetworks.addProfileSM(profileSM);
             }
             else
             {

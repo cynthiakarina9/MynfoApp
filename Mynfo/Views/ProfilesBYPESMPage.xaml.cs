@@ -936,6 +936,7 @@
                     PostProfileEmail(Box.BoxId, tappedItemEmail.ProfileEmailId);
                     tappedItemEmail.Exist = true;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileEmail(tappedItemEmail);
+                    MainViewModel.GetInstance().ListOfNetworks.updateProfileEmail(tappedItemEmail);
                     MainViewModel.GetInstance().DetailsBox.addProfileEmail(tappedItemEmail);
                 }
                 else
@@ -943,6 +944,7 @@
                     DeleteProfileEmail(Box.BoxId, tappedItemEmail.ProfileEmailId);
                     tappedItemEmail.Exist = false;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileEmail(tappedItemEmail);
+                    MainViewModel.GetInstance().ListOfNetworks.updateProfileEmail(tappedItemEmail);
                     MainViewModel.GetInstance().DetailsBox.removeProfileEmail(tappedItemEmail);
                 }
             }
@@ -954,6 +956,7 @@
                     PostProfilePhone(Box.BoxId, tappedItemPhone.ProfilePhoneId);
                     tappedItemPhone.Exist = true;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfilePhone(tappedItemPhone);
+                    MainViewModel.GetInstance().ListOfNetworks.updateProfilePhone(tappedItemPhone);
                     MainViewModel.GetInstance().DetailsBox.addProfilePhone(tappedItemPhone);
                 }
                 else
@@ -961,6 +964,7 @@
                     DeleteProfilePhone(Box.BoxId, tappedItemPhone.ProfilePhoneId);
                     tappedItemPhone.Exist = false;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfilePhone(tappedItemPhone);
+                    MainViewModel.GetInstance().ListOfNetworks.updateProfilePhone(tappedItemPhone);
                     MainViewModel.GetInstance().DetailsBox.removeProfilePhone(tappedItemPhone);
                 }
             }
@@ -972,6 +976,7 @@
                     PostProfileSM(Box.BoxId, tappedItemSM.ProfileMSId);
                     tappedItemSM.Exist = true;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileSM(tappedItemSM);
+                    MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(tappedItemSM);
                     MainViewModel.GetInstance().DetailsBox.addProfileSM(tappedItemSM);
                 }
                 else
@@ -979,6 +984,7 @@
                     DeleteProfileSM(Box.BoxId, tappedItemSM.ProfileMSId);
                     tappedItemSM.Exist = false;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileSM(tappedItemSM);
+                    MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(tappedItemSM);
                     MainViewModel.GetInstance().DetailsBox.removeProfileSM(tappedItemSM);
                 }
             }
@@ -990,6 +996,7 @@
                     PostProfileWhatsapp(Box.BoxId, tappedItemWhatsapp.ProfileWhatsappId);
                     tappedItemWhatsapp.Exist = true;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileWhatsapp(tappedItemWhatsapp);
+                    MainViewModel.GetInstance().ListOfNetworks.updateProfileWhatsapp(tappedItemWhatsapp);
                     MainViewModel.GetInstance().DetailsBox.addProfileW(tappedItemWhatsapp);
                 }
                 else
@@ -997,6 +1004,7 @@
                     DeleteProfileWhatsapp(Box.BoxId, tappedItemWhatsapp.ProfileWhatsappId);
                     tappedItemWhatsapp.Exist = false;
                     MainViewModel.GetInstance().ProfilesBYPESM.updateProfileWhatsapp(tappedItemWhatsapp);
+                    MainViewModel.GetInstance().ListOfNetworks.updateProfileWhatsapp(tappedItemWhatsapp);
                     MainViewModel.GetInstance().DetailsBox.removeProfileW(tappedItemWhatsapp);
                 }
             }

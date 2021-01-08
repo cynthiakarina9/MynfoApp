@@ -56,7 +56,7 @@
                     {
                         PostProfileEmail(Box.BoxId, E.ProfileEmailId);
                         E.Exist = true;
-                        MainViewModel.GetInstance().ListOfNetworks.addProfileEmail(E);
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileEmail(E);
                         MainViewModel.GetInstance().DetailsBox.addProfileEmail(E);
                     }
                     else
@@ -67,54 +67,207 @@
                         MainViewModel.GetInstance().DetailsBox.removeProfileEmail(E);
                     }
                     break;
-                case "phone2":
+                case "tel2":
                     ProfilePhone P = Converter.ToProfilePhone(tappedItemProfile);
                     if (P.Exist == false)
                         {
                             PostProfilePhone(Box.BoxId, P.ProfilePhoneId);
                             P.Exist = true;
-                            MainViewModel.GetInstance().ListOfNetworks.addProfilePhone(P);
+                            MainViewModel.GetInstance().ListOfNetworks.updateProfilePhone(P);
                             MainViewModel.GetInstance().DetailsBox.addProfilePhone(P);
                         }
                         else
                         {
                             DeleteProfilePhone(Box.BoxId, P.ProfilePhoneId);
                             P.Exist = false;
-                            MainViewModel.GetInstance().ListOfNetworks.removeProfilePhone(P);
+                            MainViewModel.GetInstance().ListOfNetworks.updateProfilePhone(P);
                             MainViewModel.GetInstance().DetailsBox.removeProfilePhone(P);
                         }
                     break;
                 case "facebook2":
-                    ProfileSM SM = Converter.ToProfileSM(tappedItemProfile);
-                    if (SM.Exist == false)
+                    ProfileSM SMfb = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMfb.Exist == false)
                     {
-                        PostProfileSM(Box.BoxId, SM.ProfileMSId);
-                        SM.Exist = true;
-                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SM);
-                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SM);
+                        PostProfileSM(Box.BoxId, SMfb.ProfileMSId);
+                        SMfb.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMfb);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMfb);
                     }
                     else
                     {
-                        DeleteProfileSM(Box.BoxId, SM.ProfileMSId);
-                        SM.Exist = false;
-                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SM);
-                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SM);
+                        DeleteProfileSM(Box.BoxId, SMfb.ProfileMSId);
+                        SMfb.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMfb);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMfb);
                     }
                 break;
+                case "twitter2":
+                    ProfileSM SMtwtt = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMtwtt.Exist == false)
+                    {
+                        PostProfileSM(Box.BoxId, SMtwtt.ProfileMSId);
+                        SMtwtt.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMtwtt);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMtwtt);
+                    }
+                    else
+                    {
+                        DeleteProfileSM(Box.BoxId, SMtwtt.ProfileMSId);
+                        SMtwtt.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMtwtt);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMtwtt);
+                    }
+                    break;
+                case "instagramlogo2":
+                    ProfileSM SMIns = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMIns.Exist == false)
+                    {
+                        PostProfileSM(Box.BoxId, SMIns.ProfileMSId);
+                        SMIns.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMIns);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMIns);
+                    }
+                    else
+                    {
+                        DeleteProfileSM(Box.BoxId, SMIns.ProfileMSId);
+                        SMIns.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMIns);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMIns);
+                    }
+                    break;
+                case "snapchat2":
+                    ProfileSM SMSnap = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMSnap.Exist == false)
+                    {
+                        PostProfileSM(Box.BoxId, SMSnap.ProfileMSId);
+                        SMSnap.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMSnap);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMSnap);
+                    }
+                    else
+                    {
+                        DeleteProfileSM(Box.BoxId, SMSnap.ProfileMSId);
+                        SMSnap.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMSnap);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMSnap);
+                    }
+                    break;
+                case "linkedin2":
+                    ProfileSM SMSLink = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMSLink.Exist == false)
+                    {
+                        PostProfileSM(Box.BoxId, SMSLink.ProfileMSId);
+                        SMSLink.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMSLink);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMSLink);
+                    }
+                    else
+                    {
+                        DeleteProfileSM(Box.BoxId, SMSLink.ProfileMSId);
+                        SMSLink.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMSLink);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMSLink);
+                    }
+                    break;
+                case "tiktok2":
+                    ProfileSM SMSTik = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMSTik.Exist == false)
+                    {
+                        PostProfileSM(Box.BoxId, SMSTik.ProfileMSId);
+                        SMSTik.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMSTik);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMSTik);
+                    }
+                    else
+                    {
+                        DeleteProfileSM(Box.BoxId, SMSTik.ProfileMSId);
+                        SMSTik.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMSTik);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMSTik);
+                    }
+                    break;
+                case "youtube2":
+                    ProfileSM SMYou = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMYou.Exist == false)
+                    {
+                        PostProfileSM(Box.BoxId, SMYou.ProfileMSId);
+                        SMYou.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMYou);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMYou);
+                    }
+                    else
+                    {
+                        DeleteProfileSM(Box.BoxId, SMYou.ProfileMSId);
+                        SMYou.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMYou);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMYou);
+                    }
+                    break;
+                case "spotyfy2":
+                    ProfileSM SMSP = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMSP.Exist == false)
+                    {
+                        PostProfileSM(Box.BoxId, SMSP.ProfileMSId);
+                        SMSP.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMSP);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMSP);
+                    }
+                    else
+                    {
+                        DeleteProfileSM(Box.BoxId, SMSP.ProfileMSId);
+                        SMSP.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMSP);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMSP);
+                    }
+                    break;
+                case "twitch2":
+                    ProfileSM SMTwc = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMTwc.Exist == false)
+                    {
+                        PostProfileSM(Box.BoxId, SMTwc.ProfileMSId);
+                        SMTwc.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMTwc);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMTwc);
+                    }
+                    else
+                    {
+                        DeleteProfileSM(Box.BoxId, SMTwc.ProfileMSId);
+                        SMTwc.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMTwc);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMTwc);
+                    }
+                    break;
+                case "gmail2":
+                    ProfileSM SMWeb = Converter.ToProfileSM(tappedItemProfile);
+                    if (SMWeb.Exist == false)
+                    {
+                        PostProfileSM(Box.BoxId, SMWeb.ProfileMSId);
+                        SMWeb.Exist = true;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMWeb);
+                        MainViewModel.GetInstance().DetailsBox.addProfileSM(SMWeb);
+                    }
+                    else
+                    {
+                        DeleteProfileSM(Box.BoxId, SMWeb.ProfileMSId);
+                        SMWeb.Exist = false;
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileSM(SMWeb);
+                        MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMWeb);
+                    }
+                    break;
                 case "whatsapp2":
                     ProfileWhatsapp W  = Converter.ToProfileWhatsapp(tappedItemProfile);
                     if (W.Exist == false)
                     {
                         PostProfileWhatsapp(Box.BoxId, W.ProfileWhatsappId);
                         W.Exist = true;
-                        MainViewModel.GetInstance().ListOfNetworks.addProfileW(W);
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileWhatsapp(W);
                         MainViewModel.GetInstance().DetailsBox.addProfileW(W);
                     }
                     else
                     {
                         DeleteProfileWhatsapp(Box.BoxId, W.ProfileWhatsappId);
                         W.Exist = false;
-                        MainViewModel.GetInstance().ListOfNetworks.removeProfileW(W);
+                        MainViewModel.GetInstance().ListOfNetworks.updateProfileWhatsapp(W);
                         MainViewModel.GetInstance().DetailsBox.removeProfileW(W);
                     }
                     break;

@@ -162,7 +162,7 @@
                 return;
             }
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Delete(
+            var response = await this.apiService.DeleteRelationPhone(
                 apiSecurity,
                 "/api",
                 "/Box_ProfilePhone/DeleteBox_ProfilePhoneRelations",
