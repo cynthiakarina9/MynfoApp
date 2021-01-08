@@ -253,7 +253,7 @@
                 // Use default vibration length
                 Vibration.Vibrate();
                 // Or use specified time
-                var duration = TimeSpan.FromSeconds(1);
+                var duration = TimeSpan.FromMilliseconds(500);
                 Vibration.Vibrate(duration);
                 EnableReaderMode();
 
