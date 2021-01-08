@@ -245,6 +245,11 @@
             get;
             set;
         }
+        public ListOfNetworksViewModel ListOfNetworks
+        {
+            get;
+            set;
+        }
         public LoginViewModel Login
         {
             get;

@@ -38,7 +38,7 @@
                     </ActivityIndicator>
                     <Label 
                             Grid.Row = "0" 
-                            Text = "{i18n:Translate NetworkList}"
+                            Text = "{i18n:Translate NetworksList}"
                             FontSize = "30"
                             FontAttributes="Bold"
                             TextColor = "{StaticResource MainColor}"
@@ -99,6 +99,12 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="21"
+                        IsVisible="{Binding EmptyList}"
+                        Text="{i18n:Translate ProfileNull}"
+                        TextColor="LightGray"/>
                 </Grid>
             </ScrollView>
             <!-- Botón de nuevo correo -->

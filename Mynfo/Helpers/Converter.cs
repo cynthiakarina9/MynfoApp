@@ -6,19 +6,19 @@
 
     public static class Converter
     {
+        #region User
         public static UserLocal ToUserLocal(User user)
-        {
-            return new UserLocal
-            {
-                Email = user.Email,
-                FirstName = user.FirstName,
-                ImagePath = user.ImagePath,
-                LastName = user.LastName,
-                UserId = user.UserId,
-                UserTypeId = user.UserTypeId,
-            };
-        }
-
+                {
+                    return new UserLocal
+                    {
+                        Email = user.Email,
+                        FirstName = user.FirstName,
+                        ImagePath = user.ImagePath,
+                        LastName = user.LastName,
+                        UserId = user.UserId,
+                        UserTypeId = user.UserTypeId,
+                    };
+                }
         public static User ToUserDomain(UserLocal user, byte[] imageArray)
         {
             return new User
@@ -32,33 +32,55 @@
                 ImageArray = imageArray,
             };
         }
+        #endregion
 
+        #region ProfileEmail
         public static ProfileLocal ToProfileLocalE(ProfileEmail profile)
         {
             return new ProfileLocal
             {
+                ProfileId = profile.ProfileEmailId,
                 ProfileName = profile.Name,
                 value = profile.Email,
-                Logo = "mail2"
+                Logo = "mail2",
+                Exist = profile.Exist,
+                UserId = profile.UserId
             };
         }
         public static ProfileLocal ToProfileLocalE1(ProfileEmail profile)
         {
             return new ProfileLocal
             {
+                ProfileId = profile.ProfileEmailId,
                 ProfileName = profile.Name,
                 value = profile.Email,
                 Logo = "mail3"
             };
         }
+        public static ProfileEmail ToProfileEmail(ProfileLocal profile)
+        {
+            return new ProfileEmail
+            {
+                Name = profile.ProfileName,
+                Email = profile.value,
+                Exist = profile.Exist,
+                ProfileEmailId = profile.ProfileId,
+                UserId = profile.UserId
+            };
+        }
+        #endregion
 
+        #region ProfilePhone
         public static ProfileLocal ToProfileLocalP(ProfilePhone profile)
         {
             return new ProfileLocal
             {
                 ProfileName = profile.Name,
                 value = profile.Number,
-                Logo = "tel2"
+                Logo = "tel2",
+                Exist = profile.Exist,
+                UserId = profile.UserId,
+                ProfileId = profile.ProfilePhoneId
             };
         }
 
@@ -71,11 +93,24 @@
                 Logo = "tel3"
             };
         }
+        public static ProfilePhone ToProfilePhone(ProfileLocal profile)
+        {
+            return new ProfilePhone
+            {
+                Name = profile.ProfileName,
+                Number = profile.value,
+                Exist = profile.Exist,
+                ProfilePhoneId = profile.ProfileId,
+                UserId = profile.UserId
+            };
+        }
+        #endregion
 
+        #region ProfilesSM
         public static ProfileLocal ToProfileLocalSM(ProfileSM profile)
         {
             string LogoSM = null;
-            switch(profile.RedSocialId)
+            switch (profile.RedSocialId)
             {
                 case 1:
                     LogoSM = "facebook2";
@@ -117,6 +152,8 @@
                 value = profile.link,
                 RedSocialId = profile.RedSocialId,
                 Logo = LogoSM,
+                Exist = profile.Exist,
+                ProfileId = profile.ProfileMSId
             };
         }
 
@@ -168,13 +205,32 @@
             };
         }
 
+        public static ProfileSM ToProfileSM(ProfileLocal profile)
+        {
+            return new ProfileSM
+            {
+                Exist = profile.Exist,
+                link = profile.value,
+                ProfileMSId = profile.ProfileId,
+                ProfileName = profile.ProfileName,
+                RedSocialId = profile.RedSocialId,
+                UserId = profile.UserId
+            };
+        }
+
+        #endregion
+
+        #region ProfileWhatsapp
         public static ProfileLocal ToProfileLocalW(ProfileWhatsapp profile)
         {
             return new ProfileLocal
             {
                 ProfileName = profile.Name,
                 value = profile.Number,
-                Logo = "whatsapp2"
+                Logo = "whatsapp2",
+                Exist = profile.Exist,
+                UserId = profile.UserId,
+                ProfileId = profile.ProfileWhatsappId
             };
         }
 
@@ -187,6 +243,18 @@
                 Logo = "whatsapp3"
             };
         }
+        public static ProfileWhatsapp ToProfileWhatsapp(ProfileLocal profile)
+        {
+            return new ProfileWhatsapp
+            {
+                Exist = profile.Exist,
+                Number = profile.value,
+                Name = profile.ProfileName,
+                ProfileWhatsappId = profile.ProfileId,
+                UserId = profile.UserId
+            };
+        }
+        #endregion
 
     }
 }

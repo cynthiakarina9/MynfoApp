@@ -110,20 +110,16 @@
                     </Grid>
                 </Grid>
             </ScrollView>
-            <StackLayout
-                HorizontalOptions="FillAndExpand"
-                Margin="20"
-                VerticalOptions="End">
-                <Button 
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
-                        Command = "{Binding SaveProfileTiktokCommand}"
-                        HeightRequest = "50"
-                        Text = "{i18n:Translate Save}"
-                        TextColor = "{StaticResource Dark_FontColor}"
-                        VerticalOptions = "Center"
-                        x:Name="Save"/>
-            </StackLayout>
+            
+            <Button 
+                BackgroundColor = "{StaticResource MainColor}"
+                BorderRadius = "23"
+                Command = "{Binding SaveProfileTiktokCommand}"
+                HeightRequest = "50"
+                Text = "{i18n:Translate Save}"
+                TextColor = "{StaticResource Dark_FontColor}"
+                VerticalOptions = "Center"
+                x:Name="Save"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

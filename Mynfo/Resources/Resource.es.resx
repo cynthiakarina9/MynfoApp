@@ -124,7 +124,7 @@
     <value>Ingresa tu email.</value>
   </data>
   <data name="EmailValidation" xml:space="preserve">
-    <value>Debes ingresar un email.</value>
+    <value>Debes ingresar un email</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
@@ -148,7 +148,7 @@
     <value>Contraseña</value>
   </data>
   <data name="PasswordPlaceHolder" xml:space="preserve">
-    <value>Ingresa tu contraseña.</value>
+    <value>Ingresa tu contraseña</value>
   </data>
   <data name="Forgot" xml:space="preserve">
     <value>¿Olvidaste tu contraseña?</value>
@@ -268,7 +268,7 @@
     <value>Nombres</value>
   </data>
   <data name="FirstNamePlaceHolder" xml:space="preserve">
-    <value>Ingresa nombres.</value>
+    <value>Ingresa nombres</value>
   </data>
   <data name="FirstNameValidation" xml:space="preserve">
     <value>Debes ingresar nombre(s)</value>
@@ -277,19 +277,19 @@
     <value>Apellidos</value>
   </data>
   <data name="LastNamePlaceHolder" xml:space="preserve">
-    <value>Ingresa apellidos.</value>
+    <value>Ingresa apellidos</value>
   </data>
   <data name="LastNameValidation" xml:space="preserve">
-    <value>Debes ingresar apellido(s).</value>
+    <value>Debes ingresar apellido(s)</value>
   </data>
   <data name="PhoneLabel" xml:space="preserve">
     <value>Teléfono</value>
   </data>
   <data name="PhonePlaceHolder" xml:space="preserve">
-    <value>Ingresa teléfono.</value>
+    <value>Ingresa teléfono</value>
   </data>
   <data name="PhoneValidation" xml:space="preserve">
-    <value>Debes ingresar un teléfono.</value>
+    <value>Debes ingresar un teléfono</value>
   </data>
   <data name="ConfirmLabel" xml:space="preserve">
     <value>Confirmación</value>
@@ -298,16 +298,16 @@
     <value>Ingresa la confimación de clave...</value>
   </data>
   <data name="ConfirmValidation" xml:space="preserve">
-    <value>Debes ingresar la confirmación de la clave.</value>
+    <value>Debes ingresar la confirmación de la clave</value>
   </data>
   <data name="EmailValidation2" xml:space="preserve">
-    <value>Debes ingresar un email válido.</value>
+    <value>Debes ingresar un email válido</value>
   </data>
   <data name="PasswordValidation2" xml:space="preserve">
-    <value>La contraseña debe tener al menos sies (6) carácteres.</value>
+    <value>La contraseña debe tener al menos seis (6) carácteres</value>
   </data>
   <data name="ConfirmValidation2" xml:space="preserve">
-    <value>La contraseña y la confirmación no concuerdan.</value>
+    <value>La contraseña y la confirmación no concuerdan</value>
   </data>
   <data name="UserRegisteredMessage" xml:space="preserve">
     <value>Usuario registrado, ya puedes ingresar con este email y clave asignada.</value>
@@ -340,16 +340,16 @@
     <value>Contraseña nueva</value>
   </data>
   <data name="NewPasswordPlaceHolder" xml:space="preserve">
-    <value>Ingrese la nueva contraseña.</value>
+    <value>Ingrese la nueva contraseña</value>
   </data>
   <data name="ConnectionError1" xml:space="preserve">
-    <value>Verifica que tengas los parámetros de internet activados.</value>
+    <value>Verifica que tengas los parámetros de internet activados</value>
   </data>
   <data name="ConnectionError2" xml:space="preserve">
-    <value>Verifica que tengas conexión a internet.</value>
+    <value>Verifica que tengas conexión a internet</value>
   </data>
   <data name="LoginError" xml:space="preserve">
-    <value>Email o contraseña incorrectos.</value>
+    <value>Email o contraseña incorrectos</value>
   </data>
   <data name="ChagePasswordConfirm" xml:space="preserve">
     <value>La contraseña fue cambiada exitosamente.</value>
@@ -358,7 +358,7 @@
     <value>La contraseña actual es incorrecta</value>
   </data>
   <data name="ErrorChangingPassword" xml:space="preserve">
-    <value>La contraseña no pudo ser cambiada, por favor intenta más tarde.</value>
+    <value>La contraseña no pudo ser cambiada, por favor intenta más tarde</value>
   </data>
   <data name="MyProfiles" xml:space="preserve">
     <value>Perfiles</value>
@@ -436,7 +436,7 @@
     <value>Nombre del perfil</value>
   </data>
   <data name="NumberPhone" xml:space="preserve">
-    <value>Número de Teléfono o celular</value>
+    <value>Número de teléfono o celular</value>
   </data>
   <data name="ChooseTypeProfile" xml:space="preserve">
     <value>Redes</value>
@@ -445,19 +445,19 @@
     <value>Perfil de Teléfono</value>
   </data>
   <data name="NameValidation" xml:space="preserve">
-    <value>Debe ingresar un nombre.</value>
+    <value>Debe ingresar un nombre</value>
   </data>
   <data name="NumberValidation" xml:space="preserve">
-    <value>Debe ingresar un número teléfonico.</value>
+    <value>Debe ingresar un número teléfonico</value>
   </data>
   <data name="PhoneValidation2" xml:space="preserve">
-    <value>El número de teléfono debe contener 10 dígitos.</value>
+    <value>El número de teléfono debe contener 10 dígitos</value>
   </data>
   <data name="DetailBox" xml:space="preserve">
-    <value>Detalles de Box.</value>
+    <value>Detalles de Box</value>
   </data>
   <data name="CreateProfileEmail" xml:space="preserve">
-    <value>Crear perfil de correo electrónico.</value>
+    <value>Crear perfil de correo electrónico</value>
   </data>
   <data name="PhoneProfileList" xml:space="preserve">
     <value>Lista de perfiles de teléfonos</value>
@@ -490,10 +490,10 @@
     <value>Empresarial, Personal, Amigos.</value>
   </data>
   <data name="EditEmail" xml:space="preserve">
-    <value>Editar perfil de correo eléctronico.</value>
+    <value>Editar perfil de correo eléctronico</value>
   </data>
   <data name="EditPhone" xml:space="preserve">
-    <value>Editar perfil de teléfono.</value>
+    <value>Editar perfil de teléfono</value>
   </data>
   <data name="FacebookProfileList" xml:space="preserve">
     <value>Lista de perfiles de Facebook</value>
@@ -508,7 +508,7 @@
     <value>Debe ingresar un url</value>
   </data>
   <data name="ProfileELabel" xml:space="preserve">
-    <value>Su usuario fue creado por una red social, para realizar algún cambio deberá realizarlo desde esa misma red social.</value>
+    <value>Su usuario fue creado por una red social, para realizar algún cambio deberá realizarlo desde esa misma red social</value>
   </data>
   <data name="WhatsappProfileList" xml:space="preserve">
     <value>Lista de perfiles de Whatsapp</value>
@@ -519,7 +519,7 @@
   <data name="EditNetwork" xml:space="preserve">
     <value>Editar red</value>
   </data>
-  <data name="NetworkList" xml:space="preserve">
+  <data name="NetworksList" xml:space="preserve">
     <value>Lista de redes</value>
   </data>
   <data name="AskDeleteNetworkFromBox" xml:space="preserve">
@@ -535,13 +535,13 @@
     <value>¡Éxito!</value>
   </data>
   <data name="ErrorAddProfile" xml:space="preserve">
-    <value>A ocurrido un error, por favor intentelo más tarde.</value>
+    <value>Ha ocurrido un error, por favor intentelo más tarde</value>
   </data>
   <data name="WrongEmail" xml:space="preserve">
     <value>Ya existe una cuenta con ese correo electrónico, inténtelo de nuevo con uno diferente.</value>
   </data>
   <data name="ProfileNull" xml:space="preserve">
-    <value>Aun no ha creado ningún perfil de este tipo.</value>
+    <value>Aún no ha creado ningún perfil de este tipo</value>
   </data>
   <data name="NickName" xml:space="preserve">
     <value>Nombre de usuario</value>
@@ -550,6 +550,6 @@
     <value>user</value>
   </data>
   <data name="EmptyBox" xml:space="preserve">
-    <value>Aún no tiene redes agregadas a ésta box.</value>
+    <value>Aún no tiene redes agregadas a ésta box</value>
   </data>
 </root>

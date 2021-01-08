@@ -11,7 +11,7 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
-    public class DetailsBoxViewModel : BaseViewModel
+    public class ListOfNetworksViewModel : BaseViewModel
     {
         #region Services
         ApiService apiService;
@@ -77,13 +77,11 @@
                 SetValue(ref profilePerfiles, value);
             }
         }
-
-
-        public ProfileSM selectedProfileSM { get; set; }
+        public ProfileLocal selectedProfileProfiles { get; set; }
         #endregion
 
         #region Constructor
-        public DetailsBoxViewModel(int _BoxId)
+        public ListOfNetworksViewModel(int _BoxId, bool _boxDefault, string _boxName)
         {
             apiService = new ApiService();
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
@@ -101,16 +99,6 @@
         {
             this.IsRunning = true;
             List<ProfileEmail> listEmail;
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             ProfileEmail = new ObservableCollection<ProfileEmail>();
             listEmail = await this.apiService.GetListByUser<ProfileEmail>(
@@ -126,7 +114,7 @@
                     BoxId = _BoxId,
                     ProfileEmailId = ItemEmail.ProfileEmailId
                 };
-                //apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+                
                 var response = await this.apiService.Get(
                     apiSecurity,
                     "/api",
@@ -135,29 +123,22 @@
 
                 ItemEmail.Exist = response.IsSuccess;
 
-                if (ItemEmail.Exist == true)
-                {
+                //if (ItemEmail.Exist == true)
+                //{
                     var Email = Converter.ToProfileLocalE(ItemEmail);
                     ProfilePerfiles.Add(Email);
-                }
+                //}
             }
-            //foreach (ProfileEmail profEmail in listEmail)
-            //{
-            //    if (profEmail.Exist == true)
-            //    {
-            //        ProfilePerfiles.Add(profEmail);
-            //    }
-            //}
             this.IsRunning = false;
             return ProfileEmail;
         }
 
+        #region ListasEmail
         public void addProfileEmail(ProfileEmail _profileEmail)
         {
             var E = Converter.ToProfileLocalE(_profileEmail);
             ProfilePerfiles.Add(E);
         }
-
         public void removeProfileEmail(ProfileEmail _profileEmail)
         {
             ProfileLocal E = Converter.ToProfileLocalE(_profileEmail);
@@ -172,6 +153,26 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
+        public void updateProfileEmail(ProfileEmail _profileEmail)
+        {
+            ProfileLocal E = Converter.ToProfileLocalE(_profileEmail);
+            ProfileLocal Aux = new ProfileLocal();
+            int newIndex = 0;
+            foreach (ProfileLocal PLocal in ProfilePerfiles)
+            {
+                if (E.ProfileName == PLocal.ProfileName && E.value == PLocal.value)
+                {
+                    Aux = PLocal;
+                    newIndex = ProfilePerfiles.IndexOf(PLocal);
+                }
+            }
+
+            ProfilePerfiles.Remove(Aux);
+
+            ProfilePerfiles.Insert(newIndex, E);
+        }
+        #endregion
+
         #endregion
 
         #region Phone
@@ -179,17 +180,6 @@
         {
             this.IsRunning = true;
             List<ProfilePhone> listPhone;
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
-
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             ProfilePhone = new ObservableCollection<ProfilePhone>();
             listPhone = await this.apiService.GetListByUser<ProfilePhone>(
@@ -205,7 +195,7 @@
                     BoxId = _BoxId,
                     ProfilePhoneId = ItemPhone.ProfilePhoneId
                 };
-                //apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+
                 var response = await this.apiService.Get(
                     apiSecurity,
                     "/api",
@@ -213,36 +203,29 @@
                     RelationPhone);
 
                 ItemPhone.Exist = response.IsSuccess;
-                if (ItemPhone.Exist == true)
-                {
+                //if (ItemPhone.Exist == true)
+                //{
                     var Phone = Converter.ToProfileLocalP(ItemPhone);
                     ProfilePerfiles.Add(Phone);
-                }
+                //}
             }
-            //foreach (ProfilePhone profPhone in listPhone)
-            //{
-            //    if (profPhone.Exist == true)
-            //    {
-            //        ProfilePerfiles.Add(profPhone);
-            //    }
-            //}
             this.IsRunning = false;
             return ProfilePhone;
         }
 
+        #region ListasPhone
         public void addProfilePhone(ProfilePhone _profilePhone)
         {
             var P = Converter.ToProfileLocalP(_profilePhone);
             ProfilePerfiles.Add(P);
         }
-
         public void removeProfilePhone(ProfilePhone _profilePhone)
         {
             ProfileLocal P = Converter.ToProfileLocalP(_profilePhone);
             ProfileLocal Aux = new ProfileLocal();
-            foreach(ProfileLocal PLocal in ProfilePerfiles)
+            foreach (ProfileLocal PLocal in ProfilePerfiles)
             {
-                if(P.ProfileName==PLocal.ProfileName && P.value == PLocal.value)
+                if (P.ProfileName == PLocal.ProfileName && P.value == PLocal.value)
                 {
                     Aux = PLocal;
                 }
@@ -250,6 +233,26 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
+        public void updateProfileP(ProfilePhone _profileP)
+        {
+            ProfileLocal P = Converter.ToProfileLocalP(_profileP);
+            ProfileLocal Aux = new ProfileLocal();
+            int newIndex = 0;
+            foreach (ProfileLocal PLocal in ProfilePerfiles)
+            {
+                if (P.ProfileName == PLocal.ProfileName && P.value == PLocal.value)
+                {
+                    Aux = PLocal;
+                    newIndex = ProfilePerfiles.IndexOf(PLocal);
+                }
+            }
+
+            ProfilePerfiles.Remove(Aux);
+
+            ProfilePerfiles.Insert(newIndex, P);
+        }
+        #endregion
+
         #endregion
 
         #region SM
@@ -257,16 +260,6 @@
         {
             this.IsRunning = true;
             List<ProfileSM> listSM;
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
@@ -284,29 +277,26 @@
                     BoxId = _BoxId,
                     ProfileMSId = ItemSM.ProfileMSId
                 };
-                //apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+ 
                 var response = await this.apiService.Get(
                     apiSecurity,
                     "/api",
                     "/Box_ProfileSM/GetBox_ProfileSM",
                     RelationSM);
                 ItemSM.Exist = response.IsSuccess;
-                if (ItemSM.Exist == true)
-                {
-                    var SM = Converter.ToProfileLocalSM(ItemSM);
-                    ProfilePerfiles.Add(SM);
-                }
+                var SM = Converter.ToProfileLocalSM(ItemSM);
+                ProfilePerfiles.Add(SM);
             }
             this.IsRunning = false;
             return ProfileSM;
         }
 
+        #region ListasSM
         public void addProfileSM(ProfileSM _profileSM)
         {
             var SM = Converter.ToProfileLocalSM(_profileSM);
             ProfilePerfiles.Add(SM);
         }
-
         public void removeProfileSM(ProfileSM _profileSM)
         {
             ProfileLocal SM = Converter.ToProfileLocalSM(_profileSM);
@@ -321,6 +311,25 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
+        public void updateProfileSM(ProfileSM _profileSM)
+        {
+            ProfileLocal SM = Converter.ToProfileLocalSM(_profileSM);
+            ProfileLocal Aux = new ProfileLocal();
+            int newIndex = 0;
+            foreach (ProfileLocal PLocal in ProfilePerfiles)
+            {
+                if (SM.ProfileName == PLocal.ProfileName && SM.value == PLocal.value)
+                {
+                    Aux = PLocal;
+                    newIndex = ProfilePerfiles.IndexOf(PLocal);
+                }
+            }
+
+            ProfilePerfiles.Remove(Aux);
+
+            ProfilePerfiles.Insert(newIndex, SM);
+        }
+        #endregion
         #endregion
 
         #region Whatsapp
@@ -328,18 +337,6 @@
         {
             this.IsRunning = true;
             List<ProfileWhatsapp> listWhatsapp;
-
-            //var connection = await this.apiService.CheckConnection();
-
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             ProfileWhatsapp = new ObservableCollection<ProfileWhatsapp>();
@@ -356,7 +353,7 @@
                     BoxId = _BoxId,
                     ProfileWhatsappId = ItemWhatsapp.ProfileWhatsappId
                 };
-                //apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+                
                 var response = await this.apiService.Get(
                     apiSecurity,
                     "/api",
@@ -364,29 +361,20 @@
                     RelationWhatsapp);
 
                 ItemWhatsapp.Exist = response.IsSuccess;
-                if (ItemWhatsapp.Exist == true)
-                {
-                    var W = Converter.ToProfileLocalW(ItemWhatsapp);
-                    ProfilePerfiles.Add(W);
-                }
+                
+                var W = Converter.ToProfileLocalW(ItemWhatsapp);
+                ProfilePerfiles.Add(W);
             }
-            //foreach (ProfileWhatsapp profWhatsapp in listWhatsapp)
-            //{
-            //    if (profWhatsapp.Exist == true)
-            //    {
-            //        ProfilePerfiles.Add(profWhatsapp);
-            //    }
-            //}
             this.IsRunning = false;
             return ProfileWhatsapp;
         }
 
+        #region ListaWhatsapp
         public void addProfileW(ProfileWhatsapp _profileW)
         {
             var W = Converter.ToProfileLocalW(_profileW);
             ProfilePerfiles.Add(W);
         }
-
         public void removeProfileW(ProfileWhatsapp _profileW)
         {
             ProfileLocal W = Converter.ToProfileLocalW(_profileW);
@@ -401,6 +389,26 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
+        public void updateProfileW(ProfileWhatsapp _profileW)
+        {
+            ProfileLocal W = Converter.ToProfileLocalW(_profileW);
+            ProfileLocal Aux = new ProfileLocal();
+            int newIndex = 0;
+            foreach (ProfileLocal PLocal in ProfilePerfiles)
+            {
+                if (W.ProfileName == PLocal.ProfileName && W.value == PLocal.value)
+                {
+                    Aux = PLocal;
+                    newIndex = ProfilePerfiles.IndexOf(PLocal);
+                }
+            }
+
+            ProfilePerfiles.Remove(Aux);
+
+            ProfilePerfiles.Insert(newIndex, W);
+        }
+        #endregion
+
         #endregion
 
         #endregion

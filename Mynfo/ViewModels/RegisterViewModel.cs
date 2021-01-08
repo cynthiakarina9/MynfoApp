@@ -84,10 +84,6 @@
         }
         #endregion
 
-        #region Methods
-
-        #endregion 
-
         #region Commands
         public ICommand RegisterCommand
         {

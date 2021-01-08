@@ -45,7 +45,7 @@
                     <!--BoxView 1-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "EmailProfile_Clicked"
+                        Command = "{Binding EmailProfileCommand}"
                         Grid.Column = "1"
                         Grid.Row = "1"   
                         HeightRequest = "150"
@@ -57,7 +57,7 @@
                     <!--BoxView 2-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "PhoneProfile_Clicked"
+                        Command = "{Binding PhoneProfileCommand}"
                         Grid.Column = "3"
                         Grid.Row = "1" 
                         HeightRequest = "150"
@@ -69,7 +69,7 @@
                     <!--BoxView 3-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "WhatsAppProfile_Clicked"
+                        Command = "{Binding WhatsAppProfileCommand}"
                         Grid.Column = "1"
                         Grid.Row = "2" 
                         HeightRequest = "150"
@@ -82,7 +82,7 @@
                     <!--BoxView 4-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "FacebookProfile_Clicked"
+                        Command = "{Binding FacebookProfileCommand}"
                         Grid.Column = "3"
                         Grid.Row = "2" 
                         HeightRequest = "150"
@@ -94,7 +94,7 @@
                     <!--BoxView 5-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "InstagramProfile_Clicked"
+                        Command = "{Binding InstagramProfileCommand}"
                         Grid.Column = "1"
                         Grid.Row = "3" 
                         HeightRequest = "150"
@@ -106,7 +106,7 @@
                     <!--BoxView 6 -->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked="TwitterProfile_Clicked"
+                        Command = "{Binding TwitterProfileCommand}"
                         Grid.Column = "3"
                         Grid.Row = "3"   
                         HeightRequest = "150"
@@ -118,7 +118,7 @@
                     <!-- BoxView 7 -->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked="LinkedinProfile_Clicked"
+                        Command = "{Binding LinkedinProfileCommand}"
                         Grid.Column = "1"
                         Grid.Row = "4" 
                         HeightRequest = "150"
@@ -130,7 +130,7 @@
                     <!--BoxView 8-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "TiktokProfile_Clicked"
+                        Command = "{Binding TiktokProfileCommand}"
                         Grid.Column = "3"
                         Grid.Row = "4"   
                         HeightRequest = "150"
@@ -142,7 +142,7 @@
                     <!--BoxView 9-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked ="SnapchatProfile_Clicked"
+                        Command = "{Binding SnapchatProfileCommand}"
                         Grid.Column = "1"
                         Grid.Row = "5" 
                         HeightRequest = "150"
@@ -154,7 +154,7 @@
                     <!--BoxView 10-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "SpotifyProfile_Clicked"
+                        Command = "{Binding SpotifyProfileCommand}"
                         Grid.Column = "3"
                         Grid.Row = "5"   
                         HeightRequest = "150"
@@ -166,7 +166,7 @@
                     <!--BoxView 11-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "YoutubeProfile_Clicked"
+                        Command = "{Binding YoutubeProfileCommand}"
                         Grid.Column = "1"
                         Grid.Row = "6"   
                         HeightRequest = "150"
@@ -178,7 +178,7 @@
                     <!--BoxView 12-->
                     <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "TwitchProfile_Clicked"
+                        Command = "{Binding TwitchProfileCommand}"
                         Grid.Column = "3"
                         Grid.Row = "6"   
                         HeightRequest = "150"
@@ -188,16 +188,16 @@
                         WidthRequest = "150" />
 
                     <!--BoxView 13-->
-                    <!--<ImageButton 
+                    <ImageButton 
                         BackgroundColor = "Transparent"
-                        Clicked = "WebPageProfile_Clicked"
+                        Command = "{Binding WebPageProfileCommand}"
                         Grid.Column = "1"
                         Grid.Row = "7"   
                         HeightRequest = "150"
                         HorizontalOptions = "Center"
                         Source = "gmail1.png"   
                         VerticalOptions = "Center"
-                        WidthRequest = "150" />-->
+                        WidthRequest = "150" />
 
                     <!--BoxView 14-->
                     <!--<ImageButton 

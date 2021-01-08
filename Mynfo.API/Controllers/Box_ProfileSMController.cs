@@ -69,9 +69,8 @@
                 return BadRequest(ex.Message);
             }
         }
-
-        // GET: api/Box_ProfileSM/GetBox_ProfileSM
         [HttpPost]
+        // GET: api/Box_ProfileSM/GetBox_ProfileSM
         [Route("GetBox_ProfileSMId")]
         public IQueryable<Box_ProfileSM> GetBox_ProfileSMId(JObject form)
         {
@@ -152,6 +151,45 @@
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = box_ProfileSM.Box_ProfileSMId }, box_ProfileSM);
+        }
+
+        // DELETE: api/Box_ProfileSM/5
+        [ResponseType(typeof(Box_ProfileSM))]
+        public async Task<IHttpActionResult> DeleteBox_ProfileSMRelations(JObject form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                int id;
+                dynamic jsonObject = form;
+                try
+                {
+                    id = jsonObject.ProfileMSId;
+                }
+                catch
+                {
+                    return BadRequest("Missing parameter.");
+                }
+                var box_ProfileSM = GetBox_ProfileSM().Where(u => u.ProfileMSId == id).ToList();
+                if (box_ProfileSM == null)
+                {
+                    return NotFound();
+                }
+
+                db.Box_ProfileSM.RemoveRange(box_ProfileSM);
+                await db.SaveChangesAsync();
+
+                return Ok(box_ProfileSM);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         // DELETE: api/Box_ProfileSM/5

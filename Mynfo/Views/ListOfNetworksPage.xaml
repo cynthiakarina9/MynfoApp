@@ -2,29 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.ProfilesByWebPagePage"
-             BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
-    <NavigationPage.TitleView>
-        <Grid
-            BindingContext="{Binding ProfilesByWebPage}">
-            <ImageButton
-                BackgroundColor = "Transparent"
-                Command="{Binding BackHomeCommand}"
-                Grid.ColumnSpan = "3"
-                Margin = "0,0,70,0"
-                HorizontalOptions = "Center"
-                Source = "logo_superior3.png" 
-                VerticalOptions = "Center"
-                WidthRequest = "100"/>
-        </Grid>
-    </NavigationPage.TitleView>
+             x:Class="Mynfo.Views.ListOfNetworksPage"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
-        <Grid>
-            <ScrollView 
-                BindingContext="{Binding ProfilesByWebPage}">
+        <Grid
+            BindingContext = "{Binding ListOfNetworks}">
+            <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80" />
                         <RowDefinition />
                         <RowDefinition Height="120"/>
                     </Grid.RowDefinitions>
@@ -33,81 +20,92 @@
 
                     <Label 
                         Grid.Row = "0" 
-                        Text = "{i18n:Translate NetworksList}"
+                        Text = "{i18n:Translate MyProfiles}"
                         FontSize = "25"
                         FontAttributes="Bold"
                         TextColor = "{StaticResource MainColor}"
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions = "EndAndExpand"  
                         Margin = "0,5,0,15"/>
+
+                    <!--End Titulo-->
                     <ActivityIndicator
                         Grid.Row = "1"
                         IsRunning = "{Binding IsRunning}"
                         HorizontalOptions = "CenterAndExpand"
-                        VerticalOptions="StartAndExpand">
-                    </ActivityIndicator>
-                    <ListView 
-                        ItemsSource="{Binding profileSM}"
+                        VerticalOptions="StartAndExpand" />
+
+                    <!-- Lista de perfiles de email -->
+                    <ListView  
                         Grid.Row="1"
-                        SelectedItem="{Binding selectedProfile}"
+                        HasUnevenRows="true"
                         ItemSelected="OnListViewItemSelected"
+                        ItemsSource="{Binding ProfilePerfiles, Mode=TwoWay}"
                         ItemTapped="OnListViewItemTapped"
-                        HasUnevenRows="true">
+                        Margin="10,35,10,20"
+                        SelectedItem="{Binding selectedProfileProfiles}"
+                        x:Name="ProfileList">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid Padding="10">
+                                    <Grid Padding="20">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Image 
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
                                             Grid.Column="0"
-                                            Source="webpage2"
-                                            HeightRequest="40"
-                                            HorizontalOptions="End"
-                                            Margin="70,0,20,0"
-                                            VerticalOptions="Center"
-                                            WidthRequest="50" />
+                                            HeightRequest="30"
+                                            Margin="5"
+                                            Source="{Binding Logo}"
+                                            WidthRequest="30"/>
                                         <Label 
                                             Grid.Column="1"
-                                            Text="{Binding ProfileName}"
+                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
-                                            Margin="0,0,10,0"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
+                                        <input:CheckBox 
+                                            IsEnabled="False"
+                                            Grid.Column="3"
+                                            IsChecked="{Binding Exist}" />
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+
+                    <!--Lista vacia-->
                     <Label
                         FontAttributes="Bold"
                         FontSize="21"
                         Grid.Row="1"
                         HorizontalTextAlignment="Center"
-                        IsVisible="{Binding EmptyList}"
+                        IsVisible="false"
                         Margin="10,0,10,280"
                         Text="{i18n:Translate ProfileNull}"
                         TextColor="LightGray"
                         VerticalOptions="Center"/>
                 </Grid>
             </ScrollView>
-            <!-- Botón de nuevo correo -->
+            <!--Botón para agregar nuevas cuentas-->
             <ImageButton
-                Grid.Row="0"
                 BackgroundColor = "Transparent"
-                Clicked = "NewProfileWebPage_Clicked"
+                Grid.Row = "0"
                 HeightRequest = "60"
                 HorizontalOptions ="Center"
-                Margin = "15"
                 Source = "Plus"
+                Margin = "15"
                 VerticalOptions = "End"
-                WidthRequest = "60" />
+                WidthRequest = "60" 
+                x:Name="GoToProfiles"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

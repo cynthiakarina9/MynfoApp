@@ -20,10 +20,15 @@
         #region Attributes
         private bool isRunning;
         private ObservableCollection<ProfileSM> profilesM;
+        public bool emptyList;
         #endregion
 
         #region Properties
-
+        public bool EmptyList
+        {
+            get { return this.emptyList; }
+            set { SetValue(ref this.emptyList, value); }
+        }
         public bool IsRunning
         {
             get { return this.isRunning; }
@@ -45,6 +50,7 @@
         public ProfilesByFacebookViewModel()
         {
             apiService = new ApiService();
+            EmptyList = false;
             GetList();
         }
         #endregion
@@ -99,12 +105,7 @@
 
             if (profileSocialMedia.Count == 0)
             {
-                this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Information,
-                    Languages.ProfileNull,
-                    Languages.Accept);
-                return null;
+                EmptyList = true;
             }
 
             foreach (ProfileSM profSM in profileSocialMedia)

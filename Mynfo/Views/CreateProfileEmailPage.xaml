@@ -32,88 +32,86 @@
                         <RowDefinition Height = "120"/>
                     </Grid.RowDefinitions>
                     <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "25"
-                    Grid.ColumnSpan ="1"
-                    Grid.Row = "0"
-                    HorizontalOptions = "Center"
-                    HorizontalTextAlignment = "Center"
-                    Text = "{i18n:Translate AddNetwork}"
-                    TextColor = "{StaticResource MainColor}"
-                    VerticalOptions = "Center"/>
-                    <Image
-                    HeightRequest = "180"
-                    Source = "mail2"
-                    Grid.Row = "1"
-                    WidthRequest = "180"/>
-                    <StackLayout 
-                    Grid.Row = "2"
-                    Padding = "20">
-                        <Label 
-                        FontSize = "24" 
-                        FontAttributes="Bold"
+                        FontAttributes = "Bold"
+                        FontSize = "25"
+                        Grid.ColumnSpan ="1"
+                        Grid.Row = "0"
                         HorizontalOptions = "Center"
-                        Text = "{i18n:Translate NameProfile}" 
+                        HorizontalTextAlignment = "Center"
+                        Text = "{i18n:Translate AddNetwork}"
                         TextColor = "{StaticResource MainColor}"
                         VerticalOptions = "Center"/>
+                    <Image
+                        HeightRequest = "180"
+                        Source = "mail2"
+                        Grid.Row = "1"
+                        WidthRequest = "180"/>
+                    <StackLayout 
+                        Grid.Row = "2"
+                        Padding = "20">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NameProfile}" 
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
                         <Entry 
-                        FontSize = "21"
-                        HorizontalTextAlignment = "Center"
-                        HeightRequest = "46"
-                        HorizontalOptions = "Center"
-                        MaxLength = "10"
-                        Placeholder = "{i18n:Translate NProfilePlaceH}"
-                        Text = "{Binding Name}"
-                        VerticalOptions = "Center" 
-                        WidthRequest = "300" 
-                        x:Name="ProfileName"/>
+                            FontSize = "21"
+                            HorizontalTextAlignment = "Center"
+                            HeightRequest = "46"
+                            HorizontalOptions = "Center"
+                            IsTextPredictionEnabled="True"
+                            MaxLength = "10"
+                            Placeholder = "{i18n:Translate NProfilePlaceH}"
+                            Text = "{Binding Name}"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300" 
+                            x:Name="ProfileName"/>
                     </StackLayout>
                     <StackLayout 
-                        Grid.Row = "3">
+                            Grid.Row = "3">
                         <Label 
-                        FontSize = "24" 
-                        FontAttributes="Bold"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center" 
-                        Text = "{i18n:Translate EMail}"
-                        TextColor = "{StaticResource MainColor}" />
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center" 
+                            Text = "{i18n:Translate EMail}"
+                            TextColor = "{StaticResource MainColor}" />
                         <Entry 
-                        FontSize = "21"
-                        HorizontalTextAlignment = "Center"
-                        HeightRequest = "46"
-                        HorizontalOptions = "Center"
-                        Keyboard = "Email"
-                        Placeholder = "{i18n:Translate ExampleEmail}"
-                        Text = "{Binding Email}"
-                        VerticalOptions = "Center" 
-                        WidthRequest = "300" 
-                        x:Name="ProfileMail"/>
+                            FontSize = "21"
+                            HorizontalTextAlignment = "Center"
+                            HeightRequest = "46"
+                            HorizontalOptions = "Center"
+                            Keyboard = "Email"
+                            Placeholder = "{i18n:Translate ExampleEmail}"
+                            Text = "{Binding Email}"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300" 
+                            x:Name="ProfileMail"/>
                     </StackLayout>
                     <Grid
-                    Grid.Row = "4"
-                    VerticalOptions = "CenterAndExpand">
+                        Grid.Row = "4"
+                        VerticalOptions = "CenterAndExpand">
                         <ActivityIndicator
-                        IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                        VerticalOptions = "CenterAndExpand"
-                        x:Name= "ActivityIn">
+                            IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                            VerticalOptions = "CenterAndExpand"
+                            x:Name= "ActivityIn">
                         </ActivityIndicator>
                     </Grid>
                 </Grid>
             </ScrollView>
-            <StackLayout
-                HorizontalOptions="FillAndExpand"
-                Margin="20"
-                VerticalOptions="End">
-                <Button 
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
-                        Command = "{Binding SaveProfileEmailCommand}"
-                        HeightRequest = "50"
-                        Text = "{i18n:Translate Save}"
-                        TextColor = "{StaticResource Dark_FontColor}"
-                        VerticalOptions = "Center"
-                        x:Name="Save"/>
-            </StackLayout>
+            <Button 
+                BackgroundColor = "{StaticResource MainColor}"
+                BorderRadius = "23"
+                Command = "{Binding SaveProfileEmailCommand}"
+                HorizontalOptions="Fill"
+                HeightRequest = "50"
+                Margin="15"
+                Text = "{i18n:Translate Save}"
+                TextColor = "{StaticResource Dark_FontColor}"
+                VerticalOptions = "End"
+                x:Name="Save"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

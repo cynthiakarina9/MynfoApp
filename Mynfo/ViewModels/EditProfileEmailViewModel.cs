@@ -54,18 +54,6 @@
         #endregion
 
         #region Commands
-        private async Task<ProfileEmail> GetProfileEmail(int _ProfileEmailId)
-        {
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            profileEmail = new ProfileEmail();
-            profileEmail = await this.apiService.GetProfileEmail(
-               apiSecurity,
-               "/api",
-               "/ProfileEmails/GetProfileEmail",
-               _ProfileEmailId);
-            return profileEmail;
-        }
-        
         public ICommand SaveCommand
         {
             get
@@ -189,10 +177,10 @@
                 return;
             }
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Delete3(
+            var response = await this.apiService.Delete1(
                 apiSecurity,
                 "/api",
-                "/Box_ProfileEmail/DeleteBox_ProfileEmailRelation",
+                "/Box_ProfileEmail",
                 profileEmail.ProfileEmailId);
 
             var response2 = await this.apiService.Delete(
@@ -220,6 +208,20 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+        #endregion
+
+        #region Methods
+        private async Task<ProfileEmail> GetProfileEmail(int _ProfileEmailId)
+        {
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            profileEmail = new ProfileEmail();
+            profileEmail = await this.apiService.GetProfileEmail(
+               apiSecurity,
+               "/api",
+               "/ProfileEmails/GetProfileEmail",
+               _ProfileEmailId);
+            return profileEmail;
         }
         #endregion
     }

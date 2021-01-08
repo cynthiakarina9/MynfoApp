@@ -19,10 +19,15 @@
         #region Attributes
         private bool isRunning;
         private ObservableCollection<ProfileEmail> profilemail;
-        //private List<ProfileEmail> profilemail;
+        public bool emptyList;
         #endregion
-        
+
         #region Properties
+        public bool EmptyList
+        {
+            get { return this.emptyList; }
+            set { SetValue(ref this.emptyList, value); }
+        }
         public ObservableCollection<ProfileEmail> profileEmail 
         {
             get { return profilemail; } 
@@ -52,6 +57,7 @@
         public ProfilesByEmailViewModel()
         {
             apiService = new ApiService();
+            EmptyList = false;
             GetList();
         }
         #endregion
@@ -86,14 +92,10 @@
 
             this.IsRunning = false;
 
+            
             if (listEmail.Count == 0)
             {
-                this.IsRunning = false;
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Information,
-                    Languages.ProfileNull,
-                    Languages.Accept);
-                return null;
+                EmptyList = true;
             }
 
             foreach (ProfileEmail profEmail in listEmail)

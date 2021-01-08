@@ -12,14 +12,6 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesByEmailPage : ContentPage
     {
-        #region Services
-        //ApiService apiService;
-        #endregion
-
-        #region Attributes
-        //public IList<ProfileEmail> profileEmail { get; private set; }
-        #endregion
-
         #region Constructors
         public ProfilesByEmailPage()
         {
@@ -93,58 +85,8 @@
         #endregion
 
         #region Commands
-        //public async void SetList()
-        //{
-        //    //this.IsRunning = true;
-        //    //this.isEnabled = false;
-
-        //    //var connection = await this.apiService.CheckConnection();
-
-        //    //if (!connection.IsSuccess)
-        //    //{
-        //    //    //this.IsRunning = false;
-        //    //    //this.isEnabled = true;
-        //    //    await Application.Current.MainPage.DisplayAlert(
-        //    //        Languages.Error,
-        //    //        connection.Message,
-        //    //        Languages.Accept);
-        //    //    return;
-        //    //}
-
-        //    var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-
-            
-        //    profileEmail = await this.apiService.GetListByUser<ProfileEmail>(
-        //        apiSecurity,
-        //        "/api",
-        //        "/ProfileEmails",
-        //        MainViewModel.GetInstance().User.UserId);
-
-        //    var Lista = profileEmail;
-        //    BindingContext = this;
-        //}
-        //private void NewProfileEmail_Clicked(object sender, EventArgs e)
-        //{
-        //    var mainViewModel = MainViewModel.GetInstance();
-        //    mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-        //    App.Navigator.PushAsync(new CreateProfileEmailPage());
-        //}
-        //private async void EditProfileEmail(object sender, EventArgs e, int _ProfileEmailId)
-        //{
-        //    var mainViewModel = MainViewModel.GetInstance();
-        //    mainViewModel.EditProfileEmail = new EditProfileEmailViewModel();
-        //    Application.Current.MainPage = new NavigationPage(new EditProfileEmailPage(_ProfileEmailId));
-        //}
-        //private void Back_Clicked(object sender, EventArgs e)
-        //{
-        //    var mainViewModel = MainViewModel.GetInstance();
-        //    mainViewModel.Profiles = new ProfilesViewModel();
-        //    Application.Current.MainPage = new NavigationPage(new ProfilesPage());
-        //}
-
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
-            
             ProfileEmail tappedItem = e.Item as ProfileEmail;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(tappedItem.ProfileEmailId);

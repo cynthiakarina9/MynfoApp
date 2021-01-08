@@ -126,7 +126,7 @@
             var response = await this.apiService.Delete(
                 apiSecurity,
                 "/api",
-                "/Box_ProfileSM",
+                "/Box_ProfileSM/DeleteBox_ProfileSMRelations",
                 profileSM.ProfileMSId);
 
             var response2 = await this.apiService.Delete(
