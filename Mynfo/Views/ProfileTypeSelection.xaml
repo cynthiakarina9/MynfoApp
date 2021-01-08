@@ -198,7 +198,7 @@
                         x:Name="ProfilesTwitch"/>
 
                     <!--BoxView 13-->
-                    <ImageButton 
+                    <!--<ImageButton 
                         BackgroundColor = "Transparent"
                         Grid.Column = "1"
                         Grid.Row = "7" 
@@ -207,7 +207,7 @@
                         Source = "gmail1.png"
                         VerticalOptions = "Center"
                         WidthRequest = "150"
-                        x:Name="ProfilesWebPage"/>
+                        x:Name="ProfilesWebPage"/>-->
 
                     <!--BoxView 14-->
                     <!--<ImageButton 
