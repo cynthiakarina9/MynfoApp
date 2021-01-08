@@ -1278,7 +1278,45 @@
                 };
             }
         }
+        public async Task<Response> Delete1(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfileEmail
+                {
+                    ProfileEmailId = id,
+                };
 
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    id);
+                var response = await client.DeleteAsync(url);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
         public async Task<T> Delete2<T>(
             string urlBase,
             string servicePrefix,

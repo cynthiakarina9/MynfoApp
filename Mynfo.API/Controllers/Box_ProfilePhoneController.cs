@@ -170,6 +170,44 @@
 
         // DELETE: api/Box_ProfilePhone/5
         [ResponseType(typeof(Box_ProfilePhone))]
+        public async Task<IHttpActionResult> DeleteBox_ProfilePhoneRelations(JObject form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                int id;
+                dynamic jsonObject = form;
+                try
+                {
+                    id = jsonObject.ProfilePhoneId;
+                }
+                catch
+                {
+                    return BadRequest("Missing parameter.");
+                }
+                var box_ProfilePhone = GetBox_ProfilePhone().Where(u => u.ProfilePhoneId == id).ToList();
+                if (box_ProfilePhone == null)
+                {
+                    return NotFound();
+                }
+
+                db.Box_ProfilePhone.RemoveRange(box_ProfilePhone);
+                await db.SaveChangesAsync();
+
+                return Ok(box_ProfilePhone);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+        // DELETE: api/Box_ProfilePhone/5
+        [ResponseType(typeof(Box_ProfilePhone))]
         public async Task<IHttpActionResult> DeleteBox_ProfilePhone(int id)
         {
             var box_ProfilePhone = GetBox_ProfilePhone().Where(u => u.Box_ProfilePhoneId == id).FirstOrDefault();
@@ -183,22 +221,6 @@
 
             return Ok(box_ProfilePhone);
 
-        }
-        // DELETE: api/Box_ProfilePhone/5
-        [HttpPost]
-        [Route("DeleteBox_ProfilePhoneRelation")]
-        public async Task<IHttpActionResult> DeleteBox_ProfilePhoneRelation(int id)
-        {
-            var box_ProfilePhone = GetBox_ProfilePhone().Where(u => u.ProfilePhoneId == id).ToList();
-            if (box_ProfilePhone == null)
-            {
-                return NotFound();
-            }
-
-            db.Box_ProfilePhone.RemoveRange(box_ProfilePhone);
-            await db.SaveChangesAsync();
-
-            return Ok(box_ProfilePhone);
         }
         protected override void Dispose(bool disposing)
         {

@@ -61,6 +61,7 @@
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
+                            IsTextPredictionEnabled="True"
                             MaxLength = "10"
                             Placeholder = "{i18n:Translate NProfilePlaceH}"
                             Text = "{Binding Name}"
@@ -84,7 +85,7 @@
                             HorizontalOptions = "Center"
                             Keyboard = "Email"
                             Placeholder = "{i18n:Translate ExampleEmail}"
-                            Text = "{Binding User.Name}?{Binding Email}"
+                            Text = "{Binding Email}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
                             x:Name="ProfileMail"/>

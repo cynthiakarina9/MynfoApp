@@ -157,38 +157,59 @@
 
         // DELETE: api/Box_ProfileEmail/5
         [ResponseType(typeof(Box_ProfileEmail))]
-        public async Task<IHttpActionResult> DeleteBox_ProfileEmail(int id)
+        public async Task<IHttpActionResult> DeleteBox_ProfileEmailRelations(JObject form)
         {
-            var box_ProfileEmail = GetBox_ProfileEmail().Where(u => u.Box_ProfileEmailId == id).FirstOrDefault();
-            if (box_ProfileEmail == null)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try 
+            {
+                int id;
+                dynamic jsonObject = form;
+                try
+                {
+                    id = jsonObject.ProfileEmailId;
+                }
+                catch
+                {
+                    return BadRequest("Missing parameter.");
+                }
+                var box_ProfileEmail = GetBox_ProfileEmail().Where(u => u.ProfileEmailId == id).ToList();
+                if (box_ProfileEmail == null)
+                {
+                    return NotFound();
+                }
+
+                db.Box_ProfileEmail.RemoveRange(box_ProfileEmail);
+                await db.SaveChangesAsync();
+
+                return Ok(box_ProfileEmail);
+            }
+            catch (Exception e)
             {
                 return NotFound();
             }
+            
 
-            //db.Box_ProfileEmail.Remove(List<box_ProfileEmail>);
-            db.Box_ProfileEmail.Remove(box_ProfileEmail);
-            await db.SaveChangesAsync();
-
-            return Ok(box_ProfileEmail);
         }
 
         // DELETE: api/Box_ProfileEmail/5
-        [HttpPost]
-        [Route("DeleteBox_ProfileEmailRelation")]
-        public async Task<IHttpActionResult> DeleteBox_ProfileEmailRelation(int id)
+        [ResponseType(typeof(Box_ProfileEmail))]
+        public async Task<IHttpActionResult> DeleteBox_ProfileEmail(int id)
         {
-            var box_ProfileEmail = GetBox_ProfileEmail().Where(u => u.ProfileEmailId == id).ToList();
+            var box_ProfileEmail = GetBox_ProfileEmail().Where(u => u.Box_ProfileEmailId == id).ToList();
             if (box_ProfileEmail == null)
             {
                 return NotFound();
             }
 
-            //db.Box_ProfileEmail.Remove(List<box_ProfileEmail>);
             db.Box_ProfileEmail.RemoveRange(box_ProfileEmail);
             await db.SaveChangesAsync();
 
             return Ok(box_ProfileEmail);
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
