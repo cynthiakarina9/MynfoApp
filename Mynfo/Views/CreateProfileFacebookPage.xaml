@@ -32,61 +32,62 @@
                         <RowDefinition Height = "120"/>
                     </Grid.RowDefinitions>
                     <Label 
-                            FontAttributes = "Bold"
-                            FontSize = "25"
-                            Grid.ColumnSpan ="1"
-                            Grid.Row = "0"
+                        FontAttributes = "Bold"
+                        FontSize = "25"
+                        Grid.ColumnSpan ="1"
+                        Grid.Row = "0"
+                        HorizontalOptions = "Center"
+                        HorizontalTextAlignment = "Center"
+                        Text = "{i18n:Translate AddNetwork}"
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalOptions = "Center"/>
+                    <Image 
+                        Grid.Row = "1" 
+                        HeightRequest = "180"
+                        Source ="facebook2"
+                        WidthRequest = "180"/>
+                    <StackLayout 
+                        Grid.Row = "2"
+                        Padding = "20">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
                             HorizontalOptions = "Center"
-                            HorizontalTextAlignment = "Center"
-                            Text = "{i18n:Translate AddNetwork}"
+                            Text = "{i18n:Translate NameProfile}"
                             TextColor = "{StaticResource MainColor}"
                             VerticalOptions = "Center"/>
-                    <Image 
-                            Grid.Row = "1" 
-                            HeightRequest = "180"
-                            Source ="facebook2"
-                            WidthRequest = "180"/>
-                    <StackLayout 
-                            Grid.Row = "2"
-                            Padding = "20">
-                        <Label 
-                                FontSize = "24" 
-                                FontAttributes="Bold"
-                                HorizontalOptions = "Center"
-                                Text = "{i18n:Translate NameProfile}"
-                                TextColor = "{StaticResource MainColor}"
-                                VerticalOptions = "Center"/>
                         <Entry 
-                                FontSize = "21"
-                                HeightRequest = "46"
-                                HorizontalTextAlignment = "Center"
-                                HorizontalOptions = "Center"
-                                MaxLength = "10"
-                                Placeholder = "{i18n:Translate NProfilePlaceH}"
-                                Text = "{Binding Name}"
-                                VerticalOptions = "Center" 
-                                WidthRequest = "300" 
-                                x:Name="ProfileName"/>
+                            FontSize = "21"
+                            HeightRequest = "46"
+                            HorizontalTextAlignment = "Center"
+                            HorizontalOptions = "Center"
+                            IsTextPredictionEnabled="True"
+                            MaxLength = "10"
+                            Placeholder = "{i18n:Translate NProfilePlaceH}"
+                            Text = "{Binding Name}"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300" 
+                            x:Name="ProfileName"/>
                     </StackLayout>
                     <StackLayout 
                             Grid.Row = "3">
                         <Label 
-                                FontSize = "24" 
-                                FontAttributes="Bold"
-                                HorizontalOptions = "Center"
-                                Text = "{i18n:Translate Link}"
-                                TextColor = "{StaticResource MainColor}"
-                                VerticalOptions = "Center"/>
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate Link}"
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
                         <Entry 
-                                FontSize = "21"
-                                HeightRequest = "46"
-                                HorizontalTextAlignment = "Center"
-                                HorizontalOptions = "Center"
-                                Text = "{Binding Link}"
-                                VerticalOptions = "Center" 
-                                Placeholder = "https://www.facebook.com/user"
-                                WidthRequest = "300" 
-                                x:Name="ProfileLink"/>
+                            FontSize = "21"
+                            HeightRequest = "46"
+                            HorizontalTextAlignment = "Center"
+                            HorizontalOptions = "Center"
+                            Text = "{Binding Link}"
+                            VerticalOptions = "Center" 
+                            Placeholder = "https://www.facebook.com/user"
+                            WidthRequest = "300" 
+                            x:Name="ProfileLink"/>
                     </StackLayout>
                     <Grid
                         Grid.Row = "4"

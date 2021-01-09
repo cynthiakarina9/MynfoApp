@@ -163,6 +163,9 @@
     <PackageReference Include="Plugin.PushNotification-updated">
       <Version>1.3.2</Version>
     </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.9</Version>
+    </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.5.231</Version>
     </PackageReference>

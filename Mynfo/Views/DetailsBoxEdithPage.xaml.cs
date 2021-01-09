@@ -44,7 +44,7 @@
             bool BoxDefault = false;
             int UserId = 0;
             DateTime boxcreation = DateTime.Now;
-            var BxSaveName = new ImageButton();
+            var BxSaveName = new Button();
             var BxBtnDelete = new ImageButton();
             var bxBtnHome = new ImageButton();
             var BxDefaultCheckBox = new CheckBox();
@@ -179,17 +179,15 @@
             BxNameEntry.Text = BoxName;
             BxNameEntry.HorizontalTextAlignment = TextAlignment.Center;
             BxNameEntry.WidthRequest = 200;
-            BxNameEntry.TextColor = Color.FromHex("#FF5521");
+            BxNameEntry.TextColor = Color.Black;
             BxNameEntry.FontAttributes = FontAttributes.Bold;
-            BxNameEntry.IsReadOnly = true;
             BxNameEntry.BackgroundColor = Color.Transparent;
-
             BoxNameEntry.Children.Add(BxNameEntry);
 
             //Creación de botón para actualizar nombre de la Box
-            BxSaveName.Source = "edit2.png";
-            BxSaveName.HeightRequest = 25;
-            BxSaveName.WidthRequest = 25;
+            BxSaveName.BackgroundColor = Color.FromHex("#FF5521");
+            BxSaveName.HeightRequest = 50;
+            BxSaveName.Text = Languages.Save;
             BxSaveName.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));
 
             BoxUpdateBtn.Children.Add(BxSaveName);
@@ -1329,14 +1327,8 @@
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)
         {
-            if (disabled == true)
-            {
-                BxNameEntry.IsReadOnly = false;
-                BxNameEntry.TextColor = Color.Black;
-            }
-            else
-            {
                 //Actualizar el nombre de la Box
+                
                 string queryUpdateBoxName = "update dbo.Boxes set Name = '" + _name + "' where dbo.Boxes.UserId = " + _UserId + " and dbo.Boxes.BoxId = " + _BoxId;
                 string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                 //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
@@ -1355,10 +1347,8 @@
                         connection.Close();
                     }
                 }
-                BxNameEntry.IsReadOnly = true;
-                BxNameEntry.TextColor = Color.FromHex("#FF5521");
                 BoxName = _name;
-            }
+                App.Navigator.PopAsync();
         }
 
         async private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)

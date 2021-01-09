@@ -61,7 +61,7 @@
             ToolbarResource = Resource.Layout.Toolbar;
 
             //popups
-            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this);
 
             //Color de tema
             Xamarin.Forms.Forms.SetFlags("AppTheme_Experimental");

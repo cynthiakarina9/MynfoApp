@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mynfo.Views.PupPopPage"
+             x:Name="ThisPage">
+    <Frame
+            x:Name="popuplayout"
+            HasShadow="True"
+            IsVisible="False"
+            Scale="0"
+            BackgroundColor="White"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="1,1,0.5,0.5">
+        <StackLayout>
+            <Label Text="One"/>
+            <Label Text="Two"/>
+            <Label Text="Three"/>
+            <Label Text="Four"/>
+            <Label Text="Five"/>
+            <Label Text="Six"/>
+        </StackLayout>
+    </Frame>
+
+</popup:PopupPage>

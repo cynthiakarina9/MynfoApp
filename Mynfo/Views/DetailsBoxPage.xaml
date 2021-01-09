@@ -48,15 +48,14 @@
                         Grid.Row="1"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        x:Name="BoxNameEntry" />
-                    <!--<StackLayout 
-                        Grid.Column="3"
-                        Grid.Row="1"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Center"
-                        x:Name="BoxUpdateBtn" />-->
+                        x:Name="BoxNameEntry" >
+                        <!--<Entry
+                            IsReadOnly="True"
+                            Text="{Binding BoxN.Name, Mode=TwoWay}"
+                            TextColor="Orange"/>-->
+                    </StackLayout>
 
-                     <!--Box predeterminada-->
+                    <!--Box predeterminada-->
                     <StackLayout 
                         Grid.Row="2"
                         Grid.Column="1"

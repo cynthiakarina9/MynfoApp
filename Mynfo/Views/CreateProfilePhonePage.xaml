@@ -60,6 +60,7 @@
                             HeightRequest = "46"
                             HorizontalTextAlignment = "Center"
                             HorizontalOptions = "Center"
+                            IsTextPredictionEnabled="True"
                             MaxLength = "10"
                             Placeholder = "{i18n:Translate NProfilePlaceH}"
                             Text = "{Binding Name}"

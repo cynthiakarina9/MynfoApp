@@ -2,6 +2,7 @@
 {
     using Mynfo.Models;
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Data.SqlClient;
     using System.Text;
@@ -502,10 +503,6 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.BoxRegister = new BoxRegisterViewModel();
             await Navigation.PushAsync(new BoxRegisterPage());
-
-            //var mainViewModel = MainViewModel.GetInstance();
-            //mainViewModel.BoxRegister = new BoxRegisterViewModel();
-            //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
 
             //await Launcher.OpenAsync(new Uri("fb://page/100000686899395"));
             //await Launcher.OpenAsync(new Uri("https://twitter.com/RToachee"));

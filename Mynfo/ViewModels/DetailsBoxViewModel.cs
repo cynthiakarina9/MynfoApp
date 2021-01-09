@@ -18,6 +18,7 @@
         #endregion
 
         #region Attributes
+        private Box box;
         private bool isRunning;
         private ObservableCollection<ProfileEmail> profileEmail;
         private ObservableCollection<ProfilePhone> profilePhone;
@@ -32,7 +33,11 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-
+        public Box BoxN
+        {
+            get { return this.box; }
+            set { SetValue(ref this.box, value); }
+        }
         public ObservableCollection<ProfileEmail> ProfileEmail
         {
             get { return profileEmail; }
@@ -86,6 +91,7 @@
         public DetailsBoxViewModel(int _BoxId)
         {
             apiService = new ApiService();
+            GetBoxe(_BoxId);
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
             GetListEmail(_BoxId);
             GetListPhone(_BoxId);
@@ -95,22 +101,23 @@
         #endregion
 
         #region Methods
-
+        private async Task<Box> GetBoxe(int _BoxId)
+        {
+            this.IsRunning = true;
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            BoxN = new Box();
+            BoxN = await this.apiService.GetBox(
+                apiSecurity,
+                "/api",
+                "/Boxes",
+                _BoxId);
+            return BoxN;
+        }
         #region Email
         private async Task<ObservableCollection<ProfileEmail>> GetListEmail(int _BoxId)
         {
             this.IsRunning = true;
             List<ProfileEmail> listEmail;
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             ProfileEmail = new ObservableCollection<ProfileEmail>();
             listEmail = await this.apiService.GetListByUser<ProfileEmail>(
@@ -141,13 +148,6 @@
                     ProfilePerfiles.Add(Email);
                 }
             }
-            //foreach (ProfileEmail profEmail in listEmail)
-            //{
-            //    if (profEmail.Exist == true)
-            //    {
-            //        ProfilePerfiles.Add(profEmail);
-            //    }
-            //}
             this.IsRunning = false;
             return ProfileEmail;
         }
@@ -179,16 +179,6 @@
         {
             this.IsRunning = true;
             List<ProfilePhone> listPhone;
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        connection.Message,
-            //        Languages.Accept);
-            //    return null;
-            //}
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             ProfilePhone = new ObservableCollection<ProfilePhone>();
