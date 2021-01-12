@@ -54,7 +54,9 @@
                 ProfileId = profile.ProfileEmailId,
                 ProfileName = profile.Name,
                 value = profile.Email,
-                Logo = "mail3"
+                Logo = "mail3",
+                Exist = profile.Exist,
+                UserId = profile.UserId,
             };
         }
         public static ProfileEmail ToProfileEmail(ProfileLocal profile)
@@ -90,7 +92,10 @@
             {
                 ProfileName = profile.Name,
                 value = profile.Number,
-                Logo = "tel3"
+                Logo = "tel3",
+                Exist = profile.Exist,
+                UserId = profile.UserId,
+                ProfileId = profile.ProfilePhoneId
             };
         }
         public static ProfilePhone ToProfilePhone(ProfileLocal profile)
@@ -202,6 +207,9 @@
                 value = profile.link,
                 RedSocialId = profile.RedSocialId,
                 Logo = LogoSM,
+                Exist = profile.Exist,
+                UserId = profile.UserId,
+                ProfileId = profile.ProfileMSId
             };
         }
 
@@ -240,7 +248,10 @@
             {
                 ProfileName = profile.Name,
                 value = profile.Number,
-                Logo = "whatsapp3"
+                Logo = "whatsapp3",
+                Exist = profile.Exist,
+                UserId = profile.UserId,
+                ProfileId = profile.ProfileWhatsappId
             };
         }
         public static ProfileWhatsapp ToProfileWhatsapp(ProfileLocal profile)

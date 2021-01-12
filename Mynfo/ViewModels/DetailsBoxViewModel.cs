@@ -195,7 +195,7 @@
                     BoxId = _BoxId,
                     ProfilePhoneId = ItemPhone.ProfilePhoneId
                 };
-                //apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+                
                 var response = await this.apiService.Get(
                     apiSecurity,
                     "/api",
@@ -209,13 +209,6 @@
                     ProfilePerfiles.Add(Phone);
                 }
             }
-            //foreach (ProfilePhone profPhone in listPhone)
-            //{
-            //    if (profPhone.Exist == true)
-            //    {
-            //        ProfilePerfiles.Add(profPhone);
-            //    }
-            //}
             this.IsRunning = false;
             return ProfilePhone;
         }
