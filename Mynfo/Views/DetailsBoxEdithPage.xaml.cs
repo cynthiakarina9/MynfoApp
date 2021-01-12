@@ -1,23 +1,34 @@
 ﻿namespace Mynfo.Views
 {
+    using Mynfo.Domain;
     using Mynfo.Helpers;
     using Mynfo.Models;
     using Mynfo.Resources;
+    using Mynfo.Services;
     using Mynfo.ViewModels;
     using System;
+    using System.Collections.ObjectModel;
     using System.Data.SqlClient;
+    using System.Linq;
     using System.Text;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
-    using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsBoxEdithPage : ContentPage
     {
-        #region Properties
+        #region Services
+        ApiService apiService;
+        #endregion
+
+        #region Attributes
         public Entry BxNameEntry = new Entry();
         public String BoxName;
+        #endregion
+
+        #region Properties
+        private ObservableCollection<ProfileLocal> ProfilesSelected { get; set; }
+        public ProfileLocal selectedItem { get; set; }
         #endregion
 
         #region Constructor
@@ -25,7 +36,8 @@
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-
+            apiService = new ApiService();
+            ProfilesSelected = new ObservableCollection<ProfileLocal>();
             int BoxId = _boxId;
             var boxLocal = new BoxLocal();
             int UserID = MainViewModel.GetInstance().User.UserId;
@@ -1327,30 +1339,183 @@
 
         private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)
         {
-                //Actualizar el nombre de la Box
-                
-                string queryUpdateBoxName = "update dbo.Boxes set Name = '" + _name + "' where dbo.Boxes.UserId = " + _UserId + " and dbo.Boxes.BoxId = " + _BoxId;
-                string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-                //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-                StringBuilder sb;
+            //Actualizar el nombre de la Box
 
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            string queryUpdateBoxName = "update dbo.Boxes set Name = '" + _name + "' where dbo.Boxes.UserId = " + _UserId + " and dbo.Boxes.BoxId = " + _BoxId;
+            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            StringBuilder sb;
+
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryUpdateBoxName);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryUpdateBoxName);
-                    string sql = sb.ToString();
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
                 }
-                BoxName = _name;
-                App.Navigator.PopAsync();
+            }
+            BoxName = _name;
+
+            foreach (ProfileLocal Prof in ProfilesSelected)
+            {
+                if (Prof.Logo == "mail3")
+                {
+                    DeleteProfileEmail(_BoxId, Prof.ProfileId);
+                    ProfileEmail E = Converter.ToProfileEmail(Prof);
+                    MainViewModel.GetInstance().DetailsBox.removeProfileEmail(E);
+                }
+                else if (Prof.Logo == "tel3")
+                {
+                    DeleteProfilePhone(_BoxId, Prof.ProfileId);
+                    ProfilePhone P = Converter.ToProfilePhone(Prof);
+                    MainViewModel.GetInstance().DetailsBox.removeProfilePhone(P);
+                }
+                else if (Prof.Logo == "whatsapp3")
+                {
+                    DeleteProfileWhatsapp(_BoxId, Prof.ProfileId);
+                    ProfileWhatsapp W = Converter.ToProfileWhatsapp(Prof);
+                    MainViewModel.GetInstance().DetailsBox.removeProfileW(W);
+                }
+                else if (Prof.Logo != "mail3" && Prof.Logo != "tel3" && Prof.Logo != "whatsapp3")
+                {
+                    DeleteProfileSM(_BoxId, Prof.ProfileId);
+                    ProfileSM SM = Converter.ToProfileSM(Prof);
+                    MainViewModel.GetInstance().DetailsBox.removeProfileSM(SM);
+                }
+            }
+            //MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
+            App.Navigator.PopAsync();
         }
 
+        public async void DeleteProfileEmail(int _box, int _profileEmailId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileEmail box_ProfileEmail = new Box_ProfileEmail
+            {
+                BoxId = _box,
+                ProfileEmailId = _profileEmailId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_Email = await this.apiService.GetIdRelation(
+               apiSecurity,
+               "/api",
+               "/Box_ProfileEmail/GetBox_ProfileEmail",
+               box_ProfileEmail);
+            var profileEmail = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileEmail",
+                idBox_Email.Box_ProfileEmailId);
+        }
+
+        public async void DeleteProfilePhone(int _box, int _profilePhoneId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfilePhone box_ProfilePhone = new Box_ProfilePhone
+            {
+                BoxId = _box,
+                ProfilePhoneId = _profilePhoneId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_Phone = await this.apiService.GetIdRelation(
+                apiSecurity,
+                "/api",
+                "/Box_ProfilePhone/GetBox_ProfilePhone",
+                box_ProfilePhone);
+
+            var profilePhone = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfilePhone",
+                idBox_Phone.Box_ProfilePhoneId);
+        }
+
+        public async void DeleteProfileSM(int _box, int _profileSMId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileSM box_ProfileSM = new Box_ProfileSM
+            {
+                BoxId = _box,
+                ProfileMSId = _profileSMId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_SM = await this.apiService.GetIdRelation(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileSM/GetBox_ProfileSM",
+                box_ProfileSM);
+
+            var profileSM = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileSM",
+                idBox_SM.Box_ProfileSMId);
+        }
+
+        public async void DeleteProfileWhatsapp(int _box, int _profileWhatsappId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileWhatsapp box_ProfileWhatsapp = new Box_ProfileWhatsapp
+            {
+                BoxId = _box,
+                ProfileWhatsappId = _profileWhatsappId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_Whatsapp = await this.apiService.GetIdRelation(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileWhatsapp/GetBox_ProfileWhatsapp",
+                box_ProfileWhatsapp);
+
+            var profileWhatsapp = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileWhatsapp",
+                idBox_Whatsapp.Box_ProfileWhatsappId);
+        }
+
+        #region LastCode
         async private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)
         {
             //Borrar la relación de la box con el teléfono
@@ -1472,7 +1637,34 @@
                 Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
             }
         }
+        #endregion
 
+        void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //string previous = (e.PreviousSelection.FirstOrDefault() as ProfileLocal)?.Name;
+            selectedItem = e.CurrentSelection.FirstOrDefault() as ProfileLocal;
+            ProfilesSelected.Add(selectedItem);
+            if(selectedItem.Logo== "mail3")
+            {
+                ProfileEmail E = Converter.ToProfileEmail(selectedItem);
+                MainViewModel.GetInstance().DetailsBoxEdith.removeProfileEmail(E);
+            }
+            else if (selectedItem.Logo == "tel3")
+            {
+                ProfilePhone P = Converter.ToProfilePhone(selectedItem);
+                MainViewModel.GetInstance().DetailsBoxEdith.removeProfilePhone(P);
+            }
+            else if (selectedItem.Logo == "whatsapp3")
+            {
+                ProfileWhatsapp W = Converter.ToProfileWhatsapp(selectedItem);
+                MainViewModel.GetInstance().DetailsBoxEdith.removeProfileW(W);
+            }
+            else if (selectedItem.Logo != "mail3" && selectedItem.Logo != "tel3" && selectedItem.Logo != "whatsapp3")
+            {
+                ProfileSM SM = Converter.ToProfileSM(selectedItem);
+                MainViewModel.GetInstance().DetailsBoxEdith.removeProfileSM(SM);
+            }
+        }
         async private void BackHome(object sender, EventArgs e)
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();

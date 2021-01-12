@@ -64,7 +64,9 @@
                     <CollectionView 
                         ItemsSource="{Binding ProfilePerfiles}"
                         Grid.Row="3"
-                        Grid.ColumnSpan="4">
+                        Grid.ColumnSpan="4"
+                        SelectionMode="Single"
+                        SelectionChanged="OnCollectionViewSelectionChanged">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Vertical"
                                     Span="3" />

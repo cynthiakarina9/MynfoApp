@@ -79,7 +79,6 @@
         }
 
 
-        public ProfileSM selectedProfileSM { get; set; }
         #endregion
 
         #region Constructor
@@ -177,7 +176,7 @@
                     BoxId = _BoxId,
                     ProfilePhoneId = ItemPhone.ProfilePhoneId
                 };
-                
+
                 var response = await this.apiService.Get(
                     apiSecurity,
                     "/api",
@@ -368,6 +367,8 @@
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+
+       
         #endregion
     }
 }
