@@ -173,16 +173,16 @@
             DeleteButton.Children.Add(BxBtnDelete);
 
             //Creación de Entry para colocar nombre de la box
-            BxNameEntry.FontSize = 25;
-            BxNameEntry.Text = BoxName;
-            BxNameEntry.HorizontalTextAlignment = TextAlignment.Center;
-            BxNameEntry.WidthRequest = 200;
-            BxNameEntry.TextColor = Color.FromHex("#FF5521");
-            BxNameEntry.FontAttributes = FontAttributes.Bold;
-            BxNameEntry.IsReadOnly = true;
-            BxNameEntry.BackgroundColor = Color.Transparent;
+            //BxNameEntry.FontSize = 25;
+            //BxNameEntry.Text = BoxName;
+            //BxNameEntry.HorizontalTextAlignment = TextAlignment.Center;
+            //BxNameEntry.WidthRequest = 200;
+            //BxNameEntry.TextColor = Color.FromHex("#FF5521");
+            //BxNameEntry.FontAttributes = FontAttributes.Bold;
+            //BxNameEntry.IsReadOnly = true;
+            //BxNameEntry.BackgroundColor = Color.Transparent;
 
-            BoxNameEntry.Children.Add(BxNameEntry);
+            //BoxNameEntry.Children.Add(BxNameEntry);
 
             //Creación de botón para actualizar nombre de la Box
             //BxSaveName.Source = "edit2.png";

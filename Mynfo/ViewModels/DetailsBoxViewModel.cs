@@ -33,7 +33,7 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-        public Box BoxN
+        public Box Box
         {
             get { return this.box; }
             set { SetValue(ref this.box, value); }
@@ -91,6 +91,7 @@
         public DetailsBoxViewModel(int _BoxId)
         {
             apiService = new ApiService();
+            Box = new Box();
             GetBoxe(_BoxId);
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
             GetListEmail(_BoxId);
@@ -105,13 +106,13 @@
         {
             this.IsRunning = true;
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            BoxN = new Box();
-            BoxN = await this.apiService.GetBox(
+            Box = await this.apiService.GetBox(
                 apiSecurity,
                 "/api",
                 "/Boxes",
                 _BoxId);
-            return BoxN;
+             
+            return Box;
         }
         #region Email
         private async Task<ObservableCollection<ProfileEmail>> GetListEmail(int _BoxId)

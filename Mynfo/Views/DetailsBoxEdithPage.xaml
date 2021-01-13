@@ -41,12 +41,18 @@
                         x:Name="DeleteButton" />
 
                     <!--Nombre de la box -->
-                    <StackLayout 
+                    <Entry 
+                        FontAttributes="Bold"
+                        FontSize="25"
                         Grid.ColumnSpan="4"
                         Grid.Row="1"
                         HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Box.Name, Mode=TwoWay}"
+                        TextColor="Black"
                         VerticalOptions="Center"
-                        x:Name="BoxNameEntry" />
+                        WidthRequest="200"
+                        x:Name="NameEntry"/>
 
                     <!--Box predeterminada-->
                     <StackLayout 

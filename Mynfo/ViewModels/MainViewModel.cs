@@ -255,7 +255,7 @@
             get;
             set;
         }
-
+        
         public MyExternalProfileViewModel MyExternalProfile
         {
             get;
@@ -365,6 +365,12 @@
         }
 
         public RegisterViewModel Register
+        {
+            get;
+            set;
+        }
+
+        public Register2ViewModel Register2
         {
             get;
             set;

@@ -23,13 +23,13 @@
             <ScrollView>
                 <StackLayout
                 Padding = "15">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height = "60"/>
-                        <RowDefinition Height = "170"/>
-                        <RowDefinition Height = "Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label 
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height = "60"/>
+                            <RowDefinition Height = "170"/>
+                            <RowDefinition Height = "Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label 
                         FontAttributes = "Bold"
                         FontSize = "30"
                         Grid.Row = "0"
@@ -37,31 +37,31 @@
                         Text = "{i18n:Translate Register}"
                         TextColor = "{StaticResource MainColor}"
                         VerticalOptions="Center"/>
-                    <StackLayout 
+                        <StackLayout 
                         Grid.Row = "1"
                         VerticalOptions="Center">
-                        <controls:CircleImage 
+                            <controls:CircleImage 
                             HeightRequest = "120"
                             Source = "{Binding ImageSource}">
-                            <controls:CircleImage.GestureRecognizers>
-                                <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />
-                            </controls:CircleImage.GestureRecognizers>
-                        </controls:CircleImage>
-                        <Label
+                                <controls:CircleImage.GestureRecognizers>
+                                    <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />
+                                </controls:CircleImage.GestureRecognizers>
+                            </controls:CircleImage>
+                            <Label
                             FontSize = "Small"
                             HorizontalOptions = "CenterAndExpand"
                             Text = "{i18n:Translate ChangeImage}"
                             VerticalOptions = "StartAndExpand"/>
-                    </StackLayout>
-                    <StackLayout 
+                        </StackLayout>
+                        <StackLayout 
                         Grid.Row = "2">
-                    <Label
+                            <Label
                         FontSize = "18"
                         HorizontalOptions = "CenterAndExpand"
                         Text = "{i18n:Translate FirstNameLabel}"
                         TextColor = "{StaticResource MainColor}"
                         VerticalTextAlignment = "Center" />
-                    <Entry
+                            <Entry
                         ClearButtonVisibility="WhileEditing"
                         HeightRequest = "40"
                         HorizontalTextAlignment="Center"
@@ -70,16 +70,16 @@
                         Text = "{Binding FirstName}"
                         VerticalTextAlignment="Center"
                         WidthRequest = "300" />
-                    </StackLayout>
-                    <StackLayout 
+                        </StackLayout>
+                        <StackLayout 
                         Grid.Row = "3">
-                        <Label
+                            <Label
                             FontSize = "18"
                             HorizontalOptions = "CenterAndExpand"
                             Text = "{i18n:Translate LastNameLabel}"
                             TextColor = "{StaticResource MainColor}" 
                             VerticalTextAlignment = "Center" />
-                        <Entry
+                            <Entry
                             ClearButtonVisibility="WhileEditing"
                             HeightRequest = "40"
                             HorizontalTextAlignment="Center"
@@ -88,8 +88,8 @@
                             Text = "{Binding LastName}"
                             VerticalTextAlignment="Center"
                             WidthRequest = "300" />
-                    </StackLayout>
-                    <StackLayout 
+                        </StackLayout>
+                        <!--<StackLayout 
                         Grid.Row = "4">
                         <Label
                             FontSize = "18"
@@ -141,8 +141,8 @@
                             Margin = "0,-10,0,0"
                             Text = "{Binding Confirm}"
                             WidthRequest = "300" />
-                    </StackLayout>
-                        <Button
+                    </StackLayout>-->
+                        <!--<Button
                             Grid.Row = "7"
                             BackgroundColor = "{StaticResource MainColor}"
                             BorderRadius = "23"
@@ -152,9 +152,20 @@
                             Margin="15"
                             Text = "{i18n:Translate Save}"
                             TextColor = "{StaticResource Dark_FontColor}" 
-                            VerticalOptions="EndAndExpand"/>
+                            VerticalOptions="EndAndExpand"/>-->
+                        <Button
+                            Grid.Row = "4"
+                            BackgroundColor = "{StaticResource MainColor}"
+                            BorderRadius = "23"
+                            Command = "{Binding NextCommand}"
+                            HorizontalOptions = "Fill"
+                            IsEnabled = "{Binding IsEnabled}"
+                            Margin="15"
+                            Text = "Next"
+                            TextColor = "{StaticResource Dark_FontColor}" 
+                            VerticalOptions="End"/>
                     </Grid>
-            </StackLayout>
+                </StackLayout>
             </ScrollView>
             <ActivityIndicator
                 Grid.Row = "0"

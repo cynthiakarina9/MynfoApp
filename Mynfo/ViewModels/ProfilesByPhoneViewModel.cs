@@ -75,7 +75,6 @@
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
-            //Profilephone = new List<ProfilePhone>();
             profilephone = new ObservableCollection<ProfilePhone>();
             listPhone = await this.apiService.GetListByUser<ProfilePhone>(
                 apiSecurity,

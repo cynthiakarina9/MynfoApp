@@ -19,11 +19,13 @@
 
         #region Attributes
         private bool isRunning;
+        private Box box;
         private ObservableCollection<ProfileEmail> profileEmail;
         private ObservableCollection<ProfilePhone> profilePhone;
         private ObservableCollection<ProfileSM> profileSM;
         private ObservableCollection<ProfileWhatsapp> profileWhatsapp;
         private ObservableCollection<ProfileLocal> profilePerfiles;
+        private ObservableCollection<ProfileLocal> profilesSelected;
         #endregion
 
         #region Properties
@@ -33,6 +35,17 @@
             set { SetValue(ref this.isRunning, value); }
         }
 
+        public Box Box
+        {
+            get { return this.box; }
+            set { SetValue(ref this.box, value); }
+        }
+
+        private ObservableCollection<ProfileLocal> ProfilesSelected
+        {
+            get { return this.profilesSelected; }
+            set { SetValue(ref this.profilesSelected, value); }
+        }
         public ObservableCollection<ProfileEmail> ProfileEmail
         {
             get { return profileEmail; }
@@ -77,14 +90,15 @@
                 SetValue(ref profilePerfiles, value);
             }
         }
-
-
         #endregion
 
         #region Constructor
         public DetailsBoxEdithViewModel(int _BoxId)
         {
             apiService = new ApiService();
+            Box = new Box();
+            GetBox(_BoxId);
+            ProfilesSelected = new ObservableCollection<ProfileLocal>();
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
             GetListEmail(_BoxId);
             GetListPhone(_BoxId);
@@ -154,6 +168,36 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
+
+        public async void DeleteProfileEmail(int _box, int _profileEmailId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileEmail box_ProfileEmail = new Box_ProfileEmail
+            {
+                BoxId = _box,
+                ProfileEmailId = _profileEmailId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_Email = await this.apiService.GetIdRelation(
+               apiSecurity,
+               "/api",
+               "/Box_ProfileEmail/GetBox_ProfileEmail",
+               box_ProfileEmail);
+            var profileEmail = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileEmail",
+                idBox_Email.Box_ProfileEmailId);
+        }
         #endregion
 
         #region Phone
@@ -215,6 +259,37 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
+
+        public async void DeleteProfilePhone(int _box, int _profilePhoneId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfilePhone box_ProfilePhone = new Box_ProfilePhone
+            {
+                BoxId = _box,
+                ProfilePhoneId = _profilePhoneId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_Phone = await this.apiService.GetIdRelation(
+                apiSecurity,
+                "/api",
+                "/Box_ProfilePhone/GetBox_ProfilePhone",
+                box_ProfilePhone);
+
+            var profilePhone = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfilePhone",
+                idBox_Phone.Box_ProfilePhoneId);
+        }
         #endregion
 
         #region SM
@@ -239,7 +314,7 @@
                     BoxId = _BoxId,
                     ProfileMSId = ItemSM.ProfileMSId
                 };
-                //apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            
                 var response = await this.apiService.Get(
                     apiSecurity,
                     "/api",
@@ -276,6 +351,37 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
+
+        public async void DeleteProfileSM(int _box, int _profileSMId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileSM box_ProfileSM = new Box_ProfileSM
+            {
+                BoxId = _box,
+                ProfileMSId = _profileSMId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_SM = await this.apiService.GetIdRelation(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileSM/GetBox_ProfileSM",
+                box_ProfileSM);
+
+            var profileSM = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileSM",
+                idBox_SM.Box_ProfileSMId);
+        }
         #endregion
 
         #region Whatsapp
@@ -299,7 +405,7 @@
                     BoxId = _BoxId,
                     ProfileWhatsappId = ItemWhatsapp.ProfileWhatsappId
                 };
-                //apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+                
                 var response = await this.apiService.Get(
                     apiSecurity,
                     "/api",
@@ -337,17 +443,65 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
+
+        public async void DeleteProfileWhatsapp(int _box, int _profileWhatsappId)
+        {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                await App.Navigator.PopAsync();
+            }
+
+            Box_ProfileWhatsapp box_ProfileWhatsapp = new Box_ProfileWhatsapp
+            {
+                BoxId = _box,
+                ProfileWhatsappId = _profileWhatsappId
+            };
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var idBox_Whatsapp = await this.apiService.GetIdRelation(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileWhatsapp/GetBox_ProfileWhatsapp",
+                box_ProfileWhatsapp);
+
+            var profileWhatsapp = await this.apiService.Delete(
+                apiSecurity,
+                "/api",
+                "/Box_ProfileWhatsapp",
+                idBox_Whatsapp.Box_ProfileWhatsappId);
+        }
         #endregion
 
         #region Box
+        public async Task<Box> GetBox(int _BoxId)
+        {
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            Box = await this.apiService.GetBox(
+                apiSecurity,
+                "/api",
+                "/Boxes",
+                _BoxId);
+            return Box;        
+        }
+
         public async void EdithBox(Box Box)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var profile = await this.apiService.PutBox(
                 apiSecurity,
                 "/api",
-                "/Boxes/",
-                profilePhone);
+                "/Boxes",
+                Box,
+                Box.BoxId);
+        }
+
+        public void addProfile(ProfileLocal _profileSelected)
+        {
+            ProfilesSelected.Add(_profileSelected);
         }
         #endregion
 
@@ -368,7 +522,9 @@
             Application.Current.MainPage = new MasterPage();
         }
 
-       
+        
+
+
         #endregion
     }
 }

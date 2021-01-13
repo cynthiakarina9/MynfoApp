@@ -1161,7 +1161,8 @@
            string urlBase,
            string servicePrefix,
            string controller,
-           Box model)
+           Box model,
+           int id)
         {
             try
             {
@@ -1175,7 +1176,7 @@
                     "{0}{1}/{2}",
                     servicePrefix,
                     controller,
-                    model.GetHashCode());
+                    id);
                 var response = await client.PutAsync(url, content);
                 var result = await response.Content.ReadAsStringAsync();
 

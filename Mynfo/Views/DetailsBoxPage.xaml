@@ -43,17 +43,18 @@
 
                     <!--Nombre de la box 
                     El nombre de la box será variable-->
-                    <StackLayout 
+                    <Entry 
+                        FontAttributes="Bold"
+                        FontSize="25"
                         Grid.ColumnSpan="4"
                         Grid.Row="1"
                         HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Box.Name, Mode=TwoWay}"
+                        TextColor="{StaticResource MainColor}"
                         VerticalOptions="Center"
-                        x:Name="BoxNameEntry" >
-                        <!--<Entry
-                            IsReadOnly="True"
-                            Text="{Binding BoxN.Name, Mode=TwoWay}"
-                            TextColor="Orange"/>-->
-                    </StackLayout>
+                        WidthRequest="200"
+                        x:Name="NameEntry"/>
 
                     <!--Box predeterminada-->
                     <StackLayout 

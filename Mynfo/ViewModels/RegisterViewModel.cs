@@ -250,6 +250,66 @@
             this.ImageSource = "no_image";
         }
 
+        public ICommand NextCommand
+        {
+            get
+            {
+                return new RelayCommand(Next);
+            }
+        }
+
+        private async void Next()
+        {
+            if (string.IsNullOrEmpty(this.FirstName))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.FirstNameValidation,
+                    Languages.Accept);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.LastName))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.LastNameValidation,
+                    Languages.Accept);
+                return;
+            }
+
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
+
+            byte[] imageArray = null;
+            if (this.file != null)
+            {
+                imageArray = FilesHelper.ReadFully(this.file.GetStream());
+            }
+
+            var user = new User
+            {
+                Email = this.Email,
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                ImageArray = imageArray,
+                UserTypeId = 1,
+                Password = this.Password,
+            };
+
+            MainViewModel.GetInstance().Register2 = new Register2ViewModel(user);
+            await Application.Current.MainPage.Navigation.PushAsync(new Register2Page());
+        }
+
         public ICommand ChangeImageCommand
         {
             get

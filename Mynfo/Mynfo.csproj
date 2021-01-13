@@ -82,6 +82,9 @@
     <Compile Update="Views\EditProfileTwitchPage.xaml.cs">
       <DependentUpon>EditProfileTwitchPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Register2Page.xaml.cs">
+      <DependentUpon>Register2Page.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PupPopPage.xaml.cs">
       <DependentUpon>PupPopPage.xaml</DependentUpon>
     </Compile>
@@ -216,6 +219,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ListOfNetworksPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Register2Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginFacebookPage.xaml">

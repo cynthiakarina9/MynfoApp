@@ -30,7 +30,6 @@
 
         // POST: api/Users/ejemplo@ejemplo.com
         [HttpPost]
-        [Authorize]
         [Route("GetUserByEmail")]
         public async Task<IHttpActionResult> GetUserByEmail(JObject form)
         {
