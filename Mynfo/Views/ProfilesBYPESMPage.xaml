@@ -507,7 +507,7 @@
                                             Grid.Column="0"
                                             HeightRequest="30"
                                             Margin="5"
-                                            Source="twitter2"
+                                            Source="twitterlogo2"
                                             WidthRequest="30"/>
                                         <Label 
                                             Grid.Column="1"

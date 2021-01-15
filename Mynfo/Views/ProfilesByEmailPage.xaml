@@ -48,12 +48,7 @@
 
                     <!--End Titulo-->
 
-                    <!-- Lista de correos -->
-                    <!--<StackLayout 
-                            Grid.Row="1"
-                            HorizontalOptions="FillAndExpand"
-                            Padding="25"
-                            x:Name="EmailList" />-->
+                    <!-- Lista-->
                     <ListView 
                         ItemsSource="{Binding profileEmail, Mode=TwoWay}"
                         Grid.Row="1"
@@ -104,14 +99,14 @@
                         FontSize="21"
                         Grid.Row="1"
                         HorizontalTextAlignment="Center"
-                        Margin="10,0,10,280"
                         IsVisible="{Binding EmptyList}"
+                        Margin="10,0,10,280"
                         Text="{i18n:Translate ProfileNull}"
                         TextColor="LightGray"
                         VerticalOptions="Center"/>
                 </Grid>
             </ScrollView>
-            <!-- Botón de nuevo correo -->
+            <!-- Botón de nuevo -->
             <ImageButton
                 Grid.Row="0"
                 BackgroundColor = "Transparent"

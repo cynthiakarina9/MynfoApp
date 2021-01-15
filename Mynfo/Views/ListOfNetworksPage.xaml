@@ -81,31 +81,19 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
                     <!--Lista vacia-->
                     <Label
                         FontAttributes="Bold"
                         FontSize="21"
                         Grid.Row="1"
                         HorizontalTextAlignment="Center"
-                        IsVisible="false"
+                        IsVisible="{Binding IsEmpty}"
                         Margin="10,0,10,280"
                         Text="{i18n:Translate ProfileNull}"
                         TextColor="LightGray"
                         VerticalOptions="Center"/>
                 </Grid>
             </ScrollView>
-            <!--Botón para agregar nuevas cuentas-->
-            <ImageButton
-                BackgroundColor = "Transparent"
-                Grid.Row = "0"
-                HeightRequest = "60"
-                HorizontalOptions ="Center"
-                Source = "Plus"
-                Margin = "15"
-                VerticalOptions = "End"
-                WidthRequest = "60" 
-                x:Name="GoToProfiles"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

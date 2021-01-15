@@ -18,6 +18,7 @@
         #endregion
 
         #region Attributes
+        private bool isEmpty;
         private bool isRunning;
         private ObservableCollection<ProfileEmail> profileEmail;
         private ObservableCollection<ProfilePhone> profilePhone;
@@ -27,12 +28,16 @@
         #endregion
 
         #region Properties
+        public bool IsEmpty
+        {
+            get { return this.isEmpty; }
+            set { SetValue(ref this.isEmpty, value); }
+        }
         public bool IsRunning
         {
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-
         public ObservableCollection<ProfileEmail> ProfileEmail
         {
             get { return profileEmail; }
@@ -41,7 +46,6 @@
                 SetValue(ref profileEmail, value);
             }
         }
-
         public ObservableCollection<ProfilePhone> ProfilePhone
         {
             get { return profilePhone; }
@@ -50,7 +54,6 @@
                 SetValue(ref profilePhone, value);
             }
         }
-
         public ObservableCollection<ProfileSM> ProfileSM
         {
             get { return profileSM; }
@@ -59,7 +62,6 @@
                 SetValue(ref profileSM, value);
             }
         }
-
         public ObservableCollection<ProfileWhatsapp> ProfileWhatsapp
         {
             get { return profileWhatsapp; }
@@ -68,7 +70,6 @@
                 SetValue(ref profileWhatsapp, value);
             }
         }
-
         public ObservableCollection<ProfileLocal> ProfilePerfiles
         {
             get { return profilePerfiles; }
@@ -77,13 +78,18 @@
                 SetValue(ref profilePerfiles, value);
             }
         }
-        public ProfileLocal selectedProfileProfiles { get; set; }
+        public ProfileLocal selectedProfileProfiles 
+        { 
+            get; 
+            set; 
+        }
         #endregion
 
         #region Constructor
-        public ListOfNetworksViewModel(int _BoxId, bool _boxDefault, string _boxName)
+        public ListOfNetworksViewModel(int _BoxId)
         {
             apiService = new ApiService();
+            IsEmpty = false;
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
             GetListEmail(_BoxId);
             GetListPhone(_BoxId);
@@ -138,6 +144,7 @@
         {
             var E = Converter.ToProfileLocalE(_profileEmail);
             ProfilePerfiles.Add(E);
+            IsEmpty = false;
         }
         public void removeProfileEmail(ProfileEmail _profileEmail)
         {
@@ -151,7 +158,10 @@
                 }
             }
             ProfilePerfiles.Remove(Aux);
-            var A = ProfilePerfiles.Count;
+            if(ProfilePerfiles.Count == 0)
+            {
+                IsEmpty = true;
+            }
         }
         public void updateProfileEmail(ProfileEmail _profileEmail)
         {
@@ -218,6 +228,7 @@
         {
             var P = Converter.ToProfileLocalP(_profilePhone);
             ProfilePerfiles.Add(P);
+            IsEmpty = false;
         }
         public void removeProfilePhone(ProfilePhone _profilePhone)
         {
@@ -231,7 +242,10 @@
                 }
             }
             ProfilePerfiles.Remove(Aux);
-            var A = ProfilePerfiles.Count;
+            if (ProfilePerfiles.Count == 0)
+            {
+                IsEmpty = true;
+            }
         }
         public void updateProfilePhone(ProfilePhone _profileP)
         {
@@ -296,6 +310,7 @@
         {
             var SM = Converter.ToProfileLocalSM(_profileSM);
             ProfilePerfiles.Add(SM);
+            IsEmpty = false;
         }
         public void removeProfileSM(ProfileSM _profileSM)
         {
@@ -309,7 +324,10 @@
                 }
             }
             ProfilePerfiles.Remove(Aux);
-            var A = ProfilePerfiles.Count;
+            if (ProfilePerfiles.Count == 0)
+            {
+                IsEmpty = true;
+            }
         }
         public void updateProfileSM(ProfileSM _profileSM)
         {
@@ -374,6 +392,7 @@
         {
             var W = Converter.ToProfileLocalW(_profileW);
             ProfilePerfiles.Add(W);
+            IsEmpty = false;
         }
         public void removeProfileWhatsapp(ProfileWhatsapp _profileW)
         {
@@ -387,7 +406,10 @@
                 }
             }
             ProfilePerfiles.Remove(Aux);
-            var A = ProfilePerfiles.Count;
+            if (ProfilePerfiles.Count == 0)
+            {
+                IsEmpty = true;
+            }
         }
         public void updateProfileWhatsapp(ProfileWhatsapp _profileW)
         {

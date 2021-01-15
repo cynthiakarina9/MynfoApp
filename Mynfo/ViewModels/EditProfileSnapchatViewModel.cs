@@ -87,7 +87,7 @@
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.PutProfile(
+            var profile = await this.apiService.PutProfile(
                 apiSecurity,
                 "/api",
                 "/ProfileSMs/PutProfileSM",
@@ -96,6 +96,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
+            MainViewModel.GetInstance().ProfilesBySnapchat.updateProfile(profile);
             await App.Navigator.PopAsync();
         }
 
@@ -142,6 +143,7 @@
 
             await App.Navigator.PopAsync();
         }
+
         public ICommand BackHomeCommand
         {
             get
@@ -149,7 +151,6 @@
                 return new RelayCommand(BackHome);
             }
         }
-
         private async void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();

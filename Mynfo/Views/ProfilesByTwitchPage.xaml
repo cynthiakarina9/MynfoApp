@@ -97,7 +97,7 @@
                         VerticalOptions="Center"/>
                 </Grid>
             </ScrollView>
-            <!-- Botón de nuevo correo -->
+            <!-- Botón de nuevo -->
             <ImageButton
                 Grid.Row="0"
                 BackgroundColor = "Transparent"

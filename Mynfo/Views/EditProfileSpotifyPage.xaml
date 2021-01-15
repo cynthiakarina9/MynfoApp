@@ -19,78 +19,113 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
+        <Grid
             BindingContext = "{Binding EditProfileSpotify}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height = "80"/>
-                    <RowDefinition Height = "160"/>
-                    <RowDefinition Height = "120"/>
-                    <RowDefinition Height = "80"/>
-                    <RowDefinition />
-                    <RowDefinition Height = "120"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="7.5*" />
-                    <ColumnDefinition Width="2.5*" />
-                </Grid.ColumnDefinitions>
-                <Label 
-                    FontAttributes = "Bold"
-                    FontSize = "25"
-                    Grid.ColumnSpan ="2"
-                    Grid.Row = "0"
-                    HorizontalOptions = "Center"
-                    HorizontalTextAlignment = "Center"
-                    Text = "{i18n:Translate EditNetwork}"
-                    TextColor = "{StaticResource MainColor}"
-                    VerticalOptions = "Center"/>
-                <ImageButton
-                    BackgroundColor="Transparent"
-                    Command="{Binding DeleteCommand}"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Scale=".6"
-                    Source="trash2"
-                    VerticalOptions="Start"
-                    x:Name = "ButtonDelete"/>
-                <Image
-                    HeightRequest = "180"
-                    Source = "spotify2"
-                    Grid.Row = "1"
-                    Grid.ColumnSpan ="2"
-                    WidthRequest = "180"/>
-                <StackLayout 
-                    Grid.Row = "2"
-                    Grid.ColumnSpan ="2"
-                    Padding = "20">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height = "80"/>
+                        <RowDefinition Height = "160"/>
+                        <RowDefinition Height = "120"/>
+                        <RowDefinition Height = "80"/>
+                        <RowDefinition />
+                        <RowDefinition Height = "120"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7.5*" />
+                        <ColumnDefinition Width="2.5*" />
+                    </Grid.ColumnDefinitions>
                     <Label 
-                        FontSize = "24" 
-                        FontAttributes="Bold"
+                        FontAttributes = "Bold"
+                        FontSize = "25"
+                        Grid.ColumnSpan ="2"
+                        Grid.Row = "0"
                         HorizontalOptions = "Center"
-                        Text = "{i18n:Translate NameProfile}" 
+                        HorizontalTextAlignment = "Center"
+                        Text = "{i18n:Translate EditNetwork}"
                         TextColor = "{StaticResource MainColor}"
                         VerticalOptions = "Center"/>
-                    <Entry 
-                        Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
-                        FontSize = "21"
-                        HorizontalTextAlignment = "Center"
-                        HeightRequest = "46"
-                        HorizontalOptions = "Center"
-                        IsEnabled="False"
-                        VerticalOptions = "Center" 
-                        WidthRequest = "300" 
-                        x:Name = "EntryName"/>
-                </StackLayout>
-                <StackLayout
-                    Grid.Row = "4"
-                    Grid.ColumnSpan ="2"
-                    VerticalOptions = "CenterAndExpand">
-                    <ActivityIndicator
-                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions = "CenterAndExpand">
-                    </ActivityIndicator>
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+                    <ImageButton
+                        BackgroundColor="Transparent"
+                        Command="{Binding DeleteCommand}"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Scale=".6"
+                        Source="trash2"
+                        VerticalOptions="Start"
+                        x:Name = "ButtonDelete"/>
+                    <Image
+                        HeightRequest = "180"
+                        Source = "spotify2"
+                        Grid.Row = "1"
+                        Grid.ColumnSpan ="2"
+                        WidthRequest = "180"/>
+                    <StackLayout 
+                        Grid.Row = "2"
+                        Grid.ColumnSpan ="2"
+                        Padding = "20">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NameProfile}" 
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Entry 
+                            Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
+                            FontSize = "21"
+                            HorizontalTextAlignment = "Center"
+                            HeightRequest = "46"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300" 
+                            x:Name = "EntryName"/>
+                    </StackLayout>
+                    <StackLayout 
+                        Grid.Row = "3"
+                        Grid.ColumnSpan ="2"
+                        Padding = "20">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NickName}" 
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Entry 
+                            Text="{Binding profileSM.link, Mode=TwoWay}"
+                            FontSize = "21"
+                            HorizontalTextAlignment = "Center"
+                            HeightRequest = "46"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300"/>
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row = "4"
+                        Grid.ColumnSpan ="2"
+                        VerticalOptions = "CenterAndExpand">
+                        <ActivityIndicator
+                            IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                            VerticalOptions = "CenterAndExpand">
+                        </ActivityIndicator>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <!-- Botón de guardado -->
+            <Button 
+                BackgroundColor = "{StaticResource MainColor}"
+                BorderRadius = "23"
+                Command="{Binding SaveCommand}"
+                HeightRequest = "50"
+                HorizontalOptions = "Fill"
+                Margin="15"
+                Text = "{i18n:Translate Save}"
+                FontSize="15"
+                FontAttributes="Bold"
+                TextColor = "{StaticResource Dark_FontColor}"
+                VerticalOptions = "End" 
+                x:Name = "ButtonSave"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

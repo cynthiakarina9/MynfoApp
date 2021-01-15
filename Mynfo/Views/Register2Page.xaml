@@ -98,10 +98,8 @@
                                 TextColor = "{StaticResource MainColor}"
                                 VerticalTextAlignment = "Center"/>
                             <Entry
-                                FontSize = "23"
                                 ClearButtonVisibility="WhileEditing"
                                 HorizontalTextAlignment="Center"
-                                HorizontalOptions = "CenterAndExpand"
                                 Keyboard = "Telephone"
                                 Margin = "0,-10,0,0"
                                 MaxLength="10"
@@ -110,16 +108,16 @@
                         </StackLayout>
                         <StackLayout
                             Grid.Row="5"
-                            Margin="25,-50,0,0"
+                            Margin="0,-50,0,0"
                             Orientation="Horizontal">
-                            <Label 
-                                HorizontalOptions="Center"
-                                Text="Whatsapp"
-                                VerticalOptions="Center"/>
                             <CheckBox 
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
                                 IsChecked="{Binding IsCheck}"/>
+                            <Label 
+                                HorizontalOptions="Center"
+                                Text="Whatsapp"
+                                VerticalOptions="Center"/>
                         </StackLayout>
                         <Button
                             Grid.Row = "6"

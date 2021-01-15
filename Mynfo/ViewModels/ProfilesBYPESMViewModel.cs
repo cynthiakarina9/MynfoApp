@@ -82,7 +82,7 @@
         #endregion
 
         #region Constructor
-        public ProfilesBYPESMViewModel(int _BoxId, string _ProfileType, bool _BoxDefault, string _boxName = "")
+        public ProfilesBYPESMViewModel(int _BoxId, string _ProfileType)
         {
             apiService = new ApiService();
             EmptyList = false;
@@ -190,10 +190,6 @@
                 "/ProfileEmails",
                 MainViewModel.GetInstance().User.UserId);
 
-            if (listEmail.Count == 0)
-            {
-                EmptyList = true;
-            }
 
             foreach (ProfileEmail ItemEmail in listEmail)
             {
@@ -216,6 +212,10 @@
             foreach (ProfileEmail profEmail in listEmail)
                 ProfileEmail.Add(profEmail);
 
+            if (ProfileEmail.Count == 0)
+            {
+                EmptyList = true;
+            }
             this.IsRunning = false;
             return ProfileEmail;
         }
@@ -223,11 +223,16 @@
         public void addProfileEmail(ProfileEmail _profileEmail)
         {
             ProfileEmail.Add(_profileEmail);
+            EmptyList = false;
         }
 
         public void removeProfileEmail()
         {
             ProfileEmail.Remove(selectedProfileEmail);
+            if (ProfileEmail.Count == 0)
+            {
+                EmptyList = true;
+            }
         }
 
         public void updateProfileEmail(ProfileEmail _profileEmail)
@@ -268,11 +273,6 @@
                 "/ProfilePhones",
                 MainViewModel.GetInstance().User.UserId);
 
-            if(listPhone.Count == 0)
-            {
-                EmptyList = true;
-            }
-
             foreach (ProfilePhone ItemPhone in listPhone)
             {
                 Box_ProfilePhone RelationPhone;
@@ -293,7 +293,11 @@
 
             foreach (ProfilePhone profPhone in listPhone)
                 ProfilePhone.Add(profPhone);
-
+            
+            if (ProfilePhone.Count == 0)
+            {
+                EmptyList = true;
+            }
             this.IsRunning = false;
             return ProfilePhone;
         }
@@ -302,11 +306,16 @@
         public void addProfilePhone(ProfilePhone _profilePhone)
         {
             ProfilePhone.Add(_profilePhone);
+            EmptyList = false;
         }
 
         public void removeProfilePhone()
         {
             ProfilePhone.Remove(selectedProfilePhone);
+            if (ProfilePhone.Count == 0)
+            {
+                EmptyList = true;
+            }
         }
 
         public void updateProfilePhone(ProfilePhone _profilePhone)
@@ -347,11 +356,6 @@
                 MainViewModel.GetInstance().User.UserId,
                 RedSocial);
 
-            if (listSM.Count == 0)
-            {
-                EmptyList = true;
-            }
-
             foreach (ProfileSM ItemSM in listSM)
             {
                 Box_ProfileSM RelationSM;
@@ -374,8 +378,11 @@
             {
                 ProfileSM.Add(profSM);
             }
-                
-            
+
+            if (ProfileSM.Count == 0)
+            {
+                EmptyList = true;
+            }
             this.IsRunning = false;
             return ProfileSM;
         }
@@ -384,11 +391,16 @@
         public void addProfileSM(ProfileSM _profileSM)
         {
             ProfileSM.Add(_profileSM);
+            EmptyList = false;
         }
 
         public void removeProfileSM()
         {
             ProfileSM.Remove(selectedProfileSM);
+            if (ProfileSM.Count == 0)
+            {
+                EmptyList = true;
+            }
         }
 
         public void updateProfileSM(ProfileSM _profileSM)
@@ -428,11 +440,6 @@
                 "/ProfileWhatsapps",
                 MainViewModel.GetInstance().User.UserId);
 
-            if (listWhastapp.Count == 0)
-            {
-                EmptyList = true;
-            }
-
             foreach (ProfileWhatsapp ItemWhatsapp in listWhastapp)
             {
                 Box_ProfileWhatsapp RelationWhatsapp;
@@ -454,6 +461,10 @@
             foreach (ProfileWhatsapp profWhatsapp in listWhastapp)
                 ProfileWhatsapp.Add(profWhatsapp);
 
+            if (ProfileWhatsapp.Count == 0)
+            {
+                EmptyList = true;
+            }
             this.IsRunning = false;
             return ProfileWhatsapp;
         }
@@ -462,11 +473,16 @@
         public void addProfileWhatsapp(ProfileWhatsapp _profileWhatsapp)
         {
             ProfileWhatsapp.Add(_profileWhatsapp);
+            EmptyList = false;
         }
 
         public void removeProfileWhatsapp()
         {
             ProfileWhatsapp.Remove(selectedProfileWhatsapp);
+            if (ProfileWhatsapp.Count == 0)
+            {
+                EmptyList = true;
+            }
         }
 
         public void updateProfileWhatsapp(ProfileWhatsapp _profileWhatsapp)
