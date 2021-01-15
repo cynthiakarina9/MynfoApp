@@ -436,7 +436,7 @@
     <value>Profile name</value>
   </data>
   <data name="NumberPhone" xml:space="preserve">
-    <value>Phone or cell number</value>
+    <value>Cell number</value>
   </data>
   <data name="ChooseTypeProfile" xml:space="preserve">
     <value>Networks</value>
@@ -551,5 +551,8 @@
   </data>
   <data name="EmptyBox" xml:space="preserve">
     <value>You do not have networks added to this box yet</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
   </data>
 </root>

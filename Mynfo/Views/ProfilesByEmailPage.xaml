@@ -102,9 +102,13 @@
                     <Label
                         FontAttributes="Bold"
                         FontSize="21"
+                        Grid.Row="1"
+                        HorizontalTextAlignment="Center"
+                        Margin="10,0,10,280"
                         IsVisible="{Binding EmptyList}"
                         Text="{i18n:Translate ProfileNull}"
-                        TextColor="LightGray"/>
+                        TextColor="LightGray"
+                        VerticalOptions="Center"/>
                 </Grid>
             </ScrollView>
             <!-- Botón de nuevo correo -->

@@ -553,4 +553,7 @@ Você deve inserir um url</value>
   <data name="EmptyBox" xml:space="preserve">
     <value>Você ainda não tem redes adicionadas a esta caixa.</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Próximo</value>
+  </data>
 </root>

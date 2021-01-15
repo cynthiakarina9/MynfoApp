@@ -27,7 +27,9 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height = "60"/>
                             <RowDefinition Height = "170"/>
-                            <RowDefinition Height = "Auto"/>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition Height = "100"/>
                         </Grid.RowDefinitions>
                         <Label 
                         FontAttributes = "Bold"
@@ -161,7 +163,7 @@
                             HorizontalOptions = "Fill"
                             IsEnabled = "{Binding IsEnabled}"
                             Margin="15"
-                            Text = "Next"
+                            Text = "{i18n:Translate Next}"
                             TextColor = "{StaticResource Dark_FontColor}" 
                             VerticalOptions="End"/>
                     </Grid>
