@@ -230,7 +230,8 @@
             string servicePrefix,
             string controller,
             string tokenType,
-            string accessToken, ChangePasswordRequest changePasswordRequest)
+            string accessToken, 
+            ChangePasswordRequest changePasswordRequest)
         {
             try
             {
@@ -273,7 +274,10 @@
         {
             try
             {
-                var userRequest = new UserRequest { Email = email, };
+                var userRequest = new UserRequest 
+                { 
+                    Email = email 
+                };
                 var request = JsonConvert.SerializeObject(userRequest);
                 var content = new StringContent(
                     request,

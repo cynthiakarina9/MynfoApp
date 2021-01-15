@@ -111,15 +111,15 @@
                     </Grid>
                 </Grid>
             </ScrollView>
-            
             <Button 
                 BackgroundColor = "{StaticResource MainColor}"
                 BorderRadius = "23"
                 Command = "{Binding SaveProfileTiktokCommand}"
                 HeightRequest = "50"
+                Margin="15"
                 Text = "{i18n:Translate Save}"
                 TextColor = "{StaticResource Dark_FontColor}"
-                VerticalOptions = "Center"
+                VerticalOptions = "End"
                 x:Name="Save"/>
         </Grid>
     </ContentPage.Content>

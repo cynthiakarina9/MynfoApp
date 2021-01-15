@@ -11,8 +11,6 @@
         public ProfileTypeSelection(int _BoxId, bool _boxDefault, string _boxName)
         {
             InitializeComponent();
-            //BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId));
-
             //Botones de redes sociales
             ProfilesEmail.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Email", _boxDefault, _boxName));
             ProfilesPhone.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Phone", _boxDefault, _boxName));
@@ -26,15 +24,13 @@
             ProfilesSpotify.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Spotify", _boxDefault, _boxName));
             ProfilesYoutube.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Youtube", _boxDefault, _boxName));
             ProfilesTwitch.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Twitch", _boxDefault, _boxName));
-            //ProfilesWebPage.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "WebPage", _boxDefault, _boxName));
+            ProfilesWebPage.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "WebPage", _boxDefault, _boxName));
         }
 
         private void ProfilesList_Clicked(object sender, EventArgs e, int _BoxId, string _profileType, bool _BoxDefault, string _boxName)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            //mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel(_BoxId, _profileType, _BoxDefault, _boxName);
-            mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel(_BoxId, _profileType, _BoxDefault, _boxName);
-            //Application.Current.MainPage = new NavigationPage(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault, _boxName));
+            mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel(_BoxId, _profileType);
             App.Navigator.PushAsync(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault, _boxName));
         }
         private void BackHome_Clicked(object sender, EventArgs e)

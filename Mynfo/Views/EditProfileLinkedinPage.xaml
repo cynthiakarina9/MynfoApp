@@ -55,7 +55,7 @@
                     x:Name = "ButtonDelete"/>
                 <Image
                     HeightRequest = "180"
-                    Source = "Linkedin2"
+                    Source = "linkedin2"
                     Grid.Row = "1"
                     Grid.ColumnSpan ="2"
                     WidthRequest = "180"/>

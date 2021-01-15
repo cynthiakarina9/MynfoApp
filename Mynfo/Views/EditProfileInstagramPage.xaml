@@ -86,8 +86,8 @@
                     Grid.ColumnSpan ="2"
                     VerticalOptions = "CenterAndExpand">
                     <ActivityIndicator
-                    IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions = "CenterAndExpand">
+                        IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                        VerticalOptions = "CenterAndExpand">
                     </ActivityIndicator>
                 </StackLayout>
             </Grid>

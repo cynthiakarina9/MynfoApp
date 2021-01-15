@@ -15,14 +15,14 @@
             //On<Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfileTypeSelection = new ProfileTypeSelectionViewModel();
-            mainViewModel.ListOfNetworks = new ListOfNetworksViewModel(_BoxId, _boxDefault, _boxName);
+            mainViewModel.ListOfNetworks = new ListOfNetworksViewModel(_BoxId);
 
             On<Windows>().SetHeaderIconsEnabled(true);
             On<Windows>().SetHeaderIconsSize(new Size(50, 50));
 
-            Children.Add(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName) { IconImageSource = "enter1.png" });
-            Children.Add(new ListOfNetworksPage(_BoxId) { IconImageSource = "home_icon.png" });
-            
+            Children.Add(new ListOfNetworksPage(_BoxId) { IconImageSource = "lista.png" });
+            Children.Add(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName) { IconImageSource = "tipos.png" });
+
             CurrentPage = Children[0];
         }
     }

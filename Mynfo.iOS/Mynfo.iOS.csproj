@@ -252,49 +252,22 @@
     <BundleResource Include="Resources\icono_option.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\instagram1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\instagram2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\instagram11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\instagram12.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\instagramlogo1.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\layout1.xml" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\line1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\linkedin1.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\linkedin2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\Logo_sin_relleno.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo_superior.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logo_superior2.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logo_superior3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo2.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Logo3.png" />
@@ -312,9 +285,6 @@
     <BundleResource Include="Resources\mail3.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\nikerunclub1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\no.png" />
   </ItemGroup>
   <ItemGroup>
@@ -324,16 +294,7 @@
     <BundleResource Include="Resources\perfiles.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\pinterest1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\Plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\reddit1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\skype1.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\snapchat1.png" />
@@ -387,9 +348,6 @@
     <BundleResource Include="Resources\twitch1.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\twitter1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\twitterlogo1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -400,9 +358,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\whatsapp2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\yammer1.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\youtube1.png" />
@@ -427,6 +382,63 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\twitterlogo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lista.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tipos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\linkedin3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\linkedin2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiktok3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\twitch3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\twitter3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\whatsapp3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\youtube3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\facebook3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gmail3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\instagram3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\snapchat3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\spotify3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\snapchat2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\spotify2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiktok2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\twitch2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\youtube2.png" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

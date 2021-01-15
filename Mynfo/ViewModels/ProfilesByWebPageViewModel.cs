@@ -100,15 +100,15 @@
                 MainViewModel.GetInstance().User.UserId,
                 IdNetwork);
 
+            foreach (ProfileSM profSM in profileSocialMedia)
+                profileSM.Add(profSM);
+
             this.IsRunning = false;
 
             if (profileSocialMedia.Count == 0)
             {
                 EmptyList = true;
             }
-
-            foreach (ProfileSM profSM in profileSocialMedia)
-                profileSM.Add(profSM);
 
             return profileSM;
         }
@@ -117,13 +117,26 @@
         public void addProfile(ProfileSM _profileSM)
         {
             profileSM.Add(_profileSM);
+            EmptyList = true;
         }
 
         public void removeProfile()
         {
             profileSM.Remove(selectedProfile);
+            if (profileSM.Count == 0)
+            {
+                EmptyList = true;
+            }
         }
 
+        public void updateProfile(ProfileSM _profileSM)
+        {
+            int newIndex = profileSM.IndexOf(selectedProfile);
+            profileSM.Remove(selectedProfile);
+
+            profileSM.Insert(newIndex, _profileSM);
+
+        }
         #endregion
     }
 }

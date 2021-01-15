@@ -46,7 +46,7 @@
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions="StartAndExpand">
                     </ActivityIndicator>
-                    <!-- Lista de correos -->
+                    <!-- Lista -->
                     <ListView 
                         ItemsSource="{Binding profileSM}"
                         Grid.Row="1"
@@ -98,7 +98,7 @@
                         VerticalOptions="Center"/>
                 </Grid>
             </ScrollView>
-            <!-- Botón de nuevo correo -->
+            <!-- Botón de nuevo -->
             <ImageButton
                 Grid.Row="0"
                 BackgroundColor = "Transparent"

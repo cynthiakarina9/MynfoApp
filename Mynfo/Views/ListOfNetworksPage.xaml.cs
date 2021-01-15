@@ -101,7 +101,7 @@
                         MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMfb);
                     }
                 break;
-                case "twitter2":
+                case "twitterlogo2":
                     ProfileSM SMtwtt = Converter.ToProfileSM(tappedItemProfile);
                     if (SMtwtt.Exist == false)
                     {

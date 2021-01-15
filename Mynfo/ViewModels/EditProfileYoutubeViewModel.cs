@@ -87,7 +87,7 @@
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.PutProfile(
+            var profile = await this.apiService.PutProfile(
                 apiSecurity,
                 "/api",
                 "/ProfileSMs/PutProfileSM",
@@ -96,6 +96,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
+            MainViewModel.GetInstance().ProfilesByYoutube.updateProfile(profile);
             await App.Navigator.PopAsync();
         }
 

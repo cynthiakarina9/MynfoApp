@@ -123,6 +123,14 @@
             profileSM.Remove(selectedProfile);
         }
 
+        public void updateProfile(ProfileSM _profileSM)
+        {
+            int newIndex = profileSM.IndexOf(selectedProfile);
+            profileSM.Remove(selectedProfile);
+
+            profileSM.Insert(newIndex, _profileSM);
+
+        }
         #endregion
     }
 }
