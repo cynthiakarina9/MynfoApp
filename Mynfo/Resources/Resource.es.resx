@@ -436,7 +436,7 @@
     <value>Nombre del perfil</value>
   </data>
   <data name="NumberPhone" xml:space="preserve">
-    <value>Número de teléfono o celular</value>
+    <value>Celular</value>
   </data>
   <data name="ChooseTypeProfile" xml:space="preserve">
     <value>Redes</value>
@@ -551,5 +551,8 @@
   </data>
   <data name="EmptyBox" xml:space="preserve">
     <value>Aún no tiene redes agregadas a ésta box</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Siguiente</value>
   </data>
 </root>

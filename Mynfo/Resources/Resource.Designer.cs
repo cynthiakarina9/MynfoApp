@@ -925,6 +925,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Next.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a User name.
         /// </summary>
         public static string NickName {
@@ -961,7 +970,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Phone or cell number.
+        ///   Busca una cadena traducida similar a Cell number.
         /// </summary>
         public static string NumberPhone {
             get {

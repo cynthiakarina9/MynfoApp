@@ -127,7 +127,7 @@
                             HorizontalOptions = "Fill"
                             IsEnabled = "{Binding IsEnabled}"
                             Margin="15"
-                            Text = "Next"
+                            Text = "{i18n:Translate Save}"
                             TextColor = "{StaticResource Dark_FontColor}" 
                             VerticalOptions="End"/>
                     </Grid>

@@ -612,5 +612,9 @@
         {
             get { return Resource.EmptyBox; }
         }
+        public static string Next
+        {
+            get { return Resource.Next; }
+        }
     }
 }
