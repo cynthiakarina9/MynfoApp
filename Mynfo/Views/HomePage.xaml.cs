@@ -16,7 +16,7 @@
             InitializeComponent();
 
             ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
-            //GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
+            GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
 
             System.Text.StringBuilder sb;
             string      userId = MainViewModel.GetInstance().User.UserId.ToString();
@@ -939,10 +939,10 @@
 
         private async void GoToTestPage()
         {
-            /*
+            
             MainViewModel.GetInstance().Testing = new TestingViewModel();
-            Navigation.PushAsync(new Testing());*/
-            await Launcher.OpenAsync(new Uri("https://www.facebook.com/roy.a.mustang"));
+            Navigation.PushAsync(new Testing());
+            //await Launcher.OpenAsync(new Uri("https://www.facebook.com/roy.a.mustang"));
         }
 
     }

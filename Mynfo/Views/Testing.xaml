@@ -7,50 +7,45 @@
         <Grid
             BindingContext="{Binding Testing}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="80" />
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <!--Titulo-->
-
-            <Label 
-                Grid.Row = "0" 
-                Text = "Test de Grid"
-                FontSize = "25"
-                FontAttributes="Bold"
-                TextColor = "{StaticResource MainColor}"
-                HorizontalOptions = "CenterAndExpand"
-                VerticalOptions = "EndAndExpand"  
-                Margin = "0,5,0,15"/>
-            <!--End Titulo-->
-            <CollectionView 
-                ItemsSource="{Binding ListOfNetworks}"
-                Grid.Row="1">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical"
-                                    Span="3" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="35" />
-                                <RowDefinition Height="35" />
-                            </Grid.RowDefinitions>
-                            <ImageButton
-                                BackgroundColor="Transparent"
-                                Grid.Column="0"
-                                HeightRequest="40"
-                                Margin="10"
-                                Source="whatsapp2"
-                                WidthRequest="40"/>
-                            <Label Grid.Row="0"
-                                Text="{Binding Name}"
-                                FontAttributes="Bold"
-                                TextColor="DarkRed" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Perro"
+                x:Name="AbrirPopUp1"/>
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="Gato"
+                x:Name="AbrirPopUp2"/>
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                Text="Jirafa"
+                x:Name="AbrirPopUp3"/>
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Serpiente"
+                x:Name="AbrirPopUp4"/>
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="Foca"
+                x:Name="AbrirPopUp5"/>
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
+                Text="Ratón"
+                x:Name="AbrirPopUp6"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
