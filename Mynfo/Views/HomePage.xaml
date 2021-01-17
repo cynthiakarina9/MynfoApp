@@ -32,12 +32,12 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid>
-            <ScrollView
-                BindingContext = "{Binding Home}">
+        <Grid
+            BindingContext = "{Binding Home}">
+            <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height = "200"/>
+                        <RowDefinition Height = "150"/>
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
@@ -50,12 +50,59 @@
                     </Grid.ColumnDefinitions>
 
                     <!-- Box Predeterminada-->
-                    <StackLayout 
+                    <!--<StackLayout 
                         Grid.ColumnSpan="3"
                         Grid.Row="0"
                         HorizontalOptions="Center"
+                        IsVisible="false"
                         VerticalOptions="Center"
-                        x:Name="DefaultButton" />
+                        x:Name="DefaultButton" />-->
+                    <CollectionView 
+                        ItemsSource="{Binding Box}"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="3"
+                        SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout 
+                                Orientation="Vertical"
+                                Span="1" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="80" />
+                                        <RowDefinition Height="50" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout
+                                        HorizontalOptions="Center">
+                                        <ImageButton
+                                            Clicked="ButtonDefault"
+                                            BackgroundColor="Transparent"
+                                            IsVisible="{Binding IsNull}"
+                                            HeightRequest="80"
+                                            Source="home1.png"
+                                            WidthRequest="80"/>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="23"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Name}"
+                                            TextColor="DarkRed" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <ContentView>
+                                <StackLayout 
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label Text="No Boxes yet"/>
+                                </StackLayout>
+                            </ContentView>
+                        </CollectionView.EmptyView>
+                    </CollectionView>
 
                     <!-- De la box 2 a la 4 -->
                     <StackLayout 

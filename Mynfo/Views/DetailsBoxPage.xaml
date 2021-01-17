@@ -50,6 +50,7 @@
                         Grid.Row="1"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
+                        IsReadOnly="True"
                         Text="{Binding Box.Name, Mode=TwoWay}"
                         TextColor="{StaticResource MainColor}"
                         VerticalOptions="Center"

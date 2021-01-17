@@ -220,6 +220,65 @@
             return Ok("ok");
         }
 
+        [HttpPost]
+        [Route("LoginMessage")]
+        public async Task<IHttpActionResult> LoginMessage(JObject form)
+        {
+            try
+            {
+                var email = string.Empty;
+                dynamic jsonObject = form;
+
+                try
+                {
+                    email = jsonObject.Email.Value;
+                }
+                catch
+                {
+                    return BadRequest("Incorrect call.");
+                }
+
+                var customer = await db.Users
+                    .Where(u => u.Email.ToLower() == email.ToLower())
+                    .FirstOrDefaultAsync();
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+
+                var userContext = new ApplicationDbContext();
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
+                var userASP = userManager.FindByEmail(email);
+                if (userASP == null)
+                {
+                    return NotFound();
+                }
+                else if (userASP != null)
+                {
+                    var subject = "Mynfo - User Added";
+                    var body = string.Format(@"
+                        <h1>Welcome to mynfo</h1>
+                <p>You have created an account in the mynfo 
+                    application,</p> 
+                <p>where you can share your contact information
+                    with the people of your choice.</p>
+
+                <p>For more information, doubt or comments visit</p>
+                  <p>  <a href='www.mynfo.mx'>www.mynfo.mx</a></p>");
+
+                    await MailHelper.SendMail(email, subject, body);
+                    return Ok(true);
+                }
+
+                return BadRequest("The password can't be changed.");
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         // PUT: api/Users/5
         [Authorize]
         [ResponseType(typeof(void))]

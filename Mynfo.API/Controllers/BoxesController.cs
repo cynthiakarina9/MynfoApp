@@ -35,6 +35,31 @@
             return Ok(box);
         }
 
+        // GET: api/Boxes/GetBoxDefault/1
+        [HttpPost]
+        [Route("GetBoxDefault")]
+        [ResponseType(typeof(Box))]
+        public async Task<Box> GetBoxDefault(JObject form)
+        {
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.UserId;
+            }
+            catch
+            {
+                return null;
+            }
+            Box box = GetBoxes().Where(u=> u.UserId == id && u.BoxDefault == true).FirstOrDefault();
+            if (box == null)
+            {
+                return null;
+            }
+
+            return box;
+        }
+
         //// PUT: api/Boxes/5
         //[ResponseType(typeof(void))]
         //public async Task<IHttpActionResult> PutBox(int id, Box box)

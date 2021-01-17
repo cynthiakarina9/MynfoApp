@@ -1,16 +1,29 @@
 ﻿namespace Mynfo.Views
 {
+    using Mynfo.Domain;
     using Mynfo.Models;
+    using Mynfo.Services;
     using Mynfo.ViewModels;
     using Rg.Plugins.Popup.Services;
     using System;
     using System.Data.SqlClient;
+    using System.Linq;
     using System.Text;
     using Xamarin.Essentials;
     using Xamarin.Forms;
 
     public partial class HomePage : ContentPage
     {
+        #region Services
+        ApiService apiService;
+        #endregion
+
+        #region Attributes
+        #endregion
+
+        #region Properties
+        public Box selectedItem { get; set; }
+        #endregion
         public HomePage()
         {
             InitializeComponent();
@@ -105,7 +118,7 @@
                 NoBoxes.Text = "Aún no hay boxes creadas.";
                 NoBoxes.FontSize = 22;
 
-                DefaultButton.Children.Add(NoBoxes);
+                //DefaultButton.Children.Add(NoBoxes);
             }
             else
             {
@@ -125,8 +138,9 @@
                 LabelDefault.FontSize = 20;
                 LabelDefault.HorizontalTextAlignment = TextAlignment.Center;
 
-                DefaultButton.Children.Add(Default);
-                DefaultButton.Children.Add(LabelDefault);
+                //DefaultButton.Children.Add(Default);
+                //DefaultButton.Children.Add(LabelDefault);
+                
             }
 
             //Tercer consulta para obtener las demás boxes
@@ -944,6 +958,18 @@
             Navigation.PushAsync(new Testing());*/
             await Launcher.OpenAsync(new Uri("https://www.facebook.com/roy.a.mustang"));
         }
-
+        void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedItem = new Box();
+            //string previous = (e.PreviousSelection.FirstOrDefault() as ProfileLocal)?.Name;
+            selectedItem = e.CurrentSelection.FirstOrDefault() as Box;
+            //MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(selectedItem.BoxId);
+            //App.Navigator.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
+            selectedItem = null;
+        }
+        private void ButtonDefault(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home.GoToDetails();
+        }
     }
 }
