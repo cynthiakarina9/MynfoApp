@@ -279,7 +279,11 @@
                     return;
                 }
             }
-
+            var response3 = await apiService.LoginMessage(
+                apiSecurity,
+                "/api",
+                "/Users/LoginMessage",
+                Email);
             this.IsRunning = false;
             this.IsEnabled = true;
 

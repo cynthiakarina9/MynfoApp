@@ -979,7 +979,7 @@
                         connection.Close();
                     }
                 }
-
+                MainViewModel.GetInstance().Home.GetBoxDefault();
                 BxDefaultCheckBox.IsEnabled = false;
             }
         }

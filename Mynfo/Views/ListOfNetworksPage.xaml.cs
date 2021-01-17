@@ -203,7 +203,7 @@
                         MainViewModel.GetInstance().DetailsBox.removeProfileSM(SMYou);
                     }
                     break;
-                case "spotyfy2":
+                case "spotify2":
                     ProfileSM SMSP = Converter.ToProfileSM(tappedItemProfile);
                     if (SMSP.Exist == false)
                     {

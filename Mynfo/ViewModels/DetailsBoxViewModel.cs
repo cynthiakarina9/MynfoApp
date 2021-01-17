@@ -102,7 +102,7 @@
         #endregion
 
         #region Methods
-        private async Task<Box> GetBoxe(int _BoxId)
+        public async Task<Box> GetBoxe(int _BoxId)
         {
             this.IsRunning = true;
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();

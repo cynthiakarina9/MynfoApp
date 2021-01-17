@@ -488,7 +488,7 @@
             return Box;        
         }
 
-        public async void EdithBox(Box Box)
+        public async Task<Box> EdithBox(Box Box)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var profile = await this.apiService.PutBox(
@@ -497,6 +497,9 @@
                 "/Boxes",
                 Box,
                 Box.BoxId);
+            profile = Box;
+            await MainViewModel.GetInstance().DetailsBox.GetBoxe(Box.BoxId);
+            return Box;
         }
 
         public void addProfile(ProfileLocal _profileSelected)
