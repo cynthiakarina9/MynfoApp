@@ -71,6 +71,8 @@
     <CodesignKey>Apple Development: Nicolas Blanco Storz (F698L64449)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <MtouchSdkVersion>14.2</MtouchSdkVersion>
+    <MtouchLink>Full</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />

@@ -36,6 +36,7 @@
             string dbName = "Mynfo.db3";
             string dbBinder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal));//, "..", "Library", "Databases");
             string dbRoot = Path.Combine(dbBinder, dbName);
+            Rg.Plugins.Popup.Popup.Init();
 
             global::Xamarin.Forms.Forms.Init();            
             DetectShakeTest();
