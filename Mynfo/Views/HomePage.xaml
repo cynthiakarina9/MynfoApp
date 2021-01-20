@@ -169,7 +169,7 @@
                         Grid.ColumnSpan = "3"
                         Grid.Row = "4"/>
                     
-                    <!--<ImageButton
+                    <ImageButton
                         BackgroundColor = "Transparent"
                         Grid.Column = "2"
                         Grid.Row = "4"
@@ -178,7 +178,7 @@
                         Source = "Plus"
                         VerticalOptions = "Center"
                         WidthRequest = "60"
-                        x:Name="GoToTest"/>-->
+                        x:Name="GoToTest"/>
                 </Grid>
             </ScrollView>
             <Grid
