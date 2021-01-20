@@ -53,6 +53,7 @@
                         IsReadOnly="True"
                         Text="{Binding Box.Name, Mode=TwoWay}"
                         TextColor="{StaticResource MainColor}"
+                        BackgroundColor="Transparent"
                         VerticalOptions="Center"
                         WidthRequest="200"
                         x:Name="NameEntry"/>

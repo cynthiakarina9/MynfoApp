@@ -14,6 +14,7 @@
         {
             InitializeComponent();
 
+            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
             AbrirPopUp1.Clicked += new EventHandler((sender, e) => OpenPopupTest(sender,e,"Perro"));
             AbrirPopUp2.Clicked += new EventHandler((sender, e) => OpenPopupTest(sender, e,"Gato"));
