@@ -18,8 +18,10 @@
 
         #region Attributes
         private ObservableCollection<Box> box;
+        private ObservableCollection<Box> boxNoDefault;
         private bool isRunning;
         private bool isNull;
+        private bool moreOne;
         #endregion
 
         #region Properties
@@ -27,6 +29,11 @@
         {
             get { return this.box; }
             set { SetValue(ref this.box, value); }
+        }
+        public ObservableCollection<Box> BoxNoDefault
+        {
+            get { return this.boxNoDefault; }
+            set { SetValue(ref this.boxNoDefault, value); }
         }
         public bool IsRunning
         {
@@ -50,6 +57,17 @@
                 SetValue(ref this.isNull, value);
             }
         }
+        public bool MoreOne
+        {
+            get
+            {
+                return this.moreOne;
+            }
+            set
+            {
+                SetValue(ref this.moreOne, value);
+            }
+        }
         #endregion
 
         #region Commands
@@ -62,6 +80,7 @@
             apiService = new ApiService();
             this.IsRunning = false;
             GetBoxDefault();
+            GetBoxNoDefault();
         }
         #endregion
 
@@ -103,6 +122,51 @@
             return Box;
         }
 
+        public async Task<ObservableCollection<Box>> GetBoxNoDefault()
+        {
+            this.MoreOne = false;
+            BoxNoDefault = new ObservableCollection<Box>();
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    connection.Message,
+                    Languages.Accept);
+                return null;
+            }
+
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+
+            var BoxListNoDefault = await this.apiService.GetBoxNoDefault<Box>(
+                apiSecurity,
+                "/api",
+                "/Boxes/GetBoxNoDefault",
+                MainViewModel.GetInstance().User.UserId);
+            foreach(Box boxes in BoxListNoDefault)
+            {
+                BoxNoDefault.Add(boxes);
+            }
+
+            if (BoxListNoDefault.Count != 0)
+            {
+                MoreOne = true;
+            }
+            this.IsRunning = false;
+            return Box;
+        } 
+        //Actualizar listas
+        public void AddList(Box _Boxes)
+        {
+            BoxNoDefault.Add(_Boxes);
+        }
+
+        public void RemoveList(Box _Boxes)
+        {
+            BoxNoDefault.Remove(_Boxes);
+        }
         #endregion
 
         #region Commands

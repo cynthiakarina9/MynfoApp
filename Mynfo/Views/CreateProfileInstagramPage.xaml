@@ -95,7 +95,6 @@
                                 Margin="-40,0,0,0"
                                 Text = "{Binding Link}"
                                 VerticalOptions = "Center" 
-                                Placeholder = "UserName"
                                 WidthRequest = "120" 
                                 x:Name="ProfileLink"/>
                         </StackLayout>

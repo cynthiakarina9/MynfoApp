@@ -981,6 +981,7 @@
                 }
                 MainViewModel.GetInstance().Home.GetBoxDefault();
                 BxDefaultCheckBox.IsEnabled = false;
+                MainViewModel.GetInstance().Home.GetBoxNoDefault();
             }
         }
         #endregion

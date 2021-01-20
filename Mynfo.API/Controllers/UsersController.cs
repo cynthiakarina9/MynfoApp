@@ -164,7 +164,7 @@
                 {
                     var subject = "Mynfo - Password Recovery";
                     var body = string.Format(@"
-                        <center><img src='cid:Logo' width='150' height='150'></center>
+                        
                         <center><h1>Mynfo - Password Recovery</h1>
                         <p>This is an automatically generated new password, use it to login again.</p>
                         <p>We recommend changing it right away.</p>
@@ -262,7 +262,7 @@
                 {
                     var subject = "Added User to mynfo";
                     var body = string.Format(@"
-                        <center><img src='cid:Logo' width='150' height='150'></center>
+                        
                                 <center><h1> Welcome to mynfo, we love having you here! </h1>
                     <p> You have successfully created your account, 
                         now you can share all your contact information in the easiest way.</p>

@@ -484,7 +484,7 @@
     <value>ejemplo@dominio.com</value>
   </data>
   <data name="Link" xml:space="preserve">
-    <value>Url del perfil</value>
+    <value>URL del perfil</value>
   </data>
   <data name="NProfilePlaceH" xml:space="preserve">
     <value>Empresarial, Personal, Amigos.</value>

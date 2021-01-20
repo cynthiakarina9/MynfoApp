@@ -3,6 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.HomePage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#FFFF" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <NavigationPage.TitleView>
         <Grid 
             Padding = "0" 
@@ -37,7 +54,7 @@
             <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height = "180"/>
+                        <RowDefinition Height = "190"/>
                         <RowDefinition Height = "*"/>
                         <RowDefinition Height = "*"/>
                         <RowDefinition Height = "Auto"/>
@@ -97,9 +114,49 @@
                             </ContentView>
                         </CollectionView.EmptyView>
                     </CollectionView>
-
+                    <CollectionView 
+                        ItemsSource="{Binding BoxNoDefault}"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        SelectionMode="Single"
+                        SelectionChanged="OnCollectionViewSelectionChanged">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout 
+                                Orientation="Vertical"
+                                Span="3" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10">
+                                    <StackLayout
+                                        HorizontalOptions="CenterAndExpand">
+                                        <Button
+                                            BackgroundColor="LightGray"
+                                            CornerRadius="25"
+                                            HeightRequest="80"
+                                            IsVisible="{Binding MoreOne}"
+                                            WidthRequest="80"/>
+                                        <Label
+                                            FontSize="12"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Name}"
+                                            TextColor="{StaticResource FontColor}" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <ContentView>
+                                <StackLayout 
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label Text=""/>
+                                </StackLayout>
+                            </ContentView>
+                        </CollectionView.EmptyView>
+                    </CollectionView>
                     <!-- De la box 2 a la 4 -->
-                    <StackLayout 
+                    <!--<StackLayout 
                         Grid.Column = "0"
                         Grid.Row ="1"
                         HorizontalOptions = "Center"
@@ -120,7 +177,7 @@
                         VerticalOptions = "Center"
                         x:Name = "LayoutBox4" />
 
-                    <!-- De la box 5 a la 7 -->
+                    --><!-- De la box 5 a la 7 --><!--
                     <StackLayout 
                         Grid.Column = "0"
                         Grid.Row ="2"
@@ -142,7 +199,7 @@
                         VerticalOptions = "Center"
                         x:Name = "LayoutBox7" />
 
-                    <!-- De la box 8 a la 10 -->
+                    --><!-- De la box 8 a la 10 --><!--
                     <StackLayout 
                         Grid.Column = "0"
                         Grid.Row ="3"
@@ -162,9 +219,9 @@
                         Grid.Row ="3"
                         HorizontalOptions = "Center"
                         VerticalOptions = "Center"
-                        x:Name = "LayoutBox10" />
+                        x:Name = "LayoutBox10" />-->
 
-                    <!-- Botón para agregar box nueva-->
+                    <!-- Botón para agregar box nueva--><!--
                     <BoxView 
                         Grid.ColumnSpan = "3"
                         Grid.Row = "4"/>
@@ -178,7 +235,7 @@
                         Source = "Plus"
                         VerticalOptions = "Center"
                         WidthRequest = "60"
-                        x:Name="GoToTest"/>
+                        x:Name="GoToTest"/>-->
                 </Grid>
             </ScrollView>
             <Grid

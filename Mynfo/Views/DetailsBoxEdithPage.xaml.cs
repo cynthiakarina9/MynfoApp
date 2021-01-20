@@ -218,7 +218,7 @@
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 
-            BoxDefaultCheckBox.Children.Add(BxDefaultCheckBox);
+            //BoxDefaultCheckBox.Children.Add(BxDefaultCheckBox);
 
             //**********************************************************
             //AGREGACIÓN DE PERFILES A BOX

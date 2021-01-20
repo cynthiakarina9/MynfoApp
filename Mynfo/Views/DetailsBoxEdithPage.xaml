@@ -54,13 +54,6 @@
                         WidthRequest="200"
                         x:Name="NameEntry"/>
 
-                    <!--Box predeterminada-->
-                    <StackLayout 
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        VerticalOptions="Center"
-                        x:Name="BoxDefaultCheckBox" />
-
                     <Label 
                         Grid.Row="2" 
                         Grid.Column="2" 
