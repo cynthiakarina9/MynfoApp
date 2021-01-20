@@ -37,26 +37,17 @@
             <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height = "150"/>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
+                        <RowDefinition Height = "180"/>
+                        <RowDefinition Height = "*"/>
+                        <RowDefinition Height = "*"/>
+                        <RowDefinition Height = "Auto"/>
+                        <RowDefinition Height = "Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-
-                    <!-- Box Predeterminada-->
-                    <!--<StackLayout 
-                        Grid.ColumnSpan="3"
-                        Grid.Row="0"
-                        HorizontalOptions="Center"
-                        IsVisible="false"
-                        VerticalOptions="Center"
-                        x:Name="DefaultButton" />-->
                     <CollectionView 
                         ItemsSource="{Binding Box}"
                         Grid.Row="0"
@@ -70,25 +61,28 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Padding="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="80" />
-                                        <RowDefinition Height="50" />
-                                    </Grid.RowDefinitions>
                                     <StackLayout
                                         HorizontalOptions="Center">
-                                        <ImageButton
+                                        <!--<ImageButton
                                             Clicked="ButtonDefault"
                                             BackgroundColor="Transparent"
                                             IsVisible="{Binding IsNull}"
                                             HeightRequest="80"
                                             Source="home1.png"
-                                            WidthRequest="80"/>
+                                            WidthRequest="80"/>-->
+                                        <Button
+                                            BackgroundColor="{StaticResource MainColor}"
+                                            Clicked="ButtonDefault"
+                                            CornerRadius="25"
+                                            HeightRequest="140"
+                                            IsVisible="{Binding IsNull}"
+                                            WidthRequest="140"/>
                                         <Label
                                             FontAttributes="Bold"
-                                            FontSize="23"
+                                            FontSize="20"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding Name}"
-                                            TextColor="DarkRed" />
+                                            TextColor="{StaticResource FontColor}" />
                                     </StackLayout>
                                 </Grid>
                             </DataTemplate>

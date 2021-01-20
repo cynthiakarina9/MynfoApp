@@ -616,5 +616,37 @@
         {
             get { return Resource.Next; }
         }
+        public static string HaveWhats
+        {
+            get { return Resource.HaveWhats; }
+        }
+        public static string Continue
+        {
+            get { return Resource.Continue; }
+        }
+        public static string SendEmail
+        {
+            get { return Resource.SendEmail; }
+        }
+        public static string PutEmail
+        {
+            get { return Resource.PutEmail; }
+        }
+        public static string Tag
+        {
+            get { return Resource.Tag; }
+        }
+        public static string QR
+        {
+            get { return Resource.QR; }
+        }
+        public static string MyQR
+        {
+            get { return Resource.MyQR; }
+        }
+        public static string EscanQR
+        {
+            get { return Resource.EscanQR; }
+        }
     }
 }

@@ -82,6 +82,7 @@
                             HeightRequest = "46"
                             HorizontalTextAlignment = "Center"
                             HorizontalOptions = "Center"
+                            IsSpellCheckEnabled="True"
                             Keyboard = "Telephone"
                             MaxLength = "10"
                             Text = "{Binding Number}"

@@ -240,6 +240,12 @@
             get;
             set;
         }
+
+        public LectorQRViewModel LectorQR
+        {
+            get;
+            set;
+        }
         public ListForeignBoxViewModel ListForeignBox
         {
             get;
@@ -266,6 +272,12 @@
         { 
             get; 
             set; 
+        }
+
+        public MyQRViewModel MyQR
+        {
+            get;
+            set;
         }
         public PasswordRecoveryViewModel PasswordRecovery 
         { 
@@ -414,18 +426,18 @@
                 PageName = "MyProfilePage",
                 Title = Languages.MyAccount,
             });
-            /*this.Menus.Add(new MenuItemViewModel
+            this.Menus.Add(new MenuItemViewModel
             {
-                Icon = "perfiles",
-                PageName = "ProfilesPage",
-                Title = Languages.MyProfiles,
+                Icon = "icon_tag",
+                PageName = "SettingsPage",
+                Title = Languages.Tag,
             });
             this.Menus.Add(new MenuItemViewModel
             {
-                Icon = "configuraciones",
-                PageName = "SettingsPage",
-                Title = Languages.Settings,
-            });*/
+                Icon = "icon_qr",
+                PageName = "QR",
+                Title = Languages.QR,
+            });
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "logout",

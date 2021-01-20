@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Mynfo.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Register2Page : ContentPage
+    public partial class LectorQRPage : ContentPage
     {
-        public Register2Page()
+        public LectorQRPage()
         {
             InitializeComponent();
         }

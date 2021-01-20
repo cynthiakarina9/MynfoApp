@@ -74,7 +74,7 @@
             this.apiService = new ApiService();
 
             this.IsEnabled = true;
-            this.IsCheck = false;
+            this.IsCheck = true;
         }
         #endregion
 

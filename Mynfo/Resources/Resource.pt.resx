@@ -556,4 +556,28 @@ Você deve inserir um url</value>
   <data name="Next" xml:space="preserve">
     <value>Próximo</value>
   </data>
+  <data name="HaveWhats" xml:space="preserve">
+    <value>Este número tem WhatsApp.</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="PutEmail" xml:space="preserve">
+    <value>Digite seu e-mail.</value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>Enviaremos um e-mail para você fazer o login.</value>
+  </data>
+  <data name="QR" xml:space="preserve">
+    <value>Código QR</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Configurar Tag</value>
+  </data>
+  <data name="EscanQR" xml:space="preserve">
+    <value>Scan QR</value>
+  </data>
+  <data name="MyQR" xml:space="preserve">
+    <value>Meu QR</value>
+  </data>
 </root>

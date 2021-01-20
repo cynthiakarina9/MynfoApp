@@ -440,6 +440,15 @@
   <ItemGroup>
     <BundleResource Include="Resources\youtube2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_tag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_qr.png" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties TriggeredFromHotReload="False" />

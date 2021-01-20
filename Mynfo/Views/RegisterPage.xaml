@@ -32,64 +32,66 @@
                             <RowDefinition Height = "100"/>
                         </Grid.RowDefinitions>
                         <Label 
-                        FontAttributes = "Bold"
-                        FontSize = "30"
-                        Grid.Row = "0"
-                        HorizontalOptions = "Center"
-                        Text = "{i18n:Translate Register}"
-                        TextColor = "{StaticResource MainColor}"
-                        VerticalOptions="Center"/>
+                            FontAttributes = "Bold"
+                            FontSize = "30"
+                            Grid.Row = "0"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate Register}"
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions="Center"/>
                         <StackLayout 
-                        Grid.Row = "1"
-                        VerticalOptions="Center">
+                            Grid.Row = "1"
+                            VerticalOptions="Center">
                             <controls:CircleImage 
-                            HeightRequest = "120"
-                            Source = "{Binding ImageSource}">
+                                HeightRequest = "120"
+                                Source = "{Binding ImageSource}">
                                 <controls:CircleImage.GestureRecognizers>
                                     <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />
                                 </controls:CircleImage.GestureRecognizers>
                             </controls:CircleImage>
                             <Label
-                            FontSize = "Small"
-                            HorizontalOptions = "CenterAndExpand"
-                            Text = "{i18n:Translate ChangeImage}"
-                            VerticalOptions = "StartAndExpand"/>
+                                FontSize = "Small"
+                                HorizontalOptions = "CenterAndExpand"
+                                Text = "{i18n:Translate ChangeImage}"
+                                VerticalOptions = "StartAndExpand"/>
                         </StackLayout>
                         <StackLayout 
-                        Grid.Row = "2">
+                            Grid.Row = "2">
                             <Label
-                        FontSize = "18"
-                        HorizontalOptions = "CenterAndExpand"
-                        Text = "{i18n:Translate FirstNameLabel}"
-                        TextColor = "{StaticResource MainColor}"
-                        VerticalTextAlignment = "Center" />
+                                FontSize = "18"
+                                HorizontalOptions = "CenterAndExpand"
+                                Text = "{i18n:Translate FirstNameLabel}"
+                                TextColor = "{StaticResource MainColor}"
+                                VerticalTextAlignment = "Center" />
                             <Entry
-                        ClearButtonVisibility="WhileEditing"
-                        HeightRequest = "40"
-                        HorizontalTextAlignment="Center"
-                        HorizontalOptions = "CenterAndExpand"
-                        Margin = "0,-10,0,0"
-                        Text = "{Binding FirstName}"
-                        VerticalTextAlignment="Center"
-                        WidthRequest = "300" />
+                                ClearButtonVisibility="WhileEditing"
+                                HeightRequest = "40"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions = "CenterAndExpand"
+                                IsSpellCheckEnabled="True"
+                                Margin = "0,-10,0,0"
+                                Text = "{Binding FirstName}"
+                                VerticalTextAlignment="Center"
+                                WidthRequest = "300" />
                         </StackLayout>
                         <StackLayout 
-                        Grid.Row = "3">
+                            Grid.Row = "3">
                             <Label
-                            FontSize = "18"
-                            HorizontalOptions = "CenterAndExpand"
-                            Text = "{i18n:Translate LastNameLabel}"
-                            TextColor = "{StaticResource MainColor}" 
-                            VerticalTextAlignment = "Center" />
+                                FontSize = "18"
+                                HorizontalOptions = "CenterAndExpand"
+                                Text = "{i18n:Translate LastNameLabel}"
+                                TextColor = "{StaticResource MainColor}" 
+                                VerticalTextAlignment = "Center" />
                             <Entry
-                            ClearButtonVisibility="WhileEditing"
-                            HeightRequest = "40"
-                            HorizontalTextAlignment="Center"
-                            HorizontalOptions = "CenterAndExpand"
-                            Margin = "0,-10,0,0"
-                            Text = "{Binding LastName}"
-                            VerticalTextAlignment="Center"
-                            WidthRequest = "300" />
+                                ClearButtonVisibility="WhileEditing"
+                                HeightRequest = "40"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions = "CenterAndExpand"
+                                IsSpellCheckEnabled="True"
+                                Margin = "0,-10,0,0"
+                                Text = "{Binding LastName}"
+                                VerticalTextAlignment="Center"
+                                WidthRequest = "300" />
                         </StackLayout>
                         <!--<StackLayout 
                         Grid.Row = "4">

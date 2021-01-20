@@ -18,6 +18,7 @@
                 FontSize = "26"
                 FontAttributes = "None"
                 HorizontalOptions = "Center"
+                HorizontalTextAlignment="Center"
                 Padding = "25"
                 Text = "{Binding User.FullName, StringFormat = '{0}'}"
                 TextColor = "{StaticResource MainColor}" />
@@ -29,7 +30,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid
+                                Margin="10">
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command = "{Binding NavigateCommand}" />
                                 </Grid.GestureRecognizers>
@@ -39,7 +41,6 @@
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height = "Auto"></RowDefinition>
-                                    <RowDefinition Height = "*"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Image 
                                     Grid.Column = "0"

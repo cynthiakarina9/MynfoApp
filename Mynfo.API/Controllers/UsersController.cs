@@ -10,6 +10,7 @@
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Validation;
+    using System.Drawing;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
@@ -163,9 +164,13 @@
                 {
                     var subject = "Mynfo - Password Recovery";
                     var body = string.Format(@"
-                        <h1>Mynfo App - Password Recovery</h1>
+                        <center><img src='cid:Logo' width='150' height='150'></center>
+                        <center><h1>Mynfo - Password Recovery</h1>
+                        <p>This is an automatically generated new password, use it to login again.</p>
+                        <p>We recommend changing it right away.</p>
                         <p>Your new password is: <strong>{0}</strong></p>
-                        <p>Please, don't forget change it for one easy remember for you.",
+                        <p>For more information, deubts or comments visit:</p>
+                        <p><a href='www.mynfo.mx'>www.mynfo.mx</a></p></center>",
                         newPassword);
 
                     await MailHelper.SendMail(email, subject, body);
@@ -255,16 +260,14 @@
                 }
                 else if (userASP != null)
                 {
-                    var subject = "Mynfo - User Added";
+                    var subject = "Added User to mynfo";
                     var body = string.Format(@"
-                        <h1>Welcome to mynfo</h1>
-                <p>You have created an account in the mynfo 
-                    application,</p> 
-                <p>where you can share your contact information
-                    with the people of your choice.</p>
-
-                <p>For more information, doubt or comments visit</p>
-                  <p>  <a href='www.mynfo.mx'>www.mynfo.mx</a></p>");
+                        <center><img src='cid:Logo' width='150' height='150'></center>
+                                <center><h1> Welcome to mynfo, we love having you here! </h1>
+                    <p> You have successfully created your account, 
+                        now you can share all your contact information in the easiest way.</p>
+                    <p> For more information, doubt or comments visit:</p>
+                  <p><a href = 'www.mynfo.mx' > www.mynfo.mx </a></p></center>");
 
                     await MailHelper.SendMail(email, subject, body);
                     return Ok(true);

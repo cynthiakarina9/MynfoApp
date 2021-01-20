@@ -555,4 +555,28 @@
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
+  <data name="HaveWhats" xml:space="preserve">
+    <value>This number has whatsapp.</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="PutEmail" xml:space="preserve">
+    <value>Enter your email.</value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>We will send an email so you can log in.</value>
+  </data>
+  <data name="QR" xml:space="preserve">
+    <value>QR code</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Configure Tag</value>
+  </data>
+  <data name="EscanQR" xml:space="preserve">
+    <value>Scan QR</value>
+  </data>
+  <data name="MyQR" xml:space="preserve">
+    <value>My QR</value>
+  </data>
 </root>

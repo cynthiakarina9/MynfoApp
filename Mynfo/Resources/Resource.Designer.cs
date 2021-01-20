@@ -331,6 +331,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Continue.
+        /// </summary>
+        public static string Continue {
+            get {
+                return ResourceManager.GetString("Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Countries.
         /// </summary>
         public static string Countries {
@@ -583,6 +592,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Scan QR.
+        /// </summary>
+        public static string EscanQR {
+            get {
+                return ResourceManager.GetString("EscanQR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a example@domain.com.
         /// </summary>
         public static string ExampleEmail {
@@ -678,6 +696,15 @@ namespace Mynfo.Resources {
         public static string GINI {
             get {
                 return ResourceManager.GetString("GINI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This number has whatsapp..
+        /// </summary>
+        public static string HaveWhats {
+            get {
+                return ResourceManager.GetString("HaveWhats", resourceCulture);
             }
         }
         
@@ -840,6 +867,15 @@ namespace Mynfo.Resources {
         public static string MyProfiles {
             get {
                 return ResourceManager.GetString("MyProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a My QR.
+        /// </summary>
+        public static string MyQR {
+            get {
+                return ResourceManager.GetString("MyQR", resourceCulture);
             }
         }
         
@@ -1168,6 +1204,24 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Enter your email..
+        /// </summary>
+        public static string PutEmail {
+            get {
+                return ResourceManager.GetString("PutEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a QR code.
+        /// </summary>
+        public static string QR {
+            get {
+                return ResourceManager.GetString("QR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Connections.
         /// </summary>
         public static string ReceivedBoxes {
@@ -1231,6 +1285,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a We will send an email so you can log in..
+        /// </summary>
+        public static string SendEmail {
+            get {
+                return ResourceManager.GetString("SendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Settings.
         /// </summary>
         public static string Settings {
@@ -1290,6 +1353,15 @@ namespace Mynfo.Resources {
         public static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Configure Tag.
+        /// </summary>
+        public static string Tag {
+            get {
+                return ResourceManager.GetString("Tag", resourceCulture);
             }
         }
         

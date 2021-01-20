@@ -74,10 +74,9 @@
                 App.Navigator.PushAsync(new MyProfilePage());
             }
 
-            else if (this.PageName == "ProfilesPage")
+            else if (this.PageName == "QR")
             {
-                MainViewModel.GetInstance().Profiles = new ProfilesViewModel();
-                Application.Current.MainPage = new NavigationPage (new ProfilesPage());
+                App.Navigator.PushAsync(new QRTabbedPage());
             }
 
             else if (this.PageName == "SettingsPage")
