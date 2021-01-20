@@ -481,7 +481,7 @@
     <value>example@domain.com</value>
   </data>
   <data name="Link" xml:space="preserve">
-    <value>Profile url</value>
+    <value>Profile URL</value>
   </data>
   <data name="NProfilePlaceH" xml:space="preserve">
     <value>Business, Personal, Friends.</value>
@@ -544,7 +544,7 @@
     <value>You have not created any profile of this type yet</value>
   </data>
   <data name="NickName" xml:space="preserve">
-    <value>User name</value>
+    <value>Username</value>
   </data>
   <data name="NickNamePH" xml:space="preserve">
     <value />

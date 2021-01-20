@@ -242,9 +242,6 @@
     <BundleResource Include="Resources\facebook2.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\gmail1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\gmail2.png" />
   </ItemGroup>
   <ItemGroup>
@@ -449,7 +446,7 @@
     <BundleResource Include="Resources\icon_tag.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\gmail.png" />
+    <BundleResource Include="Resources\gmail1.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon_qr.png" />

@@ -185,8 +185,8 @@
                 Label2.FontSize = 12;
                 Label2.HorizontalTextAlignment = TextAlignment.Center;
 
-                LayoutBox2.Children.Add(Box2);
-                LayoutBox2.Children.Add(Label2);
+                //LayoutBox2.Children.Add(Box2);
+                //LayoutBox2.Children.Add(Label2);
             }
             /*else
             {
@@ -221,8 +221,8 @@
                 Label3.FontSize = 12;
                 Label3.HorizontalTextAlignment = TextAlignment.Center;
 
-                LayoutBox3.Children.Add(Box3);
-                LayoutBox3.Children.Add(Label3);
+                //LayoutBox3.Children.Add(Box3);
+                //LayoutBox3.Children.Add(Label3);
             }
             /*else
             {
@@ -257,8 +257,8 @@
                 Label4.FontSize = 12;
                 Label4.HorizontalTextAlignment = TextAlignment.Center;
 
-                LayoutBox4.Children.Add(Box4);
-                LayoutBox4.Children.Add(Label4);
+                //LayoutBox4.Children.Add(Box4);
+                //LayoutBox4.Children.Add(Label4);
             }
             /*else
             {
@@ -293,8 +293,8 @@
                 Label5.FontSize = 12;
                 Label5.HorizontalTextAlignment = TextAlignment.Center;
 
-                LayoutBox5.Children.Add(Box5);
-                LayoutBox5.Children.Add(Label5);
+                //LayoutBox5.Children.Add(Box5);
+                //LayoutBox5.Children.Add(Label5);
             }
             /*else
             {
@@ -329,8 +329,8 @@
                 Label6.FontSize = 12;
                 Label6.HorizontalTextAlignment = TextAlignment.Center;
 
-                LayoutBox6.Children.Add(Box6);
-                LayoutBox6.Children.Add(Label6);
+                //LayoutBox6.Children.Add(Box6);
+                //LayoutBox6.Children.Add(Label6);
             }
             /*else
             {
@@ -365,8 +365,8 @@
                 Label7.FontSize = 12;
                 Label7.HorizontalTextAlignment = TextAlignment.Center;
 
-                LayoutBox7.Children.Add(Box7);
-                LayoutBox7.Children.Add(Label7);
+                //LayoutBox7.Children.Add(Box7);
+                //LayoutBox7.Children.Add(Label7);
             }
             /*else
             {
@@ -401,8 +401,8 @@
                 Label8.FontSize = 12;
                 Label8.HorizontalTextAlignment = TextAlignment.Center;
 
-                LayoutBox8.Children.Add(Box8);
-                LayoutBox8.Children.Add(Label8);
+                //LayoutBox8.Children.Add(Box8);
+                //LayoutBox8.Children.Add(Label8);
             }
             /*else
             {
@@ -437,8 +437,8 @@
                 Label9.FontSize = 12;
                 Label9.HorizontalTextAlignment = TextAlignment.Center;
 
-                LayoutBox9.Children.Add(Box9);
-                LayoutBox9.Children.Add(Label9);
+                //LayoutBox9.Children.Add(Box9);
+                //LayoutBox9.Children.Add(Label9);
             }
             /*else
             {
@@ -473,8 +473,8 @@
                 Label10.FontSize = 12;
                 Label10.HorizontalTextAlignment = TextAlignment.Center;
 
-                LayoutBox10.Children.Add(Box10);
-                LayoutBox10.Children.Add(Label10);
+                //LayoutBox10.Children.Add(Box10);
+                //LayoutBox10.Children.Add(Label10);
             }
             /*else
             {
@@ -963,9 +963,8 @@
             selectedItem = new Box();
             //string previous = (e.PreviousSelection.FirstOrDefault() as ProfileLocal)?.Name;
             selectedItem = e.CurrentSelection.FirstOrDefault() as Box;
-            //MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(selectedItem.BoxId);
-            //App.Navigator.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
-            selectedItem = null;
+            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(selectedItem.BoxId);
+            App.Navigator.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
         }
         private void ButtonDefault(object sender, EventArgs e)
         {

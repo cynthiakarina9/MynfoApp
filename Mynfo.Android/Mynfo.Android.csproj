@@ -323,9 +323,6 @@
     <AndroidResource Include="Resources\drawable\twitterlogo1.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gmail1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\line1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -432,7 +429,7 @@
     <AndroidResource Include="Resources\drawable\icon_tag.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gmail.png" />
+    <AndroidResource Include="Resources\drawable\gmail1.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_qr.png" />

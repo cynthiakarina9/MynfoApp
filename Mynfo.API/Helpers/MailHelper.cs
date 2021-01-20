@@ -14,16 +14,16 @@
     {
         public static async Task SendMail(string to, string subject, string body)
         {
-            string attachmentPath = Environment.CurrentDirectory + @"\Logo_sin_relleno.png";
-            Attachment inline = new Attachment(attachmentPath);
-            inline.ContentDisposition.Inline = true;
-            inline.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
-            inline.ContentId = "Logo";
-            inline.ContentType.MediaType = "image/png";
-            inline.ContentType.Name = Path.GetFileName(attachmentPath);
+            //string attachmentPath = Environment.CurrentDirectory + @"\Logo_sin_relleno.png";
+            //Attachment inline = new Attachment(attachmentPath);
+            //inline.ContentDisposition.Inline = true;
+            //inline.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+            //inline.ContentId = "Logo";
+            //inline.ContentType.MediaType = "image/png";
+            //inline.ContentType.Name = Path.GetFileName(attachmentPath);
             var message = new MailMessage();
             message.To.Add(new MailAddress(to));
-            message.Attachments.Add(inline);
+            //message.Attachments.Add(inline);
             message.From = new MailAddress(WebConfigurationManager.AppSettings["AdminUser"]);
             message.Subject = subject;
             message.Body = body;

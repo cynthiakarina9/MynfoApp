@@ -3,6 +3,7 @@
     using Mynfo.Domain;
     using Newtonsoft.Json.Linq;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
@@ -53,6 +54,30 @@
             }
             Box box = GetBoxes().Where(u=> u.UserId == id && u.BoxDefault == true).FirstOrDefault();
             if (box == null)
+            {
+                return null;
+            }
+
+            return box;
+        }
+
+        [HttpPost]
+        [Route("GetBoxNoDefault")]
+        [ResponseType(typeof(Box))]
+        public async Task<List<Box>> GetBoxNoDefault(JObject form)
+        {
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.UserId;
+            }
+            catch
+            {
+                return null;
+            }
+            var box = GetBoxes().Where(u => u.UserId == id && u.BoxDefault == false).ToList();
+            if (box.Count == 0)
             {
                 return null;
             }

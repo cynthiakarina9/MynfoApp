@@ -772,7 +772,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Profile url.
+        ///   Busca una cadena traducida similar a Profile URL.
         /// </summary>
         public static string Link {
             get {
@@ -970,7 +970,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a User name.
+        ///   Busca una cadena traducida similar a Username.
         /// </summary>
         public static string NickName {
             get {

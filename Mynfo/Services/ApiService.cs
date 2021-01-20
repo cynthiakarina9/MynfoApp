@@ -262,6 +262,42 @@
                 return null;
             }
         }
+        public async Task<List<Box>> GetBoxNoDefault<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                Box model = new Box()
+                {
+                    UserId = id
+                };
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var resp = JsonConvert.DeserializeObject<List<Box>>(result);
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public async Task<Response> ChangePassword(
             string urlBase,
             string servicePrefix,
