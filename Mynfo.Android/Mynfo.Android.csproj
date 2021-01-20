@@ -124,6 +124,9 @@
     <PackageReference Include="Xamarin.Forms.OpenWhatsApp">
       <Version>1.0.1</Version>
     </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile">
+      <Version>2.4.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services\CardReader.cs" />
