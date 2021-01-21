@@ -180,7 +180,7 @@
                         space.HeightRequest = 30;
                         break;
                     case "Twitter":
-                        profileIcon.Source = "twitter2.png";
+                        profileIcon.Source = "twitterlogo2.png";
                         profileIcon.WidthRequest = 50;
                         profileIcon.HeightRequest = 50;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
@@ -365,12 +365,12 @@
                 case "LinkedIn":
                     await Launcher.OpenAsync(new Uri(_profileValue));
                     break;
-                //case "Phone":
-                //    await call.MakePhoneCall();
-                //    break;
-                //case "Snapchat":
-                //    await call.MakePhoneCall();
-                //    break;
+                case "Phone":
+                    PhoneDialer.Open(_profileValue);
+                    break;
+                case "Snapchat":
+                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    break;
                 case "Spotify":
                     await Launcher.OpenAsync(new Uri(_profileValue));
                     break;

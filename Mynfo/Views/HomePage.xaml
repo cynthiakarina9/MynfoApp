@@ -127,21 +127,16 @@
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid Padding="10">
-                                    <StackLayout
-                                        HorizontalOptions="CenterAndExpand">
-                                        <Button
+                                <Grid Padding="10"
+                                      HorizontalOptions="Center">
+                                    
+                                        <ImageButton
                                             BackgroundColor="LightGray"
                                             CornerRadius="25"
                                             HeightRequest="80"
                                             IsVisible="{Binding MoreOne}"
                                             WidthRequest="80"/>
-                                        <Label
-                                            FontSize="12"
-                                            HorizontalTextAlignment="Center"
-                                            Text="{Binding Name}"
-                                            TextColor="{StaticResource FontColor}" />
-                                    </StackLayout>
+
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
