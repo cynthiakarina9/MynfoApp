@@ -39,7 +39,7 @@
 
             ForeingBox foreing = _foreingBox;
 
-            ForeignUserImage.Source = foreing.ImageFullPath;
+            ForeignUserImage.Source = foreing.ImagePath;
             ForeignUserName.Text = foreing.FullName;
 
             int listProfileNum = 0;
@@ -365,12 +365,12 @@
                 case "LinkedIn":
                     await Launcher.OpenAsync(new Uri(_profileValue));
                     break;
-                //case "Phone":
-                //    await call.MakePhoneCall();
-                //    break;
-                //case "Snapchat":
-                //    await call.MakePhoneCall();
-                //    break;
+                case "Phone":
+                    PhoneDialer.Open(_profileValue);
+                    break;
+                case "Snapchat":
+                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    break;
                 case "Spotify":
                     await Launcher.OpenAsync(new Uri(_profileValue));
                     break;
@@ -402,10 +402,6 @@
                 default:
                     break;
             } 
-            //await Launcher.OpenAsync(new Uri("fb://page/100000686899395"));
-            //await Launcher.OpenAsync(new Uri("https://twitter.com/RToachee"));
-            //await Launcher.OpenAsync(new Uri("instagram:page_id//user?username=rodritoachee"));
-            //await Launcher.OpenAsync(new Uri("mailto:rrodriguez@atx.com"));
         }        
         #endregion
     }

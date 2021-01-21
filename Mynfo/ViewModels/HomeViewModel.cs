@@ -180,7 +180,22 @@
         public async void GoToDetails ()
         {
             int BoxId = 0;
+            int BoxId2 = 0;
             foreach(Box boxCount in Box)
+            {
+                BoxId = boxCount.BoxId;
+            }
+            foreach(Box BoxCountNoDefault in BoxNoDefault)
+            {
+                BoxId2 = BoxCountNoDefault.BoxId;
+            }
+            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(BoxId);
+            await App.Navigator.PushAsync(new DetailsBoxPage(BoxId));
+        }
+        public async void GoToDetailsNoDefault()
+        {
+            int BoxId = 0;
+            foreach (Box boxCount in BoxNoDefault)
             {
                 BoxId = boxCount.BoxId;
             }

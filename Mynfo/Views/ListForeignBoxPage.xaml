@@ -48,7 +48,8 @@
                     HasUnevenRows="true"
                     ItemSelected="OnListViewItemSelected"
                     ItemTapped="OnListViewItemTapped"
-                    Margin="10,35,10,20">
+                    Margin="10,35,10,20"
+                    x:Name="ForeignBoxList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -67,7 +68,7 @@
                                     <controls:CircleImage
                                         HeightRequest = "60"
                                         WidthRequest="60"
-                                        Source="{Binding ImageFullPath}">                                    </controls:CircleImage>
+                                        Source="{Binding ImagePath}">                                    </controls:CircleImage>
 
                                     <Label Grid.Column="1"
                                         Text="{Binding FullName}"

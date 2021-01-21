@@ -56,9 +56,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height = "190"/>
                         <RowDefinition Height = "*"/>
-                        <RowDefinition Height = "*"/>
-                        <RowDefinition Height = "Auto"/>
-                        <RowDefinition Height = "Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -119,7 +116,8 @@
                         Grid.Row="1"
                         Grid.ColumnSpan="3"
                         SelectionMode="Single"
-                        SelectionChanged="OnCollectionViewSelectionChanged">
+                        SelectionChanged="OnCollectionViewSelectionChanged"
+                        x:Name="BoxCollectionView">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 
                                 Orientation="Vertical"
@@ -130,12 +128,13 @@
                                 <Grid Padding="10">
                                     <StackLayout
                                         HorizontalOptions="CenterAndExpand">
-                                        <Button
+                                        <Frame
                                             BackgroundColor="LightGray"
-                                            CornerRadius="25"
-                                            HeightRequest="80"
+                                            CornerRadius="15"
+                                            HeightRequest="60"
                                             IsVisible="{Binding MoreOne}"
-                                            WidthRequest="80"/>
+                                            WidthRequest="60">
+                                        </Frame>
                                         <Label
                                             FontSize="12"
                                             HorizontalTextAlignment="Center"
@@ -224,18 +223,18 @@
                     <!-- Botón para agregar box nueva--><!--
                     <BoxView 
                         Grid.ColumnSpan = "3"
-                        Grid.Row = "4"/>
-                    
-                    <!--<ImageButton
+                        Grid.Row = "4"/>-->
+
+                    <ImageButton
                         BackgroundColor = "Transparent"
                         Grid.Column = "2"
-                        Grid.Row = "4"
+                        Grid.Row = "2"
                         HeightRequest = "60"
                         HorizontalOptions ="Center"
                         Source = "Plus"
                         VerticalOptions = "Center"
                         WidthRequest = "60"
-                        x:Name="GoToTest"/>-->
+                        x:Name="GoToTest"/>
                 </Grid>
             </ScrollView>
             <Grid

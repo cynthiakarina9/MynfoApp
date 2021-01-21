@@ -29,6 +29,7 @@
             InitializeComponent();
 
             ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
+            GoToTest.Clicked += new EventHandler((sender, e) => GoToTestPage());
             //GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
 
             System.Text.StringBuilder sb;
@@ -951,20 +952,214 @@
             }
         }
 
-        private async void GoToTestPage()
+        private void GoToTestPage()
         {
-            
-            MainViewModel.GetInstance().Testing = new TestingViewModel();
+            /*MainViewModel.GetInstance().Testing = new TestingViewModel();
             Navigation.PushAsync(new Testing());
-            //await Launcher.OpenAsync(new Uri("https://www.facebook.com/roy.a.mustang"));
+            //await Launcher.OpenAsync(new Uri("https://www.facebook.com/roy.a.mustang"));*/
+
+            //insertar box foranea
+            System.Text.StringBuilder sb;
+            ForeingBox foreingBox;
+            ForeingProfile foreingProfile;
+            int BoxId = 1;//44
+            int UserId = 1;//3
+            //Inicializar la box foranea
+            foreingBox = new ForeingBox
+            {
+                BoxId = BoxId,
+                UserId = UserId,
+                Time = DateTime.Now,
+                ImagePath = MainViewModel.GetInstance().User.ImageFullPath,
+                UserTypeId = 1,
+                FirstName = "Cynthia",
+                LastName = "De la Cuesta"
+
+            };
+
+            //Insertar la box foranea
+            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+            {
+                connSQLite.Insert(foreingBox);
+            }
+
+            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string queryGetPhones = "select dbo.Boxes.BoxId, dbo.ProfilePhones.ProfilePhoneId, dbo.ProfilePhones.Name, " +
+                             "dbo.ProfilePhones.Number from dbo.Box_ProfilePhone Join dbo.Boxes " +
+                             "on(dbo.Boxes.BoxId = dbo.Box_ProfilePhone.BoxId) " +
+                             "Join dbo.ProfilePhones on(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) " +
+                             "where dbo.Boxes.BoxId = " + BoxId;
+            string queryGetEmails = "select dbo.Boxes.BoxId, dbo.ProfileEmails.ProfileEmailId, dbo.ProfileEmails.Name, " +
+                              "dbo.ProfileEmails.Email from dbo.Box_ProfileEmail " +
+                              "Join dbo.Boxes on(dbo.Boxes.BoxId = dbo.Box_ProfileEmail.BoxId) " +
+                              "Join dbo.ProfileEmails on(dbo.ProfileEmails.ProfileEmailId = dbo.Box_ProfileEmail.ProfileEmailId) " +
+                              "where dbo.Boxes.BoxId = " + BoxId;
+            string queryGetSMProfiles = "select * from dbo.Box_ProfileSM " +
+                                    "join dbo.ProfileSMs on(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
+                                    "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
+                                    "where dbo.Box_ProfileSM.BoxId = " + BoxId;
+            string queryGetWhatsapp = "select dbo.Boxes.BoxId, dbo.ProfileWhatsapps.ProfileWhatsappId, dbo.ProfileWhatsapps.Name, " +
+                                        "dbo.ProfileWhatsapps.Number from dbo.Box_ProfileWhatsapp Join dbo.Boxes " +
+                                        "on(dbo.Boxes.BoxId = dbo.Box_ProfileWhatsapp.BoxId) " +
+                                        "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
+                                        "where dbo.Boxes.BoxId =" + BoxId;
+
+            //Recorrer la lista de perfiles para insertarlos
+            //Emails
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryGetEmails);
+
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            foreingProfile = new ForeingProfile
+                            {
+                                BoxId = BoxId,
+                                UserId = UserId,
+                                ProfileName = (string)reader["Name"],
+                                value = (string)reader["Email"],
+                                ProfileType = "Email"
+                            };
+
+                            //Insertar la box foranea
+                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                            {
+                                connSQLite.Insert(foreingProfile);
+                            }
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            //PHones
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryGetPhones);
+
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            foreingProfile = new ForeingProfile
+                            {
+                                BoxId = BoxId,
+                                UserId = UserId,
+                                ProfileName = (string)reader["Name"],
+                                value = (string)reader["Number"],
+                                ProfileType = "Phone"
+                            };
+
+                            //Insertar la box foranea
+                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                            {
+                                connSQLite.Insert(foreingProfile);
+                            }
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            //Whatsapp
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryGetWhatsapp);
+
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            foreingProfile = new ForeingProfile
+                            {
+                                BoxId = BoxId,
+                                UserId = UserId,
+                                ProfileName = (string)reader["Name"],
+                                value = (string)reader["Number"],
+                                ProfileType = "Whatsapp"
+                            };
+
+                            //Insertar la box foranea
+                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                            {
+                                connSQLite.Insert(foreingProfile);
+                            }
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            //Social media
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryGetSMProfiles);
+
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            foreingProfile = new ForeingProfile
+                            {
+                                BoxId = BoxId,
+                                UserId = UserId,
+                                ProfileName = (string)reader["ProfileName"],
+                                value = (string)reader["link"],
+                                ProfileType = "Facebook"
+                            };
+
+                            //Insertar la box foranea
+                            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                            {
+                                connSQLite.Insert(foreingProfile);
+                            }
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
+            //Enviar a detalles de la box foranea cuando se inserta
+            App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
+            //App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));
         }
-        void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedItem = new Box();
-            //string previous = (e.PreviousSelection.FirstOrDefault() as ProfileLocal)?.Name;
             selectedItem = e.CurrentSelection.FirstOrDefault() as Box;
+            if (selectedItem == null)
+                return;
             MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(selectedItem.BoxId);
-            App.Navigator.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
+            await Navigation.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
+            //App.Navigator.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
+            ((CollectionView)sender).SelectedItem = null;
         }
         private void ButtonDefault(object sender, EventArgs e)
         {

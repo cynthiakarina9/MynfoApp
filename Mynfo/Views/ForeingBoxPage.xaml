@@ -5,7 +5,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ForeingBoxPage"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor = "#AB4B32">
+             BackgroundColor = "LightGray">
     <ContentPage.Content>
         <ScrollView>
             <Grid>
