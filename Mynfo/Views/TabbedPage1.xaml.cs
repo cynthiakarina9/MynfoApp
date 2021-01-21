@@ -19,7 +19,7 @@
 
             On<Windows>().SetHeaderIconsEnabled(true);
             On<Windows>().SetHeaderIconsSize(new Size(50, 50));
-
+            BackgroundColor = Color.Transparent;
             Children.Add(new ProfilesPage {IconImageSource = "networks_icon.png"});
             Children.Add(new HomePage {IconImageSource = "home_icon.png"});
             Children.Add(new ListForeignBoxPage {IconImageSource = "connections_icon.png"});

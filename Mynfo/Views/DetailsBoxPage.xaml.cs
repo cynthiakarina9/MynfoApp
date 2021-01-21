@@ -22,6 +22,7 @@
         public DetailsBoxPage(int _boxId = 0)
         {
             InitializeComponent();
+
             NavigationPage.SetHasNavigationBar(this, false);
 
             int BoxId = _boxId;

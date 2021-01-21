@@ -3,16 +3,28 @@
     using Models;
     using Mynfo.Services;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using Xamarin.Forms;
 
-    public class ListForeignBoxViewModel
+    public class ListForeignBoxViewModel : BaseViewModel
     {
         #region Services
         ApiService apiService;
         #endregion
 
+        #region Attributes
+        private ObservableCollection<ForeingBox> ForeingBox;
+        #endregion
+
         #region Properties
-        public IList<ForeingBox> foreingBox { private set; get; }
+        public ObservableCollection<ForeingBox> foreingBox
+        {
+            get { return ForeingBox; }
+            private set
+            {
+                SetValue(ref ForeingBox, value);
+            }
+        }
         #endregion
 
         #region Contructor
@@ -40,7 +52,7 @@
         public void GetList()
         {            
             List<ForeingBox> foreignBoxList = new List<ForeingBox>();
-            foreingBox = new List<ForeingBox>();
+            foreingBox = new ObservableCollection<ForeingBox>();
 
             using (var conn = new SQLite.SQLiteConnection(App.root_db))
             {
@@ -53,6 +65,10 @@
             {
                 foreingBox.Add(foreingBoxValue);
             }
+        }
+        public void AddList(ForeingBox _foreingBox)
+        {
+            foreingBox.Add(_foreingBox);
         }
         #endregion
     }

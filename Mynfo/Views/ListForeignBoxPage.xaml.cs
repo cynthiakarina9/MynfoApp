@@ -41,6 +41,7 @@
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ForeingBox selectedItem = e.SelectedItem as ForeingBox;
+            ForeignBoxList.SelectedItem = null;
         }
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
