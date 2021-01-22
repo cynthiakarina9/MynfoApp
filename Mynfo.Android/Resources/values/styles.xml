@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
   <style name="MainTheme" parent="@style/MainTheme.Base">
-    <item name="colorPrimary">#F2F2F2</item>
+    <item name="colorPrimary">#FFFFFF</item>
     <item name="colorPrimaryDark">#000000</item>
     <item name="colorAccent">#FF5521</item>
     </style>

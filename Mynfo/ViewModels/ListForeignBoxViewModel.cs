@@ -13,16 +13,16 @@
         #endregion
 
         #region Attributes
-        private ObservableCollection<ForeingBox> ForeingBox;
+        private ObservableCollection<ForeingBox> foreingBox;
         #endregion
 
         #region Properties
-        public ObservableCollection<ForeingBox> foreingBox
+        public ObservableCollection<ForeingBox> ForeingBox
         {
-            get { return ForeingBox; }
+            get { return foreingBox; }
             private set
             {
-                SetValue(ref ForeingBox, value);
+                SetValue(ref foreingBox, value);
             }
         }
         #endregion
@@ -52,7 +52,7 @@
         public void GetList()
         {            
             List<ForeingBox> foreignBoxList = new List<ForeingBox>();
-            foreingBox = new ObservableCollection<ForeingBox>();
+            ForeingBox = new ObservableCollection<ForeingBox>();
 
             using (var conn = new SQLite.SQLiteConnection(App.root_db))
             {
@@ -63,12 +63,12 @@
 
             foreach (ForeingBox foreingBoxValue in foreignBoxList)
             {
-                foreingBox.Add(foreingBoxValue);
+                ForeingBox.Add(foreingBoxValue);
             }
         }
         public void AddList(ForeingBox _foreingBox)
         {
-            foreingBox.Add(_foreingBox);
+            ForeingBox.Add(_foreingBox);
         }
         #endregion
     }

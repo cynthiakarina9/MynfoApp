@@ -5,30 +5,17 @@
     using Mynfo.ViewModels;
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListForeignBoxPage : ContentPage
     {
-        #region Services
-        ApiService apiService;
-        #endregion
-
-        #region Properties
-        public IList<ForeingBox> foreingBox { private set; get; }
-        #endregion
-
         #region Contructor
-        public ListForeignBoxPage(int _ForeignUserId = 0)
+        public ListForeignBoxPage()
         {           
             InitializeComponent();
-            apiService = new ApiService();
-
-            GetUSer(_ForeignUserId);
-            GetList();
-
-            BindingContext = this;
         }
         #endregion
 
@@ -52,37 +39,37 @@
         }
         #endregion
 
-        #region Methods
-        public async void GetUSer(int _ForeignUserId)
-        {
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            if (_ForeignUserId != 0)
-            {
-                var response = await this.apiService.GetUserId(
-                apiSecurity,
-                "/api",
-                "/Users",
-                _ForeignUserId);
-            }
-        }
+        //#region Methods
+        //public async void GetUSer(int _ForeignUserId)
+        //{
+        //    var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+        //    if (_ForeignUserId != 0)
+        //    {
+        //        var response = await this.apiService.GetUserId(
+        //        apiSecurity,
+        //        "/api",
+        //        "/Users",
+        //        _ForeignUserId);
+        //    }
+        //}
 
-        public void GetList()
-        {
-            List<ForeingBox> foreignBoxList = new List<ForeingBox>();
-            foreingBox = new List<ForeingBox>();
+        //public void GetList()
+        //{
+        //    List<ForeingBox> foreignBoxList = new List<ForeingBox>();
+        //    foreingBox = new List<ForeingBox>();
 
-            using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            {
-                int a = conn.Table<ForeingProfile>().Count();
+        //    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+        //    {
+        //        int a = conn.Table<ForeingProfile>().Count();
 
-                foreignBoxList = conn.Table<ForeingBox>().ToList();
-            }
+        //        foreignBoxList = conn.Table<ForeingBox>().ToList();
+        //    }
 
-            foreach (ForeingBox foreingBoxValue in foreignBoxList)
-            {
-                foreingBox.Add(foreingBoxValue);
-            }
-        }
-        #endregion
+        //    foreach (ForeingBox foreingBoxValue in foreignBoxList)
+        //    {
+        //        foreingBox.Add(foreingBoxValue);
+        //    }
+        //}
+        //#endregion
     }
 }
