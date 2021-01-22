@@ -31,7 +31,7 @@
     </MtouchSdkVersion>
     <MtouchI18n>west</MtouchI18n>
     <CodesignKey>Apple Development: Nicolas Blanco Storz (F698L64449)</CodesignKey>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision>VS: com.companyname.Mynfo Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -41,6 +41,8 @@
     <WarningLevel>4</WarningLevel>
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
+    <CodesignKey>Apple Development: Nicolas Blanco Storz (F698L64449)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.Mynfo Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,7 +72,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>Apple Development: Nicolas Blanco Storz (F698L64449)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision>VS: com.companyname.Mynfo Development</CodesignProvision>
     <MtouchSdkVersion>14.2</MtouchSdkVersion>
     <MtouchLink>Full</MtouchLink>
   </PropertyGroup>

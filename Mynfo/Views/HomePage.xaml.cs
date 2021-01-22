@@ -962,8 +962,8 @@
             System.Text.StringBuilder sb;
             ForeingBox foreingBox;
             ForeingProfile foreingProfile;
-            int BoxId = 44;//1
-            int UserId = 3;//1
+            int BoxId = 44;//44
+            int UserId = 3;//3
             //Inicializar la box foranea
             foreingBox = new ForeingBox
             {
