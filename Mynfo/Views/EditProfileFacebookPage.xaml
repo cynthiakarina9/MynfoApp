@@ -72,12 +72,13 @@
                         TextColor = "{StaticResource MainColor}"
                         VerticalOptions = "Center"/>
                     <Entry 
-                        Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
                         FontSize = "21"
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
                         HorizontalOptions = "Center"
                         IsEnabled="False"
+                        Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
+                        TextColor="{StaticResource FontColor}"
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name = "EntryName"/>

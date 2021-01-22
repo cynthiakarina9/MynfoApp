@@ -66,34 +66,19 @@
                                         <ColumnDefinition />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-
                                     <controls:CircleImage
                                         HeightRequest = "60"
                                         WidthRequest="60"
                                         Source="{Binding ImagePath}">
                                     </controls:CircleImage>
-
-                                    <Label Grid.Column="1"
-                                        Text="{Binding FullName}"
+                                    <Label 
+                                        Grid.Column="1"
                                         FontAttributes="Bold" 
                                         FontSize="Title"
+                                        Text="{Binding FullName}"
+                                        TextColor="{StaticResource FontColor}"
                                         VerticalTextAlignment="Center"
-                                           Margin="15,0,0,0"/>
-
-                                    <!--<ImageButton Grid.Column="2"
-                                                 Source="time.png"
-                                                 Scale="0.3"
-                                                 BackgroundColor="Transparent">
-                                    </ImageButton>
-
-                                    <ImageButton Grid.Column="3"
-                                                 Source="icono_option.png"
-                                                 Scale="0.3"
-                                                 BackgroundColor="Transparent"
-                                                 x:Name="options"> 
-                                        
-                                    </ImageButton>-->
-
+                                        Margin="15,0,0,0"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

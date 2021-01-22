@@ -16,9 +16,8 @@
                         <RowDefinition />
                         <RowDefinition Height="120"/>
                     </Grid.RowDefinitions>
-
+                    
                     <!--Titulo-->
-
                     <Label 
                         Grid.Row = "0" 
                         Text = "{i18n:Translate MyProfiles}"
@@ -69,6 +68,7 @@
                                         <Label 
                                             Grid.Column="1"
                                             Text="{Binding ProfileName, Mode=TwoWay}"
+                                            TextColor="{StaticResource FontColor}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
                                             VerticalOptions="Center"

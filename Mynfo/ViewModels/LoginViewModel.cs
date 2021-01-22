@@ -58,6 +58,7 @@
         #region Constructors
         public LoginViewModel()
         {
+            Application.Current.UserAppTheme = OSAppTheme.Light;
             this.apiService = new ApiService();
             
             this.IsRemembered = true;

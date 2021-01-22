@@ -12,7 +12,18 @@
     <item name="android:windowFullscreen">true</item>
     <item name="colorPrimaryDark">#AAAAAA</item>
   </style>-->
+  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="android:statusBarColor">#FFFFFF</item>
+    <item name="android:windowLightStatusBar">true</item>
+  </style>
   <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/layout1</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowActionBar">true</item>
+  </style>
+  <style name="MyThemeDark.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
     <item name="android:windowBackground">@drawable/layout1</item>
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowFullscreen">true</item>

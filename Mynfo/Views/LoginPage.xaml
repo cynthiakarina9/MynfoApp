@@ -48,6 +48,7 @@
                             Keyboard = "Email"
                             Margin="0,-10,0,0"
                             Text = "{Binding Email, Mode = TwoWay}"
+                            TextColor="{StaticResource FontColor}"
                             WidthRequest = "300"/>
                     </StackLayout>
 
@@ -66,6 +67,7 @@
                             IsPassword = "True"
                             Margin="0,-10,0,0"
                             Text = "{Binding Password, Mode = TwoWay}"
+                            TextColor="{StaticResource FontColor}"
                             WidthRequest = "300"/>
                     </StackLayout>
                     <StackLayout
@@ -82,37 +84,36 @@
                             IsToggled = "{Binding IsRemembered, Mode = TwoWay}"
                             HorizontalOptions = "End"/>
                     </StackLayout >
-
                     <StackLayout
                         Orientation="Horizontal"
                         HorizontalOptions="Center">
                         <Button
-                                BackgroundColor = "{StaticResource MainColor}"
-                                BorderRadius = "23"
-                                Command = "{Binding LoginCommand}"
-                                HorizontalOptions = "Center"
-                                IsEnabled = "{Binding IsEnabled,Mode = TwoWay}"
-                                Text = "{i18n:Translate Login}"
-                                TextColor = "{StaticResource Dark_FontColor}"
-                                WidthRequest = "150"/>
+                            BackgroundColor = "{StaticResource MainColor}"
+                            BorderRadius = "23"
+                            Command = "{Binding LoginCommand}"
+                            HorizontalOptions = "Center"
+                            IsEnabled = "{Binding IsEnabled,Mode = TwoWay}"
+                            Text = "{i18n:Translate Login}"
+                            TextColor = "{StaticResource Dark_FontColor}"
+                            WidthRequest = "150"/>
                         <Button
-                                BackgroundColor="Transparent"
-                                BorderRadius = "23"
-                                Command="{Binding RegisterCommand}"
-                                HorizontalOptions="Center"
-                                Text="{i18n:Translate Register}"
-                                TextColor="{StaticResource MainColor}"
-                                BorderWidth="2"
-                                BorderColor="{StaticResource MainColor}"
-                                VerticalOptions="FillAndExpand"
-                                WidthRequest="150"/>
+                            BackgroundColor="Transparent"
+                            BorderRadius = "23"
+                            Command="{Binding RegisterCommand}"
+                            HorizontalOptions="Center"
+                            Text="{i18n:Translate Register}"
+                            TextColor="{StaticResource MainColor}"
+                            BorderWidth="2"
+                            BorderColor="{StaticResource MainColor}"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="150"/>
                     </StackLayout>
                     <Label
-                            HorizontalOptions = "Center"
-                            Text = "{i18n:Translate Forgot}"
-                            TextColor = "{StaticResource MainColor}"
-                            Margin="25"
-                            VerticalOptions = "FillAndExpand">
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate Forgot}"
+                        TextColor = "{StaticResource MainColor}"
+                        Margin="25"
+                        VerticalOptions = "FillAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"/>
                         </Label.GestureRecognizers>

@@ -66,6 +66,7 @@
                             MaxLength = "10"
                             Placeholder = "{i18n:Translate NProfilePlaceH}"
                             Text = "{Binding Name}"
+                            TextColor="{StaticResource FontColor}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
                             x:Name="ProfileName"/>
@@ -87,6 +88,7 @@
                             Keyboard = "Email"
                             Placeholder = "{i18n:Translate ExampleEmail}"
                             Text = "{Binding Email}"
+                            TextColor="{StaticResource FontColor}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
                             x:Name="ProfileMail"/>

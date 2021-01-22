@@ -31,7 +31,6 @@
                     </Grid.RowDefinitions>
 
                     <!--Titulo-->
-                        
                     <Label 
                         Grid.Row = "0" 
                         Text = "{i18n:Translate NetworksList}"
@@ -75,11 +74,12 @@
                                             VerticalOptions="Center"
                                             WidthRequest="50" />
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
                                             Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                     </Grid>

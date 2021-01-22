@@ -65,42 +65,44 @@
                             Grid.ColumnSpan ="2"
                             Padding = "20">
                         <Label 
-                                FontSize = "24" 
-                                FontAttributes="Bold"
-                                HorizontalOptions = "Center"
-                                Text = "{i18n:Translate NameProfile}"
-                                TextColor = "{StaticResource MainColor}"
-                                VerticalOptions = "Center"/>
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NameProfile}"
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
                         <Entry 
-                                FontSize = "21"
-                                HorizontalTextAlignment = "Center"
-                                HorizontalOptions = "Center"
-                                MaxLength = "10"
-                                Text = "{Binding profilePhone.Name}"
-                                VerticalOptions = "Center" 
-                                WidthRequest = "300" 
-                                x:Name = "EntryName"/>
+                            FontSize = "21"
+                            HorizontalTextAlignment = "Center"
+                            HorizontalOptions = "Center"
+                            MaxLength = "10"
+                            Text = "{Binding profilePhone.Name}"
+                            TextColor="{StaticResource FontColor}"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300" 
+                            x:Name = "EntryName"/>
                     </StackLayout>
                     <StackLayout 
                             Grid.Row = "3"
                             Grid.ColumnSpan ="2">
                         <Label 
-                                FontSize = "24" 
-                                FontAttributes="Bold"
-                                HorizontalOptions = "Center"
-                                VerticalOptions = "Center" 
-                                Text = "{i18n:Translate NumberPhone}" 
-                                TextColor = "{StaticResource MainColor}"/>
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center" 
+                            Text = "{i18n:Translate NumberPhone}" 
+                            TextColor = "{StaticResource MainColor}"/>
                         <Entry 
-                                FontSize = "21"
-                                HorizontalTextAlignment = "Center"
-                                HorizontalOptions = "Center"
-                                Keyboard = "Telephone"
-                                MaxLength = "10"
-                                Text = "{Binding profilePhone.Number}"
-                                VerticalOptions = "Center" 
-                                WidthRequest = "300"
-                                x:Name = "EntryPhone"/>
+                            FontSize = "21"
+                            HorizontalTextAlignment = "Center"
+                            HorizontalOptions = "Center"
+                            Keyboard = "Telephone"
+                            MaxLength = "10"
+                            Text = "{Binding profilePhone.Number}"
+                            TextColor="{StaticResource FontColor}"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300"
+                            x:Name = "EntryPhone"/>
                     </StackLayout>
                     <StackLayout
                             Grid.Row = "4"
@@ -125,6 +127,5 @@
                 WidthRequest = "150"
                 x:Name = "ButtonSave"/>
         </Grid>
-        
     </ContentPage.Content>
 </ContentPage>

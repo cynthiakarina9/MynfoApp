@@ -78,13 +78,6 @@
                                 <Grid Padding="10">
                                     <StackLayout
                                         HorizontalOptions="Center">
-                                        <!--<ImageButton
-                                            Clicked="ButtonDefault"
-                                            BackgroundColor="Transparent"
-                                            IsVisible="{Binding IsNull}"
-                                            HeightRequest="80"
-                                            Source="home1.png"
-                                            WidthRequest="80"/>-->
                                         <Button
                                             BackgroundColor="{StaticResource MainColor}"
                                             Clicked="ButtonDefault"
@@ -155,87 +148,6 @@
                             </ContentView>
                         </CollectionView.EmptyView>
                     </CollectionView>
-                    <!-- De la box 2 a la 4 -->
-                    <!--<StackLayout 
-                        Grid.Column = "0"
-                        Grid.Row ="1"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        x:Name = "LayoutBox2" />
-
-                    <StackLayout 
-                        Grid.Column = "1"
-                        Grid.Row ="1"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        x:Name = "LayoutBox3" />
-
-                    <StackLayout 
-                        Grid.Column = "2"
-                        Grid.Row ="1"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        x:Name = "LayoutBox4" />
-
-                    --><!-- De la box 5 a la 7 --><!--
-                    <StackLayout 
-                        Grid.Column = "0"
-                        Grid.Row ="2"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        x:Name = "LayoutBox5" />
-
-                    <StackLayout 
-                        Grid.Column = "1"
-                        Grid.Row ="2"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        x:Name = "LayoutBox6" />
-
-                    <StackLayout 
-                        Grid.Column = "2"
-                        Grid.Row ="2"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        x:Name = "LayoutBox7" />
-
-                    --><!-- De la box 8 a la 10 --><!--
-                    <StackLayout 
-                        Grid.Column = "0"
-                        Grid.Row ="3"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        x:Name = "LayoutBox8" />
-
-                    <StackLayout 
-                        Grid.Column = "1"
-                        Grid.Row ="3"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        x:Name = "LayoutBox9" />
-
-                    <StackLayout 
-                        Grid.Column = "2"
-                        Grid.Row ="3"
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "Center"
-                        x:Name = "LayoutBox10" />-->
-
-                    <!-- Botón para agregar box nueva--><!--
-                    <BoxView 
-                        Grid.ColumnSpan = "3"
-                        Grid.Row = "4"/>-->
-
-                    <!--<ImageButton
-                        BackgroundColor = "Transparent"
-                        Grid.Column = "2"
-                        Grid.Row = "2"
-                        HeightRequest = "60"
-                        HorizontalOptions ="Center"
-                        Source = "Plus"
-                        VerticalOptions = "Center"
-                        WidthRequest = "60"
-                        x:Name="GoToTest"/>-->
                 </Grid>
             </ScrollView>
             <Grid

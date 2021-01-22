@@ -29,7 +29,7 @@
             InitializeComponent();
 
             ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
-            GoToTest.Clicked += new EventHandler((sender, e) => GoToTestPage());
+            //GoToTest.Clicked += new EventHandler((sender, e) => GoToTestPage());
             //GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
 
             System.Text.StringBuilder sb;

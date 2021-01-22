@@ -48,8 +48,6 @@
         }
         #endregion       
 
-
-
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             //Set DB root
@@ -59,7 +57,7 @@
             instance = this;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            
             //popups
             Rg.Plugins.Popup.Popup.Init(this);
 

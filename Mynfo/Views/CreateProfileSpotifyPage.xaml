@@ -66,6 +66,7 @@
                             MaxLength = "10"
                             Placeholder = "{i18n:Translate NProfilePlaceH}"
                             Text = "{Binding Name}"
+                            TextColor="{StaticResource FontColor}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
                             x:Name="ProfileName"/>
@@ -85,6 +86,7 @@
                             HorizontalTextAlignment = "Center"
                             HorizontalOptions = "Center"
                             Text = "{Binding Link}"
+                            TextColor="{StaticResource FontColor}"
                             VerticalOptions = "Center" 
                             Placeholder = "https://www.spotify.com/user"
                             WidthRequest = "300" 

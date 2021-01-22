@@ -49,17 +49,10 @@
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
                         Text="{Binding Box.Name, Mode=TwoWay}"
-                        TextColor="Black"
+                        TextColor="{StaticResource FontColor}"
                         VerticalOptions="Center"
                         WidthRequest="200"
                         x:Name="NameEntry"/>
-
-                    <Label 
-                        Grid.Row="2" 
-                        Grid.Column="2" 
-                        Text="{i18n:Translate DefaultBox}" 
-                        TextColor="Black"
-                        VerticalOptions="Center"/>
                     <CollectionView 
                         ItemsSource="{Binding ProfilePerfiles}"
                         Grid.Row="3"
@@ -88,7 +81,7 @@
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding ProfileName}"
                                             FontAttributes="Bold"
-                                            TextColor="DarkRed" />
+                                            TextColor="{StaticResource FontColor}" />
                                     </StackLayout>
                                 </Grid>
                             </DataTemplate>
