@@ -21,7 +21,6 @@
                 WidthRequest = "100"/>
         </Grid>
     </NavigationPage.TitleView>
-    
     <ContentPage.Content>
         <ScrollView  
             BindingContext = "{Binding MyProfile}">
@@ -43,7 +42,6 @@
                         Padding = "0,0,0,19"
                         Text = "{i18n:Translate ChangeImage}" />
                 </StackLayout>
-                
                 <Grid 
                     HorizontalOptions = "Center">
                     <Grid.ColumnDefinitions>

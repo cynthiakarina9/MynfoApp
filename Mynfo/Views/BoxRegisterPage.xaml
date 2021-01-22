@@ -44,6 +44,7 @@
                     HorizontalTextAlignment = "Center"
                     MaxLength="10"
                     Text = "{Binding Name}"
+                    TextColor="{StaticResource FontColor}"
                     VerticalOptions = "Center"
                     WidthRequest = "300"/>
                 <Button 

@@ -80,11 +80,12 @@
                             TextColor = "{StaticResource MainColor}"
                             VerticalOptions = "Center"/>
                         <Entry 
-                            Text="{Binding profileEmail.Name, Mode=TwoWay}"
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
+                            Text="{Binding profileEmail.Name, Mode=TwoWay}"
+                            TextColor="{StaticResource FontColor}"
                             MaxLength = "10"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
@@ -102,12 +103,13 @@
                             Text = "{i18n:Translate EMail}"
                             TextColor = "{StaticResource MainColor}"/>
                         <Entry
-                            Text="{Binding profileEmail.Email, Mode=TwoWay}"
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
                             Keyboard = "Email"
+                            Text="{Binding profileEmail.Email, Mode=TwoWay}"
+                            TextColor="{StaticResource FontColor}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300"
                             x:Name = "EntryEmail"/>

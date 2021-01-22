@@ -10,6 +10,7 @@
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            Application.Current.UserAppTheme = OSAppTheme.Light;
         }
     }
 }

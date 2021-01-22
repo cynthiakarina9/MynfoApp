@@ -85,10 +85,12 @@
                                             Source="mail2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding Name, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding Name}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
@@ -137,10 +139,12 @@
                                             Source="tel2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding Name, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding Name}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
@@ -189,10 +193,12 @@
                                             Source="facebook2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
@@ -235,10 +241,12 @@
                                             Source="instagramlogo2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
@@ -281,10 +289,12 @@
                                             Source="linkedin2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
@@ -327,10 +337,12 @@
                                             Source="snapchat2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
@@ -373,10 +385,12 @@
                                             Source="spotify2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
@@ -419,10 +433,12 @@
                                             Source="tiktok2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
@@ -465,10 +481,12 @@
                                             Source="twitch2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
@@ -511,10 +529,12 @@
                                             Source="twitterlogo2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
@@ -557,10 +577,12 @@
                                             Source="gmail2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
@@ -593,7 +615,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="2.5*" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <ImageButton
@@ -604,16 +626,19 @@
                                             Source="whatsapp2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding Name, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding Name}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
                                             Grid.Column="2"
-                                            Text="{Binding Number, Mode=TwoWay}"
                                             FontSize="15"
+                                            Text="{Binding Number, Mode=TwoWay}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
                                         <input:CheckBox 
@@ -656,10 +681,12 @@
                                             Source="youtube2"
                                             WidthRequest="30"/>
                                         <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Margin="0,0,10,0"
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{StaticResource FontColor}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
