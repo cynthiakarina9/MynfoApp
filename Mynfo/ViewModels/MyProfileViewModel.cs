@@ -9,6 +9,7 @@
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using System;
 
     public class MyProfileViewModel : BaseViewModel
     {
@@ -103,53 +104,59 @@
         private async void ChangeImage()
         {
             await CrossMedia.Current.Initialize();
-
-            if (CrossMedia.Current.IsCameraAvailable &&
-                CrossMedia.Current.IsTakePhotoSupported)
+            try
             {
-                var source = await Application.Current.MainPage.DisplayActionSheet(
-                    Languages.SourceImageQuestion,
-                    Languages.Cancel,
-                    null,
-                    Languages.FromGallery,
-                    Languages.FromCamera);
-
-                if (source == Languages.Cancel)
+                if (CrossMedia.Current.IsCameraAvailable &&
+                    CrossMedia.Current.IsTakePhotoSupported)
                 {
-                    this.file = null;
-                    return;
+                    var source = await Application.Current.MainPage.DisplayActionSheet(
+                        Languages.SourceImageQuestion,
+                        Languages.Cancel,
+                        null,
+                        Languages.FromGallery,
+                        Languages.FromCamera);
+
+                    if (source == Languages.Cancel)
+                    {
+                        this.file = null;
+                        return;
+                    }
+
+                    if (source == Languages.FromCamera)
+                    {
+                        this.file = await CrossMedia.Current.TakePhotoAsync(
+                            new StoreCameraMediaOptions
+                            {
+                                SaveToAlbum = true,
+                                Directory = "Sample",
+                                Name = "test.jpg",
+                                PhotoSize = PhotoSize.Small,
+                            }
+                        );
+                    }
+                    else
+                    {
+                        this.file = await CrossMedia.Current.PickPhotoAsync();
+                    }
                 }
 
-                if (source == Languages.FromCamera)
-                {
-                    this.file = await CrossMedia.Current.TakePhotoAsync(
-                        new StoreCameraMediaOptions
-                        {
-                            SaveToAlbum = true,
-                            Directory = "Sample",
-                            Name = "test.jpg",
-                            PhotoSize = PhotoSize.Small,
-                        }
-                    );
-                }
                 else
                 {
                     this.file = await CrossMedia.Current.PickPhotoAsync();
                 }
-            }
 
-            else
-            {
-                this.file = await CrossMedia.Current.PickPhotoAsync();
-            }
-
-            if (this.file != null)
-            {
-                this.ImageSource = ImageSource.FromStream(() =>
+                if (this.file != null)
                 {
-                    var stream = file.GetStream();
-                    return stream;
-                });
+                    this.ImageSource = ImageSource.FromStream(() =>
+                    {
+                        var stream = file.GetStream();
+                        return stream;
+                    });
+                }
+            }
+            catch(Exception e)
+            {
+                return;
             }
         }
 

@@ -44,9 +44,13 @@
             LoadApplication(new App(dbRoot));
             DependencyService.Register<ILocalize>();
             return base.FinishedLaunching(app, options);
+            //UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
+            //if (statusBar != null && statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
+            //{
+            //    // change to your desired color 
+            //    statusBar.BackgroundColor = Color.FromHex("#7f6550").ToUIColor();
+            //}
         }       
-
-
 
         #region Trigger nfc
         // Set speed delay for monitoring changes.
