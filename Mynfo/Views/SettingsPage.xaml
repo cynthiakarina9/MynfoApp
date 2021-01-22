@@ -4,6 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.SettingsPage"
              Title = "{i18n:Translate Settings}"
+             BackgroundColor="#FFFFFF"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <ScrollView>

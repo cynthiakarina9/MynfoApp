@@ -256,7 +256,9 @@ namespace Mynfo.Droid.Services
                 }
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    //App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
                     Application.Current.MainPage.Navigation.PushModalAsync(new ForeingBoxPage(foreingBox, true));
+                    MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
                 });
             }
             catch (Exception ex)

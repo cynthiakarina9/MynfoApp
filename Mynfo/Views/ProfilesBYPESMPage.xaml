@@ -4,6 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesBYPESMPage"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             BackgroundColor="#FFFFFF"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>

@@ -972,8 +972,8 @@
                 Time = DateTime.Now,
                 ImagePath = MainViewModel.GetInstance().User.ImageFullPath,
                 UserTypeId = 1,
-                FirstName = "Cynthia",
-                LastName = "De la Cuesta"
+                FirstName = "Rodrigo",
+                LastName = "Rodriguez"
 
             };
 
@@ -1125,13 +1125,50 @@
                     {
                         while (reader.Read())
                         {
+                            int IdRedSocial = (int)reader["RedSocialId"];
+                            var Name = string.Empty;
+                            switch(IdRedSocial)
+                            {
+                                case 1:
+                                    Name = "Facebook";
+                                    break;
+                                case 2:
+                                    Name = "Instagram";
+                                    break;
+                                case 3:
+                                    Name = "Twitter";
+                                    break;
+                                case 4:
+                                    Name = "Snapchat";
+                                    break;
+                                case 5:
+                                    Name = "LinkedIn";
+                                    break;
+                                case 6:
+                                    Name = "TikTok";
+                                    break;
+                                case 7:
+                                    Name = "Youtube";
+                                    break;
+                                case 8:
+                                    Name = "Spotify";
+                                    break;
+                                case 9:
+                                    Name = "Twitch";
+                                    break;
+                                case 10:
+                                    Name = "WebPage";
+                                    break;
+                                default:
+                                    break;
+                            };
                             foreingProfile = new ForeingProfile
                             {
                                 BoxId = BoxId,
                                 UserId = UserId,
                                 ProfileName = (string)reader["ProfileName"],
                                 value = (string)reader["link"],
-                                ProfileType = "Facebook"
+                                ProfileType = Name
                             };
 
                             //Insertar la box foranea
@@ -1147,6 +1184,7 @@
             }
 
             MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
+            MainViewModel.GetInstance().ListForeignBox.GetList();
             //Enviar a detalles de la box foranea cuando se inserta
             App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
             //App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));

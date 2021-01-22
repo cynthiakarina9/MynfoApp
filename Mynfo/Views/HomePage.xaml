@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.HomePage"
+             BackgroundColor="#FFFFFF"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Resources>
         <Style TargetType="Grid">
@@ -225,7 +226,7 @@
                         Grid.ColumnSpan = "3"
                         Grid.Row = "4"/>-->
 
-                    <ImageButton
+                    <!--<ImageButton
                         BackgroundColor = "Transparent"
                         Grid.Column = "2"
                         Grid.Row = "2"
@@ -234,7 +235,7 @@
                         Source = "Plus"
                         VerticalOptions = "Center"
                         WidthRequest = "60"
-                        x:Name="GoToTest"/>
+                        x:Name="GoToTest"/>-->
                 </Grid>
             </ScrollView>
             <Grid

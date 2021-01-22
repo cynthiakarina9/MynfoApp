@@ -180,7 +180,7 @@
                         space.HeightRequest = 30;
                         break;
                     case "Twitter":
-                        profileIcon.Source = "twitter2.png";
+                        profileIcon.Source = "twitterlogo2.png";
                         profileIcon.WidthRequest = 50;
                         profileIcon.HeightRequest = 50;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;

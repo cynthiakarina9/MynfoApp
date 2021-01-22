@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              x:Class="Mynfo.Views.MyProfilePage"
              Title = "{i18n:Translate MyAccount}"
+             BackgroundColor="#FFFFFF"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
