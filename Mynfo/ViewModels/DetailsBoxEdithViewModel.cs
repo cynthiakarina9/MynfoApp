@@ -499,6 +499,7 @@
                 Box.BoxId);
             profile = Box;
             await MainViewModel.GetInstance().DetailsBox.GetBoxe(Box.BoxId);
+            MainViewModel.GetInstance().Home.UpdateList(Box);
             return Box;
         }
 
