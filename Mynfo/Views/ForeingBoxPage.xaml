@@ -5,15 +5,15 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ForeingBoxPage"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor = "LightGray">
+             BackgroundColor = "#FEBDA8">
     <ContentPage.Content>
         <ScrollView>
             <Grid>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="180"/>
                         <RowDefinition Height="80"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="180"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -21,32 +21,32 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <!--Botón para volver a home-->
-                    
-                    <!-- Nombre e imagen del usuario foraneo-->
+                    <!--Botón para volver a home-->                    
                     <StackLayout 
                         Grid.Column ="2"
                         HorizontalOptions="End"
                         VerticalOptions="Center"
                         Padding="0,10,10,0"
                         x:Name="BackButton" />
-                    <controls:CircleImage
-                        Grid.Row = "1"
-                        Grid.Column = "1"
-                        HeightRequest = "180"
-                        WidthRequest = "180"
-                        x:Name="ForeignUserImage">
-                    </controls:CircleImage>
+                    <!-- Nombre e imagen del usuario foraneo-->
                     <Label 
                         FontAttributes="Bold"
                         FontSize = "28"
-                        Grid.Row="2"
+                        Grid.Row="1"
                         Grid.ColumnSpan = "3"
                         HorizontalTextAlignment="Center"
                         HorizontalOptions = "Center"
-                        TextColor = "{StaticResource MainColor}"
+                        TextColor = "{StaticResource FontColor}"
+                        VerticalOptions="Center"
                         x:Name="ForeignUserName" />
-
+                    
+                    <controls:CircleImage
+                        Grid.Row = "2"
+                        Grid.Column = "1"
+                        HeightRequest = "190"
+                        WidthRequest = "190"
+                        x:Name="ForeignUserImage">
+                    </controls:CircleImage>
                     <!-- Listado de perfiles -->
                     <Grid
                         Grid.Row="3"

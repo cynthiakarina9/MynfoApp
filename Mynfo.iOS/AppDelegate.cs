@@ -33,7 +33,8 @@
             string dbRoot = Path.Combine(dbBinder, dbName);
             Rg.Plugins.Popup.Popup.Init();
 
-            global::Xamarin.Forms.Forms.Init();            
+            global::Xamarin.Forms.Forms.Init();
+            ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             DetectShakeTest();
             ToggleAccelerometer();
             LoadApplication(new App(dbRoot));
