@@ -32,6 +32,7 @@
     <PackageReference Include="Xamarin.Forms.InputKit" Version="3.4.4" />
     <PackageReference Include="Xamarin.Forms.OpenWhatsApp" Version="1.0.1" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
   </ItemGroup>
 
   <ItemGroup>

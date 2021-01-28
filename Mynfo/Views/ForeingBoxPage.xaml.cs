@@ -39,7 +39,7 @@
 
             ForeingBox foreing = _foreingBox;
 
-            ForeignUserImage.Source = foreing.ImagePath;
+            ForeignUserImage.Source = foreing.ImageFullPath;
             ForeignUserName.Text = foreing.FullName;
 
             int listProfileNum = 0;
@@ -60,8 +60,8 @@
                 {
                     case "Phone":
                         profileIcon.Source = "tel2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -79,8 +79,8 @@
                     case "Email":
 
                         profileIcon.Source = "mail2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -96,8 +96,8 @@
                         break;
                     case "Facebook":
                         profileIcon.Source = "facebook2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -113,8 +113,8 @@
                         break;
                     case "Instagram":
                         profileIcon.Source = "instagramlogo2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -130,8 +130,8 @@
                         break;
                     case "LinkedIn":
                         profileIcon.Source = "linkedin2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -147,8 +147,8 @@
                         break;
                     case "TikTok":
                         profileIcon.Source = "tiktok2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -164,8 +164,8 @@
                         break;
                     case "Twitch":
                         profileIcon.Source = "twitch2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -181,8 +181,8 @@
                         break;
                     case "Twitter":
                         profileIcon.Source = "twitterlogo2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -198,8 +198,8 @@
                         break;
                     case "Snapchat":
                         profileIcon.Source = "snapchat2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -215,8 +215,8 @@
                         break;
                     case "Spotify":
                         profileIcon.Source = "spotify2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -232,8 +232,8 @@
                         break;
                     case "WebPage":
                         profileIcon.Source = "gmail2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -249,8 +249,8 @@
                         break;
                     case "Whatsapp":
                         profileIcon.Source = "whatsapp2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;
@@ -266,8 +266,8 @@
                         break;
                     case "Youtube":
                         profileIcon.Source = "youtube2.png";
-                        profileIcon.WidthRequest = 50;
-                        profileIcon.HeightRequest = 50;
+                        profileIcon.WidthRequest = 60;
+                        profileIcon.HeightRequest = 60;
                         profileIcon.HorizontalOptions = LayoutOptions.Center;
                         profileIcon.IsEnabled = true;
                         profileIcon.BackgroundColor = Color.Transparent;

@@ -1,13 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<zxing:ZXingScannerPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
+             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             mc:Ignorable="d"
              BackgroundColor="#FFFFFF"
-             x:Class="Mynfo.Views.LectorQRPage">
+             x:Class="Mynfo.Views.LectorQRPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid 
+            BindingContext="{Binding LectorQR}">
+            <zxing:ZXingScannerView 
+                x:Name="scanView"
+                OnScanResult="scanView_OnScanResult"
+                IsScanning="{Binding IsScanning}"/>
+            <zxing:ZXingDefaultOverlay 
+                TopText="Align the barcode within the frame"
+                BottomText = "El escaneo es automático"
+                Opacity = "0.75"/>
+            <zxing:ZXingBarcodeImageView
+                    BarcodeFormat="QR_CODE"
+                    BarcodeValue="{Binding QrCode}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                Opacity="1">
+                <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                    <zxcm:EncodingOptions 
+                        Width="500" 
+                        Height="500" />
+                </zxing:ZXingBarcodeImageView.BarcodeOptions>
+            </zxing:ZXingBarcodeImageView>
+        </Grid>
     </ContentPage.Content>
-</ContentPage>
+</zxing:ZXingScannerPage>

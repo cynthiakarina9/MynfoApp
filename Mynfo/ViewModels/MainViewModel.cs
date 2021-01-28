@@ -426,7 +426,7 @@
                 PageName = "MyProfilePage",
                 Title = Languages.MyAccount,
             });
-            /*this.Menus.Add(new MenuItemViewModel
+            this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "icon_tag",
                 PageName = "SettingsPage",
@@ -437,7 +437,7 @@
                 Icon = "icon_qr",
                 PageName = "QR",
                 Title = Languages.QR,
-            });*/
+            });
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "logout",
