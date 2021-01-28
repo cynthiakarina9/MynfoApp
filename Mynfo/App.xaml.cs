@@ -174,8 +174,8 @@
             await Xamarin.Forms.Device.InvokeOnMainThreadAsync(async () => await Current.MainPage.DisplayAlert("message from service", msg, "ok"));*/
 
 
-        public static async Task DisplayAlertAsync(string msg) =>
-            await Xamarin.Forms.Device.InvokeOnMainThreadAsync(async () => await Current.MainPage.DisplayAlert("message from service", msg, "ok"));
+        //public static async Task DisplayAlertAsync(string msg) =>
+        //    await Xamarin.Forms.Device.InvokeOnMainThreadAsync(async () => await Current.MainPage.DisplayAlert("message from service", msg, "ok"));
 
 
 

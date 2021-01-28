@@ -5,12 +5,15 @@
     using Mynfo.Models;
     using Mynfo.ViewModels;
     using System;
+    using System.Threading;
     using System.Windows.Input;
+    using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
+        public static bool write_nfc = false;
         public SettingsPage()
         {
             InitializeComponent();
@@ -86,5 +89,13 @@
             }
         }
         #endregion
+
+        void escribir_tag(object sender, EventArgs e)
+        {
+            var duration = TimeSpan.FromMilliseconds(500);
+            Vibration.Vibrate(duration);
+            Vibration.Vibrate(duration);
+            write_nfc = true;                       
+        }
     }
 }

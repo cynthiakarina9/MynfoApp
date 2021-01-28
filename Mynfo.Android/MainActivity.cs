@@ -16,23 +16,26 @@
     using System.IO;
     using System.Text;
     using Mynfo.ViewModels;
-    using System.Collections.Generic;
     using Newtonsoft.Json.Linq;
     using SQLite;
-    using Android.Graphics.Drawables;
-    using System.Globalization;
-    using Mynfo.Droid.Services;
+    using Android.Graphics.Drawables;    
+    using Mynfo.Services;
     using System.Threading;
     using Xamarin.Essentials;
+    using Android.Nfc.Tech;
+    using Mynfo.Views;
 
-    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },
+    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },    
+    Categories = new[] { "android.intent.category.DEFAULT" }), 
+    IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
+    DataHost = "boxweb1.azurewebsites.net", DataScheme = "http",
     Categories = new[] { "android.intent.category.DEFAULT" })]
     [MetaData("android.nfc.action.TECH_DISCOVERED", Resource = "@xml/techlist")]
 
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
-    {
+    {        
         public string json;
-        public CardReader cardReader;
+        public Mynfo.Droid.Services.CardReader cardReader;
         public NfcReaderFlags READER_FLAGS = NfcReaderFlags.NfcA | NfcReaderFlags.SkipNdefCheck;
         #region Singleton
         private static MainActivity instance;
@@ -74,15 +77,15 @@
             DetectShakeTest();
             ToggleAccelerometer();
 
-            var receiver = new MessageReceiver();
+            var receiver = new Mynfo.Droid.Services.MessageReceiver();
             RegisterReceiver(receiver, new IntentFilter("MSG_NAME"));
-            cardReader = new CardReader();
+            cardReader = new Mynfo.Droid.Services.CardReader();
             LoadApplication(new App(dbRoot));
 
             if (Intent?.Extras != null)
             {
                 var message = Intent.Extras.GetString("MSG_DATA");
-                await App.DisplayAlertAsync(message);
+                //await App.DisplayAlertAsync(message);
             }
         }
 
@@ -130,113 +133,86 @@
 
         protected override void OnResume()
         {
-            base.OnResume(); 
-
+            base.OnResume();            
             try 
             {
-                if (NfcAdapter.ActionTechDiscovered.Equals(Intent.Action))
-                {
-                    //Get the NFC ID
-                    var myTag = Intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
+                if (SettingsPage.write_nfc == true)
+                {                   
 
-                    var msg = (NdefMessage)myTag[0];
-                    var record = msg.GetRecords()[0];
-                    //If the NFC Card ID is not null
-                    if (record != null)
+                    string dominio = "boxweb1.azurewebsites.net/";
+                    string user = MainViewModel.GetInstance().User.UserId.ToString();
+                    string tag_id = "";
+
+                    string url = dominio+ "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
+                    //http://localhost:58951/index.aspx?user_id=7
+                    var tag = Intent.GetParcelableExtra(NfcAdapter.ExtraTag) as Tag;
+                    if (tag != null)
                     {
-                        if (record.Tnf == NdefRecord.TnfWellKnown) // The data is defined by the Record Type Definition (RTD) specification available from http://members.nfc-forum.org/specs/spec_list/
-                        {
-                            // Get the transfered data
-                            var data = Encoding.ASCII.GetString(record.GetPayload());
-                            string result = data.Substring(3);
-                            Imprime_box.Consulta_user(result);
+                        Ndef ndef = Ndef.Get(tag);
+                        if (ndef != null && ndef.IsWritable)
+                        {                            
+                            /*var payload = Encoding.ASCII.GetBytes(url);
+                            var mimeBytes = Encoding.ASCII.GetBytes("text/html");
+                            var record = new NdefRecord(NdefRecord.TnfWellKnown, mimeBytes, new byte[0], payload);
+                            var ndefMessage = new NdefMessage(new[] { record });
+                            ndef.Connect();
+                            ndef.WriteNdefMessage(ndefMessage);
+                            ndef.Close();*/
+
+                            ndef.Connect();
+                            NdefRecord mimeRecord = NdefRecord.CreateUri("http://" + url);
+                            ndef.WriteNdefMessage(new NdefMessage(mimeRecord));
+                            ndef.Close();
                         }
                     }
+                    SettingsPage.write_nfc = false;
+                    var duration = TimeSpan.FromMilliseconds(1500);
+                    Vibration.Vibrate(duration);                    
                 }
+                else 
+                {
+                    if (NfcAdapter.ActionNdefDiscovered.Equals(Intent.Action))
+                    {
+                        //Get the NFC ID
+                        var myTag = Intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
+
+                        var msg = (NdefMessage)myTag[0];
+                        var record = msg.GetRecords()[0];
+                        //If the NFC Card ID is not null
+                        if (record != null)
+                        {
+                            if (record.Tnf == NdefRecord.TnfWellKnown) // The data is defined by the Record Type Definition (RTD) specification available from http://members.nfc-forum.org/specs/spec_list/
+                            {
+                                // Get the transfered data
+                                var data = Encoding.ASCII.GetString(record.GetPayload());
+                                string result = data.Substring(1);                                
+                                
+                                string[] variables = result.Split('=');                                                                
+                                string[] depura_userid = variables[1].Split('&');
+                                string tag_id = variables[2];
+                                string user_id = depura_userid[0];                                
+
+                                Imprime_box.Consulta_user(user_id, tag_id);
+                            }
+                        }
+                    }
+                }                
             }
             catch (Exception ex) 
             {
                 Console.WriteLine(ex);
             }           
         }
-    
 
-
-
-
-    //Convert the byte array of the NfcCard Uid to string
-    private static string ByteArrayToString(byte[] ba)
+        //Convert the byte array of the NfcCard Uid to string
+        private static string ByteArrayToString(byte[] ba)
         {
             var hex = new StringBuilder(ba.Length * 2);
             foreach (byte b in ba)
                 hex.AppendFormat("{0:x2}", b);
             return hex.ToString();
         }
-
-
-
-
-
-
-        //Insercion NFC
-
-        /*
-          public void InsertForeignData()
-          {
-              ForeingBox      foreingBox;
-              ForeingProfile  foreingProfile;
-
-              //Validar que la box no exista
-              //using(var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-              //{
-              //    connSQLite.FindWithQuery<ForeingBox>("")
-              //}
-
-              //Inicializar la box foranea
-              foreingBox = new ForeingBox
-              {
-                  BoxId = Convert.ToInt32(nfcData[0].boxId),
-                  UserId = Convert.ToInt32(nfcData[0].userId),
-                  //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),
-                  Time = DateTime.Now,
-                  ImagePath = nfcData[0].imagePath,
-                  UserTypeId = Convert.ToInt32(nfcData[0].userTypeId),
-                  FirstName = nfcData[0].firstName,
-                  LastName = nfcData[0].lastName
-
-              };
-
-              //Insertar la box foranea
-              using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-              {
-                  connSQLite.Insert(foreingBox);
-              }
-
-              //Recorrer la lista de perfiles para insertarlos
-              foreach(Get_nfc get_nfc in nfcData)
-              {
-                  if (get_nfc.boxId != "-") 
-                  {
-                      foreingProfile = new ForeingProfile
-                      {
-                          BoxId = Convert.ToInt32(get_nfc.boxId),
-                          UserId = Convert.ToInt32(get_nfc.userId),
-                          ProfileName = get_nfc.profileName,
-                          value = get_nfc.value,
-                          ProfileType = get_nfc.ProfileType
-                      };
-
-                      //Insertar la box foranea
-                      using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-                      {
-                          connSQLite.Insert(foreingProfile);
-                      }
-                  }                
-              }
-              //Enviar a detalles de la box foranea cuando se inserta
-              App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));
-          }
-      */
+       
 
         #region Trigger nfc
         // Set speed delay for monitoring changes.
@@ -262,7 +238,7 @@
 
                 Thread.Sleep(3000);
 
-                DisableReaderMode();
+                DisableReaderMode();               
 
                 Vibration.Vibrate();                             
                 Vibration.Vibrate(duration);

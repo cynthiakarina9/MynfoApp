@@ -24,46 +24,10 @@
                     HorizontalOptions = "Center"
                     VerticalOptions = "Center"  
                     Margin = "0,0,0,90"/>
-                
-                <ListView 
-                    ItemsSource = "{Binding Menus}"
-                    HasUnevenRows = "True"
-                    SeparatorVisibility = "None"
-                    HorizontalOptions = "CenterAndExpand"
-                    Grid.Row = "1" 
-                    Grid.ColumnSpan = "3"
-                    Margin = "80,0,0,0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid>
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command = "{Binding NavigateCommand}" />
-                                    </Grid.GestureRecognizers>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width = "*"></ColumnDefinition>
-                                        <ColumnDefinition Width = "2*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height = "Auto"></RowDefinition>
-                                        <RowDefinition Height = "*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Image 
-                                    Grid.Column = "0"
-                                    HeightRequest = "50"
-                                    Source = "{Binding Icon}"
-                                    WidthRequest = "50" />
-                                    <Label 
-                                    FontSize = "17"
-                                    Grid.Column = "1"
-                                    Text = "{Binding Title}"
-                                    TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor},Light = {StaticResource Light_FontColor}}"
-                                    VerticalOptions = "Center" />
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+
+                <Button Grid.Row="1" VerticalOptions="CenterAndExpand" Margin="5,5,5,5" Grid.Column="1" Text="Escribe tu Tag" Clicked="escribir_tag" TextColor="#1085c8" BackgroundColor="Orange"/>
+
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

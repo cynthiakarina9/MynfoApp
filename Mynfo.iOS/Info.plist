@@ -34,5 +34,22 @@
 	<string>Mynfo</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+  <key>NFCReaderUsageDescription</key>
+	<string>NFC tag to read NDEF messages into the application</string>
+  <key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+  <string>com.apple.developer.nfc.readersession.iso7816.select-identifiers</string>
+  <key>com.apple.developer.nfc.readersession.iso15693.select-identifiers</key>
+  <string>com.apple.developer.nfc.readersession.iso15693.select-identifiers</string>
+  <key>com.apple.developer.nfc.readersession.iso18092.select-identifiers</key>
+  <string>com.apple.developer.nfc.readersession.iso18092.select-identifiers</string>
+  <key>com.apple.developer.nfc.readersession.iso18092.select-identifiers</key>
+  <string>com.apple.developer.nfc.readersession.iso18092.select-identifiers</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>external-accessory</string>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>processing</string>
+	</array>
 </dict>
 </plist>
