@@ -14,7 +14,7 @@
     <AssemblyName>Mynfo.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <ProvisioningType>automatic</ProvisioningType>
+    <ProvisioningType>manual</ProvisioningType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +43,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <CodesignKey>Apple Development: Nicolas Blanco Storz (F698L64449)</CodesignKey>
     <CodesignProvision>VS: com.companyname.Mynfo Development</CodesignProvision>
+    <MtouchI18n>west</MtouchI18n>
+    <MtouchUseLlvm>false</MtouchUseLlvm>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,8 +75,19 @@
     <CodesignKey>Apple Development: Nicolas Blanco Storz (F698L64449)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>VS: com.companyname.Mynfo Development</CodesignProvision>
-    <MtouchSdkVersion>14.2</MtouchSdkVersion>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchSdkVersion>
+    </MtouchSdkVersion>
+    <MtouchLink>None</MtouchLink>
+    <MtouchI18n>west</MtouchI18n>
+    <MtouchUseLlvm>false</MtouchUseLlvm>
+    <MtouchInterpreter>
+    </MtouchInterpreter>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <MtouchNoSymbolStrip>false</MtouchNoSymbolStrip>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <MtouchExtraArgs>
+    </MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -82,6 +95,9 @@
   <PropertyGroup>
     <ApplicationIcon>
     </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Mynfo.iOS.Application</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Implementations\Localize.cs" />
@@ -162,7 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework">
-      <Version>6.3.0</Version>
+      <Version>6.4.0</Version>
     </PackageReference>
     <PackageReference Include="Plugin.PushNotification-updated">
       <Version>1.3.2</Version>
@@ -172,12 +188,6 @@
     </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.5.231</Version>
-    </PackageReference>
-    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView">
-      <Version>16.4.0.54</Version>
-    </PackageReference>
-    <PackageReference Include="Syncfusion.Xamarin.SfListView">
-      <Version>18.4.0.30</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Badge">
       <Version>1.0.0</Version>
@@ -197,8 +207,8 @@
     <PackageReference Include="Xamarin.Auth">
       <Version>1.6.0</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
     <PackageReference Include="Xamarin.Forms.InputKit">
       <Version>3.4.4</Version>
     </PackageReference>
@@ -220,22 +230,10 @@
     <BundleResource Include="Resources\account.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\arroba.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Conections.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\configuraciones.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\edit2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\enter1.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\facebook1.png" />
@@ -245,15 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\gmail2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\home1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_navigation_arrow_back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icono_option.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\instagramlogo1.png" />
@@ -268,13 +257,7 @@
     <BundleResource Include="Resources\Logo_sin_relleno.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\logo_superior2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\logo_superior3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Logo3.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logout.png" />
@@ -287,9 +270,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\mail3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\no.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\no_image.png" />
@@ -310,15 +290,6 @@
     <BundleResource Include="Resources\spotify1.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\SS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\teams1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tel.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\tel1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -328,13 +299,7 @@
     <BundleResource Include="Resources\tel3.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\telegram1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\tiktok1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\time.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\trash.png" />
@@ -343,19 +308,10 @@
     <BundleResource Include="Resources\trash2.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\trashIcon1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tumblr1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\twitch1.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\twitterlogo1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\wechat1.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\whatsapp1.png" />
@@ -365,12 +321,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\youtube1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\testIOSIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\testIOSIcon2.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\connections_icon.png" />

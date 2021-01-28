@@ -3,13 +3,8 @@
     using CoreNFC;
     using Foundation;
     using Mynfo.Interfaces;
-    using Mynfo.iOS.Services;
     using System;
     using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
     using UIKit;
     using Xamarin.Essentials;
     using Xamarin.Forms;
