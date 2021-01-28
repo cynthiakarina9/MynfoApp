@@ -261,12 +261,6 @@
             get;
             set;
         }
-        
-        public MyExternalProfileViewModel MyExternalProfile
-        {
-            get;
-            set;
-        }
 
         public MyProfileViewModel MyProfile
         { 

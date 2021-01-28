@@ -167,6 +167,21 @@
         {
             BoxNoDefault.Remove(_Boxes);
         }
+        public void UpdateList(Box _Boxes)
+        {
+            Box Aux = new Box();
+            foreach (Box B in BoxNoDefault)
+            {
+                if (_Boxes.BoxId == B.BoxId)
+                {
+                    Aux = B;
+                }
+            }
+            int newIndex = BoxNoDefault.IndexOf(Aux);
+            BoxNoDefault.Remove(Aux);
+
+            BoxNoDefault.Insert(newIndex, _Boxes);
+        }
         #endregion
 
         #region Commands

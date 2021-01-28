@@ -493,12 +493,13 @@
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var profile = await this.apiService.PutBox(
                 apiSecurity,
-                "/api",
+                "/api", 
                 "/Boxes",
                 Box,
                 Box.BoxId);
             profile = Box;
             await MainViewModel.GetInstance().DetailsBox.GetBoxe(Box.BoxId);
+            MainViewModel.GetInstance().Home.UpdateList(Box);
             return Box;
         }
 
