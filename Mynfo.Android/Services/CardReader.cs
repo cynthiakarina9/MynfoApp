@@ -88,12 +88,13 @@ namespace Mynfo.Droid.Services
                     {
                         var msg = Encoding.UTF8.GetString(payload);
 
-                        Imprime_box.Consulta_user(msg);
+                        Imprime_box.Consulta_user(msg,"");
                     } 
                 }
                 catch (Exception e)
                 {
-                    await App.DisplayAlertAsync("Error communicating with card: " + e.Message);
+                    Console.WriteLine(e.Message);
+                    //await App.DisplayAlertAsync("Error communicating with card: " + e.Message);
                 }
             }
         }

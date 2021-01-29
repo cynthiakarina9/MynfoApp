@@ -5,11 +5,12 @@
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
-		<integer>2</integer>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -19,13 +20,13 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>12.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>Mynfo</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.companyname.Mynfo</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.13</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -36,5 +37,33 @@
 	<string>Allow the app to get images from the gallery in order to set a profile picture.</string>
 	<key>NFCReaderUsageDescription</key>
 	<string>Allow the app to read and write physical nfc tags in order to share information.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This is a characteristic that is no needed on the app</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This is a characteristic that is no needed on the app</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This is a characteristic that is no needed on the app</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>This is a characteristic that is no needed on the app</string>
+	<key>NSSiriUsageDescription</key>
+	<string>This is a characteristic that is no needed on the app</string>
+  <key>NFCReaderUsageDescription</key>
+	<string>NFC tag to read NDEF messages into the application</string>
+  <key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+  <string>com.apple.developer.nfc.readersession.iso7816.select-identifiers</string>
+  <key>com.apple.developer.nfc.readersession.iso15693.select-identifiers</key>
+  <string>com.apple.developer.nfc.readersession.iso15693.select-identifiers</string>
+  <key>com.apple.developer.nfc.readersession.iso18092.select-identifiers</key>
+  <string>com.apple.developer.nfc.readersession.iso18092.select-identifiers</string>
+  <key>com.apple.developer.nfc.readersession.iso18092.select-identifiers</key>
+  <string>com.apple.developer.nfc.readersession.iso18092.select-identifiers</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>external-accessory</string>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>processing</string>
+	</array>
+
 </dict>
 </plist>

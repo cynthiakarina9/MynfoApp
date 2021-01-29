@@ -17,7 +17,7 @@ namespace Mynfo.Droid.Services
         public override async void OnReceive(Context context, Intent intent)
         {
             var message = intent.GetStringExtra("MSG_DATA");
-            await App.DisplayAlertAsync(message);
+         //   await App.DisplayAlertAsync(message);
         }
     }
 }

@@ -1,14 +1,13 @@
 ﻿namespace Mynfo.Views
 {
     using Mynfo.Models;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using ViewModels;
     using Xamarin.Essentials;
     using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
     using Xamarin.Forms.OpenWhatsApp;
-    using ViewModels;
+    using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ForeingBoxPage : ContentPage
