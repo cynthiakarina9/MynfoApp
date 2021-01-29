@@ -12,6 +12,8 @@
     using Plugin.NFC;
     using System;
     using System.IO;
+    using System.Text;
+    using System.Threading.Tasks;
     using UIKit;
     using Xamarin.Essentials;    
     using Xamarin.Forms;
@@ -241,22 +243,20 @@
             var nFCNdefTag = tags[0];
             session.ConnectToTag(nFCNdefTag, CompletionHandler);
 
-            string dominio = "https://boxweb1.azurewebsites.net/";
+            string dominio = "http://boxweb1.azurewebsites.net/";
             string user = MainViewModel.GetInstance().User.UserId.ToString();
             string tag_id = "";
             string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
 
-            //NdefUriRecord hola = new uri
-
-
-
-
-            NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url, NSLocale.CurrentLocale);
+            NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
             NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
             nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
             {
                 Console.WriteLine("escrito");
-            });       
+            });
+            SettingsPage.write_nfc = false;
+            var duration = TimeSpan.FromMilliseconds(1500);
+            Vibration.Vibrate(duration);
         }
 
         private void CompletionHandler(NSError obj)
@@ -265,18 +265,3 @@
         }  
     }
 }
-
-/*
-[Export("readerSession:didDetectTags:")]
-public void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag nFCNdefTag)
-{
-    session.ConnectToTag(nFCNdefTag, null);
-
-
-    NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload("hello world", NSLocale.CurrentLocale);
-    NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
-    nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
-    {
-        Console.WriteLine("Hola");
-    });
-}*/
