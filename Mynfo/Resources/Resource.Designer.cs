@@ -142,6 +142,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a and stick it to the back of your phone..
+        /// </summary>
+        public static string AndStick {
+            get {
+                return ResourceManager.GetString("AndStick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Area:.
         /// </summary>
         public static string Area {
@@ -273,6 +282,15 @@ namespace Mynfo.Resources {
         public static string Close {
             get {
                 return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Configure TAG.
+        /// </summary>
+        public static string ConfigureTAG {
+            get {
+                return ResourceManager.GetString("ConfigureTAG", resourceCulture);
             }
         }
         
@@ -1204,6 +1222,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Push.
+        /// </summary>
+        public static string Push {
+            get {
+                return ResourceManager.GetString("Push", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Enter your email..
         /// </summary>
         public static string PutEmail {
@@ -1339,6 +1366,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Store.
+        /// </summary>
+        public static string Store {
+            get {
+                return ResourceManager.GetString("Store", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Subregion:.
         /// </summary>
         public static string Subregion {
@@ -1357,11 +1393,29 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Make sure you have your TAG at hand..
+        /// </summary>
+        public static string SureTAG {
+            get {
+                return ResourceManager.GetString("SureTAG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Configure Tag.
         /// </summary>
         public static string Tag {
             get {
                 return ResourceManager.GetString("Tag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a If you don&apos;t have it yet, buy it at.
+        /// </summary>
+        public static string TakeinStore {
+            get {
+                return ResourceManager.GetString("TakeinStore", resourceCulture);
             }
         }
         

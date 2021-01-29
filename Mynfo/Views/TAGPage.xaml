@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.TAGPage"
              BackgroundColor="#FFFFFF"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
@@ -27,7 +28,7 @@
                     FontSize="17"
                     Grid.Row="1"
                     HorizontalTextAlignment="Center"
-                    Text="Asegurate de tener tu Sticker a la mano"
+                    Text="{i18n:Translate SureTAG}"
                     TextColor="{StaticResource FontColor}"/>
                 <StackLayout
                     Grid.Row="2"
@@ -36,12 +37,12 @@
                     <Label
                         FontSize="12"                        
                         HorizontalTextAlignment="Center"
-                        Text="Si aún no lo tienes, cómpralo en la"
+                        Text="{i18n:Translate TakeinStore}"
                         TextColor="{StaticResource FontColor}"/>
                     <Label
                         FontSize="12"                        
                         HorizontalTextAlignment="Center"
-                        Text="Tienda"
+                        Text="{i18n:Translate Store}"
                         TextColor="{StaticResource MainColor}">
                         <Label.GestureRecognizers>
                             <!--<TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"/>-->
@@ -60,8 +61,8 @@
                         <Label
                             FontSize="20"
                             HorizontalTextAlignment="Center"
-                            Text="Presiona 'Configurar Stiker', y pegalo a la parte superior de tu teléfono"
-                            TextColor="{StaticResource FontColor}"/>
+                            TextColor="{StaticResource FontColor}"
+                            x:Name="Press"/>
                     </StackLayout>
                 </Frame>
                 <StackLayout
@@ -73,7 +74,7 @@
                         HeightRequest = "50"
                         HorizontalOptions = "FillAndExpand"
                         FontAttributes="Bold"
-                        Text="Configurar stiker"
+                        Text="{i18n:Translate ConfigureTAG}"
                         TextColor="White"
                         VerticalOptions="EndAndExpand"
                         WidthRequest="150"/>

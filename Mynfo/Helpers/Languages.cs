@@ -648,5 +648,29 @@
         {
             get { return Resource.EscanQR; }
         }
+        public static string SureTAG
+        {
+            get { return Resource.SureTAG; }
+        }
+        public static string TakeinStore
+        {
+            get { return Resource.TakeinStore; }
+        }
+        public static string Store
+        {
+            get { return Resource.Store; }
+        }
+        public static string Push
+        {
+            get { return Resource.Push; }
+        }
+        public static string ConfigureTAG
+        {
+            get { return Resource.ConfigureTAG; }
+        }
+        public static string AndStick
+        {
+            get { return Resource.AndStick; }
+        }
     }
 }

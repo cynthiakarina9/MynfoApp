@@ -580,4 +580,22 @@ Você deve inserir um url</value>
   <data name="MyQR" xml:space="preserve">
     <value>Meu QR</value>
   </data>
+  <data name="AndStick" xml:space="preserve">
+    <value>e cole na parte de trás do seu telefone.</value>
+  </data>
+  <data name="ConfigureTAG" xml:space="preserve">
+    <value>Configurar TAG</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>Pressione</value>
+  </data>
+  <data name="Store" xml:space="preserve">
+    <value>Loja</value>
+  </data>
+  <data name="SureTAG" xml:space="preserve">
+    <value>Certifique-se de ter sua TAG em mãos.</value>
+  </data>
+  <data name="TakeinStore" xml:space="preserve">
+    <value>Se você ainda não tem, compre em</value>
+  </data>
 </root>
