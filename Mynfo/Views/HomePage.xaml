@@ -55,8 +55,8 @@
             <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height = "190"/>
-                        <RowDefinition Height = "*"/>
+                        <RowDefinition Height = "180"/>
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />

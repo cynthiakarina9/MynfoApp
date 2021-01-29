@@ -382,7 +382,7 @@
             set;
         }
 
-        public SettingsViewModel Settings
+        public TAGViewModel TAG
         {
             get;
             set;
@@ -423,7 +423,7 @@
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "icon_tag",
-                PageName = "SettingsPage",
+                PageName = "TAGPage",
                 Title = Languages.Tag,
             });
             this.Menus.Add(new MenuItemViewModel

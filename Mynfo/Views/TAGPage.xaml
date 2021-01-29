@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.TAGPage"
+             BackgroundColor="#FFFFFF"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Grid>
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,70,0"
+                HorizontalOptions = "Center"
+                Source = "logo_superior3.png" 
+                VerticalOptions = "Center"
+                WidthRequest = "100"/>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label
+                    FontSize="17"
+                    Grid.Row="1"
+                    HorizontalTextAlignment="Center"
+                    Text="{i18n:Translate SureTAG}"
+                    TextColor="{StaticResource FontColor}"/>
+                <StackLayout
+                    Grid.Row="2"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    <Label
+                        FontSize="12"                        
+                        HorizontalTextAlignment="Center"
+                        Text="{i18n:Translate TakeinStore}"
+                        TextColor="{StaticResource FontColor}"/>
+                    <Label
+                        FontSize="12"                        
+                        HorizontalTextAlignment="Center"
+                        Text="{i18n:Translate Store}"
+                        TextColor="{StaticResource MainColor}">
+                        <Label.GestureRecognizers>
+                            <!--<TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"/>-->
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <Frame
+                    BackgroundColor="#F2F2F2"
+                    CornerRadius="60"
+                    Grid.Row="3"
+                    Margin="20">
+                    <StackLayout
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontSize="20"
+                            HorizontalTextAlignment="Center"
+                            TextColor="{StaticResource FontColor}"
+                            x:Name="Press"/>
+                    </StackLayout>
+                </Frame>
+                <StackLayout
+                    Grid.Row="4"
+                    Margin="15">
+                    <Button
+                        BackgroundColor="{StaticResource MainColor}"
+                        BorderRadius="23"
+                        HeightRequest = "50"
+                        HorizontalOptions = "FillAndExpand"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate ConfigureTAG}"
+                        TextColor="White"
+                        VerticalOptions="EndAndExpand"
+                        WidthRequest="150"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
