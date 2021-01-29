@@ -10,9 +10,12 @@
     using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
+    using Device = Xamarin.Forms.Device;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
+
         public static bool write_nfc = false;
         public SettingsPage()
         {
@@ -91,11 +94,11 @@
         #endregion
 
         void escribir_tag(object sender, EventArgs e)
-        {
+        {            
             var duration = TimeSpan.FromMilliseconds(500);
             Vibration.Vibrate(duration);
             Vibration.Vibrate(duration);
-            write_nfc = true;                       
+            write_nfc = true;                                            
         }
     }
 } 

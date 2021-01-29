@@ -70,20 +70,27 @@
         {
             try
             {
-                Vibration.Vibrate();
 
-                InvokeOnMainThread(() =>
+                if (SettingsPage.write_nfc == true) 
                 {
-                    Session = new NFCNdefReaderSession(this, null, true);
-                    if (Session != null)
+                    ScanWriteAsync();
+                    SettingsPage.write_nfc = false;
+                    var duration = TimeSpan.FromMilliseconds(1500);
+                    Vibration.Vibrate(duration);
+                }
+                else 
+                {
+                    Vibration.Vibrate();
+
+                    InvokeOnMainThread(() =>
                     {
-                        Session.BeginSession();
-                    }
-                });
-
-
-                //ScanWriteAsync();
-
+                        Session = new NFCNdefReaderSession(this, null, true);
+                        if (Session != null)
+                        {
+                            Session.BeginSession();
+                        }
+                    });
+                }         
             }
             catch (FeatureNotSupportedException ex)
             {
@@ -253,10 +260,10 @@
             nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
             {
                 Console.WriteLine("escrito");
+                SettingsPage.write_nfc = false;
             });
+            Console.WriteLine("escrito");
             SettingsPage.write_nfc = false;
-            var duration = TimeSpan.FromMilliseconds(1500);
-            Vibration.Vibrate(duration);
         }
 
         private void CompletionHandler(NSError obj)
