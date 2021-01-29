@@ -51,7 +51,6 @@
                             TextColor="{StaticResource FontColor}"
                             WidthRequest = "300"/>
                     </StackLayout>
-
                     <StackLayout 
                         HorizontalOptions = "Center"
                         VerticalOptions = "FillAndExpand">

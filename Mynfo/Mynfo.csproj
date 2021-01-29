@@ -99,6 +99,9 @@
     <Compile Update="Views\ProfilesPage.xaml.cs">
       <DependentUpon>ProfilesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\TAGPage.xaml.cs">
+      <DependentUpon>TAGPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TabbedPage1.xaml.cs">
       <DependentUpon>TabbedPage1.xaml</DependentUpon>
     </Compile>
@@ -310,7 +313,7 @@
     <EmbeddedResource Update="Views\RegisterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SettingsPage.xaml">
+    <EmbeddedResource Update="Views\TAGPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TabbedListOfNetworksPage.xaml">

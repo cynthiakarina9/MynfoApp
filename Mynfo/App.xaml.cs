@@ -73,7 +73,7 @@
                     mainViewModel.Register = new RegisterViewModel();
                     mainViewModel.MyProfile = new MyProfileViewModel();
                     mainViewModel.Profiles = new ProfilesViewModel();
-                    mainViewModel.Settings = new SettingsViewModel();
+                    mainViewModel.TAG = new TAGViewModel();
                     mainViewModel.ChangePassword = new ChangePasswordViewModel();
                     mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
                     Xamarin.Forms.Application.Current.MainPage = new MasterPage();
@@ -159,7 +159,7 @@
             mainViewModel.Register = new RegisterViewModel();
             mainViewModel.MyProfile = new MyProfileViewModel();
             mainViewModel.Profiles = new ProfilesViewModel();
-            mainViewModel.Settings = new SettingsViewModel();
+            mainViewModel.TAG = new TAGViewModel();
             mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
             Xamarin.Forms.Application.Current.MainPage = new MasterPage();
             //Application.Current.MainPage = new NavigationPage(new TabbedPage1());

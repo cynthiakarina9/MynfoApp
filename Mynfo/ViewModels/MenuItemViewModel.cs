@@ -79,10 +79,10 @@
                 App.Navigator.PushAsync(new QRTabbedPage());
             }
 
-            else if (this.PageName == "SettingsPage")
+            else if (this.PageName == "TAGPage")
             {
-                MainViewModel.GetInstance().Settings = new SettingsViewModel();
-                App.Navigator.PushAsync(new SettingsPage());
+                MainViewModel.GetInstance().TAG = new TAGViewModel();
+                App.Navigator.PushAsync(new TAGPage());
             }
         }
         #endregion
