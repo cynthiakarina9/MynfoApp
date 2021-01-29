@@ -82,11 +82,6 @@
                 Application.Current.MainPage = new NavigationPage(new ProfilesPage());
             }
 
-            else if (this.PageName == "SettingsPage")
-            {
-                MainViewModel.GetInstance().Settings = new SettingsViewModel();
-                App.Navigator.PushAsync(new SettingsPage());
-            }
         }
         #endregion
 
