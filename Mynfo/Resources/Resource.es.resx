@@ -579,4 +579,22 @@
   <data name="MyQR" xml:space="preserve">
     <value>Mi QR</value>
   </data>
+  <data name="AndStick" xml:space="preserve">
+    <value>y pegalo a la parte posterior de tu teléfono.</value>
+  </data>
+  <data name="ConfigureTAG" xml:space="preserve">
+    <value>Configurar TAG</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>Presiona</value>
+  </data>
+  <data name="Store" xml:space="preserve">
+    <value>Tienda</value>
+  </data>
+  <data name="SureTAG" xml:space="preserve">
+    <value>Asegúrese de tener su TAG a la mano.</value>
+  </data>
+  <data name="TakeinStore" xml:space="preserve">
+    <value>Si aún no lo tienes, cómpralo en</value>
+  </data>
 </root>

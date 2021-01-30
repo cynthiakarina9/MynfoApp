@@ -1,25 +1,15 @@
-﻿using Android.Content;
-using Android.Nfc;
-using Android.Nfc.Tech;
+﻿using System;
 using Mynfo.Domain;
 using Mynfo.Models;
-using Mynfo.Services;
 using Mynfo.ViewModels;
 using Mynfo.Views;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Device = Xamarin.Forms.Device;
 
-namespace Mynfo.Droid.Services
+namespace Mynfo.Services
 {
-    class Imprime_box
+    public class Imprime_box
     {
         public static void Consulta_user(string user_id, string tag_id)
         {
@@ -72,7 +62,7 @@ namespace Mynfo.Droid.Services
                 Console.WriteLine(ex);
             }
         }
-        
+
         public static async void InsertForeignData(string user_id, int box_id)
         {
             ApiService apiService = new ApiService();
@@ -265,6 +255,6 @@ namespace Mynfo.Droid.Services
             {
                 Console.WriteLine(ex);
             }
-        }        
+        }
     }
 }

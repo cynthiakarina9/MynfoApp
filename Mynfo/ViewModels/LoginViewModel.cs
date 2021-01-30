@@ -216,7 +216,7 @@
             mainViewModel.Register = new RegisterViewModel();
             mainViewModel.MyProfile = new MyProfileViewModel();
             mainViewModel.Profiles = new ProfilesViewModel();
-            mainViewModel.Settings = new SettingsViewModel();
+            mainViewModel.TAG = new TAGViewModel();
             mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
             Application.Current.MainPage = new MasterPage();
             //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
