@@ -74,9 +74,7 @@
                 if (SettingsPage.write_nfc == true) 
                 {
                     ScanWriteAsync();
-                    SettingsPage.write_nfc = false;
-                    var duration = TimeSpan.FromMilliseconds(1500);
-                    Vibration.Vibrate(duration);
+                    SettingsPage.write_nfc = false;                    
                 }
                 else 
                 {
@@ -248,7 +246,7 @@
         public void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
         {
             var nFCNdefTag = tags[0];
-            session.ConnectToTag(nFCNdefTag, null);
+            session.ConnectToTag(nFCNdefTag, CompletionHandler);
 
             string dominio = "http://boxweb1.azurewebsites.net/";
             string user = MainViewModel.GetInstance().User.UserId.ToString();
@@ -264,6 +262,11 @@
             });
             Console.WriteLine("escrito");
             SettingsPage.write_nfc = false;
-        }         
+        }
+        private void CompletionHandler(NSError obj)
+        {
+            var duration = TimeSpan.FromMilliseconds(1500);
+            Vibration.Vibrate(duration);
+        }
     }
 }
