@@ -1,6 +1,8 @@
 ﻿namespace Mynfo.Views
 {
     using Mynfo.Helpers;
+    using System;
+    using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -12,7 +14,14 @@
             Label uno = new Label();
             uno.Text = Languages.ConfigureTAG;
             uno.TextColor = Color.FromHex("#FF5521");
-            Press.Text = Languages.Push + " '" + uno.Text + "' " + Languages.AndStick;
+            Press.Text = Languages.Push + " '" + uno.Text + "' " + Languages.AndStick;            
+        }
+        void escribir_tag(object sender, EventArgs e)
+        {
+            var duration = TimeSpan.FromMilliseconds(500);
+            Vibration.Vibrate(duration);
+            Vibration.Vibrate(duration);
+            SettingsPage.write_nfc = true;
         }
     }
 }

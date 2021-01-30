@@ -248,7 +248,7 @@
         public void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
         {
             var nFCNdefTag = tags[0];
-            session.ConnectToTag(nFCNdefTag, CompletionHandler);
+            session.ConnectToTag(nFCNdefTag, null);
 
             string dominio = "http://boxweb1.azurewebsites.net/";
             string user = MainViewModel.GetInstance().User.UserId.ToString();
@@ -264,11 +264,6 @@
             });
             Console.WriteLine("escrito");
             SettingsPage.write_nfc = false;
-        }
-
-        private void CompletionHandler(NSError obj)
-        {
-            //add code here
-        }  
+        }         
     }
 }
