@@ -49,7 +49,7 @@
                                 WidthRequest="150"/>
                             <Label
                                 FontSize="15"
-                                Text="Perfil de Mynfo"
+                                Text="{i18n:Translate ProfileMynfo}"
                                 HorizontalTextAlignment="Center"
                                 TextColor="{StaticResource FontColor}"
                                 VerticalTextAlignment="Center"/>
@@ -82,7 +82,7 @@
                         <Label
                             FontSize="10"
                             HorizontalTextAlignment="Center"
-                            Text="Este código QR te permitirá compratir tu box pedeterminada en cualquier navegador."
+                            Text="{i18n:Translate QRForWhat}"
                             TextColor="{StaticResource FontColor}"
                             VerticalTextAlignment="Center"/>
                     </StackLayout>

@@ -18,8 +18,7 @@
                 OnScanResult="scanView_OnScanResult"
                 IsScanning="{Binding IsScanning}"/>
             <zxing:ZXingDefaultOverlay 
-                TopText="Align the barcode within the frame"
-                BottomText = "El escaneo es automático"
+                BottomText = "{i18n:Translate QRMynfo}"
                 Opacity = "0.75"/>
             <zxing:ZXingBarcodeImageView
                     BarcodeFormat="QR_CODE"

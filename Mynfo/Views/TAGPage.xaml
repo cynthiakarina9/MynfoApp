@@ -6,9 +6,11 @@
              BackgroundColor="#FFFFFF"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
-        <Grid>
+        <Grid
+            BindingContext="{Binding TAG}">
             <ImageButton
                 BackgroundColor = "Transparent"
+                Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
@@ -18,7 +20,8 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding TAG}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"/>
@@ -45,7 +48,7 @@
                         Text="{i18n:Translate Store}"
                         TextColor="{StaticResource MainColor}">
                         <Label.GestureRecognizers>
-                            <!--<TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"/>-->
+                            <TapGestureRecognizer Command="{Binding GoToStoreCommand}"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
