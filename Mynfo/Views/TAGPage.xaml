@@ -80,6 +80,7 @@
                         Text="{i18n:Translate ConfigureTAG}"
                         TextColor="White"
                         VerticalOptions="EndAndExpand"
+                        Clicked="escribir_tag"
                         WidthRequest="150"/>
                 </StackLayout>
             </Grid>
