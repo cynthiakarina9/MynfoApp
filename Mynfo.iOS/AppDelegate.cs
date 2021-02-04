@@ -69,7 +69,7 @@
         public void Accelerometer_ShakeDetected(object sender, EventArgs e)
         {
             try
-            {
+            { 
 
                 if (SettingsPage.write_nfc == true) 
                 {
