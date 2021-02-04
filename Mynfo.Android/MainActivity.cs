@@ -167,6 +167,7 @@
                         }
                     }
                     SettingsPage.write_nfc = false;
+                    System.Threading.Tasks.Task task = App.DisplayAlertAsync("Tag escrito correctamente");
                     var duration = TimeSpan.FromMilliseconds(1500);
                     Vibration.Vibrate(duration);                    
                 }

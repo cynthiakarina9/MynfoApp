@@ -18,6 +18,7 @@
         }
         void escribir_tag(object sender, EventArgs e)
         {
+            System.Threading.Tasks.Task task = App.DisplayAlertAsync("Acerca tu tag para escribir");
             var duration = TimeSpan.FromMilliseconds(500);
             Vibration.Vibrate(duration);
             Vibration.Vibrate(duration);
