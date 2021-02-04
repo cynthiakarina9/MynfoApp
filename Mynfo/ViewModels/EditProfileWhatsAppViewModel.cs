@@ -4,15 +4,13 @@
     using GalaSoft.MvvmLight.Command;
     using Helpers;
     using Services;
-    using Views;
     using System.Threading.Tasks;
     using System.Windows.Input;
+    using Views;
     using Xamarin.Forms;
-    using System.Data.SqlClient;
 
     public class EditProfileWhatsAppViewModel : BaseViewModel
     {
-
         #region Services
         private ApiService apiService;
         #endregion
@@ -54,7 +52,7 @@
         }
         #endregion
 
-        #region Commands
+        #region Methods
         private async Task<ProfileWhatsapp> GetProfile(int _ProfileMSId)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -66,7 +64,9 @@
                _ProfileMSId);
             return profileWhats;
         }
+        #endregion
 
+        #region Commands
         public ICommand SaveCommand
         {
             get
@@ -74,7 +74,6 @@
                 return new RelayCommand(Save);
             }
         }
-
         private async void Save()
         {
             this.IsRunning = true;
@@ -147,7 +146,6 @@
                 return new RelayCommand(Delete);
             }
         }
-
         private async void Delete()
         {
             this.IsRunning = true;
@@ -192,13 +190,11 @@
                 return new RelayCommand(BackHome);
             }
         }
-
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
         #endregion
-
     }
 }

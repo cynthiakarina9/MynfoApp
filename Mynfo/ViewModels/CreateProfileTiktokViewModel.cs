@@ -3,6 +3,7 @@
     using Domain;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
+    using Mynfo.Models;
     using Mynfo.Views;
     using Services;
     using System.Windows.Input;
@@ -57,7 +58,6 @@
                 return new RelayCommand(SaveProfileTiktok);
             }
         }
-
         private async void SaveProfileTiktok()
         {
             if (string.IsNullOrEmpty(this.Name))
@@ -120,7 +120,20 @@
                     Languages.Accept);
                 return;
             }
-
+            var ProfileLocal = new Profile
+            {
+                UserId = mainViewModel.User.UserId,
+                ProfileName = profileSM.ProfileName,
+                value = profileSM.link,
+                ProfileType = "TikTok",
+                Logo = "tiktok2",
+                ProfileId = profileSM.ProfileMSId,
+            };
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.CreateTable<Profile>();
+                conn.Insert(ProfileLocal);
+            }
             this.IsRunning = false;
             this.IsEnabled = true;
 
@@ -141,6 +154,7 @@
 
             await App.Navigator.PopAsync();
         }
+
         public ICommand BackHomeCommand
         {
             get

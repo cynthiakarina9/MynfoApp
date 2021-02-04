@@ -4,7 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              x:Class="Mynfo.Views.RegisterPage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>
@@ -54,6 +54,7 @@
                                 FontSize = "Small"
                                 HorizontalOptions = "CenterAndExpand"
                                 Text = "{i18n:Translate ChangeImage}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 VerticalOptions = "StartAndExpand"/>
                         </StackLayout>
                         <StackLayout 
@@ -72,6 +73,7 @@
                                 IsSpellCheckEnabled="True"
                                 Margin = "0,-10,0,0"
                                 Text = "{Binding FirstName}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 VerticalTextAlignment="Center"
                                 WidthRequest = "300" />
                         </StackLayout>
@@ -91,73 +93,10 @@
                                 IsSpellCheckEnabled="True"
                                 Margin = "0,-10,0,0"
                                 Text = "{Binding LastName}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 VerticalTextAlignment="Center"
                                 WidthRequest = "300" />
                         </StackLayout>
-                        <!--<StackLayout 
-                        Grid.Row = "4">
-                        <Label
-                            FontSize = "18"
-                            HorizontalOptions = "CenterAndExpand"
-                            Text = "{i18n:Translate EMail}"
-                            TextColor = "{StaticResource MainColor}"
-                            VerticalTextAlignment = "Center" />
-                        <Entry
-                            ClearButtonVisibility="WhileEditing"
-                            HorizontalTextAlignment="Center"
-                            HorizontalOptions = "CenterAndExpand"
-                            Keyboard = "Email"
-                            Margin = "0,-10,0,0"
-                            VerticalTextAlignment="Center"
-                            Text="{Binding Email}"
-                            WidthRequest = "300" />
-                    </StackLayout>
-                    <StackLayout 
-                        Grid.Row = "5">
-                        <Label
-                            FontSize = "17"
-                            HorizontalOptions = "CenterAndExpand"
-                            Text = "{i18n:Translate Password}"
-                            TextColor = "{StaticResource MainColor}"
-                            VerticalTextAlignment = "Center"/>
-                        <Entry
-                            FontSize = "23"
-                            ClearButtonVisibility="WhileEditing"
-                            HorizontalTextAlignment="Center"
-                            HorizontalOptions = "CenterAndExpand"
-                            IsPassword = "True"
-                            Margin = "0,-10,0,0"
-                            Text = "{Binding Password}"
-                            WidthRequest = "300" />
-                    </StackLayout>
-                    <StackLayout 
-                        Grid.Row = "6">
-                        <Label
-                            FontSize = "18"
-                            HorizontalOptions = "CenterAndExpand"
-                            Text = "{i18n:Translate ConfirmLabel}"
-                            TextColor = "{StaticResource MainColor}"
-                            VerticalTextAlignment = "Center"/>
-                        <Entry
-                            ClearButtonVisibility="WhileEditing"
-                            HorizontalTextAlignment="Center"
-                            HorizontalOptions = "CenterAndExpand"
-                            IsPassword = "True"
-                            Margin = "0,-10,0,0"
-                            Text = "{Binding Confirm}"
-                            WidthRequest = "300" />
-                    </StackLayout>-->
-                        <!--<Button
-                            Grid.Row = "7"
-                            BackgroundColor = "{StaticResource MainColor}"
-                            BorderRadius = "23"
-                            Command = "{Binding RegisterCommand}"
-                            HorizontalOptions = "FillAndExpand"
-                            IsEnabled = "{Binding IsEnabled}"
-                            Margin="15"
-                            Text = "{i18n:Translate Save}"
-                            TextColor = "{StaticResource Dark_FontColor}" 
-                            VerticalOptions="EndAndExpand"/>-->
                         <Button
                             Grid.Row = "4"
                             BackgroundColor = "{StaticResource MainColor}"
@@ -167,7 +106,7 @@
                             IsEnabled = "{Binding IsEnabled}"
                             Margin="15"
                             Text = "{i18n:Translate Next}"
-                            TextColor = "{StaticResource Dark_FontColor}" 
+                            TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                             VerticalOptions="End"/>
                     </Grid>
                 </StackLayout>

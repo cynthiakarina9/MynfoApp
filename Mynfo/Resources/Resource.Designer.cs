@@ -502,7 +502,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Edti network.
+        ///   Busca una cadena traducida similar a Edit network.
         /// </summary>
         public static string EditNetwork {
             get {

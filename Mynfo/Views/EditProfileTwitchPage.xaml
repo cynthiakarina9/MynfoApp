@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.EditProfileTwitchPage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -78,7 +78,7 @@
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
                             Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
-                            TextColor="{StaticResource FontColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
                             x:Name = "EntryName"/>
@@ -100,7 +100,7 @@
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
                             Text="{Binding profileSM.link}"
-                            TextColor="{StaticResource FontColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" />
                     </StackLayout>
@@ -126,7 +126,7 @@
                 Text = "{i18n:Translate Save}"
                 FontSize="15"
                 FontAttributes="Bold"
-                TextColor = "{StaticResource Dark_FontColor}"
+                TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                 VerticalOptions = "End" 
                 x:Name = "ButtonSave"/>
         </Grid>

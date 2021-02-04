@@ -12,11 +12,11 @@
     <item name="android:windowFullscreen">true</item>
     <item name="colorPrimaryDark">#AAAAAA</item>
   </style>-->
-  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+  <!--<style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
     <item name="android:statusBarColor">#FFFFFFFF</item>
     <item name="android:windowLightStatusBar">true</item>
     <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-  </style>
+  </style>-->
   
   <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
     <item name="spinBars">true</item>

@@ -4,7 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.SettingsPage"
              Title = "{i18n:Translate Settings}"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <ScrollView>
@@ -25,9 +25,14 @@
                     VerticalOptions = "Center"  
                     Margin = "0,0,0,90"/>
 
-                <Button Grid.Row="1" VerticalOptions="CenterAndExpand" Margin="5,5,5,5" Grid.Column="1" Text="Escribe tu Tag" Clicked="escribir_tag" TextColor="#1085c8" BackgroundColor="Orange"/>
-
-
+                <Button 
+                    Grid.Row="1" 
+                    VerticalOptions="CenterAndExpand" 
+                    Margin="5,5,5,5" Grid.Column="1" 
+                    Text="Escribe tu Tag" 
+                    Clicked="escribir_tag" 
+                    TextColor="#1085c8" 
+                    BackgroundColor="Orange"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -5,7 +5,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor = "{StaticResource Menu_BackgroundColor}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
              Title = "{i18n:Translate Menu}">
     <ContentPage.Content>
         <StackLayout
@@ -23,7 +23,7 @@
                 Text = "{Binding User.FullName, StringFormat = '{0}'}"
                 TextColor = "{StaticResource MainColor}" />
             <ListView 
-                BackgroundColor="#F2F2F2"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
                 ItemsSource = "{Binding Menus}"
                 HasUnevenRows = "True"
                 SeparatorVisibility = "None">
@@ -51,7 +51,7 @@
                                     FontSize = "17"
                                     Grid.Column = "1"
                                     Text = "{Binding Title}"
-                                    TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor},Light = {StaticResource Light_FontColor}}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                     VerticalOptions = "Center" />
                             </Grid>
                         </ViewCell>

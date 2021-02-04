@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.CreateProfilePhonePage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -65,7 +65,7 @@
                             MaxLength = "10"
                             Placeholder = "{i18n:Translate NProfilePlaceH}"
                             Text = "{Binding Name}"
-                            TextColor="{StaticResource FontColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300"
                             x:Name="ProfileName"/>
@@ -88,7 +88,7 @@
                             Keyboard = "Telephone"
                             MaxLength = "10"
                             Text = "{Binding Number}"
-                            TextColor="{StaticResource FontColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             Placeholder = "xxx-xxx-xxxx"
                             VerticalOptions = "Center" 
                             WidthRequest = "300"
@@ -113,7 +113,7 @@
                 HorizontalOptions="Fill"
                 Margin="15"
                 Text = "{i18n:Translate Save}"
-                TextColor = "{StaticResource Dark_FontColor}"
+                TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                 VerticalOptions="End"
                 x:Name="Save"/>
         </Grid>

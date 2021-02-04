@@ -5,7 +5,6 @@
     using Mynfo.Helpers;
     using Mynfo.Views;
     using Services;
-    using System.Data.SqlClient;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -196,6 +195,7 @@
 
             await App.Navigator.PopAsync();
         }
+
         public ICommand BackHomeCommand
         {
             get
@@ -203,7 +203,6 @@
                 return new RelayCommand(BackHome);
             }
         }
-
         private async void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();

@@ -28,6 +28,7 @@
             get { return this.emptyList; }
             set { SetValue(ref this.emptyList, value); }
         }
+
         public ObservableCollection<ProfileEmail> profileEmail 
         {
             get { return profilemail; } 
@@ -36,7 +37,6 @@
                 SetValue(ref profilemail, value);
             }
         }
-
 
         public bool IsRunning
         {
@@ -62,7 +62,7 @@
         }
         #endregion
 
-        #region Commands
+        #region Methods
         public async Task<ObservableCollection<ProfileEmail>> GetList()
         {
             this.IsRunning = true;
@@ -79,10 +79,9 @@
                     Languages.Accept);
                 return null;
             }
-            
+
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            
-            //profileEmail = new List<ProfileEmail>();
+
             profileEmail = new ObservableCollection<ProfileEmail>();
             listEmail = await this.apiService.GetListByUser<ProfileEmail>(
                 apiSecurity,
@@ -92,7 +91,6 @@
 
             this.IsRunning = false;
 
-            
             if (listEmail.Count == 0)
             {
                 EmptyList = true;
@@ -101,38 +99,10 @@
             foreach (ProfileEmail profEmail in listEmail)
                 profileEmail.Add(profEmail);
 
-            
             return profileEmail;
-            
-        }
-        public ICommand BackHomeCommand
-        {
-            get
-            {
-                return new RelayCommand(BackHome);
-            }
         }
 
-        private void BackHome()
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
-        public ICommand NewProfileEmailCommand
-        {
-            get
-            {
-                return new RelayCommand(NewProfileEmail);
-            }
-        }
-        private void NewProfileEmail()
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-            App.Navigator.PushAsync(new CreateProfileEmailPage());
-        }
-
-        //Actualizar listas
+        #region Lista
         public void addProfile(ProfileEmail _profileEmail)
         {
             profileEmail.Add(_profileEmail);
@@ -150,6 +120,36 @@
 
             profileEmail.Insert(newIndex, _profileEmail);
 
+        }
+        #endregion
+        #endregion
+
+        #region Commands
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+        private void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
+
+        public ICommand NewProfileEmailCommand
+        {
+            get
+            {
+                return new RelayCommand(NewProfileEmail);
+            }
+        }
+        private void NewProfileEmail()
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
+            App.Navigator.PushAsync(new CreateProfileEmailPage());
         }
         #endregion
     }

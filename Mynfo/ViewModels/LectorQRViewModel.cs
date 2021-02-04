@@ -6,15 +6,10 @@
     using Mynfo.Services;
     using Mynfo.Views;
     using System;
-    using System.Collections.Generic;
     using System.Data.SqlClient;
-    using System.Text;
     using System.Threading.Tasks;
-    using System.Windows.Input;
     using Xamarin.Forms;
     using ZXing;
-    using ZXing.Mobile;
-    using ZXing.Net.Mobile.Forms;
 
     public class LectorQRViewModel : BaseViewModel
     {
@@ -83,10 +78,10 @@
                 string[] b = a.Split('=', '&');
                 await MainViewModel.GetInstance().LectorQR.GetBoxDefault(Convert.ToInt32(b[1]));
                 result = null;
-                //await DisplayAlert("Scanned result", "The barcode's text is " + result.Text + ". The barcode's format is " + result.BarcodeFormat, "OK");
             });
             IsScanning = true;
         }
+
         public async Task<Box> GetBoxDefault(int id)
         {
             Box = new Box();
@@ -146,11 +141,7 @@
 
         private void GoToTestPage(int _id, int box, ForeingBox foreingBox2)
         {
-            /*MainViewModel.GetInstance().Testing = new TestingViewModel();
-            Navigation.PushAsync(new Testing());
-            //await Launcher.OpenAsync(new Uri("https://www.facebook.com/roy.a.mustang"));*/
-
-            //insertar box foranea
+            //Insertar box foranea
             System.Text.StringBuilder sb;
             ForeingBox foreingBox;
             foreingBox = foreingBox2;
@@ -368,7 +359,6 @@
             MainViewModel.GetInstance().ListForeignBox.GetList();
             //Enviar a detalles de la box foranea cuando se inserta
             App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
-            //App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));
         }
         #endregion
     }

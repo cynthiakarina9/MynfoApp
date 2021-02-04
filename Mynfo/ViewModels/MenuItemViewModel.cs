@@ -10,10 +10,6 @@
 
     public class MenuItemViewModel : BaseViewModel
     {
-        #region Attributs
-        private UserLocal user;
-        #endregion
-
         #region Properties
         public string Icon { get; set; }
         public string Title { get; set; }

@@ -95,24 +95,6 @@
             return profilephone;
         }
 
-        #endregion
-
-        #region Commands
-        public ICommand BackHomeCommand
-        {
-            get
-            {
-                return new RelayCommand(BackHome);
-            }
-        }
-
-        private async void BackHome()
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
-        #endregion
-
         #region Listas
         public void addProfile(ProfilePhone _profilePhone)
         {
@@ -131,6 +113,24 @@
 
             profilephone.Insert(newIndex, _profilePhone);
 
+        }
+        #endregion
+
+        #endregion
+
+        #region Commands
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+
+        private async void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

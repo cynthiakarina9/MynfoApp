@@ -54,7 +54,6 @@
         #region Constructors
         public ChangePasswordViewModel()
         {
-
             this.apiService = new ApiService();
             var User = MainViewModel.GetInstance().User;
             this.IsEnabled = true;
@@ -192,8 +191,7 @@
                 Languages.Accept);
             await App.Navigator.PopAsync();
         }
-        #endregion
-
+        
         public ICommand BackHomeCommand
         {
             get
@@ -201,11 +199,11 @@
                 return new RelayCommand(BackHome);
             }
         }
-
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+        #endregion
     }
 }

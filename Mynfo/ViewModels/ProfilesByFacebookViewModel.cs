@@ -42,8 +42,11 @@
                 SetValue(ref profilesM, value);
             }
         }
-
-        public ProfileSM selectedProfile { get; set; }
+        public ProfileSM selectedProfile 
+        { 
+            get; 
+            set; 
+        }
         #endregion
 
         #region Constructor
@@ -114,7 +117,7 @@
             return profileSM;
         }
 
-        //Actualizar listas
+        #region Listas
         public void addProfile(ProfileSM _profileSM)
         {
             profileSM.Add(_profileSM);
@@ -124,7 +127,7 @@
         {
             profileSM.Remove(selectedProfile);
         }
-
+        #endregion
         #endregion
     }
 }

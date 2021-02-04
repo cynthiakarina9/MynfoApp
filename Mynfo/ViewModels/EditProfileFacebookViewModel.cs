@@ -144,6 +144,7 @@
 
             await App.Navigator.PopAsync();
         }
+
         public ICommand BackHomeCommand
         {
             get
@@ -151,8 +152,7 @@
                 return new RelayCommand(BackHome);
             }
         }
-
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();

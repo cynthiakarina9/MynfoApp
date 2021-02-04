@@ -84,12 +84,10 @@
                 return new RelayCommand(ChangePassword);
             }
         }
-
         private void ChangePassword()
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ChangePassword = new ChangePasswordViewModel();
-            //await App.Navigator.PushAsync(new ChangePasswordPage());
             App.Navigator.PushAsync(new ChangePasswordPage());
         }
 
@@ -100,7 +98,6 @@
                 return new RelayCommand(ChangeImage);
             }
         }
-
         private async void ChangeImage()
         {
             await CrossMedia.Current.Initialize();
@@ -167,7 +164,6 @@
                 return new RelayCommand(Save);
             }
         }
-
         private async void Save()
         {
             if (string.IsNullOrEmpty(this.User.FirstName))
@@ -270,7 +266,7 @@
             mainViewModel.Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
-        #endregion
+        
         public ICommand BackHomeCommand
         {
             get
@@ -278,11 +274,11 @@
                 return new RelayCommand(BackHome);
             }
         }
-
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+        #endregion
     }
 }

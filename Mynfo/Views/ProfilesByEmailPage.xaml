@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesByEmailPage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -80,14 +80,14 @@
                                             FontSize="18"
                                             FontAttributes="Bold" 
                                             Text="{Binding Name, Mode=TwoWay}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
                                             Grid.Column="2"
                                             FontSize="15"
                                             Text="{Binding Email, Mode=TwoWay}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
                                     </Grid>

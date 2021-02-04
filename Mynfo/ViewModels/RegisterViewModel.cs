@@ -1,16 +1,15 @@
 ﻿namespace Mynfo.ViewModels
 {
-    using System.Windows.Input;
     using Domain;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
-    using Views;
     using Plugin.Media;
     using Plugin.Media.Abstractions;
     using Services;
-    using Xamarin.Forms;
     using System;
-    using System.Text.RegularExpressions;
+    using System.Windows.Input;
+    using Views;
+    using Xamarin.Forms;
 
     public class RegisterViewModel : BaseViewModel
     {
@@ -92,7 +91,6 @@
                 return new RelayCommand(Register);
             }
         }
-
         private async void Register()
         {
             if (string.IsNullOrEmpty(this.FirstName))
@@ -257,7 +255,6 @@
                 return new RelayCommand(Next);
             }
         }
-
         private async void Next()
         {
             if (string.IsNullOrEmpty(this.FirstName))
@@ -317,7 +314,6 @@
                 return new RelayCommand(ChangeImage);
             }
         }
-
         private async void ChangeImage()
         {
             await CrossMedia.Current.Initialize();

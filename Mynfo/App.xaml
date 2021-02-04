@@ -18,17 +18,19 @@
             <Color x:Key="BoxActiveColor">LightGray</Color>
             <Color x:Key="BoxEmptyColor">Gray</Color>
             <Color x:Key="BackgroundColor">#ffff</Color>
-            <Color x:Key="Dark_FontColor">#fff</Color>
+            <Color x:Key="Dark_FontColor">#FFFFFF</Color>
             <Color x:Key="DarkMenu_FontColor">#000000</Color>
             <Color x:Key="FontColor">#000000</Color>
             <Color x:Key="MainColor">#FF5521</Color>
             <Color x:Key="MainFountyColor">#FF5521</Color>
-            <Color x:Key="Menu_BackgroundColor">#F2F2F2</Color>
+            <Color x:Key="Menu_BackgroundColorLight">#F2F2F2</Color>
+            <Color x:Key="Menu_BackgroundColorDark">#464642</Color>
             <Color x:Key="MenuColor">#4A38FF</Color>
             <Color x:Key="MenuFountColor">#F1FF99</Color>
             <Color x:Key="Light_FontColor">#000000</Color>
             <Color x:Key="LoginEntryColor">#AAA</Color>
-            
+            <Color x:Key="BackgroundColorLigth">#FFFFFF</Color>
+            <Color x:Key="BackgroundColorDark">#000000</Color>
 
         </ResourceDictionary>
     </Application.Resources>
