@@ -37,7 +37,7 @@
         {
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
             Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
-            //MainPage = new NavigationPage(new HomePage());
+            
             InitializeComponent();
 
             //Set root SQLite
@@ -77,7 +77,6 @@
                     mainViewModel.ChangePassword = new ChangePasswordViewModel();
                     mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
                     Xamarin.Forms.Application.Current.MainPage = new MasterPage();
-                    //Application.Current.MainPage = new NavigationPage(new MasterPage());
                 }
                 else
                 {
@@ -162,20 +161,15 @@
             mainViewModel.TAG = new TAGViewModel();
             mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
             Xamarin.Forms.Application.Current.MainPage = new MasterPage();
-            //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
             Settings.IsRemembered = "true";
-
-            //mainViewModel.Home = new HomeViewModel();
-            ////Application.Current.MainPage = new MasterPage();
-            //Application.Current.MainPage = new NavigationPage(new TabbedPage1());
         }
 
         /*public static async Task DisplayAlertAsync(string msg) =>
             await Xamarin.Forms.Device.InvokeOnMainThreadAsync(async () => await Current.MainPage.DisplayAlert("message from service", msg, "ok"));*/
 
 
-        //public static async Task DisplayAlertAsync(string msg) =>
-        //    await Xamarin.Forms.Device.InvokeOnMainThreadAsync(async () => await Current.MainPage.DisplayAlert("message from service", msg, "ok"));
+        public static async Task DisplayAlertAsync(string msg) =>
+          await Xamarin.Forms.Device.InvokeOnMainThreadAsync(async () => await Current.MainPage.DisplayAlert("", msg, "ok"));
 
 
 

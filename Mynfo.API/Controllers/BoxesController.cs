@@ -119,7 +119,30 @@
 
         //    return StatusCode(HttpStatusCode.NoContent);
         //}
+        //GET: api/LastBox
+        [HttpPost]
+        [Route("LastBoxC")]
+        [ResponseType(typeof(Box))]
+        public async Task<List<Box>> LastBoxC(JObject form)
+        {
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.UserId;
+            }
+            catch
+            {
+                return null;
+            }
+            var box = GetBoxes().Where(u => u.UserId == id && u.BoxDefault == false).ToList();
+            if (box.Count == 0)
+            {
+                return null;
+            }
 
+            return box;
+        }
         // PUT: api/Boxes/PutBox1/5
         [ResponseType(typeof(Box))]
         public async Task<Box> PutBox(int id, Box box)

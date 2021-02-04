@@ -1,17 +1,13 @@
-﻿using GalaSoft.MvvmLight.Command;
-using Mynfo.Domain;
-using Mynfo.Helpers;
-using Mynfo.Services;
-using Mynfo.Views;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
-using System.Windows.Input;
-using Xamarin.Forms;
-
-namespace Mynfo.ViewModels
+﻿namespace Mynfo.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
+    using Mynfo.Domain;
+    using Mynfo.Helpers;
+    using Mynfo.Models;
+    using Mynfo.Services;
+    using Mynfo.Views;
+    using System.Windows.Input;
+    using Xamarin.Forms;
     public class CreateProfileWhatsAppViewModel : BaseViewModel
     {
         #region Services
@@ -57,7 +53,6 @@ namespace Mynfo.ViewModels
         #endregion
 
         #region Commands
-
         public ICommand SaveProfileWhatsAppCommand
         {
             get
@@ -134,7 +129,20 @@ namespace Mynfo.ViewModels
                     Languages.Accept);
                 return;
             }
-
+            var ProfileLocal = new Profile
+            {
+                UserId = mainViewModel.User.UserId,
+                ProfileName = profileWhatsApp.Name,
+                value = profileWhatsApp.Number,
+                ProfileType = "Whatsapp",
+                Logo = "whatsapp2",
+                ProfileId = profileWhatsApp.ProfileWhatsappId,
+            };
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.CreateTable<Profile>();
+                conn.Insert(ProfileLocal);
+            }
             this.IsRunning = false;
             this.IsEnabled = true;
 
@@ -154,6 +162,7 @@ namespace Mynfo.ViewModels
 
             await App.Navigator.PopAsync();
         }
+
         public ICommand BackHomeCommand
         {
             get

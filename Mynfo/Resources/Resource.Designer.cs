@@ -502,7 +502,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Edti network.
+        ///   Busca una cadena traducida similar a Edit network.
         /// </summary>
         public static string EditNetwork {
             get {
@@ -1186,6 +1186,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Mynfo Profile.
+        /// </summary>
+        public static string ProfileMynfo {
+            get {
+                return ResourceManager.GetString("ProfileMynfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Profile name.
         /// </summary>
         public static string ProfileName {
@@ -1245,6 +1254,24 @@ namespace Mynfo.Resources {
         public static string QR {
             get {
                 return ResourceManager.GetString("QR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This QR code will allow you to share your default box in any browser..
+        /// </summary>
+        public static string QRForWhat {
+            get {
+                return ResourceManager.GetString("QRForWhat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Scan a QR code from Mynfo..
+        /// </summary>
+        public static string QRMynfo {
+            get {
+                return ResourceManager.GetString("QRMynfo", resourceCulture);
             }
         }
         

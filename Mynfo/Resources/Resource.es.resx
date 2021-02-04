@@ -597,4 +597,13 @@
   <data name="TakeinStore" xml:space="preserve">
     <value>Si aún no lo tienes, cómpralo en</value>
   </data>
+  <data name="ProfileMynfo" xml:space="preserve">
+    <value>Perfil de Mynfo</value>
+  </data>
+  <data name="QRForWhat" xml:space="preserve">
+    <value>Este código QR te permitirá compartir tu box predeterminada en cuaquier navegador.</value>
+  </data>
+  <data name="QRMynfo" xml:space="preserve">
+    <value>Escanea un codigo QR de Mynfo.</value>
+  </data>
 </root>

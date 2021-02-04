@@ -55,7 +55,6 @@
         #endregion
 
         #region Commands
-
         public ICommand BackHomeCommand
         {
             get
@@ -63,8 +62,7 @@
                 return new RelayCommand(BackHome);
             }
         }
-
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
@@ -113,7 +111,7 @@
             return profileSM;
         }
 
-        //Actualizar listas
+        #region Listas
         public void addProfile(ProfileSM _profileSM)
         {
             profileSM.Add(_profileSM);
@@ -135,8 +133,9 @@
             profileSM.Remove(selectedProfile);
 
             profileSM.Insert(newIndex, _profileSM);
-
         }
+        #endregion
+
         #endregion
     }
 }

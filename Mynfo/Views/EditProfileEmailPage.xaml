@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.EditProfileEmailPage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -56,8 +56,6 @@
                         Source="trash2"
                         VerticalOptions="Start"
                         x:Name = "ButtonDelete"/>
-                    <!-- End de título y borrar network-->
-                
                     <!-- Imagen de network -->
                     <Image
                         HeightRequest = "180"
@@ -65,8 +63,6 @@
                         Grid.Row = "1"
                         Grid.ColumnSpan ="2"
                         WidthRequest = "180"/>
-                    <!-- End Imagen de network -->
-                    
                     <!-- Nombre de perfil -->
                     <StackLayout 
                         Grid.Row = "2"
@@ -85,7 +81,7 @@
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
                             Text="{Binding profileEmail.Name, Mode=TwoWay}"
-                            TextColor="{StaticResource FontColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             MaxLength = "10"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
@@ -109,7 +105,7 @@
                             HorizontalOptions = "Center"
                             Keyboard = "Email"
                             Text="{Binding profileEmail.Email, Mode=TwoWay}"
-                            TextColor="{StaticResource FontColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300"
                             x:Name = "EntryEmail"/>
@@ -137,7 +133,7 @@
                 Text = "{i18n:Translate Save}"
                 FontSize="15"
                 FontAttributes="Bold"
-                TextColor = "{StaticResource Dark_FontColor}"
+                TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                 VerticalOptions = "End" 
                 x:Name = "ButtonSave"/>
         </Grid>

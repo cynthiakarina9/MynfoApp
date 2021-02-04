@@ -2,20 +2,10 @@
 {
     using GalaSoft.MvvmLight.Command;
     using Mynfo.Views;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Windows.Input;
 
     public class ProfilesViewModel
     {
-        #region Constrctor
-        public ProfilesViewModel()
-        {
-
-        }
-        #endregion
-
         #region Commads
 
         #region Email
@@ -175,6 +165,7 @@
             mainViewModel.ProfilesByWebPage = new ProfilesByWebPageViewModel();
             await App.Navigator.PushAsync(new ProfilesByWebPagePage());
         }
+
         public ICommand YoutubeProfileCommand
         {
             get

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n = "clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.Register2Page"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>
@@ -55,6 +55,7 @@
                             HorizontalOptions="CenterAndExpand"
                             Margin="0,-10,0,0"
                             Text="{Binding Email}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalTextAlignment="Center"
                             WidthRequest="300"/>
                     </StackLayout>
@@ -75,6 +76,7 @@
                             HorizontalOptions="CenterAndExpand"
                             Margin="0,-10,0,0"
                             Text="{Binding Password}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalTextAlignment="Center"
                             WidthRequest="300"/>
                     </StackLayout>
@@ -95,6 +97,7 @@
                             HorizontalOptions="CenterAndExpand"
                             Margin="0,-10,0,0"
                             Text="{Binding Confirm}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalTextAlignment="Center"
                             WidthRequest="300"/>
                     </StackLayout>
@@ -114,7 +117,9 @@
                             HorizontalOptions="CenterAndExpand"
                             Keyboard = "Telephone"
                             Margin="0,-10,0,0"
+                            MaxLength="10"
                             Text="{Binding Number}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalTextAlignment="Center"
                             WidthRequest="300"/>
                     </StackLayout>
@@ -131,6 +136,7 @@
                             WidthRequest="25"/>
                         <Label
                             Text="{i18n:Translate HaveWhats}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions="Center"/>
                     </StackLayout>
                 </Grid>
@@ -143,7 +149,7 @@
                 HorizontalOptions="Fill"
                 Margin="15"
                 Text = "{i18n:Translate Save}"
-                TextColor = "{StaticResource Dark_FontColor}"
+                TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                 VerticalOptions="End"
                 x:Name="Save"/>
             <ActivityIndicator

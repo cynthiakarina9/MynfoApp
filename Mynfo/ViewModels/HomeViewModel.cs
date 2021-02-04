@@ -156,8 +156,9 @@
             }
             this.IsRunning = false;
             return Box;
-        } 
-        //Actualizar listas
+        }
+
+        #region Listas
         public void AddList(Box _Boxes)
         {
             BoxNoDefault.Add(_Boxes);
@@ -167,6 +168,7 @@
         {
             BoxNoDefault.Remove(_Boxes);
         }
+
         public void UpdateList(Box _Boxes)
         {
             Box Aux = new Box();
@@ -181,6 +183,18 @@
             BoxNoDefault.Remove(Aux);
 
             BoxNoDefault.Insert(newIndex, _Boxes);
+        }
+        #endregion
+
+        public async void GoToDetailsNoDefault()
+        {
+            int BoxId = 0;
+            foreach (Box boxCount in BoxNoDefault)
+            {
+                BoxId = boxCount.BoxId;
+            }
+            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(BoxId);
+            await App.Navigator.PushAsync(new DetailsBoxPage(BoxId));
         }
         #endregion
 
@@ -203,16 +217,6 @@
             foreach(Box BoxCountNoDefault in BoxNoDefault)
             {
                 BoxId2 = BoxCountNoDefault.BoxId;
-            }
-            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(BoxId);
-            await App.Navigator.PushAsync(new DetailsBoxPage(BoxId));
-        }
-        public async void GoToDetailsNoDefault()
-        {
-            int BoxId = 0;
-            foreach (Box boxCount in BoxNoDefault)
-            {
-                BoxId = boxCount.BoxId;
             }
             MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(BoxId);
             await App.Navigator.PushAsync(new DetailsBoxPage(BoxId));

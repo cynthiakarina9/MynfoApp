@@ -141,7 +141,6 @@
                     break;
             }
         }
-
         #endregion
 
         #region Commands
@@ -152,7 +151,6 @@
                 return new RelayCommand(BackHome);
             }
         }
-
         private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();

@@ -406,6 +406,15 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_qr.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\telegram1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\telegram2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\telegram3.png" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties TriggeredFromHotReload="False" />

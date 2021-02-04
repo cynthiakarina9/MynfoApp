@@ -3,9 +3,9 @@
     using Domain;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
+    using Mynfo.Models;
     using Mynfo.Views;
     using Services;
-    using System.Data.SqlClient;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -130,6 +130,20 @@
                     Languages.ErrorAddProfile,
                     Languages.Accept);
                 return;
+            }
+            var ProfileLocal = new Profile
+            {
+                UserId = mainViewModel.User.UserId,
+                ProfileName = profileemail.Name,
+                value = profileemail.Email,
+                ProfileType = "Email",
+                Logo = "email2",
+                ProfileId = profileemail.ProfileEmailId,
+            };
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.CreateTable<Profile>();
+                conn.Insert(ProfileLocal);
             }
 
             this.IsRunning = false;

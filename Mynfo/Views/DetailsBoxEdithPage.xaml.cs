@@ -200,6 +200,7 @@
 
             //Creación de botón para actualizar nombre de la Box
             BxSaveName.BackgroundColor = Color.FromHex("#FF5521");
+            BxSaveName.BorderWidth = 23;
             BxSaveName.HeightRequest = 50;
             BxSaveName.Text = Languages.Save;
             BxSaveName.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));

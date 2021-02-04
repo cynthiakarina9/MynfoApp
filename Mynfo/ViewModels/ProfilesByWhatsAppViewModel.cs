@@ -5,11 +5,8 @@
     using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.Views;
-    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -68,7 +65,7 @@
         }
         #endregion
 
-        #region Commands
+        #region Methods
         public async Task<ObservableCollection<ProfileWhatsapp>> GetList()
         {
             this.IsRunning = true;
@@ -109,26 +106,8 @@
             return profileWhatsApp;
 
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        public ICommand BackHomeCommand
-        {
-            get
-            {
-                return new RelayCommand(BackHome);
-            }
-        }
 
-        private async void BackHome()
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
-
-        //Actualizar listas
+        #region Listas
         public void addProfile(ProfileWhatsapp _profileWhatsapp)
         {
             profileWhatsApp.Add(_profileWhatsapp);
@@ -145,7 +124,23 @@
             profileWhatsApp.Remove(selectedProfile);
 
             profileWhatsApp.Insert(newIndex, _profileWhatsapp);
+        }
+        #endregion
 
+        #endregion
+
+        #region Commands
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+        private void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

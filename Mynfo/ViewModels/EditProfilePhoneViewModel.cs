@@ -5,7 +5,6 @@
     using Mynfo.Helpers;
     using Mynfo.Views;
     using Services;
-    using System.Data.SqlClient;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -54,7 +53,7 @@
         }
         #endregion
 
-        #region Commands
+        #region Methods
         private async Task<ProfilePhone> GetProfilePhone(int _ProfilePhoneId)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -66,7 +65,9 @@
                _ProfilePhoneId);
             return profilePhone;
         }
+        #endregion
 
+        #region Commands
         public ICommand SaveCommand
         {
             get
@@ -137,6 +138,7 @@
 
             await App.Navigator.PopAsync();
         }
+
         public ICommand DeleteCommand
         {
             get
@@ -144,7 +146,6 @@
                 return new RelayCommand(Delete);
             }
         }
-
         private async void Delete()
         {
             this.IsRunning = true;
@@ -181,6 +182,7 @@
 
             await App.Navigator.PopAsync();
         }
+
         public ICommand BackHomeCommand
         {
             get
@@ -188,8 +190,7 @@
                 return new RelayCommand(BackHome);
             }
         }
-
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();

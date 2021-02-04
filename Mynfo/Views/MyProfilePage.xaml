@@ -5,7 +5,7 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              x:Class="Mynfo.Views.MyProfilePage"
              Title = "{i18n:Translate MyAccount}"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -40,7 +40,8 @@
                         HorizontalOptions = "Center" 
                         FontSize = "Small" 
                         Padding = "0,0,0,19"
-                        Text = "{i18n:Translate ChangeImage}" />
+                        Text = "{i18n:Translate ChangeImage}"
+                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                 </StackLayout>
                 <Grid 
                     HorizontalOptions = "Center">
@@ -68,7 +69,7 @@
                                 FontSize = "23"
                                 Placeholder = "{i18n:Translate FirstNamePlaceHolder}" 
                                 Text = "{Binding User.FirstName, Mode = TwoWay}" 
-                                TextColor = "{StaticResource FontColor}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 HorizontalTextAlignment = "Center" 
                                 x:Name = "FirstNameEntry"/>
                         </StackLayout>
@@ -91,7 +92,7 @@
                                 HorizontalTextAlignment = "Center" 
                                 Placeholder = "{i18n:Translate LastNamePlaceHolder}" 
                                 Text = "{Binding User.LastName, Mode=TwoWay}"
-                                TextColor = "{StaticResource FontColor}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 x:Name = "LastNameEntry"/>
                         </StackLayout>
                         <!--Correo-->
@@ -110,7 +111,7 @@
                             <Entry 
                                 FontSize = "21"
                                 Text = "{Binding User.Email, Mode = TwoWay}" 
-                                TextColor = "{StaticResource FontColor}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 HorizontalTextAlignment = "Center" 
                                 WidthRequest="300"
                                 x:Name = "EmailEntry"/>
@@ -133,7 +134,7 @@
                         HorizontalOptions = "FillAndExpand"
                         IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
                         Text = "{i18n:Translate Save}"
-                        TextColor = "{StaticResource Dark_FontColor}"
+                        TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                         x:Name = "ButtonSave">
                     </Button>
                     <Button
@@ -144,7 +145,7 @@
                         HorizontalOptions = "FillAndExpand"
                         IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
                         Text = "{i18n:Translate ChangePassword}"
-                        TextColor = "Black"
+                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                         x:Name = "ButtonChangePassw">
                     </Button>
                     <StackLayout 

@@ -514,7 +514,7 @@
     <value>List of Whatsapp profiles</value>
   </data>
   <data name="EditNetwork" xml:space="preserve">
-    <value>Edti network</value>
+    <value>Edit network</value>
   </data>
   <data name="NetworksList" xml:space="preserve">
     <value>Networks list</value>
@@ -596,5 +596,14 @@
   </data>
   <data name="TakeinStore" xml:space="preserve">
     <value>If you don't have it yet, buy it at</value>
+  </data>
+  <data name="ProfileMynfo" xml:space="preserve">
+    <value>Mynfo Profile</value>
+  </data>
+  <data name="QRForWhat" xml:space="preserve">
+    <value>This QR code will allow you to share your default box in any browser.</value>
+  </data>
+  <data name="QRMynfo" xml:space="preserve">
+    <value>Scan a QR code from Mynfo.</value>
   </data>
 </root>

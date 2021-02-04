@@ -7,7 +7,7 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
              mc:Ignorable="d"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              x:Class="Mynfo.Views.LectorQRPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
@@ -18,8 +18,7 @@
                 OnScanResult="scanView_OnScanResult"
                 IsScanning="{Binding IsScanning}"/>
             <zxing:ZXingDefaultOverlay 
-                TopText="Align the barcode within the frame"
-                BottomText = "El escaneo es automático"
+                BottomText = "{i18n:Translate QRMynfo}"
                 Opacity = "0.75"/>
             <zxing:ZXingBarcodeImageView
                     BarcodeFormat="QR_CODE"
@@ -29,8 +28,8 @@
                 Opacity="1">
                 <zxing:ZXingBarcodeImageView.BarcodeOptions>
                     <zxcm:EncodingOptions 
-                        Width="500" 
-                        Height="500" />
+                        Width="300" 
+                        Height="300" />
                 </zxing:ZXingBarcodeImageView.BarcodeOptions>
             </zxing:ZXingBarcodeImageView>
         </Grid>

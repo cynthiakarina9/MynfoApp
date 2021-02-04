@@ -4,7 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ListOfNetworksPage"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <Grid
@@ -35,7 +35,7 @@
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions="StartAndExpand" />
 
-                    <!-- Lista de perfiles de email -->
+                    <!-- Lista de perfiles -->
                     <ListView  
                         Grid.Row="1"
                         HasUnevenRows="true"
@@ -68,13 +68,14 @@
                                         <Label 
                                             Grid.Column="1"
                                             Text="{Binding ProfileName, Mode=TwoWay}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             FontSize="18"
                                             FontAttributes="Bold" 
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
                                             IsEnabled="False"
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
                                     </Grid>

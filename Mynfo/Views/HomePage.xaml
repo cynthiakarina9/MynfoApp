@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.HomePage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Resources>
         <Style TargetType="Grid">
@@ -90,7 +90,7 @@
                                             FontSize="20"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding Name}"
-                                            TextColor="{StaticResource FontColor}" />
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                                     </StackLayout>
                                 </Grid>
                             </DataTemplate>
@@ -133,7 +133,7 @@
                                             FontSize="12"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding Name}"
-                                            TextColor="{StaticResource FontColor}" />
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                                     </StackLayout>
                                 </Grid>
                             </DataTemplate>

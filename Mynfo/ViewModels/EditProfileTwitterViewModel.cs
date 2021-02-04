@@ -50,7 +50,7 @@
         }
         #endregion
 
-        #region Commands
+        #region Methods
         private async Task<ProfileSM> GetProfile(int _ProfileMSId)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -62,7 +62,9 @@
                _ProfileMSId);
             return profileSM;
         }
+        #endregion
 
+        #region Commands
         public ICommand SaveCommand
         {
             get
@@ -142,6 +144,7 @@
 
             await App.Navigator.PopAsync();
         }
+
         public ICommand BackHomeCommand
         {
             get
@@ -149,8 +152,7 @@
                 return new RelayCommand(BackHome);
             }
         }
-
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();

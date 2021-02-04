@@ -598,4 +598,13 @@ Você deve inserir um url</value>
   <data name="TakeinStore" xml:space="preserve">
     <value>Se você ainda não tem, compre em</value>
   </data>
+  <data name="ProfileMynfo" xml:space="preserve">
+    <value>Perfil Mynfo</value>
+  </data>
+  <data name="QRForWhat" xml:space="preserve">
+    <value>Este código QR permitirá que você compartilhe sua caixa padrão em qualquer navegador.</value>
+  </data>
+  <data name="QRMynfo" xml:space="preserve">
+    <value>Digitalize um código QR do Mynfo.</value>
+  </data>
 </root>

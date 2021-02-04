@@ -46,11 +46,6 @@
         #endregion
 
         #region ViewModels
-        public AddProfilesViewModel AddProfiles
-        {
-            get;
-            set;
-        }
         public BoxRegisterViewModel BoxRegister
         {
             get;
