@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Rg.Plugins.Popup.Animations;
+using Rg.Plugins.Popup.Enums;
 using Rg.Plugins.Popup.Pages;
-using Rg.Plugins.Popup;
-
+using Rg.Plugins.Popup.Services;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Rg.Plugins.Popup.Animations;
-using Mynfo.ViewModels;
-using Rg.Plugins.Popup.Enums;
-using Rg.Plugins.Popup.Services;
 
 namespace Mynfo.Views
 {
