@@ -133,7 +133,7 @@
     <value>You must enter a password</value>
   </data>
   <data name="Rememberme" xml:space="preserve">
-    <value>Rememberme in this device</value>
+    <value>Remember me in this device</value>
   </data>
   <data name="SomethingWrong" xml:space="preserve">
     <value>Something was wrong, please try again later</value>
@@ -262,7 +262,7 @@
     <value>Register New User</value>
   </data>
   <data name="ChangeImage" xml:space="preserve">
-    <value>Touch the image to chage it</value>
+    <value>Touch the image to change it</value>
   </data>
   <data name="FirstNameLabel" xml:space="preserve">
     <value>First Name</value>

@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
-             xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ForeingBoxPage"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor = "#FEBDA8">
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundForeignBoxLigth}, Dark={StaticResource BackgroundForeignBoxDark}}">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding ForeingBox}">
             <Grid>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -29,17 +29,22 @@
                         Padding="0,10,10,0"
                         x:Name="BackButton" />
                     <!-- Nombre e imagen del usuario foraneo-->
-                    <Label 
-                        FontAttributes="Bold"
-                        FontSize = "28"
-                        Grid.Row="1"
-                        Grid.ColumnSpan = "3"
-                        HorizontalTextAlignment="Center"
-                        HorizontalOptions = "Center"
-                        TextColor = "{StaticResource FontColor}"
-                        VerticalOptions="Center"
-                        x:Name="ForeignUserName" />
-                    
+                    <StackLayout
+                            Grid.Row="1"
+                            Grid.ColumnSpan = "3"
+                            HorizontalOptions="Center">
+                        <Label 
+                            FontAttributes="Bold"
+                            FontSize = "28"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions = "Center"
+                            TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            VerticalOptions="Center"
+                            x:Name="ForeignUserName" />
+                        <Line
+                            HeightRequest="1"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                    </StackLayout>
                     <controls:CircleImage
                         Grid.Row = "2"
                         Grid.Column = "1"
@@ -48,30 +53,53 @@
                         x:Name="ForeignUserImage">
                     </controls:CircleImage>
                     <!-- Listado de perfiles -->
-                    <Grid
+                    <CollectionView 
+                        ItemsSource="{Binding ProfilesF}"
                         Grid.Row="3"
-                        Grid.ColumnSpan="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-
-                        <StackLayout 
-                            HorizontalOptions="FillAndExpand"
-                            Padding="5,35"
-                            x:Name="ProfilesList1" />
-                        <StackLayout 
-                            Grid.Column="1"
-                            HorizontalOptions="FillAndExpand"
-                            Padding="5,35"
-                            x:Name="ProfilesList2" />
-                        <StackLayout 
-                            Grid.Column="2"
-                            HorizontalOptions="FillAndExpand"
-                            Padding="5,35"
-                            x:Name="ProfilesList3" />
-                    </Grid>
+                        Grid.ColumnSpan="3"
+                        SelectionMode="Single"
+                        SelectionChanged="OnCollectionViewSelectionChanged">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"
+                                    Span="3" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10">
+                                    <StackLayout
+                                        HorizontalOptions="CenterAndExpand">
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding GoToProfiles}"
+                                            HeightRequest="50"
+                                            Source="{Binding Logo}"
+                                            WidthRequest="50"/>
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding ProfileName}"
+                                            FontAttributes="Bold"
+                                            TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <!--<CollectionView.EmptyView>
+                            <ContentView>
+                                <StackLayout 
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label 
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        HorizontalOptions="Fill"
+                                        HorizontalTextAlignment="Center" 
+                                        Margin="10,0,10,280"
+                                        Text="{i18n:Translate EmptyBox}"
+                                        VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </ContentView>
+                        </CollectionView.EmptyView>-->
+                    </CollectionView>
                 </Grid>
             </Grid>
         </ScrollView>

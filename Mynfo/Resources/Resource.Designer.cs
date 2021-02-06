@@ -241,7 +241,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Touch the image to chage it.
+        ///   Busca una cadena traducida similar a Touch the image to change it.
         /// </summary>
         public static string ChangeImage {
             get {
@@ -1312,7 +1312,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Rememberme in this device.
+        ///   Busca una cadena traducida similar a Remember me in this device.
         /// </summary>
         public static string Rememberme {
             get {
