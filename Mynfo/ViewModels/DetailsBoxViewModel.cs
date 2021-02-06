@@ -6,6 +6,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.Views;
+    using Rg.Plugins.Popup.Extensions;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
@@ -33,11 +34,13 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
+
         public Box Box
         {
             get { return this.box; }
             set { SetValue(ref this.box, value); }
         }
+
         public ObservableCollection<ProfileEmail> ProfileEmail
         {
             get { return profileEmail; }
@@ -83,21 +86,20 @@
             }
         }
 
-
         public ProfileSM selectedProfileSM { get; set; }
         #endregion
 
         #region Constructor
-        public DetailsBoxViewModel(int _BoxId)
+        public DetailsBoxViewModel(Box _Box)
         {
             apiService = new ApiService();
             Box = new Box();
-            GetBoxe(_BoxId);
+            GetBoxe(_Box.BoxId);
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
-            GetListEmail(_BoxId);
-            GetListPhone(_BoxId);
-            GetListSM(_BoxId);
-            GetListWhatsapp(_BoxId);
+            GetListEmail(_Box.BoxId);
+            GetListPhone(_Box.BoxId);
+            GetListSM(_Box.BoxId);
+            GetListWhatsapp(_Box.BoxId);
         }
         #endregion
 
@@ -114,6 +116,7 @@
              
             return Box;
         }
+
         #region Email
         private async Task<ObservableCollection<ProfileEmail>> GetListEmail(int _BoxId)
         {
@@ -402,6 +405,7 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+            Application.Current.MainPage.Navigation.PopPopupAsync();
         }
         #endregion
     }

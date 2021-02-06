@@ -4,7 +4,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
-    using Rg.Plugins.Popup.Services;
+    using Rg.Plugins.Popup.Extensions;
     using System;
     using System.Data.SqlClient;
     using System.Linq;
@@ -509,8 +509,8 @@
         private void BoxDetailsView(object sender, EventArgs e, int _BoxId)
         {
             //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-            App.Navigator.PushAsync(new DetailsBoxPage(_BoxId));
+            //MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
+            //App.Navigator.PushAsync(new DetailsBoxPage(_BoxId));
         }
 
         private async void CreateBox_Clicked(object sender, EventArgs e)
@@ -1194,8 +1194,9 @@
             selectedItem = e.CurrentSelection.FirstOrDefault() as Box;
             if (selectedItem == null)
                 return;
-            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(selectedItem.BoxId);
-            await Navigation.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
+            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(selectedItem);
+            //await Navigation.PushAsync(new DetailsBoxPage(selectedItem));
+            await Navigation.PushPopupAsync(new DetailBoxPopUpPage(selectedItem));
             //App.Navigator.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
             ((CollectionView)sender).SelectedItem = null;
         }

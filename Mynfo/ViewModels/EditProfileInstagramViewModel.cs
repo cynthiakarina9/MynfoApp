@@ -125,7 +125,7 @@
                 return;
             }
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.Delete(
+            var response = await this.apiService.Delete1(
                 apiSecurity,
                 "/api",
                 "/Box_ProfileSM/DeleteBox_ProfileSMRelations",
@@ -152,7 +152,7 @@
                 return new RelayCommand(BackHome);
             }
         }
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();

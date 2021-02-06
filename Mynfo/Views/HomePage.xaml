@@ -13,7 +13,7 @@
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="#FFFF" />
+                                        Value="Transparent" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -109,6 +109,7 @@
                         ItemsSource="{Binding BoxNoDefault}"
                         Grid.Row="1"
                         Grid.ColumnSpan="3"
+                        IsVisible="{Binding MoreOne}"
                         SelectionMode="Single"
                         SelectionChanged="OnCollectionViewSelectionChanged"
                         x:Name="BoxCollectionView">
@@ -125,9 +126,56 @@
                                         <Frame
                                             BackgroundColor="LightGray"
                                             CornerRadius="15"
-                                            HeightRequest="60"
+                                            HeightRequest="50"
                                             IsVisible="{Binding MoreOne}"
-                                            WidthRequest="60">
+                                            WidthRequest="50">
+                                            <Frame.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="White" Offset="0.1"/>
+                                                    <GradientStop Color="#f3947a" Offset="0.6"/>
+                                                </LinearGradientBrush>
+                                            </Frame.Background>
+                                            <!--<CollectionView 
+                                                IsVisible="{Binding MoreOne}"
+                                                ItemsSource="{Binding ProfilePerfiles}">
+                                                <CollectionView.ItemsLayout>
+                                                    <GridItemsLayout 
+                                                        Orientation="Vertical"
+                                                        Span="3" />
+                                                </CollectionView.ItemsLayout>
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid
+                                                            Padding=" 10">
+                                                            <StackLayout
+                                                                HorizontalOptions="Center">
+                                                                <Image
+                                                                    Source="captura"
+                                                                    Scale="0.001"/>
+                                                                <Label
+                                                                    Text="{Binding BoxId}"/>
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>-->
+                                            <!--<StackLayout
+                                                Orientation="Horizontal"
+                                                HorizontalOptions="FillAndExpand"
+                                                Margin="-12,0,40,0">
+                                                <Image 
+                                                    Scale="1"
+                                                    Source="captura"
+                                                    Margin="2"/>
+                                                <Image 
+                                                    Scale="1"
+                                                    Source="captura"
+                                                    Margin="2"/>
+                                                <Image 
+                                                    Scale="1"
+                                                    Source="captura"
+                                                    Margin="2"/>
+                                            </StackLayout>-->
                                         </Frame>
                                         <Label
                                             FontSize="12"

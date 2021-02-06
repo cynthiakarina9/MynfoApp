@@ -31,7 +31,8 @@
             <Color x:Key="LoginEntryColor">#AAA</Color>
             <Color x:Key="BackgroundColorLigth">#FFFFFF</Color>
             <Color x:Key="BackgroundColorDark">#000000</Color>
-
+            <Color x:Key="BackgroundForeignBoxDark">#6a7c89</Color>
+            <Color x:Key="BackgroundForeignBoxLigth">#a7c4d6</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

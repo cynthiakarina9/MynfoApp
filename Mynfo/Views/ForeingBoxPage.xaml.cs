@@ -3,6 +3,8 @@
     using Mynfo.Models;
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
     using ViewModels;
     using Xamarin.Essentials;
     using Xamarin.Forms;
@@ -14,6 +16,7 @@
     {
         #region Properties
         public string data = Data_ntc.data_value;
+        public ProfileLocal selectedItem { get; set; }
         #endregion
 
         #region Constructor
@@ -34,300 +37,12 @@
 
             #region DataFill
 
-            List<ForeingProfile> foreingProfileList = new List<ForeingProfile>();
 
             ForeingBox foreing = _foreingBox;
 
             ForeignUserImage.Source = foreing.ImageFullPath;
             ForeignUserName.Text = foreing.FullName;
 
-            int listProfileNum = 0;
-
-            using (var conn = new SQLite.SQLiteConnection(App.root_db))
-            {
-                foreingProfileList = conn.Query<ForeingProfile>("Select * from ForeingProfile where ForeingProfile.BoxId = ?", _foreingBox.BoxId);
-            }
-
-            foreach(ForeingProfile foreingProfileValue in foreingProfileList)
-            {
-                var profileIcon = new ImageButton();
-                var profileName = new Label();
-                //var deleteProfile = new ImageButton();
-                var space = new BoxView();
-
-                switch(foreingProfileValue.ProfileType)
-                {
-                    case "Phone":
-                        profileIcon.Source = "tel2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-
-                    case "Email":
-
-                        profileIcon.Source = "mail2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "Facebook":
-                        profileIcon.Source = "facebook2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "Instagram":
-                        profileIcon.Source = "instagramlogo2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "LinkedIn":
-                        profileIcon.Source = "linkedin2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "TikTok":
-                        profileIcon.Source = "tiktok2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "Twitch":
-                        profileIcon.Source = "twitch2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "Twitter":
-                        profileIcon.Source = "twitterlogo2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "Snapchat":
-                        profileIcon.Source = "snapchat2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "Spotify":
-                        profileIcon.Source = "spotify2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "WebPage":
-                        profileIcon.Source = "gmail2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "Whatsapp":
-                        profileIcon.Source = "whatsapp2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    case "Youtube":
-                        profileIcon.Source = "youtube2.png";
-                        profileIcon.WidthRequest = 60;
-                        profileIcon.HeightRequest = 60;
-                        profileIcon.HorizontalOptions = LayoutOptions.Center;
-                        profileIcon.IsEnabled = true;
-                        profileIcon.BackgroundColor = Color.Transparent;
-                        profileIcon.Clicked += new EventHandler((sender, e) => GoToProfile(sender, e, foreingProfileValue.ProfileType, foreingProfileValue.value));
-
-                        profileName.Text = foreingProfileValue.ProfileName;
-                        profileName.FontSize = 15;
-                        profileName.HorizontalTextAlignment = TextAlignment.Center;
-                        profileName.FontAttributes = FontAttributes.Bold;
-                        profileName.TextColor = Color.Black;
-
-                        space.HeightRequest = 30;
-                        break;
-                    default:
-                        break;
-                }
-
-                //Asignación de perfiles en columnas
-                switch (listProfileNum)
-                {
-                    case 0:
-                        listProfileNum = 2;
-
-                        ProfilesList1.Children.Add(profileIcon);
-                        ProfilesList1.Children.Add(profileName);
-                        ProfilesList1.Children.Add(space);
-                        //ProfilesList1.Children.Add(deleteProfile);
-                        break;
-
-                    case 1:
-                        listProfileNum = 2;
-
-                        ProfilesList1.Children.Add(profileIcon);
-                        ProfilesList1.Children.Add(profileName);
-                        ProfilesList1.Children.Add(space);
-                        // ProfilesList1.Children.Add(deleteProfile);
-                        break;
-
-                    case 2:
-                        listProfileNum = 3;
-
-                        ProfilesList2.Children.Add(profileIcon);
-                        ProfilesList2.Children.Add(profileName);
-                        ProfilesList2.Children.Add(space);
-                        //ProfilesList2.Children.Add(deleteProfile);
-                        break;
-
-                    case 3:
-                        listProfileNum = 1;
-
-                        ProfilesList3.Children.Add(profileIcon);
-                        ProfilesList3.Children.Add(profileName);
-                        ProfilesList3.Children.Add(space);
-                        //ProfilesList3.Children.Add(deleteProfile);
-                        break;
-
-                    default:
-                        break;
-                }
-
-            }
 
             #endregion
         }
@@ -346,49 +61,51 @@
                 Navigation.PopAsync();
             }
         }
-
-        async private void GoToProfile(object sender, EventArgs e, string _profileType, string _profileValue)
+        async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch(_profileType)
+            selectedItem = e.CurrentSelection.FirstOrDefault() as ProfileLocal;
+            if (selectedItem == null)
+                return;
+            switch (selectedItem.ProfileType)
             {
                 case "Email":
-                    await Launcher.OpenAsync(new Uri("mailto:" + _profileValue));
+                    await Launcher.OpenAsync(new Uri("mailto:" + selectedItem.value));
                     break;
 
                 case "Instagram":
-                    await Launcher.OpenAsync(new Uri( _profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 case "Facebook":
-                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 case "LinkedIn":
-                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 case "Phone":
-                    PhoneDialer.Open(_profileValue);
+                    PhoneDialer.Open(selectedItem.value);
                     break;
                 case "Snapchat":
-                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 case "Spotify":
-                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 case "TikTok":
-                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 case "Twitch":
-                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 case "Twitter":
-                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 case "WebPage":
-                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 case "Whatsapp":
                     try
                     {
-                        Chat.Open("+52" + _profileValue, "Hola un gusto. Soy " + MainViewModel.GetInstance().User.FullName + ", te comparto este mensaje por Mynfo!");
+                        Chat.Open("+52" + selectedItem.value, "Hola un gusto. Soy " + MainViewModel.GetInstance().User.FullName + ", te comparto este mensaje por Mynfo!");
                     }
                     catch (Exception ex)
                     {
@@ -396,11 +113,12 @@
                     }
                     break;
                 case "Youtube":
-                    await Launcher.OpenAsync(new Uri(_profileValue));
+                    await Launcher.OpenAsync(new Uri(selectedItem.value));
                     break;
                 default:
                     break;
-            } 
+            }
+            ((CollectionView)sender).SelectedItem = null;
         }        
         #endregion
     }

@@ -6,6 +6,7 @@
     using Mynfo.Resources;
     using Mynfo.Services;
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Extensions;
     using System;
     using System.Collections.ObjectModel;
     using System.Data.SqlClient;
@@ -251,7 +252,7 @@
                             phoneIcon.HeightRequest = 50;
                             phoneIcon.HorizontalOptions = LayoutOptions.Center;
                             phoneIcon.IsEnabled = true;
-                            phoneIcon.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));
+                            //phoneIcon.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));
 
                             phoneName.Text = (string)reader["Name"];
                             phoneName.FontSize = 15;
@@ -330,108 +331,108 @@
             }
 
             //Consulta para obtener Emails
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(queryGetEmails);
-                string sql = sb.ToString();
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    sb = new System.Text.StringBuilder();
+            //    sb.Append(queryGetEmails);
+            //    string sql = sb.ToString();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var emailIcon = new ImageButton();
-                            var emailProfile = new Label();
-                            //var deleteProfile = new ImageButton();
-                            var Line = new BoxView();
-                            int EmailId = (int)reader["ProfileEmailId"];
-                            var space = new BoxView();
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        using (SqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                var emailIcon = new ImageButton();
+            //                var emailProfile = new Label();
+            //                //var deleteProfile = new ImageButton();
+            //                var Line = new BoxView();
+            //                int EmailId = (int)reader["ProfileEmailId"];
+            //                var space = new BoxView();
 
-                            emailIcon.Source = "mail2.png";
-                            emailIcon.WidthRequest = 50;
-                            emailIcon.HeightRequest = 50;
-                            emailIcon.HorizontalOptions = LayoutOptions.Center;
-                            emailIcon.IsEnabled = true;
-                            emailIcon.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));
+            //                emailIcon.Source = "mail2.png";
+            //                emailIcon.WidthRequest = 50;
+            //                emailIcon.HeightRequest = 50;
+            //                emailIcon.HorizontalOptions = LayoutOptions.Center;
+            //                emailIcon.IsEnabled = true;
+            //                emailIcon.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));
 
-                            emailProfile.Text = (string)reader["Name"];
-                            emailProfile.FontSize = 15;
-                            emailProfile.HorizontalTextAlignment = TextAlignment.Center;
-                            emailProfile.FontAttributes = FontAttributes.Bold;
-                            emailProfile.TextColor = Color.Black;
+            //                emailProfile.Text = (string)reader["Name"];
+            //                emailProfile.FontSize = 15;
+            //                emailProfile.HorizontalTextAlignment = TextAlignment.Center;
+            //                emailProfile.FontAttributes = FontAttributes.Bold;
+            //                emailProfile.TextColor = Color.Black;
 
-                            space.HeightRequest = 30;
+            //                space.HeightRequest = 30;
 
-                            /*deleteProfile.Source = "trash2.png";
-                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
-                            deleteProfile.CornerRadius = 15;
-                            deleteProfile.HeightRequest = 30;
-                            deleteProfile.WidthRequest = 30;
-                            deleteProfile.HorizontalOptions = LayoutOptions.End;
-                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
+            //                /*deleteProfile.Source = "trash2.png";
+            //                deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
+            //                deleteProfile.CornerRadius = 15;
+            //                deleteProfile.HeightRequest = 30;
+            //                deleteProfile.WidthRequest = 30;
+            //                deleteProfile.HorizontalOptions = LayoutOptions.End;
+            //                deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
 
-                            //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
-                            if (BoxDefault == true)
-                            {
-                                //deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
-                                emailIcon.BackgroundColor = Color.FromHex("#FEBDA8");
-                            }
-                            else
-                            {
-                                //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                emailIcon.BackgroundColor = Color.FromHex("#FFFFFF");
-                            }
+            //                //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
+            //                if (BoxDefault == true)
+            //                {
+            //                    //deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+            //                    emailIcon.BackgroundColor = Color.FromHex("#FEBDA8");
+            //                }
+            //                else
+            //                {
+            //                    //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
+            //                    emailIcon.BackgroundColor = Color.FromHex("#FFFFFF");
+            //                }
 
-                            //Asignación de caja en columnas
-                            //switch (listProfileNum)
-                            //{
-                            //    case 0:
-                            //        listProfileNum = 2;
+            //                //Asignación de caja en columnas
+            //                //switch (listProfileNum)
+            //                //{
+            //                //    case 0:
+            //                //        listProfileNum = 2;
 
-                            //        ProfilesList1.Children.Add(emailIcon);
-                            //        ProfilesList1.Children.Add(emailProfile);
-                            //        ProfilesList1.Children.Add(space);
-                            //        //ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
+            //                //        ProfilesList1.Children.Add(emailIcon);
+            //                //        ProfilesList1.Children.Add(emailProfile);
+            //                //        ProfilesList1.Children.Add(space);
+            //                //        //ProfilesList1.Children.Add(deleteProfile);
+            //                //        break;
 
-                            //    case 1:
-                            //        listProfileNum = 2;
+            //                //    case 1:
+            //                //        listProfileNum = 2;
 
-                            //        ProfilesList1.Children.Add(emailIcon);
-                            //        ProfilesList1.Children.Add(emailProfile);
-                            //        ProfilesList1.Children.Add(space);
-                            //        //ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
+            //                //        ProfilesList1.Children.Add(emailIcon);
+            //                //        ProfilesList1.Children.Add(emailProfile);
+            //                //        ProfilesList1.Children.Add(space);
+            //                //        //ProfilesList1.Children.Add(deleteProfile);
+            //                //        break;
 
-                            //    case 2:
-                            //        listProfileNum = 3;
+            //                //    case 2:
+            //                //        listProfileNum = 3;
 
-                            //        ProfilesList2.Children.Add(emailIcon);
-                            //        ProfilesList2.Children.Add(emailProfile);
-                            //        ProfilesList2.Children.Add(space);
-                            //        //ProfilesList2.Children.Add(deleteProfile);
-                            //        break;
+            //                //        ProfilesList2.Children.Add(emailIcon);
+            //                //        ProfilesList2.Children.Add(emailProfile);
+            //                //        ProfilesList2.Children.Add(space);
+            //                //        //ProfilesList2.Children.Add(deleteProfile);
+            //                //        break;
 
-                            //    case 3:
-                            //        listProfileNum = 1;
+            //                //    case 3:
+            //                //        listProfileNum = 1;
 
-                            //        ProfilesList3.Children.Add(emailIcon);
-                            //        ProfilesList3.Children.Add(emailProfile);
-                            //        ProfilesList3.Children.Add(space);
-                            //        //ProfilesList3.Children.Add(deleteProfile);
-                            //        break;
+            //                //        ProfilesList3.Children.Add(emailIcon);
+            //                //        ProfilesList3.Children.Add(emailProfile);
+            //                //        ProfilesList3.Children.Add(space);
+            //                //        //ProfilesList3.Children.Add(deleteProfile);
+            //                //        break;
 
-                            //    default:
-                            //        break;
-                            //}
-                        }
-                    }
-                    connection.Close();
-                }
-            }
+            //                //    default:
+            //                //        break;
+            //                //}
+            //            }
+            //        }
+            //        connection.Close();
+            //    }
+            //}
 
             //Consulta para obtener Perfiles de redes sociales
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -457,151 +458,151 @@
                             var space = new BoxView();
 
                             //Aquí se deben agregar las diferentes variables de redes sociales que se agreguen en el futúro
-                            switch (SMType)
-                            {
-                                case "Facebook":
-                                    SMIcon.Source = "facebook2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //switch (SMType)
+                            //{
+                            //    case "Facebook":
+                            //        SMIcon.Source = "facebook2.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Twitter":
-                                    SMIcon.Source = "twitter2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    case "Twitter":
+                            //        SMIcon.Source = "twitter2.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Instagram":
-                                    SMIcon.Source = "instagramlogo2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    case "Instagram":
+                            //        SMIcon.Source = "instagramlogo2.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Snapchat":
-                                    SMIcon.Source = "snapchat2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    case "Snapchat":
+                            //        SMIcon.Source = "snapchat2.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "LinkedIn":
-                                    SMIcon.Source = "linkedin2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    case "LinkedIn":
+                            //        SMIcon.Source = "linkedin2.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "TikTok":
-                                    SMIcon.Source = "tiktok2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    case "TikTok":
+                            //        SMIcon.Source = "tiktok2.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Youtube":
-                                    SMIcon.Source = "youtube2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    case "Youtube":
+                            //        SMIcon.Source = "youtube2.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Spotify":
-                                    SMIcon.Source = "spotify2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    case "Spotify":
+                            //        SMIcon.Source = "spotify2.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Twitch":
-                                    SMIcon.Source = "twitch2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    case "Twitch":
+                            //        SMIcon.Source = "twitch2.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "WebPage":
-                                    SMIcon.Source = "networks_icon.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    case "WebPage":
+                            //        SMIcon.Source = "networks_icon.png";
+                            //        SMIcon.WidthRequest = 50;
+                            //        SMIcon.HeightRequest = 50;
+                            //        SMIcon.HorizontalOptions = LayoutOptions.Center;
+                            //        SMIcon.IsEnabled = true;
+                            //        SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
 
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                default:
-                                    break;
-                            }
+                            //        SMProfileName.Text = (string)reader["ProfileName"];
+                            //        SMProfileName.FontSize = 15;
+                            //        SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
+                            //        SMProfileName.FontAttributes = FontAttributes.Bold;
+                            //        SMProfileName.TextColor = Color.Black;
+                            //        break;
+                            //    default:
+                            //        break;
+                            //}
 
                             space.HeightRequest = 30;
 
@@ -674,109 +675,109 @@
             }
 
             //Consulta para obtener Whatsapp
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(queryGetWhatsapp);
-                string sql = sb.ToString();
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    sb = new System.Text.StringBuilder();
+            //    sb.Append(queryGetWhatsapp);
+            //    string sql = sb.ToString();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var whatsappIcon = new ImageButton();
-                            var whatsappName = new Label();
-                            //var deleteProfile = new ImageButton();
-                            var Line = new BoxView();
-                            int WhatsappId = (int)reader["ProfileWhatsappId"];
-                            var space = new BoxView();
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        using (SqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                var whatsappIcon = new ImageButton();
+            //                var whatsappName = new Label();
+            //                //var deleteProfile = new ImageButton();
+            //                var Line = new BoxView();
+            //                int WhatsappId = (int)reader["ProfileWhatsappId"];
+            //                var space = new BoxView();
 
-                            whatsappIcon.Source = "whatsapp2.png";
-                            whatsappIcon.WidthRequest = 50;
-                            whatsappIcon.HeightRequest = 50;
-                            whatsappIcon.HorizontalOptions = LayoutOptions.Center;
-                            whatsappIcon.IsEnabled = true;
-                            whatsappIcon.Clicked += new EventHandler((sender, e) => DeleteBoxWhatsapp(sender, e, BoxId, WhatsappId));
+            //                whatsappIcon.Source = "whatsapp2.png";
+            //                whatsappIcon.WidthRequest = 50;
+            //                whatsappIcon.HeightRequest = 50;
+            //                whatsappIcon.HorizontalOptions = LayoutOptions.Center;
+            //                whatsappIcon.IsEnabled = true;
+            //                whatsappIcon.Clicked += new EventHandler((sender, e) => DeleteBoxWhatsapp(sender, e, BoxId, WhatsappId));
 
-                            whatsappName.Text = (string)reader["Name"];
-                            whatsappName.FontSize = 15;
-                            whatsappName.HorizontalTextAlignment = TextAlignment.Center;
-                            whatsappName.FontAttributes = FontAttributes.Bold;
-                            whatsappName.TextColor = Color.Black;
+            //                whatsappName.Text = (string)reader["Name"];
+            //                whatsappName.FontSize = 15;
+            //                whatsappName.HorizontalTextAlignment = TextAlignment.Center;
+            //                whatsappName.FontAttributes = FontAttributes.Bold;
+            //                whatsappName.TextColor = Color.Black;
 
-                            space.HeightRequest = 30;
+            //                space.HeightRequest = 30;
 
-                            /*deleteProfile.Source = "trash2.png";
-                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
-                            deleteProfile.CornerRadius = 15;
-                            deleteProfile.HeightRequest = 30;
-                            deleteProfile.WidthRequest = 30;
-                            deleteProfile.HorizontalOptions = LayoutOptions.End;
-                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));*/
+            //                /*deleteProfile.Source = "trash2.png";
+            //                deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
+            //                deleteProfile.CornerRadius = 15;
+            //                deleteProfile.HeightRequest = 30;
+            //                deleteProfile.WidthRequest = 30;
+            //                deleteProfile.HorizontalOptions = LayoutOptions.End;
+            //                deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));*/
 
-                            //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
-                            if (BoxDefault == true)
-                            {
-                                //deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
-                                whatsappIcon.BackgroundColor = Color.FromHex("#FEBDA8");
-                            }
-                            else
-                            {
-                                //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                whatsappIcon.BackgroundColor = Color.FromHex("#FFFFFF" +
-                                    "");
-                            }
+            //                //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
+            //                if (BoxDefault == true)
+            //                {
+            //                    //deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
+            //                    whatsappIcon.BackgroundColor = Color.FromHex("#FEBDA8");
+            //                }
+            //                else
+            //                {
+            //                    //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
+            //                    whatsappIcon.BackgroundColor = Color.FromHex("#FFFFFF" +
+            //                        "");
+            //                }
 
-                            //Asignación de caja en columnas
-                            //switch (listProfileNum)
-                            //{
-                            //    case 0:
-                            //        listProfileNum = 2;
+            //                //Asignación de caja en columnas
+            //                //switch (listProfileNum)
+            //                //{
+            //                //    case 0:
+            //                //        listProfileNum = 2;
 
-                            //        ProfilesList1.Children.Add(whatsappIcon);
-                            //        ProfilesList1.Children.Add(whatsappName);
-                            //        ProfilesList1.Children.Add(space);
-                            //        //ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
+            //                //        ProfilesList1.Children.Add(whatsappIcon);
+            //                //        ProfilesList1.Children.Add(whatsappName);
+            //                //        ProfilesList1.Children.Add(space);
+            //                //        //ProfilesList1.Children.Add(deleteProfile);
+            //                //        break;
 
-                            //    case 1:
-                            //        listProfileNum = 2;
+            //                //    case 1:
+            //                //        listProfileNum = 2;
 
-                            //        ProfilesList1.Children.Add(whatsappIcon);
-                            //        ProfilesList1.Children.Add(whatsappName);
-                            //        ProfilesList1.Children.Add(space);
-                            //        // ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
+            //                //        ProfilesList1.Children.Add(whatsappIcon);
+            //                //        ProfilesList1.Children.Add(whatsappName);
+            //                //        ProfilesList1.Children.Add(space);
+            //                //        // ProfilesList1.Children.Add(deleteProfile);
+            //                //        break;
 
-                            //    case 2:
-                            //        listProfileNum = 3;
+            //                //    case 2:
+            //                //        listProfileNum = 3;
 
-                            //        ProfilesList2.Children.Add(whatsappIcon);
-                            //        ProfilesList2.Children.Add(whatsappName);
-                            //        ProfilesList2.Children.Add(space);
-                            //        //ProfilesList2.Children.Add(deleteProfile);
-                            //        break;
+            //                //        ProfilesList2.Children.Add(whatsappIcon);
+            //                //        ProfilesList2.Children.Add(whatsappName);
+            //                //        ProfilesList2.Children.Add(space);
+            //                //        //ProfilesList2.Children.Add(deleteProfile);
+            //                //        break;
 
-                            //    case 3:
-                            //        listProfileNum = 1;
+            //                //    case 3:
+            //                //        listProfileNum = 1;
 
-                            //        ProfilesList3.Children.Add(whatsappIcon);
-                            //        ProfilesList3.Children.Add(whatsappName);
-                            //        ProfilesList3.Children.Add(space);
-                            //        //ProfilesList3.Children.Add(deleteProfile);
-                            //        break;
+            //                //        ProfilesList3.Children.Add(whatsappIcon);
+            //                //        ProfilesList3.Children.Add(whatsappName);
+            //                //        ProfilesList3.Children.Add(space);
+            //                //        //ProfilesList3.Children.Add(deleteProfile);
+            //                //        break;
 
-                            //    default:
-                            //        break;
-                            //}
-                        }
-                    }
-                    connection.Close();
-                }
-            }
+            //                //    default:
+            //                //        break;
+            //                //}
+            //            }
+            //        }
+            //        connection.Close();
+            //    }
+            //}
 
             //Marcar o desmarcar la box predeterminada
             void CheckDefaultBox(object sender, EventArgs e)
@@ -1535,129 +1536,129 @@
                 idBox_Whatsapp.Box_ProfileWhatsappId);
         }
 
-        #region LastCode
-        async private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)
-        {
-            //Borrar la relación de la box con el teléfono
-            string queryDeleteBoxPhone = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId + " and dbo.Box_ProfilePhone.ProfilePhoneId = " + _PhoneId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
+        //#region LastCode
+        //async private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)
+        //{
+        //    //Borrar la relación de la box con el teléfono
+        //    string queryDeleteBoxPhone = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId + " and dbo.Box_ProfilePhone.ProfilePhoneId = " + _PhoneId;
+        //    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+        //    //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+        //    StringBuilder sb;
 
-            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
+        //    bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
 
-            if (response == true)
-            {
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryDeleteBoxPhone);
-                    string sql = sb.ToString();
+        //    if (response == true)
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
+        //        {
+        //            sb = new System.Text.StringBuilder();
+        //            sb.Append(queryDeleteBoxPhone);
+        //            string sql = sb.ToString();
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
-                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-            }
-        }
+        //            using (SqlCommand command = new SqlCommand(sql, connection))
+        //            {
+        //                connection.Open();
+        //                command.ExecuteNonQuery();
+        //                connection.Close();
+        //            }
+        //        }
+        //        MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
+        //        Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+        //    }
+        //}
 
-        async private void DeleteBoxEmail(object sender, EventArgs e, int _BoxId, int _EmailId)
-        {
-            //Borrar la relación de la box con el correo
-            string queryDeleteBoxEmail = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId + " and dbo.Box_ProfileEmail.ProfileEmailId = " + _EmailId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
+        //async private void DeleteBoxEmail(object sender, EventArgs e, int _BoxId, int _EmailId)
+        //{
+        //    //Borrar la relación de la box con el correo
+        //    string queryDeleteBoxEmail = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId + " and dbo.Box_ProfileEmail.ProfileEmailId = " + _EmailId;
+        //    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+        //    //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+        //    StringBuilder sb;
+        //    bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
 
-            if (response == true)
-            {
+        //    if (response == true)
+        //    {
 
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryDeleteBoxEmail);
-                    string sql = sb.ToString();
+        //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
+        //        {
+        //            sb = new System.Text.StringBuilder();
+        //            sb.Append(queryDeleteBoxEmail);
+        //            string sql = sb.ToString();
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
-                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-            }
-        }
+        //            using (SqlCommand command = new SqlCommand(sql, connection))
+        //            {
+        //                connection.Open();
+        //                command.ExecuteNonQuery();
+        //                connection.Close();
+        //            }
+        //        }
+        //        MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
+        //        Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+        //    }
+        //}
 
-        async private void DeleteBoxSM(object sender, EventArgs e, int _BoxId, int _SMId)
-        {
-            //Borrar la relación de la box con el correo
-            string queryDeleteBoxSM = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId + " and dbo.Box_ProfileSM.ProfileMSId = " + _SMId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
+        //async private void DeleteBoxSM(object sender, EventArgs e, int _BoxId, int _SMId)
+        //{
+        //    //Borrar la relación de la box con el correo
+        //    string queryDeleteBoxSM = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId + " and dbo.Box_ProfileSM.ProfileMSId = " + _SMId;
+        //    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+        //    //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+        //    StringBuilder sb;
+        //    bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
 
-            if (response == true)
-            {
+        //    if (response == true)
+        //    {
 
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryDeleteBoxSM);
-                    string sql = sb.ToString();
+        //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
+        //        {
+        //            sb = new System.Text.StringBuilder();
+        //            sb.Append(queryDeleteBoxSM);
+        //            string sql = sb.ToString();
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
-                //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-                //await Navigation.PushAsync(new DetailsBoxPage(_BoxId));
-            }
-        }
+        //            using (SqlCommand command = new SqlCommand(sql, connection))
+        //            {
+        //                connection.Open();
+        //                command.ExecuteNonQuery();
+        //                connection.Close();
+        //            }
+        //        }
+        //        //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+        //        MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
+        //        Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+        //        //await Navigation.PushAsync(new DetailsBoxPage(_BoxId));
+        //    }
+        //}
 
-        async private void DeleteBoxWhatsapp(object sender, EventArgs e, int _BoxId, int _WhatsappId)
-        {
-            //Borrar la relación de la box con el teléfono
-            string queryDeleteBoxWhatsapp = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId + " and dbo.Box_ProfileWhatsapp.ProfileWhatsappId = " + _WhatsappId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
+        //async private void DeleteBoxWhatsapp(object sender, EventArgs e, int _BoxId, int _WhatsappId)
+        //{
+        //    //Borrar la relación de la box con el teléfono
+        //    string queryDeleteBoxWhatsapp = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId + " and dbo.Box_ProfileWhatsapp.ProfileWhatsappId = " + _WhatsappId;
+        //    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+        //    //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+        //    StringBuilder sb;
 
-            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
+        //    bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
 
-            if (response == true)
-            {
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryDeleteBoxWhatsapp);
-                    string sql = sb.ToString();
+        //    if (response == true)
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
+        //        {
+        //            sb = new System.Text.StringBuilder();
+        //            sb.Append(queryDeleteBoxWhatsapp);
+        //            string sql = sb.ToString();
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
-                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-            }
-        }
-        #endregion
+        //            using (SqlCommand command = new SqlCommand(sql, connection))
+        //            {
+        //                connection.Open();
+        //                command.ExecuteNonQuery();
+        //                connection.Close();
+        //            }
+        //        }
+        //        MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
+        //        Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
+        //    }
+        //}
+        //#endregion
 
         void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {

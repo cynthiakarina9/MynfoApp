@@ -358,6 +358,7 @@
             MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
             MainViewModel.GetInstance().ListForeignBox.GetList();
             //Enviar a detalles de la box foranea cuando se inserta
+            MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(foreingBox, true);
             App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
         }
         #endregion
