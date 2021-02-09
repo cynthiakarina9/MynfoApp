@@ -4,7 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesBYPESMPage"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid>
@@ -34,9 +34,8 @@
                         <RowDefinition />
                         <RowDefinition Height="120"/>
                     </Grid.RowDefinitions>
-
+                    
                     <!--Titulo-->
-
                     <Label 
                         Grid.Row = "0" 
                         Text = "{i18n:Translate MyProfiles}"
@@ -46,8 +45,6 @@
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions = "EndAndExpand"  
                         Margin = "0,5,0,15"/>
-
-                    <!--End Titulo-->
                     <ActivityIndicator
                         Grid.Row = "1"
                         IsRunning = "{Binding IsRunning}"
@@ -90,16 +87,18 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding Name}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
                                             Grid.Column="2"
                                             Text="{Binding Email, Mode=TwoWay}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             FontSize="10"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -144,16 +143,18 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding Name}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
                                             Grid.Column="2"
                                             Text="{Binding Number, Mode=TwoWay}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             FontSize="15"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -198,10 +199,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -246,10 +248,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -294,10 +297,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -342,10 +346,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
+                                        <input:CheckBox
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -390,10 +395,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -438,10 +444,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -486,10 +493,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -534,10 +542,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -582,10 +591,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -631,17 +641,18 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding Name}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
                                             Grid.Column="2"
                                             FontSize="15"
                                             Text="{Binding Number, Mode=TwoWay}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />
@@ -686,10 +697,11 @@
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <input:CheckBox 
+                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             IsEnabled="False"
                                             Grid.Column="3"
                                             IsChecked="{Binding Exist}" />

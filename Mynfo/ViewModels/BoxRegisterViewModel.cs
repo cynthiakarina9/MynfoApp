@@ -1,16 +1,15 @@
 ﻿namespace Mynfo.ViewModels
 {
+    using Domain;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
-    using Domain;
+    using Mynfo.Models;
     using Services;
+    using System;
+    using System.Data.SqlClient;
     using System.Windows.Input;
     using Views;
     using Xamarin.Forms;
-    using System;
-    using System.Data.SqlClient;
-    using Mynfo.Models;
-    using SQLite;
 
     public class BoxRegisterViewModel : BaseViewModel
     {
@@ -91,29 +90,44 @@
             bool defaultBoxExists = false;
             Box box;
             BoxLocal boxLocal;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            string QueryToFindDefaultboxes = "select * from dbo.Boxes where dbo.Boxes.BoxDefault = 1 and dbo.Boxes.UserId = "
-                                                + mainViewModel.User.UserId;
+            //string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            //string QueryToFindDefaultboxes = "select * from dbo.Boxes where dbo.Boxes.BoxDefault = 1 and dbo.Boxes.UserId = "
+            //                                    + mainViewModel.User.UserId;
 
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    sb = new System.Text.StringBuilder();
+            //    sb.Append(QueryToFindDefaultboxes);
+            //    string sql = sb.ToString();
+
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        using (SqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                defaultBoxExists = true;
+            //            }
+            //        }
+            //        connection.Close();
+            //    }
+            //}
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var BoxList = await this.apiService.GetBoxDefault<Box>(
+                apiSecurity,
+                "/api",
+                "/Boxes/GetBoxDefault",
+                MainViewModel.GetInstance().User.UserId);
+            if(BoxList == default)
             {
-                sb = new System.Text.StringBuilder();
-                sb.Append(QueryToFindDefaultboxes);
-                string sql = sb.ToString();
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            defaultBoxExists = true;
-                        }
-                    }
-                    connection.Close();
-                }
+                defaultBoxExists = false;
             }
+            else
+            {
+                defaultBoxExists = true;
+            }
+
             if (defaultBoxExists)
             {
                 box = new Box
@@ -136,8 +150,6 @@
             }
 
 
-
-            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var response = await this.apiService.Post2(
                 apiSecurity,
                 "/api",
@@ -158,58 +170,58 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            if (!defaultBoxExists)
-            {
-                string QueryToFindLastBoxCreated = "SELECT MAX(dbo.Boxes.BoxId) as BoxId FROM dbo.Boxes WHERE dbo.Boxes.UserId = +"
-                                                + mainViewModel.User.UserId;
-                int lastBoxId = 0;
+            //if (!defaultBoxExists)
+            //{
+            //    string QueryToFindLastBoxCreated = "SELECT MAX(dbo.Boxes.BoxId) as BoxId FROM dbo.Boxes WHERE dbo.Boxes.UserId = +"
+            //                                    + mainViewModel.User.UserId;
+            //    int lastBoxId = 0;
 
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(QueryToFindLastBoxCreated);
-                    string sql = sb.ToString();
+            //    using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //    {
+            //        sb = new System.Text.StringBuilder();
+            //        sb.Append(QueryToFindLastBoxCreated);
+            //        string sql = sb.ToString();
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                lastBoxId = (int)reader["BoxId"];
-                            }
-                        }
-                        connection.Close();
-                    }
-                }
+            //        using (SqlCommand command = new SqlCommand(sql, connection))
+            //        {
+            //            connection.Open();
+            //            using (SqlDataReader reader = command.ExecuteReader())
+            //            {
+            //                while (reader.Read())
+            //                {
+            //                    lastBoxId = (int)reader["BoxId"];
+            //                }
+            //            }
+            //            connection.Close();
+            //        }
+            //    }
 
-                boxLocal = new BoxLocal
-                {
-                    BoxId = lastBoxId,
-                    BoxDefault = true,
-                    Name = this.Name,
-                    UserId = MainViewModel.GetInstance().User.UserId,
-                    Time = boxTime,
-                    FirstName = MainViewModel.GetInstance().User.FirstName,
-                    LastName = MainViewModel.GetInstance().User.LastName,
-                    ImagePath = MainViewModel.GetInstance().User.ImagePath,
-                    UserTypeId = MainViewModel.GetInstance().User.UserTypeId
-                };
+            //    boxLocal = new BoxLocal
+            //    {
+            //        BoxId = lastBoxId,
+            //        BoxDefault = true,
+            //        Name = this.Name,
+            //        UserId = MainViewModel.GetInstance().User.UserId,
+            //        Time = boxTime,
+            //        FirstName = MainViewModel.GetInstance().User.FirstName,
+            //        LastName = MainViewModel.GetInstance().User.LastName,
+            //        ImagePath = MainViewModel.GetInstance().User.ImagePath,
+            //        UserTypeId = MainViewModel.GetInstance().User.UserTypeId
+            //    };
 
 
-                //Crear box local predeterminada
-                using (var conn = new SQLite.SQLiteConnection(App.root_db))
-                {
-                    conn.CreateTable<BoxLocal>();
-                    conn.Insert(boxLocal);
-                }
-                //Crear tabla de perfiles de box local predeterminada
-                using (var conn = new SQLite.SQLiteConnection(App.root_db))
-                {
-                    conn.CreateTable<ProfileLocal>();
-                }
-            }
+            //    //Crear box local predeterminada
+            //    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            //    {
+            //        conn.CreateTable<BoxLocal>();
+            //        conn.Insert(boxLocal);
+            //    }
+            //    //Crear tabla de perfiles de box local predeterminada
+            //    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            //    {
+            //        conn.CreateTable<ProfileLocal>();
+            //    }
+            //}
 
             this.Name = string.Empty;
             //mainViewModel.DetailsBox = new DetailsBoxViewModel();
@@ -217,6 +229,7 @@
             mainViewModel.Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+
         public ICommand BackHomeCommand
         {
             get
@@ -224,14 +237,11 @@
                 return new RelayCommand(BackHome);
             }
         }
-
-        private async void BackHome()
+        private  void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
         #endregion
-
-
     }
 }

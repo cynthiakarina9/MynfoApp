@@ -6,6 +6,7 @@
     using Mynfo.Resources;
     using Mynfo.Services;
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Extensions;
     using System;
     using System.Collections.ObjectModel;
     using System.Data.SqlClient;
@@ -15,7 +16,7 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailsBoxEdithPage : ContentPage
+    public partial class DetailsBoxEdithPage
     {
         #region Services
         ApiService apiService;
@@ -39,6 +40,8 @@
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             apiService = new ApiService();
+            OSAppTheme currentTheme = Application.Current.RequestedTheme;
+            FullBackGround.CloseWhenBackgroundIsClicked = true;
             ProfilesSelected = new ObservableCollection<ProfileLocal>();
             int BoxId = _boxId;
             var boxLocal = new BoxLocal();
@@ -153,58 +156,36 @@
             //Definir color de fondo con respecto a si la box es predeterminada
             if (BoxDefault == true)
             {
-                FullBackGround.BackgroundColor = Color.FromHex("#FEBDA8");
+                BackG.BackgroundColor = Color.FromHex("#FEBDA8");
                 bxBtnHome.BackgroundColor = Color.FromHex("#FEBDA8");
                 BxSaveName.BackgroundColor = Color.FromHex("#FEBDA8");
                 BxBtnDelete.BackgroundColor = Color.FromHex("#FEBDA8");
+                if (currentTheme == OSAppTheme.Dark)
+                {
+                    DeleteButton.Source = "trash3";
+                }
+                else
+                {
+                    DeleteButton.Source = "trash";
+                }
             }
             else
             {
-                FullBackGround.BackgroundColor = Color.FromHex("#FFFFFF");
+                BackG.BackgroundColor = Color.FromHex("#FFFFFF");
                 bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
                 BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
                 BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
+                DeleteButton.Source = "trash2";
             }
 
 
-            //Navegación a ventana de perfiles
-            //BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault, BoxName));
+            //Acción de boton de borrado
+            DeleteButton.Clicked += new EventHandler((sender, e) => deleteBox(sender, e, BoxId, UserID, BoxDefault));
 
-            //Creación del botón para volver a home
-            bxBtnHome.BackgroundColor = Color.Transparent;
-            bxBtnHome.Source = "back.png";
-            bxBtnHome.WidthRequest = 50;
-            bxBtnHome.HeightRequest = 50;
-            bxBtnHome.Clicked += ToolbarItem_Clicked;
 
-            HomeButton.Children.Add(bxBtnHome);
+            //Acción de botón actualización de Box
+            BoxUpdateBtn.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));
 
-            //Creación de botón para borrar box
-            BxBtnDelete.BackgroundColor = Color.Transparent;
-            BxBtnDelete.Source = "trash.png";
-            BxBtnDelete.WidthRequest = 50;
-            BxBtnDelete.HeightRequest = 50;
-            BxBtnDelete.Clicked += new EventHandler((sender, e) => deleteBox(sender, e, BoxId, UserID, BoxDefault));
-
-            DeleteButton.Children.Add(BxBtnDelete);
-
-            //Creación de Entry para colocar nombre de la box
-            //BxNameEntry.FontSize = 25;
-            //BxNameEntry.Text = BoxName;
-            //BxNameEntry.HorizontalTextAlignment = TextAlignment.Center;
-            //BxNameEntry.WidthRequest = 200;
-            //BxNameEntry.TextColor = Color.Black;
-            //BxNameEntry.FontAttributes = FontAttributes.Bold;
-            //BxNameEntry.BackgroundColor = Color.Transparent;
-            //BoxNameEntry.Children.Add(BxNameEntry);
-
-            //Creación de botón para actualizar nombre de la Box
-            BxSaveName.BackgroundColor = Color.FromHex("#FF5521");
-            BxSaveName.HeightRequest = 50;
-            BxSaveName.Text = Languages.Save;
-            BxSaveName.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));
-
-            BoxUpdateBtn.Children.Add(BxSaveName);
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
@@ -250,7 +231,7 @@
                             phoneIcon.HeightRequest = 50;
                             phoneIcon.HorizontalOptions = LayoutOptions.Center;
                             phoneIcon.IsEnabled = true;
-                            phoneIcon.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));
+                            //phoneIcon.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));
 
                             phoneName.Text = (string)reader["Name"];
                             phoneName.FontSize = 15;
@@ -259,14 +240,6 @@
                             phoneName.TextColor = Color.Black;
 
                             space.HeightRequest = 30;
-
-                            /*deleteProfile.Source = "trash2.png";
-                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
-                            deleteProfile.CornerRadius = 15;
-                            deleteProfile.HeightRequest = 30;
-                            deleteProfile.WidthRequest = 30;
-                            deleteProfile.HorizontalOptions = LayoutOptions.End;
-                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));*/
 
                             //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
                             if (BoxDefault == true)
@@ -280,157 +253,12 @@
                                 phoneIcon.BackgroundColor = Color.FromHex("#FFFFFF");
                             }
 
-                            //Asignación de caja en columnas
-                            //switch (listProfileNum)
-                            //{
-                            //    case 0:
-                            //        listProfileNum = 2;
-
-                            //        ProfilesList1.Children.Add(phoneIcon);
-                            //        ProfilesList1.Children.Add(phoneName);
-                            //        ProfilesList1.Children.Add(space);
-                            //        //ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 1:
-                            //        listProfileNum = 2;
-
-                            //        ProfilesList1.Children.Add(phoneIcon);
-                            //        ProfilesList1.Children.Add(phoneName);
-                            //        ProfilesList1.Children.Add(space);
-                            //        // ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 2:
-                            //        listProfileNum = 3;
-
-                            //        ProfilesList2.Children.Add(phoneIcon);
-                            //        ProfilesList2.Children.Add(phoneName);
-                            //        ProfilesList2.Children.Add(space);
-                            //        //ProfilesList2.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 3:
-                            //        listProfileNum = 1;
-
-                            //        ProfilesList3.Children.Add(phoneIcon);
-                            //        ProfilesList3.Children.Add(phoneName);
-                            //        ProfilesList3.Children.Add(space);
-                            //        //ProfilesList3.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    default:
-                            //        break;
-                            //}
                         }
                     }
                     connection.Close();
                 }
             }
 
-            //Consulta para obtener Emails
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(queryGetEmails);
-                string sql = sb.ToString();
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var emailIcon = new ImageButton();
-                            var emailProfile = new Label();
-                            //var deleteProfile = new ImageButton();
-                            var Line = new BoxView();
-                            int EmailId = (int)reader["ProfileEmailId"];
-                            var space = new BoxView();
-
-                            emailIcon.Source = "mail2.png";
-                            emailIcon.WidthRequest = 50;
-                            emailIcon.HeightRequest = 50;
-                            emailIcon.HorizontalOptions = LayoutOptions.Center;
-                            emailIcon.IsEnabled = true;
-                            emailIcon.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));
-
-                            emailProfile.Text = (string)reader["Name"];
-                            emailProfile.FontSize = 15;
-                            emailProfile.HorizontalTextAlignment = TextAlignment.Center;
-                            emailProfile.FontAttributes = FontAttributes.Bold;
-                            emailProfile.TextColor = Color.Black;
-
-                            space.HeightRequest = 30;
-
-                            /*deleteProfile.Source = "trash2.png";
-                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
-                            deleteProfile.CornerRadius = 15;
-                            deleteProfile.HeightRequest = 30;
-                            deleteProfile.WidthRequest = 30;
-                            deleteProfile.HorizontalOptions = LayoutOptions.End;
-                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
-
-                            //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
-                            if (BoxDefault == true)
-                            {
-                                //deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
-                                emailIcon.BackgroundColor = Color.FromHex("#FEBDA8");
-                            }
-                            else
-                            {
-                                //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                emailIcon.BackgroundColor = Color.FromHex("#FFFFFF");
-                            }
-
-                            //Asignación de caja en columnas
-                            //switch (listProfileNum)
-                            //{
-                            //    case 0:
-                            //        listProfileNum = 2;
-
-                            //        ProfilesList1.Children.Add(emailIcon);
-                            //        ProfilesList1.Children.Add(emailProfile);
-                            //        ProfilesList1.Children.Add(space);
-                            //        //ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 1:
-                            //        listProfileNum = 2;
-
-                            //        ProfilesList1.Children.Add(emailIcon);
-                            //        ProfilesList1.Children.Add(emailProfile);
-                            //        ProfilesList1.Children.Add(space);
-                            //        //ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 2:
-                            //        listProfileNum = 3;
-
-                            //        ProfilesList2.Children.Add(emailIcon);
-                            //        ProfilesList2.Children.Add(emailProfile);
-                            //        ProfilesList2.Children.Add(space);
-                            //        //ProfilesList2.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 3:
-                            //        listProfileNum = 1;
-
-                            //        ProfilesList3.Children.Add(emailIcon);
-                            //        ProfilesList3.Children.Add(emailProfile);
-                            //        ProfilesList3.Children.Add(space);
-                            //        //ProfilesList3.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    default:
-                            //        break;
-                            //}
-                        }
-                    }
-                    connection.Close();
-                }
-            }
 
             //Consulta para obtener Perfiles de redes sociales
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -455,163 +283,7 @@
                             string SMType = (string)reader["Name"];
                             var space = new BoxView();
 
-                            //Aquí se deben agregar las diferentes variables de redes sociales que se agreguen en el futúro
-                            switch (SMType)
-                            {
-                                case "Facebook":
-                                    SMIcon.Source = "facebook2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Twitter":
-                                    SMIcon.Source = "twitter2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Instagram":
-                                    SMIcon.Source = "instagramlogo2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Snapchat":
-                                    SMIcon.Source = "snapchat2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "LinkedIn":
-                                    SMIcon.Source = "linkedin2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "TikTok":
-                                    SMIcon.Source = "tiktok2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Youtube":
-                                    SMIcon.Source = "youtube2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Spotify":
-                                    SMIcon.Source = "spotify2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "Twitch":
-                                    SMIcon.Source = "twitch2.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                case "WebPage":
-                                    SMIcon.Source = "networks_icon.png";
-                                    SMIcon.WidthRequest = 50;
-                                    SMIcon.HeightRequest = 50;
-                                    SMIcon.HorizontalOptions = LayoutOptions.Center;
-                                    SMIcon.IsEnabled = true;
-                                    SMIcon.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));
-
-                                    SMProfileName.Text = (string)reader["ProfileName"];
-                                    SMProfileName.FontSize = 15;
-                                    SMProfileName.HorizontalTextAlignment = TextAlignment.Center;
-                                    SMProfileName.FontAttributes = FontAttributes.Bold;
-                                    SMProfileName.TextColor = Color.Black;
-                                    break;
-                                default:
-                                    break;
-                            }
-
                             space.HeightRequest = 30;
-
-                            /*deleteProfile.Source = "trash2.png";
-                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
-                            deleteProfile.CornerRadius = 15;
-                            deleteProfile.HeightRequest = 30;
-                            deleteProfile.WidthRequest = 30;
-                            deleteProfile.HorizontalOptions = LayoutOptions.End;
-                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxSM(sender, e, BoxId, SMId));*/
-
                             //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
                             if (BoxDefault == true)
                             {
@@ -624,153 +296,6 @@
                                 SMIcon.BackgroundColor = Color.FromHex("#FFFFFF");
                             }
 
-                            //Asignación de caja en columnas
-                            //switch (listProfileNum)
-                            //{
-                            //    case 0:
-                            //        listProfileNum = 2;
-
-                            //        ProfilesList1.Children.Add(SMIcon);
-                            //        ProfilesList1.Children.Add(SMProfileName);
-                            //        ProfilesList1.Children.Add(space);
-                            //        //ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 1:
-                            //        listProfileNum = 2;
-
-                            //        ProfilesList1.Children.Add(SMIcon);
-                            //        ProfilesList1.Children.Add(SMProfileName);
-                            //        ProfilesList1.Children.Add(space);
-                            //        //ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 2:
-                            //        listProfileNum = 3;
-
-                            //        ProfilesList2.Children.Add(SMIcon);
-                            //        ProfilesList2.Children.Add(SMProfileName);
-                            //        ProfilesList2.Children.Add(space);
-                            //        //ProfilesList2.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 3:
-                            //        listProfileNum = 1;
-
-                            //        ProfilesList3.Children.Add(SMIcon);
-                            //        ProfilesList3.Children.Add(SMProfileName);
-                            //        ProfilesList3.Children.Add(space);
-                            //        //ProfilesList3.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    default:
-                            //        break;
-                            //}
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-
-            //Consulta para obtener Whatsapp
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(queryGetWhatsapp);
-                string sql = sb.ToString();
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var whatsappIcon = new ImageButton();
-                            var whatsappName = new Label();
-                            //var deleteProfile = new ImageButton();
-                            var Line = new BoxView();
-                            int WhatsappId = (int)reader["ProfileWhatsappId"];
-                            var space = new BoxView();
-
-                            whatsappIcon.Source = "whatsapp2.png";
-                            whatsappIcon.WidthRequest = 50;
-                            whatsappIcon.HeightRequest = 50;
-                            whatsappIcon.HorizontalOptions = LayoutOptions.Center;
-                            whatsappIcon.IsEnabled = true;
-                            whatsappIcon.Clicked += new EventHandler((sender, e) => DeleteBoxWhatsapp(sender, e, BoxId, WhatsappId));
-
-                            whatsappName.Text = (string)reader["Name"];
-                            whatsappName.FontSize = 15;
-                            whatsappName.HorizontalTextAlignment = TextAlignment.Center;
-                            whatsappName.FontAttributes = FontAttributes.Bold;
-                            whatsappName.TextColor = Color.Black;
-
-                            space.HeightRequest = 30;
-
-                            /*deleteProfile.Source = "trash2.png";
-                            deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
-                            deleteProfile.CornerRadius = 15;
-                            deleteProfile.HeightRequest = 30;
-                            deleteProfile.WidthRequest = 30;
-                            deleteProfile.HorizontalOptions = LayoutOptions.End;
-                            deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxPhone(sender, e, BoxId, PhoneId));*/
-
-                            //Definir color de fondo de ícono de basura con respecto a si la box es predeterminada
-                            if (BoxDefault == true)
-                            {
-                                //deleteProfile.BackgroundColor = Color.FromHex("#FFAB8F");
-                                whatsappIcon.BackgroundColor = Color.FromHex("#FEBDA8");
-                            }
-                            else
-                            {
-                                //deleteProfile.BackgroundColor = Color.FromHex("#AAAAAA");
-                                whatsappIcon.BackgroundColor = Color.FromHex("#FFFFFF" +
-                                    "");
-                            }
-
-                            //Asignación de caja en columnas
-                            //switch (listProfileNum)
-                            //{
-                            //    case 0:
-                            //        listProfileNum = 2;
-
-                            //        ProfilesList1.Children.Add(whatsappIcon);
-                            //        ProfilesList1.Children.Add(whatsappName);
-                            //        ProfilesList1.Children.Add(space);
-                            //        //ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 1:
-                            //        listProfileNum = 2;
-
-                            //        ProfilesList1.Children.Add(whatsappIcon);
-                            //        ProfilesList1.Children.Add(whatsappName);
-                            //        ProfilesList1.Children.Add(space);
-                            //        // ProfilesList1.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 2:
-                            //        listProfileNum = 3;
-
-                            //        ProfilesList2.Children.Add(whatsappIcon);
-                            //        ProfilesList2.Children.Add(whatsappName);
-                            //        ProfilesList2.Children.Add(space);
-                            //        //ProfilesList2.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    case 3:
-                            //        listProfileNum = 1;
-
-                            //        ProfilesList3.Children.Add(whatsappIcon);
-                            //        ProfilesList3.Children.Add(whatsappName);
-                            //        ProfilesList3.Children.Add(space);
-                            //        //ProfilesList3.Children.Add(deleteProfile);
-                            //        break;
-
-                            //    default:
-                            //        break;
-                            //}
                         }
                     }
                     connection.Close();
@@ -892,76 +417,6 @@
                     }
                 }
 
-                //Consulta para obtener perfiles de redes sociales
-                //using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                //{
-                //    sb = new System.Text.StringBuilder();
-                //    sb.Append(queryGetBoxSMProfiles);
-
-                //    string sql = sb.ToString();
-
-                //    using (SqlCommand command = new SqlCommand(sql, connection))
-                //    {
-                //        connection.Open();
-                //        using (SqlDataReader reader = command.ExecuteReader())
-                //        {
-                //            while (reader.Read())
-                //            {
-                //                ProfileLocal smProfile = new ProfileLocal
-                //                {
-                //                    IdBox = _boxId,
-                //                    UserId = (int)reader["UserId"],
-                //                    ProfileName = (string)reader["ProfileName"],
-                //                    value = (string)reader["link"],
-                //                    ProfileType = (string)reader["Name"]
-                //                };
-                //                //Crear perfil de teléfono de box local predeterminada
-                //                using (var conn = new SQLite.SQLiteConnection(App.root_db))
-                //                {
-                //                    conn.Insert(smProfile);
-                //                }
-                //            }
-                //        }
-
-                //        connection.Close();
-                //    }
-                //}
-
-                //Consulta para obtener perfiles de whatsapp
-                //using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                //{
-                //    sb = new System.Text.StringBuilder();
-                //    sb.Append(queryGetBoxWhatsapp);
-
-                //    string sql = sb.ToString();
-
-                //    using (SqlCommand command = new SqlCommand(sql, connection))
-                //    {
-                //        connection.Open();
-                //        using (SqlDataReader reader = command.ExecuteReader())
-                //        {
-                //            while (reader.Read())
-                //            {
-                //                ProfileLocal whatsappProfile = new ProfileLocal
-                //                {
-                //                    IdBox = _boxId,
-                //                    UserId = (int)reader["UserId"],
-                //                    ProfileName = (string)reader["Name"],
-                //                    value = (string)reader["Number"],
-                //                    ProfileType = "Whatsapp"
-                //                };
-                //                //Crear perfil de teléfono de box local predeterminada
-                //                using (var conn = new SQLite.SQLiteConnection(App.root_db))
-                //                {
-                //                    conn.Insert(whatsappProfile);
-                //                }
-                //            }
-                //        }
-
-                //        connection.Close();
-                //    }
-                //}
-
                 //Consulta para predeterminar la box actual
                 using (SqlConnection connection = new SqlConnection(cadenaConexion))
                 {
@@ -998,10 +453,6 @@
         #endregion
 
         #region Methods
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PopAsync(false);
-        }
 
         async void deleteBox(object sender, EventArgs e, int _BoxId, int _UserId, bool _BoxDefault)
         {
@@ -1326,6 +777,7 @@
                 }
 
                 //Regresar a home
+                await Navigation.PopPopupAsync();
                 var mainViewModel = MainViewModel.GetInstance();
                 mainViewModel.Home = new HomeViewModel();
                 Application.Current.MainPage = new MasterPage();
@@ -1343,24 +795,6 @@
         {
             //Actualizar el nombre de la Box
 
-            //string queryUpdateBoxName = "update dbo.Boxes set Name = '" + _name + "' where dbo.Boxes.UserId = " + _UserId + " and dbo.Boxes.BoxId = " + _BoxId;
-            //string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            ////string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //StringBuilder sb;
-
-            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            //{
-            //    sb = new System.Text.StringBuilder();
-            //    sb.Append(queryUpdateBoxName);
-            //    string sql = sb.ToString();
-
-            //    using (SqlCommand command = new SqlCommand(sql, connection))
-            //    {
-            //        connection.Open();
-            //        command.ExecuteNonQuery();
-            //        connection.Close();
-            //    }
-            //}
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             Box = await this.apiService.GetBox(
@@ -1376,7 +810,7 @@
                 UserId = Box.UserId,
                 Time = Box.Time,
             };
-            MainViewModel.GetInstance().DetailsBoxEdith.EdithBox(box3);
+            await MainViewModel.GetInstance().DetailsBoxEdith.EdithBox(box3);
 
             //BoxName = _name;
 
@@ -1408,7 +842,7 @@
                 }
             }
             
-            App.Navigator.PopAsync();
+            await Navigation.PopPopupAsync();
         }
 
         public async void DeleteProfileEmail(int _box, int _profileEmailId)
@@ -1481,7 +915,7 @@
                     Languages.Error,
                     connection.Message,
                     Languages.Accept);
-                await App.Navigator.PopAsync();
+                await Navigation.PopPopupAsync();
             }
 
             Box_ProfileSM box_ProfileSM = new Box_ProfileSM
@@ -1534,130 +968,6 @@
                 idBox_Whatsapp.Box_ProfileWhatsappId);
         }
 
-        #region LastCode
-        async private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)
-        {
-            //Borrar la relación de la box con el teléfono
-            string queryDeleteBoxPhone = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId + " and dbo.Box_ProfilePhone.ProfilePhoneId = " + _PhoneId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-
-            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
-
-            if (response == true)
-            {
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryDeleteBoxPhone);
-                    string sql = sb.ToString();
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
-                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-            }
-        }
-
-        async private void DeleteBoxEmail(object sender, EventArgs e, int _BoxId, int _EmailId)
-        {
-            //Borrar la relación de la box con el correo
-            string queryDeleteBoxEmail = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId + " and dbo.Box_ProfileEmail.ProfileEmailId = " + _EmailId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
-
-            if (response == true)
-            {
-
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryDeleteBoxEmail);
-                    string sql = sb.ToString();
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
-                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-            }
-        }
-
-        async private void DeleteBoxSM(object sender, EventArgs e, int _BoxId, int _SMId)
-        {
-            //Borrar la relación de la box con el correo
-            string queryDeleteBoxSM = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId + " and dbo.Box_ProfileSM.ProfileMSId = " + _SMId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
-
-            if (response == true)
-            {
-
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryDeleteBoxSM);
-                    string sql = sb.ToString();
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
-                //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-                //await Navigation.PushAsync(new DetailsBoxPage(_BoxId));
-            }
-        }
-
-        async private void DeleteBoxWhatsapp(object sender, EventArgs e, int _BoxId, int _WhatsappId)
-        {
-            //Borrar la relación de la box con el teléfono
-            string queryDeleteBoxWhatsapp = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId + " and dbo.Box_ProfileWhatsapp.ProfileWhatsappId = " + _WhatsappId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb;
-
-            bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
-
-            if (response == true)
-            {
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryDeleteBoxWhatsapp);
-                    string sql = sb.ToString();
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
-                MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-                Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-            }
-        }
-        #endregion
-
         void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //string previous = (e.PreviousSelection.FirstOrDefault() as ProfileLocal)?.Name;
@@ -1684,8 +994,9 @@
                 MainViewModel.GetInstance().DetailsBoxEdith.removeProfileSM(SM);
             }
         }
-        async private void BackHome(object sender, EventArgs e)
+       private void BackHome(object sender, EventArgs e)
         {
+            Navigation.PopAllPopupAsync();
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }

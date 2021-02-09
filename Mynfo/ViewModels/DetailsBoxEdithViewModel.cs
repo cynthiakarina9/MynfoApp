@@ -6,6 +6,8 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.Views;
+    using Rg.Plugins.Popup.Extensions;
+    using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
@@ -147,13 +149,11 @@
             this.IsRunning = false;
             return ProfileEmail;
         }
-
         public void addProfileEmail(ProfileEmail _profileEmail)
         {
             var E = Converter.ToProfileLocalE1(_profileEmail);
             ProfilePerfiles.Add(E);
         }
-
         public void removeProfileEmail(ProfileEmail _profileEmail)
         {
             ProfileLocal E = Converter.ToProfileLocalE1(_profileEmail);
@@ -168,7 +168,6 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
-
         public async void DeleteProfileEmail(int _box, int _profileEmailId)
         {
             var connection = await this.apiService.CheckConnection();
@@ -238,13 +237,11 @@
             this.IsRunning = false;
             return ProfilePhone;
         }
-
         public void addProfilePhone(ProfilePhone _profilePhone)
         {
             var P = Converter.ToProfileLocalP1(_profilePhone);
             ProfilePerfiles.Add(P);
         }
-
         public void removeProfilePhone(ProfilePhone _profilePhone)
         {
             ProfileLocal P = Converter.ToProfileLocalP1(_profilePhone);
@@ -259,7 +256,6 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
-
         public async void DeleteProfilePhone(int _box, int _profilePhoneId)
         {
             var connection = await this.apiService.CheckConnection();
@@ -330,13 +326,11 @@
             this.IsRunning = false;
             return ProfileSM;
         }
-
         public void addProfileSM(ProfileSM _profileSM)
         {
             var SM = Converter.ToProfileLocalSM1(_profileSM);
             ProfilePerfiles.Add(SM);
         }
-
         public void removeProfileSM(ProfileSM _profileSM)
         {
             ProfileLocal SM = Converter.ToProfileLocalSM1(_profileSM);
@@ -351,7 +345,6 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
-
         public async void DeleteProfileSM(int _box, int _profileSMId)
         {
             var connection = await this.apiService.CheckConnection();
@@ -422,13 +415,11 @@
             this.IsRunning = false;
             return ProfileWhatsapp;
         }
-
         public void addProfileW(ProfileWhatsapp _profileW)
         {
             var W = Converter.ToProfileLocalW1(_profileW);
             ProfilePerfiles.Add(W);
         }
-
         public void removeProfileW(ProfileWhatsapp _profileW)
         {
             ProfileLocal W = Converter.ToProfileLocalW1(_profileW);
@@ -443,7 +434,6 @@
             ProfilePerfiles.Remove(Aux);
             var A = ProfilePerfiles.Count;
         }
-
         public async void DeleteProfileWhatsapp(int _box, int _profileWhatsappId)
         {
             var connection = await this.apiService.CheckConnection();
@@ -487,7 +477,6 @@
                 _BoxId);
             return Box;        
         }
-
         public async Task<Box> EdithBox(Box Box)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -502,7 +491,6 @@
             MainViewModel.GetInstance().Home.UpdateList(Box);
             return Box;
         }
-
         public void addProfile(ProfileLocal _profileSelected)
         {
             ProfilesSelected.Add(_profileSelected);
@@ -519,16 +507,12 @@
                 return new RelayCommand(BackHome);
             }
         }
-
         private void BackHome()
         {
+            PopupNavigation.Instance.PopAllAsync();
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
-
-        
-
-
         #endregion
     }
 }

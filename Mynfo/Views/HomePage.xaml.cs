@@ -4,7 +4,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
-    using Rg.Plugins.Popup.Services;
+    using Rg.Plugins.Popup.Extensions;
     using System;
     using System.Data.SqlClient;
     using System.Linq;
@@ -28,43 +28,14 @@
         {
             InitializeComponent();
 
-            ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
-            //GoToTest.Clicked += new EventHandler((sender, e) => GoToTestPage());
-            //GoToTest.Clicked += new EventHandler((sender,e) => GoToTestPage());
+            //ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
 
             System.Text.StringBuilder sb;
             string      userId = MainViewModel.GetInstance().User.UserId.ToString();
-            string      DefaultBoxName = "";
-            string      consultaDefault = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 1";
-            string      consultaBoxes = "select * from dbo.Boxes where dbo.Boxes.UserId = " + userId + " and dbo.Boxes.BoxDefault = 0";
             string      consultaGetBoxesNum = "select * from dbo.Boxes where Boxes.UserId = " + userId;
             string      cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             //string     cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            var         Default = new Button();
-            var         LabelDefault = new Label();
-            var         Box2 = new Button();
-            var         Label2 = new Label();
-            var         Box3 = new Button();
-            var         Label3 = new Label();
-            var         Box4 = new Button();
-            var         Label4 = new Label();
-            var         Box5 = new Button();
-            var         Label5 = new Label();
-            var         Box6 = new Button();
-            var         Label6 = new Label();
-            var         Box7 = new Button();
-            var         Label7 = new Label();
-            var         Box8 = new Button();
-            var         Label8 = new Label();
-            var         Box9 = new Button();
-            var         Label9 = new Label();
-            var         Box10 = new Button();
-            var         Label10 = new Label();
-            var         NoBoxes = new Label();
-            string[]    boxes = new string[9];
-            int[]       boxesIDs = new int[9];
-            int         arrayPos = 0;
-            int         DefaultBoxId = 0;
+          
             int         BoxNum = 0;
 
 
@@ -91,407 +62,6 @@
                 }
             }
 
-            //Segunda consulta para obtener box default
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(consultaDefault); 
-                string sql = sb.ToString();
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            DefaultBoxName  = (string)reader["Name"];
-                            DefaultBoxId    = (int)reader["BoxId"];
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-
-            //Si no hay box mandamos mensaje de que no hay boxes creadas
-            if(DefaultBoxName == "")
-            {
-                NoBoxes.Text = "Aún no hay boxes creadas.";
-                NoBoxes.FontSize = 22;
-
-                //DefaultButton.Children.Add(NoBoxes);
-            }
-            else
-            {
-                //Agregamos botón con el nombre de la box
-                //Default.Text = DefaultBoxName;
-                Default.BackgroundColor = Color.FromHex("#FF5521");
-                Default.CornerRadius = 25;
-                Default.FontAttributes = FontAttributes.Bold;
-                Default.FontSize = 20;
-                Default.HeightRequest = 140;
-                Default.TextColor = Color.FromHex("#fff");
-                Default.WidthRequest = 140;
-                Default.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender,e,DefaultBoxId));
-
-                LabelDefault.Text = DefaultBoxName;
-                LabelDefault.FontAttributes = FontAttributes.Bold;
-                LabelDefault.FontSize = 20;
-                LabelDefault.HorizontalTextAlignment = TextAlignment.Center;
-
-                //DefaultButton.Children.Add(Default);
-                //DefaultButton.Children.Add(LabelDefault);
-                
-            }
-
-            //Tercer consulta para obtener las demás boxes
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(consultaBoxes);
-                string sql = sb.ToString();
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            boxes[arrayPos] = (string)reader["Name"];
-                            boxesIDs[arrayPos] = (int)reader["BoxId"];
-
-                            arrayPos++;
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-
-            //Box 2
-            if (boxes[0] != null)
-            {
-                //Agregamos botón con el nombre de la box
-                Box2.BackgroundColor = Color.LightGray;
-                Box2.CornerRadius = 15;
-                Box2.FontAttributes = FontAttributes.Bold;
-                Box2.FontSize = 12;
-                Box2.HeightRequest = 80;
-                Box2.TextColor = Color.Black;
-                Box2.WidthRequest = 80;
-                Box2.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[0]));
-
-                Label2.Text = boxes[0].ToString();
-                Label2.FontAttributes = FontAttributes.Bold;
-                Label2.FontSize = 12;
-                Label2.HorizontalTextAlignment = TextAlignment.Center;
-
-                //LayoutBox2.Children.Add(Box2);
-                //LayoutBox2.Children.Add(Label2);
-            }
-            /*else
-            {
-                //Agregamos botón sin nombre y desactivado
-                Box2.BackgroundColor = Color.Gray;
-                Box2.CornerRadius = 15;
-                Box2.HeightRequest = 80;
-                Box2.WidthRequest = 80;
-                Box2.IsEnabled = false;
-
-                Label2.Text = "";
-
-                LayoutBox2.Children.Add(Box2);
-                LayoutBox2.Children.Add(Label2);
-            }*/
-
-            //Box 3
-            if (boxes[1] != null)
-            {
-                //Agregamos botón con el nombre de la box
-                Box3.BackgroundColor = Color.LightGray;
-                Box3.CornerRadius = 15;
-                Box3.FontAttributes = FontAttributes.Bold;
-                Box3.FontSize = 12;
-                Box3.HeightRequest = 80;
-                Box3.TextColor = Color.Black;
-                Box3.WidthRequest = 80;
-                Box3.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[1]));
-
-                Label3.Text = boxes[1].ToString();
-                Label3.FontAttributes = FontAttributes.Bold;
-                Label3.FontSize = 12;
-                Label3.HorizontalTextAlignment = TextAlignment.Center;
-
-                //LayoutBox3.Children.Add(Box3);
-                //LayoutBox3.Children.Add(Label3);
-            }
-            /*else
-            {
-                //Agregamos botón sin nombre y desactivado
-                Box3.BackgroundColor = Color.Gray;
-                Box3.CornerRadius = 15;
-                Box3.HeightRequest = 80;
-                Box3.WidthRequest = 80;
-                Box3.IsEnabled = false;
-
-                Label3.Text = "";
-
-                LayoutBox3.Children.Add(Box3);
-                LayoutBox3.Children.Add(Label3);
-            }*/
-
-            //Box 4
-            if (boxes[2] != null)
-            {
-                //Agregamos botón con el nombre de la box
-                Box4.BackgroundColor = Color.LightGray;
-                Box4.CornerRadius = 15;
-                Box4.FontAttributes = FontAttributes.Bold;
-                Box4.FontSize = 12;
-                Box4.HeightRequest = 80;
-                Box4.TextColor = Color.Black;
-                Box4.WidthRequest = 80;
-                Box4.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[2]));
-
-                Label4.Text = boxes[2].ToString();
-                Label4.FontAttributes = FontAttributes.Bold;
-                Label4.FontSize = 12;
-                Label4.HorizontalTextAlignment = TextAlignment.Center;
-
-                //LayoutBox4.Children.Add(Box4);
-                //LayoutBox4.Children.Add(Label4);
-            }
-            /*else
-            {
-                //Agregamos botón sin nombre y desactivado
-                Box4.BackgroundColor = Color.Gray;
-                Box4.CornerRadius = 15;
-                Box4.HeightRequest = 80;
-                Box4.WidthRequest = 80;
-                Box4.IsEnabled = false;
-
-                Label4.Text = "";
-
-                LayoutBox4.Children.Add(Box4);
-                LayoutBox4.Children.Add(Label4);
-            }*/
-
-            //Box 5
-            if (boxes[3] != null)
-            {
-                //Agregamos botón con el nombre de la box
-                Box5.BackgroundColor = Color.LightGray;
-                Box5.CornerRadius = 15;
-                Box5.FontAttributes = FontAttributes.Bold;
-                Box5.FontSize = 12;
-                Box5.HeightRequest = 80;
-                Box5.TextColor = Color.Black;
-                Box5.WidthRequest = 80;
-                Box5.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[3]));
-
-                Label5.Text = boxes[3].ToString();
-                Label5.FontAttributes = FontAttributes.Bold;
-                Label5.FontSize = 12;
-                Label5.HorizontalTextAlignment = TextAlignment.Center;
-
-                //LayoutBox5.Children.Add(Box5);
-                //LayoutBox5.Children.Add(Label5);
-            }
-            /*else
-            {
-                //Agregamos botón sin nombre y desactivado
-                Box5.BackgroundColor = Color.Gray;
-                Box5.CornerRadius = 15;
-                Box5.HeightRequest = 80;
-                Box5.WidthRequest = 80;
-                Box5.IsEnabled = false;
-
-                Label5.Text = "";
-
-                LayoutBox5.Children.Add(Box5);
-                LayoutBox5.Children.Add(Label5);
-            }*/
-
-            //Box 6
-            if (boxes[4] != null)
-            {
-                //Agregamos botón con el nombre de la box
-                Box6.BackgroundColor = Color.LightGray;
-                Box6.CornerRadius = 15;
-                Box6.FontAttributes = FontAttributes.Bold;
-                Box6.FontSize = 12;
-                Box6.HeightRequest = 80;
-                Box6.TextColor = Color.Black;
-                Box6.WidthRequest = 80;
-                Box6.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[4]));
-
-                Label6.Text = boxes[4].ToString();
-                Label6.FontAttributes = FontAttributes.Bold;
-                Label6.FontSize = 12;
-                Label6.HorizontalTextAlignment = TextAlignment.Center;
-
-                //LayoutBox6.Children.Add(Box6);
-                //LayoutBox6.Children.Add(Label6);
-            }
-            /*else
-            {
-                //Agregamos botón sin nombre y desactivado
-                Box6.BackgroundColor = Color.Gray;
-                Box6.CornerRadius = 15;
-                Box6.HeightRequest = 80;
-                Box6.WidthRequest = 80;
-                Box6.IsEnabled = false;
-
-                Label6.Text = "";
-
-                LayoutBox6.Children.Add(Box6);
-                LayoutBox6.Children.Add(Label6);
-            }*/
-
-            //Box 7
-            if (boxes[5] != null)
-            {
-                //Agregamos botón con el nombre de la box
-                Box7.BackgroundColor = Color.LightGray;
-                Box7.CornerRadius = 15;
-                Box7.FontAttributes = FontAttributes.Bold;
-                Box7.FontSize = 12;
-                Box7.HeightRequest = 80;
-                Box7.TextColor = Color.Black;
-                Box7.WidthRequest = 80;
-                Box7.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[5]));
-
-                Label7.Text = boxes[5].ToString();
-                Label7.FontAttributes = FontAttributes.Bold;
-                Label7.FontSize = 12;
-                Label7.HorizontalTextAlignment = TextAlignment.Center;
-
-                //LayoutBox7.Children.Add(Box7);
-                //LayoutBox7.Children.Add(Label7);
-            }
-            /*else
-            {
-                //Agregamos botón sin nombre y desactivado
-                Box7.BackgroundColor = Color.Gray;
-                Box7.CornerRadius = 15;
-                Box7.HeightRequest = 80;
-                Box7.WidthRequest = 80;
-                Box7.IsEnabled = false;
-
-                Label7.Text = "";
-
-                LayoutBox7.Children.Add(Box7);
-                LayoutBox7.Children.Add(Label7);
-            }*/
-
-            //Box 8
-            if (boxes[6] != null)
-            {
-                //Agregamos botón con el nombre de la box
-                Box8.BackgroundColor = Color.LightGray;
-                Box8.CornerRadius = 15;
-                Box8.FontAttributes = FontAttributes.Bold;
-                Box8.FontSize = 12;
-                Box8.HeightRequest = 80;
-                Box8.TextColor = Color.Black;
-                Box8.WidthRequest = 80;
-                Box8.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[6]));
-
-                Label8.Text = boxes[6].ToString();
-                Label8.FontAttributes = FontAttributes.Bold;
-                Label8.FontSize = 12;
-                Label8.HorizontalTextAlignment = TextAlignment.Center;
-
-                //LayoutBox8.Children.Add(Box8);
-                //LayoutBox8.Children.Add(Label8);
-            }
-            /*else
-            {
-                //Agregamos botón sin nombre y desactivado
-                Box8.BackgroundColor = Color.Gray;
-                Box8.CornerRadius = 15;
-                Box8.HeightRequest = 80;
-                Box8.WidthRequest = 80;
-                Box8.IsEnabled = false;
-
-                Label8.Text = "";
-
-                LayoutBox8.Children.Add(Box8);
-                LayoutBox8.Children.Add(Label8);
-            }*/
-
-            //Box 9
-            if (boxes[7] != null)
-            {
-                //Agregamos botón con el nombre de la box
-                Box9.BackgroundColor = Color.LightGray;
-                Box9.CornerRadius = 15;
-                Box9.FontAttributes = FontAttributes.Bold;
-                Box9.FontSize = 12;
-                Box9.HeightRequest = 80;
-                Box9.TextColor = Color.Black;
-                Box9.WidthRequest = 80;
-                Box9.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[7]));
-
-                Label9.Text = boxes[7].ToString();
-                Label9.FontAttributes = FontAttributes.Bold;
-                Label9.FontSize = 12;
-                Label9.HorizontalTextAlignment = TextAlignment.Center;
-
-                //LayoutBox9.Children.Add(Box9);
-                //LayoutBox9.Children.Add(Label9);
-            }
-            /*else
-            {
-                //Agregamos botón sin nombre y desactivado
-                Box9.BackgroundColor = Color.Gray;
-                Box9.CornerRadius = 15;
-                Box9.HeightRequest = 80;
-                Box9.WidthRequest = 80;
-                Box9.IsEnabled = false;
-
-                Label9.Text = "";
-
-                LayoutBox9.Children.Add(Box9);
-                LayoutBox9.Children.Add(Label9);
-            }*/
-
-            //Box 10
-            if (boxes[8] != null)
-            {
-                //Agregamos botón con el nombre de la box
-                Box10.BackgroundColor = Color.LightGray;
-                Box10.CornerRadius = 15;
-                Box10.FontAttributes = FontAttributes.Bold;
-                Box10.FontSize = 12;
-                Box10.HeightRequest = 80;
-                Box10.TextColor = Color.Black;
-                Box10.WidthRequest = 80;
-                Box10.Clicked += new EventHandler((sender, e) => BoxDetailsView(sender, e, boxesIDs[8]));
-
-                Label10.Text = boxes[8].ToString();
-                Label10.FontAttributes = FontAttributes.Bold;
-                Label10.FontSize = 12;
-                Label10.HorizontalTextAlignment = TextAlignment.Center;
-
-                //LayoutBox10.Children.Add(Box10);
-                //LayoutBox10.Children.Add(Label10);
-            }
-            /*else
-            {
-                //Agregamos botón sin nombre y desactivado
-                Box10.BackgroundColor = Color.Gray;
-                Box10.CornerRadius = 15;
-                Box10.HeightRequest = 80;
-                Box10.WidthRequest = 80;
-                Box10.IsEnabled = false;
-
-                Label10.Text = "";
-
-                LayoutBox10.Children.Add(Box10);
-                LayoutBox10.Children.Add(Label10);
-            }*/
-
             //Validamos que podamos crear boxes nuevas
             if(BoxNum == 10)
             {
@@ -505,14 +75,6 @@
             }            
         }       
 
-        //Ir hacia detalles de la box
-        private void BoxDetailsView(object sender, EventArgs e, int _BoxId)
-        {
-            //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-            App.Navigator.PushAsync(new DetailsBoxPage(_BoxId));
-        }
-
         private async void CreateBox_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
@@ -523,14 +85,6 @@
             //await Launcher.OpenAsync(new Uri("https://twitter.com/RToachee"));
             //await Launcher.OpenAsync(new Uri("instagram:page_id//user?username=rodritoachee"));
             //await Launcher.OpenAsync(new Uri("mailto:rrodriguez@atx.com"));
-        }
-
-        private async void ForeingBoxes_Clicked(object sender, EventArgs e)
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
-            await Navigation.PushAsync(new ListForeignBoxPage());
-
         }
 
         private void CheckLocalBox()
@@ -1194,11 +748,12 @@
             selectedItem = e.CurrentSelection.FirstOrDefault() as Box;
             if (selectedItem == null)
                 return;
-            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(selectedItem.BoxId);
-            await Navigation.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
-            //App.Navigator.PushAsync(new DetailsBoxPage(selectedItem.BoxId));
+            MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(selectedItem);
+            await Navigation.PushPopupAsync(new DetailBoxPopUpPage(selectedItem));
             ((CollectionView)sender).SelectedItem = null;
         }
+
+        //Detalles de box predeterminada
         private void ButtonDefault(object sender, EventArgs e)
         {
             MainViewModel.GetInstance().Home.GoToDetails();

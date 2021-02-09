@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.DetailsBoxPage"
              x:Name="FullBackGround"
@@ -20,7 +19,7 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
@@ -34,12 +33,15 @@
                         x:Name="HomeButton" />
 
                     <!--Botón para editar box-->
-                    <StackLayout 
+                    <ImageButton 
+                        BackgroundColor="Transparent"
                         Grid.Column ="3"
+                        HeightRequest="50"
                         HorizontalOptions="End"
-                        VerticalOptions="Center"
                         Padding="0,10,10,0"
-                        x:Name="DeleteButton" />
+                        VerticalOptions="Center"
+                        WidthRequest="50"
+                        x:Name="EdithButton" />
 
                     <!--Nombre de la box 
                     El nombre de la box será variable-->
@@ -52,7 +54,7 @@
                         HorizontalTextAlignment="Center"
                         IsReadOnly="True"
                         Text="{Binding Box.Name, Mode=TwoWay}"
-                        TextColor="{StaticResource MainColor}"
+                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                         BackgroundColor="Transparent"
                         VerticalOptions="Center"
                         WidthRequest="200"
@@ -69,7 +71,7 @@
                         Grid.Row="2" 
                         Grid.Column="2" 
                         Text="{i18n:Translate DefaultBox}" 
-                        TextColor="{StaticResource FontColor}"
+                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                         VerticalOptions="Center"/>
                     <CollectionView 
                         ItemsSource="{Binding ProfilePerfiles}"
@@ -97,7 +99,7 @@
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding ProfileName}"
                                             FontAttributes="Bold"
-                                            TextColor="DarkRed" />
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />
                                     </StackLayout>
                                 </Grid>
                             </DataTemplate>
@@ -128,7 +130,6 @@
                 HeightRequest="70"
                 HorizontalOptions="Center"
                 Margin="15"
-                Source="Plus" 
                 VerticalOptions="End"
                 WidthRequest="70"
                 x:Name="BoxProfiles"/>

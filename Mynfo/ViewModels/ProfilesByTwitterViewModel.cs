@@ -3,10 +3,8 @@ using Mynfo.Domain;
 using Mynfo.Helpers;
 using Mynfo.Services;
 using Mynfo.Views;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -116,7 +114,7 @@ namespace Mynfo.ViewModels
             return profileSM;
         }
 
-        //Actualizar listas
+        #region Listas
         public void addProfile(ProfileSM _profileSM)
         {
             profileSM.Add(_profileSM);
@@ -126,6 +124,7 @@ namespace Mynfo.ViewModels
         {
             profileSM.Remove(selectedProfile);
         }
+        #endregion
 
         #endregion
     }

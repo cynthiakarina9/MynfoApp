@@ -1,11 +1,7 @@
 ﻿namespace Mynfo.ViewModels
 {
-    using Mynfo.Domain;
     using Mynfo.Models;
     using Mynfo.Services;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using Xamarin.Forms;
 
     public class MyQRViewModel : BaseViewModel

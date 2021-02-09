@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.CreateProfileLinkedinPage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -63,10 +63,10 @@
                             HorizontalTextAlignment = "Center"
                             HorizontalOptions = "Center"
                             IsTextPredictionEnabled="True"
-                            MaxLength = "10"
+                            MaxLength = "20"
                             Placeholder = "{i18n:Translate NProfilePlaceH}"
                             Text = "{Binding Name}"
-                            TextColor="{StaticResource FontColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
                             x:Name="ProfileName"/>
@@ -86,7 +86,7 @@
                             HorizontalTextAlignment = "Center"
                             HorizontalOptions = "Center"
                             Text = "{Binding Link}"
-                            TextColor="{StaticResource FontColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             Placeholder = "https://www.linkedin.com/user"
                             WidthRequest = "300" 
@@ -111,7 +111,7 @@
                 HorizontalOptions="Fill"
                 Margin="15"
                 Text = "{i18n:Translate Save}"
-                TextColor = "{StaticResource Dark_FontColor}"
+                TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                 VerticalOptions = "End"
                 x:Name="Save"/>
         </Grid>

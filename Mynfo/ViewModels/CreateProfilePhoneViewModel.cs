@@ -1,14 +1,13 @@
 ﻿namespace Mynfo.ViewModels
 {
-    using GalaSoft.MvvmLight.Command;
     using Domain;
+    using GalaSoft.MvvmLight.Command;
     using Helpers;
+    using Mynfo.Models;
+    using Mynfo.Views;
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
-    using Mynfo.Views;
-    using System.Threading.Tasks;
-    using System.Data.SqlClient;
 
     public class CreateProfilePhoneViewModel :  BaseViewModel
     {
@@ -55,8 +54,7 @@
         #endregion
 
         #region Commands
-       
-    public ICommand SaveProfilePhoneCommand
+        public ICommand SaveProfilePhoneCommand
         {
             get
             {
@@ -132,7 +130,20 @@
                     Languages.Accept);
                 return;
             }
-
+            var ProfileLocal = new Profile
+            {
+                UserId = mainViewModel.User.UserId,
+                ProfileName = profilephone.Name,
+                value = profilephone.Number,
+                ProfileType = "Phone",
+                Logo = "tel2",
+                ProfileId = profilephone.ProfilePhoneId,
+            };
+            using (var conn = new SQLite.SQLiteConnection(App.root_db))
+            {
+                conn.CreateTable<Profile>();
+                conn.Insert(ProfileLocal);
+            }
             this.IsRunning = false;
             this.IsEnabled = true;
 
@@ -160,7 +171,6 @@
                 return new RelayCommand(BackHome);
             }
         }
-
         private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();

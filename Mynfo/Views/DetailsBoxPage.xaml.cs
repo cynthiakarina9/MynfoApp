@@ -1,31 +1,46 @@
 ﻿namespace Mynfo.Views
 {
-    using Mynfo.Helpers;
+    using Mynfo.Domain;
     using Mynfo.Models;
-    using Mynfo.Resources;
+    using Mynfo.Services;
     using Mynfo.ViewModels;
     using System;
     using System.Data.SqlClient;
-    using System.Text;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsBoxPage : ContentPage
     {
+        #region Services
+        ApiService apiService;
+        #endregion
+
         #region Properties
         public Entry BxNameEntry = new Entry();
         public String BoxName;
+        public Box Box { get; set; }
         #endregion
 
         #region Constructor
-        public DetailsBoxPage(int _boxId = 0)
+        public DetailsBoxPage(Box _Box)
         {
             InitializeComponent();
-
+            apiService = new ApiService();
             NavigationPage.SetHasNavigationBar(this, false);
-
-            int BoxId = _boxId;
+            OSAppTheme currentTheme = Application.Current.RequestedTheme;
+            if (currentTheme == OSAppTheme.Dark)
+            {
+                EdithButton.Source = "edit1";
+                BoxProfiles.Source = "plusb";
+            }
+            else
+            {
+                EdithButton.Source = "edit2";
+                BoxProfiles.Source = "plus";
+            }
+        
+            int BoxId = _Box.BoxId;
             var boxLocal = new BoxLocal();
             int UserID = MainViewModel.GetInstance().User.UserId;
             string consultaDefault;
@@ -50,30 +65,30 @@
             int listProfileNum = 0;
 
             //Llenar BoxId si es 0
-            if (BoxId == 0)
-            {
-                using (SqlConnection connection = new SqlConnection(cadenaConexion))
-                {
-                    sb = new System.Text.StringBuilder();
-                    sb.Append(queryLastBoxCreated);
+            //if (BoxId == 0)
+            //{
+            //    using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //    {
+            //        sb = new System.Text.StringBuilder();
+            //        sb.Append(queryLastBoxCreated);
 
-                    string sql = sb.ToString();
+            //        string sql = sb.ToString();
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                BoxId = (int)reader["BoxId"];
-                            }
-                        }
+            //        using (SqlCommand command = new SqlCommand(sql, connection))
+            //        {
+            //            connection.Open();
+            //            using (SqlDataReader reader = command.ExecuteReader())
+            //            {
+            //                while (reader.Read())
+            //                {
+            //                    BoxId = (int)reader["BoxId"];
+            //                }
+            //            }
 
-                        connection.Close();
-                    }
-                }
-            }
+            //            connection.Close();
+            //        }
+            //    }
+            //}
 
             //Asignación de querys
             consultaDefault = "select * from dbo.Boxes where dbo.Boxes.BoxId = " + BoxId;
@@ -92,40 +107,40 @@
             queryGetSMProfiles = "select * from dbo.Box_ProfileSM " +
                                     "join dbo.ProfileSMs on(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
                                     "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
-                                    "where dbo.Box_ProfileSM.BoxId = " + _boxId;
+                                    "where dbo.Box_ProfileSM.BoxId = " + _Box.BoxId;
             queryGetWhatsapp = "select dbo.Boxes.BoxId, dbo.ProfileWhatsapps.ProfileWhatsappId, dbo.ProfileWhatsapps.Name, " +
                                         "dbo.ProfileWhatsapps.Number from dbo.Box_ProfileWhatsapp Join dbo.Boxes " +
                                         "on(dbo.Boxes.BoxId = dbo.Box_ProfileWhatsapp.BoxId) " +
                                         "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
-                                        "where dbo.Boxes.BoxId =" + _boxId;
+                                        "where dbo.Boxes.BoxId =" + _Box.BoxId;
 
             //Consulta para obtener Box
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(consultaDefault);
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    sb = new System.Text.StringBuilder();
+            //    sb.Append(consultaDefault);
 
-                string sql = sb.ToString();
+            //    string sql = sb.ToString();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            BoxName = (string)reader["Name"];
-                            BoxDefault = (bool)reader["BoxDefault"];
-                            UserId = (int)reader["UserId"];
-                            boxcreation = (DateTime)reader["Time"];
-                        }
-                    }
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        using (SqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                BoxName = (string)reader["Name"];
+            //                BoxDefault = (bool)reader["BoxDefault"];
+            //                UserId = (int)reader["UserId"];
+            //                boxcreation = (DateTime)reader["Time"];
+            //            }
+            //        }
 
-                    connection.Close();
-                }
-            }
+            //        connection.Close();
+            //    }
+            //}
 
-            boxLocal.BoxId = _boxId;
+            boxLocal.BoxId = _Box.BoxId;
             boxLocal.Name = BoxName;
             boxLocal.BoxDefault = BoxDefault;
             boxLocal.UserId = UserId;
@@ -136,19 +151,40 @@
             boxLocal.UserTypeId = MainViewModel.GetInstance().User.UserTypeId;
 
             //Definir color de fondo con respecto a si la box es predeterminada
-            if (BoxDefault == true)
+            if (_Box.BoxDefault == true)
             {
-                FullBackGround.BackgroundColor = Color.FromHex("#FEBDA8");
-                bxBtnHome.BackgroundColor = Color.FromHex("#FEBDA8");
-                BxSaveName.BackgroundColor = Color.FromHex("#FEBDA8");
-                BxBtnDelete.BackgroundColor = Color.FromHex("#FEBDA8");
+                if(currentTheme == OSAppTheme.Light)
+                {
+                    FullBackGround.BackgroundColor = Color.FromHex("#ff6c45");
+                    bxBtnHome.BackgroundColor = Color.FromHex("#ff6c45");
+                    BxSaveName.BackgroundColor = Color.FromHex("#ff6c45");
+                    BxBtnDelete.BackgroundColor = Color.FromHex("#ff6c45");
+                }
+                else
+                {
+                    FullBackGround.BackgroundColor = Color.FromHex("#FF5521");
+                    bxBtnHome.BackgroundColor = Color.FromHex("#FF5521");
+                    BxSaveName.BackgroundColor = Color.FromHex("#FF5521");
+                    BxBtnDelete.BackgroundColor = Color.FromHex("#FF5521");
+                }
+                
             }
             else
             {
-                FullBackGround.BackgroundColor = Color.FromHex("#FFFFFF");
-                bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
-                BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
-                BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
+                if (currentTheme == OSAppTheme.Light)
+                {
+                    FullBackGround.BackgroundColor = Color.FromHex("#FFFFFF");
+                    bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
+                    BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
+                    BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
+                }
+                else
+                {
+                    FullBackGround.BackgroundColor = Color.FromHex("#d1d1d1");
+                    bxBtnHome.BackgroundColor = Color.FromHex("#d1d1d1");
+                    BxSaveName.BackgroundColor = Color.FromHex("#d1d1d1");
+                    BxBtnDelete.BackgroundColor = Color.FromHex("#d1d1d1");
+                }
             }
 
 
@@ -165,43 +201,32 @@
             HomeButton.Children.Add(bxBtnHome);
 
             //Creación de botón para borrar box
-            BxBtnDelete.BackgroundColor = Color.Transparent;
-            BxBtnDelete.Source = "edit2.png";
-            BxBtnDelete.WidthRequest = 50;
-            BxBtnDelete.HeightRequest = 50;
-            BxBtnDelete.Clicked += new EventHandler((sender, e) => edithBox(sender, e, BoxId, UserID, BoxDefault));
+            //BxBtnDelete.BackgroundColor = Color.Transparent;
+            //BxBtnDelete.Source = "edit2.png";
+            //BxBtnDelete.WidthRequest = 50;
+            //BxBtnDelete.HeightRequest = 50;
+            EdithButton.Clicked += new EventHandler((sender, e) => edithBox(sender, e, BoxId, UserID, BoxDefault));
 
-            DeleteButton.Children.Add(BxBtnDelete);
-
-            //Creación de Entry para colocar nombre de la box
-            //BxNameEntry.FontSize = 25;
-            //BxNameEntry.Text = BoxName;
-            //BxNameEntry.HorizontalTextAlignment = TextAlignment.Center;
-            //BxNameEntry.WidthRequest = 200;
-            //BxNameEntry.TextColor = Color.FromHex("#FF5521");
-            //BxNameEntry.FontAttributes = FontAttributes.Bold;
-            //BxNameEntry.IsReadOnly = true;
-            //BxNameEntry.BackgroundColor = Color.Transparent;
-
-            //BoxNameEntry.Children.Add(BxNameEntry);
-
-            //Creación de botón para actualizar nombre de la Box
-            //BxSaveName.Source = "edit2.png";
-            //BxSaveName.HeightRequest = 25;
-            //BxSaveName.WidthRequest = 25;
-            //BxSaveName.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));
-
-            //BoxUpdateBtn.Children.Add(BxSaveName);
+            //EdithButton.Children.Add(BxBtnDelete);
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
             if (BoxDefault == true)
             {
                 BxDefaultCheckBox.IsEnabled = false;
+                if(currentTheme == OSAppTheme.Dark)
+                {
+                    BxDefaultCheckBox.BackgroundColor = Color.White;
+                }
+                else
+                {
+                    BxDefaultCheckBox.BackgroundColor = Color.Black;
+                }
             }
             else
             {
                 BxDefaultCheckBox.IsEnabled = true;
+                BxDefaultCheckBox.BackgroundColor = Color.FromHex("#FF5521");
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 
@@ -772,19 +797,19 @@
                 string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
                                             "join dbo.Box_ProfileEmail on" +
                                             "(dbo.ProfileEmails.ProfileEmailId = dbo.Box_ProfileEmail.ProfileEmailId) " +
-                                            "where dbo.Box_ProfileEmail.BoxId = " + _boxId;
+                                            "where dbo.Box_ProfileEmail.BoxId = " + _Box.BoxId;
                 string queryGetBoxPhone = "select * from dbo.ProfilePhones " +
                                             "join dbo.Box_ProfilePhone on" +
                                             "(dbo.ProfilePhones.ProfilePhoneId = dbo.Box_ProfilePhone.ProfilePhoneId) " +
-                                            "where dbo.Box_ProfilePhone.BoxId = " + _boxId;
+                                            "where dbo.Box_ProfilePhone.BoxId = " + _Box.BoxId;
                 string queryGetBoxSMProfiles = "select * from dbo.ProfileSMs " +
                                                 "join dbo.Box_ProfileSM on" +
                                                 "(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
                                                 "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
-                                                "where dbo.Box_ProfileSM.BoxId = " + _boxId;
+                                                "where dbo.Box_ProfileSM.BoxId = " + _Box.BoxId;
                 string queryGetBoxWhatsapp = "select * from dbo.ProfileWhatsapps join dbo.Box_ProfileWhatsapp on " +
                                                 "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
-                                                "where dbo.Box_ProfileWhatsapp.BoxId = " + _boxId;
+                                                "where dbo.Box_ProfileWhatsapp.BoxId = " + _Box.BoxId;
 
                 //Borrar box predeterminada anterior
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
@@ -828,7 +853,7 @@
                             {
                                 ProfileLocal emailProfile = new ProfileLocal
                                 {
-                                    IdBox = _boxId,
+                                    IdBox = _Box.BoxId,
                                     UserId = (int)reader["UserId"],
                                     ProfileName = (string)reader["Name"],
                                     value = (string)reader["Email"],
@@ -863,7 +888,7 @@
                             {
                                 ProfileLocal phoneProfile = new ProfileLocal
                                 {
-                                    IdBox = _boxId,
+                                    IdBox = _Box.BoxId,
                                     UserId = (int)reader["UserId"],
                                     ProfileName = (string)reader["Name"],
                                     value = (string)reader["Number"],
@@ -898,7 +923,7 @@
                             {
                                 ProfileLocal smProfile = new ProfileLocal
                                 {
-                                    IdBox = _boxId,
+                                    IdBox = _Box.BoxId,
                                     UserId = (int)reader["UserId"],
                                     ProfileName = (string)reader["ProfileName"],
                                     value = (string)reader["link"],
@@ -933,7 +958,7 @@
                             {
                                 ProfileLocal whatsappProfile = new ProfileLocal
                                 {
-                                    IdBox = _boxId,
+                                    IdBox = _Box.BoxId,
                                     UserId = (int)reader["UserId"],
                                     ProfileName = (string)reader["Name"],
                                     value = (string)reader["Number"],
@@ -994,7 +1019,18 @@
             mainViewModel.Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+        public Box GetBoxe(Box _Box)
+        {
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            Box = new Box();
+            var Box2 = this.apiService.GetBox(
+                apiSecurity,
+                "/api",
+                "/Boxes",
+                _Box.BoxId);
 
+            return Box;
+        }
         async void edithBox(object sender, EventArgs e, int _BoxId, int _UserId, bool _BoxDefault)
         {
             #region LastCode
@@ -1333,162 +1369,6 @@
         {
             App.Navigator.PushAsync(new TabbedListOfNetworksPage(_BoxId, _boxDefault, _boxName), false);
         }
-
-        //private void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)
-        //{
-        //    if (disabled == true)
-        //    {
-        //        BxNameEntry.IsReadOnly = false;
-        //        BxNameEntry.TextColor = Color.Black;
-        //    }
-        //    else
-        //    {
-        //        //Actualizar el nombre de la Box
-        //        string queryUpdateBoxName = "update dbo.Boxes set Name = '" + _name + "' where dbo.Boxes.UserId = " + _UserId + " and dbo.Boxes.BoxId = " + _BoxId;
-        //        string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //        //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //        StringBuilder sb;
-
-        //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
-        //        {
-        //            sb = new System.Text.StringBuilder();
-        //            sb.Append(queryUpdateBoxName);
-        //            string sql = sb.ToString();
-
-        //            using (SqlCommand command = new SqlCommand(sql, connection))
-        //            {
-        //                connection.Open();
-        //                command.ExecuteNonQuery();
-        //                connection.Close();
-        //            }
-        //        }
-        //        BxNameEntry.IsReadOnly = true;
-        //        BxNameEntry.TextColor = Color.FromHex("#FF5521");
-        //        BoxName = _name;
-        //    }
-        //}
-
-        //async private void DeleteBoxPhone(object sender, EventArgs e, int _BoxId, int _PhoneId)
-        //{
-        //    //Borrar la relación de la box con el teléfono
-        //    string queryDeleteBoxPhone = "delete from dbo.Box_ProfilePhone where dbo.Box_ProfilePhone.BoxId = " + _BoxId + " and dbo.Box_ProfilePhone.ProfilePhoneId = " + _PhoneId;
-        //    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //    //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //    StringBuilder sb;
-
-        //    bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
-
-        //    if (response == true)
-        //    {
-        //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
-        //        {
-        //            sb = new System.Text.StringBuilder();
-        //            sb.Append(queryDeleteBoxPhone);
-        //            string sql = sb.ToString();
-
-        //            using (SqlCommand command = new SqlCommand(sql, connection))
-        //            {
-        //                connection.Open();
-        //                command.ExecuteNonQuery();
-        //                connection.Close();
-        //            }
-        //        }
-        //        MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-        //        Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-        //    }
-        //}
-
-        //async private void DeleteBoxEmail(object sender, EventArgs e, int _BoxId, int _EmailId)
-        //{
-        //    //Borrar la relación de la box con el correo
-        //    string queryDeleteBoxEmail = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId + " and dbo.Box_ProfileEmail.ProfileEmailId = " + _EmailId;
-        //    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //    //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //    StringBuilder sb;
-        //    bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
-
-        //    if (response == true)
-        //    {
-
-        //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
-        //        {
-        //            sb = new System.Text.StringBuilder();
-        //            sb.Append(queryDeleteBoxEmail);
-        //            string sql = sb.ToString();
-
-        //            using (SqlCommand command = new SqlCommand(sql, connection))
-        //            {
-        //                connection.Open();
-        //                command.ExecuteNonQuery();
-        //                connection.Close();
-        //            }
-        //        }
-        //        MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-        //        Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-        //    }
-        //}
-
-        //async private void DeleteBoxSM(object sender, EventArgs e, int _BoxId, int _SMId)
-        //{
-        //    //Borrar la relación de la box con el correo
-        //    string queryDeleteBoxSM = "delete from dbo.Box_ProfileSM where dbo.Box_ProfileSM.BoxId = " + _BoxId + " and dbo.Box_ProfileSM.ProfileMSId = " + _SMId;
-        //    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //    //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //    StringBuilder sb;
-        //    bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
-
-        //    if (response == true)
-        //    {
-
-        //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
-        //        {
-        //            sb = new System.Text.StringBuilder();
-        //            sb.Append(queryDeleteBoxSM);
-        //            string sql = sb.ToString();
-
-        //            using (SqlCommand command = new SqlCommand(sql, connection))
-        //            {
-        //                connection.Open();
-        //                command.ExecuteNonQuery();
-        //                connection.Close();
-        //            }
-        //        }
-        //        //Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-        //        MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-        //        Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-        //        //await Navigation.PushAsync(new DetailsBoxPage(_BoxId));
-        //    }
-        //}
-
-        //async private void DeleteBoxWhatsapp(object sender, EventArgs e, int _BoxId, int _WhatsappId)
-        //{
-        //    //Borrar la relación de la box con el teléfono
-        //    string queryDeleteBoxWhatsapp = "delete from dbo.Box_ProfileWhatsapp where dbo.Box_ProfileWhatsapp.BoxId = " + _BoxId + " and dbo.Box_ProfileWhatsapp.ProfileWhatsappId = " + _WhatsappId;
-        //    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //    //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-        //    StringBuilder sb;
-
-        //    bool response = await DisplayAlert(Languages.Warning, Languages.AskDeleteNetworkFromBox, Languages.Yes, Languages.No);
-
-        //    if (response == true)
-        //    {
-        //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
-        //        {
-        //            sb = new System.Text.StringBuilder();
-        //            sb.Append(queryDeleteBoxWhatsapp);
-        //            string sql = sb.ToString();
-
-        //            using (SqlCommand command = new SqlCommand(sql, connection))
-        //            {
-        //                connection.Open();
-        //                command.ExecuteNonQuery();
-        //                connection.Close();
-        //            }
-        //        }
-        //        MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_BoxId);
-        //        Application.Current.MainPage = new NavigationPage(new DetailsBoxPage(_BoxId));
-        //    }
-        //}
 
         private void BackHome (object sender, EventArgs e)
         {

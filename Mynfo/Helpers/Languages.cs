@@ -672,5 +672,17 @@
         {
             get { return Resource.AndStick; }
         }
+        public static string ProfileMynfo
+        {
+            get { return Resource.ProfileMynfo; }
+        }
+        public static string QRForWhat
+        {
+            get { return Resource.QRForWhat; }
+        }
+        public static string QRMynfo
+        {
+            get { return Resource.QRMynfo; }
+        }
     }
 }

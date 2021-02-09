@@ -3,6 +3,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -34,7 +35,8 @@
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
             ForeingBox tappedItem = e.Item as ForeingBox;
-            Navigation.PushAsync(new ForeingBoxPage(tappedItem));
+            MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(tappedItem);
+            PopupNavigation.Instance.PushAsync(new ForeingBoxPage(tappedItem));
 
         }
         #endregion

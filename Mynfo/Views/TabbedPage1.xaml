@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:local="clr-namespace:Mynfo.Views" 
             x:Class="Mynfo.Views.TabbedPage1"
-            BarBackgroundColor = "#FFFFFF"
-            BarTextColor="#000000"
+            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+            BarTextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
             SelectedTabColor="#FF5521"
-            UnselectedTabColor="#000000">
+            UnselectedTabColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}">
     <NavigationPage.TitleView>
         <Grid>
             <StackLayout

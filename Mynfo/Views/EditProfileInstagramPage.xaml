@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.EditProfileInstagramPage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -76,12 +76,32 @@
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
                         HorizontalOptions = "Center"
-                        IsEnabled="False"
                         Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
-                        TextColor="{StaticResource FontColor}"
+                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                         VerticalOptions = "Center" 
                         WidthRequest = "300" 
                         x:Name = "EntryName"/>
+                </StackLayout>
+                <StackLayout 
+                    Grid.Row = "2"
+                    Grid.ColumnSpan ="2"
+                    Padding = "20">
+                    <Label 
+                        FontSize = "24" 
+                        FontAttributes="Bold"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate NameProfile}" 
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalOptions = "Center"/>
+                    <Entry 
+                        FontSize = "21"
+                        HorizontalTextAlignment = "Center"
+                        HeightRequest = "46"
+                        HorizontalOptions = "Center"
+                        Text="{Binding profileSM.Value, Mode=TwoWay}"
+                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                        VerticalOptions = "Center" 
+                        WidthRequest = "300" />
                 </StackLayout>
                 <StackLayout
                     Grid.Row = "4"

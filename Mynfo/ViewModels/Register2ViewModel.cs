@@ -5,9 +5,6 @@
     using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.Views;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -78,10 +75,6 @@
         }
         #endregion
 
-        #region Methods
-
-        #endregion
-
         #region Commands
         public ICommand RegisterCommand
         {
@@ -90,7 +83,6 @@
                 return new RelayCommand(Register);
             }
         }
-
         private async void Register()
         {
             if (string.IsNullOrEmpty(this.Email))

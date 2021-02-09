@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="Mynfo.Views.DetailBoxPopUpPage"
+             BindingContext = "{Binding Main, Source={StaticResource Locator}}"
+             x:Name="FrameB">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                               EndPoint="1,1">
+            <GradientStop Color="{AppThemeBinding Light=#f3947a, Dark= #ff6c45}"
+                            Offset="0.1" />
+            <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #c9c5c5}"
+                            Offset="0.6" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.Content>
+        <Frame
+            BindingContext = "{Binding DetailsBox}"
+            CornerRadius="50"
+            HasShadow="True"
+            Margin="30"
+            x:Name="BackG">
+            <Grid>
+                <Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <!--Botón para editar box-->
+                        <ImageButton 
+                            BackgroundColor="Transparent"
+                            Grid.Column ="3"
+                            Grid.RowSpan="2"
+                            HeightRequest="40"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start"
+                            WidthRequest="40"
+                            x:Name="EdithButton" />
+                        <!--Nombre de la box 
+                    El nombre de la box será variable-->
+                        <Entry 
+                            FontAttributes="Bold"
+                            FontSize="25"
+                            Grid.ColumnSpan="4"
+                            Grid.Row="1"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            IsReadOnly="True"
+                            Text="{Binding Box.Name, Mode=TwoWay}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="Center"
+                            WidthRequest="200"
+                            x:Name="NameEntry"/>
+                        <!--Box predeterminada-->
+                        <StackLayout 
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="20,0,0,0"
+                            VerticalOptions="Center"
+                            x:Name="BoxDefaultCheckBox" />
+                        <Label 
+                            Grid.Row="2" 
+                            Grid.Column="2" 
+                            Text="{i18n:Translate DefaultBox}" 
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            VerticalOptions="Center"/>
+                        <CollectionView 
+                            ItemsSource="{Binding ProfilePerfiles}"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="4">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"
+                                    Span="3" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition Height="35" />
+                                        </Grid.RowDefinitions>
+                                        <StackLayout
+                                            HorizontalOptions="Center">
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                HeightRequest="50"
+                                                Source="{Binding Logo}"
+                                                WidthRequest="50"/>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Micro"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.EmptyView>
+                                <ContentView>
+                                    <StackLayout 
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            FontSize="18"
+                                            HorizontalOptions="Fill"
+                                            HorizontalTextAlignment="Center" 
+                                            Margin="10,0,10,280"
+                                            Text="{i18n:Translate EmptyBox}"
+                                            VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                </ContentView>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
+                    </Grid>
+                </Grid>
+                <!--Agregar perfiles-->
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Grid.Row="0"
+                    HeightRequest="60"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    WidthRequest="60"
+                    x:Name="BoxProfiles"/>
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</popup:PopupPage>

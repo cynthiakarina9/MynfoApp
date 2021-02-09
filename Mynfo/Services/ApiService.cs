@@ -14,6 +14,7 @@
 
     public class ApiService
     {
+        #region Connection
         public async Task<Response> CheckConnection()
         {
             if (!CrossConnectivity.Current.IsConnected)
@@ -43,8 +44,363 @@
                 IsSuccess = true,
             };
         }
+        #endregion
 
-        public async Task<Models.FacebookResponse> GetFacebookProfile(string accessToken)
+        #region Delete
+        public async Task<Response> Delete<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string tokenType,
+            string accessToken,
+            T model)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(tokenType, accessToken);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    model.GetHashCode());
+                var response = await client.DeleteAsync(url);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = JsonConvert.DeserializeObject<Response>(result);
+                    error.IsSuccess = false;
+                    return error;
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<Response> Delete<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            T model)
+        {
+            try
+            {
+
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    model.GetHashCode());
+                var response = await client.DeleteAsync(url);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = JsonConvert.DeserializeObject<Response>(result);
+                    error.IsSuccess = false;
+                    return error;
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+        public async Task<Response> DeleteEmail(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfileEmail
+                {
+                    ProfileEmailId = id,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<Response> Delete1(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfileSM
+                {
+                    ProfileMSId = id,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<Response> DeleteWhatsapp(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfileWhatsapp
+                {
+                    ProfileWhatsappId = id,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<Response> DeleteRelationPhone(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new ProfilePhone
+                {
+                    ProfilePhoneId = id,
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<T> Delete2<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    id);
+                var response = await client.DeleteAsync(url);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<T>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+
+        public async Task<Response> Delete3<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            T model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    model);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = JsonConvert.DeserializeObject<Response>(result);
+                    error.IsSuccess = false;
+                    return error;
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+        public async Task<Response> Delete(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    id);
+                var response = await client.DeleteAsync(url);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = JsonConvert.DeserializeObject<Response>(result);
+                    error.IsSuccess = false;
+                    return error;
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+        #endregion
+
+        #region Get
+        public async Task<Models.FacebookResponse> GetFacebookProfile(
+            string accessToken)
         {
             var requestUrl = "https://graph.facebook.com/v2.8/me/?fields=name," +
                 "picture.width(999),cover,age_range,devices,email,gender," +
@@ -56,41 +412,6 @@
             var facebookResponse =
                 JsonConvert.DeserializeObject<Models.FacebookResponse>(userJson);
             return facebookResponse;
-        }
-
-        public async Task<TokenResponse> LoginFacebook(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            Models.FacebookResponse profile)
-        {
-            try
-            {
-                var request = JsonConvert.SerializeObject(profile);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return null;
-                }
-
-                var tokenResponse = await GetToken(
-                    urlBase,
-                    profile.Id,
-                    profile.Id);
-                return tokenResponse;
-            }
-            catch
-            {
-                return null;
-            }
         }
 
         public async Task<TokenResponse> GetToken(
@@ -262,6 +583,7 @@
                 return null;
             }
         }
+
         public async Task<List<Box>> GetBoxNoDefault<T>(
             string urlBase,
             string servicePrefix,
@@ -296,139 +618,6 @@
             catch (Exception ex)
             {
                 return null;
-            }
-        }
-        public async Task<Response> ChangePassword(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            string tokenType,
-            string accessToken, 
-            ChangePasswordRequest changePasswordRequest)
-        {
-            try
-            {
-                var request = JsonConvert.SerializeObject(changePasswordRequest);
-                var content = new StringContent(request, Encoding.UTF8, "application/json");
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                    };
-                }
-
-                return new Response
-                {
-                    IsSuccess = true,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
-
-        public async Task<Response> PasswordRecovery(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            string email)
-        {
-            try
-            {
-                var userRequest = new UserRequest 
-                { 
-                    Email = email 
-                };
-                var request = JsonConvert.SerializeObject(userRequest);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
-                    };
-                }
-
-                return new Response
-                {
-                    IsSuccess = true,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
-
-
-        public async Task<Response> LoginMessage(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            string email)
-        {
-            try
-            {
-                var userRequest = new UserRequest
-                {
-                    Email = email
-                };
-                var request = JsonConvert.SerializeObject(userRequest);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
-                    };
-                }
-
-                return new Response
-                {
-                    IsSuccess = true,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
             }
         }
 
@@ -678,143 +867,13 @@
             }
         }
 
-        public async Task<Response> Post<T>(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            string tokenType,
-            string accessToken,
-            T model)
-        {
-            try
-            {
-                var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(
-                    request, Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(tokenType, accessToken);
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    var error = JsonConvert.DeserializeObject<Response>(result);
-                    error.IsSuccess = false;
-                    return error;
-                }
-
-                var newRecord = JsonConvert.DeserializeObject<T>(result);
-
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = "Record added OK",
-                    Result = newRecord,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
-
-        public async Task<T> Post<T>(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            T model)
-        {
-            try
-            {
-                var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(
-                    request, Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    var error = JsonConvert.DeserializeObject<T>(result);
-                    return error;
-                }
-
-                var newRecord = JsonConvert.DeserializeObject<T>(result);
-
-                return newRecord;
-            }
-            catch (Exception ex)
-            {
-                return default;
-            }
-        }
-
-        public async Task<Response> Post2<T>(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            T model)
-        {
-            try
-            {
-                var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
-                    };
-                }
-
-
-                var result = await response.Content.ReadAsStringAsync();
-                var newRecord = JsonConvert.DeserializeObject<T>(result);
-
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = "Record added OK",
-                    Result = newRecord,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
-
         public async Task<User> GetUserByEmail(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            string tokenType,
-            string accessToken,
-            string email)
+           string urlBase,
+           string servicePrefix,
+           string controller,
+           string tokenType,
+           string accessToken,
+           string email)
         {
             try
             {
@@ -1190,7 +1249,314 @@
                 };
             }
         }
+        #endregion
 
+        #region Login
+        public async Task<Response> LoginMessage(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string email)
+        {
+            try
+            {
+                var userRequest = new UserRequest
+                {
+                    Email = email
+                };
+                var request = JsonConvert.SerializeObject(userRequest);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<TokenResponse> LoginFacebook(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            Models.FacebookResponse profile)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(profile);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var tokenResponse = await GetToken(
+                    urlBase,
+                    profile.Id,
+                    profile.Id);
+                return tokenResponse;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region Password
+        public async Task<Response> ChangePassword(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string tokenType,
+            string accessToken,
+            ChangePasswordRequest changePasswordRequest)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(changePasswordRequest);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                    };
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<Response> PasswordRecovery(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string email)
+        {
+            try
+            {
+                var userRequest = new UserRequest
+                {
+                    Email = email
+                };
+                var request = JsonConvert.SerializeObject(userRequest);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+        #endregion
+
+        #region Post
+        public async Task<Response> Post<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string tokenType,
+            string accessToken,
+            T model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request, Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(tokenType, accessToken);
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = JsonConvert.DeserializeObject<Response>(result);
+                    error.IsSuccess = false;
+                    return error;
+                }
+
+                var newRecord = JsonConvert.DeserializeObject<T>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Record added OK",
+                    Result = newRecord,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<T> Post<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            T model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request, Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = JsonConvert.DeserializeObject<T>(result);
+                    return error;
+                }
+
+                var newRecord = JsonConvert.DeserializeObject<T>(result);
+
+                return newRecord;
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+
+        public async Task<Response> Post2<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            T model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+
+                var result = await response.Content.ReadAsStringAsync();
+                var newRecord = JsonConvert.DeserializeObject<T>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Record added OK",
+                    Result = newRecord,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+        #endregion
+
+        #region Put
         public async Task<T> PutProfile<T>(
             string urlBase,
             string servicePrefix,
@@ -1318,316 +1684,6 @@
                 return model;
             }
         }
-
-        public async Task<Response> Delete<T>(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            string tokenType,
-            string accessToken,
-            T model)
-        {
-            try
-            {
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(tokenType, accessToken);
-                var url = string.Format(
-                    "{0}{1}/{2}",
-                    servicePrefix,
-                    controller,
-                    model.GetHashCode());
-                var response = await client.DeleteAsync(url);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    var error = JsonConvert.DeserializeObject<Response>(result);
-                    error.IsSuccess = false;
-                    return error;
-                }
-
-                return new Response
-                {
-                    IsSuccess = true,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
-
-        public async Task<Response> Delete<T>(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            T model)
-        {
-            try
-            {
-                
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format(
-                    "{0}{1}/{2}",
-                    servicePrefix,
-                    controller,
-                    model.GetHashCode());
-                var response = await client.DeleteAsync(url);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    var error = JsonConvert.DeserializeObject<Response>(result);
-                    error.IsSuccess = false;
-                    return error;
-                }
-
-                return new Response
-                {
-                    IsSuccess = true,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
-        public async Task<Response> DeleteEmail(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            int id)
-        {
-            try
-            {
-                var model = new ProfileEmail
-                {
-                    ProfileEmailId = id,
-                };
-
-                var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format(
-                    "{0}{1}",
-                    servicePrefix,
-                    controller);
-                var response = await client.PostAsync(url, content);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return default;
-                }
-                return JsonConvert.DeserializeObject<Response>(result);
-            }
-            catch (Exception ex)
-            {
-                return default;
-            }
-        }
-        public async Task<Response> Delete1(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            int id)
-        {
-            try
-            {
-                var model = new ProfileSM
-                {
-                    ProfileMSId = id,
-                };
-
-                var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format(
-                    "{0}{1}",
-                    servicePrefix,
-                    controller);
-                var response = await client.PostAsync(url, content);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return default;
-                }
-                return JsonConvert.DeserializeObject<Response>(result);
-            }
-            catch (Exception ex)
-            {
-                return default;
-            }
-        }
-        public async Task<Response> DeleteWhatsapp(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            int id)
-        {
-            try
-            {
-                var model = new ProfileWhatsapp
-                {
-                    ProfileWhatsappId = id,
-                };
-
-                var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format(
-                    "{0}{1}",
-                    servicePrefix,
-                    controller);
-                var response = await client.PostAsync(url, content);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return default;
-                }
-                return JsonConvert.DeserializeObject<Response>(result);
-            }
-            catch (Exception ex)
-            {
-                return default;
-            }
-        }
-        public async Task<Response> DeleteRelationPhone(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            int id)
-        {
-            try
-            {
-                var model = new ProfilePhone
-                {
-                    ProfilePhoneId = id,
-                };
-
-                var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format(
-                    "{0}{1}",
-                    servicePrefix,
-                    controller);
-                var response = await client.PostAsync(url, content);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return default;
-                }
-                return JsonConvert.DeserializeObject<Response>(result);
-            }
-            catch (Exception ex)
-            {
-                return default;
-            }
-        }
-        public async Task<T> Delete2<T>(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            int id)
-        {
-            try
-            {
-
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format(
-                    "{0}{1}/{2}",
-                    servicePrefix,
-                    controller,
-                    id);
-                var response = await client.DeleteAsync(url);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return default;
-                }
-                return JsonConvert.DeserializeObject<T>(result);
-            }
-            catch (Exception ex)
-            {
-                return default;
-            }
-        }
-
-        public async Task<Response> Delete3<T>(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            T model)
-        {
-            try
-            {
-                var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8, "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var url = string.Format(
-                    "{0}{1}/{2}",
-                    servicePrefix,
-                    controller,
-                    model);
-                var response = await client.PostAsync(url,content);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    var error = JsonConvert.DeserializeObject<Response>(result);
-                    error.IsSuccess = false;
-                    return error;
-                }
-
-                return new Response
-                {
-                    IsSuccess = true,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
+        #endregion
     }
 }

@@ -1,15 +1,12 @@
-﻿using GalaSoft.MvvmLight.Command;
-using Mynfo.Helpers;
-using Mynfo.Services;
-using System.Windows.Input;
-using Xamarin.Forms;
-
-namespace Mynfo.ViewModels
+﻿namespace Mynfo.ViewModels
 {
-
+    using GalaSoft.MvvmLight.Command;
+    using Mynfo.Helpers;
+    using Mynfo.Services;
+    using System.Windows.Input;
+    using Xamarin.Forms;
     public class PasswordRecoveryViewModel : BaseViewModel
     {
-
         #region Services
         ApiService apiService;
         #endregion
@@ -56,7 +53,6 @@ namespace Mynfo.ViewModels
                 return new RelayCommand(Recovery);
             }
         }
-
         async void Recovery()
         {
             if (string.IsNullOrEmpty(this.Email))

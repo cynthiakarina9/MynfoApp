@@ -35,7 +35,9 @@
             GetUSer(_ForeignUserId);
             GetList();
         }
+        #endregion
 
+        #region Methods
         public async void GetUSer(int _ForeignUserId)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -66,10 +68,14 @@
                 ForeingBox.Add(foreingBoxValue);
             }
         }
+
+        #region Lista
         public void AddList(ForeingBox _foreingBox)
-        {
-            ForeingBox.Add(_foreingBox);
-        }
+                {
+                    ForeingBox.Add(_foreingBox);
+                }
+        #endregion
+        
         #endregion
     }
 }

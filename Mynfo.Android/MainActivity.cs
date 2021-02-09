@@ -4,26 +4,19 @@
     using Android.Content;
     using Android.Content.PM;
     using Android.Nfc;
+    using Android.Nfc.Tech;
     using Android.OS;
     using Android.Runtime;
-    using Models;
-    using Newtonsoft.Json;
+    using Mynfo.Services;
+    using Mynfo.ViewModels;
+    using Mynfo.Views;
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
     using System;
-    using System.Collections.Generic;
-    using System.Globalization;
     using System.IO;
     using System.Text;
-    using Mynfo.ViewModels;
-    using Newtonsoft.Json.Linq;
-    using SQLite;
-    using Android.Graphics.Drawables;    
-    using Mynfo.Services;
     using System.Threading;
     using Xamarin.Essentials;
-    using Android.Nfc.Tech;
-    using Mynfo.Views;
 
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },    
     Categories = new[] { "android.intent.category.DEFAULT" }), 

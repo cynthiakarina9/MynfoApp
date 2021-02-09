@@ -3,9 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.BoxRegisterPage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
-
     <NavigationPage.TitleView>
         <Grid
             BindingContext="{Binding BoxRegister}">
@@ -35,6 +34,7 @@
                     Grid.Row = "1"
                     HorizontalOptions = "Center"
                     Text = "{i18n:Translate BoxName}" 
+                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                     VerticalOptions = "Center" />
                 <Entry 
                     FontSize = "18"
@@ -44,7 +44,7 @@
                     HorizontalTextAlignment = "Center"
                     MaxLength="10"
                     Text = "{Binding Name}"
-                    TextColor="{StaticResource FontColor}"
+                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                     VerticalOptions = "Center"
                     WidthRequest = "300"/>
                 <Button 
@@ -55,7 +55,7 @@
                     HeightRequest = "40"
                     HorizontalOptions = "Center"
                     Text = "{i18n:Translate Create}"
-                    TextColor = "{StaticResource Dark_FontColor}"
+                    TextColor = "{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                     VerticalOptions = "End"
                     WidthRequest = "100"/>
                 <ActivityIndicator

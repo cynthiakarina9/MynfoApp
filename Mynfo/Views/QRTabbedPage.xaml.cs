@@ -2,22 +2,18 @@
 {
     using Mynfo.Helpers;
     using Mynfo.ViewModels;
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Linq;
     using System.Runtime.CompilerServices;
-    using System.Text;
-    using System.Threading.Tasks;
 
     using Xamarin.Forms;
     using Xamarin.Forms.PlatformConfiguration;
     using Xamarin.Forms.PlatformConfiguration.WindowsSpecific;
+    using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
     using Xamarin.Forms.Xaml;
     using ZXing;
     using ZXing.Mobile;
     using ZXing.Net.Mobile.Forms;
-    using static SQLite.SQLite3;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QRTabbedPage : INotifyPropertyChanged
@@ -40,7 +36,7 @@
             {
                 BarcodeFormat.QR_CODE,
                 BarcodeFormat.CODE_128,
-                BarcodeFormat.EAN_13
+                BarcodeFormat.EAN_13,
             };
 
             #region TabbedPage

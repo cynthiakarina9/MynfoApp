@@ -58,7 +58,6 @@
         #region Constructors
         public LoginViewModel()
         {
-            Application.Current.UserAppTheme = OSAppTheme.Light;
             this.apiService = new ApiService();
             
             this.IsRemembered = true;
@@ -67,7 +66,6 @@
         #endregion
 
         #region Commands
-
         public ICommand LoginFacebookComand
         {
             get
@@ -75,7 +73,6 @@
                 return new RelayCommand(LoginFacebook);
             }
         }
-
         private async void LoginFacebook()
         {
             await Application.Current.MainPage.Navigation.PushAsync(
@@ -89,7 +86,6 @@
                 return new RelayCommand(Login);
             }
         }
-
         private async void Login()
         {
             if (string.IsNullOrEmpty(this.Email))
@@ -235,7 +231,6 @@
                 return new RelayCommand(Register);
             }
         }
-
         private async void Register()
         {
             MainViewModel.GetInstance().Register = new RegisterViewModel();
@@ -249,7 +244,6 @@
                 return new RelayCommand(RecoverPassword);
             }
         }
-
         async void RecoverPassword()
         {
             MainViewModel.GetInstance().PasswordRecovery =

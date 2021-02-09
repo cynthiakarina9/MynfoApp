@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesByEmailPage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -22,31 +22,28 @@
     <ContentPage.Content>
         <Grid
             BindingContext="{Binding ProfilesByEmail}">
-            <ScrollView>
+            <Label 
+                Grid.Row = "0" 
+                Text = "{i18n:Translate NetworksList}"
+                FontSize = "30"
+                FontAttributes="Bold"
+                TextColor = "{StaticResource MainColor}"
+                HorizontalOptions = "CenterAndExpand"
+                VerticalOptions = "Start"  
+                Margin = "0,5,0,15"/>
+            <Grid>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
-                        <RowDefinition />
-                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-
-                    <!--Titulo-->
                     <ActivityIndicator
                         Grid.Row = "1"
                         IsRunning = "{Binding IsRunning}"
                         HorizontalOptions = "CenterAndExpand"
                         VerticalOptions="StartAndExpand">
                     </ActivityIndicator>
-                    <Label 
-                        Grid.Row = "0" 
-                        Text = "{i18n:Translate NetworksList}"
-                        FontSize = "30"
-                        FontAttributes="Bold"
-                        TextColor = "{StaticResource MainColor}"
-                        HorizontalOptions = "CenterAndExpand"
-                        VerticalOptions = "EndAndExpand"  
-                        Margin = "0,5,0,15"/>
-
                     <!-- Lista-->
                     <ListView 
                         ItemsSource="{Binding profileEmail, Mode=TwoWay}"
@@ -54,13 +51,14 @@
                         HasUnevenRows="true"
                         SelectedItem="{Binding selectedProfile}"
                         ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20">
+                        Margin="10,35,10,20"
+                        x:Name="ListaEmail">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <Grid Padding="20">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
@@ -80,14 +78,14 @@
                                             FontSize="18"
                                             FontAttributes="Bold" 
                                             Text="{Binding Name, Mode=TwoWay}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
                                             Grid.Column="2"
                                             FontSize="15"
                                             Text="{Binding Email, Mode=TwoWay}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Center"/>
                                     </Grid>
@@ -106,7 +104,7 @@
                         TextColor="LightGray"
                         VerticalOptions="Center"/>
                 </Grid>
-            </ScrollView>
+            </Grid>
             <!-- Botón de nuevo -->
             <ImageButton
                 Grid.Row="0"

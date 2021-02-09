@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesByTiktokPage"
-             BackgroundColor="#FFFFFF"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
@@ -52,7 +52,8 @@
                         SelectedItem="{Binding selectedProfile}"
                         ItemSelected="OnListViewItemSelected"
                         ItemTapped="OnListViewItemTapped"
-                        HasUnevenRows="true">
+                        HasUnevenRows="true"
+                        x:Name="ListaTiktok">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -78,7 +79,7 @@
                                             FontAttributes="Bold" 
                                             Margin="0,0,10,0"
                                             Text="{Binding ProfileName}"
-                                            TextColor="{StaticResource FontColor}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             VerticalOptions="Center"
                                             HorizontalTextAlignment = "Start"/>
                                     </Grid>
