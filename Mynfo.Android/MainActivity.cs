@@ -220,7 +220,7 @@
             {
                 Console.WriteLine(ex);
             }           
-        }
+        } 
 
         //Convert the byte array of the NfcCard Uid to string
         private static string ByteArrayToString(byte[] ba)
