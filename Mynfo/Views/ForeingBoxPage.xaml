@@ -1,107 +1,119 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="Mynfo.Views.ForeingBoxPage"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundForeignBoxLigth}, Dark={StaticResource BackgroundForeignBoxDark}}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+             x:Name="BackG">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                               EndPoint="1,1">
+            <GradientStop Color="{AppThemeBinding Light=#b8cfe6, Dark= #acb9c6}"
+                            Offset="0.1" />
+            <GradientStop Color="{AppThemeBinding Light= #FFFFFF, Dark= #d1d1d1}"
+                            Offset="0.6" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
     <ContentPage.Content>
-        <ScrollView
-            BindingContext="{Binding ForeingBox}">
-            <Grid>
+        <Frame
+            CornerRadius="50"
+            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundForeignBoxLigth}, Dark={StaticResource BackgroundForeignBoxDark}}"
+            HasShadow="True"
+            Margin="30"
+            x:Name="FrameB">
+            <Grid
+                BindingContext="{Binding ForeingBox}">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="60"/>
-                        <RowDefinition Height="180"/>
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <!--Botón para volver a home-->                    
-                    <StackLayout 
-                        Grid.Column ="2"
-                        HorizontalOptions="End"
-                        VerticalOptions="Center"
-                        Padding="0,10,10,0"
-                        x:Name="BackButton" />
-                    <!-- Nombre e imagen del usuario foraneo-->
-                    <StackLayout
-                            Grid.Row="1"
-                            Grid.ColumnSpan = "3"
-                            HorizontalOptions="Center">
-                        <Label 
-                            FontAttributes="Bold"
-                            FontSize = "28"
-                            HorizontalTextAlignment="Center"
-                            HorizontalOptions = "Center"
-                            TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                            VerticalOptions="Center"
-                            x:Name="ForeignUserName" />
-                        <Line
-                            HeightRequest="1"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
-                    </StackLayout>
-                    <controls:CircleImage
-                        Grid.Row = "2"
-                        Grid.Column = "1"
-                        HeightRequest = "190"
-                        WidthRequest = "190"
-                        x:Name="ForeignUserImage">
-                    </controls:CircleImage>
-                    <!-- Listado de perfiles -->
-                    <CollectionView 
-                        ItemsSource="{Binding ProfilesF}"
-                        Grid.Row="3"
-                        Grid.ColumnSpan="3"
-                        SelectionMode="Single"
-                        SelectionChanged="OnCollectionViewSelectionChanged">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Vertical"
-                                    Span="3" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Padding="10">
-                                    <StackLayout
-                                        HorizontalOptions="CenterAndExpand">
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Command="{Binding GoToProfiles}"
-                                            HeightRequest="50"
-                                            Source="{Binding Logo}"
-                                            WidthRequest="50"/>
-                                        <Label
-                                            HorizontalTextAlignment="Center"
-                                            Text="{Binding ProfileName}"
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Nombre e imagen del usuario foraneo-->
+                        <StackLayout
+                                Grid.Row="1"
+                                Grid.ColumnSpan = "3"
+                                HorizontalOptions="Center">
+                            <Label 
+                                FontAttributes="Bold"
+                                FontSize = "25"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions = "Center"
+                                TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                VerticalOptions="Center"
+                                x:Name="ForeignUserName" />
+                            <Line
+                                HeightRequest="1"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                        </StackLayout>
+                        <controls:CircleImage
+                            Grid.Row="2"
+                            Grid.ColumnSpan="3"
+                            HeightRequest="100"
+                            WidthRequest="100"
+                            x:Name="ForeignUserImage">
+                        </controls:CircleImage>
+                        <!-- Listado de perfiles -->
+                        <CollectionView 
+                            ItemsSource="{Binding ProfilesF}"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="3"
+                            SelectionMode="Single"
+                            SelectionChanged="OnCollectionViewSelectionChanged">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"
+                                        Span="3" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <StackLayout
+                                            HorizontalOptions="CenterAndExpand">
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Command="{Binding GoToProfiles}"
+                                                HeightRequest="50"
+                                                Source="{Binding Logo}"
+                                                WidthRequest="50"/>
+                                            <Label
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding ProfileName}"
+                                                FontAttributes="Bold"
+                                                TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <!--<CollectionView.EmptyView>
+                                <ContentView>
+                                    <StackLayout 
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label 
                                             FontAttributes="Bold"
-                                            TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />
+                                            FontSize="18"
+                                            HorizontalOptions="Fill"
+                                            HorizontalTextAlignment="Center" 
+                                            Margin="10,0,10,280"
+                                            Text="{i18n:Translate EmptyBox}"
+                                            VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                        <!--<CollectionView.EmptyView>
-                            <ContentView>
-                                <StackLayout 
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label 
-                                        FontAttributes="Bold"
-                                        FontSize="18"
-                                        HorizontalOptions="Fill"
-                                        HorizontalTextAlignment="Center" 
-                                        Margin="10,0,10,280"
-                                        Text="{i18n:Translate EmptyBox}"
-                                        VerticalOptions="CenterAndExpand"/>
-                                </StackLayout>
-                            </ContentView>
-                        </CollectionView.EmptyView>-->
-                    </CollectionView>
+                                </ContentView>
+                            </CollectionView.EmptyView>-->
+                        </CollectionView>
+                    </Grid>
                 </Grid>
             </Grid>
-        </ScrollView>
+        </Frame>
+        
     </ContentPage.Content>
-</ContentPage>
+</popup:PopupPage>

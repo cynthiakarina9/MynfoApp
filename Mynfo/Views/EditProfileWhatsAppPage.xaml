@@ -20,9 +20,9 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid>
-            <ScrollView
-                BindingContext = "{Binding EditProfileWhatsApp}">
+        <Grid
+            BindingContext = "{Binding EditProfileWhatsApp}">
+            <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height = "80"/>

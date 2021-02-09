@@ -214,10 +214,19 @@
             if (BoxDefault == true)
             {
                 BxDefaultCheckBox.IsEnabled = false;
+                if(currentTheme == OSAppTheme.Dark)
+                {
+                    BxDefaultCheckBox.BackgroundColor = Color.White;
+                }
+                else
+                {
+                    BxDefaultCheckBox.BackgroundColor = Color.Black;
+                }
             }
             else
             {
                 BxDefaultCheckBox.IsEnabled = true;
+                BxDefaultCheckBox.BackgroundColor = Color.FromHex("#FF5521");
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 

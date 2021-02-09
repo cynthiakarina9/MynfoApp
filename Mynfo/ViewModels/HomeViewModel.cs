@@ -144,7 +144,6 @@
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
             GetBoxDefault();
             GetBoxNoDefault();
-            //GetProfiles();
         }
         #endregion
 
@@ -222,43 +221,6 @@
             return Box;
         }
 
-        public async void GetProfiles()
-        {
-            
-            if (Box.Count != 0 && BoxNoDefault.Count == 0)
-            {
-                int BoxId = 0;
-                foreach (Box b in Box)
-                {
-                    BoxId = b.BoxId;
-                }
-                GetListEmail(BoxId);
-                GetListPhone(BoxId);
-                GetListSM(BoxId);
-                GetListWhatsapp(BoxId);
-            }
-            if (BoxNoDefault.Count != 0)
-            {
-                int BoxId = 0;
-                int BoxId2 = 0;
-                foreach (Box b in Box)
-                {
-                    BoxId2 = b.BoxId;
-                    GetListEmail(BoxId2);
-                    GetListPhone(BoxId2);
-                    GetListSM(BoxId2);
-                    GetListWhatsapp(BoxId2);
-                }
-                foreach (Box b in Box)
-                {
-                    BoxId = b.BoxId;
-                    GetListEmail(BoxId);
-                    GetListPhone(BoxId);
-                    GetListSM(BoxId);
-                    GetListWhatsapp(BoxId);
-                }
-            }
-        }
 
         #region Listas
         public void AddList(Box _Boxes)
@@ -268,23 +230,47 @@
 
         public void RemoveList(Box _Boxes)
         {
-            BoxNoDefault.Remove(_Boxes);
+            if(_Boxes.BoxDefault == false)
+            {
+                BoxNoDefault.Remove(_Boxes);
+            }
+            else
+            {
+                Box.Remove(_Boxes);
+            }
         }
 
         public void UpdateList(Box _Boxes)
         {
             Box Aux = new Box();
-            foreach (Box B in BoxNoDefault)
+            if(_Boxes.BoxDefault == false)
             {
-                if (_Boxes.BoxId == B.BoxId)
+                foreach (Box B in BoxNoDefault)
                 {
-                    Aux = B;
+                    if (_Boxes.BoxId == B.BoxId)
+                    {
+                        Aux = B;
+                    }
                 }
-            }
-            int newIndex = BoxNoDefault.IndexOf(Aux);
-            BoxNoDefault.Remove(Aux);
+                int newIndex = BoxNoDefault.IndexOf(Aux);
+                BoxNoDefault.Remove(Aux);
 
-            BoxNoDefault.Insert(newIndex, _Boxes);
+                BoxNoDefault.Insert(newIndex, _Boxes);
+            }
+            else
+            {
+                foreach (Box B in Box)
+                {
+                    if (_Boxes.BoxId == B.BoxId)
+                    {
+                        Aux = B;
+                    }
+                }
+                int newIndex = Box.IndexOf(Aux);
+                Box.Remove(Aux);
+
+                Box.Insert(newIndex, _Boxes);
+            }
         }
         #endregion
 
@@ -558,20 +544,12 @@
         }
         public async void GoToDetails ()
         {
-            int BoxId = 0;
-            int BoxId2 = 0;
             Box _Box = new Box();
             foreach(Box boxCount in Box)
             {
-                BoxId = boxCount.BoxId;
                 _Box = boxCount;
             }
-            foreach(Box BoxCountNoDefault in BoxNoDefault)
-            {
-                BoxId2 = BoxCountNoDefault.BoxId;
-            }
             MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_Box);
-            //await App.Navigator.PushAsync(new DetailsBoxPage(_Box));
             await PopupNavigation.Instance.PushAsync(new DetailBoxPopUpPage(_Box));
         }
         #endregion
