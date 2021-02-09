@@ -14,9 +14,7 @@
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
-    {
-
-        public static bool write_nfc = false;
+    {        
         public SettingsPage()
         {
             InitializeComponent();
@@ -93,7 +91,7 @@
             var duration = TimeSpan.FromMilliseconds(500);
             Vibration.Vibrate(duration);
             Vibration.Vibrate(duration);
-            write_nfc = true;                                            
+            //write_nfc = true;                                            
         }
     }
 } 

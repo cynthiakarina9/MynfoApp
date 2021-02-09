@@ -23,7 +23,7 @@
     // application events from iOS.
     [Register("AppDelegate")]
 
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, INFCNdefReaderSessionDelegate
+    public class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, INFCNdefReaderSessionDelegate
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -69,26 +69,17 @@
         public void Accelerometer_ShakeDetected(object sender, EventArgs e)
         {
             try
-            { 
+            {                 
+                Vibration.Vibrate();
 
-                if (SettingsPage.write_nfc == true) 
+                InvokeOnMainThread(() =>
                 {
-                    ScanWriteAsync();
-                    SettingsPage.write_nfc = false;                    
-                }
-                else 
-                {
-                    Vibration.Vibrate();
-
-                    InvokeOnMainThread(() =>
+                    Session = new NFCNdefReaderSession(this, null, true);
+                    if (Session != null)
                     {
-                        Session = new NFCNdefReaderSession(this, null, true);
-                        if (Session != null)
-                        {
-                            Session.BeginSession();
-                        }
-                    });
-                }         
+                        Session.BeginSession();
+                    }
+                });              
             }
             catch (FeatureNotSupportedException ex)
             {
@@ -98,7 +89,7 @@
             {
                 // Other error has occurred.
             }
-        }
+        }        
 
         public void ToggleAccelerometer()
         {
@@ -217,56 +208,6 @@
 
             //Return the tag content.
             return tagContent;
-        }        
-
-
-        public NFCNdefReaderSession _tagSession;        
-        public TaskCompletionSource<string> _tcs;
-        public Task ScanWriteAsync()
-        {
-
-            if (!NFCNdefReaderSession.ReadingAvailable)
-            {
-                throw new InvalidOperationException("Reading NDEF is not available");
-            }
-
-            _tcs = new TaskCompletionSource<string>();
-            var pollingOption = NFCPollingOption.Iso14443;
-            _tagSession = new NFCNdefReaderSession(this, DispatchQueue.CurrentQueue, true)
-            {
-                AlertMessage = "Writing",
-            };
-
-            _tagSession.BeginSession();
-
-            return _tcs.Task;
-        }      
-
-        [Foundation.Export("readerSession:didDetectTags:")]
-        public void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
-        {
-            var nFCNdefTag = tags[0];
-            session.ConnectToTag(nFCNdefTag, CompletionHandler);
-
-            string dominio = "http://boxweb1.azurewebsites.net/";
-            string user = MainViewModel.GetInstance().User.UserId.ToString();
-            string tag_id = "";
-            string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
-
-            NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
-            NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
-            nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
-            {
-                Console.WriteLine("escrito");
-                SettingsPage.write_nfc = false;
-            });
-            Console.WriteLine("escrito");
-            SettingsPage.write_nfc = false;
-        }
-        private void CompletionHandler(NSError obj)
-        {
-            var duration = TimeSpan.FromMilliseconds(1500);
-            Vibration.Vibrate(duration);
-        }
+        }                      
     }
 }

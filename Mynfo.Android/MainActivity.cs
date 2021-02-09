@@ -101,7 +101,6 @@
         {
             Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed);
         }
-
         private void EnableReaderMode()
         {
             try
@@ -114,7 +113,6 @@
                 Console.WriteLine(ex);
             }            
         }
-
         private void DisableReaderMode()
         {
             try 
@@ -127,49 +125,74 @@
                 Console.WriteLine(ex);
             }            
         }
-
-
         protected string TagUid;
-
-
         protected override void OnResume()
         {
             base.OnResume();            
             try 
             {
-                if (SettingsPage.write_nfc == true)
-                {                   
+                if (TAGPage.write_nfc == true)
+                {
+                    int user_id = 0;
+                    if (NfcAdapter.ActionNdefDiscovered.Equals(Intent.Action))
+                    {
+                        //Get the NFC ID
+                        var myTag = Intent.GetParcelableArrayExtra(NfcAdapter.ExtraNdefMessages);
+
+                        var msg = (NdefMessage)myTag[0];
+                        var record = msg.GetRecords()[0];
+                        //If the NFC Card ID is not null
+                        if (record != null)
+                        {
+                            if (record.Tnf == NdefRecord.TnfWellKnown) // The data is defined by the Record Type Definition (RTD) specification available from http://members.nfc-forum.org/specs/spec_list/
+                            {
+                                // Get the transfered data
+                                var data = Encoding.ASCII.GetString(record.GetPayload());
+                                string result = data.Substring(1);
+
+                                string[] variables = result.Split('=');
+                                string[] depura_userid = variables[1].Split('&');                                
+                                user_id = Convert.ToInt32(depura_userid[0]);
+                            }
+                        }
+                    }
 
                     string dominio = "boxweb1.azurewebsites.net/";
                     string user = MainViewModel.GetInstance().User.UserId.ToString();
                     string tag_id = "";
-
-                    string url = dominio+ "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
-                    //http://localhost:58951/index.aspx?user_id=7
-                    var tag = Intent.GetParcelableExtra(NfcAdapter.ExtraTag) as Tag;
-                    if (tag != null)
+                    if (user_id == Convert.ToInt32(user) || 0 == user_id)
                     {
-                        Ndef ndef = Ndef.Get(tag);
-                        if (ndef != null && ndef.IsWritable)
-                        {                            
-                            /*var payload = Encoding.ASCII.GetBytes(url);
-                            var mimeBytes = Encoding.ASCII.GetBytes("text/html");
-                            var record = new NdefRecord(NdefRecord.TnfWellKnown, mimeBytes, new byte[0], payload);
-                            var ndefMessage = new NdefMessage(new[] { record });
-                            ndef.Connect();
-                            ndef.WriteNdefMessage(ndefMessage);
-                            ndef.Close();*/
+                        string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
+                        //http://localhost:58951/index.aspx?user_id=7
+                        var tag = Intent.GetParcelableExtra(NfcAdapter.ExtraTag) as Tag;
+                        if (tag != null)
+                        {
+                            Ndef ndef = Ndef.Get(tag);
+                            if (ndef != null && ndef.IsWritable)
+                            {
+                                /*var payload = Encoding.ASCII.GetBytes(url);
+                                var mimeBytes = Encoding.ASCII.GetBytes("text/html");
+                                var record = new NdefRecord(NdefRecord.TnfWellKnown, mimeBytes, new byte[0], payload);
+                                var ndefMessage = new NdefMessage(new[] { record });
+                                ndef.Connect();
+                                ndef.WriteNdefMessage(ndefMessage);
+                                ndef.Close();*/
 
-                            ndef.Connect();
-                            NdefRecord mimeRecord = NdefRecord.CreateUri("http://" + url);
-                            ndef.WriteNdefMessage(new NdefMessage(mimeRecord));
-                            ndef.Close();
+                                ndef.Connect();
+                                NdefRecord mimeRecord = NdefRecord.CreateUri("http://" + url);
+                                ndef.WriteNdefMessage(new NdefMessage(mimeRecord));
+                                ndef.Close();
+                            }
                         }
+                        TAGPage.write_nfc = false;
+                        System.Threading.Tasks.Task task = App.DisplayAlertAsync("Tag escrito correctamente");
+                        var duration = TimeSpan.FromMilliseconds(1500);
+                        Vibration.Vibrate(duration);
                     }
-                    SettingsPage.write_nfc = false;
-                    System.Threading.Tasks.Task task = App.DisplayAlertAsync("Tag escrito correctamente");
-                    var duration = TimeSpan.FromMilliseconds(1500);
-                    Vibration.Vibrate(duration);                    
+                    else 
+                    {
+                        System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
+                    }
                 }
                 else 
                 {
@@ -215,7 +238,6 @@
             return hex.ToString();
         }
        
-
         #region Trigger nfc
         // Set speed delay for monitoring changes.
         Xamarin.Essentials.SensorSpeed speed = Xamarin.Essentials.SensorSpeed.Game;
@@ -278,3 +300,15 @@
         #endregion Trigger nfc
     }
 }
+
+//[assembly: Dependency(typeof(BackgroundDependency_Android))]
+//namespace ProjectNamespace.Droid
+//{
+//    public class BackgroundDependency_Android : Java.Lang.Object, IBackgroundDependency
+//    {
+//        public void ExecuteCommand()
+//        {
+//            StartBeepWork();
+//        }
+//    }
+//}
