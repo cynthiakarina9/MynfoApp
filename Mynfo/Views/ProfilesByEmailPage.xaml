@@ -54,7 +54,8 @@
                         HasUnevenRows="true"
                         SelectedItem="{Binding selectedProfile}"
                         ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20">
+                        Margin="10,35,10,20"
+                        x:Name="ListaEmail">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

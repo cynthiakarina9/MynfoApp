@@ -42,8 +42,11 @@
         {
 
             ProfileSM tappedItem = e.Item as ProfileSM;
+            if (tappedItem == null)
+                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileYoutube = new EditProfileYoutubeViewModel(tappedItem.ProfileMSId);
+            ListaYoutube.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileYoutubePage());
         }
         #endregion

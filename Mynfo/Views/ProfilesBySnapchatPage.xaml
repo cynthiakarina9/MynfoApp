@@ -52,7 +52,8 @@
                         SelectedItem="{Binding selectedProfile}"
                         ItemSelected="OnListViewItemSelected"
                         ItemTapped="OnListViewItemTapped"
-                        HasUnevenRows="true">
+                        HasUnevenRows="true"
+                        x:Name="ListaSnapchat">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
