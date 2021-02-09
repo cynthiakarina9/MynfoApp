@@ -30,6 +30,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <Label
                         FontAttributes="Bold"

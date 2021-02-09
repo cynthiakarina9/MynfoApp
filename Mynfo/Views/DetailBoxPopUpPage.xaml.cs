@@ -5,6 +5,7 @@
     using Mynfo.Services;
     using Mynfo.ViewModels;
     using Rg.Plugins.Popup.Extensions;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
@@ -35,17 +36,7 @@
             NavigationPage.SetHasNavigationBar(this, false);
             OSAppTheme currentTheme = Application.Current.RequestedTheme;
             FrameB.CloseWhenBackgroundIsClicked= true;
-            if (currentTheme == OSAppTheme.Dark)
-            {
-                EdithButton.Source = "edit1";
-                BoxProfiles.Source = "plusb";
-            }
-            else
-            {
-                EdithButton.Source = "edit2";
-                BoxProfiles.Source = "plus";
-            }
-
+            
             int BoxId = _Box.BoxId;
             var boxLocal = new BoxLocal();
             int UserID = MainViewModel.GetInstance().User.UserId;
@@ -170,34 +161,34 @@
 
             //Navegación a ventana de perfiles
             BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault, BoxName));
-
-            //Creación del botón para volver a home
-            bxBtnHome.BackgroundColor = Color.Transparent;
-            bxBtnHome.Source = "back.png";
-            bxBtnHome.WidthRequest = 50;
-            bxBtnHome.HeightRequest = 50;
-            bxBtnHome.Clicked += ToolbarItem_Clicked;
-
-            HomeButton.Children.Add(bxBtnHome);
-
-            //Creación de botón para borrar box
-            //BxBtnDelete.BackgroundColor = Color.Transparent;
-            //BxBtnDelete.Source = "edit2.png";
-            //BxBtnDelete.WidthRequest = 50;
-            //BxBtnDelete.HeightRequest = 50;
+            
+            //Botón de Editar
             EdithButton.Clicked += new EventHandler((sender, e) => edithBox(sender, e, BoxId, UserID, BoxDefault));
-
-            //EdithButton.Children.Add(BxBtnDelete);
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
             if (BoxDefault == true)
             {
                 BxDefaultCheckBox.IsEnabled = false;
+                if (currentTheme == OSAppTheme.Dark)
+                {
+                    BxDefaultCheckBox.Color = Color.White;
+                    EdithButton.Source = "edit1";
+                    BoxProfiles.Source = "plusb";
+                }
+                else
+                {
+                    BxDefaultCheckBox.Color = Color.Black;
+                    EdithButton.Source = "edit1";
+                    BoxProfiles.Source = "plusn";
+                }
             }
             else
             {
                 BxDefaultCheckBox.IsEnabled = true;
+                BxDefaultCheckBox.Color = Color.FromHex("FF5521");
+                EdithButton.Source = "edit2";
+                BoxProfiles.Source = "plus";
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 
@@ -447,8 +438,7 @@
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.DetailsBoxEdith = new DetailsBoxEdithViewModel(_BoxId);
-            await App.Navigator.PushAsync(new DetailsBoxEdithPage(_BoxId));
-            await Navigation.PopPopupAsync();
+            await PopupNavigation.Instance.PushAsync(new DetailsBoxEdithPage(_BoxId));
         }
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)

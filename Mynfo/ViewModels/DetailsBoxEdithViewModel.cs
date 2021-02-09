@@ -509,6 +509,7 @@
         }
         private void BackHome()
         {
+            PopupNavigation.Instance.PopAllAsync();
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }

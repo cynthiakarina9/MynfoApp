@@ -63,7 +63,7 @@
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
                             IsTextPredictionEnabled="True"
-                            MaxLength = "10"
+                            MaxLength = "20"
                             Placeholder = "{i18n:Translate NProfilePlaceH}"
                             Text = "{Binding Name}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"

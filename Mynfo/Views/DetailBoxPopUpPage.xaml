@@ -7,18 +7,12 @@
              BindingContext = "{Binding Main, Source={StaticResource Locator}}"
              x:Name="FrameB">
     <ContentPage.Background>
-        <!--<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-            <GradientStop Color="Transparent" Offset="0.1"/>
-            <GradientStop Color="Orange" Offset="1.0"/>
-        </LinearGradientBrush>-->
         <LinearGradientBrush StartPoint="0,0"
                                EndPoint="1,1">
             <GradientStop Color="{AppThemeBinding Light=#f3947a, Dark= #ff6c45}"
                             Offset="0.1" />
             <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #c9c5c5}"
                             Offset="0.6" />
-            <GradientStop Color="{AppThemeBinding Light= #a8d0e9, Dark= #a7c4d6}"
-                            Offset="1.0" />
         </LinearGradientBrush>
     </ContentPage.Background>
     <ContentPage.Content>
@@ -28,44 +22,31 @@
             HasShadow="True"
             Margin="30"
             x:Name="BackG">
-            <!--<Frame.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="Green" Offset="0.1"/>
-                    <GradientStop Color="Orange" Offset="1.0"/>
-                </LinearGradientBrush>
-            </Frame.Background>-->
             <Grid>
-                <ScrollView>
+                <Grid>
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="70"/>
-                            <RowDefinition Height="80"/>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition />
-                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="0.25*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <!--Botón para volver a home-->
-                        <StackLayout 
-                            Grid.Column="0"
-                            HorizontalOptions="Start"
-                            VerticalOptions="Center"
-                            Padding="10,10,0,0"
-                            x:Name="HomeButton" />
                         <!--Botón para editar box-->
                         <ImageButton 
                             BackgroundColor="Transparent"
                             Grid.Column ="3"
-                            HeightRequest="50"
+                            Grid.RowSpan="2"
+                            HeightRequest="40"
                             HorizontalOptions="End"
-                            Padding="0,10,10,0"
-                            VerticalOptions="Center"
-                            WidthRequest="50"
+                            VerticalOptions="Start"
+                            WidthRequest="40"
                             x:Name="EdithButton" />
                         <!--Nombre de la box 
                     El nombre de la box será variable-->
@@ -74,7 +55,7 @@
                             FontSize="25"
                             Grid.ColumnSpan="4"
                             Grid.Row="1"
-                            HorizontalOptions="Center"
+                            HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             IsReadOnly="True"
                             Text="{Binding Box.Name, Mode=TwoWay}"
@@ -87,6 +68,7 @@
                         <StackLayout 
                             Grid.Row="2"
                             Grid.Column="1"
+                            Margin="20,0,0,0"
                             VerticalOptions="Center"
                             x:Name="BoxDefaultCheckBox" />
                         <Label 
@@ -145,16 +127,15 @@
                             </CollectionView.EmptyView>
                         </CollectionView>
                     </Grid>
-                </ScrollView>
+                </Grid>
                 <!--Agregar perfiles-->
                 <ImageButton
                     BackgroundColor="Transparent"
                     Grid.Row="0"
-                    HeightRequest="70"
+                    HeightRequest="60"
                     HorizontalOptions="Center"
-                    Margin="15"
                     VerticalOptions="End"
-                    WidthRequest="70"
+                    WidthRequest="60"
                     x:Name="BoxProfiles"/>
             </Grid>
         </Frame>

@@ -12,7 +12,7 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ForeingBoxPage : ContentPage
+    public partial class ForeingBoxPage 
     {
         #region Properties
         public string data = Data_ntc.data_value;
@@ -24,20 +24,10 @@
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            #region Button
-            //Creación del botón para volver a boxes foraneas
-            var bxBtnBack = new ImageButton();
-            bxBtnBack.BackgroundColor = Color.Transparent;
-            bxBtnBack.Source = "back.png";
-            bxBtnBack.WidthRequest = 50;
-            bxBtnBack.HeightRequest = 50;
-            bxBtnBack.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, isAfterReceiving));
-            BackButton.Children.Add(bxBtnBack);
-            #endregion
+            OSAppTheme currentTheme = Application.Current.RequestedTheme;
+            BackG.CloseWhenBackgroundIsClicked = true;
 
             #region DataFill
-
-
             ForeingBox foreing = _foreingBox;
 
             ForeignUserImage.Source = foreing.ImageFullPath;

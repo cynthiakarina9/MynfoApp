@@ -5,6 +5,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.Views;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
@@ -357,9 +358,10 @@
 
             MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
             MainViewModel.GetInstance().ListForeignBox.GetList();
+
             //Enviar a detalles de la box foranea cuando se inserta
             MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(foreingBox, true);
-            App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
+            PopupNavigation.Instance.PushAsync(new ForeingBoxPage(foreingBox, true));
         }
         #endregion
     }
