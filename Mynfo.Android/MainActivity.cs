@@ -207,7 +207,7 @@
                                 
                                 string[] variables = result.Split('=');                                                                
                                 string[] depura_userid = variables[1].Split('&');
-                                string tag_id = variables[2];
+                                string tag_id = variables[2]; 
                                 string user_id = depura_userid[0];                                
 
                                 Imprime_box.Consulta_user(user_id, tag_id);
