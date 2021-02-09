@@ -44,8 +44,11 @@
         {
 
             ProfileSM tappedItem = e.Item as ProfileSM;
+            if (tappedItem == null)
+                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileLinkedin = new EditProfileLinkedinViewModel(tappedItem.ProfileMSId);
+            ListaLinkedin.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileLinkedinPage());
         }
         #endregion

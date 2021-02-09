@@ -4,7 +4,6 @@
     using CoreNFC;
     using Foundation;
     using Mynfo.Interfaces;
-    using Mynfo.iOS.Services;
     using Mynfo.Services;
     using Mynfo.ViewModels;
     using Mynfo.Views;
@@ -15,7 +14,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using UIKit;
-    using Xamarin.Essentials;    
+    using Xamarin.Essentials;
     using Xamarin.Forms;
 
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
