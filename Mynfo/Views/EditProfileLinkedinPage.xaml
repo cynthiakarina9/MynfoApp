@@ -76,7 +76,7 @@
                         HorizontalTextAlignment = "Center"
                         HeightRequest = "46"
                         HorizontalOptions = "Center"
-                        IsEnabled="False"
+                        MaxLength = "20"
                         Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                         VerticalOptions = "Center" 

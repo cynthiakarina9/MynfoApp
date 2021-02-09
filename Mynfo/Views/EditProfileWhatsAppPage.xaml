@@ -75,7 +75,7 @@
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
                             HorizontalOptions = "Center"
-                            MaxLength = "10"
+                            MaxLength = "20"
                             Text = "{Binding profileWhats.Name}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 

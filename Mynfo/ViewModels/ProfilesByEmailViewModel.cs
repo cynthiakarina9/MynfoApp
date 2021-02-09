@@ -119,7 +119,7 @@
             profileEmail.Remove(selectedProfile);
 
             profileEmail.Insert(newIndex, _profileEmail);
-
+            selectedProfile = null;
         }
         #endregion
         #endregion
