@@ -103,7 +103,6 @@
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
-
             ProfileSM tappedItem = e.Item as ProfileSM;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileFacebook = new EditProfileFacebookViewModel(tappedItem.ProfileMSId);

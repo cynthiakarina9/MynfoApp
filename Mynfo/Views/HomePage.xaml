@@ -84,6 +84,7 @@
                         Grid.ColumnSpan="3"
                         IsVisible="{Binding MoreOne}"
                         SelectionMode="Single"
+                        SelectedItem="{Binding selectedItem}"
                         SelectionChanged="OnCollectionViewSelectionChanged"
                         x:Name="BoxCollectionView">
                         <CollectionView.ItemsLayout>

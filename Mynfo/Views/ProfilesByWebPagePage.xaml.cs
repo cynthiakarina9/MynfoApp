@@ -8,11 +8,13 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesByWebPagePage : ContentPage
     {
+        #region Constructor
         public ProfilesByWebPagePage()
         {
             InitializeComponent();
         }
-
+        #endregion
+        
         #region Commands
         private void NewProfileWebPage_Clicked(object sender, EventArgs e)
         {

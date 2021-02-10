@@ -52,6 +52,7 @@
                         Grid.Row="1"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
+                        MaxLength="20"
                         IsReadOnly="True"
                         Text="{Binding Box.Name, Mode=TwoWay}"
                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"

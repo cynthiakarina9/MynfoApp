@@ -115,11 +115,16 @@
         public void addProfile(ProfileSM _profileSM)
         {
             profileSM.Add(_profileSM);
+            EmptyList = false;
         }
 
         public void removeProfile()
         {
             profileSM.Remove(selectedProfile);
+            if (profileSM.Count == 0)
+            {
+                EmptyList = true;
+            }
         }
         #endregion
 

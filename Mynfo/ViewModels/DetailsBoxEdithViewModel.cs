@@ -6,7 +6,6 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.Views;
-    using Rg.Plugins.Popup.Extensions;
     using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;

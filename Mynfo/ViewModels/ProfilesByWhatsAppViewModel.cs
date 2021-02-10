@@ -65,6 +65,21 @@
         }
         #endregion
 
+        #region Commands
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+        private void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            Application.Current.MainPage = new MasterPage();
+        }
+        #endregion
+
         #region Methods
         public async Task<ObservableCollection<ProfileWhatsapp>> GetList()
         {
@@ -111,11 +126,16 @@
         public void addProfile(ProfileWhatsapp _profileWhatsapp)
         {
             profileWhatsApp.Add(_profileWhatsapp);
+            EmptyList = false;
         }
 
         public void removeProfile()
         {
             profileWhatsApp.Remove(selectedProfile);
+            if (profileWhatsApp.Count == 0)
+            {
+                EmptyList = true;
+            }
         }
 
         public void updateProfile(ProfileWhatsapp _profileWhatsapp)
@@ -124,24 +144,10 @@
             profileWhatsApp.Remove(selectedProfile);
 
             profileWhatsApp.Insert(newIndex, _profileWhatsapp);
+            selectedProfile = null;
         }
         #endregion
 
-        #endregion
-
-        #region Commands
-        public ICommand BackHomeCommand
-        {
-            get
-            {
-                return new RelayCommand(BackHome);
-            }
-        }
-        private void BackHome()
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
         #endregion
     }
 }

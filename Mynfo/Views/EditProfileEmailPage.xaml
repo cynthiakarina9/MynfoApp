@@ -80,9 +80,9 @@
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
+                            MaxLength = "20"
                             Text="{Binding profileEmail.Name, Mode=TwoWay}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                            MaxLength = "10"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
                             x:Name = "EntryName"/>

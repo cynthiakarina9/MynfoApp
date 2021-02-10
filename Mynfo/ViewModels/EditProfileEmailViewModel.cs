@@ -115,38 +115,6 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            #region LastCode2
-            //string consultaDefault = "select * from dbo.ProfileEmails where dbo.ProfileEmails.ProfileEmailId = "
-            //                            + profileEmail.ProfileEmailId ;
-            //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-
-            //ProfileEmail _profileEmail = new ProfileEmail();
-
-            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            //{
-            //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            //    sb.Append(consultaDefault);
-            //    string sql = sb.ToString();
-
-            //    using (SqlCommand command = new SqlCommand(sql, connection))
-            //    {
-            //        connection.Open();
-            //        using (SqlDataReader reader = command.ExecuteReader())
-            //        {
-            //            while (reader.Read())
-            //            {
-            //                _profileEmail.ProfileEmailId = (int)reader["ProfileEmailId"];
-            //                _profileEmail.Name = (string)reader["Name"];
-            //                _profileEmail.UserId = (int)reader["UserId"];
-            //                _profileEmail.Email = (string)reader["Email"];
-            //            }
-            //        }
-            //        connection.Close();
-            //    }
-            //}
-            #endregion
-
-
             //Agregar a la lista
             MainViewModel.GetInstance().ProfilesByEmail.updateProfile(profile);
             await App.Navigator.PopAsync();
@@ -203,7 +171,7 @@
                 return new RelayCommand(BackHome);
             }
         }
-        private async void BackHome()
+        private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
