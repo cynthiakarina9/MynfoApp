@@ -43,11 +43,8 @@
         {
 
             ProfileSM tappedItem = e.Item as ProfileSM;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileInstagram = new EditProfileInstagramViewModel(tappedItem.ProfileMSId);
-            ListaIG.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileInstagramPage());
         }
         #endregion

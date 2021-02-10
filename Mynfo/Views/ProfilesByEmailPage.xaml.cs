@@ -88,11 +88,8 @@
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
             ProfileEmail tappedItem = e.Item as ProfileEmail;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileEmail = new EditProfileEmailViewModel(tappedItem.ProfileEmailId);
-            ListaEmail.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileEmailPage());
         }
         #endregion

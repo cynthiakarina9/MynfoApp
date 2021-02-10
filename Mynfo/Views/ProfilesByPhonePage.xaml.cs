@@ -111,11 +111,8 @@
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
             ProfilePhone tappedItem = e.Item as ProfilePhone;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfilePhone = new EditProfilePhoneViewModel(tappedItem.ProfilePhoneId);
-            Listatelefonos.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfilePhonePage(tappedItem.ProfilePhoneId));
         }
         #endregion
