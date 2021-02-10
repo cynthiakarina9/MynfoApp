@@ -75,12 +75,11 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Padding="10">
-                                        <StackLayout
-                                            HorizontalOptions="CenterAndExpand">
-                                            <ImageButton
+                                    <StackLayout
+                                        BackgroundColor="Transparent"
+                                        Padding="10">
+                                        <Image
                                                 BackgroundColor="Transparent"
-                                                Command="{Binding GoToProfiles}"
                                                 HeightRequest="50"
                                                 Source="{Binding Logo}"
                                                 WidthRequest="50"/>
@@ -89,8 +88,8 @@
                                                 Text="{Binding ProfileName}"
                                                 FontAttributes="Bold"
                                                 TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />
-                                        </StackLayout>
-                                    </Grid>
+
+                                    </StackLayout>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                             <!--<CollectionView.EmptyView>

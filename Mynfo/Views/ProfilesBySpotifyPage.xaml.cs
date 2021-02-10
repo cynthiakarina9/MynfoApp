@@ -44,11 +44,8 @@
         {
 
             ProfileSM tappedItem = e.Item as ProfileSM;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileSpotify = new EditProfileSpotifyViewModel(tappedItem.ProfileMSId);
-            ListaSpotify.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileSpotifyPage());
         }
         #endregion

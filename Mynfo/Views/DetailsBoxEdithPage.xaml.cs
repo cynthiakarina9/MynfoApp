@@ -7,6 +7,7 @@
     using Mynfo.Services;
     using Mynfo.ViewModels;
     using Rg.Plugins.Popup.Extensions;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Collections.ObjectModel;
     using System.Data.SqlClient;
@@ -524,7 +525,16 @@
                     sb = new System.Text.StringBuilder();
                     sb.Append(sqlDeleteBox);
                     sql = sb.ToString();
+                    
+                    var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
+                    var Box = await this.apiService.GetBox(
+                        apiSecurity,
+                        "/api",
+                        "/Boxes",
+                        _BoxId);
+                        MainViewModel.GetInstance().Home.RemoveList(Box);
+                    
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -777,10 +787,10 @@
                 }
 
                 //Regresar a home
-                await Navigation.PopPopupAsync();
-                var mainViewModel = MainViewModel.GetInstance();
-                mainViewModel.Home = new HomeViewModel();
+                
+                MainViewModel.GetInstance().Home = new HomeViewModel();
                 Application.Current.MainPage = new MasterPage();
+                await PopupNavigation.Instance.PopAllAsync();
             }
         }
 
@@ -794,8 +804,6 @@
         private async void UpdateBoxName(object sender, EventArgs e, int _BoxId, string _name, int _UserId, bool disabled)
         {
             //Actualizar el nombre de la Box
-
-
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             Box = await this.apiService.GetBox(
                 apiSecurity,

@@ -103,13 +103,9 @@
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
-
             ProfileSM tappedItem = e.Item as ProfileSM;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileFacebook = new EditProfileFacebookViewModel(tappedItem.ProfileMSId);
-            ListaFB.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileFacebookPage());
         }
         #endregion

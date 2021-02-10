@@ -20,23 +20,24 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid
-            BindingContext="{Binding ProfilesByEmail}">
+        <Grid>
+            <!--Titulo-->
             <Label 
                 Grid.Row = "0" 
                 Text = "{i18n:Translate NetworksList}"
-                FontSize = "30"
+                FontSize = "25"
                 FontAttributes="Bold"
                 TextColor = "{StaticResource MainColor}"
                 HorizontalOptions = "CenterAndExpand"
-                VerticalOptions = "Start"  
+                VerticalOptions = "StartAndExpand" 
                 Margin = "0,5,0,15"/>
-            <Grid>
+            <Grid
+                BindingContext="{Binding ProfilesByEmail}">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="10" />
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition />
+                        <RowDefinition Height="60"/>
                     </Grid.RowDefinitions>
                     <ActivityIndicator
                         Grid.Row = "1"

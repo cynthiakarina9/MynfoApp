@@ -3,11 +3,6 @@
     using Mynfo.Domain;
     using Mynfo.ViewModels;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
@@ -43,11 +38,8 @@
         {
 
             ProfileSM tappedItem = e.Item as ProfileSM;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileInstagram = new EditProfileInstagramViewModel(tappedItem.ProfileMSId);
-            ListaIG.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileInstagramPage());
         }
         #endregion

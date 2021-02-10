@@ -106,11 +106,16 @@
         public void addProfile(ProfileEmail _profileEmail)
         {
             profileEmail.Add(_profileEmail);
+            EmptyList = false;
         }
 
         public void removeProfile()
         {
             profileEmail.Remove(selectedProfile);
+            if (profileEmail.Count == 0)
+            {
+                EmptyList = true;
+            }
         }
 
         public void updateProfile(ProfileEmail _profileEmail)

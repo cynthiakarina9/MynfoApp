@@ -133,6 +133,7 @@
             profileSM.Remove(selectedProfile);
 
             profileSM.Insert(newIndex, _profileSM);
+            selectedProfile = null;
         }
         #endregion
 

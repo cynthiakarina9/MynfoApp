@@ -35,8 +35,8 @@
             apiService = new ApiService();
             NavigationPage.SetHasNavigationBar(this, false);
             OSAppTheme currentTheme = Application.Current.RequestedTheme;
-            FrameB.CloseWhenBackgroundIsClicked= true;
-            
+            FrameB.CloseWhenBackgroundIsClicked = true;
+
             int BoxId = _Box.BoxId;
             var boxLocal = new BoxLocal();
             int UserID = MainViewModel.GetInstance().User.UserId;
@@ -161,7 +161,7 @@
 
             //Navegación a ventana de perfiles
             BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault, BoxName));
-            
+
             //Botón de Editar
             EdithButton.Clicked += new EventHandler((sender, e) => edithBox(sender, e, BoxId, UserID, BoxDefault));
 
