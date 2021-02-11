@@ -20,8 +20,17 @@
             On<Windows>().SetHeaderIconsEnabled(true);
             On<Windows>().SetHeaderIconsSize(new Size(50, 50));
 
-            Children.Add(new ListOfNetworksPage(_BoxId) { IconImageSource = "lista.png" });
-            Children.Add(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName) { IconImageSource = "tipos.png" });
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                Children.Add(new ListOfNetworksPage(_BoxId) { IconImageSource = "ListProfiles_icon" });
+                Children.Add(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName) { IconImageSource = "TypesProfiles_Icon" });
+            }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                Children.Add(new ListOfNetworksPage(_BoxId) { IconImageSource = "lista.png" });
+                Children.Add(new ProfileTypeSelection(_BoxId, _boxDefault, _boxName) { IconImageSource = "tipos.png" });
+            }
+            
 
             CurrentPage = Children[0];
         }
