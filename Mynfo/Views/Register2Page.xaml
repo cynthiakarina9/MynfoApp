@@ -30,6 +30,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Label
@@ -146,12 +147,13 @@
                 BackgroundColor="{StaticResource MainColor}"
                 BorderRadius="23"
                 Command = "{Binding RegisterCommand}"
+                Grid.Row ="0"
                 HeightRequest="50"
                 HorizontalOptions="Fill"
                 Margin="15"
                 Text = "{i18n:Translate Save}"
                 TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
-                VerticalOptions="End"
+                VerticalOptions="EndAndExpand"
                 x:Name="Save"/>
             <ActivityIndicator
                 Grid.Row ="0"

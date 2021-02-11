@@ -7,6 +7,7 @@
     using Plugin.Media.Abstractions;
     using Services;
     using System;
+    using System.Linq;
     using System.Windows.Input;
     using Views;
     using Xamarin.Forms;
@@ -265,7 +266,19 @@
                     Languages.Accept);
                 return;
             }
+            //char[] A = FirstName.ToCharArray();
+            //foreach(char B in A)
+            //{
 
+            //    if (!Char.IsLetter(B) || !Char.IsWhiteSpace(B))
+            //    {
+            //        await Application.Current.MainPage.DisplayAlert(
+            //            Languages.Error,
+            //            Languages.FirstNameValidation,
+            //            Languages.Accept);
+            //        return;
+            //    }
+            //}
             if (string.IsNullOrEmpty(this.LastName))
             {
                 await Application.Current.MainPage.DisplayAlert(

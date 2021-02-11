@@ -68,7 +68,15 @@
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300"
-                            x:Name="ProfileName"/>
+                            x:Name="ProfileName">
+                            <Entry.Keyboard>
+                                <Keyboard x:FactoryMethod="Create">
+                                    <x:Arguments>
+                                        <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                    </x:Arguments>
+                                </Keyboard>
+                            </Entry.Keyboard>
+                        </Entry>
                     </StackLayout>
                     <StackLayout 
                         Grid.Row = "3">

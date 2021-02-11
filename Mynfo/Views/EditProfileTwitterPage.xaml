@@ -76,12 +76,41 @@
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
-                            HorizontalOptions = "Center"
+                            HorizontalOptions = "CenterAndExpand"
                             MaxLength = "20"
                             Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                            IsEnabled="false"
                             VerticalOptions = "Center" 
+                            WidthRequest = "300" >
+                            <Entry.Keyboard>
+                                <Keyboard x:FactoryMethod="Create">
+                                    <x:Arguments>
+                                        <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                    </x:Arguments>
+                                </Keyboard>
+                            </Entry.Keyboard>
+                        </Entry>
+                    </StackLayout>
+                    <StackLayout 
+                        Grid.Row = "3"
+                        Grid.ColumnSpan ="2"
+                        Padding = "20">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NickName}" 
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Entry 
+                            FontSize = "21"
+                            HorizontalTextAlignment = "Center"
+                            HeightRequest = "46"
+                            HorizontalOptions = "Center"
+                            Keyboard="Url"
+                            Text="{Binding profileSM.link, Mode=TwoWay}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            VerticalOptions = "CenterAndExpand" 
                             WidthRequest = "300" />
                     </StackLayout>
                     <StackLayout
@@ -96,7 +125,7 @@
                 </Grid>
             </ScrollView>
             <!-- Botón de guardado -->
-            <!--<Button 
+            <Button 
                 BackgroundColor = "{StaticResource MainColor}"
                 BorderRadius = "23"
                 Command="{Binding SaveCommand}"
@@ -108,7 +137,7 @@
                 FontAttributes="Bold"
                 TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
                 VerticalOptions = "End" 
-                x:Name = "ButtonSave"/>-->
+                x:Name = "ButtonSave"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
