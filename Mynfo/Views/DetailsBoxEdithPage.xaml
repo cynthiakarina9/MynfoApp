@@ -55,6 +55,7 @@
                             Grid.Row="1"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
+                            MaxLength="20"
                             Text="{Binding Box.Name, Mode=TwoWay}"
                             TextColor="{StaticResource FontColor}"
                             VerticalOptions="Center"

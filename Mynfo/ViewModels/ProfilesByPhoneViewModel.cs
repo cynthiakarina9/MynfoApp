@@ -99,11 +99,16 @@
         public void addProfile(ProfilePhone _profilePhone)
         {
             profilephone.Add(_profilePhone);
+            EmptyList = false;
         }
 
         public void removeProfile()
         {
             profilephone.Remove(selectedProfile);
+            if (profilephone.Count == 0)
+            {
+                EmptyList = true;
+            }
         }
 
         public void updateProfile(ProfilePhone _profilePhone)
@@ -112,7 +117,7 @@
             profilephone.Remove(selectedProfile);
 
             profilephone.Insert(newIndex, _profilePhone);
-
+            selectedProfile = null;
         }
         #endregion
 

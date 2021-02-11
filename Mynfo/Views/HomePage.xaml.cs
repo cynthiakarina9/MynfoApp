@@ -23,11 +23,12 @@
 
         #region Properties
         public Box selectedItem { get; set; }
+        public Box selectedItem2 { get; set; }
         #endregion
         public HomePage()
         {
             InitializeComponent();
-
+            
             //ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
 
             System.Text.StringBuilder sb;

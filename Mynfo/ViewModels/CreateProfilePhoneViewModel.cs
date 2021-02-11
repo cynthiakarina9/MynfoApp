@@ -6,6 +6,8 @@
     using Mynfo.Models;
     using Mynfo.Views;
     using Services;
+    using System;
+    using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -72,6 +74,14 @@
                 return;
             }
             if (string.IsNullOrEmpty(this.Number))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NumberValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (!(this.Number).ToCharArray().All(Char.IsDigit))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,

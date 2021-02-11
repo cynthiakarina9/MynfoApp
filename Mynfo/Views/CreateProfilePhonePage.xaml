@@ -68,7 +68,15 @@
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300"
-                            x:Name="ProfileName"/>
+                            x:Name="ProfileName">
+                            <Entry.Keyboard>
+                                <Keyboard x:FactoryMethod="Create">
+                                    <x:Arguments>
+                                        <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                    </x:Arguments>
+                                </Keyboard>
+                            </Entry.Keyboard>
+                        </Entry>
                     </StackLayout>
                     <StackLayout 
                         Grid.Row = "3">
@@ -93,6 +101,30 @@
                             VerticalOptions = "Center" 
                             WidthRequest = "300"
                             x:Name="ProfileNumber"/>
+                        <!--<StackLayout
+                            Orientation="Horizontal">
+                            <Picker
+                                Title="Select a monkey"
+                                TitleColor="Green"
+                                ItemDisplayBinding="{Binding Name}"
+                                TextColor="Orange"
+                                FontAttributes="Italic"
+                                FontSize="24"/>
+                            <Entry 
+                                FontSize = "21"
+                                HeightRequest = "46"
+                                HorizontalTextAlignment = "Center"
+                                HorizontalOptions = "Center"
+                                IsSpellCheckEnabled="True"
+                                Keyboard = "Telephone"
+                                MaxLength = "10"
+                                Text = "{Binding Number}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                Placeholder = "xxx-xxx-xxxx"
+                                VerticalOptions = "Center" 
+                                WidthRequest = "300"
+                                x:Name="ProfileNumber"/>
+                        </StackLayout>-->
                     </StackLayout>
                     <Grid
                         Grid.Row = "4"

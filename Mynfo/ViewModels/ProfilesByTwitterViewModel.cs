@@ -56,7 +56,6 @@ namespace Mynfo.ViewModels
         #endregion
 
         #region Commands
-
         public ICommand BackHomeCommand
         {
             get
@@ -118,11 +117,25 @@ namespace Mynfo.ViewModels
         public void addProfile(ProfileSM _profileSM)
         {
             profileSM.Add(_profileSM);
+            EmptyList = false;
         }
 
         public void removeProfile()
         {
             profileSM.Remove(selectedProfile);
+            if (profileSM.Count == 0)
+            {
+                EmptyList = true;
+            }
+        }
+
+        public void updateProfile(ProfileSM _profileSM)
+        {
+            int newIndex = profileSM.IndexOf(selectedProfile);
+            profileSM.Remove(selectedProfile);
+
+            profileSM.Insert(newIndex, _profileSM);
+            selectedProfile = null;
         }
         #endregion
 

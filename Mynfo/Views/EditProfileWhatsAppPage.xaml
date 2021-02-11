@@ -74,13 +74,21 @@
                         <Entry 
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
-                            HorizontalOptions = "Center"
-                            MaxLength = "10"
+                            HorizontalOptions = "CenterAndExpand"
+                            MaxLength = "20"
                             Text = "{Binding profileWhats.Name}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
-                            x:Name = "EntryName"/>
+                            x:Name = "EntryName">
+                            <Entry.Keyboard>
+                                <Keyboard x:FactoryMethod="Create">
+                                    <x:Arguments>
+                                        <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                    </x:Arguments>
+                                </Keyboard>
+                            </Entry.Keyboard>
+                        </Entry>
                     </StackLayout>
                     <StackLayout 
                         Grid.Row = "3"

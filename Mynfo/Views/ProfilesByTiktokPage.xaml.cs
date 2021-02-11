@@ -43,11 +43,8 @@
         {
 
             ProfileSM tappedItem = e.Item as ProfileSM;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileTiktok = new EditProfileTiktokViewModel(tappedItem.ProfileMSId);
-            ListaTiktok.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileTiktokPage());
         }
         #endregion

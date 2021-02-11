@@ -8,11 +8,13 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesByWebPagePage : ContentPage
     {
+        #region Constructor
         public ProfilesByWebPagePage()
         {
             InitializeComponent();
         }
-
+        #endregion
+        
         #region Commands
         private void NewProfileWebPage_Clicked(object sender, EventArgs e)
         {
@@ -41,11 +43,8 @@
         {
 
             ProfileSM tappedItem = e.Item as ProfileSM;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileWebPage = new EditProfileWebPageViewModel(tappedItem.ProfileMSId);
-            ListaWebPage.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileWebPagePage());
         }
         #endregion

@@ -71,7 +71,15 @@
                                 Text = "{Binding User.FirstName, Mode = TwoWay}" 
                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 HorizontalTextAlignment = "Center" 
-                                x:Name = "FirstNameEntry"/>
+                                x:Name = "FirstNameEntry">
+                                <Entry.Keyboard>
+                                    <Keyboard x:FactoryMethod="Create">
+                                        <x:Arguments>
+                                            <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                        </x:Arguments>
+                                    </Keyboard>
+                                </Entry.Keyboard>
+                            </Entry>
                         </StackLayout>
                         <!--Apellidos-->
                         <StackLayout
@@ -93,7 +101,15 @@
                                 Placeholder = "{i18n:Translate LastNamePlaceHolder}" 
                                 Text = "{Binding User.LastName, Mode=TwoWay}"
                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                x:Name = "LastNameEntry"/>
+                                x:Name = "LastNameEntry">
+                                <Entry.Keyboard>
+                                    <Keyboard x:FactoryMethod="Create">
+                                        <x:Arguments>
+                                            <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                        </x:Arguments>
+                                    </Keyboard>
+                                </Entry.Keyboard>
+                            </Entry>
                         </StackLayout>
                         <!--Correo-->
                         <StackLayout
@@ -110,9 +126,10 @@
                                 x:Name = "EmailLabel"/>
                             <Entry 
                                 FontSize = "21"
+                                HorizontalTextAlignment = "Center" 
+                                Keyboard="Email"
                                 Text = "{Binding User.Email, Mode = TwoWay}" 
                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                HorizontalTextAlignment = "Center" 
                                 WidthRequest="300"
                                 x:Name = "EmailEntry"/>
                         </StackLayout>

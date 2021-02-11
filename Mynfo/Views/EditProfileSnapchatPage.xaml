@@ -77,11 +77,20 @@
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
+                            MaxLength = "20"
                             Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
                             WidthRequest = "300" 
-                            x:Name = "EntryName"/>
+                            x:Name = "EntryName">
+                            <Entry.Keyboard>
+                                <Keyboard x:FactoryMethod="Create">
+                                    <x:Arguments>
+                                        <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                    </x:Arguments>
+                                </Keyboard>
+                            </Entry.Keyboard>
+                        </Entry>
                     </StackLayout>
                     <StackLayout 
                         Grid.Row = "3"
@@ -99,9 +108,10 @@
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
+                            Keyboard="Url"
                             Text="{Binding profileSM.link, Mode=TwoWay}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                            VerticalOptions = "Center" 
+                            VerticalOptions = "CenterAndExpand" 
                             WidthRequest = "300" />
                     </StackLayout>
                     <StackLayout

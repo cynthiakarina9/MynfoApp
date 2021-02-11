@@ -77,10 +77,19 @@
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
+                            MaxLength = "20"
                             Text="{Binding profileSM.ProfileName, Mode=TwoWay}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 
-                            WidthRequest = "300"/>
+                            WidthRequest = "300">
+                            <Entry.Keyboard>
+                                <Keyboard x:FactoryMethod="Create">
+                                    <x:Arguments>
+                                        <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                    </x:Arguments>
+                                </Keyboard>
+                            </Entry.Keyboard>
+                        </Entry>
                     </StackLayout>
                     <StackLayout 
                         Grid.Row = "3"
@@ -97,7 +106,8 @@
                             FontSize = "21"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
-                            HorizontalOptions = "Center"
+                            HorizontalOptions = "CenterAndExpand"
+                            Keyboard="Url"
                             Text="{Binding profileSM.link, Mode=TwoWay}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                             VerticalOptions = "Center" 

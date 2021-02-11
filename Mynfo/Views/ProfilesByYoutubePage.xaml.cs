@@ -9,10 +9,12 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesByYoutubePage : ContentPage
     {
+        #region Connstructor
         public ProfilesByYoutubePage()
         {
             InitializeComponent();
         }
+        #endregion
 
         #region Commands
         private void NewProfileYoutube_Clicked(object sender, EventArgs e)
@@ -40,13 +42,9 @@
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
-
             ProfileSM tappedItem = e.Item as ProfileSM;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileYoutube = new EditProfileYoutubeViewModel(tappedItem.ProfileMSId);
-            ListaYoutube.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileYoutubePage());
         }
         #endregion

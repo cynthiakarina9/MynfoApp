@@ -75,6 +75,22 @@
         }
         private async void Save()
         {
+            if (string.IsNullOrEmpty(this.profileSM.ProfileName))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NameValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (string.IsNullOrEmpty(this.profileSM.link))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.LinkValidation,
+                    Languages.Accept);
+                return;
+            }
             this.IsRunning = true;
             this.IsEnabled = false;
             var checkConnetion = await this.apiService.CheckConnection();
@@ -90,7 +106,7 @@
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await this.apiService.PutProfile(
+            var profile = await this.apiService.PutProfile(
                 apiSecurity,
                 "/api",
                 "/ProfileSMs/PutProfileSM",
@@ -99,6 +115,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
+            MainViewModel.GetInstance().ProfilesByLinkedin.updateProfile(profile);
             await App.Navigator.PopAsync();
         }
 

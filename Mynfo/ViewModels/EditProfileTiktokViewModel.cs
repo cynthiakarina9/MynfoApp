@@ -74,6 +74,22 @@
         }
         private async void Save()
         {
+            if (string.IsNullOrEmpty(this.profileSM.ProfileName))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NameValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (string.IsNullOrEmpty(this.profileSM.link))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.LinkValidation,
+                    Languages.Accept);
+                return;
+            }
             this.IsRunning = true;
             this.IsEnabled = false;
             var checkConnetion = await this.apiService.CheckConnection();

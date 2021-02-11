@@ -42,11 +42,8 @@
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
             ProfileSM tappedItem = e.Item as ProfileSM;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileTwitch = new EditProfileTwitchViewModel(tappedItem.ProfileMSId);
-            ListaTwitch.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileTwitchPage());
         }
         #endregion

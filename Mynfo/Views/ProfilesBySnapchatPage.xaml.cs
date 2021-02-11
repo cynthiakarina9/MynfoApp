@@ -43,11 +43,8 @@
         {
 
             ProfileSM tappedItem = e.Item as ProfileSM;
-            if (tappedItem == null)
-                return;
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.EditProfileSnapchat = new EditProfileSnapchatViewModel(tappedItem.ProfileMSId);
-            ListaSnapchat.SelectedItem = null;
             App.Navigator.PushAsync(new EditProfileSnapchatPage());
         }
         #endregion

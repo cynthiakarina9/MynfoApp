@@ -22,25 +22,23 @@
     <ContentPage.Content>
         <Grid
             BindingContext="{Binding ProfilesByWhatsApp}">
-            <ScrollView>
+            <!--Titulo-->
+            <Label 
+                Grid.Row = "0" 
+                Text = "{i18n:Translate NetworksList}"
+                FontSize = "25"
+                FontAttributes="Bold"
+                TextColor = "{StaticResource MainColor}"
+                HorizontalOptions = "CenterAndExpand"
+                VerticalOptions = "Start" 
+                Margin = "0,5,0,15"/>
+            <Grid>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
+                        <RowDefinition Height="40"/>
                         <RowDefinition />
-                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="60"/>
                     </Grid.RowDefinitions>
-
-                    <!--Titulo-->
-                    <Label 
-                        Grid.Row = "0" 
-                        Text = "{i18n:Translate NetworksList}"
-                        FontSize = "25"
-                        FontAttributes="Bold"
-                        TextColor = "{StaticResource MainColor}"
-                        HorizontalOptions = "CenterAndExpand"
-                        VerticalOptions = "EndAndExpand"  
-                        Margin = "0,5,0,15"/>
-
                     <ActivityIndicator
                         Grid.Row = "1"
                         IsRunning = "{Binding IsRunning}"
@@ -108,7 +106,7 @@
                         TextColor="LightGray"
                         VerticalOptions="Center"/>
                 </Grid>
-            </ScrollView>
+            </Grid>
             <!-- Botón de nuevo -->
             <ImageButton
                 Grid.Row="0"

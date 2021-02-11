@@ -4,6 +4,8 @@
     using GalaSoft.MvvmLight.Command;
     using Helpers;
     using Services;
+    using System;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Views;
@@ -76,6 +78,38 @@
         }
         private async void Save()
         {
+            if (string.IsNullOrEmpty(this.profileWhats.Name))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NameValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (string.IsNullOrEmpty(this.profileWhats.Number))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NumberValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (!(this.profileWhats.Number).ToCharArray().All(Char.IsDigit))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NumberValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (this.profileWhats.Number.Length != 10)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.PhoneValidation2,
+                    Languages.Accept);
+                return;
+            }
             this.IsRunning = true;
             this.IsEnabled = false;
 
@@ -90,7 +124,6 @@
                     Languages.Accept);
                 return;
             }
-
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var profile = await this.apiService.PutProfile(
                 apiSecurity,
@@ -100,37 +133,6 @@
 
             this.IsRunning = false;
             this.IsEnabled = true;
-
-            #region LastCode2
-            //string consultaDefault = "select * from dbo.ProfileWhatsapps where dbo.ProfileWhatsapps.ProfileWhatsappId = "
-            //                            + profilewhats.ProfileWhatsappId;
-            //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-
-            //ProfileWhatsapp _profileWhatsapp = new ProfileWhatsapp();
-
-            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            //{
-            //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            //    sb.Append(consultaDefault);
-            //    string sql = sb.ToString();
-
-            //    using (SqlCommand command = new SqlCommand(sql, connection))
-            //    {
-            //        connection.Open();
-            //        using (SqlDataReader reader = command.ExecuteReader())
-            //        {
-            //            while (reader.Read())
-            //            {
-            //                _profileWhatsapp.ProfileWhatsappId = (int)reader["ProfileWhatsappId"];
-            //                _profileWhatsapp.Name = (string)reader["Name"];
-            //                _profileWhatsapp.UserId = (int)reader["UserId"];
-            //                _profileWhatsapp.Number = (string)reader["Number"];
-            //            }
-            //        }
-            //        connection.Close();
-            //    }
-            //}
-            #endregion
 
 
             //Agregar a la lista
