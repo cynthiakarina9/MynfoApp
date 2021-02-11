@@ -5,9 +5,9 @@
     using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;    
-    using Foundation;    
+    //using Foundation;    
 
-    [Register("AppDelegate")]
+    //[Register("AppDelegate")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TAGPage : ContentPage
     {

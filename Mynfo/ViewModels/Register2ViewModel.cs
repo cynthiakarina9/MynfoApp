@@ -5,6 +5,8 @@
     using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.Views;
+    using System;
+    using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -137,6 +139,14 @@
                 return;
             }
             if (string.IsNullOrEmpty(this.Number))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NumberValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (!this.Number.ToCharArray().All(Char.IsLetter))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,

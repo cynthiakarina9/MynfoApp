@@ -62,7 +62,6 @@
         }
         private async void Save()
         {
-
             if (string.IsNullOrEmpty(this.profileEmail.Name))
             {
                 await Application.Current.MainPage.DisplayAlert(

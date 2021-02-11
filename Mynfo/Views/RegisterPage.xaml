@@ -75,7 +75,15 @@
                                 Text = "{Binding FirstName}"
                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 VerticalTextAlignment="Center"
-                                WidthRequest = "300" />
+                                WidthRequest = "300">
+                                <Entry.Keyboard>
+                                    <Keyboard x:FactoryMethod="Create">
+                                        <x:Arguments>
+                                            <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                        </x:Arguments>
+                                    </Keyboard>
+                                </Entry.Keyboard>
+                            </Entry>
                         </StackLayout>
                         <StackLayout 
                             Grid.Row = "3">
@@ -95,7 +103,15 @@
                                 Text = "{Binding LastName}"
                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 VerticalTextAlignment="Center"
-                                WidthRequest = "300" />
+                                WidthRequest = "300" >
+                                <Entry.Keyboard>
+                                    <Keyboard x:FactoryMethod="Create">
+                                        <x:Arguments>
+                                            <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                        </x:Arguments>
+                                    </Keyboard>
+                                </Entry.Keyboard>
+                            </Entry>
                         </StackLayout>
                         <Button
                             Grid.Row = "4"

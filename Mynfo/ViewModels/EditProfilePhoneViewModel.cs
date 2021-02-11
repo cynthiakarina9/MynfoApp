@@ -5,6 +5,8 @@
     using Mynfo.Helpers;
     using Mynfo.Views;
     using Services;
+    using System;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -77,6 +79,38 @@
         }
         private async void Save()
         {
+            if (string.IsNullOrEmpty(this.profilePhone.Name))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NameValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (string.IsNullOrEmpty(this.profilePhone.Number))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NumberValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (!(this.profilePhone.Number).ToCharArray().All(Char.IsDigit))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NumberValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (this.profilePhone.Number.Length != 10)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.PhoneValidation2,
+                    Languages.Accept);
+                return;
+            }
             this.IsRunning = true;
             this.IsEnabled = false;
 

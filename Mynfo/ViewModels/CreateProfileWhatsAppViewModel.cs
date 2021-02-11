@@ -6,6 +6,8 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.Views;
+    using System;
+    using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
     public class CreateProfileWhatsAppViewModel : BaseViewModel
@@ -71,6 +73,14 @@
                 return;
             }
             if (string.IsNullOrEmpty(this.Number))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.NumberValidation,
+                    Languages.Accept);
+                return;
+            }
+            if (!(this.Number).ToCharArray().All(Char.IsDigit))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,

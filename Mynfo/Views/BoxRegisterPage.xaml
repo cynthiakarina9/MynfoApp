@@ -26,7 +26,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height = "160"/>
                     <RowDefinition Height = "40"/>
-                    <RowDefinition Height = "40"/>
+                    <RowDefinition Height = "60"/>
                     <RowDefinition Height = "50"/>
                 </Grid.RowDefinitions>
                 <Label 
@@ -37,16 +37,24 @@
                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                     VerticalOptions = "Center" />
                 <Entry 
-                    FontSize = "18"
+                    FontSize = "21"
                     Grid.Row = "2"
-                    HeightRequest = "50"
+                    HeightRequest = "80"
                     HorizontalOptions = "Center"
                     HorizontalTextAlignment = "Center"
                     MaxLength="20"
                     Text = "{Binding Name}"
                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                    VerticalOptions = "Center"
-                    WidthRequest = "300"/>
+                    VerticalOptions = "CenterAndExpand"
+                    WidthRequest = "300">
+                    <Entry.Keyboard>
+                        <Keyboard x:FactoryMethod="Create">
+                            <x:Arguments>
+                                <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                            </x:Arguments>
+                        </Keyboard>
+                    </Entry.Keyboard>
+                </Entry>
                 <Button 
                     BackgroundColor = "{StaticResource MainColor}"
                     BorderRadius = "23"
