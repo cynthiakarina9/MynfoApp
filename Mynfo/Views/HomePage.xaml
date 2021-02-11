@@ -81,8 +81,7 @@
                     <CollectionView 
                         ItemsSource="{Binding BoxNoDefault}"
                         Grid.Row="1"
-                        Grid.ColumnSpan="3"
-                        IsVisible="{Binding MoreOne}"
+                        Grid.ColumnSpan="3"                        
                         SelectionMode="Single"
                         SelectedItem="{Binding selectedItem}"
                         SelectionChanged="OnCollectionViewSelectionChanged"
