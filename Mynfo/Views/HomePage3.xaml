@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mynfo.Views.HomePage"
+             x:Class="Mynfo.Views.HomePage3"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Resources>
@@ -24,93 +24,95 @@
     <ContentPage.Content>
         <Grid
             BindingContext = "{Binding Home}">
-            <Grid>
+            <ScrollView>
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height = "180"/>
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <CollectionView 
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height = "180"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <CollectionView 
                         ItemsSource="{Binding Box}"
                         Grid.Row="0"
                         Grid.ColumnSpan="3"
                         SelectionChanged="OnCollectionViewSelectionChanged"
                         SelectionMode="Single">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout 
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout 
                                 Orientation="Vertical"
                                 Span="1" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Padding="10">
-                                    <StackLayout
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <StackLayout
                                         HorizontalOptions="Center">
-                                        <Frame
+                                            <Frame
                                             BackgroundColor="{StaticResource MainColor}"
                                             CornerRadius="25"
                                             HasShadow="true"
                                             HeightRequest="80"
                                             IsVisible="{Binding IsNull}"
                                             WidthRequest="80"/>
-                                        <Label
+                                            <Label
                                             FontAttributes="Bold"
                                             FontSize="20"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding Name}"
                                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
-                                    </StackLayout>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                        <CollectionView.EmptyView>
-                            <ContentView>
-                                <StackLayout 
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.EmptyView>
+                                <ContentView>
+                                    <StackLayout 
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand">
-                                    <Label Text="No Boxes yet"/>
-                                </StackLayout>
-                            </ContentView>
-                        </CollectionView.EmptyView>
-                    </CollectionView>
-                    <CollectionView 
+                                        <Label Text="No Boxes yet"/>
+                                    </StackLayout>
+                                </ContentView>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
+                        <CollectionView 
                         ItemsSource="{Binding BoxNoDefault}"
                         Grid.Row="1"
-                        Grid.ColumnSpan="3"                        
+                        Grid.ColumnSpan="3"
+                        IsVisible="{Binding MoreOne}"
                         SelectionMode="Single"
                         SelectedItem="{Binding selectedItem}"
                         SelectionChanged="OnCollectionViewSelectionChanged"
                         x:Name="BoxCollectionView">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout 
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout 
                                 Orientation="Vertical"
                                 Span="3" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Padding="10">
-                                    <StackLayout
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <StackLayout
                                         HorizontalOptions="CenterAndExpand">
-                                        <Frame
+                                            <Frame
                                             BackgroundColor="LightGray"
                                             CornerRadius="15"
                                             HasShadow="True"
                                             HeightRequest="45"
                                             IsVisible="{Binding MoreOne}"
                                             WidthRequest="45">
-                                            <Frame.Background>
-                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                    <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}"  Offset="0.1"/>
-                                                    <GradientStop Color="{AppThemeBinding Light=#FFFF, Dark=#0000}" Offset="0.6"/>
-                                                    <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}" Offset="0.1"/>
-                                                </LinearGradientBrush>
-                                            </Frame.Background>
-                                            <!--<CollectionView 
+                                                <Frame.Background>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                        <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}"  Offset="0.1"/>
+                                                        <GradientStop Color="{AppThemeBinding Light=#FFFF, Dark=#0000}" Offset="0.6"/>
+                                                        <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}" Offset="0.1"/>
+                                                    </LinearGradientBrush>
+                                                </Frame.Background>
+                                                <!--<CollectionView 
                                                 IsVisible="{Binding MoreOne}"
                                                 ItemsSource="{Binding ProfilePerfiles}">
                                                 <CollectionView.ItemsLayout>
@@ -134,7 +136,7 @@
                                                     </DataTemplate>
                                                 </CollectionView.ItemTemplate>
                                             </CollectionView>-->
-                                            <!--<StackLayout
+                                                <!--<StackLayout
                                                 Orientation="Horizontal"
                                                 HorizontalOptions="FillAndExpand"
                                                 Margin="-12,0,40,0">
@@ -151,28 +153,29 @@
                                                     Source="captura"
                                                     Margin="2"/>
                                             </StackLayout>-->
-                                        </Frame>
-                                        <Label
+                                            </Frame>
+                                            <Label
                                             FontSize="12"
                                             HorizontalTextAlignment="Center"
                                             Text="{Binding Name}"
                                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
-                                    </StackLayout>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                        <CollectionView.EmptyView>
-                            <ContentView>
-                                <StackLayout 
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.EmptyView>
+                                <ContentView>
+                                    <StackLayout 
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand">
-                                    <Label Text=""/>
-                                </StackLayout>
-                            </ContentView>
-                        </CollectionView.EmptyView>
-                    </CollectionView>
+                                        <Label Text=""/>
+                                    </StackLayout>
+                                </ContentView>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </ScrollView>
             <Grid
                 Grid.Row="0"
                 HorizontalOptions="CenterAndExpand"

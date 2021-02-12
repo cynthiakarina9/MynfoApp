@@ -175,7 +175,7 @@
                                 NdefRecord mimeRecord = NdefRecord.CreateUri("http://" + url);
                                 ndef.WriteNdefMessage(new NdefMessage(mimeRecord));
                                 ndef.Close();
-                            }
+                            } 
                         }
                         TAGPage.write_nfc = false;
                         System.Threading.Tasks.Task task = App.DisplayAlertAsync("Tag escrito correctamente");
