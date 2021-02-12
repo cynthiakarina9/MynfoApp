@@ -188,7 +188,7 @@
                 BxDefaultCheckBox.IsEnabled = true;
                 BxDefaultCheckBox.Color = Color.FromHex("FF5521");
                 EdithButton.Source = "edit2";
-                BoxProfiles.Source = "plus";
+                BoxProfiles.Source = "Plus";
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 
