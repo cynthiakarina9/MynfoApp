@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.ProfilesBYPESMPage"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+             
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <NavigationPage.TitleView>
+    <!--<NavigationPage.TitleView>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -23,718 +24,726 @@
                 WidthRequest = "100"/>
             
         </Grid>
-    </NavigationPage.TitleView>
+    </NavigationPage.TitleView>-->
     <ContentPage.Content>
-        <Grid
-            BindingContext = "{Binding ProfilesBYPESM}">
-            <ScrollView>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
-                        <RowDefinition />
-                        <RowDefinition Height="120"/>
-                    </Grid.RowDefinitions>
+        <Frame
+            CornerRadius="50"
+            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+            HasShadow="True"
+            Margin="30"
+            x:Name="BackG">
+            <Grid
+                BindingContext = "{Binding ProfilesBYPESM}">
+                <ScrollView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition />
+                            <RowDefinition Height="120"/>
+                        </Grid.RowDefinitions>
                     
-                    <!--Titulo-->
-                    <Label 
-                        Grid.Row = "0" 
-                        Text = "{i18n:Translate MyProfiles}"
-                        FontSize = "25"
-                        FontAttributes="Bold"
-                        TextColor = "{StaticResource MainColor}"
-                        HorizontalOptions = "CenterAndExpand"
-                        VerticalOptions = "EndAndExpand"  
-                        Margin = "0,5,0,15"/>
-                    <ActivityIndicator
-                        Grid.Row = "1"
-                        IsRunning = "{Binding IsRunning}"
-                        HorizontalOptions = "CenterAndExpand"
-                        VerticalOptions="StartAndExpand" />
+                        <!--Titulo-->
+                        <Label 
+                            Grid.Row = "0" 
+                            Text = "{i18n:Translate MyProfiles}"
+                            FontSize = "25"
+                            FontAttributes="Bold"
+                            TextColor = "{StaticResource MainColor}"
+                            HorizontalOptions = "CenterAndExpand"
+                            VerticalOptions = "EndAndExpand"  
+                            Margin = "0,5,0,15"/>
+                        <ActivityIndicator
+                            Grid.Row = "1"
+                            IsRunning = "{Binding IsRunning}"
+                            HorizontalOptions = "CenterAndExpand"
+                            VerticalOptions="StartAndExpand" />
                     
-                    <!-- Lista de perfiles de email -->
-                    <ListView  
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileEmail, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileEmail}"
-                        x:Name="ProfileListEmail">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="3*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="mail2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding Name}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <Label 
-                                            Grid.Column="2"
-                                            Text="{Binding Email, Mode=TwoWay}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            FontSize="10"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Center"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de perfiles de email -->
+                        <ListView  
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileEmail, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileEmail}"
+                            x:Name="ProfileListEmail">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="mail2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding Name}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <Label 
+                                                Grid.Column="2"
+                                                Text="{Binding Email, Mode=TwoWay}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                FontSize="10"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Center"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     
-                    <!-- Lista de perfiles de teléfono -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemsSource="{Binding ProfilePhone, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfilePhone, Mode=TwoWay}"
-                        x:Name="ProfileListPhone">
-                        <ListView.ItemTemplate>
-                            <DataTemplate >
-                                <ViewCell>
-                                    <Grid Padding="15">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="tel2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding Name}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <Label 
-                                            Grid.Column="2"
-                                            Text="{Binding Number, Mode=TwoWay}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            FontSize="15"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Center"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de perfiles de teléfono -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemsSource="{Binding ProfilePhone, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfilePhone, Mode=TwoWay}"
+                            x:Name="ProfileListPhone">
+                            <ListView.ItemTemplate>
+                                <DataTemplate >
+                                    <ViewCell>
+                                        <Grid Padding="15">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="tel2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding Name}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <Label 
+                                                Grid.Column="2"
+                                                Text="{Binding Number, Mode=TwoWay}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                FontSize="15"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Center"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     
-                    <!-- Lista de Facebook -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListFacebook">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="facebook2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de Facebook -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListFacebook">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="facebook2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de Instagram -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListInstagram">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="instagramlogo2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de Instagram -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListInstagram">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="instagramlogo2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de Linkedin -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListLinkedin">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="linkedin2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de Linkedin -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListLinkedin">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="linkedin2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de Snapchat -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListSnapchat">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="snapchat2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de Snapchat -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListSnapchat">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="snapchat2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de Spotify -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListSpotify">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="spotify2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de Spotify -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListSpotify">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="spotify2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de Tiktok -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListTiktok">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="tiktok2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de Tiktok -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListTiktok">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="tiktok2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de Twitch -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListTwitch">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="twitch2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de Twitch -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListTwitch">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="twitch2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de Twitter -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListTwitter">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="twitterlogo2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de Twitter -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListTwitter">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="twitterlogo2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de WebPage -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListWebPage">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="gmail2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de WebPage -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListWebPage">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="gmail2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de WhatsApp -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileWhatsapp, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileWhatsapp}"
-                        x:Name="ProfileListWhatsapp">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="2.5*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="whatsapp2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding Name}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <Label 
-                                            Grid.Column="2"
-                                            FontSize="15"
-                                            Text="{Binding Number, Mode=TwoWay}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Center"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de WhatsApp -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileWhatsapp, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileWhatsapp}"
+                            x:Name="ProfileListWhatsapp">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="2.5*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="whatsapp2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding Name}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <Label 
+                                                Grid.Column="2"
+                                                FontSize="15"
+                                                Text="{Binding Number, Mode=TwoWay}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Center"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!-- Lista de Youtube -->
-                    <ListView 
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileSM}"
-                        x:Name="ProfileListYoutube">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="youtube2"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            Grid.Column="1"
-                                            Margin="0,0,10,0"
-                                            Text="{Binding ProfileName}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            IsEnabled="False"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        <!-- Lista de Youtube -->
+                        <ListView 
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListYoutube">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="youtube2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     
-                    <!--Lista vacia-->
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="21"
-                        Grid.Row="1"
-                        HorizontalTextAlignment="Center"
-                        IsVisible="{Binding EmptyList}"
-                        Margin="10,0,10,280"
-                        Text="{i18n:Translate ProfileNull}"
-                        TextColor="LightGray"
-                        VerticalOptions="Center"/>
-                </Grid>
-            </ScrollView>
-            <!--Botón para agregar nuevas cuentas-->
-            <ImageButton
-                BackgroundColor = "Transparent"
-                Grid.Row = "0"
-                HeightRequest = "60"
-                HorizontalOptions ="Center"
-                Source = "Plus"
-                Margin = "15"
-                VerticalOptions = "End"
-                WidthRequest = "60" 
-                x:Name="GoToProfiles"/>
-        </Grid>
+                        <!--Lista vacia-->
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="21"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="{Binding EmptyList}"
+                            Margin="10,0,10,280"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                </ScrollView>
+                <!--Botón para agregar nuevas cuentas-->
+                <!--<ImageButton
+                    BackgroundColor = "Transparent"
+                    Grid.Row = "0"
+                    HeightRequest = "60"
+                    HorizontalOptions ="Center"
+                    Source = "Plus"
+                    Margin = "15"
+                    VerticalOptions = "End"
+                    WidthRequest = "60" 
+                    x:Name="GoToProfiles"/>-->
+            </Grid>
+        </Frame>
+        
     </ContentPage.Content>
-</ContentPage>
+</popup:PopupPage>

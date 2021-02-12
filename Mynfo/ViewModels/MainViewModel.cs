@@ -57,6 +57,11 @@
             get;
             set;
         }
+        public CreateProfilesViewModel CreateProfiles
+        {
+            get;
+            set;
+        }
         public CreateProfileEmailViewModel CreateProfileEmail
         {
             get;

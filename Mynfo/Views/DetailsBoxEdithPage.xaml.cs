@@ -468,7 +468,7 @@
             string sql;
 
             bool answer = await DisplayAlert(Resource.Warning, Resource.DeleteBoxNotification, Resource.Yes, Resource.No);
-
+            #region If
             if (answer == true)
             {
                 using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -525,7 +525,7 @@
                     sb = new System.Text.StringBuilder();
                     sb.Append(sqlDeleteBox);
                     sql = sb.ToString();
-                    
+
                     var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
                     var Box = await this.apiService.GetBox(
@@ -533,8 +533,8 @@
                         "/api",
                         "/Boxes",
                         _BoxId);
-                        MainViewModel.GetInstance().Home.RemoveList(Box);
-                    
+                    MainViewModel.GetInstance().Home.RemoveList(Box);
+
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -787,11 +787,20 @@
                 }
 
                 //Regresar a home
-                
-                MainViewModel.GetInstance().Home = new HomeViewModel();
+
+            MainViewModel.GetInstance().Home = new HomeViewModel();
                 Application.Current.MainPage = new MasterPage();
                 await PopupNavigation.Instance.PopAllAsync();
             }
+            #endregion
+            //if(answer == true)
+            //{
+            //    MainViewModel.GetInstance().DetailsBoxEdith.DeleteBox(_BoxId);
+            //}
+            //else
+            //{
+            //    return;
+            //}
         }
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)

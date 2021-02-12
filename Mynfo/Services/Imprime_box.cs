@@ -6,6 +6,7 @@ using Mynfo.Views;
 using System.Data.SqlClient;
 using Xamarin.Forms;
 using Device = Xamarin.Forms.Device;
+using Rg.Plugins.Popup.Services;
 
 namespace Mynfo.Services
 {
@@ -247,7 +248,8 @@ namespace Mynfo.Services
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     //App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
-                    Application.Current.MainPage.Navigation.PushModalAsync(new ForeingBoxPage(foreingBox, true));
+                    MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(foreingBox);
+                    PopupNavigation.Instance.PushAsync(new ForeingBoxPage(foreingBox, true));
                     MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
                 });
             }

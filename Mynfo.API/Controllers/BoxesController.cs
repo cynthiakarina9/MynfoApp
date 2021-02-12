@@ -61,6 +61,7 @@
             return box;
         }
 
+        // GET: api/Boxes/GetBoxNoDefault/1
         [HttpPost]
         [Route("GetBoxNoDefault")]
         [ResponseType(typeof(Box))]
@@ -78,6 +79,33 @@
             }
             var box = GetBoxes().Where(u => u.UserId == id && u.BoxDefault == false).ToList();
             if (box.Count == 0)
+            {
+                return null;
+            }
+
+            return box;
+        }
+
+        // GET: api/Boxes/GetLastBox/1
+        [HttpPost]
+        [Route("GetLastBox")]
+        [ResponseType(typeof(Box))]
+        public async Task<Box> GetLastBox(JObject form)
+        {
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.UserId;
+            }
+            catch
+            {
+                return null;
+            }
+            var boxList = GetBoxes().Where(u => u.UserId == id).ToList();
+            var box2 = boxList.Max(u => u.BoxId);
+            var box = GetBoxes().Where(u => u.BoxId == box2).FirstOrDefault();
+            if (box == null)
             {
                 return null;
             }
@@ -120,29 +148,6 @@
         //    return StatusCode(HttpStatusCode.NoContent);
         //}
         //GET: api/LastBox
-        [HttpPost]
-        [Route("LastBoxC")]
-        [ResponseType(typeof(Box))]
-        public async Task<List<Box>> LastBoxC(JObject form)
-        {
-            int id;
-            dynamic jsonObject = form;
-            try
-            {
-                id = jsonObject.UserId;
-            }
-            catch
-            {
-                return null;
-            }
-            var box = GetBoxes().Where(u => u.UserId == id && u.BoxDefault == false).ToList();
-            if (box.Count == 0)
-            {
-                return null;
-            }
-
-            return box;
-        }
         // PUT: api/Boxes/PutBox1/5
         [ResponseType(typeof(Box))]
         public async Task<Box> PutBox(int id, Box box)

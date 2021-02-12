@@ -512,6 +512,122 @@
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+
+        
+        public async void DeleteBox(int _BoxId)
+        {
+            this.IsRunning = true;
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+
+            #region Revisión de perfiles de box
+
+            #region Email
+            var EmailProfiles = await this.apiService.GetRelationBox_ProfilesEmail(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfileEmail/GetBox_ProfileEmailBoxId",
+                    _BoxId);
+            if (EmailProfiles.Count != 0)
+            {
+                var DeleteEmail = await this.apiService.DeleteProfilesEmail_Box(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfileEmail/DeleteBox_ProfileEmailBoxRelation",
+                    _BoxId);
+            }
+            #endregion
+
+            #region Phone
+            var PhoneProfiles = await this.apiService.GetRelationBox_ProfilesPhone(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfilePhone/GetBox_ProfilePhoneBoxId",
+                    _BoxId);
+            if (PhoneProfiles.Count != 0)
+            {
+                var DeletePhone = await this.apiService.DeleteProfilesPhone_Box(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfilePhone/DeleteBox_ProfilePhoneBoxRelations",
+                    _BoxId);
+            }
+            #endregion
+
+            #region Whatsapp
+            var WhatsappProfiles = await this.apiService.GetRelationBox_ProfilesWhatsapp(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfileWhatsapp/GetBox_ProfileWhatsappBoxId",
+                    _BoxId);
+            if (WhatsappProfiles.Count != 0)
+            {
+                var DeleteWhatsapp = await this.apiService.DeleteProfilesWhatsapp_Box(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfileWhatsapp/DeleteBox_ProfileWhatsappBoxRelations",
+                    _BoxId);
+            }
+            #endregion
+
+            #region SM
+            var SMProfiles = await this.apiService.GetRelationBox_ProfilesSM(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfileSM/GetBox_ProfileSMBoxId",
+                    _BoxId);
+            if (SMProfiles.Count != 0)
+            {
+                var DeleteSM = await this.apiService.DeleteProfilesPhone_Box(
+                    apiSecurity,
+                    "/api",
+                    "/Box_ProfileSM/DeleteBox_ProfileSMBoxRelations",
+                    _BoxId);
+            }
+            #endregion
+
+            #endregion
+
+            var box = await this.apiService.GetBox(
+                apiSecurity,
+                    "/api",
+                    "/Boxes",
+                    _BoxId);
+            if(box.BoxDefault == true)
+            {
+                MainViewModel.GetInstance().Home.RemoveList(box);
+                var LastBox = await this.apiService.GetLastBox(
+                    apiSecurity,
+                    "/api",
+                    "/Boxes/GetLastBox",
+                    _BoxId);
+                var NewDefault = new Box 
+                {
+                    BoxId = LastBox.BoxId,
+                    UserId = LastBox.UserId,
+                    Name = LastBox.Name,
+                    Time = LastBox.Time,
+                    BoxDefault = true
+                };
+                await EdithBox(NewDefault);
+                var response = await this.apiService.Delete(
+                    apiSecurity,
+                    "/api",
+                    "/Boxes",
+                    _BoxId);
+            }
+            else
+            {
+                MainViewModel.GetInstance().Home.RemoveList(box);
+                var response = await this.apiService.Delete(
+                    apiSecurity,
+                    "/api",
+                    "/Boxes",
+                    _BoxId);
+            }
+            await PopupNavigation.Instance.PopAllAsync();
+            //MainViewModel.GetInstance().Home = new HomeViewModel();
+            //Application.Current.MainPage = new MasterPage();
+        }
         #endregion
     }
 }
