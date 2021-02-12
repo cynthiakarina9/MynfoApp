@@ -1,96 +1,126 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="Mynfo.Views.ListOfNetworksPage"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             x:Name="BackgroundFull">
     <ContentPage.Content>
-        <Grid
-            BindingContext = "{Binding ListOfNetworks}">
-            <!--Titulo-->
-            <Label 
-                Grid.Row = "0" 
-                Text = "{i18n:Translate MyProfiles}"
-                FontSize = "25"
-                FontAttributes="Bold"
-                TextColor = "{StaticResource MainColor}"
-                HorizontalOptions = "CenterAndExpand"
-                VerticalOptions = "Start"/>
+        <Frame
+            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+            BindingContext = "{Binding ListOfNetworks}"
+            CornerRadius="50"
+            HasShadow="True"
+            Margin="30">
             <Grid>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="5" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <ActivityIndicator
-                        Grid.Row = "1"
-                        IsRunning = "{Binding IsRunning}"
-                        HorizontalOptions = "CenterAndExpand"
-                        VerticalOptions="StartAndExpand" />
-
-                    <!-- Lista de perfiles -->
-                    <ListView  
-                        Grid.Row="1"
-                        HasUnevenRows="true"
-                        ItemSelected="OnListViewItemSelected"
-                        ItemsSource="{Binding ProfilePerfiles, Mode=TwoWay}"
-                        ItemTapped="OnListViewItemTapped"
-                        Margin="10,35,10,20"
-                        SelectedItem="{Binding selectedProfileProfiles}"
-                        x:Name="ProfileList">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="20">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="3*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <ImageButton
-                                            BackgroundColor="Transparent"
-                                            Grid.Column="0"
-                                            HeightRequest="30"
-                                            Margin="5"
-                                            Source="{Binding Logo}"
-                                            WidthRequest="30"/>
-                                        <Label 
-                                            Grid.Column="1"
-                                            Text="{Binding ProfileName, Mode=TwoWay}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            FontSize="18"
-                                            FontAttributes="Bold" 
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Start"/>
-                                        <input:CheckBox 
-                                            IsEnabled="False"
-                                            BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            Grid.Column="3"
-                                            IsChecked="{Binding Exist}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <!--Lista vacia-->
-                    <Label
+                <!--Titulo-->
+                <StackLayout
+                    Grid.Row="0"
+                    Orientation="Horizontal"
+                    BindingContext = "{Binding ListOfNetworks}">
+                    <Label 
+                        Text = "{i18n:Translate MyProfiles}"
+                        FontSize = "25"
                         FontAttributes="Bold"
-                        FontSize="21"
-                        Grid.Row="1"
-                        HorizontalTextAlignment="Center"
-                        IsVisible="{Binding IsEmpty}"
-                        Margin="10,0,10,280"
-                        Text="{i18n:Translate ProfileNull}"
-                        TextColor="LightGray"
-                        VerticalOptions="Center"/>
+                        TextColor = "{StaticResource MainColor}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions = "Start"/>
+                    <!--<Button
+                        BackgroundColor="Gray"
+                        Command="{Binding GotoAddCommand}"
+                        HeightRequest="40"
+                        HorizontalOptions="Start"
+                        IsEnabled="true"
+                        VerticalOptions="Start"
+                        WidthRequest="40"/>-->
+                </StackLayout>
+                <Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Command="{Binding GotoAddCommand}"
+                            Grid.RowSpan="2"
+                            HeightRequest="40"
+                            HorizontalOptions="End"
+                            IsEnabled="true"
+                            Source="Plus"
+                            VerticalOptions="Start"
+                            WidthRequest="40"/>
+                        <ActivityIndicator
+                            Grid.Row = "1"
+                            IsRunning = "{Binding IsRunning}"
+                            HorizontalOptions = "CenterAndExpand"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <!-- Lista de perfiles -->
+                        <ListView  
+                            Grid.Row="1"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfilePerfiles, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,35,10,20"
+                            SelectedItem="{Binding selectedProfileProfiles}"
+                            x:Name="ProfileList">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Margin="5"
+                                                Source="{Binding Logo}"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                Grid.Column="1"
+                                                Text="{Binding ProfileName, Mode=TwoWay}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                IsEnabled="False"
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!--Lista vacia-->
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="21"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="{Binding IsEmpty}"
+                            Margin="10,0,10,280"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="Center"/>
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
+        </Frame>
+        
     </ContentPage.Content>
-</ContentPage>
+</popup:PopupPage>

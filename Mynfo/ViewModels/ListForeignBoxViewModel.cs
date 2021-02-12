@@ -1,9 +1,13 @@
 ﻿namespace Mynfo.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
     using Models;
     using Mynfo.Services;
+    using Mynfo.Views;
+    using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
     using Xamarin.Forms;
 
     public class ListForeignBoxViewModel : BaseViewModel
@@ -71,11 +75,11 @@
 
         #region Lista
         public void AddList(ForeingBox _foreingBox)
-                {
-                    ForeingBox.Add(_foreingBox);
-                }
+        {
+            ForeingBox.Add(_foreingBox);
+        }
         #endregion
-        
+
         #endregion
     }
 }

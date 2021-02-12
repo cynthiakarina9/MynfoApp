@@ -38,8 +38,8 @@
         //    return Ok(box_ProfilePhone);
         //}
 
-        // GET: api/Box_ProfilePhone/GetBox_ProfilePhone
 
+        // GET: api/Box_ProfilePhone/GetBox_ProfilePhone        
         [HttpPost]
         [Route("GetBox_ProfilePhone")]
         public async Task<IHttpActionResult> GetBox_ProfilePhone(JObject form)
@@ -73,6 +73,7 @@
             }
         }
 
+        // GET: api/Box_ProfilePhone/GetBox_ProfilePhoneId
         [HttpPost]
         [Route("GetBox_ProfilePhoneId")]
         public IQueryable<Box_ProfilePhone> GetBox_ProfilePhoneId(JObject form)
@@ -106,6 +107,39 @@
             }
         }
 
+        // GET: api/Box_ProfilePhone/GetBox_ProfilePhoneId
+        [HttpPost]
+        [Route("GetBox_ProfilePhoneBoxId")]
+        public List<Box_ProfilePhone> GetBox_ProfilePhoneBoxId(JObject form)
+        {
+            try
+            {
+                int idBox = 0;
+                dynamic jsonObject = form;
+
+                try
+                {
+                    idBox = jsonObject.BoxId;
+                }
+                catch
+                {
+                    return null;
+                }
+                var box_ProfilePhone = db.Box_ProfilePhone.Where(u => u.BoxId == idBox).ToList();
+                if (box_ProfilePhone.Count() == 0)
+                {
+                    return null;
+                }
+
+                return box_ProfilePhone;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        // GET: api/Box_ProfilePhone/GetBox_Relations
         [HttpPost]
         [Route("GetBox_Relations")]
         public async Task<IHttpActionResult> GetBox_Relations(int boxid)
@@ -222,6 +256,47 @@
             await db.SaveChangesAsync();
 
             return Ok(box_ProfilePhone);
+
+        }
+
+        // DELETE: api/Box_ProfilePhone/5
+        [HttpPost]
+        [Route("DeleteBox_ProfilePhoneBoxRelations")]
+        [ResponseType(typeof(Box_ProfilePhone))]
+        public async Task<IHttpActionResult> DeleteBox_ProfilePhoneBoxRelations(JObject form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                int id;
+                dynamic jsonObject = form;
+                try
+                {
+                    id = jsonObject.BoxId;
+                }
+                catch
+                {
+                    return BadRequest("Missing parameter.");
+                }
+                var box_ProfilePhone = GetBox_ProfilePhone().Where(u => u.BoxId == id).ToList();
+                if (box_ProfilePhone.Count == 0)
+                {
+                    return NotFound();
+                }
+
+                db.Box_ProfilePhone.RemoveRange(box_ProfilePhone);
+                await db.SaveChangesAsync();
+
+                return Ok(box_ProfilePhone);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
         protected override void Dispose(bool disposing)

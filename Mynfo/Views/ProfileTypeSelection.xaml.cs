@@ -1,12 +1,13 @@
 ﻿namespace Mynfo.Views
 {
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Services;
     using System;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfileTypeSelection : ContentPage
+    public partial class ProfileTypeSelection 
     {
         public ProfileTypeSelection(int _BoxId, bool _boxDefault, string _boxName)
         {
@@ -31,7 +32,7 @@
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.ProfilesBYPESM = new ProfilesBYPESMViewModel(_BoxId, _profileType);
-            App.Navigator.PushAsync(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault, _boxName));
+            PopupNavigation.Instance.PushAsync(new ProfilesBYPESMPage(_BoxId, _profileType, _BoxDefault, _boxName));
         }
         private void BackHome_Clicked(object sender, EventArgs e)
         {

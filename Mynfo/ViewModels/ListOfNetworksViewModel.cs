@@ -6,6 +6,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.Views;
+    using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
@@ -20,6 +21,7 @@
         #region Attributes
         private bool isEmpty;
         private bool isRunning;
+        private Box box;
         private ObservableCollection<ProfileEmail> profileEmail;
         private ObservableCollection<ProfilePhone> profilePhone;
         private ObservableCollection<ProfileSM> profileSM;
@@ -37,6 +39,11 @@
         {
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
+        }
+        public Box Box
+        {
+            get { return this.box; }
+            set { SetValue(ref this.box, value); }
         }
         public ObservableCollection<ProfileEmail> ProfileEmail
         {
@@ -91,6 +98,7 @@
             apiService = new ApiService();
             IsEmpty = false;
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
+            GetBox(_BoxId);
             GetListEmail(_BoxId);
             GetListPhone(_BoxId);
             GetListSM(_BoxId);
@@ -99,6 +107,21 @@
         #endregion
 
         #region Methods
+
+        #region Box
+        public async Task<Box> GetBox(int _BoxId)
+        {
+            Box = new Box();
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var BoxApi = await this.apiService.GetBox(
+               apiSecurity,
+               "/api",
+               "/Boxes",
+               _BoxId);
+            Box = BoxApi;
+            return Box;
+        }
+        #endregion
 
         #region Email
         private async Task<ObservableCollection<ProfileEmail>> GetListEmail(int _BoxId)
@@ -448,6 +471,19 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+
+        public ICommand GotoAddCommand
+        {
+            get
+            {
+                return new RelayCommand(GotoAdd);
+            }
+        }
+        private void GotoAdd()
+        {
+            PopupNavigation.Instance.PopAsync();
+            PopupNavigation.Instance.PushAsync(new ProfileTypeSelection(Box.BoxId, Box.BoxDefault, Box.Name));
         }
         #endregion
     }
