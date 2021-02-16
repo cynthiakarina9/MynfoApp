@@ -57,6 +57,11 @@
             get;
             set;
         }
+        public CreateProfilesViewModel CreateProfiles
+        {
+            get;
+            set;
+        }
         public CreateProfileEmailViewModel CreateProfileEmail
         {
             get;
@@ -228,6 +233,12 @@
         { 
             get; 
             set; 
+        }
+
+        public GifViewModel GIF
+        {
+            get;
+            set;
         }
 
         public HomeViewModel Home

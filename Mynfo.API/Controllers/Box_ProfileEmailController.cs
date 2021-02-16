@@ -71,7 +71,7 @@
                 return BadRequest(ex.Message);
             }
         }
-
+        //GET(POST): api/Box_ProfilEmail/GetBox_ProfileEmailId
         [HttpPost]
         [Route("GetBox_ProfileEmailId")]
         public IQueryable<Box_ProfileEmail> GetBox_ProfileEmailId(JObject form)
@@ -104,7 +104,37 @@
                 return null;
             }
         }
+        //GET(POST): api/Box_ProfilEmail/GetBox_ProfileEmailBoxId
+        [HttpPost]
+        [Route("GetBox_ProfileEmailBoxId")]
+        public List<Box_ProfileEmail> GetBox_ProfileEmailBoxId(JObject form)
+        {
+            try
+            {
+                int idBox = 0;
+                dynamic jsonObject = form;
 
+                try
+                {
+                    idBox = jsonObject.BoxId;
+                }
+                catch
+                {
+                    return null;
+                }
+                var box_ProfileEmail = db.Box_ProfileEmail.Where(u => u.BoxId == idBox).ToList();
+                if (box_ProfileEmail.Count() == 0)
+                {
+                    return null;
+                }
+
+                return box_ProfileEmail;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         // PUT: api/Box_ProfileEmail/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutBox_ProfileEmail(int id, Box_ProfileEmail box_ProfileEmail)
@@ -209,7 +239,45 @@
 
             return Ok(box_ProfileEmail);
         }
+       
+        // DELETE: api/Box_ProfileEmail/5
+        [HttpPost]
+        [Route("DeleteBox_ProfileEmailBoxRelation")]
+        [ResponseType(typeof(Box_ProfileEmail))]
+        public async Task<IHttpActionResult> DeleteBox_ProfileEmailBoxRelation(JObject form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                int id;
+                dynamic jsonObject = form;
+                try
+                {
+                    id = jsonObject.BoxId;
+                }
+                catch
+                {
+                    return BadRequest("Missing parameter.");
+                }
+                var box_ProfileEmail = GetBox_ProfileEmail().Where(u => u.BoxId == id).ToList();
+                if (box_ProfileEmail.Count == 0)
+                {
+                    return NotFound();
+                }
 
+                db.Box_ProfileEmail.RemoveRange(box_ProfileEmail);
+                await db.SaveChangesAsync();
+
+                return Ok(box_ProfileEmail);
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

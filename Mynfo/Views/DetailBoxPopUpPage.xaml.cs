@@ -188,7 +188,7 @@
                 BxDefaultCheckBox.IsEnabled = true;
                 BxDefaultCheckBox.Color = Color.FromHex("FF5521");
                 EdithButton.Source = "edit2";
-                BoxProfiles.Source = "plus";
+                BoxProfiles.Source = "Plus";
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 
@@ -443,8 +443,10 @@
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {
-            App.Navigator.PushAsync(new TabbedListOfNetworksPage(_BoxId, _boxDefault, _boxName), false);
-            Navigation.PopPopupAsync();
+            //App.Navigator.PushAsync(new TabbedListOfNetworksPage(_BoxId, _boxDefault, _boxName), false);
+            //Navigation.PopPopupAsync();
+            MainViewModel.GetInstance().ListOfNetworks = new ListOfNetworksViewModel(_BoxId);
+            PopupNavigation.Instance.PushAsync(new ListOfNetworksPage(_BoxId));
         }
 
         private void BackHome(object sender, EventArgs e)

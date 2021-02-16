@@ -6,6 +6,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.Views;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Linq;
     using System.Windows.Input;
@@ -170,7 +171,14 @@
             this.Name = string.Empty;
             this.Number = string.Empty;
 
-            await App.Navigator.PopAsync();
+            if (mainViewModel.ProfilesBYPESM != null)
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }
+            else
+            {
+                await App.Navigator.PopAsync();
+            }
         }
 
         public ICommand BackHomeCommand

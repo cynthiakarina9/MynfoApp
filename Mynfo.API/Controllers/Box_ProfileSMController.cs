@@ -3,6 +3,7 @@
     using Mynfo.Domain;
     using Newtonsoft.Json.Linq;
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -69,8 +70,9 @@
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost]
+
         // GET: api/Box_ProfileSM/GetBox_ProfileSM
+        [HttpPost]
         [Route("GetBox_ProfileSMId")]
         public IQueryable<Box_ProfileSM> GetBox_ProfileSMId(JObject form)
         {
@@ -90,6 +92,38 @@
                     return null;
                 }
                 var box_ProfileSM = GetBox_ProfileSM().Where(u => u.BoxId == idBox && u.ProfileMSId == idSM);
+                if (box_ProfileSM.Count() == 0)
+                {
+                    return null;
+                }
+
+                return box_ProfileSM;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        // GET: api/Box_ProfileSM/GetBox_ProfileSM
+        [HttpPost]
+        [Route("GetBox_ProfileSMBoxId")]
+        public List<Box_ProfileSM> GetBox_ProfileSMBoxId(JObject form)
+        {
+            try
+            {
+                int idBox = 0;
+                dynamic jsonObject = form;
+
+                try
+                {
+                    idBox = jsonObject.BoxId;
+                }
+                catch
+                {
+                    return null;
+                }
+                var box_ProfileSM = GetBox_ProfileSM().Where(u => u.BoxId == idBox).ToList() ;
                 if (box_ProfileSM.Count() == 0)
                 {
                     return null;
@@ -209,7 +243,45 @@
 
             return Ok(box_ProfileSM);
         }
+        // DELETE: api/Box_ProfileSM/5
+        [HttpPost]
+        [Route("DeleteBox_ProfileSMBoxRelations")]
+        [ResponseType(typeof(Box_ProfileSM))]
+        public async Task<IHttpActionResult> DeleteBox_ProfileSMBoxRelations(JObject form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                int id;
+                dynamic jsonObject = form;
+                try
+                {
+                    id = jsonObject.BoxId;
+                }
+                catch
+                {
+                    return BadRequest("Missing parameter.");
+                }
+                var box_ProfileSM = GetBox_ProfileSM().Where(u => u.BoxId == id).ToList();
+                if (box_ProfileSM.Count == 0)
+                {
+                    return NotFound();
+                }
 
+                db.Box_ProfileSM.RemoveRange(box_ProfileSM);
+                await db.SaveChangesAsync();
+
+                return Ok(box_ProfileSM);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

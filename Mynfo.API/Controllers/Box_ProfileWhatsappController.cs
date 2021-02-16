@@ -105,6 +105,37 @@
                 return null;
             }
         }
+        // GET: api/Box_ProfilePhone/GetBox_ProfilePhone
+        [HttpPost]
+        [Route("GetBox_ProfileWhatsappBoxId")]
+        public List<Box_ProfileWhatsapp> GetBox_ProfileWhatsappBoxId(JObject form)
+        {
+            try
+            {
+                int idBox = 0;
+                dynamic jsonObject = form;
+
+                try
+                {
+                    idBox = jsonObject.BoxId;
+                }
+                catch
+                {
+                    return null;
+                }
+                var box_ProfileWhatsapp = GetBox_ProfileWhatsapp().Where(u => u.BoxId == idBox).ToList();
+                if (box_ProfileWhatsapp.Count() == 0)
+                {
+                    return null;
+                }
+
+                return box_ProfileWhatsapp;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
         // PUT: api/Box_ProfileWhatsapp/5
         [ResponseType(typeof(void))]
@@ -209,7 +240,46 @@
 
             return Ok(box_ProfileWhatsapp);
         }
+        // DELETE: api/Box_ProfileWhatsapp/5
+        [HttpPost]
+        [Route("DeleteBox_ProfileWhatsappBoxRelations")]
+        [ResponseType(typeof(Box_ProfileWhatsapp))]
+        public async Task<IHttpActionResult> DeleteBox_ProfileWhatsappBoxRelations(JObject form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                int id;
+                dynamic jsonObject = form;
+                try
+                {
+                    id = jsonObject.BoxId;
+                }
+                catch
+                {
+                    return BadRequest("Missing parameter.");
+                }
+                var box_ProfileWhasapp = GetBox_ProfileWhatsapp().Where(u => u.BoxId == id).ToList();
+                if (box_ProfileWhasapp.Count == 0)
+                {
+                    return NotFound();
+                }
 
+                db.Box_ProfileWhatsapp.RemoveRange(box_ProfileWhasapp);
+                await db.SaveChangesAsync();
+
+                return Ok(box_ProfileWhasapp);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

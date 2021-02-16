@@ -5,12 +5,14 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Text;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ListOfNetworksPage : ContentPage
+    public partial class ListOfNetworksPage 
     {
         #region Attributes
         public bool Actived;
@@ -23,16 +25,20 @@
 
         #region Properties
         public Box Box { get; set; }
+        public Box Box2 { get; set; }
         public ProfileLocal selectedItemProfile { get; set; }
         #endregion
 
         #region Constructor
         public ListOfNetworksPage(int _BoxId)
         {
+            InitializeComponent();
             apiService = new ApiService();
             Box = new Box();
             Box.BoxId = _BoxId;
-            InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            OSAppTheme currentTheme = Application.Current.RequestedTheme;
+            BackgroundFull.CloseWhenBackgroundIsClicked = true;
         }
         #endregion
 
@@ -275,6 +281,8 @@
                     break;
             }
         }
+
+        
         #endregion
 
         #region Email

@@ -396,6 +396,155 @@
                 };
             }
         }
+
+        public async Task<Response> DeleteProfilesEmail_Box(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new Box_ProfileEmail()
+                {
+                    BoxId = id
+                };
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<Response> DeleteProfilesPhone_Box(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new Box_ProfilePhone()
+                {
+                    BoxId = id
+                };
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<Response> DeleteProfilesWhatsapp_Box(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new Box_ProfileWhatsapp()
+                {
+                    BoxId = id
+                };
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<Response> DeletProfilesSM_Box(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                var model = new Box_ProfileSM()
+                {
+                    BoxId = id
+                };
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<Response>(result);
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
         #endregion
 
         #region Get
@@ -512,7 +661,6 @@
         {
             try
             {
-
                 var request = JsonConvert.SerializeObject(model);
                 var content = new StringContent(
                     request,
@@ -620,7 +768,44 @@
                 return null;
             }
         }
+        public async Task<Box> GetLastBox(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                Box model = new Box()
+                {
+                    UserId = id
+                };
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
 
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Box>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public async Task<Response> Get<T>(
             string urlBase,
             string servicePrefix,
@@ -1203,50 +1388,152 @@
             }
         }
 
-        public async Task<Response> Put<T>(
+        public async Task<List<Box_ProfileEmail>> GetRelationBox_ProfilesEmail(
             string urlBase,
             string servicePrefix,
             string controller,
-            T model)
+            int Id)
         {
             try
             {
+                var model = new Box_ProfileEmail
+                {
+                    BoxId = Id
+                };
+
                 var request = JsonConvert.SerializeObject(model);
                 var content = new StringContent(
                     request,
-                    Encoding.UTF8, "application/json");
+                    Encoding.UTF8,
+                    "application/json");
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                var url = string.Format(
-                    "{0}{1}/{2}",
-                    servicePrefix,
-                    controller,
-                    model.GetHashCode());
-                var response = await client.PutAsync(url, content);
-                var result = await response.Content.ReadAsStringAsync();
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    var error = JsonConvert.DeserializeObject<Response>(result);
-                    error.IsSuccess = false;
-                    return error;
+                    string resul = "0";
+                    return JsonConvert.DeserializeObject<List<Box_ProfileEmail>>(resul);
                 }
 
-                var newRecord = JsonConvert.DeserializeObject<T>(result);
-
-                return new Response
-                {
-                    IsSuccess = true,
-                    Result = newRecord,
-                };
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Box_ProfileEmail>>(result);
             }
-            catch (Exception ex)
+            catch
             {
-                return new Response
+                return null;
+            }
+        }
+        public async Task<List<Box_ProfilePhone>> GetRelationBox_ProfilesPhone(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int Id)
+        {
+            try
+            {
+                var model = new Box_ProfilePhone
                 {
-                    IsSuccess = false,
-                    Message = ex.Message,
+                    BoxId = Id
                 };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    string resul = "0";
+                    return JsonConvert.DeserializeObject<List<Box_ProfilePhone>>(resul);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Box_ProfilePhone>>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<List<Box_ProfileWhatsapp>> GetRelationBox_ProfilesWhatsapp(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int Id)
+        {
+            try
+            {
+                var model = new Box_ProfileWhatsapp
+                {
+                    BoxId = Id
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    string resul = "0";
+                    return JsonConvert.DeserializeObject<List<Box_ProfileWhatsapp>>(resul);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Box_ProfileWhatsapp>>(result);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<List<Box_ProfileSM>> GetRelationBox_ProfilesSM(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int Id)
+        {
+            try
+            {
+                var model = new Box_ProfileSM
+                {
+                    BoxId = Id
+                };
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    string resul = "0";
+                    return JsonConvert.DeserializeObject<List<Box_ProfileSM>>(resul);
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Box_ProfileSM>>(result);
+            }
+            catch
+            {
+                return null;
             }
         }
         #endregion
@@ -1682,6 +1969,52 @@
             catch (Exception ex)
             {
                 return model;
+            }
+        }
+        public async Task<Response> Put<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            T model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}/{2}",
+                    servicePrefix,
+                    controller,
+                    model.GetHashCode());
+                var response = await client.PutAsync(url, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var error = JsonConvert.DeserializeObject<Response>(result);
+                    error.IsSuccess = false;
+                    return error;
+                }
+
+                var newRecord = JsonConvert.DeserializeObject<T>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = newRecord,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
             }
         }
         #endregion

@@ -4,6 +4,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Data.SqlClient;
     using Xamarin.Forms;
@@ -1367,7 +1368,8 @@
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {
-            App.Navigator.PushAsync(new TabbedListOfNetworksPage(_BoxId, _boxDefault, _boxName), false);
+            //App.Navigator.PushAsync(new TabbedListOfNetworksPage(_BoxId, _boxDefault, _boxName), false);
+            PopupNavigation.Instance.PushAsync(new ListOfNetworksPage(_BoxId));
         }
 
         private void BackHome (object sender, EventArgs e)

@@ -82,6 +82,12 @@
     <Compile Update="Views\EditProfileTwitchPage.xaml.cs">
       <DependentUpon>EditProfileTwitchPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomePage3.xaml.cs">
+      <DependentUpon>HomePage3.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PupPopPage.xaml.cs">
       <DependentUpon>PupPopPage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +138,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CreateProfileSnapchatPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CreateProfilesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CreateProfileSpotifyPage.xaml">
@@ -204,6 +213,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ForeingBoxPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\GifPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomePage3.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomePage.xaml">

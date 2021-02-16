@@ -26,11 +26,6 @@
         private bool isRunning;
         private bool isNull;
         private bool moreOne;
-        private ObservableCollection<ProfileEmail> profileEmail;
-        private ObservableCollection<ProfilePhone> profilePhone;
-        private ObservableCollection<ProfileSM> profileSM;
-        private ObservableCollection<ProfileWhatsapp> profileWhatsapp;
-        private ObservableCollection<ProfileLocal> profilePerfiles;
         #endregion
 
         #region Properties

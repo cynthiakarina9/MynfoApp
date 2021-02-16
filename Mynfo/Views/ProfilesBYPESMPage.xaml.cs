@@ -4,13 +4,14 @@
     using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Text;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilesBYPESMPage : ContentPage
+    public partial class ProfilesBYPESMPage 
     {
         #region Attributes
         public bool Actived;
@@ -40,36 +41,7 @@
             #region Variables
             int BoxId = _BoxId;
             int UserId = MainViewModel.GetInstance().User.UserId;
-            string queryGetEmailProfiles;
-            string queryGetPhoneProfiles;
-            string queryGetFacebookProfiles;
-            string queryGetWhatsappProfiles;
-            string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            StringBuilder sb, sb2;
 
-            #endregion
-
-            #region Queries
-
-            queryGetEmailProfiles = "select dbo.ProfileEmails.ProfileEmailId from dbo.ProfileEmails " +
-                                                "where dbo.ProfileEmails.UserId = " + UserId + " except select " +
-                                                "dbo.Box_ProfileEmail.ProfileEmailId from dbo.Box_ProfileEmail " +
-                                                "where dbo.Box_ProfileEmail.BoxId = " + BoxId;
-            queryGetPhoneProfiles = "SELECT dbo.ProfilePhones.ProfilePhoneId FROM dbo.ProfilePhones " +
-                                            "where dbo.ProfilePhones.UserId = " + UserId + " EXCEPT SELECT " +
-                                            "dbo.Box_ProfilePhone.ProfilePhoneId FROM dbo.Box_ProfilePhone " +
-                                            "where dbo.Box_ProfilePhone.BoxId = " + BoxId;
-            queryGetFacebookProfiles = "SELECT dbo.ProfileSMs.ProfileMSId FROM dbo.ProfileSMs " +
-                                            "where dbo.ProfileSMs.UserId = " + UserId +
-                                            " and dbo.ProfileSMs.RedSocialId = 1 " +
-                                            " EXCEPT SELECT " +
-                                            "dbo.Box_ProfileSM.ProfileMSId FROM dbo.Box_ProfileSM " +
-                                            "where dbo.Box_ProfileSM.BoxId = " + BoxId;
-            queryGetWhatsappProfiles = "SELECT dbo.ProfileWhatsapps.ProfileWhatsappId FROM dbo.ProfileWhatsapps " +
-                                            "where dbo.ProfileWhatsapps.UserId = " + UserId +
-                                            " EXCEPT SELECT " +
-                                            "dbo.Box_ProfileWhatsapp.ProfilePhoneId FROM dbo.Box_ProfileWhatsapp " +
-                                            "where dbo.Box_ProfileWhatsapp.BoxId = " + BoxId;
             #endregion
 
             #region Commands
@@ -77,9 +49,6 @@
             //BackDetails.Clicked += new EventHandler((sender, e) => Back_Clicked(sender, e, _BoxId, _BoxDefault, _boxName));
 
             GoToProfiles.Clicked += new EventHandler((sender, e) => GoToProfiles_Clicked(sender, e, _BoxId, _ProfileType, _BoxDefault));
-
-
-
             #endregion
 
             switch (_ProfileType)
@@ -284,291 +253,6 @@
                     break;
             }
 
-            #region Consultas
-
-            //switch (_ProfileType)
-            //{
-            //    case "Phone":
-            //        Consulta para obtener teléfonos
-            //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            //        {
-            //            sb = new System.Text.StringBuilder();
-            //            sb.Append(queryGetPhoneProfiles);
-            //            string sql = sb.ToString();
-
-            //            using (SqlCommand command = new SqlCommand(sql, connection))
-            //            {
-            //                connection.Open();
-            //                using (SqlDataReader reader = command.ExecuteReader())
-            //                {
-            //                    while (reader.Read())
-            //                    {
-            //                        int ProfilePhoneId = (int)reader["ProfilePhoneId"];
-            //                        string queryGetProfile = "select * from dbo.ProfilePhones where dbo.ProfilePhones.ProfilePhoneId = " + ProfilePhoneId;
-
-            //                        Validamos los valores que obtenemos
-            //                        using (SqlConnection connection2 = new SqlConnection(cadenaConexion))
-            //                        {
-            //                            sb2 = new System.Text.StringBuilder();
-            //                            sb2.Append(queryGetProfile);
-            //                            string sql2 = sb2.ToString();
-
-            //                            using (SqlCommand command2 = new SqlCommand(sql2, connection2))
-            //                            {
-            //                                connection2.Open();
-            //                                using (SqlDataReader reader2 = command2.ExecuteReader())
-            //                                {
-            //                                    while (reader2.Read())
-            //                                    {
-            //                                        var phoneName = new Label();
-            //                                        var phoneNumber = new Label();
-            //                                        var CreateRelation = new ImageButton();
-            //                                        var Line = new BoxView();
-
-            //                                        phoneName.Text = (string)reader2["Name"];
-            //                                        phoneName.FontSize = 15;
-            //                                        phoneName.FontAttributes = FontAttributes.Bold;
-
-            //                                        phoneNumber.Text = (string)reader2["Number"];
-            //                                        phoneNumber.FontSize = 25;
-            //                                        phoneNumber.HorizontalTextAlignment = TextAlignment.Center;
-
-            //                                        CreateRelation.BackgroundColor = Color.Transparent;
-            //                                        CreateRelation.CornerRadius = 15;
-            //                                        CreateRelation.HeightRequest = 30;
-            //                                        CreateRelation.WidthRequest = 30;
-            //                                        CreateRelation.HorizontalOptions = LayoutOptions.End;
-            //                                        CreateRelation.Source = "enter1";
-            //                                        CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxPhoneRelation(sender, e, BoxId, ProfilePhoneId, _BoxDefault, _boxName));
-
-            //                                        Line.HeightRequest = 1;
-            //                                        Line.Color = Color.FromHex("#FF5521");
-
-            //                                        ProfileList.Children.Add(phoneName);
-            //                                        ProfileList.Children.Add(phoneNumber);
-            //                                        ProfileList.Children.Add(CreateRelation);
-            //                                        ProfileList.Children.Add(Line);
-            //                                    }
-            //                                }
-            //                                connection2.Close();
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //                connection.Close();
-            //            }
-            //        }
-            //        break;
-            //    case "Email":
-            //        Consulta para obtener Emails
-            //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            //        {
-            //            sb = new System.Text.StringBuilder();
-            //            sb.Append(queryGetEmailProfiles);
-            //            string sql = sb.ToString();
-
-            //            using (SqlCommand command = new SqlCommand(sql, connection))
-            //            {
-            //                connection.Open();
-            //                using (SqlDataReader reader = command.ExecuteReader())
-            //                {
-            //                    while (reader.Read())
-            //                    {
-            //                        int ProfileEmailId = (int)reader["ProfileEmailId"];
-            //                        string queryGetProfile = "select * from dbo.ProfileEmails where dbo.ProfileEmails.ProfileEmailId = " + ProfileEmailId;
-
-            //                        Validamos los valores que obtenemos
-            //                        using (SqlConnection connection2 = new SqlConnection(cadenaConexion))
-            //                        {
-            //                            sb2 = new System.Text.StringBuilder();
-            //                            sb2.Append(queryGetProfile);
-            //                            string sql2 = sb2.ToString();
-
-            //                            using (SqlCommand command2 = new SqlCommand(sql2, connection2))
-            //                            {
-            //                                connection2.Open();
-            //                                using (SqlDataReader reader2 = command2.ExecuteReader())
-            //                                {
-            //                                    while (reader2.Read())
-            //                                    {
-            //                                        var emailProfile = new Label();
-            //                                        var emailAddress = new Label();
-            //                                        var CreateRelation = new ImageButton();
-            //                                        var Line = new BoxView();
-
-            //                                        emailProfile.Text = (string)reader2["Name"];
-            //                                        emailProfile.FontSize = 15;
-            //                                        emailProfile.FontAttributes = FontAttributes.Bold;
-
-            //                                        emailAddress.Text = (string)reader2["Email"];
-            //                                        emailAddress.FontSize = 25;
-            //                                        emailAddress.HorizontalTextAlignment = TextAlignment.Center;
-
-            //                                        CreateRelation.BackgroundColor = Color.Transparent;
-            //                                        CreateRelation.CornerRadius = 15;
-            //                                        CreateRelation.HeightRequest = 30;
-            //                                        CreateRelation.WidthRequest = 30;
-            //                                        CreateRelation.HorizontalOptions = LayoutOptions.End;
-            //                                        CreateRelation.Source = "enter1";
-            //                                        CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxEmailRelation(sender, e, BoxId, ProfileEmailId, _BoxDefault, _boxName));
-
-            //                                        Line.HeightRequest = 1;
-            //                                        Line.Color = Color.FromHex("#FF5521");
-
-            //                                        ProfileList.Children.Add(emailProfile);
-            //                                        ProfileList.Children.Add(emailAddress);
-            //                                        ProfileList.Children.Add(CreateRelation);
-            //                                        ProfileList.Children.Add(Line);
-            //                                    }
-            //                                }
-            //                                connection2.Close();
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //                connection.Close();
-            //            }
-            //        }
-            //        break;
-            //    case "Facebook":
-            //        Consulta para obtener Facebook
-            //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            //        {
-            //            sb = new System.Text.StringBuilder();
-            //            sb.Append(queryGetFacebookProfiles);
-            //            string sql = sb.ToString();
-
-            //            using (SqlCommand command = new SqlCommand(sql, connection))
-            //            {
-            //                connection.Open();
-            //                using (SqlDataReader reader = command.ExecuteReader())
-            //                {
-            //                    while (reader.Read())
-            //                    {
-            //                        int ProfileSMId = (int)reader["ProfileMSId"];
-            //                        string queryGetProfile = "select * from dbo.ProfileSMs where dbo.ProfileSMs.ProfileMSId = " + ProfileSMId;
-
-            //                        Validamos los valores que obtenemos
-            //                        using (SqlConnection connection2 = new SqlConnection(cadenaConexion))
-            //                        {
-            //                            sb2 = new System.Text.StringBuilder();
-            //                            sb2.Append(queryGetProfile);
-            //                            string sql2 = sb2.ToString();
-
-            //                            using (SqlCommand command2 = new SqlCommand(sql2, connection2))
-            //                            {
-            //                                connection2.Open();
-            //                                using (SqlDataReader reader2 = command2.ExecuteReader())
-            //                                {
-            //                                    while (reader2.Read())
-            //                                    {
-            //                                        var SMProfile = new Label();
-            //                                        var CreateRelation = new ImageButton();
-            //                                        var Line = new BoxView();
-
-            //                                        SMProfile.Text = (string)reader2["ProfileName"];
-            //                                        SMProfile.FontSize = 25;
-            //                                        SMProfile.FontAttributes = FontAttributes.Bold;
-            //                                        SMProfile.HorizontalTextAlignment = TextAlignment.Center;
-
-            //                                        CreateRelation.BackgroundColor = Color.Transparent;
-            //                                        CreateRelation.CornerRadius = 15;
-            //                                        CreateRelation.HeightRequest = 30;
-            //                                        CreateRelation.WidthRequest = 30;
-            //                                        CreateRelation.HorizontalOptions = LayoutOptions.End;
-            //                                        CreateRelation.Source = "enter1";
-            //                                        CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxSMRelation(sender, e, BoxId, ProfileSMId, _BoxDefault, _boxName));
-
-            //                                        Line.HeightRequest = 1;
-            //                                        Line.Color = Color.FromHex("#FF5521");
-
-            //                                        ProfileList.Children.Add(SMProfile);
-            //                                        ProfileList.Children.Add(CreateRelation);
-            //                                        ProfileList.Children.Add(Line);
-            //                                    }
-            //                                }
-            //                                connection2.Close();
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //                connection.Close();
-            //            }
-            //        }
-            //        break;
-
-            //    case "Whatsapp":
-            //        Consulta para obtener Whatsapp
-            //        using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            //        {
-            //            sb = new System.Text.StringBuilder();
-            //            sb.Append(queryGetWhatsappProfiles);
-            //            string sql = sb.ToString();
-
-            //            using (SqlCommand command = new SqlCommand(sql, connection))
-            //            {
-            //                connection.Open();
-            //                using (SqlDataReader reader = command.ExecuteReader())
-            //                {
-            //                    while (reader.Read())
-            //                    {
-            //                        int ProfileWhatsappId = (int)reader["ProfileWhatsappId"];
-            //                        string queryGetProfile = "select * from dbo.ProfileWhatsapps where dbo.ProfileWhatsapps.ProfileWhatsappId = " + ProfileWhatsappId;
-
-            //                        Validamos los valores que obtenemos
-            //                        using (SqlConnection connection2 = new SqlConnection(cadenaConexion))
-            //                        {
-            //                            sb2 = new System.Text.StringBuilder();
-            //                            sb2.Append(queryGetProfile);
-            //                            string sql2 = sb2.ToString();
-
-            //                            using (SqlCommand command2 = new SqlCommand(sql2, connection2))
-            //                            {
-            //                                connection2.Open();
-            //                                using (SqlDataReader reader2 = command2.ExecuteReader())
-            //                                {
-            //                                    while (reader2.Read())
-            //                                    {
-            //                                        var WAProfile = new Label();
-            //                                        var CreateRelation = new ImageButton();
-            //                                        var Line = new BoxView();
-
-            //                                        WAProfile.Text = (string)reader2["Name"];
-            //                                        WAProfile.FontSize = 25;
-            //                                        WAProfile.FontAttributes = FontAttributes.Bold;
-            //                                        WAProfile.HorizontalTextAlignment = TextAlignment.Center;
-
-            //                                        CreateRelation.BackgroundColor = Color.Transparent;
-            //                                        CreateRelation.CornerRadius = 15;
-            //                                        CreateRelation.HeightRequest = 30;
-            //                                        CreateRelation.WidthRequest = 30;
-            //                                        CreateRelation.HorizontalOptions = LayoutOptions.End;
-            //                                        CreateRelation.Source = "enter1";
-            //                                        CreateRelation.Clicked += new EventHandler((sender, e) => CreateBoxWhatsappRelation(sender, e, BoxId, ProfileWhatsappId, _BoxDefault, _boxName));
-
-            //                                        Line.HeightRequest = 1;
-            //                                        Line.Color = Color.FromHex("#FF5521");
-
-            //                                        ProfileList.Children.Add(WAProfile);
-            //                                        ProfileList.Children.Add(CreateRelation);
-            //                                        ProfileList.Children.Add(Line);
-            //                                    }
-            //                                }
-            //                                connection2.Close();
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //                connection.Close();
-            //            }
-            //        }
-            //        break;
-            //    default:
-            //        break;
-            //}
-
-            #endregion
-
         }
         #endregion
 
@@ -582,55 +266,55 @@
             {
                 case "Phone":
                     mainViewModel.CreateProfilePhone = new CreateProfilePhoneViewModel();
-                    App.Navigator.PushAsync(new CreateProfilePhonePage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfilePhonePopUpPage());
                     break;
                 case "Email":
                     mainViewModel.CreateProfileEmail = new CreateProfileEmailViewModel();
-                    App.Navigator.PushAsync(new CreateProfileEmailPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileEmailPopUpPage());
                     break;
                 case "Facebook":
                     mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
-                    App.Navigator.PushAsync(new CreateProfileFacebookPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileFacebookPopUpPage());
                     break;
                 case "Instagram":
                     mainViewModel.CreateProfileInstagram = new CreateProfileInstagramViewModel();
-                    App.Navigator.PushAsync(new CreateProfileInstagramPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileInstagramPopUpPage());
                     break;
                 case "LinkedIn":
                     mainViewModel.CreateProfileLinkedin = new CreateProfileLinkedinViewModel();
-                    App.Navigator.PushAsync(new CreateProfileLinkedinPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileLinkedinPopUpPage());
                     break;
                 case "Spotify":
                     mainViewModel.CreateProfileSpotify = new CreateProfileSpotifyViewModel();
-                    App.Navigator.PushAsync(new CreateProfileSpotifyPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileSpotifyPopUpPage());
                     break;
                 case "Snapchat":
                     mainViewModel.CreateProfileSnapchat = new CreateProfileSnapchatViewModel();
-                    App.Navigator.PushAsync(new CreateProfileSnapchatPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileSnapchatPopUpPage());
                     break;
                 case "Twitch":
                     mainViewModel.CreateProfileTwitch = new CreateProfileTwitchViewModel();
-                    App.Navigator.PushAsync(new CreateProfileTwitchPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileTwitchPopUpPage());
                     break;
                 case "TikTok":
                     mainViewModel.CreateProfileTiktok = new CreateProfileTiktokViewModel();
-                    App.Navigator.PushAsync(new CreateProfileTiktokPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileTiktokPopUpPage());
                     break;
                 case "Twitter":
                     mainViewModel.CreateProfileTwitter = new CreateProfileTwitterViewModel();
-                    App.Navigator.PushAsync(new CreateProfileTwitterPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileTwitterPopUpPage());
                     break;
                 case "WebPage":
                     mainViewModel.CreateProfileWebPage = new CreateProfileWebViewModel();
-                    App.Navigator.PushAsync(new CreateProfileWebPagePage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileWebPagePopUpPage());
                     break;
                 case "Whatsapp":
                     mainViewModel.CreateProfileWhatsApp = new CreateProfileWhatsAppViewModel();
-                    App.Navigator.PushAsync(new CreateProfileWhatsAppPage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileWhatsAppPopUpPage());
                     break;
                 case "Youtube":
                     mainViewModel.CreateProfileYoutube = new CreateProfileYoutubeViewModel();
-                    App.Navigator.PushAsync(new CreateProfileYoutubePage());
+                    PopupNavigation.Instance.PushAsync(new CreateProfileYoutubePopUpPage());
                     break;
                 default:
                     break;
