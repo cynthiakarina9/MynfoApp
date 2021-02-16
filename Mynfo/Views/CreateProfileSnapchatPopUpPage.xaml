@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<popup:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
-             x:Class="Mynfo.Views.CreateProfileLinkedinPage"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="Mynfo.Views.CreateProfileSnapchatPopUpPage"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
-            BindingContext="{Binding CreateProfileLinkedin}">
+            BindingContext="{Binding CreateProfileSnapchat}">
             <ImageButton 
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
@@ -21,7 +22,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid
-            BindingContext = "{Binding CreateProfileLinkedin}">
+            BindingContext = "{Binding CreateProfileSnapchat}">
             <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -45,7 +46,7 @@
                     <Image 
                         Grid.Row = "1" 
                         HeightRequest = "180"
-                        Source ="linkedin2"
+                        Source ="snapchat2"
                         WidthRequest = "180"/>
                     <StackLayout 
                         Grid.Row = "2"
@@ -81,36 +82,35 @@
                     </StackLayout>
                     <StackLayout 
                         Grid.Row = "3">
+                        <Label 
+                            FontSize = "24" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NickName}"
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
                         <StackLayout
-                            HorizontalOptions = "Center"
+                            HorizontalOptions="Center"
+                            Margin="25,-5,25,0"
                             Orientation="Horizontal">
-                            <Label 
-                                FontSize = "24" 
-                                FontAttributes="Bold"
+                            <Label
+                                FontSize = "22"
                                 HorizontalOptions = "Center"
-                                Text = "{i18n:Translate Link}"
-                                TextColor = "{StaticResource MainColor}"
-                                VerticalOptions = "Center"/>
-                            <ImageButton
-                                BackgroundColor="Transparent"
-                                Command="{Binding GotoGIFCommand}"
-                                HeightRequest="20"
-                                HorizontalOptions = "Center"
-                                Source="question"
-                                WidthRequest="20"/>
+                                Text = "@"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                VerticalOptions="Center"
+                                WidthRequest = "50" />
+                            <Entry 
+                                FontSize = "21"
+                                HeightRequest = "46"
+                                HorizontalOptions="Center"
+                                Margin="-40,0,0,0"
+                                Text = "{Binding Link}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                VerticalOptions = "Center" 
+                                WidthRequest = "120" 
+                                x:Name="ProfileLink"/>
                         </StackLayout>
-                        <Entry 
-                            FontSize = "21"
-                            HeightRequest = "46"
-                            HorizontalTextAlignment = "Center"
-                            HorizontalOptions = "Center"
-                            Keyboard="Url"
-                            Text = "{Binding Link}"
-                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                            VerticalOptions = "Center" 
-                            Placeholder = "https://www.linkedin.com/user"
-                            WidthRequest = "300" 
-                            x:Name="ProfileLink"/>
                     </StackLayout>
                     <Grid
                         Grid.Row = "4"
@@ -126,7 +126,7 @@
             <Button 
                 BackgroundColor = "{StaticResource MainColor}"
                 BorderRadius = "23"
-                Command = "{Binding SaveProfileLinkedinCommand}"
+                Command = "{Binding SaveProfileSnapchatCommand}"
                 HeightRequest = "50"
                 HorizontalOptions="Fill"
                 Margin="15"
@@ -136,4 +136,4 @@
                 x:Name="Save"/>
         </Grid>
     </ContentPage.Content>
-</ContentPage>
+</popup:PopupPage>

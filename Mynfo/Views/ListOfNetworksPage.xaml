@@ -5,6 +5,7 @@
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="Mynfo.Views.ListOfNetworksPage"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             BackgroundColor="Transparent"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Name="BackgroundFull">
     <ContentPage.Content>
@@ -49,7 +50,7 @@
                             HeightRequest="40"
                             HorizontalOptions="End"
                             IsEnabled="true"
-                            Source="Plus"
+                            Source="tipos"
                             VerticalOptions="Start"
                             WidthRequest="40"/>
                         <ActivityIndicator
@@ -76,8 +77,8 @@
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="3*" />
                                                 <ColumnDefinition Width="3*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
@@ -90,12 +91,13 @@
                                                 WidthRequest="30"/>
                                             <Label 
                                                 Grid.Column="1"
+                                                Grid.ColumnSpan="2"
                                                 Text="{Binding ProfileName, Mode=TwoWay}"
                                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                                 FontSize="18"
                                                 FontAttributes="Bold" 
                                                 VerticalOptions="Center"
-                                                HorizontalTextAlignment = "Start"/>
+                                                HorizontalTextAlignment = "Center"/>
                                             <input:CheckBox 
                                                 IsEnabled="False"
                                                 BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
@@ -121,6 +123,5 @@
                 </Grid>
             </Grid>
         </Frame>
-        
     </ContentPage.Content>
 </popup:PopupPage>

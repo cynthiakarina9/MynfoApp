@@ -140,6 +140,10 @@ namespace Mynfo.Services
                                                     "(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
                                                     "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
                                                     "where dbo.Box_ProfileSM.BoxId = " + box_id;
+                    string queryGetBoxWhatsappProfiles = "select * from dbo.ProfileWhatsapps " +
+                                                    "join dbo.Box_ProfileWhatsapp on" +
+                                                    "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
+                                                    "where dbo.Box_ProfileWhatsapp.BoxId = " + box_id;
 
                     //Consulta para obtener perfiles email
                     using (SqlConnection conn1 = new SqlConnection(cadenaConexion))
@@ -241,6 +245,41 @@ namespace Mynfo.Services
                                     }
                                 }
                             }
+                            conn1.Close();
+                        }
+                    }
+
+                    //Consulta para obtener perfiles Whatsapp
+                    using (SqlConnection conn1 = new SqlConnection(cadenaConexion))
+                    {
+                        sb = new System.Text.StringBuilder();
+                        sb.Append(queryGetBoxWhatsappProfiles);
+
+                        string sql = sb.ToString();
+
+                        using (SqlCommand command = new SqlCommand(sql, conn1))
+                        {
+                            conn1.Open();
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    foreingProfile = new ForeingProfile
+                                    {
+                                        BoxId = box_id,
+                                        UserId = (int)reader["UserId"],
+                                        ProfileName = (string)reader["Name"],
+                                        value = (string)reader["Number"],
+                                        ProfileType = "Whatsapp"
+                                    };
+                                    //Crear perfil de Whatsapp de box local predeterminada
+                                    using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                    {
+                                        connSQLite.Insert(foreingProfile);
+                                    }
+                                }
+                            }
+
                             conn1.Close();
                         }
                     }

@@ -2,10 +2,11 @@
 {
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreateProfileTiktokPage : ContentPage
+    public partial class CreateProfilePhonePopUpPage
     {
-        public CreateProfileTiktokPage()
+        public CreateProfilePhonePopUpPage()
         {
             InitializeComponent();
         }

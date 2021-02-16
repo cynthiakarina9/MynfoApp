@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="Mynfo.Views.GifPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0"
+                               EndPoint="1,1">
+            <GradientStop Color="{AppThemeBinding Light=#f3947a, Dark= #ff6c45}"
+                            Offset="0.1" />
+            <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #c9c5c5}"
+                            Offset="0.6" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.Content>
+
+        <Image
+            BackgroundColor="Transparent"
+            HorizontalOptions="Center"
+            IsAnimationPlaying="True"
+            Margin="0,50,0,0"
+            VerticalOptions="Center"
+            x:Name="GIFImage"/>
+    </ContentPage.Content>
+</popup:PopupPage>

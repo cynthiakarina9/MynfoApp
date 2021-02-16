@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.CreateProfileInstagramPopUpPage"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             BackgroundColor="Transparent"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <Frame
+            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+            CornerRadius="50"
+            HasShadow="True"
+            Margin="30"
+            x:Name="BackG">
+            <Grid
+                BindingContext = "{Binding CreateProfileInstagram}">
+                <ScrollView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height = "70"/>
+                            <RowDefinition Height = "160"/>
+                            <RowDefinition Height = "110"/>
+                            <RowDefinition Height = "110"/>
+                            <RowDefinition />
+                            <RowDefinition Height = "120"/>
+                        </Grid.RowDefinitions>
+                        <Label 
+                            FontAttributes = "Bold"
+                            FontSize = "25"
+                            Grid.ColumnSpan ="1"
+                            Grid.Row = "0"
+                            HorizontalOptions = "Center"
+                            HorizontalTextAlignment = "Center"
+                            Text = "{i18n:Translate AddNetwork}"
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Image 
+                            Grid.Row = "1" 
+                            HeightRequest = "180"
+                            Source ="instagramlogo2"
+                            WidthRequest = "180"/>
+                        <StackLayout 
+                            Grid.Row = "2"
+                            Padding = "20">
+                            <Label 
+                                FontSize = "24" 
+                                FontAttributes="Bold"
+                                HorizontalOptions = "Center"
+                                Text = "{i18n:Translate NameProfile}"
+                                TextColor = "{StaticResource MainColor}"
+                                VerticalOptions = "Center"/>
+                            <Entry 
+                                FontSize = "21"
+                                HeightRequest = "46"
+                                HorizontalTextAlignment = "Center"
+                                HorizontalOptions = "Center"
+                                IsTextPredictionEnabled="True"
+                                MaxLength = "20"
+                                Placeholder = "{i18n:Translate NProfilePlaceH}"
+                                Text = "{Binding Name}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                VerticalOptions = "Center" 
+                                WidthRequest = "300" 
+                                x:Name="ProfileName">
+                                <Entry.Keyboard>
+                                    <Keyboard x:FactoryMethod="Create">
+                                        <x:Arguments>
+                                            <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                        </x:Arguments>
+                                    </Keyboard>
+                                </Entry.Keyboard>
+                            </Entry>
+                        </StackLayout>
+                        <StackLayout 
+                            Grid.Row = "3">
+                            <Label 
+                                FontSize = "24" 
+                                FontAttributes="Bold"
+                                HorizontalOptions = "Center"
+                                Text = "{i18n:Translate NickName}"
+                                TextColor = "{StaticResource MainColor}"
+                                VerticalOptions = "Center"/>
+                            <StackLayout
+                                HorizontalOptions="Center"
+                                Margin="25,-5,25,0"
+                                Orientation="Horizontal">
+                                <Label
+                                    FontSize = "22"
+                                    HorizontalOptions = "Center"
+                                    Text = "@"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    VerticalOptions="Center"
+                                    WidthRequest = "50" />
+                                <Entry 
+                                    FontSize = "21"
+                                    HeightRequest = "46"
+                                    HorizontalOptions="Center"
+                                    Margin="-40,0,0,0"
+                                    Text = "{Binding Link}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    VerticalOptions = "Center" 
+                                    WidthRequest = "120" 
+                                    x:Name="ProfileLink"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <Grid
+                            Grid.Row = "4"
+                            VerticalOptions = "CenterAndExpand">
+                            <ActivityIndicator
+                                IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                                VerticalOptions = "CenterAndExpand"
+                                x:Name= "ActivityIn">
+                            </ActivityIndicator>
+                        </Grid>
+                    </Grid>
+                </ScrollView>
+                <Button 
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    Command = "{Binding SaveProfileInstagramCommand}"
+                    HeightRequest = "50"
+                    HorizontalOptions="Fill"
+                    Margin="15"
+                    Text = "{i18n:Translate Save}"
+                    TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
+                    VerticalOptions = "End"
+                    x:Name="Save"/>
+            </Grid>
+        </Frame>
+        
+    </ContentPage.Content>
+</popup:PopupPage>
