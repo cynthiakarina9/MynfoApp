@@ -81,13 +81,24 @@
                     </StackLayout>
                     <StackLayout 
                         Grid.Row = "3">
-                        <Label 
-                            FontSize = "24" 
-                            FontAttributes="Bold"
+                        <StackLayout
                             HorizontalOptions = "Center"
-                            Text = "{i18n:Translate Link}"
-                            TextColor = "{StaticResource MainColor}"
-                            VerticalOptions = "Center"/>
+                            Orientation="Horizontal">
+                            <Label 
+                                FontSize = "24" 
+                                FontAttributes="Bold"
+                                HorizontalOptions = "Center"
+                                Text = "{i18n:Translate Link}"
+                                TextColor = "{StaticResource MainColor}"
+                                VerticalOptions = "Center"/>
+                            <ImageButton
+                                BackgroundColor="Transparent"
+                                Command="{Binding GotoGIFCommand}"
+                                HeightRequest="20"
+                                HorizontalOptions = "Center"
+                                Source="question"
+                                WidthRequest="20"/>
+                        </StackLayout>
                         <Entry 
                             FontSize = "21"
                             HeightRequest = "46"

@@ -5,6 +5,7 @@
     using Helpers;
     using Mynfo.Models;
     using Mynfo.Views;
+    using Rg.Plugins.Popup.Services;
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -167,6 +168,19 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+
+        public ICommand GotoGIFCommand
+        {
+            get
+            {
+                return new RelayCommand(GotoGIF);
+            }
+        }
+        private async void GotoGIF()
+        {
+            MainViewModel.GetInstance().GIF = new GifViewModel();
+            await PopupNavigation.Instance.PushAsync(new GifPage());
         }
         #endregion
     }

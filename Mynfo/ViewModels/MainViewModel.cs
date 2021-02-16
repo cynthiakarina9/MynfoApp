@@ -235,6 +235,12 @@
             set; 
         }
 
+        public GifViewModel GIF
+        {
+            get;
+            set;
+        }
+
         public HomeViewModel Home
         {
             get;
