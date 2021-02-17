@@ -12,6 +12,7 @@
     using Mynfo.Views;
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Configuration;
     using System.IO;
@@ -138,6 +139,7 @@
             {
                 if (TAGPage.write_nfc == true)
                 {
+                    PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
                     int user_id = 0;
                     if (NfcAdapter.ActionNdefDiscovered.Equals(Intent.Action))
                     {
@@ -198,6 +200,7 @@
                     {
                         System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
                     }
+                    PopupNavigation.Instance.PopAsync();
                 }
                 else 
                 {

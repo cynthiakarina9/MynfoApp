@@ -4,24 +4,27 @@
     using CoreNFC;
     using Foundation;
     using Mynfo.Interfaces;
+    using Mynfo.iOS.Services;
     using Mynfo.Services;
     using Mynfo.ViewModels;
     using Mynfo.Views;
     using NdefLibrary.Ndef;
     using Plugin.NFC;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.IO;
     using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
     using UIKit;
     using Xamarin.Essentials;
     using Xamarin.Forms;
+    using static Mynfo.Views.TAGPage;
 
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-
     public class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, INFCNdefReaderSessionDelegate
     {
         //
@@ -120,8 +123,7 @@
 
         public void DidDetect(NFCNdefReaderSession session, NFCNdefMessage[] messages)
         {
-            int user_id = 0;
-            
+            int user_id = 0;            
             try
             {                                
                 if (messages != null && messages.Length > 0)
@@ -132,20 +134,27 @@
                     string[] depura_userid = variables[1].Split('&');
                     string tag_id = variables[2];
                     user_id = Convert.ToInt32(depura_userid[0]);
-                    
-                    Imprime_box.Consulta_user(user_id.ToString(), tag_id);
+                    if (write_tag.modo_escritura == false) { Imprime_box.Consulta_user(user_id.ToString(), tag_id); }                    
                 }                
             }
             catch (Exception e) 
             {
                 Console.WriteLine(e);
-            }
+            }            
+            
+            session.Dispose();
             user_id_tag = user_id.ToString();
+            if (write_tag.modo_escritura == true)
+            {
+                Thread.Sleep(8000);
+                write_tag.modo_escritura = true;
+                write_tag myobject = new write_tag();
+                myobject.ScanWriteAsync();
+            }
         }        
              
         public void DidInvalidate(NFCNdefReaderSession session, NSError error)
         {
-
             var readerError = (NFCReaderError)(long)error.Code;
 
             if (readerError != NFCReaderError.ReaderSessionInvalidationErrorFirstNDEFTagRead &&
@@ -161,6 +170,8 @@
                     //});
                 });
             }
+            session.InvalidateSession();
+            session.Dispose();
         }
 
         string GetRecords(NFCNdefPayload[] records)
@@ -216,6 +227,8 @@
 
             //Return the tag content.
             return tagContent;
-        }                      
+        }
+
+        
     }
 }

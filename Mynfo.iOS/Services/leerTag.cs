@@ -55,11 +55,14 @@ namespace Mynfo.iOS.Services
                 Console.WriteLine(e);
             }
             AppDelegate.user_id_tag = user_id.ToString();
-            write_tag myobject = new write_tag();
-            Thread.Sleep(5000);
+            session.InvalidateSession();
+            session.Dispose();
+            Thread.Sleep(4000);
+            write_tag myobject = new write_tag();            
             myobject.ScanWriteAsync();           
         }
 
+ 
         public override void DidInvalidate(NFCNdefReaderSession session, NSError error)
         {
 
@@ -68,8 +71,18 @@ namespace Mynfo.iOS.Services
             if (readerError != NFCReaderError.ReaderSessionInvalidationErrorFirstNDEFTagRead &&
                 readerError != NFCReaderError.ReaderSessionInvalidationErrorUserCanceled)
             {
-
+                InvokeOnMainThread(() =>
+                {
+                    var alertController = UIAlertController.Create("Session Invalidated", error.LocalizedDescription, UIAlertControllerStyle.Alert);
+                    alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
+                    //DispatchQueue.MainQueue.DispatchAsync(() =>
+                    //{
+                    //    this.PresentViewController(alertController, true, null);
+                    //});
+                });
             }
+            session.InvalidateSession();
+            session.Dispose();
         }
 
         string GetRecords(NFCNdefPayload[] records)

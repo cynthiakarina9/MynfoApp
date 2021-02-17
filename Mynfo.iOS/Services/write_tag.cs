@@ -5,6 +5,7 @@ using Mynfo.iOS.Services;
 using Mynfo.ViewModels;
 using Mynfo.Views;
 using Plugin.NFC;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,8 +74,6 @@ namespace Mynfo.iOS.Services
                         session.Dispose();
                         AppDelegate.user_id_tag = "?";
                     });
-
-                    AppDelegate.user_id_tag = "?";
                 }
                 else
                 {
@@ -84,6 +83,7 @@ namespace Mynfo.iOS.Services
                     AppDelegate.user_id_tag = "?";
                 }
                 AppDelegate.user_id_tag = "?";
+                PopupNavigation.Instance.PopAsync();
             }            
         }
         string GetRecords(NFCNdefPayload[] records)
@@ -103,11 +103,20 @@ namespace Mynfo.iOS.Services
         public override void DidInvalidate(NFCNdefReaderSession session, NSError error)
         {
             //add code here
+            session.InvalidateSession();
+            session.Dispose();
         }
+
+        public static bool modo_escritura = false;
+
         public void ExecuteCommand()
         {
-            leerTag myobject = new leerTag();
-            myobject.invoke_lector();          
+            modo_escritura = true;
+            PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
+
+            AppDelegate j = new AppDelegate();
+
+            j.invoke_lector();
         }
     }
 }
