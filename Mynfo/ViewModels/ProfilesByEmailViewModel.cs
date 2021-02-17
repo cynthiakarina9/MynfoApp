@@ -7,6 +7,7 @@
     using Mynfo.Views;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -96,7 +97,8 @@
                 EmptyList = true;
             }
 
-            foreach (ProfileEmail profEmail in listEmail)
+            var ListOrderBy = listEmail.OrderBy(x => x.Name).ToList();
+            foreach (ProfileEmail profEmail in ListOrderBy)
                 profileEmail.Add(profEmail);
 
             return profileEmail;

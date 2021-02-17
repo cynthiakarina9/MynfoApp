@@ -13,12 +13,14 @@
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
     using System;
+    using System.Configuration;
     using System.IO;
     using System.Text;
     using System.Threading;
     using Xamarin.Essentials;
+    using Xamarin.Forms;
 
-    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },    
+    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", /*Theme = "@style/MainTheme",*/ MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },    
     Categories = new[] { "android.intent.category.DEFAULT" }), 
     IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
     DataHost = "boxweb1.azurewebsites.net", DataScheme = "http",
@@ -80,6 +82,16 @@
             {
                 var message = Intent.Extras.GetString("MSG_DATA");
                 //await App.DisplayAlertAsync(message);
+            }
+
+
+            if (Xamarin.Forms.Application.Current.RequestedTheme == OSAppTheme.Dark)
+            {
+                this.SetTheme(Resource.Style.NightTheme);
+            }
+            else
+            {
+                this.SetTheme(Resource.Style.MainTheme);
             }
         }
 
@@ -220,7 +232,7 @@
             {
                 Console.WriteLine(ex);
             }           
-        } 
+        }
 
         //Convert the byte array of the NfcCard Uid to string
         private static string ByteArrayToString(byte[] ba)

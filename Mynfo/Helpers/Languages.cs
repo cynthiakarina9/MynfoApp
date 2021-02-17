@@ -684,5 +684,9 @@
         {
             get { return Resource.QRMynfo; }
         }
+        public static string ConfigSticker
+        {
+            get { return Resource.ConfigSticker; }
+        }
     }
 }

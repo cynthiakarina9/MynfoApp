@@ -7,6 +7,7 @@
     using Mynfo.Views;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -207,7 +208,8 @@
                 ItemEmail.Exist = response.IsSuccess;
             }
 
-            foreach (ProfileEmail profEmail in listEmail)
+            var ListOrderBy = listEmail.OrderBy(x => x.Name).ToList();
+            foreach (ProfileEmail profEmail in ListOrderBy)
                 ProfileEmail.Add(profEmail);
 
             if (ProfileEmail.Count == 0)
@@ -288,7 +290,8 @@
                 ItemPhone.Exist = response.IsSuccess;
             }
 
-            foreach (ProfilePhone profPhone in listPhone)
+            var ListOrderBy = listPhone.OrderBy(x => x.Name).ToList();
+            foreach (ProfilePhone profPhone in ListOrderBy)
                 ProfilePhone.Add(profPhone);
             
             if (ProfilePhone.Count == 0)
@@ -371,7 +374,8 @@
                 ItemSM.Exist = response.IsSuccess;
             }
 
-            foreach (ProfileSM profSM in listSM)
+            var ListOrderBy = listSM.OrderBy(x => x.ProfileName).ToList();
+            foreach (ProfileSM profSM in ListOrderBy)
             {
                 ProfileSM.Add(profSM);
             }
@@ -455,7 +459,8 @@
                 ItemWhatsapp.Exist = response.IsSuccess;
             }
 
-            foreach (ProfileWhatsapp profWhatsapp in listWhastapp)
+            var ListOrderBy = listWhastapp.OrderBy(x => x.Name).ToList();
+            foreach (ProfileWhatsapp profWhatsapp in ListOrderBy)
                 ProfileWhatsapp.Add(profWhatsapp);
 
             if (ProfileWhatsapp.Count == 0)

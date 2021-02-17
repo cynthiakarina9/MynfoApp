@@ -13,10 +13,10 @@
                 Command="{Binding BackHomeCommand}"
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,70,0"
-                HorizontalOptions = "Center"
-                Source = "logo_superior3.png" 
+                HorizontalOptions = "Center" 
                 VerticalOptions = "Center"
-                WidthRequest = "100"/>
+                WidthRequest = "100"
+                x:Name="Logosuperior"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>

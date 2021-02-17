@@ -12,8 +12,8 @@
                 Padding = "0,0,70,0">
                 <ImageButton
                     BackgroundColor = "Transparent"
-                    Source = "logo_superior3.png" 
-                    WidthRequest = "100" />
+                    WidthRequest = "100" 
+                    x:Name="Logosuperior"/>
             </StackLayout>
         </Grid>
     </NavigationPage.TitleView>

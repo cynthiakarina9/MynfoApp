@@ -7,6 +7,7 @@
     using Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -104,7 +105,9 @@
             }
             
             this.IsRunning = false;
-            foreach (ProfileSM profSM in profileSocialMedia)
+
+            var ListOrderBy = profileSocialMedia.OrderBy(x => x.ProfileName).ToList();
+            foreach (ProfileSM profSM in ListOrderBy)
                 profileSM.Add(profSM);
 
             return profileSM;

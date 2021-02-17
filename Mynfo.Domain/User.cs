@@ -30,6 +30,8 @@
 
         public int UserTypeId { get; set; }
 
+        public bool Share { get; set; }
+
         [JsonIgnore]
         public virtual UserType UserType { get; set; }
 

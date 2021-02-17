@@ -62,7 +62,7 @@
             var user = await db.Users.FindAsync(id);
             if (user == null)
             {
-                return  null;
+                return null;
             }
 
             return user;
