@@ -286,6 +286,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Setting sticker . . . .
+        /// </summary>
+        public static string ConfigSticker {
+            get {
+                return ResourceManager.GetString("ConfigSticker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Configure TAG.
         /// </summary>
         public static string ConfigureTAG {

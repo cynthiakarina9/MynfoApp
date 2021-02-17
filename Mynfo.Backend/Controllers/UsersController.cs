@@ -1,14 +1,17 @@
-﻿namespace Mynfo.Backend.Controllers
-{
-    using Backend.Models;
-    using Domain;
-    using Helpers;
-    using System.Data.Entity;
-    using System.Net;
-    using System.Threading.Tasks;
-    using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using Mynfo.Backend.Models;
+using Mynfo.Domain;
 
-    //[Authorize(Roles = "Admin")]
+namespace Mynfo.Backend.Controllers
+{
     public class UsersController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
@@ -16,7 +19,8 @@
         // GET: Users
         public async Task<ActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+            var users = db.Users.Include(u => u.UserType);
+            return View(await users.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -37,69 +41,60 @@
         // GET: Users/Create
         public ActionResult Create()
         {
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name");
             return View();
         }
 
         // POST: Users/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(UserView view)
+        public async Task<ActionResult> Create([Bind(Include = "UserId,FirstName,LastName,Email,ImagePath,UserTypeId")] User user)
         {
             if (ModelState.IsValid)
             {
-                var user = this.ToUser(view);
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
-                UsersHelper.CreateUserASP(view.Email, "User", view.Password);
                 return RedirectToAction("Index");
             }
 
-            return View(view);
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name", user.UserTypeId);
+            return View(user);
         }
 
-        private User ToUser(UserView view)
+        // GET: Users/Edit/5
+        public async Task<ActionResult> Edit(int? id)
         {
-            return new User
+            if (id == null)
             {
-                Email = view.Email,
-                FirstName = view.FirstName,
-                ImagePath = view.ImagePath,
-                LastName = view.LastName,
-                UserId = view.UserId,
-
-            };
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = await db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name", user.UserTypeId);
+            return View(user);
         }
 
-        //// GET: Users/Edit/5
-        //public async Task<ActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    User user = await db.Users.FindAsync(id);
-        //    if (user == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(user);
-        //}
-
-        //// POST: Users/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Edit([Bind(Include = "UserId,FirstName,LastName,Email,ImagePath")] User user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(user).State = EntityState.Modified;
-        //        await db.SaveChangesAsync();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(user);
-        //}
+        // POST: Users/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "UserId,FirstName,LastName,Email,ImagePath,UserTypeId")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name", user.UserTypeId);
+            return View(user);
+        }
 
         // GET: Users/Delete/5
         public async Task<ActionResult> Delete(int? id)

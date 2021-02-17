@@ -7,6 +7,7 @@
     using Mynfo.Views;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -115,7 +116,8 @@
                 EmptyList = true;
             }
 
-            foreach (ProfileWhatsapp profWhatsapp in listWhats)
+            var ListOrderBy = listWhats.OrderBy(x => x.Name).ToList();
+            foreach (ProfileWhatsapp profWhatsapp in ListOrderBy)
                 profileWhatsApp.Add(profWhatsapp);
 
             return profileWhatsApp;

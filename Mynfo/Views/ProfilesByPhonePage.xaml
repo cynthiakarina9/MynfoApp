@@ -14,9 +14,9 @@
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
-                Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "100"/>
+                WidthRequest = "100"
+                x:Name="Logosuperior"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -48,6 +48,7 @@
                     <ListView 
                         ItemsSource="{Binding profilephone}"
                         Grid.Row="1"
+                        GroupDisplayBinding="{Binding Name}"
                         SelectedItem="{Binding selectedProfile}"
                         ItemSelected="OnListViewItemSelected"
                         ItemTapped="OnListViewItemTapped"
@@ -62,8 +63,8 @@
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="100" />
-                                            <ColumnDefinition Width="180" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="30" />
                                         </Grid.ColumnDefinitions>
                                         <ImageButton
@@ -79,15 +80,15 @@
                                             FontAttributes="Bold" 
                                             Text="{Binding Name}"
                                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
+                                            VerticalOptions="Start"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
-                                            Grid.Column="2"
+                                            Grid.Column="1"
                                             Text="{Binding Number}"
                                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                             FontSize="15"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Center"/>
+                                            VerticalOptions="End"
+                                            HorizontalTextAlignment = "Start"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

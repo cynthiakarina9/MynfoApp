@@ -85,6 +85,14 @@
 
         public async Task<Box> GetBoxDefault(int id)
         {
+            if(id== null || id ==0)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                   Languages.Error,
+                   "El usuario no es valido",
+                   Languages.Accept);
+                return null;
+            }
             Box = new Box();
             var connection = await this.apiService.CheckConnection();
 
