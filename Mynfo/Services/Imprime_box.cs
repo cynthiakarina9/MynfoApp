@@ -24,7 +24,7 @@ namespace Mynfo.Services
 
                 string queryLastBoxCreated =
 
-                "select dbo.Users.FirstName, dbo.Users.LastName, dbo.Users.UserTypeId, dbo.Users.ImagePath, dbo.Boxes.BoxId from dbo.Users " +
+                "select dbo.Users.FirstName, dbo.Users.LastName, dbo.Users.UserTypeId, dbo.Users.ImagePath, dbo.Users.Share, dbo.Boxes.BoxId from dbo.Users " +
                 "join dbo.Boxes on(dbo.Boxes.UserId = dbo.Users.UserId) " +
                 " where dbo.Users.UserId = " + user_id +
                 " and dbo.Boxes.BoxDefault = 1";
@@ -50,6 +50,10 @@ namespace Mynfo.Services
                                 string get_ImagePath = reader["ImagePath"].ToString();
                                 int get_box_id = (int)reader["BoxId"];
                                 int UserTypeId_get = (int)reader["UserTypeId"];
+                                bool Share = (bool)reader["Share"];
+
+                                //if (Share != true) { user_id = 0; get_box_id = 0; }
+
                                 InsertForeignData(user_id, get_box_id);
                             }
                         }

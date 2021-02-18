@@ -1,5 +1,7 @@
 ﻿namespace Mynfo.Views
 {
+    using CoreNFC;
+    using Foundation;
     using Mynfo.Helpers;
     using System;
     using Xamarin.Essentials;
@@ -19,6 +21,16 @@
         public TAGPage()
         {
             InitializeComponent();
+            OSAppTheme currentTheme = App.Current.RequestedTheme;
+            if (currentTheme == OSAppTheme.Dark)
+            {
+                Logosuperior.Source = "logo_superior2.png";
+            }
+            else
+            {
+                Logosuperior.Source = "logo_superior3.png";
+            }
+
             uno.Text = Languages.ConfigureTAG;
             uno.TextColor = Color.FromHex("#FF5521");
             uno.FontSize = 22;

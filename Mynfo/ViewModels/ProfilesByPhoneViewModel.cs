@@ -7,6 +7,7 @@
     using Mynfo.Views;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -88,10 +89,12 @@
             {
                 EmptyList = true;
             }
-
-            foreach (ProfilePhone profPhone in listPhone)
+            var ListOrderBy = listPhone.OrderBy(x => x.Name).ToList();
+            foreach (ProfilePhone profPhone in ListOrderBy)
+            {
                 profilephone.Add(profPhone);
-
+            }
+                
             return profilephone;
         }
 

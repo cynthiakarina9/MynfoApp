@@ -14,9 +14,9 @@
                 Grid.ColumnSpan = "3"
                 Margin = "0,0,70,0"
                 HorizontalOptions = "Center"
-                Source = "logo_superior3.png" 
                 VerticalOptions = "Center"
-                WidthRequest = "100"/>
+                WidthRequest = "100"
+                x:Name="Logosuperior"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -64,32 +64,32 @@
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="100" />
-                                            <ColumnDefinition Width="180" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="30" />
                                         </Grid.ColumnDefinitions>
                                         <ImageButton
                                             BackgroundColor="Transparent"
                                             Grid.Column="0"
-                                            HeightRequest="40"
+                                            HeightRequest="30"
                                             Margin="10"
                                             Source="whatsapp2"
-                                            WidthRequest="40"/>
+                                            WidthRequest="30"/>
                                         <Label 
                                             Grid.Column="1"
                                             FontSize="18"
                                             FontAttributes="Bold" 
                                             Text="{Binding Name}"
                                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
+                                            VerticalOptions="Start"
                                             HorizontalTextAlignment = "Start"/>
                                         <Label 
                                             FontSize="15"
-                                            Grid.Column="2"
+                                            Grid.Column="1"
                                             Text="{Binding Number}"
                                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                            VerticalOptions="Center"
-                                            HorizontalTextAlignment = "Center"/>
+                                            VerticalOptions="End"
+                                            HorizontalTextAlignment = "Start"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

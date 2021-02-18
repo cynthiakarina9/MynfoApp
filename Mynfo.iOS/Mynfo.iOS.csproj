@@ -102,6 +102,7 @@
     <Compile Include="Implementations\Localize.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\leerTag.cs" />
     <Compile Include="Renderers\IOSStandardEntryRenderer.cs" />
     <Compile Include="Services\ReadTag.cs" />
     <Compile Include="Services\write_tag.cs" />

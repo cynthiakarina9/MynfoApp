@@ -12,13 +12,16 @@
     using Mynfo.Views;
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
+    using Rg.Plugins.Popup.Services;
     using System;
+    using System.Configuration;
     using System.IO;
     using System.Text;
     using System.Threading;
     using Xamarin.Essentials;
+    using Xamarin.Forms;
 
-    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },    
+    [Activity(Label = "Mynfo", Icon = "@mipmap/icon", /*Theme = "@style/MainTheme",*/ MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },    
     Categories = new[] { "android.intent.category.DEFAULT" }), 
     IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
     DataHost = "boxweb1.azurewebsites.net", DataScheme = "http",
@@ -81,6 +84,16 @@
                 var message = Intent.Extras.GetString("MSG_DATA");
                 //await App.DisplayAlertAsync(message);
             }
+
+
+            if (Xamarin.Forms.Application.Current.RequestedTheme == OSAppTheme.Dark)
+            {
+                this.SetTheme(Resource.Style.NightTheme);
+            }
+            else
+            {
+                this.SetTheme(Resource.Style.MainTheme);
+            }
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -126,6 +139,7 @@
             {
                 if (TAGPage.write_nfc == true)
                 {
+                    PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
                     int user_id = 0;
                     if (NfcAdapter.ActionNdefDiscovered.Equals(Intent.Action))
                     {
@@ -186,6 +200,7 @@
                     {
                         System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
                     }
+                    PopupNavigation.Instance.PopAsync();
                 }
                 else 
                 {
@@ -220,7 +235,7 @@
             {
                 Console.WriteLine(ex);
             }           
-        } 
+        }
 
         //Convert the byte array of the NfcCard Uid to string
         private static string ByteArrayToString(byte[] ba)

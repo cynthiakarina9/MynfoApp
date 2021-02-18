@@ -9,6 +9,7 @@
     using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -135,7 +136,9 @@
                 "/api",
                 "/ProfileEmails",
                 MainViewModel.GetInstance().User.UserId);
-            foreach (ProfileEmail ItemEmail in listEmail)
+
+            var ListOrderBy = listEmail.OrderBy(x => x.Name).ToList();
+            foreach (ProfileEmail ItemEmail in ListOrderBy)
             {
                 Box_ProfileEmail RelationEmail;
                 RelationEmail = new Box_ProfileEmail
@@ -220,7 +223,9 @@
                 "/api",
                 "/ProfilePhones",
                 MainViewModel.GetInstance().User.UserId);
-            foreach (ProfilePhone ItemPhone in listPhone)
+
+            var ListOrderBy = listPhone.OrderBy(x => x.Name).ToList();
+            foreach (ProfilePhone ItemPhone in ListOrderBy)
             {
                 Box_ProfilePhone RelationPhone;
                 RelationPhone = new Box_ProfilePhone
@@ -306,7 +311,9 @@
                 "/api",
                 "/ProfileSMs",
                 MainViewModel.GetInstance().User.UserId);
-            foreach (ProfileSM ItemSM in listSM)
+
+            var ListOrderBy = listSM.OrderBy(x => x.ProfileName).ToList();
+            foreach (ProfileSM ItemSM in ListOrderBy)
             {
                 Box_ProfileSM RelationSM;
                 RelationSM = new Box_ProfileSM
@@ -386,7 +393,9 @@
                 "/api",
                 "/ProfileWhatsapps",
                 MainViewModel.GetInstance().User.UserId);
-            foreach (ProfileWhatsapp ItemWhatsapp in listWhatsapp)
+
+            var ListOrderBy = listWhatsapp.OrderBy(x => x.Name).ToList();
+            foreach (ProfileWhatsapp ItemWhatsapp in ListOrderBy)
             {
                 Box_ProfileWhatsapp RelationWhatsapp;
                 RelationWhatsapp = new Box_ProfileWhatsapp

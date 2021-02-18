@@ -606,4 +606,7 @@
   <data name="QRMynfo" xml:space="preserve">
     <value>Scan a QR code from Mynfo.</value>
   </data>
+  <data name="ConfigSticker" xml:space="preserve">
+    <value>Setting sticker . . . </value>
+  </data>
 </root>

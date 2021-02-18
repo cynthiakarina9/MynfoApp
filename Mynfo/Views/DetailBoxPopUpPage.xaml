@@ -11,7 +11,7 @@
                                EndPoint="1,1">
             <GradientStop Color="{AppThemeBinding Light=#f3947a, Dark= #ff6c45}"
                             Offset="0.1" />
-            <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #c9c5c5}"
+            <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #5f5b5b}"
                             Offset="0.6" />
         </LinearGradientBrush>
     </ContentPage.Background>

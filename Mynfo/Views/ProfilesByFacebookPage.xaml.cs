@@ -12,67 +12,15 @@
         public ProfilesByFacebookPage()
         {
             InitializeComponent();
-            #region LastCode
-            //int UserId = MainViewModel.GetInstance().User.UserId;
-            //string queryGetFacebookByUser = "select * from dbo.ProfileSMs  where dbo.ProfileSMs.UserId = " + UserId +"and RedSocialId = 1";
-            //string cadenaConexion = @"data source=serverappmyinfonfc.database.windows.net;initial catalog=mynfo;user id=adminatxnfc;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //System.Text.StringBuilder sb;
-
-            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            //{
-            //    sb = new System.Text.StringBuilder();
-            //    sb.Append(queryGetFacebookByUser);
-            //    string sql = sb.ToString();
-
-            //    using (SqlCommand command = new SqlCommand(sql, connection))
-            //    {
-            //        connection.Open();
-            //        using (SqlDataReader reader = command.ExecuteReader())
-            //        {
-            //            while (reader.Read())
-            //            {
-            //                var FacebookProfile = new Label();
-            //                var emailAddress = new Label();
-            //                //var deleteProfile = new Button();
-            //                var editProfile = new ImageButton();
-            //                var Line = new BoxView();
-
-            //                FacebookProfile.Text = (string)reader["ProfileName"];
-            //                FacebookProfile.FontSize = 25;
-            //                FacebookProfile.FontAttributes = FontAttributes.Bold;
-
-            //                /*deleteProfile.Text = "B";
-            //                deleteProfile.TextColor = Color.Black;
-            //                deleteProfile.FontSize = 10;
-            //                deleteProfile.BackgroundColor = Color.FromHex("#f9a589");
-            //                deleteProfile.CornerRadius = 15;
-            //                deleteProfile.HeightRequest = 30;
-            //                deleteProfile.WidthRequest = 30;
-            //                deleteProfile.HorizontalOptions = LayoutOptions.End;
-            //                deleteProfile.Clicked += new EventHandler((sender, e) => DeleteBoxEmail(sender, e, BoxId, EmailId));*/
-            //                //int FacebookId = (int)reader["ProfileMSId"];
-            //                editProfile.Source = "facebook2";
-            //                editProfile.BackgroundColor = Color.Transparent;
-            //                editProfile.CornerRadius = 20;
-            //                editProfile.HeightRequest = 40;
-            //                editProfile.WidthRequest = 40;
-            //                editProfile.HorizontalOptions = LayoutOptions.Start;
-            //                //editProfile.Clicked += new EventHandler((sender, e) => EditProfileEmail(sender, e, EmailId));
-
-            //                Line.HeightRequest = 1;
-            //                Line.Color = Color.FromHex("#FF5521");
-
-            //                FacebookList.Children.Add(editProfile);
-            //                FacebookList.Children.Add(FacebookProfile);
-            //                //FacebookList.Children.Add(emailAddress);
-            //                //EmailList.Children.Add(deleteProfile);
-            //                FacebookList.Children.Add(Line);
-            //            }
-            //        }
-            //        connection.Close();
-            //    }
-            //}
-            #endregion
+            OSAppTheme currentTheme = App.Current.RequestedTheme;
+            if (currentTheme == OSAppTheme.Dark)
+            {
+                Logosuperior.Source = "logo_superior2.png";
+            }
+            else
+            {
+                Logosuperior.Source = "logo_superior3.png";
+            }
 
         }
         #endregion
