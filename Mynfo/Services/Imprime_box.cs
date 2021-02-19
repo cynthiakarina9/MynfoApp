@@ -16,8 +16,6 @@ namespace Mynfo.Services
         {
             try
             {
-
-
                 //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
                 string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
@@ -50,7 +48,7 @@ namespace Mynfo.Services
                                 string get_ImagePath = reader["ImagePath"].ToString();
                                 int get_box_id = (int)reader["BoxId"];
                                 int UserTypeId_get = (int)reader["UserTypeId"];
-                                InsertForeignData(user_id, get_box_id);
+                                InsertForeignData(Convert.ToInt32(user_id), get_box_id);
                             }
                         }
 
@@ -64,11 +62,11 @@ namespace Mynfo.Services
             }
         }
 
-        public static async void InsertForeignData(string user_id, int box_id)
+        public static async void InsertForeignData(int user_id, int box_id)
         {
             ApiService apiService = new ApiService();
 
-            int user_I = Convert.ToInt32(user_id);
+            int user_I = user_id;
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             User box_detail = new User();
             box_detail = await apiService.GetUserId(apiSecurity,
@@ -83,44 +81,55 @@ namespace Mynfo.Services
 
             ForeingBox foreingBox;
             ForeingProfile foreingProfile;
-
+            ForeingBox A = new ForeingBox();
             //Validar que la box no exista
-            //using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-            //{
-            //    connSQLite.CreateTable<ForeingBox>();
-            //}
-
-
-
-            //Inicializar la box foranea
-            foreingBox = new ForeingBox
-            {
-                BoxId = box_id,
-                UserId = user_I,
-                //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),
-                Time = DateTime.Now,
-                ImagePath = box_detail.ImagePath,
-                UserTypeId = box_detail.UserTypeId,
-                FirstName = box_detail.FirstName,
-                LastName = box_detail.LastName
-
-            };
-
-            //Insertar la box foranea
             using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
             {
-                connSQLite.Insert(foreingBox);
+                A = connSQLite.FindWithQuery<ForeingBox>("select * from ForeingBox where ForeingBox.BoxId = ?", box_id);
+            }
+
+            if (A == null)
+            {
+                //Inicializar la box foranea
+                foreingBox = new ForeingBox
+                {
+                    BoxId = box_id,
+                    UserId = user_I,
+                    //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),
+                    Time = DateTime.Now,
+                    ImagePath = box_detail.ImagePath,
+                    UserTypeId = box_detail.UserTypeId,
+                    FirstName = box_detail.FirstName,
+                    LastName = box_detail.LastName
+
+                };
+
+                //Insertar la box foranea
+                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    connSQLite.Insert(foreingBox);
+                }
+            }
+            else
+            {
+                foreingBox = A;
             }
             try
             {
                 if (box_id != 0)
                 {
-                    using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                    //using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                    //{
+                    //    connSQLite.CreateTable<Profile_get>();
+                    //}
+                    if (A != null)
                     {
-                        connSQLite.CreateTable<Profile_get>();
+                        using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                        {
+                            connSQLite.Execute("Delete from ForeingProfile Where ForeingProfile.BoxId = ?", A.BoxId);
+                        }
                     }
-
-
+                    #region ForeignProfiles
                     System.Text.StringBuilder sb;
                     //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
@@ -283,14 +292,18 @@ namespace Mynfo.Services
                             conn1.Close();
                         }
                     }
+                    #endregion
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        //App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
+                        MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(foreingBox);
+                        PopupNavigation.Instance.PushAsync(new ForeingBoxPage(foreingBox, true));
+                        if (A == null)
+                        {
+                            MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
+                        }
+                    });
                 }
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    //App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
-                    MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(foreingBox);
-                    PopupNavigation.Instance.PushAsync(new ForeingBoxPage(foreingBox, true));
-                    MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
-                });
             }
             catch (Exception ex)
             {

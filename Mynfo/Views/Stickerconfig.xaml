@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers" 
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="Mynfo.Views.Stickerconfig"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+             BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
+    <ContentPage.Content>
+        <Frame
+            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+            CornerRadius="50"
+            HasShadow="True"
+            Margin="30"
+            x:Name="BackG">
+            <StackLayout>
+                <Label 
+                    FontAttributes="Bold"
+                    FontSize="21"
+                    Text="¡Stiker configurado!"
+                    TextColor="{StaticResource MainColor}"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+                <Image
+                    HeightRequest="120"
+                    BackgroundColor="Transparent"
+                    Source="check3"
+                    WidthRequest="120"/>
+                <Label 
+                    Text="Todas las Boxes que configures y manipules de ahora en adelante se veran reflejados en tu sticker."
+                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</popup:PopupPage>

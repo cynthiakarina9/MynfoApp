@@ -40,7 +40,6 @@
             get { return this.box; }
             set { SetValue(ref this.box, value); }
         }
-
         public ObservableCollection<ProfileEmail> ProfileEmail
         {
             get { return profileEmail; }

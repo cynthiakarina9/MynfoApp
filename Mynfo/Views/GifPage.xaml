@@ -14,13 +14,38 @@
         </LinearGradientBrush>
     </ContentPage.Background>
     <ContentPage.Content>
-
-        <Image
+        <Frame
             BackgroundColor="Transparent"
-            HorizontalOptions="Center"
-            IsAnimationPlaying="True"
-            Margin="0,50,0,0"
-            VerticalOptions="Center"
-            x:Name="GIFImage"/>
+            BindingContext="{Binding GIF}"
+            CornerRadius="30"
+            HasShadow="True"
+            Margin="30">
+            <Grid
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image
+                    BackgroundColor="Transparent"
+                    Grid.Row = "0"
+                    HorizontalOptions="CenterAndExpand"
+                    IsAnimationPlaying="{Binding IsEnabled}"
+                    Margin="-50"
+                    Source="GIF_Facebook4.gif"
+                    VerticalOptions="CenterAndExpand"
+                    x:Name="ImgGIF"/>
+                <ActivityIndicator
+                    Grid.Row = "0"
+                    IsRunning = "False"
+                    HorizontalOptions = "CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+            </Grid>
+            
+        </Frame>
     </ContentPage.Content>
 </popup:PopupPage>

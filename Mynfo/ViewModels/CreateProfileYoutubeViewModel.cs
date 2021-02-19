@@ -188,7 +188,7 @@
         }
         private async void GotoGIF()
         {
-            MainViewModel.GetInstance().GIF = new GifViewModel();
+            MainViewModel.GetInstance().GIF = new GifViewModel("YouTube");
             await PopupNavigation.Instance.PushAsync(new GifPage());
         }
         #endregion

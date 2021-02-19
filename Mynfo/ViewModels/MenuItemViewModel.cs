@@ -28,7 +28,6 @@
         {
             App.Master.IsPresented = false;
             var mainViewModal = MainViewModel.GetInstance();
-            
             //Logout
             if (this.PageName == "LoginPage")
             {

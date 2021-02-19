@@ -6,10 +6,13 @@
     <item name="colorAccent">#FF5521</item>
   </style>
   <style name = "NightTheme" parent = "Theme.AppCompat">
-    <item name="colorPrimary" >#000000</item>
+    <item name="colorPrimary" >#222b3a</item>
     <item name="colorPrimaryDark">#FFFFFF</item>
     <item name="colorAccent">#FF5521</item>
+    
   </style>
+  <color name="ListViewSelected">#96BCE3</color>
+  <color name="ListViewHighlighted">#E39696</color>
     <!--Splash Screen-->
   <!--<style name="Theme.Splash" parent="android:Theme">
     <item name="android:windowBackground">@drawable/SS</item>
