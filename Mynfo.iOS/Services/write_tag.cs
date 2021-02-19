@@ -19,7 +19,7 @@ using static Mynfo.Views.TAGPage;
 [assembly: Dependency(typeof(write_tag))]
 namespace Mynfo.iOS.Services
 {
-    public class write_tag : NFCNdefReaderSessionDelegate, IBackgroundDependency
+    public class write_tag : NFCNdefReaderSessionDelegate
     {        
         public static NFCNdefReaderSession _tagSession;        
         public static TaskCompletionSource<string> _tcs;
@@ -35,7 +35,6 @@ namespace Mynfo.iOS.Services
             _tagSession = new NFCNdefReaderSession(this, DispatchQueue.CurrentQueue, true)
             {
                 AlertMessage = "Vuelve a acercar tu Tag",
-
             };
             _tagSession.BeginSession();
             return _tcs.Task;
