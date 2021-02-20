@@ -22,6 +22,21 @@
                 Padding = "25"
                 Text = "{Binding User.FullName, StringFormat = '{0}'}"
                 TextColor = "{StaticResource MainColor}" />
+            <StackLayout
+                Padding = "20,30,20,30"
+                Orientation="Horizontal"
+                VerticalOptions = "FillAndExpand"
+                HorizontalOptions = "CenterAndExpand">
+                <Label
+                    HorizontalOptions = "StartAndExpand"
+                    Text = "TAG" 
+                    VerticalOptions = "CenterAndExpand"
+                    TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor}}"/>
+                <Switch
+                    Toggled="OnToggled"
+                    IsToggled = "{Binding User.Share, Mode = TwoWay}"
+                    HorizontalOptions = "Center"/>
+            </StackLayout >
             <ListView 
                 BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
                 ItemsSource = "{Binding Menus}"
