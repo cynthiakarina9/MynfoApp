@@ -688,5 +688,21 @@
         {
             get { return Resource.ConfigSticker; }
         }
+        public static string ConfigStickerRi
+        {
+            get { return Resource.ConfigStickerRi; }
+        }
+        public static string AllConfigSticker
+        {
+            get { return Resource.AllConfigSticker; }
+        }
+        public static string HoldYourPhone
+        {
+            get { return Resource.HoldYourPhone; }
+        }
+        public static string ReadyToScan
+        {
+            get { return Resource.ReadyToScan; }
+        }
     }
 }

@@ -25,7 +25,7 @@
         }
         #endregion
 
-        #region Methods
+        #region Commands
         private void NewProfileTwitter_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
@@ -47,6 +47,7 @@
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ProfileSM selectedItem = e.SelectedItem as ProfileSM;
+            selectedItem = null;
         }
 
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)

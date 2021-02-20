@@ -37,6 +37,7 @@
             OSAppTheme currentTheme = Application.Current.RequestedTheme;
             FrameB.CloseWhenBackgroundIsClicked = true;
 
+            #region Lastcode
             int BoxId = _Box.BoxId;
             var boxLocal = new BoxLocal();
             int UserID = MainViewModel.GetInstance().User.UserId;
@@ -151,10 +152,10 @@
                 }
                 else
                 {
-                    BackG.BackgroundColor = Color.FromHex("#d1d1d1");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#d1d1d1");
-                    BxSaveName.BackgroundColor = Color.FromHex("#d1d1d1");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#d1d1d1");
+                    BackG.BackgroundColor = Color.FromHex("#222b3a");
+                    bxBtnHome.BackgroundColor = Color.FromHex("#222b3a");
+                    BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
+                    BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
                 }
             }
 
@@ -178,7 +179,7 @@
                 }
                 else
                 {
-                    BxDefaultCheckBox.Color = Color.Black;
+                    BxDefaultCheckBox.Color = Color.FromHex("#222b3a");
                     EdithButton.Source = "edit1";
                     BoxProfiles.Source = "plusn";
                 }
@@ -412,6 +413,8 @@
                 BxDefaultCheckBox.IsEnabled = false;
                 MainViewModel.GetInstance().Home.GetBoxNoDefault();
             }
+            #endregion
+
         }
         #endregion
 

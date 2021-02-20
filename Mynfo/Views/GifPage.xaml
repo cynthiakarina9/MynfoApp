@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="Mynfo.Views.GifPage"
+             BackgroundColor="Transparent"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <ContentPage.Background>
+    <!--<ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0"
                                EndPoint="1,1">
             <GradientStop Color="{AppThemeBinding Light=#f3947a, Dark= #ff6c45}"
@@ -12,15 +13,39 @@
             <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #c9c5c5}"
                             Offset="0.6" />
         </LinearGradientBrush>
-    </ContentPage.Background>
+    </ContentPage.Background>-->
     <ContentPage.Content>
-
-        <Image
+        <Frame
             BackgroundColor="Transparent"
-            HorizontalOptions="Center"
-            IsAnimationPlaying="True"
-            Margin="0,50,0,0"
-            VerticalOptions="Center"
-            x:Name="GIFImage"/>
+            BindingContext="{Binding GIF}"
+            CornerRadius="30"
+            HasShadow="True"
+            Margin="30">
+            <Grid
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image
+                    BackgroundColor="Transparent"
+                    Grid.Row = "0"
+                    HorizontalOptions="CenterAndExpand"
+                    IsAnimationPlaying="true"
+                    Margin="-10"
+                    Source="{Binding GitImage}"
+                    VerticalOptions="CenterAndExpand"
+                    x:Name="ImgGIF"/>
+                <ActivityIndicator
+                    Grid.Row = "0"
+                    IsRunning = "False"
+                    HorizontalOptions = "CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+            </Grid>
+        </Frame>
     </ContentPage.Content>
 </popup:PopupPage>

@@ -120,7 +120,7 @@
                 HeightRequest = "50"
                 Margin="15"
                 Text = "{i18n:Translate Save}"
-                TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
+                TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource FontColorButtonDark}}"
                 VerticalOptions = "End"
                 x:Name="Save"/>
         </Grid>

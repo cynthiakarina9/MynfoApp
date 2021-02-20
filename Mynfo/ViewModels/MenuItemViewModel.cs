@@ -14,6 +14,7 @@
         public string Icon { get; set; }
         public string Title { get; set; }
         public string PageName { get; set; }
+        public bool Share { get; set; }
         #endregion
 
         #region Commands
@@ -28,7 +29,6 @@
         {
             App.Master.IsPresented = false;
             var mainViewModal = MainViewModel.GetInstance();
-            
             //Logout
             if (this.PageName == "LoginPage")
             {

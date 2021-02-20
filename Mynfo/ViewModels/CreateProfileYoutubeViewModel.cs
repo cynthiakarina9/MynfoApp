@@ -80,7 +80,14 @@
                     Languages.Accept);
                 return;
             }
-
+            if (!RegexUtilities.IsValidURL(this.Link))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.LinkValidation,
+                    Languages.Accept);
+                return;
+            }
             this.IsRunning = true;
             this.IsEnabled = false;
 
@@ -188,7 +195,7 @@
         }
         private async void GotoGIF()
         {
-            MainViewModel.GetInstance().GIF = new GifViewModel();
+            MainViewModel.GetInstance().GIF = new GifViewModel("YouTube");
             await PopupNavigation.Instance.PushAsync(new GifPage());
         }
         #endregion

@@ -147,7 +147,7 @@
             if (write_tag.modo_escritura == true)
             {
                 Thread.Sleep(8000);
-                write_tag.modo_escritura = true;
+                write_tag.modo_escritura = false;
                 write_tag myobject = new write_tag();
                 myobject.ScanWriteAsync();
             }

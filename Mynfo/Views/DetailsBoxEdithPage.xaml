@@ -5,15 +5,17 @@
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="Mynfo.Views.DetailsBoxEdithPage"
              x:Name="FullBackGround"
+             BackgroundColor="Transparent"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0"
+        <!--<LinearGradientBrush StartPoint="0,0"
                                EndPoint="1,1">
             <GradientStop Color="{AppThemeBinding Light=#f3947a, Dark= #ff6c45}"
                             Offset="0.1" />
             <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #5f5b5b}"
                             Offset="0.6" />
-        </LinearGradientBrush>
+        </LinearGradientBrush>-->
+        <SolidColorBrush x:Name="ColorFront"/>
     </ContentPage.Background>
     <ContentPage.Content>
         <Frame
@@ -28,7 +30,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="70"/>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
@@ -42,10 +44,20 @@
                             Grid.Column ="3"
                             Grid.RowSpan="2"
                             HeightRequest="40"
-                            HorizontalOptions="End"
-                            VerticalOptions="Start"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="Center"
                             WidthRequest="40"
                             x:Name="DeleteButton" />
+                        <!--<StackLayout 
+                            Orientation="Horizontal"
+                            Grid.ColumnSpan ="3"
+                            Grid.Row="2"
+                            RadioButtonGroup.GroupName="colors">
+                            <RadioButton Content="Red" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Red" x:Name="radio1" IsChecked="{Binding c}"/>
+                            <RadioButton Content="Green" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Green" x:Name="radio2"/>
+                            <RadioButton Content="Blue" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Blue" x:Name="radio3"/>
+                            <RadioButton Content="Other" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Other" x:Name="radio4"/>
+                        </StackLayout>-->
 
                         <!--Nombre de la box -->
                         <Entry 
@@ -61,6 +73,7 @@
                             VerticalOptions="Center"
                             WidthRequest="200"
                             x:Name="NameEntry"/>
+                        
                         <CollectionView 
                             ItemsSource="{Binding ProfilePerfiles}"
                             Grid.Row="3"

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns = "http://xamarin.com/schemas/2014/forms"
-             xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:i18n = "clr-namespace:Mynfo.Helpers"
-             x:Class = "Mynfo.Views.LoginPage"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.LoginPage"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
-             BindingContext = "{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <Grid
             BindingContext = "{Binding Login}">
@@ -93,7 +93,7 @@
                             HorizontalOptions = "Center"
                             IsEnabled = "{Binding IsEnabled,Mode = TwoWay}"
                             Text = "{i18n:Translate Login}"
-                            TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
+                            TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource FontColorButtonDark}}"
                             WidthRequest = "150"/>
                         <Button
                             BackgroundColor="Transparent"

@@ -21,6 +21,7 @@
         #region Attributes
         private bool isRunning;
         private Box box;
+        private string color;
         private ObservableCollection<ProfileEmail> profileEmail;
         private ObservableCollection<ProfilePhone> profilePhone;
         private ObservableCollection<ProfileSM> profileSM;
@@ -42,6 +43,11 @@
             set { SetValue(ref this.box, value); }
         }
 
+        public string Color
+        {
+            get { return this.color; }
+            set { SetValue(ref this.color, value); }
+        }
         private ObservableCollection<ProfileLocal> ProfilesSelected
         {
             get { return this.profilesSelected; }
@@ -465,6 +471,12 @@
         }
         #endregion
 
+        public string GetColorBack(string C)
+        {
+            Color = C;
+            return Color;
+        }
+
         #region Box
         public async Task<Box> GetBox(int _BoxId)
         {
@@ -513,7 +525,6 @@
             Application.Current.MainPage = new MasterPage();
         }
 
-        
         public async void DeleteBox(int _BoxId)
         {
             this.IsRunning = true;
