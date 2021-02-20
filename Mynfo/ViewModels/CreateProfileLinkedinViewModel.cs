@@ -78,7 +78,14 @@
                     Languages.Accept);
                 return;
             }
-
+            if (!RegexUtilities.IsValidURL(this.Link))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.LinkValidation,
+                    Languages.Accept);
+                return;
+            }
             this.IsRunning = true;
             this.IsEnabled = false;
 

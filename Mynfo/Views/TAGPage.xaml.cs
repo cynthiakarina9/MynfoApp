@@ -1,7 +1,7 @@
 ﻿namespace Mynfo.Views
 {
-    using CoreNFC;
-    using Foundation;
+    //using CoreNFC;
+    //using Foundation;
     using Mynfo.Helpers;
     using System;
     using Xamarin.Essentials;

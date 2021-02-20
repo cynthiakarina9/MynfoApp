@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="Mynfo.Views.GifPage"
+             BackgroundColor="Transparent"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    <ContentPage.Background>
+    <!--<ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0"
                                EndPoint="1,1">
             <GradientStop Color="{AppThemeBinding Light=#f3947a, Dark= #ff6c45}"
@@ -12,7 +13,7 @@
             <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #c9c5c5}"
                             Offset="0.6" />
         </LinearGradientBrush>
-    </ContentPage.Background>
+    </ContentPage.Background>-->
     <ContentPage.Content>
         <Frame
             BackgroundColor="Transparent"
@@ -24,7 +25,7 @@
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -33,9 +34,9 @@
                     BackgroundColor="Transparent"
                     Grid.Row = "0"
                     HorizontalOptions="CenterAndExpand"
-                    IsAnimationPlaying="{Binding IsEnabled}"
-                    Margin="-50"
-                    Source="GIF_Facebook4.gif"
+                    IsAnimationPlaying="true"
+                    Margin="-10"
+                    Source="{Binding GitImage}"
                     VerticalOptions="CenterAndExpand"
                     x:Name="ImgGIF"/>
                 <ActivityIndicator
@@ -45,7 +46,6 @@
                     VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
             </Grid>
-            
         </Frame>
     </ContentPage.Content>
 </popup:PopupPage>

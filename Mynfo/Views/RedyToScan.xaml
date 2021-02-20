@@ -16,23 +16,22 @@
                 CornerRadius="30"
                 HasShadow="True">
                 <Grid>
-                <Label 
-                    Text="Ready to Scan"
-                    VerticalOptions="Start" 
-                    HorizontalOptions="CenterAndExpand" />
-                <Image
-                    HeightRequest="80"
-                    Margin="15"
-                    Source="check3"
-                    WidthRequest="80"/>
-                <Label
-                    FontSize="12"
-                    Text="Hold your Phone near the sticker."
-                    VerticalOptions="End" 
-                    HorizontalOptions="CenterAndExpand"/>
-            </Grid>
+                    <Label 
+                        Text="{i18n:Translate ReadyToScan}"
+                        VerticalOptions="Start" 
+                        HorizontalOptions="CenterAndExpand" />
+                    <Image
+                        HeightRequest="60"
+                        Margin="15"
+                        Source="check3"
+                        WidthRequest="60"/>
+                    <Label
+                        FontSize="12"
+                        Text="{i18n:Translate HoldYourPhone}"
+                        VerticalOptions="End" 
+                        HorizontalOptions="CenterAndExpand"/>
+                </Grid>
             </Frame>
-        
         </Frame>
     </ContentPage.Content>
 </popup:PopupPage>

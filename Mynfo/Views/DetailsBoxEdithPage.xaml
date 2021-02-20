@@ -5,6 +5,7 @@
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="Mynfo.Views.DetailsBoxEdithPage"
              x:Name="FullBackGround"
+             BackgroundColor="Transparent"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Background>
         <!--<LinearGradientBrush StartPoint="0,0"
@@ -47,7 +48,7 @@
                             VerticalOptions="Center"
                             WidthRequest="40"
                             x:Name="DeleteButton" />
-                        <StackLayout 
+                        <!--<StackLayout 
                             Orientation="Horizontal"
                             Grid.ColumnSpan ="3"
                             Grid.Row="2"
@@ -56,7 +57,7 @@
                             <RadioButton Content="Green" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Green" x:Name="radio2"/>
                             <RadioButton Content="Blue" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Blue" x:Name="radio3"/>
                             <RadioButton Content="Other" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Other" x:Name="radio4"/>
-                        </StackLayout>
+                        </StackLayout>-->
 
                         <!--Nombre de la box -->
                         <Entry 

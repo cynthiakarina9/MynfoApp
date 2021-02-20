@@ -52,7 +52,7 @@ namespace Mynfo.Services
 
                                 //if (Share != true) { user_id = 0; get_box_id = 0; }
 
-                                InsertForeignData(user_id, get_box_id);
+                                InsertForeignData(Convert.ToInt32(user_id), get_box_id);
                             }
                         }
 

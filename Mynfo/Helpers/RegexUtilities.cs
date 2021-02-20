@@ -24,5 +24,17 @@
                 return false;
             }
         }
+        public static bool IsValidURL(string url)
+        {
+            var expresion = @"^(http|https|ftp|)\://|[a-zA-Z0-9\-\.]+\.[a-zA-Z](:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;%\$#\=~])*[^\.\,\)\(\s]$";
+            if (Regex.IsMatch(url, expresion))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

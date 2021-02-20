@@ -58,14 +58,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label
-                HorizontalOptions = "StartAndExpand"
-                Text = "Escribir tag" 
-                VerticalOptions = "Center"
-                TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor}}"/>
-            <Switch
-                IsToggled = "{Binding User.Share, Mode = TwoWay}"
-                HorizontalOptions = "End"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -42,26 +42,26 @@
         {
             InitializeComponent();
             
-            if(!radio1.IsChecked && !radio2.IsChecked && !radio3.IsChecked && !radio4.IsChecked)
-            {
-                NewColor = Color.FromHex("#FEBDA8");
-            }
-            else if(radio1.IsChecked)
-            {
-                NewColor = Color.Red;
-            }
-            else if (radio2.IsChecked)
-            {
-                NewColor = Color.Green;
-            }
-            else if (radio3.IsChecked)
-            {
-                NewColor = Color.Blue;
-            }
-            else if (radio4.IsChecked)
-            {
-                NewColor = Color.YellowGreen;
-            }
+            //if(!radio1.IsChecked && !radio2.IsChecked && !radio3.IsChecked && !radio4.IsChecked)
+            //{
+            //    NewColor = Color.FromHex("#FEBDA8");
+            //}
+            //else if(radio1.IsChecked)
+            //{
+            //    NewColor = Color.Red;
+            //}
+            //else if (radio2.IsChecked)
+            //{
+            //    NewColor = Color.Green;
+            //}
+            //else if (radio3.IsChecked)
+            //{
+            //    NewColor = Color.Blue;
+            //}
+            //else if (radio4.IsChecked)
+            //{
+            //    NewColor = Color.YellowGreen;
+            //}
             NavigationPage.SetHasNavigationBar(this, false);
             FullBackGround.BackgroundColor = NewColor;
             #region F
@@ -1044,26 +1044,26 @@
             Application.Current.MainPage = new MasterPage();
         }
 
-        void OnColorsRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if(radio1.IsChecked)
-            {
-                NewColor = Color.Red;
-            }
-            else if (radio2.IsChecked)
-            {
-                NewColor = Color.Green;
-            }
-            else if (radio3.IsChecked)
-            {
-                NewColor = Color.Blue;
-            }
-            else if (radio4.IsChecked)
-            {
-                NewColor = Color.YellowGreen;
-            }
-            FullBackGround.BackgroundColor = NewColor;
-        }
+        //void OnColorsRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
+        //{
+        //    if(radio1.IsChecked)
+        //    {
+        //        NewColor = Color.Red;
+        //    }
+        //    else if (radio2.IsChecked)
+        //    {
+        //        NewColor = Color.Green;
+        //    }
+        //    else if (radio3.IsChecked)
+        //    {
+        //        NewColor = Color.Blue;
+        //    }
+        //    else if (radio4.IsChecked)
+        //    {
+        //        NewColor = Color.YellowGreen;
+        //    }
+        //    FullBackGround.BackgroundColor = NewColor;
+        //}
         #endregion
 
     }

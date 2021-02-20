@@ -17,7 +17,7 @@
                 <Label 
                     FontAttributes="Bold"
                     FontSize="21"
-                    Text="¡Stiker configurado!"
+                    Text="{i18n:Translate ConfigStickerRi}"
                     TextColor="{StaticResource MainColor}"
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="CenterAndExpand" />
@@ -27,7 +27,7 @@
                     Source="check3"
                     WidthRequest="120"/>
                 <Label 
-                    Text="Todas las Boxes que configures y manipules de ahora en adelante se veran reflejados en tu sticker."
+                    Text="{i18n:Translate AllConfigSticker}"
                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                     VerticalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
