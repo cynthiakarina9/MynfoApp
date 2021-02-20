@@ -33,7 +33,7 @@ namespace Mynfo.Controls
             set => SetValue(BorderColorProperty, value);
         }
         /// <summary>
-        /// This property cannot be changed at runtime in iOS.
+        /// Ésta propiedad no puede cambiar durante el tiempo de ejecución en IOS
         /// </summary>
         public Thickness Padding
         {
