@@ -38,8 +38,16 @@
             On<Windows>().SetHeaderIconsEnabled(true);
             On<Windows>().SetHeaderIconsSize(new Size(50, 50));
 
-            Children.Add(new MyQRPage { Title = Languages.MyQR });
-            Children.Add(new LectorQRPage { Title = Languages.EscanQR });
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                Children.Add(new MyQRPage { Title = Languages.MyQR });
+            }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                Children.Add(new MyQRPage { Title = Languages.MyQR });
+                Children.Add(new LectorQRPage { Title = Languages.EscanQR });
+            }
+
 
             CurrentPage = Children[0];
             #endregion
