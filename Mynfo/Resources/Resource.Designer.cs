@@ -124,6 +124,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a All the Boxes that you configure and manipulate from now on will be reflected in your sticker..
+        /// </summary>
+        public static string AllConfigSticker {
+            get {
+                return ResourceManager.GetString("AllConfigSticker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Alpha Code 2:.
         /// </summary>
         public static string AlphaCode2 {
@@ -291,6 +300,15 @@ namespace Mynfo.Resources {
         public static string ConfigSticker {
             get {
                 return ResourceManager.GetString("ConfigSticker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sticker configurated!.
+        /// </summary>
+        public static string ConfigStickerRi {
+            get {
+                return ResourceManager.GetString("ConfigStickerRi", resourceCulture);
             }
         }
         
@@ -732,6 +750,15 @@ namespace Mynfo.Resources {
         public static string HaveWhats {
             get {
                 return ResourceManager.GetString("HaveWhats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hold your Phone near the sticker..
+        /// </summary>
+        public static string HoldYourPhone {
+            get {
+                return ResourceManager.GetString("HoldYourPhone", resourceCulture);
             }
         }
         
@@ -1281,6 +1308,15 @@ namespace Mynfo.Resources {
         public static string QRMynfo {
             get {
                 return ResourceManager.GetString("QRMynfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ready to Scan..
+        /// </summary>
+        public static string ReadyToScan {
+            get {
+                return ResourceManager.GetString("ReadyToScan", resourceCulture);
             }
         }
         

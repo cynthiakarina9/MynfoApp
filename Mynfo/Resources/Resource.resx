@@ -609,4 +609,16 @@
   <data name="ConfigSticker" xml:space="preserve">
     <value>Setting sticker . . . </value>
   </data>
+  <data name="AllConfigSticker" xml:space="preserve">
+    <value>All the Boxes that you configure and manipulate from now on will be reflected in your sticker.</value>
+  </data>
+  <data name="ConfigStickerRi" xml:space="preserve">
+    <value>Sticker configurated!</value>
+  </data>
+  <data name="HoldYourPhone" xml:space="preserve">
+    <value>Hold your Phone near the sticker.</value>
+  </data>
+  <data name="ReadyToScan" xml:space="preserve">
+    <value>Ready to Scan.</value>
+  </data>
 </root>

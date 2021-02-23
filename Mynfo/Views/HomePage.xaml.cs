@@ -81,6 +81,7 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.BoxRegister = new BoxRegisterViewModel();
             await Navigation.PushAsync(new BoxRegisterPage());
+            //await Navigation.PushAsync(new ConfigStikerPage());
 
             //await Launcher.OpenAsync(new Uri("fb://page/100000686899395"));
             //await Launcher.OpenAsync(new Uri("https://twitter.com/RToachee"));

@@ -60,6 +60,7 @@
     <Compile Include="Box_ProfileSM.cs" />
     <Compile Include="Box_ProfileSMMap.cs" />
     <Compile Include="Box_ProfileWhatsapp.cs" />
+    <Compile Include="Color.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="FacebookResponse.cs" />
     <Compile Include="ProfileEmail.cs" />

@@ -119,7 +119,7 @@
         public void addProfile(ProfileSM _profileSM)
         {
             profileSM.Add(_profileSM);
-            EmptyList = true;
+            EmptyList = false;
         }
 
         public void removeProfile()

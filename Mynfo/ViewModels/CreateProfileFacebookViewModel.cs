@@ -7,6 +7,7 @@
     using Mynfo.Views;
     using Rg.Plugins.Popup.Services;
     using Services;
+    using System;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -71,6 +72,15 @@
                 return;
             }
             if (string.IsNullOrEmpty(this.Link))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.LinkValidation,
+                    Languages.Accept);
+                return;
+            }
+            
+            if (!RegexUtilities.IsValidURL(this.Link))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -173,7 +183,7 @@
         }
         private async void GotoGIF()
         {
-            MainViewModel.GetInstance().GIF = new GifViewModel();
+            MainViewModel.GetInstance().GIF = new GifViewModel("Facebook");
             await PopupNavigation.Instance.PushAsync(new GifPage());
         }
         public ICommand BackHomeCommand

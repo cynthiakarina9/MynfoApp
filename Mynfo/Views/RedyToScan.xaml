@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mynfo.Views.RedyToScan">
+    <ContentPage.Content>
+        <Frame
+            BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
+            CornerRadius="30"
+            HasShadow="True"
+            Margin="30,150,30,30"
+            x:Name="BackG">
+            <Frame
+                BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+                CornerRadius="30"
+                HasShadow="True">
+                <Grid>
+                    <Label 
+                        Text="{i18n:Translate ReadyToScan}"
+                        VerticalOptions="Start" 
+                        HorizontalOptions="CenterAndExpand" />
+                    <Image
+                        HeightRequest="60"
+                        Margin="15"
+                        Source="check3"
+                        WidthRequest="60"/>
+                    <Label
+                        FontSize="12"
+                        Text="{i18n:Translate HoldYourPhone}"
+                        VerticalOptions="End" 
+                        HorizontalOptions="CenterAndExpand"/>
+                </Grid>
+            </Frame>
+        </Frame>
+    </ContentPage.Content>
+</popup:PopupPage>

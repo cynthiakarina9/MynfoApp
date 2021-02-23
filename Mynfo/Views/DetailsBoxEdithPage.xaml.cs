@@ -9,6 +9,7 @@
     using Rg.Plugins.Popup.Extensions;
     using Rg.Plugins.Popup.Services;
     using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Data.SqlClient;
     using System.Linq;
@@ -27,6 +28,7 @@
         public Entry BxNameEntry = new Entry();
         public String boxName;
         public Box Box;
+        public Color NewColor;
         #endregion
 
         #region Properties
@@ -39,7 +41,30 @@
         public DetailsBoxEdithPage(int _boxId = 0)
         {
             InitializeComponent();
+            
+            //if(!radio1.IsChecked && !radio2.IsChecked && !radio3.IsChecked && !radio4.IsChecked)
+            //{
+            //    NewColor = Color.FromHex("#FEBDA8");
+            //}
+            //else if(radio1.IsChecked)
+            //{
+            //    NewColor = Color.Red;
+            //}
+            //else if (radio2.IsChecked)
+            //{
+            //    NewColor = Color.Green;
+            //}
+            //else if (radio3.IsChecked)
+            //{
+            //    NewColor = Color.Blue;
+            //}
+            //else if (radio4.IsChecked)
+            //{
+            //    NewColor = Color.YellowGreen;
+            //}
             NavigationPage.SetHasNavigationBar(this, false);
+            FullBackGround.BackgroundColor = NewColor;
+            #region F
             apiService = new ApiService();
             OSAppTheme currentTheme = Application.Current.RequestedTheme;
             FullBackGround.CloseWhenBackgroundIsClicked = true;
@@ -450,11 +475,12 @@
 
                 BxDefaultCheckBox.IsEnabled = false;
             }
+            #endregion
         }
         #endregion
 
         #region Methods
-
+        
         async void deleteBox(object sender, EventArgs e, int _BoxId, int _UserId, bool _BoxDefault)
         {
             string sqlDeleteEmails = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId,
@@ -1011,12 +1037,33 @@
                 MainViewModel.GetInstance().DetailsBoxEdith.removeProfileSM(SM);
             }
         }
-       private void BackHome(object sender, EventArgs e)
+        private void BackHome(object sender, EventArgs e)
         {
             Navigation.PopAllPopupAsync();
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
         }
+
+        //void OnColorsRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
+        //{
+        //    if(radio1.IsChecked)
+        //    {
+        //        NewColor = Color.Red;
+        //    }
+        //    else if (radio2.IsChecked)
+        //    {
+        //        NewColor = Color.Green;
+        //    }
+        //    else if (radio3.IsChecked)
+        //    {
+        //        NewColor = Color.Blue;
+        //    }
+        //    else if (radio4.IsChecked)
+        //    {
+        //        NewColor = Color.YellowGreen;
+        //    }
+        //    FullBackGround.BackgroundColor = NewColor;
+        //}
         #endregion
 
     }

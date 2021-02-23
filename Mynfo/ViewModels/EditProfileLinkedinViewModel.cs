@@ -91,6 +91,14 @@
                     Languages.Accept);
                 return;
             }
+            if (!RegexUtilities.IsValidURL(this.profileSM.link))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.LinkValidation,
+                    Languages.Accept);
+                return;
+            }
             this.IsRunning = true;
             this.IsEnabled = false;
             var checkConnetion = await this.apiService.CheckConnection();
