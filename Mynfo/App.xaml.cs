@@ -76,7 +76,14 @@
                     mainViewModel.TAG = new TAGViewModel();
                     mainViewModel.ChangePassword = new ChangePasswordViewModel();
                     mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
-                    Xamarin.Forms.Application.Current.MainPage = new MasterPage();
+                    //if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+                    //{
+                        Xamarin.Forms.Application.Current.MainPage = new MasterPage();
+                    /*}
+                    else if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+                    {
+                        Xamarin.Forms.Application.Current.MainPage = new MasterPageIOS();
+                    }*/
                 }
                 else
                 {

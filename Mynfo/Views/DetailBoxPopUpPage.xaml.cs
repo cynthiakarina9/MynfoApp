@@ -186,6 +186,12 @@
                 }
             }
 
+            //Tamaño de etiqueta de box predeterminada
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+            {
+                defaultLabel.FontSize = 13;
+            }
+
 
             //Navegación a ventana de perfiles
             BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault, BoxName));
@@ -195,6 +201,17 @@
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
+            BxDefaultCheckBox.VerticalOptions = LayoutOptions.Start;
+            if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+            {
+                Thickness thick = new Thickness(20, -6, 0, 0);
+                BoxDefaultCheckBox.Margin = thick;
+            }
+            else if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+            {
+                Thickness thick = new Thickness(20, 0, 0, 0);
+                BoxDefaultCheckBox.Margin = thick;
+            }
             if (BoxDefault == true)
             {
                 BxDefaultCheckBox.IsEnabled = false;
