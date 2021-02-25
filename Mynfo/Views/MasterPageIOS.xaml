@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:pages="clr-namespace:Mynfo.Views"
+            x:Class="Mynfo.Views.MasterPageIOS">
+    <FlyoutPage.Flyout>
+        <pages:MenuPage/>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

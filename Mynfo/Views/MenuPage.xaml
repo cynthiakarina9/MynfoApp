@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
-             Title = "{i18n:Translate Menu}">
+             Title = "☰">
     <ContentPage.Content>
         <StackLayout
             Padding = "20,30,5,5">
@@ -22,7 +22,7 @@
                 Padding = "25"
                 Text = "{Binding User.FullName, StringFormat = '{0}'}"
                 TextColor = "{StaticResource MainColor}" />
-            <StackLayout
+            <!--<StackLayout
                 Padding = "20,30,20,30"
                 Orientation="Horizontal"
                 VerticalOptions = "FillAndExpand"
@@ -36,7 +36,7 @@
                     Toggled="OnToggled"
                     IsToggled = "{Binding User.Share, Mode = TwoWay}"
                     HorizontalOptions = "Center"/>
-            </StackLayout >
+            </StackLayout >-->
             <ListView 
                 BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
                 ItemsSource = "{Binding Menus}"

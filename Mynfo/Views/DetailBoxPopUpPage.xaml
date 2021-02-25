@@ -68,15 +68,18 @@
                         <StackLayout 
                             Grid.Row="2"
                             Grid.Column="1"
-                            Margin="20,0,0,0"
+                            Margin="20,-6,0,0"
                             VerticalOptions="Center"
                             x:Name="BoxDefaultCheckBox" />
                         <Label 
                             Grid.Row="2" 
                             Grid.Column="2" 
+                            Grid.ColumnSpan="2"
+                            Margin="-5,-0,0,0"
                             Text="{i18n:Translate DefaultBox}" 
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                            VerticalOptions="Center"/>
+                            VerticalOptions="Center"
+                            x:Name="defaultLabel"/>
                         <CollectionView 
                             ItemsSource="{Binding ProfilePerfiles}"
                             Grid.Row="3"
