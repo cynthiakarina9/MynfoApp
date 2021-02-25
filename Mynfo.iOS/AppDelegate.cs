@@ -141,7 +141,7 @@
             {
                 Console.WriteLine(e);
             }            
-            
+             
             session.Dispose();
             user_id_tag = user_id.ToString();
             if (write_tag.modo_escritura == true)
