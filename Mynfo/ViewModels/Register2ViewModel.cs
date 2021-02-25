@@ -147,8 +147,8 @@
                 return;
             }
 
-            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
-            {
+           /* if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+            {*/
                 if (this.Number.ToCharArray().All(Char.IsLetter))
                 {
                     await Application.Current.MainPage.DisplayAlert(
@@ -157,7 +157,7 @@
                         Languages.Accept);
                     return;
                 }
-            }
+           /* }
             else if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
             {
                 if (!this.Number.ToCharArray().All(Char.IsLetter))
@@ -168,7 +168,7 @@
                         Languages.Accept);
                     return;
                 }
-            }
+            }*/
             
             if (this.Number.Length != 10)
             {
