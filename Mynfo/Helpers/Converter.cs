@@ -17,7 +17,11 @@
                         LastName = user.LastName,
                         UserId = user.UserId,
                         UserTypeId = user.UserTypeId,
-                        Share = user.Share
+                        Share = user.Share,
+                        Edad = user.Edad,
+                        Ubicacion = user.Ubicacion,
+                        Ocupacion = user.Ocupacion,
+                        Conexiones = user.Conexiones,
                     };
                 }
         public static User ToUserDomain(UserLocal user, byte[] imageArray)
@@ -31,7 +35,11 @@
                 UserId = user.UserId,
                 UserTypeId = user.UserTypeId,
                 ImageArray = imageArray,
-                Share = user.Share
+                Share = user.Share,
+                Edad = user.Edad,
+                Ubicacion = user.Ubicacion,
+                Ocupacion = user.Ocupacion,
+                Conexiones = user.Conexiones,
             };
         }
         #endregion
