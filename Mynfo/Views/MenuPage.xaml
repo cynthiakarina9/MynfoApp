@@ -16,22 +16,22 @@
             </controls:CircleImage>
             <Label 
                 FontSize = "26"
-                FontAttributes = "None"
+                FontAttributes = "Bold"
                 HorizontalOptions = "Center"
                 HorizontalTextAlignment="Center"
-                Padding = "25"
+                Padding = "5"
                 Text = "{Binding User.FullName, StringFormat = '{0}'}"
                 TextColor = "{StaticResource MainColor}" />
             <StackLayout
-                Padding = "20,30,20,30"
                 Orientation="Horizontal"
-                VerticalOptions = "FillAndExpand"
+                VerticalOptions = "Center"
                 HorizontalOptions = "CenterAndExpand">
                 <Label
+                    FontAttributes="Bold"
                     HorizontalOptions = "StartAndExpand"
                     Text = "TAG" 
                     VerticalOptions = "CenterAndExpand"
-                    TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor}}"/>
+                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                 <Switch
                     Toggled="OnToggled"
                     IsToggled = "{Binding User.Share, Mode = TwoWay}"

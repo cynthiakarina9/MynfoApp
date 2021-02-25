@@ -429,6 +429,12 @@
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "icon_tag",
+                PageName = "Help",
+                Title = "Help",
+            });
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "icon_tag",
                 PageName = "TAGPage",
                 Title = Languages.Tag,
             });
@@ -437,6 +443,12 @@
                 Icon = "icon_qr",
                 PageName = "QR",
                 Title = Languages.QR,
+            });
+            this.Menus.Add(new MenuItemViewModel
+            {
+                Icon = "comments1",
+                PageName = "Comments",
+                Title = "Comments",
             });
             this.Menus.Add(new MenuItemViewModel
             {

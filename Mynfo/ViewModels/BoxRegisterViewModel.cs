@@ -94,7 +94,7 @@
                 "/api",
                 "/Boxes/GetBoxDefault",
                 MainViewModel.GetInstance().User.UserId);
-            if(BoxList == default)
+            if(BoxList == default || BoxList == null)
             {
                 defaultBoxExists = false;
             }
@@ -111,6 +111,7 @@
                     BoxDefault = false,
                     UserId = mainViewModel.User.UserId,
                     Time = boxTime,
+                    ColorBox = "#c6c6c6"
                 };
             }
             else
@@ -121,6 +122,7 @@
                     BoxDefault = true,
                     UserId = mainViewModel.User.UserId,
                     Time = boxTime,
+                    ColorBox = "#c6c6c6"
                 };
             }
 
@@ -141,12 +143,16 @@
                     Languages.Accept);
                 return;
             }
-
+            var A = await this.apiService.GetLastBox(
+                apiSecurity,
+                "/api",
+                "/Boxes/GetLastBox",
+                mainViewModel.User.UserId);
             this.IsRunning = false;
             this.IsEnabled = true;
 
             this.Name = string.Empty;
-            mainViewModel.Home.AddList(box);
+            mainViewModel.Home.AddList(A);
             await App.Navigator.PopAsync();
         }
 

@@ -16,11 +16,11 @@
     </ContentPage.Background>-->
     <ContentPage.Content>
         <Frame
-            BackgroundColor="Transparent"
+            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
             BindingContext="{Binding GIF}"
             CornerRadius="30"
             HasShadow="True"
-            Margin="30">
+            Margin="40,10,40,10">
             <Grid
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand">
@@ -35,7 +35,7 @@
                     Grid.Row = "0"
                     HorizontalOptions="CenterAndExpand"
                     IsAnimationPlaying="true"
-                    Margin="-10"
+                    Margin="-20"
                     Source="{Binding GitImage}"
                     VerticalOptions="CenterAndExpand"
                     x:Name="ImgGIF"/>

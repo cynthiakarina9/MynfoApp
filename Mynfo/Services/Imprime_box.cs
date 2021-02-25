@@ -301,6 +301,7 @@ namespace Mynfo.Services
                     {
                         //App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
                         MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(foreingBox);
+                        App.Navigator.PopAsync();
                         PopupNavigation.Instance.PushAsync(new ForeingBoxPage(foreingBox, true));
                         if (A == null)
                         {

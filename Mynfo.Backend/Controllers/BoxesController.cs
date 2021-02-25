@@ -46,11 +46,11 @@ namespace Mynfo.Backend.Controllers
         }
 
         // POST: Boxes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "BoxId,Name,BoxDefault,UserId,Time")] Box box)
+        public async Task<ActionResult> Create([Bind(Include = "BoxId,Name,BoxDefault,UserId,Time,ColorBox")] Box box)
         {
             if (ModelState.IsValid)
             {
@@ -80,11 +80,11 @@ namespace Mynfo.Backend.Controllers
         }
 
         // POST: Boxes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "BoxId,Name,BoxDefault,UserId,Time")] Box box)
+        public async Task<ActionResult> Edit([Bind(Include = "BoxId,Name,BoxDefault,UserId,Time,ColorBox")] Box box)
         {
             if (ModelState.IsValid)
             {

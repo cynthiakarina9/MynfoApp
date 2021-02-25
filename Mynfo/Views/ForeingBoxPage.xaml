@@ -42,22 +42,25 @@
                         <StackLayout
                                 Grid.Row="1"
                                 Grid.ColumnSpan = "3"
-                                HorizontalOptions="Center">
+                                HorizontalOptions="Start">
                             <Label 
                                 FontAttributes="Bold"
                                 FontSize = "25"
                                 HorizontalTextAlignment="Center"
                                 HorizontalOptions = "Center"
+                                Padding="0,-5,0,0"
                                 TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                VerticalOptions="Center"
+                                VerticalOptions="Start"
                                 x:Name="ForeignUserName" />
                             <Line
                                 HeightRequest="1"
-                                BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                                BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                Margin="0,0,0,40"/>
                         </StackLayout>
                         <controls:CircleImage
                             Grid.Row="2"
                             Grid.ColumnSpan="3"
+                            Margin="0,5,0,0"
                             HeightRequest="100"
                             WidthRequest="100"
                             x:Name="ForeignUserImage">

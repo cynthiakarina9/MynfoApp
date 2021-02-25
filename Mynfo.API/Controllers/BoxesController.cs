@@ -52,7 +52,7 @@
             {
                 return null;
             }
-            Box box = GetBoxes().Where(u=> u.UserId == id && u.BoxDefault == true).FirstOrDefault();
+            Box box = GetBoxes().Where(u => u.UserId == id && u.BoxDefault == true).FirstOrDefault();
             if (box == null)
             {
                 return null;
@@ -148,6 +148,7 @@
         //    return StatusCode(HttpStatusCode.NoContent);
         //}
         //GET: api/LastBox
+
         // PUT: api/Boxes/PutBox1/5
         [ResponseType(typeof(Box))]
         public async Task<Box> PutBox(int id, Box box)
@@ -182,7 +183,7 @@
 
             return box;
         }
-
+        
         //// PUT: api/Boxes/5
         //[ResponseType(typeof(void))]
         //public async Task<IHttpActionResult> PutBoxDefault(JObject form)

@@ -100,6 +100,7 @@
         #region Methods
         public async Task<ObservableCollection<Box>> GetBoxDefault()
         {
+            this.IsRunning = true;
             this.IsNull = false;
             Box = new ObservableCollection<Box>();
             var connection = await this.apiService.CheckConnection();
@@ -124,10 +125,11 @@
 
             if(BoxList != null)
             {
-                Box.Add(BoxList); 
+                Box.Add(BoxList);
+                IsNull = false;
             }
             
-            if(Box.Count != 0)
+            if(Box.Count == 0)
             {
                 IsNull = true;
             }
@@ -137,6 +139,7 @@
 
         public async Task<ObservableCollection<Box>> GetBoxNoDefault()
         {
+            this.IsRunning = true;
             selectedItem = null;
             this.MoreOne = false;
             BoxNoDefault = new ObservableCollection<Box>();
@@ -176,7 +179,14 @@
         #region Listas
         public void AddList(Box _Boxes)
         {
-            BoxNoDefault.Add(_Boxes);
+            if(_Boxes.BoxDefault == false)
+            {
+                BoxNoDefault.Add(_Boxes);
+            }
+            else
+            {
+                Box.Add(_Boxes);
+            }
         }
 
         public void RemoveList(Box _Boxes)

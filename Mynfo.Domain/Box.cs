@@ -19,6 +19,8 @@
 
         public virtual DateTime Time { get; set; }
 
+        public string ColorBox { get; set; }
+
         [JsonIgnore]
         public virtual User User { get; set; }
 

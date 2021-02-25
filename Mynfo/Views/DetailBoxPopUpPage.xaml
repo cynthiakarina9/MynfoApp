@@ -6,15 +6,17 @@
              x:Class="Mynfo.Views.DetailBoxPopUpPage"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}"
              x:Name="FrameB">
-    <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0"
+    <!--<ContentPage.Background
+        BindingContext = "{Binding DetailsBox}">
+        <SolidColorBrush x:Name="ColorBB"/>
+        --><!--<LinearGradientBrush StartPoint="0,0"
                                EndPoint="1,1">
-            <GradientStop Color="{AppThemeBinding Light=#f3947a, Dark= #fea188}"
+            <GradientStop Color="{Binding ColorB}"
                             Offset="0.1" />
-            <GradientStop Color="{AppThemeBinding Light= #d1d1d1, Dark= #79808c}"
+            <GradientStop Color="{AppThemeBinding Light= #FFFFFF, Dark= #79808c}"
                             Offset="0.6" />
-        </LinearGradientBrush>
-    </ContentPage.Background>
+        </LinearGradientBrush>--><!--
+    </ContentPage.Background>-->
     <ContentPage.Content>
         <Frame
             BindingContext = "{Binding DetailsBox}"
@@ -68,15 +70,18 @@
                         <StackLayout 
                             Grid.Row="2"
                             Grid.Column="1"
-                            Margin="20,0,0,0"
+                            Margin="-10,0,0,0"
                             VerticalOptions="Center"
                             x:Name="BoxDefaultCheckBox" />
                         <Label 
                             Grid.Row="2" 
                             Grid.Column="2" 
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="StartAndExpand"
+                            Margin="-30,0,0,0"
                             Text="{i18n:Translate DefaultBox}" 
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                            VerticalOptions="Center"/>
+                            VerticalOptions="CenterAndExpand"/>
                         <CollectionView 
                             ItemsSource="{Binding ProfilePerfiles}"
                             Grid.Row="3"
