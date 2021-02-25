@@ -78,7 +78,7 @@
                             HorizontalOptions = "StartAndExpand"
                             Text = "{i18n:Translate Rememberme}" 
                             VerticalOptions = "Center"
-                            TextColor = "{AppThemeBinding Dark = {StaticResource DarkMenu_FontColor}}"/>
+                            TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                         <Switch
                             IsToggled = "{Binding IsRemembered, Mode = TwoWay}"
                             HorizontalOptions = "End"/>
@@ -87,13 +87,13 @@
                         Orientation="Horizontal"
                         HorizontalOptions="Center">
                         <Button
-                            BackgroundColor = "{StaticResource MainColor}"
+                            BackgroundColor = "{AppThemeBinding Light={StaticResource MainColor}, Dark=white}"
                             BorderRadius = "23"
                             Command = "{Binding LoginCommand}"
                             HorizontalOptions = "Center"
                             IsEnabled = "{Binding IsEnabled,Mode = TwoWay}"
                             Text = "{i18n:Translate Login}"
-                            TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource FontColorButtonDark}}"
+                            TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource MainColor}}"
                             WidthRequest = "150"/>
                         <Button
                             BackgroundColor="Transparent"

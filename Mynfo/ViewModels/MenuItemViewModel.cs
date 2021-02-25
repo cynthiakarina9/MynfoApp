@@ -7,6 +7,7 @@
     using Views;
     using Mynfo.Models;
     using Mynfo.Services;
+    using Xamarin.Essentials;
 
     public class MenuItemViewModel : BaseViewModel
     {
@@ -25,7 +26,7 @@
                 return new RelayCommand(Navigate);
             }
         }
-        private void Navigate()
+        private async void Navigate()
         {
             App.Master.IsPresented = false;
             var mainViewModal = MainViewModel.GetInstance();
@@ -67,18 +68,29 @@
             else if (this.PageName == "MyProfilePage")
             {
                 MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
-                App.Navigator.PushAsync(new MyProfilePage());
+                await App.Navigator.PushAsync(new MyProfilePage());
             }
 
             else if (this.PageName == "QR")
             {
-                App.Navigator.PushAsync(new QRTabbedPage());
+                await App.Navigator.PushAsync(new QRTabbedPage());
             }
 
             else if (this.PageName == "TAGPage")
             {
                 MainViewModel.GetInstance().TAG = new TAGViewModel();
-                App.Navigator.PushAsync(new TAGPage());
+                await App.Navigator.PushAsync(new TAGPage());
+            }
+
+            else if (this.PageName == "Help")
+            {
+                MainViewModel.GetInstance().TAG = new TAGViewModel();
+                await App.Navigator.PushAsync(new TAGPage());
+            }
+
+            else if (this.PageName == "Comments")
+            {
+                await Browser.OpenAsync("https://mynfo.mx/preguntas-frecuentes/", BrowserLaunchMode.SystemPreferred);
             }
         }
         #endregion

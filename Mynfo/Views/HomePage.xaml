@@ -73,7 +73,9 @@
                                 <StackLayout 
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand">
-                                    <Label Text="No Boxes yet"/>
+                                    <Label 
+                                        IsVisible="{Binding IsNull}"
+                                        Text="No Boxes yet"/>
                                 </StackLayout>
                             </ContentView>
                         </CollectionView.EmptyView>
@@ -97,60 +99,19 @@
                                     <StackLayout
                                         HorizontalOptions="CenterAndExpand">
                                         <Frame
-                                            BackgroundColor="LightGray"
+                                            BackgroundColor="{Binding ColorBox}"
                                             CornerRadius="15"
                                             HasShadow="True"
                                             HeightRequest="45"
                                             IsVisible="{Binding MoreOne}"
                                             WidthRequest="45">
-                                            <Frame.Background>
+                                            <!--<Frame.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                     <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}"  Offset="0.1"/>
                                                     <GradientStop Color="{AppThemeBinding Light=#FFFF, Dark=#0000}" Offset="0.6"/>
                                                     <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}" Offset="0.1"/>
                                                 </LinearGradientBrush>
-                                            </Frame.Background>
-                                            <!--<CollectionView 
-                                                IsVisible="{Binding MoreOne}"
-                                                ItemsSource="{Binding ProfilePerfiles}">
-                                                <CollectionView.ItemsLayout>
-                                                    <GridItemsLayout 
-                                                        Orientation="Vertical"
-                                                        Span="3" />
-                                                </CollectionView.ItemsLayout>
-                                                <CollectionView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Grid
-                                                            Padding=" 10">
-                                                            <StackLayout
-                                                                HorizontalOptions="Center">
-                                                                <Image
-                                                                    Source="captura"
-                                                                    Scale="0.001"/>
-                                                                <Label
-                                                                    Text="{Binding BoxId}"/>
-                                                            </StackLayout>
-                                                        </Grid>
-                                                    </DataTemplate>
-                                                </CollectionView.ItemTemplate>
-                                            </CollectionView>-->
-                                            <!--<StackLayout
-                                                Orientation="Horizontal"
-                                                HorizontalOptions="FillAndExpand"
-                                                Margin="-12,0,40,0">
-                                                <Image 
-                                                    Scale="1"
-                                                    Source="captura"
-                                                    Margin="2"/>
-                                                <Image 
-                                                    Scale="1"
-                                                    Source="captura"
-                                                    Margin="2"/>
-                                                <Image 
-                                                    Scale="1"
-                                                    Source="captura"
-                                                    Margin="2"/>
-                                            </StackLayout>-->
+                                            </Frame.Background>-->
                                         </Frame>
                                         <Label
                                             FontSize="12"
@@ -161,16 +122,14 @@
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
-                        <CollectionView.EmptyView>
-                            <ContentView>
-                                <StackLayout 
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label Text=""/>
-                                </StackLayout>
-                            </ContentView>
-                        </CollectionView.EmptyView>
                     </CollectionView>
+                    <ActivityIndicator
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="2"
+                        IsRunning="{Binding IsRunning}"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                    </ActivityIndicator>
                 </Grid>
             </Grid>
             <Grid

@@ -6,6 +6,7 @@
     using Mynfo.ViewModels;
     using Rg.Plugins.Popup.Extensions;
     using Rg.Plugins.Popup.Services;
+    using SkiaSharp.Views.Forms;
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
@@ -125,6 +126,7 @@
             //Definir color de fondo con respecto a si la box es predeterminada
             if (_Box.BoxDefault == true)
             {
+                FrameB.BackgroundColor = Color.FromHex("#FFFFFF");
                 if (currentTheme == OSAppTheme.Light)
                 {
                     BackG.BackgroundColor = Color.FromHex("#ff6c45");
@@ -145,6 +147,14 @@
             {
                 if (currentTheme == OSAppTheme.Light)
                 {
+                    if (_Box.ColorBox != null)
+                    {
+                        FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
+                    }
+                    else
+                    {
+                        FrameB.BackgroundColor = Color.FromHex("#b4b6ae");
+                    }
                     BackG.BackgroundColor = Color.FromHex("#FFFFFF");
                     bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
                     BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
@@ -152,6 +162,23 @@
                 }
                 else
                 {
+                    if (_Box.ColorBox != null)
+                    {
+                        FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
+
+                        //if(_Box.ColorBox.Length == 6)
+                        //{
+                        //    FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
+                        //}
+                        //else
+                        //{
+                        //    FrameB.BackgroundColor = Color.;
+                        //}
+                    }
+                    else
+                    {
+                        FrameB.BackgroundColor = Color.FromHex("#e3dac4");
+                    }
                     BackG.BackgroundColor = Color.FromHex("#222b3a");
                     bxBtnHome.BackgroundColor = Color.FromHex("#222b3a");
                     BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
@@ -191,7 +218,7 @@
                 if (currentTheme == OSAppTheme.Dark)
                 {
                     BxDefaultCheckBox.Color = Color.White;
-                    EdithButton.Source = "edit1";
+                    EdithButton.Source = "edit3";
                     BoxProfiles.Source = "plusb";
                 }
                 else
@@ -203,10 +230,20 @@
             }
             else
             {
-                BxDefaultCheckBox.IsEnabled = true;
-                BxDefaultCheckBox.Color = Color.FromHex("FF5521");
-                EdithButton.Source = "edit2";
-                BoxProfiles.Source = "Plus";
+                if (currentTheme == OSAppTheme.Dark)
+                {
+                    BxDefaultCheckBox.IsEnabled = true;
+                    BxDefaultCheckBox.Color = Color.FromHex("FFFFFF");
+                    EdithButton.Source = "edit3";
+                    BoxProfiles.Source = "plusb";
+                }
+                else
+                {
+                    BxDefaultCheckBox.IsEnabled = true;
+                    BxDefaultCheckBox.Color = Color.FromHex("FF5521");
+                    EdithButton.Source = "edit2";
+                    BoxProfiles.Source = "Plus";
+                }
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 

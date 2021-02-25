@@ -11,7 +11,7 @@
         <StackLayout
             Margin="20">
             <Frame
-                BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark=#949fb0}"
                 CornerRadius="50"
                 Margin="15">
                 <Grid
@@ -45,11 +45,11 @@
                                 FontSize="21"
                                 HorizontalTextAlignment="Center"
                                 Text="{Binding UserLocal.FullName}"
-                                TextColor="{StaticResource MainColor}"
+                                TextColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource Dark_FontColor}}"
                                 VerticalTextAlignment="Center"
                                 WidthRequest="150"/>
                             <Label
-                                FontSize="15"
+                                FontSize="13"
                                 Text="{i18n:Translate ProfileMynfo}"
                                 HorizontalTextAlignment="Center"
                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
@@ -84,7 +84,7 @@
                             FontSize="10"
                             HorizontalTextAlignment="Center"
                             Text="{i18n:Translate QRForWhat}"
-                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Light_FontColor}}"
                             VerticalTextAlignment="Center"/>
                     </StackLayout>
                 </Grid>
