@@ -124,6 +124,24 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Age:.
+        /// </summary>
+        public static string AgeLabel {
+            get {
+                return ResourceManager.GetString("AgeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 21 years old.
+        /// </summary>
+        public static string AgePlaceHolder {
+            get {
+                return ResourceManager.GetString("AgePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a All the Boxes that you configure and manipulate from now on will be reflected in your sticker..
         /// </summary>
         public static string AllConfigSticker {
@@ -844,6 +862,24 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Location:.
+        /// </summary>
+        public static string LocationLabel {
+            get {
+                return ResourceManager.GetString("LocationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Manhattan, Nueva York, EE. UU..
+        /// </summary>
+        public static string LocationPlaceHolder {
+            get {
+                return ResourceManager.GetString("LocationPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Login.
         /// </summary>
         public static string Login {
@@ -1083,6 +1119,24 @@ namespace Mynfo.Resources {
         public static string NumericCode {
             get {
                 return ResourceManager.GetString("NumericCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Occupation:.
+        /// </summary>
+        public static string OccupationLabel {
+            get {
+                return ResourceManager.GetString("OccupationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Information Technology Engineer..
+        /// </summary>
+        public static string OccupationPlaceHolder {
+            get {
+                return ResourceManager.GetString("OccupationPlaceHolder", resourceCulture);
             }
         }
         

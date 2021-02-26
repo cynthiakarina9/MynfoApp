@@ -26,6 +26,7 @@
         private bool isRunning;
         private bool isNull;
         private bool moreOne;
+        private ImageSource imageSource;
         #endregion
 
         #region Properties
@@ -84,6 +85,17 @@
             }
         }
         public Box selectedItem { get; set; }
+
+        public UserLocal User
+        {
+            get;
+            set;
+        }
+        public ImageSource ImageSource
+        {
+            get { return this.imageSource; }
+            set { SetValue(ref this.imageSource, value); }
+        }
         #endregion
 
         #region Contructor
@@ -91,7 +103,17 @@
         {
             apiService = new ApiService();
             this.IsRunning = false;
-            
+            this.User = MainViewModel.GetInstance().User;
+            if (this.User.ImageFullPath == "noimage" 
+                || this.User.ImageFullPath == string.Empty 
+                || this.User.ImageFullPath == null)
+            {
+                this.ImageSource = "no_image";
+            }
+            else
+            {
+                this.ImageSource = this.User.ImageFullPath;
+            }
             GetBoxDefault();
             GetBoxNoDefault();
         }
