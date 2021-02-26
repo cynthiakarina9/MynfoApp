@@ -19,7 +19,7 @@ using static Mynfo.Views.TAGPage;
 [assembly: Dependency(typeof(write_tag))]
 namespace Mynfo.iOS.Services
 {
-    public class write_tag : NFCNdefReaderSessionDelegate
+    public class write_tag : NFCNdefReaderSessionDelegate, IBackgroundDependency
     {        
         public static NFCNdefReaderSession _tagSession;        
         public static TaskCompletionSource<string> _tcs;
@@ -57,7 +57,7 @@ namespace Mynfo.iOS.Services
             }
             else
             {
-                if (Convert.ToInt32(user_id_tag) == Convert.ToInt32(MainViewModel.GetInstance().User.UserId.ToString()) || 0 == Convert.ToInt32(user_id_tag))
+                if ((Convert.ToInt32(user_id_tag) == Convert.ToInt32(MainViewModel.GetInstance().User.UserId.ToString())) || (0 == Convert.ToInt32(user_id_tag)))
                 {
                     var nFCNdefTag = tags[0];
                     session.ConnectToTag(nFCNdefTag, CompletionHandler);
@@ -67,22 +67,24 @@ namespace Mynfo.iOS.Services
                     string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
                     NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
                     NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
-                    nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
-                    {
-                        session.InvalidateSession();
-                        session.Dispose();
-                        AppDelegate.user_id_tag = "?";
-                    });
+                    nFCNdefTag.WriteNdef(nFCNdefMessage, delegate{});
+                    //Task task = App.DisplayAlertAsync(user_id_tag);
                 }
                 else
                 {
-                    Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
-                    session.InvalidateSession();
+                    Task task2 = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");                    
                     session.Dispose();
+                    session.InvalidateSession();
                     AppDelegate.user_id_tag = "?";
                 }
                 AppDelegate.user_id_tag = "?";
                 PopupNavigation.Instance.PopAsync();
+                session.InvalidateSession();
+                _tagSession.InvalidateSession();
+                PopupNavigation.Instance.PushAsync(new Stickerconfig());
+                Thread.Sleep(4000);
+                PopupNavigation.Instance.PopAsync();
+                // session.Dispose();     
             }            
         }
         string GetRecords(NFCNdefPayload[] records)
