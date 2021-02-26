@@ -3,7 +3,10 @@
     //using CoreNFC;
     //using Foundation;
     using Mynfo.Helpers;
+    using Rg.Plugins.Popup.Extensions;
+    using Rg.Plugins.Popup.Services;
     using System;
+    using System.Threading;
     using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;    
@@ -38,18 +41,25 @@
         }
         void escribir_tag(object sender, EventArgs e)
         {
-
-            var duration = TimeSpan.FromMilliseconds(1000);
-            if (Device.RuntimePlatform == Device.iOS)
-            {                            
-                Vibration.Vibrate(duration);
-                DependencyService.Get<IBackgroundDependency>().ExecuteCommand();
-            }
-            else if (Device.RuntimePlatform == Device.Android)
+            try
             {
-                System.Threading.Tasks.Task task = App.DisplayAlertAsync("Acerca tu tag para escribir");                               
-                Vibration.Vibrate(duration);
-                write_nfc = true;
+                //Navigation.PushPopupAsync(new RedyToScan());
+
+                var duration = TimeSpan.FromMilliseconds(1000);
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    Vibration.Vibrate(duration);
+                    DependencyService.Get<IBackgroundDependency>().ExecuteCommand();
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+                    Vibration.Vibrate(duration);
+                    write_nfc = true;
+                }
+            }
+            catch (Exception e2) 
+            {
+                Console.WriteLine(e2);
             }
         }
         public interface IBackgroundDependency

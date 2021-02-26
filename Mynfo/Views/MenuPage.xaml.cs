@@ -11,8 +11,8 @@
     {
         public MenuPage()
         {
+            get_share();
             InitializeComponent();
-            var A = MainViewModel.GetInstance().User;
         }
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -43,6 +43,34 @@
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+        }        
+        public static void get_share()
+        {
+            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string queryLastBoxCreated = "select* from users where UserId =" + MainViewModel.GetInstance().User.UserId;
+            System.Text.StringBuilder sb;
+            bool Share;
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryLastBoxCreated);
+
+                string sql = sb.ToString();
+
+                using (SqlCommand command3 = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command3.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Share = (bool)reader["Share"];
+                            MainViewModel.GetInstance().User.Share = Share;
+                        }
+                    }
+                    connection.Close();
+                }
             }
         }
     }
