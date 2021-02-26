@@ -117,7 +117,7 @@
                             <TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"/>
                         </Label.GestureRecognizers>
                     </Label>
-                    <StackLayout
+                    <!--<StackLayout
                             HorizontalOptions = "Center"
                             Orientation = "Horizontal"
                             VerticalOptions = "EndAndExpand">
@@ -128,7 +128,7 @@
                                 <TapGestureRecognizer Command = "{Binding LoginFacebookComand}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                        <!--<Frame 
+                        <Frame 
                             OutlineColor = "Transparent">
                             <Image
                             Source = "twitter1"
@@ -136,8 +136,8 @@
                         </Frame>
                         <Image
                             Source = "instagram1"
-                            WidthRequest = "45"/>-->
-                    </StackLayout>
+                            WidthRequest = "45"/>
+                    </StackLayout>-->
                     <ActivityIndicator
                         IsRunning = "{Binding IsRunning, Mode=TwoWay}"
                         VerticalOptions = "CenterAndExpand">

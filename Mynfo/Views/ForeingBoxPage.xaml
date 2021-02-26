@@ -28,9 +28,10 @@
                 <Grid>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="60"/>
-                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -38,37 +39,105 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <!-- Nombre e imagen del usuario foraneo-->
+                        <!-- Información del usuario foraneo-->
                         <StackLayout
-                                Grid.Row="1"
-                                Grid.ColumnSpan = "3"
-                                HorizontalOptions="Start">
-                            <Label 
-                                FontAttributes="Bold"
-                                FontSize = "25"
-                                HorizontalTextAlignment="Center"
-                                HorizontalOptions = "Center"
-                                Padding="0,-5,0,0"
-                                TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                VerticalOptions="Start"
-                                x:Name="ForeignUserName" />
+                            Grid.Row="0"
+                            Grid.RowSpan="4"
+                            Grid.Column="0"
+                            Grid.ColumnSpan = "3"
+                            HorizontalOptions="CenterAndExpand">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="20*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <controls:CircleImage
+                                    Grid.Row="0"
+                                    Grid.RowSpan="5"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Margin="0,5,0,0"
+                                    HeightRequest="100"
+                                    WidthRequest="100"
+                                    x:Name="ForeignUserImage">
+                                </controls:CircleImage>
+                                <Label 
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="3"
+                                    Grid.Row="0"
+                                    FontAttributes="Bold"
+                                    FontSize = "25"
+                                    HorizontalTextAlignment="Start"
+                                    Padding="0,-5,0,0"
+                                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    VerticalOptions="Start"
+                                    x:Name="ForeignUserName"/>
+                                <Label 
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="3"
+                                    Grid.Row="1"
+                                    FontSize = "15"
+                                    HorizontalTextAlignment="Start"
+                                    VerticalTextAlignment="Center"
+                                    Padding="0,-5,0,0"
+                                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    VerticalOptions="Start"
+                                    x:Name="ForeignAge"/>
+                                <Label 
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="3"
+                                    Grid.Row="2"
+                                    FontSize = "15"
+                                    HorizontalTextAlignment="Start"
+                                    VerticalTextAlignment="Center"
+                                    Padding="0,-5,0,0"
+                                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    VerticalOptions="Start"
+                                    x:Name="ForeignLocation"/>
+                                <Label 
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="3"
+                                    Grid.Row="3"
+                                    FontSize = "15"
+                                    HorizontalTextAlignment="Start"
+                                    VerticalTextAlignment="Center"
+                                    Padding="0,-5,0,0"
+                                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    VerticalOptions="Start"
+                                    x:Name="ForeignJob"/>
+                                <Label 
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="3"
+                                    Grid.Row="4"
+                                    FontSize = "15"
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="End"
+                                    VerticalTextAlignment="Center"
+                                    Padding="0,-5,0,0"
+                                    TextColor = "#FF5521"
+                                    VerticalOptions="Start"
+                                    x:Name="ForeignConnection"/>
+                            </Grid>
                             <Line
                                 HeightRequest="1"
-                                BackgroundColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                BackgroundColor="#FF5521"
                                 Margin="0,0,0,40"/>
                         </StackLayout>
-                        <controls:CircleImage
-                            Grid.Row="2"
-                            Grid.ColumnSpan="3"
-                            Margin="0,5,0,0"
-                            HeightRequest="100"
-                            WidthRequest="100"
-                            x:Name="ForeignUserImage">
-                        </controls:CircleImage>
+
                         <!-- Listado de perfiles -->
                         <CollectionView 
                             ItemsSource="{Binding ProfilesF}"
-                            Grid.Row="3"
+                            Grid.Row="4"
                             Grid.ColumnSpan="3"
                             SelectionMode="Single"
                             SelectionChanged="OnCollectionViewSelectionChanged">
