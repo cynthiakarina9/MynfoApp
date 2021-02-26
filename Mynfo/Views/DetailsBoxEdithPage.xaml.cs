@@ -830,6 +830,7 @@
                 Name = NameEntry.Text,
                 UserId = Box.UserId,
                 Time = Box.Time,
+                ColorBox = Box.ColorBox
             };
             await MainViewModel.GetInstance().DetailsBoxEdith.EdithBox(box3);
 
