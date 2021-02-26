@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.HomePage"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
@@ -66,14 +67,15 @@
                                 Text="{Binding User.FirstName}"
                                 TextColor="{StaticResource MainColor}"/>
                             <StackLayout
-                                Orientation="Horizontal">
+                                Orientation="Horizontal"
+                                IsVisible="{Binding EdadLabel}">
                                 <Label
                                     FontSize="15"
                                     Text="{Binding User.Edad}"
                                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                                 <Label
                                     FontSize="15"
-                                    Text=" Años"
+                                    Text="{i18n:Translate Anios}"
                                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                             </StackLayout>
                             <Label 
@@ -92,7 +94,7 @@
                                 <Label
                                     FontAttributes="Bold"
                                     FontSize="18"
-                                    Text="Conexions: "
+                                    Text="{i18n:Translate ViewsLabel}"
                                     TextColor="{StaticResource MainColor}"/>
                                 <Label 
                                     FontSize="15"
@@ -108,6 +110,7 @@
                             BackgroundColor="{AppThemeBinding Light=#d8dce3, Dark={StaticResource Menu_BackgroundColorDark}}"
                             Margin="30,0,30,40"/>
                     </Grid>
+                    <!--Box predeterminada-->
                     <CollectionView 
                         ItemsSource="{Binding Box}"
                         Grid.Row="1"
@@ -152,6 +155,7 @@
                             </ContentView>
                         </CollectionView.EmptyView>
                     </CollectionView>
+                    <!--Boxes no predeterminadas-->
                     <CollectionView 
                         ItemsSource="{Binding BoxNoDefault}"
                         Grid.Row="2"                       
@@ -194,6 +198,7 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+                    <!--Carga-->
                     <ActivityIndicator
                         Grid.RowSpan="2"
                         IsRunning="{Binding IsRunning}"
@@ -202,6 +207,7 @@
                     </ActivityIndicator>
                 </Grid>
             </Grid>
+            <!--Botón de más boxes-->
             <Grid
                 Grid.Row="0"
                 HorizontalOptions="CenterAndExpand"

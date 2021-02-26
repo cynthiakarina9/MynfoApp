@@ -49,6 +49,9 @@
         {
             switch (Name)
             {
+                case "All":
+                    GitImage = "facebook.gif";
+                    break;
                 case "Facebook":
                     GitImage = "facebook.gif";
                     break;

@@ -61,7 +61,7 @@
                             HorizontalTextAlignment="Center"
                             IsReadOnly="True"
                             Text="{Binding Box.Name, Mode=TwoWay}"
-                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            TextColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource Dark_FontColor}}"
                             BackgroundColor="Transparent"
                             VerticalOptions="Center"
                             WidthRequest="200"

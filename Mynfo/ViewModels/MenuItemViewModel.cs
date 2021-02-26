@@ -8,6 +8,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Xamarin.Essentials;
+    using Rg.Plugins.Popup.Services;
 
     public class MenuItemViewModel : BaseViewModel
     {
@@ -84,8 +85,8 @@
 
             else if (this.PageName == "Help")
             {
-                MainViewModel.GetInstance().TAG = new TAGViewModel();
-                await App.Navigator.PushAsync(new TAGPage());
+                MainViewModel.GetInstance().GIF = new GifViewModel("All");
+                await PopupNavigation.Instance.PushAsync(new GifPage());
             }
 
             else if (this.PageName == "Comments")

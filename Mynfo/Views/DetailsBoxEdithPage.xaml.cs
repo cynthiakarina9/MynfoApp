@@ -161,41 +161,23 @@
             boxLocal.UserTypeId = MainViewModel.GetInstance().User.UserTypeId;
 
             //Definir color de fondo con respecto a si la box es predeterminada
-            if (BoxDefault == true)
+            if (currentTheme == OSAppTheme.Dark)
             {
-                BackG.BackgroundColor = Color.FromHex("#FEBDA8");
-                bxBtnHome.BackgroundColor = Color.FromHex("#FEBDA8");
-                BxSaveName.BackgroundColor = Color.FromHex("#FEBDA8");
-                BxBtnDelete.BackgroundColor = Color.FromHex("#FEBDA8");
-                if (currentTheme == OSAppTheme.Dark)
-                {
-                    DeleteButton.Source = "trash3";
-                }
-                else
-                {
-                    DeleteButton.Source = "trash";
-                }
+                BackG.BackgroundColor = Color.FromHex("#222b3a");
+                bxBtnHome.BackgroundColor = Color.FromHex("#222b3a");
+                BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
+                DeleteButton.Source = "trash3";
             }
             else
             {
-                if (currentTheme == OSAppTheme.Dark)
-                {
-                    BackG.BackgroundColor = Color.FromHex("#7891bb");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#7891bb");
-                    BxSaveName.BackgroundColor = Color.FromHex("#7891bb");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#7891bb");
-                    DeleteButton.Source = "trash2";
-                }
-                else
-                {
-                    BackG.BackgroundColor = Color.FromHex("#FFFFFF");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
-                    BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
-                    DeleteButton.Source = "trash2";
-                }
-                
+                BackG.BackgroundColor = Color.FromHex("#FFFFFF");
+                bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
+                BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
+                DeleteButton.Source = "trash2";
             }
+            
 
 
             //Acción de boton de borrado
@@ -1053,11 +1035,11 @@
             Dictionary<string, string> nameToColor = new Dictionary<string, string>
             {
                 { "Verde", "#12947f" }, { "Verde Agua", "#2fc4b2" },
-                { "Azul oscuro", "#404a7f" }, { "Anaranjado", "#ff6633" },
+                { "Azul oscuro", "#404a7f" }, { "Anaranjado", "#FF5521" },
                 { "Azul claro", "#508ed8" }, { "Amarillo", "#d89a00" },
                 { "Fuchsia", "#ff0033" }, { "Verde Oscuro", "#008445" },
                 { "Morado", "#7f416a" }, { "Lila ", "#6f50ff" },
-                //{ "Purple", Color.Purple }, { "Red", Color.Red },
+                { "Rojo", "#c1271f" }, { "Rosa", "ce7d7d" },
                 //{ "Silver", Color.Silver }, { "Teal", Color.Teal },
                 //{ "White", Color.White }, { "Yellow", Color.Yellow }
             };
@@ -1122,7 +1104,7 @@
                                 ColorH = "#404a7f";
                                 break;
                             case "Anaranjado":
-                                ColorH = "#ff6633";
+                                ColorH = "#FF5521";
                                 break;
                             case "Azul claro":
                                 ColorH = "#508ed8";
@@ -1141,6 +1123,12 @@
                                 break;
                             case "Lila ":
                                 ColorH = "#6f50ff";
+                                break;
+                            case "Rojo ":
+                                ColorH = "#c1271f";
+                                break;
+                            case "Rosa ":
+                                ColorH = "#ce7d7d";
                                 break;
                             default:
                                 break;

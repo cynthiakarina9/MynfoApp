@@ -124,72 +124,35 @@
             boxLocal.UserTypeId = MainViewModel.GetInstance().User.UserTypeId;
 
             //Definir color de fondo con respecto a si la box es predeterminada
-            if (_Box.BoxDefault == true)
+            if (currentTheme == OSAppTheme.Light)
             {
-                if (currentTheme == OSAppTheme.Light)
+                if (_Box.ColorBox != null)
                 {
-                    if (_Box.ColorBox != null)
-                    {
-                        FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
-                    }
-                    else
-                    {
-                        FrameB.BackgroundColor = Color.FromHex("#c6c6c6");
-                    }
-                    BackG.BackgroundColor = Color.FromHex("#FFFFFF");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
-                    BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
+                    FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
                 }
                 else
                 {
-                    if (_Box.ColorBox != null)
-                    {
-                        FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
-                    }
-                    else
-                    {
-                        FrameB.BackgroundColor = Color.FromHex("#a4a4a4");
-                    }
-                    BackG.BackgroundColor = Color.FromHex("#222b3a");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#222b3a");
-                    BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
+                    FrameB.BackgroundColor = Color.FromHex("#c6c6c6");
                 }
-
+                BackG.BackgroundColor = Color.FromHex("#FFFFFF");
+                bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
+                BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
             }
             else
             {
-                if (currentTheme == OSAppTheme.Light)
+                if (_Box.ColorBox != null)
                 {
-                    if (_Box.ColorBox != null)
-                    {
-                        FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
-                    }
-                    else
-                    {
-                        FrameB.BackgroundColor = Color.FromHex("#c6c6c6");
-                    }
-                    BackG.BackgroundColor = Color.FromHex("#FFFFFF");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
-                    BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
+                    FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
                 }
                 else
                 {
-                    if (_Box.ColorBox != null)
-                    {
-                        FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
-                    }
-                    else
-                    {
-                        FrameB.BackgroundColor = Color.FromHex("#a4a4a4");
-                    }
-                    BackG.BackgroundColor = Color.FromHex("#222b3a");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#222b3a");
-                    BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
+                    FrameB.BackgroundColor = Color.FromHex("#a4a4a4");
                 }
+                BackG.BackgroundColor = Color.FromHex("#222b3a");
+                bxBtnHome.BackgroundColor = Color.FromHex("#222b3a");
+                BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
             }
 
             //Tamaño de etiqueta de box predeterminada
@@ -229,9 +192,9 @@
                 }
                 else
                 {
-                    BxDefaultCheckBox.Color = Color.FromHex("#222b3a");
-                    EdithButton.Source = "edit1";
-                    BoxProfiles.Source = "plusn";
+                    BxDefaultCheckBox.Color = Color.FromHex("FF5521");
+                    EdithButton.Source = "edit2";
+                    BoxProfiles.Source = "Plus";
                 }
             }
             else

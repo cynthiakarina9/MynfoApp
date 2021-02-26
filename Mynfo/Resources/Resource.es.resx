@@ -627,6 +627,12 @@
   <data name="AgePlaceHolder" xml:space="preserve">
     <value>21 años</value>
   </data>
+  <data name="Anios" xml:space="preserve">
+    <value> años</value>
+  </data>
+  <data name="HelpLabel" xml:space="preserve">
+    <value>¿Cómo comparto mis datos?</value>
+  </data>
   <data name="LocationLabel" xml:space="preserve">
     <value>Ubicación:</value>
   </data>
@@ -638,5 +644,8 @@
   </data>
   <data name="OccupationPlaceHolder" xml:space="preserve">
     <value>Ingeniero en tecnologías de la información.</value>
+  </data>
+  <data name="ViewsLabel" xml:space="preserve">
+    <value>Conexiones: </value>
   </data>
 </root>
