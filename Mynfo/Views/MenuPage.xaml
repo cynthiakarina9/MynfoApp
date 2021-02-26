@@ -22,7 +22,7 @@
                 Padding = "5"
                 Text = "{Binding User.FullName, StringFormat = '{0}'}"
                 TextColor = "{StaticResource MainColor}" />
-            <!--<StackLayout
+            <StackLayout
                 Orientation="Horizontal"
                 VerticalOptions = "Center"
                 HorizontalOptions = "CenterAndExpand">

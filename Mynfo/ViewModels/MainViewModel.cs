@@ -428,9 +428,9 @@
             });
             this.Menus.Add(new MenuItemViewModel
             {
-                Icon = "icon_tag",
+                Icon = "question",
                 PageName = "Help",
-                Title = "Help",
+                Title = Languages.HelpLabel,
             });
             this.Menus.Add(new MenuItemViewModel
             {

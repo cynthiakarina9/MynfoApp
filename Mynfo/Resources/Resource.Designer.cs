@@ -178,6 +178,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a  years old.
+        /// </summary>
+        public static string Anios {
+            get {
+                return ResourceManager.GetString("Anios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Area:.
         /// </summary>
         public static string Area {
@@ -768,6 +777,15 @@ namespace Mynfo.Resources {
         public static string HaveWhats {
             get {
                 return ResourceManager.GetString("HaveWhats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a How do I share my information?.
+        /// </summary>
+        public static string HelpLabel {
+            get {
+                return ResourceManager.GetString("HelpLabel", resourceCulture);
             }
         }
         
@@ -1587,6 +1605,15 @@ namespace Mynfo.Resources {
         public static string Value {
             get {
                 return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Connections: .
+        /// </summary>
+        public static string ViewsLabel {
+            get {
+                return ResourceManager.GetString("ViewsLabel", resourceCulture);
             }
         }
         

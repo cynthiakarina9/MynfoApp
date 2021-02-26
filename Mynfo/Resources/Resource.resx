@@ -639,4 +639,13 @@
   <data name="OccupationPlaceHolder" xml:space="preserve">
     <value>Information Technology Engineer.</value>
   </data>
+  <data name="Anios" xml:space="preserve">
+    <value> years old</value>
+  </data>
+  <data name="HelpLabel" xml:space="preserve">
+    <value>How do I share my information?</value>
+  </data>
+  <data name="ViewsLabel" xml:space="preserve">
+    <value>Connections: </value>
+  </data>
 </root>

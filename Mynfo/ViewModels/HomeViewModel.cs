@@ -27,6 +27,7 @@
         private bool isNull;
         private bool moreOne;
         private ImageSource imageSource;
+        private bool edadLabel;
         #endregion
 
         #region Properties
@@ -96,6 +97,11 @@
             get { return this.imageSource; }
             set { SetValue(ref this.imageSource, value); }
         }
+        public bool EdadLabel
+        {
+            get { return this.edadLabel; }
+            set { SetValue(ref this.edadLabel, value); }
+        }
         #endregion
 
         #region Contructor
@@ -114,6 +120,11 @@
             {
                 this.ImageSource = this.User.ImageFullPath;
             }
+            if (User.Edad == 0)
+            {
+                EdadLabel = false;
+            }
+            EdadLabel = true;
             GetBoxDefault();
             GetBoxNoDefault();
         }

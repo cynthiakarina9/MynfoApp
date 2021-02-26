@@ -728,5 +728,17 @@
         {
             get { return Resource.OccupationPlaceHolder; }
         }
+        public static string Anios
+        {
+            get { return Resource.Anios; }
+        }
+        public static string ViewsLabel
+        {
+            get { return Resource.ViewsLabel; }
+        }
+        public static string HelpLabel
+        {
+            get { return Resource.HelpLabel; }
+        }
     }
 }

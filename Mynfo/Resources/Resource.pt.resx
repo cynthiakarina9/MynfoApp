@@ -640,4 +640,13 @@ Você deve inserir um url</value>
   <data name="OccupationPlaceHolder" xml:space="preserve">
     <value>Engenheiro de Tecnologia da Informação.</value>
   </data>
+  <data name="Anios" xml:space="preserve">
+    <value> anos</value>
+  </data>
+  <data name="HelpLabel" xml:space="preserve">
+    <value>Como faço para compartilhar meus dados?</value>
+  </data>
+  <data name="ViewsLabel" xml:space="preserve">
+    <value>Conexões: </value>
+  </data>
 </root>
