@@ -43,7 +43,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <!--Imagen de perfil-->
+                        <!--Imagen de perfil -->
                         <controls:CircleImage 
                             BorderColor="{StaticResource MainColor}"
                             BorderThickness="3"
