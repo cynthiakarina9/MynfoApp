@@ -806,6 +806,44 @@
                 return null;
             }
         }
+        public async Task<int> GetBoxCount(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id)
+        {
+            try
+            {
+                Box model = new Box()
+                {
+                    UserId = id
+                };
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format(
+                    "{0}{1}",
+                    servicePrefix,
+                    controller);
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return 0;
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<int>(result);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
         public async Task<Response> Get<T>(
             string urlBase,
             string servicePrefix,

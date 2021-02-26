@@ -6,7 +6,6 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Rg.Plugins.Popup.Services;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
     using System.Windows.Input;
@@ -28,6 +27,7 @@
         private bool moreOne;
         private ImageSource imageSource;
         private bool edadLabel;
+        private bool visibleButton;
         #endregion
 
         #region Properties
@@ -86,7 +86,6 @@
             }
         }
         public Box selectedItem { get; set; }
-
         public UserLocal User
         {
             get;
@@ -101,6 +100,11 @@
         {
             get { return this.edadLabel; }
             set { SetValue(ref this.edadLabel, value); }
+        }
+        public bool VisibleButton
+        {
+            get { return this.visibleButton; }
+            set { SetValue(ref this.visibleButton, value); }
         }
         #endregion
 
@@ -125,6 +129,7 @@
                 EdadLabel = false;
             }
             EdadLabel = true;
+            GetBoxCount();
             GetBoxDefault();
             GetBoxNoDefault();
         }
@@ -207,7 +212,6 @@
             this.IsRunning = false;
             return Box;
         }
-
 
         #region Listas
         public void AddList(Box _Boxes)
@@ -299,6 +303,25 @@
             await PopupNavigation.Instance.PushAsync(new DetailBoxPopUpPage(_Box));
         }
 
+        public async Task<bool> GetBoxCount()
+        {
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var BoxCount = await this.apiService.GetBoxCount(
+                apiSecurity,
+                "/api",
+                "/Boxes/GetBoxCount",
+                MainViewModel.GetInstance().User.UserId);
+            VisibleButton = false;
+            if (BoxCount <4)
+            {
+                VisibleButton = true;
+            }
+            else
+            {
+                VisibleButton = false;
+            }
+            return VisibleButton;
+        }
         #endregion
 
         #region Commands

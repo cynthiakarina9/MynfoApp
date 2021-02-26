@@ -217,11 +217,11 @@
                     Clicked = "CreateBox_Clicked"
                     HeightRequest = "60"
                     HorizontalOptions ="CenterAndExpand"
+                    IsVisible="{Binding VisibleButton}"
                     Margin="15"
                     Source = "Plus"
                     VerticalOptions="End"
-                    WidthRequest = "60"
-                    x:Name="CreateBoxBtn"/>
+                    WidthRequest = "60"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

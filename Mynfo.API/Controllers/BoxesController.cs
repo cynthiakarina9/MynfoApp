@@ -112,7 +112,30 @@
 
             return box;
         }
+        // GET: api/Boxes/GetBoxCount/1
+        [HttpPost]
+        [Route("GetBoxCount")]
+        [ResponseType(typeof(Box))]
+        public async Task<int> GetBoxCount(JObject form)
+        {
+            int id;
+            dynamic jsonObject = form;
+            try
+            {
+                id = jsonObject.UserId;
+            }
+            catch
+            {
+                return 0;
+            }
+            var box = GetBoxes().Where(u => u.UserId == id).ToList();
+            if (box.Count == 0)
+            {
+                return 0;
+            }
 
+            return box.Count();
+        }
         //// PUT: api/Boxes/5
         //[ResponseType(typeof(void))]
         //public async Task<IHttpActionResult> PutBox(int id, Box box)
