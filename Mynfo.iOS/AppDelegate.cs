@@ -142,15 +142,18 @@
                 Console.WriteLine(e);
             }            
              
-            session.Dispose();
             user_id_tag = user_id.ToString();
             if (write_tag.modo_escritura == true)
             {
-                Thread.Sleep(8000);
+                session.InvalidateSession();
+                session.Dispose();
+                Thread.Sleep(7000);
                 write_tag.modo_escritura = false;
                 write_tag myobject = new write_tag();
                 myobject.ScanWriteAsync();
             }
+            session.InvalidateSession();           
+            Session.InvalidateSession();
         }        
              
         public void DidInvalidate(NFCNdefReaderSession session, NSError error)
@@ -227,8 +230,6 @@
 
             //Return the tag content.
             return tagContent;
-        }
-
-        
+        }        
     }
 }

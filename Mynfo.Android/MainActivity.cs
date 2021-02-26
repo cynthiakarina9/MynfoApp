@@ -137,8 +137,10 @@
             base.OnResume();            
             try 
             {
+
                 if (TAGPage.write_nfc == true)
-                {
+                {                    
+                    //PopupNavigation.Instance.PopAsync();
                     PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
                     int user_id = 0;
                     if (NfcAdapter.ActionNdefDiscovered.Equals(Intent.Action))
@@ -192,14 +194,17 @@
                             } 
                         }
                         TAGPage.write_nfc = false;
-                        System.Threading.Tasks.Task task = App.DisplayAlertAsync("Tag escrito correctamente");
-                        var duration = TimeSpan.FromMilliseconds(1500);
+                        
+                        var duration = TimeSpan.FromMilliseconds(2000);
                         Vibration.Vibrate(duration);
                     }
                     else 
                     {
                         System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
                     }
+                    PopupNavigation.Instance.PopAsync();
+                    PopupNavigation.Instance.PushAsync(new Stickerconfig());
+                    Thread.Sleep(4000);
                     PopupNavigation.Instance.PopAsync();
                 }
                 else 
