@@ -622,4 +622,31 @@ Você deve inserir um url</value>
   <data name="ReadyToScan" xml:space="preserve">
     <value>Pronto para escanear.</value>
   </data>
+  <data name="AgeLabel" xml:space="preserve">
+    <value>Idade:</value>
+  </data>
+  <data name="AgePlaceHolder" xml:space="preserve">
+    <value>21 anos</value>
+  </data>
+  <data name="LocationLabel" xml:space="preserve">
+    <value>Localização:</value>
+  </data>
+  <data name="LocationPlaceHolder" xml:space="preserve">
+    <value>Vila Mariana – Región Sur – São Paulo.</value>
+  </data>
+  <data name="OccupationLabel" xml:space="preserve">
+    <value>Ocupação:</value>
+  </data>
+  <data name="OccupationPlaceHolder" xml:space="preserve">
+    <value>Engenheiro de Tecnologia da Informação.</value>
+  </data>
+  <data name="Anios" xml:space="preserve">
+    <value> anos</value>
+  </data>
+  <data name="HelpLabel" xml:space="preserve">
+    <value>Como faço para compartilhar meus dados?</value>
+  </data>
+  <data name="ViewsLabel" xml:space="preserve">
+    <value>Conexões: </value>
+  </data>
 </root>

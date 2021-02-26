@@ -26,6 +26,8 @@
         private bool isRunning;
         private bool isNull;
         private bool moreOne;
+        private ImageSource imageSource;
+        private bool edadLabel;
         #endregion
 
         #region Properties
@@ -84,6 +86,22 @@
             }
         }
         public Box selectedItem { get; set; }
+
+        public UserLocal User
+        {
+            get;
+            set;
+        }
+        public ImageSource ImageSource
+        {
+            get { return this.imageSource; }
+            set { SetValue(ref this.imageSource, value); }
+        }
+        public bool EdadLabel
+        {
+            get { return this.edadLabel; }
+            set { SetValue(ref this.edadLabel, value); }
+        }
         #endregion
 
         #region Contructor
@@ -91,7 +109,22 @@
         {
             apiService = new ApiService();
             this.IsRunning = false;
-            
+            this.User = MainViewModel.GetInstance().User;
+            if (this.User.ImageFullPath == "noimage" 
+                || this.User.ImageFullPath == string.Empty 
+                || this.User.ImageFullPath == null)
+            {
+                this.ImageSource = "no_image";
+            }
+            else
+            {
+                this.ImageSource = this.User.ImageFullPath;
+            }
+            if (User.Edad == 0)
+            {
+                EdadLabel = false;
+            }
+            EdadLabel = true;
             GetBoxDefault();
             GetBoxNoDefault();
         }
@@ -100,6 +133,7 @@
         #region Methods
         public async Task<ObservableCollection<Box>> GetBoxDefault()
         {
+            this.IsRunning = true;
             this.IsNull = false;
             Box = new ObservableCollection<Box>();
             var connection = await this.apiService.CheckConnection();
@@ -124,10 +158,11 @@
 
             if(BoxList != null)
             {
-                Box.Add(BoxList); 
+                Box.Add(BoxList);
+                IsNull = false;
             }
             
-            if(Box.Count != 0)
+            if(Box.Count == 0)
             {
                 IsNull = true;
             }
@@ -137,6 +172,7 @@
 
         public async Task<ObservableCollection<Box>> GetBoxNoDefault()
         {
+            this.IsRunning = true;
             selectedItem = null;
             this.MoreOne = false;
             BoxNoDefault = new ObservableCollection<Box>();
@@ -176,7 +212,14 @@
         #region Listas
         public void AddList(Box _Boxes)
         {
-            BoxNoDefault.Add(_Boxes);
+            if(_Boxes.BoxDefault == false)
+            {
+                BoxNoDefault.Add(_Boxes);
+            }
+            else
+            {
+                Box.Add(_Boxes);
+            }
         }
 
         public void RemoveList(Box _Boxes)

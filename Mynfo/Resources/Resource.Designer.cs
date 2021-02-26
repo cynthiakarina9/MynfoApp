@@ -124,6 +124,24 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Age:.
+        /// </summary>
+        public static string AgeLabel {
+            get {
+                return ResourceManager.GetString("AgeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 21 years old.
+        /// </summary>
+        public static string AgePlaceHolder {
+            get {
+                return ResourceManager.GetString("AgePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a All the Boxes that you configure and manipulate from now on will be reflected in your sticker..
         /// </summary>
         public static string AllConfigSticker {
@@ -156,6 +174,15 @@ namespace Mynfo.Resources {
         public static string AndStick {
             get {
                 return ResourceManager.GetString("AndStick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a  years old.
+        /// </summary>
+        public static string Anios {
+            get {
+                return ResourceManager.GetString("Anios", resourceCulture);
             }
         }
         
@@ -754,6 +781,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a How do I share my information?.
+        /// </summary>
+        public static string HelpLabel {
+            get {
+                return ResourceManager.GetString("HelpLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Hold your Phone near the sticker..
         /// </summary>
         public static string HoldYourPhone {
@@ -840,6 +876,24 @@ namespace Mynfo.Resources {
         public static string LinkValidation {
             get {
                 return ResourceManager.GetString("LinkValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Location:.
+        /// </summary>
+        public static string LocationLabel {
+            get {
+                return ResourceManager.GetString("LocationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Manhattan, Nueva York, EE. UU..
+        /// </summary>
+        public static string LocationPlaceHolder {
+            get {
+                return ResourceManager.GetString("LocationPlaceHolder", resourceCulture);
             }
         }
         
@@ -1083,6 +1137,24 @@ namespace Mynfo.Resources {
         public static string NumericCode {
             get {
                 return ResourceManager.GetString("NumericCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Occupation:.
+        /// </summary>
+        public static string OccupationLabel {
+            get {
+                return ResourceManager.GetString("OccupationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Information Technology Engineer..
+        /// </summary>
+        public static string OccupationPlaceHolder {
+            get {
+                return ResourceManager.GetString("OccupationPlaceHolder", resourceCulture);
             }
         }
         
@@ -1533,6 +1605,15 @@ namespace Mynfo.Resources {
         public static string Value {
             get {
                 return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Connections: .
+        /// </summary>
+        public static string ViewsLabel {
+            get {
+                return ResourceManager.GetString("ViewsLabel", resourceCulture);
             }
         }
         

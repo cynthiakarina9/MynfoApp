@@ -73,6 +73,7 @@ namespace Mynfo.Services
             int user_I = user_id;
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             User box_detail = new User();
+            AddViewToUser(user_I);
             box_detail = await apiService.GetUserId(apiSecurity,
                                                 "/api",
                                                 "/Users",
@@ -104,8 +105,11 @@ namespace Mynfo.Services
                     ImagePath = box_detail.ImagePath,
                     UserTypeId = box_detail.UserTypeId,
                     FirstName = box_detail.FirstName,
-                    LastName = box_detail.LastName
-
+                    LastName = box_detail.LastName,
+                    Edad = box_detail.Edad,
+                    Ubicacion = box_detail.Ubicacion,
+                    Ocupacion = box_detail.Ocupacion,
+                    Conexiones = box_detail.Conexiones
                 };
 
                 //Insertar la box foranea
@@ -117,6 +121,7 @@ namespace Mynfo.Services
             else
             {
                 foreingBox = A;
+                foreingBox.Conexiones = box_detail.Conexiones;
             }
             try
             {
@@ -301,6 +306,7 @@ namespace Mynfo.Services
                     {
                         //App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
                         MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(foreingBox);
+                        App.Navigator.PopAsync();
                         PopupNavigation.Instance.PushAsync(new ForeingBoxPage(foreingBox, true));
                         if (A == null)
                         {
@@ -312,6 +318,27 @@ namespace Mynfo.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+        }
+
+        public static void AddViewToUser(int _UserId)
+        {
+            System.Text.StringBuilder sb;
+            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string queryAddView = "UPDATE dbo.Users SET Conexiones = Conexiones + 1 WHERE dbo.Users.UserId = " + _UserId;
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryAddView);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+                
             }
         }
     }

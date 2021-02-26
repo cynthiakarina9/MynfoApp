@@ -20,6 +20,7 @@
 
         #region Attributes
         private Box box;
+        private Color colorB;
         private bool isRunning;
         private ObservableCollection<ProfileEmail> profileEmail;
         private ObservableCollection<ProfilePhone> profilePhone;
@@ -39,6 +40,11 @@
         {
             get { return this.box; }
             set { SetValue(ref this.box, value); }
+        }
+        public Color ColorB
+        {
+            get { return this.colorB; }
+            set { SetValue(ref this.colorB, value); }
         }
         public ObservableCollection<ProfileEmail> ProfileEmail
         {
@@ -92,8 +98,10 @@
         public DetailsBoxViewModel(Box _Box)
         {
             apiService = new ApiService();
-            Box = new Box();
-            GetBoxe(_Box.BoxId);
+            
+            var B = _Box;
+            GetBoxe(B.BoxId);
+            GetColor(_Box.BoxId);
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
             GetListEmail(_Box.BoxId);
             GetListPhone(_Box.BoxId);
@@ -106,6 +114,7 @@
         public async Task<Box> GetBoxe(int _BoxId)
         {
             this.IsRunning = true;
+            Box = new Box();
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             Box = await this.apiService.GetBox(
                 apiSecurity,
@@ -114,6 +123,18 @@
                 _BoxId);
              
             return Box;
+        }
+        public async Task<Color> GetColor(int _BoxId)
+        {
+            this.IsRunning = true;
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            Box = await this.apiService.GetBox(
+                apiSecurity,
+                "/api",
+                "/Boxes",
+                _BoxId);
+            ColorB = Color.FromHex(Box.ColorBox);
+            return ColorB;
         }
 
         #region Email

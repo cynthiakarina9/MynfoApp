@@ -5,10 +5,6 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
-    using Rg.Plugins.Popup.Services;
-    using System;
-    using System.Text;
-    using System.Threading.Tasks;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
     [XamlCompilation(XamlCompilationOptions.Compile)]

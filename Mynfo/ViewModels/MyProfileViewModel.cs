@@ -56,7 +56,9 @@
             this.apiService = new ApiService();
 
             this.User = MainViewModel.GetInstance().User;
-            if(this.User.ImageFullPath == "noimage")
+            if (this.User.ImageFullPath == "noimage"
+                || this.User.ImageFullPath == string.Empty
+                || this.User.ImageFullPath == null)
             {
                 this.ImageSource = "no_image";
             }

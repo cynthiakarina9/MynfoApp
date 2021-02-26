@@ -23,6 +23,14 @@
 
         public string LastName { get; set; }
 
+        public int Edad { get; set; }
+
+        public string Ubicacion { get; set; }
+
+        public string Ocupacion { get; set; }
+
+        public int Conexiones { get; set; }
+
         public string ImageFullPath
         {
             get

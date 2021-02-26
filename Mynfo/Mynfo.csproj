@@ -89,6 +89,9 @@
     <Compile Update="Views\HomePage3.xaml.cs">
       <DependentUpon>HomePage3.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\MasterPageIOS.xaml.cs">
+      <DependentUpon>MasterPageIOS.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PupPopPage.xaml.cs">
       <DependentUpon>PupPopPage.xaml</DependentUpon>
     </Compile>

@@ -6,6 +6,7 @@
     using Mynfo.ViewModels;
     using Rg.Plugins.Popup.Extensions;
     using Rg.Plugins.Popup.Services;
+    using SkiaSharp.Views.Forms;
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
@@ -123,40 +124,41 @@
             boxLocal.UserTypeId = MainViewModel.GetInstance().User.UserTypeId;
 
             //Definir color de fondo con respecto a si la box es predeterminada
-            if (_Box.BoxDefault == true)
+            if (currentTheme == OSAppTheme.Light)
             {
-                if (currentTheme == OSAppTheme.Light)
+                if (_Box.ColorBox != null)
                 {
-                    BackG.BackgroundColor = Color.FromHex("#ff6c45");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#ff6c45");
-                    BxSaveName.BackgroundColor = Color.FromHex("#ff6c45");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#ff6c45");
+                    FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
                 }
                 else
                 {
-                    BackG.BackgroundColor = Color.FromHex("#FF5521");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#FF5521");
-                    BxSaveName.BackgroundColor = Color.FromHex("#FF5521");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#FF5521");
+                    FrameB.BackgroundColor = Color.FromHex("#c6c6c6");
                 }
-
+                BackG.BackgroundColor = Color.FromHex("#FFFFFF");
+                bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
+                BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
             }
             else
             {
-                if (currentTheme == OSAppTheme.Light)
+                if (_Box.ColorBox != null)
                 {
-                    BackG.BackgroundColor = Color.FromHex("#FFFFFF");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#FFFFFF");
-                    BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
+                    FrameB.BackgroundColor = Color.FromHex(_Box.ColorBox);
                 }
                 else
                 {
-                    BackG.BackgroundColor = Color.FromHex("#222b3a");
-                    bxBtnHome.BackgroundColor = Color.FromHex("#222b3a");
-                    BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
-                    BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
+                    FrameB.BackgroundColor = Color.FromHex("#a4a4a4");
                 }
+                BackG.BackgroundColor = Color.FromHex("#222b3a");
+                bxBtnHome.BackgroundColor = Color.FromHex("#222b3a");
+                BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
+            }
+
+            //Tamaño de etiqueta de box predeterminada
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+            {
+                defaultLabel.FontSize = 13;
             }
 
 
@@ -168,28 +170,49 @@
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
+            BxDefaultCheckBox.VerticalOptions = LayoutOptions.Start;
+            if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+            {
+                Thickness thick = new Thickness(20, -6, 0, 0);
+                BoxDefaultCheckBox.Margin = thick;
+            }
+            else if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+            {
+                Thickness thick = new Thickness(20, 0, 0, 0);
+                BoxDefaultCheckBox.Margin = thick;
+            }
             if (BoxDefault == true)
             {
                 BxDefaultCheckBox.IsEnabled = false;
                 if (currentTheme == OSAppTheme.Dark)
                 {
                     BxDefaultCheckBox.Color = Color.White;
-                    EdithButton.Source = "edit1";
+                    EdithButton.Source = "edit3";
                     BoxProfiles.Source = "plusb";
                 }
                 else
                 {
-                    BxDefaultCheckBox.Color = Color.FromHex("#222b3a");
-                    EdithButton.Source = "edit1";
-                    BoxProfiles.Source = "plusn";
+                    BxDefaultCheckBox.Color = Color.FromHex("FF5521");
+                    EdithButton.Source = "edit2";
+                    BoxProfiles.Source = "Plus";
                 }
             }
             else
             {
-                BxDefaultCheckBox.IsEnabled = true;
-                BxDefaultCheckBox.Color = Color.FromHex("FF5521");
-                EdithButton.Source = "edit2";
-                BoxProfiles.Source = "Plus";
+                if (currentTheme == OSAppTheme.Dark)
+                {
+                    BxDefaultCheckBox.IsEnabled = true;
+                    BxDefaultCheckBox.Color = Color.FromHex("FFFFFF");
+                    EdithButton.Source = "edit3";
+                    BoxProfiles.Source = "plusb";
+                }
+                else
+                {
+                    BxDefaultCheckBox.IsEnabled = true;
+                    BxDefaultCheckBox.Color = Color.FromHex("FF5521");
+                    EdithButton.Source = "edit2";
+                    BoxProfiles.Source = "Plus";
+                }
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 

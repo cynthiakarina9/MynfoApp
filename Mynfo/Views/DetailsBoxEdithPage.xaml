@@ -20,7 +20,6 @@
     <ContentPage.Content>
         <Frame
             CornerRadius="50"
-            HasShadow="True"
             Margin="30"
             x:Name="BackG">
             <Grid
@@ -42,12 +41,28 @@
                         <ImageButton 
                             BackgroundColor="Transparent"
                             Grid.Column ="3"
+                            Grid.Row="0"
                             Grid.RowSpan="2"
                             HeightRequest="40"
-                            HorizontalOptions="StartAndExpand"
-                            VerticalOptions="Center"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start"
                             WidthRequest="40"
                             x:Name="DeleteButton" />
+                        <StackLayout
+                            HorizontalOptions="Start"
+                            Grid.Column ="0"
+                            Grid.Row="1"
+                            Padding="0,-10,0,0"
+                            VerticalOptions="Start"
+                            Orientation="Horizontal">
+                            <Picker
+                                BackgroundColor="Transparent"
+                                MenuItem.Accelerator="paleta.png"
+                                Title="Color"
+                                TextColor="{StaticResource MainColor}"
+                                x:Name="paleta"/>
+                        </StackLayout>
+                        
                         <!--<StackLayout 
                             Orientation="Horizontal"
                             Grid.ColumnSpan ="3"
@@ -69,7 +84,7 @@
                             HorizontalTextAlignment="Center"
                             MaxLength="20"
                             Text="{Binding Box.Name, Mode=TwoWay}"
-                            TextColor="{StaticResource FontColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource MainColor}}"
                             VerticalOptions="Center"
                             WidthRequest="200"
                             x:Name="NameEntry"/>
@@ -102,7 +117,7 @@
                                                 HorizontalTextAlignment="Center"
                                                 Text="{Binding ProfileName}"
                                                 FontAttributes="Bold"
-                                                TextColor="{StaticResource FontColor}" />
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />
                                         </StackLayout>
                                     </Grid>
                                 </DataTemplate>

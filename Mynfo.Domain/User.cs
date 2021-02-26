@@ -32,6 +32,20 @@
 
         public bool Share { get; set; }
 
+        [Display(Name = "Edad")]
+        public int Edad { get; set; }
+
+        [Display(Name = "Ubicacion")]
+        [MaxLength(50, ErrorMessage = "The field {0} only can contains a maxium of {1} characters lenght.")]
+        public string Ubicacion { get; set; }
+
+        [Display(Name = "Ocupacion")]
+        [MaxLength(50, ErrorMessage = "The field {0} only can contains a maxium of {1} characters lenght.")]
+        public string Ocupacion { get; set; }
+
+        [Display(Name = "Conexiones")]
+        public int Conexiones { get; set; }
+
         [JsonIgnore]
         public virtual UserType UserType { get; set; }
 

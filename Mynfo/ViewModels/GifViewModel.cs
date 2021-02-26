@@ -49,17 +49,20 @@
         {
             switch (Name)
             {
+                case "All":
+                    GitImage = "facebook.gif";
+                    break;
                 case "Facebook":
-                    GitImage = "GIF_Facebook4.gif";
+                    GitImage = "facebook.gif";
                     break;
                 case "LinkedIn":
-                    GitImage = "GIF_LinkedIn.gif";
+                    GitImage = "linkedin.gif";
                     break;
                 case "Spotify":
-                    GitImage = "GIF_Spotify.gif";
+                    GitImage = "spotify.gif";
                     break;
                 case "YouTube":
-                    GitImage = "GIF_Youtube.gif";
+                    GitImage = "youtube.gif";
                     break;
                 default:
                     break;

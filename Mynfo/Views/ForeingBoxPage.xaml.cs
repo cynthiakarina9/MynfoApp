@@ -32,6 +32,13 @@
 
             ForeignUserImage.Source = foreing.ImageFullPath;
             ForeignUserName.Text = foreing.FullName;
+            if(foreing.Edad != 0)
+                ForeignAge.Text = foreing.Edad + " Años";
+            if (foreing.Ubicacion != "")
+                ForeignLocation.Text = foreing.Ubicacion;
+            if (foreing.Ubicacion != "")
+                ForeignJob.Text = foreing.Ocupacion;
+            ForeignConnection.Text = "Conexiones: " + foreing.Conexiones;
 
 
             #endregion

@@ -41,32 +41,13 @@
         public DetailsBoxEdithPage(int _boxId = 0)
         {
             InitializeComponent();
-            
-            //if(!radio1.IsChecked && !radio2.IsChecked && !radio3.IsChecked && !radio4.IsChecked)
-            //{
-            //    NewColor = Color.FromHex("#FEBDA8");
-            //}
-            //else if(radio1.IsChecked)
-            //{
-            //    NewColor = Color.Red;
-            //}
-            //else if (radio2.IsChecked)
-            //{
-            //    NewColor = Color.Green;
-            //}
-            //else if (radio3.IsChecked)
-            //{
-            //    NewColor = Color.Blue;
-            //}
-            //else if (radio4.IsChecked)
-            //{
-            //    NewColor = Color.YellowGreen;
-            //}
+            OSAppTheme currentTheme = Application.Current.RequestedTheme;
+
             NavigationPage.SetHasNavigationBar(this, false);
             FullBackGround.BackgroundColor = NewColor;
             #region F
             apiService = new ApiService();
-            OSAppTheme currentTheme = Application.Current.RequestedTheme;
+            
             FullBackGround.CloseWhenBackgroundIsClicked = true;
             ProfilesSelected = new ObservableCollection<ProfileLocal>();
             int BoxId = _boxId;
@@ -180,20 +161,13 @@
             boxLocal.UserTypeId = MainViewModel.GetInstance().User.UserTypeId;
 
             //Definir color de fondo con respecto a si la box es predeterminada
-            if (BoxDefault == true)
+            if (currentTheme == OSAppTheme.Dark)
             {
-                BackG.BackgroundColor = Color.FromHex("#FEBDA8");
-                bxBtnHome.BackgroundColor = Color.FromHex("#FEBDA8");
-                BxSaveName.BackgroundColor = Color.FromHex("#FEBDA8");
-                BxBtnDelete.BackgroundColor = Color.FromHex("#FEBDA8");
-                if (currentTheme == OSAppTheme.Dark)
-                {
-                    DeleteButton.Source = "trash3";
-                }
-                else
-                {
-                    DeleteButton.Source = "trash";
-                }
+                BackG.BackgroundColor = Color.FromHex("#222b3a");
+                bxBtnHome.BackgroundColor = Color.FromHex("#222b3a");
+                BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
+                BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
+                DeleteButton.Source = "trash3";
             }
             else
             {
@@ -203,11 +177,14 @@
                 BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
                 DeleteButton.Source = "trash2";
             }
+            
 
 
             //Acción de boton de borrado
             DeleteButton.Clicked += new EventHandler((sender, e) => deleteBox(sender, e, BoxId, UserID, BoxDefault));
 
+            //Acción de boton de borrado
+            //paleta.Clicked += new EventHandler((sender, e) => changeColor(sender, e, BoxId));
 
             //Acción de botón actualización de Box
             BoxUpdateBtn.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));
@@ -215,6 +192,7 @@
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
+            changeColor(_boxId);
             if (BoxDefault == true)
             {
                 BxDefaultCheckBox.IsEnabled = false;
@@ -852,6 +830,7 @@
                 Name = NameEntry.Text,
                 UserId = Box.UserId,
                 Time = Box.Time,
+                ColorBox = Box.ColorBox
             };
             await MainViewModel.GetInstance().DetailsBoxEdith.EdithBox(box3);
 
@@ -1044,6 +1023,141 @@
             Application.Current.MainPage = new MasterPage();
         }
 
+        private async void changeColor(int Id)
+        {
+            OSAppTheme currentTheme = Application.Current.RequestedTheme;
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            Box = await this.apiService.GetBox(
+                   apiSecurity,
+                   "/api",
+                   "/Boxes",
+                   Id);
+            // Dictionary to get Color from color name.
+            Dictionary<string, string> nameToColor = new Dictionary<string, string>
+            {
+                { "Verde", "#12947f" }, { "Verde Agua", "#2fc4b2" },
+                { "Azul oscuro", "#404a7f" }, { "Anaranjado", "#FF5521" },
+                { "Azul claro", "#508ed8" }, { "Amarillo", "#d89a00" },
+                { "Fuchsia", "#ff0033" }, { "Verde Oscuro", "#008445" },
+                { "Morado", "#7f416a" }, { "Lila ", "#6f50ff" },
+                { "Rojo", "#c1271f" }, { "Rosa", "ce7d7d" },
+                //{ "Silver", Color.Silver }, { "Teal", Color.Teal },
+                //{ "White", Color.White }, { "Yellow", Color.Yellow }
+            };
+
+                
+
+                foreach (string colorName in nameToColor.Keys)
+                {
+                    paleta.Items.Add(colorName);
+                }
+
+            // Create BoxView for displaying picked Color
+                BoxView boxView = new BoxView
+                {
+                    WidthRequest = 150,
+                    HeightRequest = 150,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
+
+                paleta.SelectedIndexChanged += (sender2, args) =>
+                {
+                    if (paleta.SelectedIndex == -1)
+                    {
+                        boxView.Color = Color.Default;
+                        string A = "";
+                        if (currentTheme == OSAppTheme.Light)
+                        {
+                            A = "#c6c6c6";
+                        }
+                        else
+                        {
+                            A = "#c6c6c6";
+                        }
+                        
+                        //Actualizar el nombre de la Box
+                        var box3 = new Box
+                        {
+                            BoxId = Box.BoxId,
+                            BoxDefault = Box.BoxDefault,
+                            Name = NameEntry.Text,
+                            UserId = Box.UserId,
+                            ColorBox = A,
+                            Time = Box.Time,
+                        };
+                        MainViewModel.GetInstance().DetailsBoxEdith.EdithBox(box3);
+                        MainViewModel.GetInstance().DetailsBox.GetColor(Box.BoxId);
+                    }
+                    else
+                    {
+                        string colorName = paleta.Items[paleta.SelectedIndex];
+                        string ColorH = "";
+                        switch(colorName)
+                        {
+                            case "Verde":
+                                ColorH = "#12947f";
+                                break;
+                            case "Verde Agua":
+                                ColorH = "#2fc4b2";
+                                break;
+                            case "Azul oscuro":
+                                ColorH = "#404a7f";
+                                break;
+                            case "Anaranjado":
+                                ColorH = "#FF5521";
+                                break;
+                            case "Azul claro":
+                                ColorH = "#508ed8";
+                                break;
+                            case "Amarillo":
+                                ColorH = "#d89a00";
+                                break;
+                            case "Fuchsia":
+                                ColorH = "#ff0033";
+                                break;
+                            case "Verde Oscuro":
+                                ColorH = "#008445";
+                                break;
+                            case "Morado":
+                                ColorH = "#7f416a";
+                                break;
+                            case "Lila ":
+                                ColorH = "#6f50ff";
+                                break;
+                            case "Rojo ":
+                                ColorH = "#c1271f";
+                                break;
+                            case "Rosa ":
+                                ColorH = "#ce7d7d";
+                                break;
+                            default:
+                                break;
+                        }
+                        //boxView.Color = nameToColor[colorName];
+                        var box3 = new Box
+                        {
+                            BoxId = Box.BoxId,
+                            BoxDefault = Box.BoxDefault,
+                            Name = NameEntry.Text,
+                            UserId = Box.UserId,
+                            ColorBox = ColorH,
+                            Time = Box.Time,
+                        };
+                        MainViewModel.GetInstance().DetailsBoxEdith.EdithBox(box3);
+                        MainViewModel.GetInstance().DetailsBox.GetColor(Box.BoxId);
+                        
+                    }
+                };
+
+                // Accomodate iPhone status bar.
+                this.Padding = new Thickness(10, 12);
+
+            //// Build the page.
+            
+
+        }
+        
         //void OnColorsRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
         //{
         //    if(radio1.IsChecked)

@@ -22,12 +22,21 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView  
+        <Grid
             BindingContext = "{Binding MyProfile}">
-            <StackLayout
-                Padding = "15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid
+                Grid.Row="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Start">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
                 <!--Imagen de perfil-->
                 <controls:CircleImage 
+                    Grid.Row="0"
                     HeightRequest = "180"
                     Source = "{Binding ImageSource}">
                     <controls:CircleImage.GestureRecognizers>
@@ -35,148 +44,243 @@
                     </controls:CircleImage.GestureRecognizers>
                 </controls:CircleImage>
                 <StackLayout
+                    Grid.Row="1"
+                    VerticalOptions="Center"
                     x:Name = "ChangeImage">
                     <Label 
                         HorizontalOptions = "Center" 
                         FontSize = "Small" 
-                        Padding = "0,0,0,19"
                         Text = "{i18n:Translate ChangeImage}"
                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
                 </StackLayout>
-                <Grid 
-                    HorizontalOptions = "Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <StackLayout 
-                        HorizontalOptions = "Center"
-                        Orientation = "Vertical" >
-                        <!--Nombre-->
-                        <StackLayout
-                            HorizontalOptions="Center">
-                            <Label
-                                FontSize = "17"
-                                Grid.Column = "0"
-                                HorizontalOptions = "End"
-                                HorizontalTextAlignment = "Start"
-                                Text = "{i18n:Translate FirstNameLabel}"
-                                TextColor = "{StaticResource MainFountyColor}"
-                                VerticalOptions = "Center" />
-                        </StackLayout>
-                        <StackLayout
-                            Padding="0,-10,0,0">
-                            <Entry 
-                                FontSize = "23"
-                                Placeholder = "{i18n:Translate FirstNamePlaceHolder}" 
-                                Text = "{Binding User.FirstName, Mode = TwoWay}" 
-                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                HorizontalTextAlignment = "Center" 
-                                x:Name = "FirstNameEntry">
-                                <Entry.Keyboard>
-                                    <Keyboard x:FactoryMethod="Create">
-                                        <x:Arguments>
-                                            <KeyboardFlags>CapitalizeWord</KeyboardFlags>
-                                        </x:Arguments>
-                                    </Keyboard>
-                                </Entry.Keyboard>
-                            </Entry>
-                        </StackLayout>
-                        <!--Apellidos-->
-                        <StackLayout
-                            HorizontalOptions="Center">
-                            <Label
-                                FontSize = "17"
-                                Grid.Column = "0"
-                                HorizontalOptions = "End"
-                                HorizontalTextAlignment = "Start"
-                                Text = "{i18n:Translate LastNameLabel}" 
-                                TextColor = "{StaticResource MainFountyColor}"
-                                VerticalOptions = "Center" />
-                        </StackLayout>
-                        <StackLayout
-                            Padding="0,-10,0,0">
-                            <Entry 
-                                FontSize = "23" 
-                                HorizontalTextAlignment = "Center" 
-                                Placeholder = "{i18n:Translate LastNamePlaceHolder}" 
-                                Text = "{Binding User.LastName, Mode=TwoWay}"
-                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                x:Name = "LastNameEntry">
-                                <Entry.Keyboard>
-                                    <Keyboard x:FactoryMethod="Create">
-                                        <x:Arguments>
-                                            <KeyboardFlags>CapitalizeWord</KeyboardFlags>
-                                        </x:Arguments>
-                                    </Keyboard>
-                                </Entry.Keyboard>
-                            </Entry>
-                        </StackLayout>
-                        <!--Correo-->
-                        <StackLayout
-                            HorizontalOptions="Center"
-                            x:Name = "Email">
-                            <Label
-                                FontSize = "17"
-                                Grid.Column = "0"
-                                HorizontalOptions = "Center"
-                                HorizontalTextAlignment = "Start"
-                                Text = "{i18n:Translate EMail}" 
-                                TextColor = "{StaticResource MainFountyColor}"
-                                VerticalOptions = "Center" 
-                                x:Name = "EmailLabel"/>
-                            <Entry 
-                                FontSize = "21"
-                                HorizontalTextAlignment = "Center" 
-                                Keyboard="Email"
-                                Text = "{Binding User.Email, Mode = TwoWay}" 
-                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                WidthRequest="300"
-                                x:Name = "EmailEntry"/>
-                        </StackLayout>
-                    </StackLayout>
-                </Grid>
-                <ActivityIndicator
-                    IsRunning = "{Binding IsRunning, Mode = TwoWay}"
-                    VerticalOptions = "CenterAndExpand">
-                </ActivityIndicator>
-                <!-- Botones de acciones -->
                 <StackLayout
-                    Orientation = "Vertical"
-                    VerticalOptions = "End">
-                    <Button
-                        BackgroundColor = "{StaticResource MainColor}"
-                        BorderRadius = "23"
-                        Command = "{Binding SaveCommand}"
-                        HeightRequest = "46"
-                        HorizontalOptions = "FillAndExpand"
-                        IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
-                        Text = "{i18n:Translate Save}"
-                        TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
-                        x:Name = "ButtonSave">
-                    </Button>
+                    Grid.Row="2">
                     <Button
                         BackgroundColor = "Transparent"
+                        BorderColor="{StaticResource MainColor}"
                         BorderRadius = "23"
+                        BorderWidth="1"
                         Command = "{Binding ChangePasswordCommand}"
-                        HeightRequest = "46"
+                        Grid.Row="1"
                         HorizontalOptions = "FillAndExpand"
+                        HeightRequest="46"
                         IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
                         Text = "{i18n:Translate ChangePassword}"
                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                         x:Name = "ButtonChangePassw">
                     </Button>
-                    <StackLayout 
-                        HorizontalOptions = "Center"
-                        VerticalOptions = "End"
-                        x:Name = "ExtProfile">
-                        <Label
-                            FontSize = "Small"
-                            HorizontalOptions = "Center"
-                            Text = "{i18n:Translate ProfileELabel}"
-                            HorizontalTextAlignment="Center"/>
-                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </Grid>
+            <ScrollView  
+                Grid.Row="1">
+                <Grid
+                    Padding = "15">
+                    <Grid 
+                        HorizontalOptions = "Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout 
+                            HorizontalOptions = "Center"
+                            Orientation = "Vertical" >
+                            <!--Nombre-->
+                            <StackLayout
+                                HorizontalOptions="Center">
+                                <Label
+                                    FontSize = "17"
+                                    Grid.Column = "0"
+                                    HorizontalOptions = "End"
+                                    HorizontalTextAlignment = "Start"
+                                    Text = "{i18n:Translate FirstNameLabel}"
+                                    TextColor = "{StaticResource MainFountyColor}"
+                                    VerticalOptions = "Center" />
+                            </StackLayout>
+                            <StackLayout
+                                Padding="0,-10,0,0">
+                                <Entry 
+                                    FontSize = "23"
+                                    Placeholder = "{i18n:Translate FirstNamePlaceHolder}" 
+                                    Text = "{Binding User.FirstName, Mode = TwoWay}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    HorizontalTextAlignment = "Center" 
+                                    x:Name = "FirstNameEntry">
+                                    <Entry.Keyboard>
+                                        <Keyboard x:FactoryMethod="Create">
+                                            <x:Arguments>
+                                                <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                            </x:Arguments>
+                                        </Keyboard>
+                                    </Entry.Keyboard>
+                                </Entry>
+                            </StackLayout>
+                            <!--Apellidos-->
+                            <StackLayout
+                                HorizontalOptions="Center">
+                                <Label
+                                    FontSize = "17"
+                                    Grid.Column = "0"
+                                    HorizontalOptions = "End"
+                                    HorizontalTextAlignment = "Start"
+                                    Text = "{i18n:Translate LastNameLabel}" 
+                                    TextColor = "{StaticResource MainFountyColor}"
+                                    VerticalOptions = "Center" />
+                            </StackLayout>
+                            <StackLayout
+                                Padding="0,-10,0,0">
+                                <Entry 
+                                    FontSize = "23" 
+                                    HorizontalTextAlignment = "Center" 
+                                    Placeholder = "{i18n:Translate LastNamePlaceHolder}" 
+                                    Text = "{Binding User.LastName, Mode=TwoWay}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    x:Name = "LastNameEntry">
+                                    <Entry.Keyboard>
+                                        <Keyboard x:FactoryMethod="Create">
+                                            <x:Arguments>
+                                                <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                            </x:Arguments>
+                                        </Keyboard>
+                                    </Entry.Keyboard>
+                                </Entry>
+                            </StackLayout>
+                            <!--Correo-->
+                            <StackLayout
+                                HorizontalOptions="Center"
+                                x:Name = "Email">
+                                <Label
+                                    FontSize = "17"
+                                    Grid.Column = "0"
+                                    HorizontalOptions = "Center"
+                                    HorizontalTextAlignment = "Start"
+                                    Text = "{i18n:Translate EMail}" 
+                                    TextColor = "{StaticResource MainFountyColor}"
+                                    VerticalOptions = "Center" 
+                                    x:Name = "EmailLabel"/>
+                                <Entry 
+                                    FontSize = "21"
+                                    HorizontalTextAlignment = "Center" 
+                                    IsEnabled="False"
+                                    Keyboard="Email"
+                                    Text = "{Binding User.Email, Mode = TwoWay}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    WidthRequest="300"
+                                    x:Name = "EmailEntry"/>
+                            </StackLayout>
+                            <!--Edad-->
+                            <StackLayout
+                                HorizontalOptions="Center">
+                                <Label
+                                    FontSize = "17"
+                                    Grid.Column = "0"
+                                    HorizontalOptions = "Center"
+                                    Text = "{i18n:Translate AgeLabel}"
+                                    TextColor = "{StaticResource MainFountyColor}"
+                                    VerticalOptions = "Center" />
+                                <Entry 
+                                    FontSize = "23"
+                                    HorizontalTextAlignment = "Center" 
+                                    Keyboard="Numeric"
+                                    MaxLength="3"
+                                    Placeholder = "{i18n:Translate AgePlaceHolder}" 
+                                    Text = "{Binding User.Edad, Mode = TwoWay}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                    
+                                    WidthRequest="300"
+                                    x:Name = "EdadEntry"/>
+                            </StackLayout>
+                            <!--Ubicación-->
+                            <StackLayout
+                                HorizontalOptions="Center">
+                                <Label
+                                    FontSize = "17"
+                                    Grid.Column = "0"
+                                    HorizontalOptions = "Center"
+                                    Text = "{i18n:Translate LocationLabel}"
+                                    TextColor = "{StaticResource MainFountyColor}"
+                                    VerticalOptions = "Center" />
+                                <Entry 
+                                    FontSize = "23"
+                                    HorizontalTextAlignment = "Center"
+                                    Placeholder = "{i18n:Translate LocationPlaceHolder}" 
+                                    MaxLength="30"
+                                    Text = "{Binding User.Ubicacion, Mode = TwoWay}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                    
+                                    WidthRequest="300"
+                                    x:Name = "UbicacionEntry"/>
+                            </StackLayout>
+                            <!--Ocupación-->
+                            <StackLayout
+                                HorizontalOptions="Center">
+                                <Label
+                                    FontSize = "17"
+                                    Grid.Column = "0"
+                                    HorizontalOptions = "Center"
+                                    Text = "{i18n:Translate OccupationLabel}"
+                                    TextColor = "{StaticResource MainFountyColor}"
+                                    VerticalOptions = "Center" />
+                                <Entry 
+                                    FontSize = "15"
+                                    HorizontalTextAlignment = "Center" 
+                                    MaxLength="50"
+                                    Placeholder = "{i18n:Translate OccupationPlaceHolder}" 
+                                    Text = "{Binding User.Ocupacion, Mode = TwoWay}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                    
+                                    WidthRequest="300"
+                                    x:Name = "OcupacionEntry"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                    <ActivityIndicator
+                        IsRunning = "{Binding IsRunning, Mode = TwoWay}"
+                        VerticalOptions = "CenterAndExpand">
+                    </ActivityIndicator>
+                    
+                </Grid>
+            </ScrollView>
+            <!-- Botones de acciones -->
+            <Grid
+                Grid.Row="0"
+                HorizontalOptions="End"
+                VerticalOptions="Start">
+                <Button
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    Command = "{Binding SaveCommand}"
+                    Grid.Row="0"
+                    HeightRequest = "46"
+                    IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
+                    Text = "{i18n:Translate Save}"
+                    TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
+                    x:Name = "ButtonSave">
+                </Button>
+            </Grid>
+            <!--<Grid
+                Grid.Row="0"
+                VerticalOptions="End"
+                Margin="0,-200,0,0">
+                <Button
+                    BackgroundColor = "Transparent"
+                    BorderColor="{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    BorderWidth="1"
+                    Command = "{Binding ChangePasswordCommand}"
+                    Grid.Row="1"
+                    HorizontalOptions = "FillAndExpand"
+                    IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
+                    Text = "{i18n:Translate ChangePassword}"
+                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                    x:Name = "ButtonChangePassw">
+                </Button>
+                --><!--<StackLayout 
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "End"
+                    x:Name = "ExtProfile">
+                    <Label
+                        FontSize = "Small"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate ProfileELabel}"
+                        HorizontalTextAlignment="Center"/>
+                </StackLayout>--><!--
+            </Grid>-->
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

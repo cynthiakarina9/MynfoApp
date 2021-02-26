@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.HomePage"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Resources>
@@ -27,18 +29,91 @@
             <Grid>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height = "180"/>
+                        <RowDefinition Height = "Auto"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+                    <Grid
+                        Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Imagen de perfil-->
+                        <controls:CircleImage 
+                            BorderColor="{StaticResource MainColor}"
+                            BorderThickness="3"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            HorizontalOptions="Center"
+                            HeightRequest = "120"
+                            Margin="30,0,30,0"
+                            Source = "{Binding ImageSource}"
+                            VerticalOptions="Center"
+                            WidthRequest="120">
+                        </controls:CircleImage>
+                        <StackLayout
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Grid.RowSpan="2">
+                            <Label 
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding User.FirstName}"
+                                TextColor="{StaticResource MainColor}"/>
+                            <StackLayout
+                                Orientation="Horizontal"
+                                IsVisible="{Binding EdadLabel}">
+                                <Label
+                                    FontSize="15"
+                                    Text="{Binding User.Edad}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                                <Label
+                                    FontSize="15"
+                                    Text="{i18n:Translate Anios}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                            </StackLayout>
+                            <Label 
+                                FontSize="15"
+                                Text="{Binding User.Ubicacion}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                            <Label 
+                                FontSize="15"
+                                Text="{Binding User.Ocupacion}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                            <Label
+                                Text="
+                                "/>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="{i18n:Translate ViewsLabel}"
+                                    TextColor="{StaticResource MainColor}"/>
+                                <Label 
+                                    FontSize="15"
+                                    VerticalTextAlignment="End"
+                                    Text="{Binding User.Conexiones}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <Line
+                            Grid.ColumnSpan="2"
+                            Grid.Row="3"
+                            HeightRequest="1"
+                            BackgroundColor="{AppThemeBinding Light=#d8dce3, Dark={StaticResource Menu_BackgroundColorDark}}"
+                            Margin="30,0,30,40"/>
+                    </Grid>
+                    <!--Box predeterminada-->
                     <CollectionView 
                         ItemsSource="{Binding Box}"
-                        Grid.Row="0"
-                        Grid.ColumnSpan="3"
+                        Grid.Row="1"
                         SelectionChanged="OnCollectionViewSelectionChanged"
                         SelectionMode="Single">
                         <CollectionView.ItemsLayout>
@@ -52,7 +127,7 @@
                                     <StackLayout
                                         HorizontalOptions="Center">
                                         <Frame
-                                            BackgroundColor="{StaticResource MainColor}"
+                                            BackgroundColor="{Binding ColorBox}"
                                             CornerRadius="25"
                                             HasShadow="true"
                                             HeightRequest="80"
@@ -73,15 +148,17 @@
                                 <StackLayout 
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand">
-                                    <Label Text="No Boxes yet"/>
+                                    <Label 
+                                        IsVisible="{Binding IsNull}"
+                                        Text="No Boxes yet"/>
                                 </StackLayout>
                             </ContentView>
                         </CollectionView.EmptyView>
                     </CollectionView>
+                    <!--Boxes no predeterminadas-->
                     <CollectionView 
                         ItemsSource="{Binding BoxNoDefault}"
-                        Grid.Row="1"
-                        Grid.ColumnSpan="3"                        
+                        Grid.Row="2"                       
                         SelectionMode="Single"
                         SelectedItem="{Binding selectedItem}"
                         SelectionChanged="OnCollectionViewSelectionChanged"
@@ -97,60 +174,19 @@
                                     <StackLayout
                                         HorizontalOptions="CenterAndExpand">
                                         <Frame
-                                            BackgroundColor="LightGray"
+                                            BackgroundColor="{Binding ColorBox}"
                                             CornerRadius="15"
                                             HasShadow="True"
                                             HeightRequest="45"
                                             IsVisible="{Binding MoreOne}"
                                             WidthRequest="45">
-                                            <Frame.Background>
+                                            <!--<Frame.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                     <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}"  Offset="0.1"/>
                                                     <GradientStop Color="{AppThemeBinding Light=#FFFF, Dark=#0000}" Offset="0.6"/>
                                                     <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}" Offset="0.1"/>
                                                 </LinearGradientBrush>
-                                            </Frame.Background>
-                                            <!--<CollectionView 
-                                                IsVisible="{Binding MoreOne}"
-                                                ItemsSource="{Binding ProfilePerfiles}">
-                                                <CollectionView.ItemsLayout>
-                                                    <GridItemsLayout 
-                                                        Orientation="Vertical"
-                                                        Span="3" />
-                                                </CollectionView.ItemsLayout>
-                                                <CollectionView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Grid
-                                                            Padding=" 10">
-                                                            <StackLayout
-                                                                HorizontalOptions="Center">
-                                                                <Image
-                                                                    Source="captura"
-                                                                    Scale="0.001"/>
-                                                                <Label
-                                                                    Text="{Binding BoxId}"/>
-                                                            </StackLayout>
-                                                        </Grid>
-                                                    </DataTemplate>
-                                                </CollectionView.ItemTemplate>
-                                            </CollectionView>-->
-                                            <!--<StackLayout
-                                                Orientation="Horizontal"
-                                                HorizontalOptions="FillAndExpand"
-                                                Margin="-12,0,40,0">
-                                                <Image 
-                                                    Scale="1"
-                                                    Source="captura"
-                                                    Margin="2"/>
-                                                <Image 
-                                                    Scale="1"
-                                                    Source="captura"
-                                                    Margin="2"/>
-                                                <Image 
-                                                    Scale="1"
-                                                    Source="captura"
-                                                    Margin="2"/>
-                                            </StackLayout>-->
+                                            </Frame.Background>-->
                                         </Frame>
                                         <Label
                                             FontSize="12"
@@ -161,18 +197,17 @@
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
-                        <CollectionView.EmptyView>
-                            <ContentView>
-                                <StackLayout 
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label Text=""/>
-                                </StackLayout>
-                            </ContentView>
-                        </CollectionView.EmptyView>
                     </CollectionView>
+                    <!--Carga-->
+                    <ActivityIndicator
+                        Grid.RowSpan="2"
+                        IsRunning="{Binding IsRunning}"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                    </ActivityIndicator>
                 </Grid>
             </Grid>
+            <!--Botón de más boxes-->
             <Grid
                 Grid.Row="0"
                 HorizontalOptions="CenterAndExpand"
