@@ -36,7 +36,7 @@
                     Toggled="OnToggled"
                     IsToggled = "{Binding User.Share, Mode = TwoWay}"
                     HorizontalOptions = "Center"/>
-            </StackLayout >-->
+            </StackLayout >
             <ListView 
                 BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
                 ItemsSource = "{Binding Menus}"

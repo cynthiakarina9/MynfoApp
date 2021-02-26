@@ -64,12 +64,12 @@
             }
 
             //Validamos que podamos crear boxes nuevas
-            if(BoxNum == 7)
+            if(BoxNum == 4)
             {
                 CreateBoxBtn.IsVisible = false;
                 CreateBoxBtn.IsEnabled = false;
             }
-            else if(BoxNum < 7)
+            else if(BoxNum < 4)
             {
                 CreateBoxBtn.IsVisible = true;
                 CreateBoxBtn.IsEnabled = true;

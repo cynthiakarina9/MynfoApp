@@ -23,7 +23,7 @@
 
             if (user.UserTypeId == 1)
             {
-                ExtProfile.IsVisible = false;
+                //ExtProfile.IsVisible = false;
             }
             else
             {
@@ -32,7 +32,7 @@
                 Email.IsVisible = false;
                 FirstNameEntry.IsReadOnly = true;
                 LastNameEntry.IsReadOnly = true;
-                ExtProfile.IsVisible = true;
+                //ExtProfile.IsVisible = true;
                 ChangeImage.IsVisible = false;
             }
         }

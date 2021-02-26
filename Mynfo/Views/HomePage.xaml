@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.HomePage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Resources>
@@ -27,18 +28,89 @@
             <Grid>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height = "180"/>
+                        <RowDefinition Height = "Auto"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+                    <Grid
+                        Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Imagen de perfil-->
+                        <controls:CircleImage 
+                            BorderColor="{StaticResource MainColor}"
+                            BorderThickness="3"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            HorizontalOptions="Center"
+                            HeightRequest = "120"
+                            Margin="30,0,30,0"
+                            Source = "{Binding ImageSource}"
+                            VerticalOptions="Center"
+                            WidthRequest="120">
+                        </controls:CircleImage>
+                        <StackLayout
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Grid.RowSpan="2">
+                            <Label 
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding User.FirstName}"
+                                TextColor="{StaticResource MainColor}"/>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    FontSize="15"
+                                    Text="{Binding User.Edad}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                                <Label
+                                    FontSize="15"
+                                    Text=" Años"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                            </StackLayout>
+                            <Label 
+                                FontSize="15"
+                                Text="{Binding User.Ubicacion}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                            <Label 
+                                FontSize="15"
+                                Text="{Binding User.Ocupacion}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                            <Label
+                                Text="
+                                "/>
+                            <StackLayout
+                                Orientation="Horizontal">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="Conexions: "
+                                    TextColor="{StaticResource MainColor}"/>
+                                <Label 
+                                    FontSize="15"
+                                    VerticalTextAlignment="End"
+                                    Text="{Binding User.Conexiones}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <Line
+                            Grid.ColumnSpan="2"
+                            Grid.Row="3"
+                            HeightRequest="1"
+                            BackgroundColor="{AppThemeBinding Light=#d8dce3, Dark={StaticResource Menu_BackgroundColorDark}}"
+                            Margin="30,0,30,40"/>
+                    </Grid>
                     <CollectionView 
                         ItemsSource="{Binding Box}"
-                        Grid.Row="0"
-                        Grid.ColumnSpan="3"
+                        Grid.Row="1"
                         SelectionChanged="OnCollectionViewSelectionChanged"
                         SelectionMode="Single">
                         <CollectionView.ItemsLayout>
@@ -52,7 +124,7 @@
                                     <StackLayout
                                         HorizontalOptions="Center">
                                         <Frame
-                                            BackgroundColor="{StaticResource MainColor}"
+                                            BackgroundColor="{Binding ColorBox}"
                                             CornerRadius="25"
                                             HasShadow="true"
                                             HeightRequest="80"
@@ -82,8 +154,7 @@
                     </CollectionView>
                     <CollectionView 
                         ItemsSource="{Binding BoxNoDefault}"
-                        Grid.Row="1"
-                        Grid.ColumnSpan="3"                        
+                        Grid.Row="2"                       
                         SelectionMode="Single"
                         SelectedItem="{Binding selectedItem}"
                         SelectionChanged="OnCollectionViewSelectionChanged"
@@ -124,7 +195,6 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                     <ActivityIndicator
-                        Grid.ColumnSpan="3"
                         Grid.RowSpan="2"
                         IsRunning="{Binding IsRunning}"
                         HorizontalOptions="CenterAndExpand"

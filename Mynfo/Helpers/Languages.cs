@@ -704,5 +704,29 @@
         {
             get { return Resource.ReadyToScan; }
         }
+        public static string AgeLabel
+        {
+            get { return Resource.AgeLabel; }
+        }
+        public static string AgePlaceHolder
+        {
+            get { return Resource.AgePlaceHolder; }
+        }
+        public static string LocationLabel
+        {
+            get { return Resource.LocationLabel; }
+        }
+        public static string LocationPlaceHolder
+        {
+            get { return Resource.LocationPlaceHolder; }
+        }
+        public static string OccupationLabel
+        {
+            get { return Resource.OccupationLabel; }
+        }
+        public static string OccupationPlaceHolder
+        {
+            get { return Resource.OccupationPlaceHolder; }
+        }
     }
 }

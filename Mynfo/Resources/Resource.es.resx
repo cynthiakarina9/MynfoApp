@@ -621,4 +621,22 @@
   <data name="ReadyToScan" xml:space="preserve">
     <value>Listo para escanear.</value>
   </data>
+  <data name="AgeLabel" xml:space="preserve">
+    <value>Edad:</value>
+  </data>
+  <data name="AgePlaceHolder" xml:space="preserve">
+    <value>21 años</value>
+  </data>
+  <data name="LocationLabel" xml:space="preserve">
+    <value>Ubicación:</value>
+  </data>
+  <data name="LocationPlaceHolder" xml:space="preserve">
+    <value>Apizaco, Tlaxcala, México.</value>
+  </data>
+  <data name="OccupationLabel" xml:space="preserve">
+    <value>Ocupación:</value>
+  </data>
+  <data name="OccupationPlaceHolder" xml:space="preserve">
+    <value>Ingeniero en tecnologías de la información.</value>
+  </data>
 </root>

@@ -42,26 +42,6 @@
         {
             InitializeComponent();
             OSAppTheme currentTheme = Application.Current.RequestedTheme;
-            //if(!radio1.IsChecked && !radio2.IsChecked && !radio3.IsChecked && !radio4.IsChecked)
-            //{
-            //    NewColor = Color.FromHex("#FEBDA8");
-            //}
-            //else if(radio1.IsChecked)
-            //{
-            //    NewColor = Color.Red;
-            //}
-            //else if (radio2.IsChecked)
-            //{
-            //    NewColor = Color.Green;
-            //}
-            //else if (radio3.IsChecked)
-            //{
-            //    NewColor = Color.Blue;
-            //}
-            //else if (radio4.IsChecked)
-            //{
-            //    NewColor = Color.YellowGreen;
-            //}
 
             NavigationPage.SetHasNavigationBar(this, false);
             FullBackGround.BackgroundColor = NewColor;
@@ -230,16 +210,14 @@
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
+            changeColor(_boxId);
             if (BoxDefault == true)
             {
                 BxDefaultCheckBox.IsEnabled = false;
-                paleta.IsVisible = false;
             }
             else
             {
                 BxDefaultCheckBox.IsEnabled = true;
-                paleta.IsVisible = true;
-                changeColor(_boxId);
             }
             BxDefaultCheckBox.CheckedChanged += CheckDefaultBox;
 

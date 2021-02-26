@@ -621,4 +621,22 @@
   <data name="ReadyToScan" xml:space="preserve">
     <value>Ready to Scan.</value>
   </data>
+  <data name="AgeLabel" xml:space="preserve">
+    <value>Age:</value>
+  </data>
+  <data name="AgePlaceHolder" xml:space="preserve">
+    <value>21 years old</value>
+  </data>
+  <data name="LocationLabel" xml:space="preserve">
+    <value>Location:</value>
+  </data>
+  <data name="LocationPlaceHolder" xml:space="preserve">
+    <value>Manhattan, Nueva York, EE. UU.</value>
+  </data>
+  <data name="OccupationLabel" xml:space="preserve">
+    <value>Occupation:</value>
+  </data>
+  <data name="OccupationPlaceHolder" xml:space="preserve">
+    <value>Information Technology Engineer.</value>
+  </data>
 </root>
