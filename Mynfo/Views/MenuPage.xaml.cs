@@ -28,8 +28,8 @@
             {
                 bool value = e.Value;
                 int share = 1;
-                if (value == true) { share = 1; }
-                if (value == false) { share = 0; }
+                if (value == true) { share = 1; TagLabel.Text = "TAG ON"; }
+                if (value == false) { share = 0; TagLabel.Text = "TAG OFF"; }
                 int user_id = MainViewModel.GetInstance().User.UserId;
                 string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                 string queryLastBoxCreated = @"UPDATE Users SET Share = "+ share + "where UserId ="+ user_id;                

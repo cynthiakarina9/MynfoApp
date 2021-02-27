@@ -36,6 +36,7 @@
                 </Grid.RowDefinitions>
                 <!--Imagen de perfil-->
                 <controls:CircleImage 
+                    Aspect="AspectFill"
                     Grid.Row="0"
                     HeightRequest = "180"
                     Source = "{Binding ImageSource}">
@@ -246,6 +247,7 @@
                     BorderRadius = "23"
                     Command = "{Binding SaveCommand}"
                     Grid.Row="0"
+                    Margin="0,0,10,0"
                     HeightRequest = "46"
                     IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
                     Text = "{i18n:Translate Save}"

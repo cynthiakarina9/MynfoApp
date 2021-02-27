@@ -87,6 +87,7 @@ namespace Mynfo.Services
             ForeingBox foreingBox;
             ForeingProfile foreingProfile;
             ForeingBox A = new ForeingBox();
+            ForeingBox oldForeing = new ForeingBox(); ;
             //Validar que la box no exista
             using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
             {
@@ -120,8 +121,13 @@ namespace Mynfo.Services
             }
             else
             {
+                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    oldForeing = A;
+                    connSQLite.ExecuteScalar<ForeingBox>("UPDATE ForeingBox SET Conexiones = Conexiones + 1 WHERE ForeingBox.BoxId = ?", box_id);
+                    A = connSQLite.FindWithQuery<ForeingBox>("select * from ForeingBox where ForeingBox.BoxId = ?", box_id);
+                }
                 foreingBox = A;
-                foreingBox.Conexiones = box_detail.Conexiones;
             }
             try
             {
@@ -311,6 +317,13 @@ namespace Mynfo.Services
                         if (A == null)
                         {
                             MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
+                        }
+                        else
+                        {
+                            //Box anterior
+                            //oldForeing
+                            MainViewModel.GetInstance().ListForeignBox.UpdateList(oldForeing, foreingBox);
+                            
                         }
                     });
                 }

@@ -2,6 +2,7 @@
 {
     using Helpers;
     using Models;
+    using Mynfo.Domain;
     using Services;
     using System;
     using System.IO;
@@ -76,14 +77,8 @@
                     mainViewModel.TAG = new TAGViewModel();
                     mainViewModel.ChangePassword = new ChangePasswordViewModel();
                     mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
-                    //if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
-                    //{
-                        Xamarin.Forms.Application.Current.MainPage = new MasterPage();
-                    /*}
-                    else if(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
-                    {
-                        Xamarin.Forms.Application.Current.MainPage = new MasterPageIOS();
-                    }*/
+                    
+                    Current.MainPage = new MasterPage();
                 }
                 else
                 {
@@ -109,7 +104,7 @@
             }
         }
 
-        public static async Task NavigateToProfile(FacebookResponse profile)
+        public static async Task NavigateToProfile(Mynfo.Models.FacebookResponse profile)
         {
             if (profile == null)
             {
@@ -177,8 +172,6 @@
 
         public static async Task DisplayAlertAsync(string msg) =>
           await Xamarin.Forms.Device.InvokeOnMainThreadAsync(async () => await Current.MainPage.DisplayAlert("", msg, "ok"));
-
-
 
 
         protected override void OnStart()
