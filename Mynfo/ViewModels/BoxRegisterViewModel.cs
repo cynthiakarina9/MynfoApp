@@ -3,10 +3,8 @@
     using Domain;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
-    using Mynfo.Models;
     using Services;
     using System;
-    using System.Data.SqlClient;
     using System.Windows.Input;
     using Views;
     using Xamarin.Forms;
@@ -153,6 +151,7 @@
 
             this.Name = string.Empty;
             mainViewModel.Home.AddList(A);
+            mainViewModel.Home.GetBoxCount();
             await App.Navigator.PopAsync();
         }
 

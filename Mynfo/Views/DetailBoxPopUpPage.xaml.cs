@@ -87,41 +87,41 @@
                                         "Join dbo.ProfileWhatsapps on(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
                                         "where dbo.Boxes.BoxId =" + _Box.BoxId;
 
-            //Consulta para obtener Box
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
-            {
-                sb = new System.Text.StringBuilder();
-                sb.Append(consultaDefault);
+            ////Consulta para obtener Box
+            //using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            //{
+            //    sb = new System.Text.StringBuilder();
+            //    sb.Append(consultaDefault);
 
-                string sql = sb.ToString();
+            //    string sql = sb.ToString();
 
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            BoxName = (string)reader["Name"];
-                            BoxDefault = (bool)reader["BoxDefault"];
-                            UserId = (int)reader["UserId"];
-                            boxcreation = (DateTime)reader["Time"];
-                        }
-                    }
+            //    using (SqlCommand command = new SqlCommand(sql, connection))
+            //    {
+            //        connection.Open();
+            //        using (SqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                BoxName = (string)reader["Name"];
+            //                BoxDefault = (bool)reader["BoxDefault"];
+            //                UserId = (int)reader["UserId"];
+            //                boxcreation = (DateTime)reader["Time"];
+            //            }
+            //        }
 
-                    connection.Close();
-                }
-            }
+            //        connection.Close();
+            //    }
+            //}
 
-            boxLocal.BoxId = _Box.BoxId;
-            boxLocal.Name = BoxName;
-            boxLocal.BoxDefault = BoxDefault;
-            boxLocal.UserId = UserId;
-            boxLocal.Time = boxcreation;
-            boxLocal.FirstName = MainViewModel.GetInstance().User.FirstName;
-            boxLocal.LastName = MainViewModel.GetInstance().User.LastName;
-            boxLocal.ImagePath = MainViewModel.GetInstance().User.ImagePath;
-            boxLocal.UserTypeId = MainViewModel.GetInstance().User.UserTypeId;
+            //boxLocal.BoxId = _Box.BoxId;
+            //boxLocal.Name = BoxName;
+            //boxLocal.BoxDefault = BoxDefault;
+            //boxLocal.UserId = UserId;
+            //boxLocal.Time = boxcreation;
+            //boxLocal.FirstName = MainViewModel.GetInstance().User.FirstName;
+            //boxLocal.LastName = MainViewModel.GetInstance().User.LastName;
+            //boxLocal.ImagePath = MainViewModel.GetInstance().User.ImagePath;
+            //boxLocal.UserTypeId = MainViewModel.GetInstance().User.UserTypeId;
 
             //Definir color de fondo con respecto a si la box es predeterminada
             if (currentTheme == OSAppTheme.Light)
@@ -442,12 +442,6 @@
         #endregion
 
         #region Methods
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-        }
         public async Task<Box> GetBoxe(int _BoxId)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
@@ -460,26 +454,19 @@
 
             return Box;
         }
+        #endregion
+
+        #region Commands
         async void edithBox(object sender, EventArgs e, int _BoxId, int _UserId, bool _BoxDefault)
         {
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.DetailsBoxEdith = new DetailsBoxEdithViewModel(_BoxId);
             await PopupNavigation.Instance.PushAsync(new DetailsBoxEdithPage(_BoxId));
         }
-
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {
-            //App.Navigator.PushAsync(new TabbedListOfNetworksPage(_BoxId, _boxDefault, _boxName), false);
-            //Navigation.PopPopupAsync();
             MainViewModel.GetInstance().ListOfNetworks = new ListOfNetworksViewModel(_BoxId);
             PopupNavigation.Instance.PushAsync(new ListOfNetworksPage(_BoxId));
-        }
-
-        private void BackHome(object sender, EventArgs e)
-        {
-            MainViewModel.GetInstance().Home = new HomeViewModel();
-            Application.Current.MainPage = new MasterPage();
-            Navigation.PopPopupAsync();
         }
         #endregion
     }

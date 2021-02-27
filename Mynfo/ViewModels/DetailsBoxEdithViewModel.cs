@@ -36,13 +36,11 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-
         public Box Box
         {
             get { return this.box; }
             set { SetValue(ref this.box, value); }
         }
-
         public string Color
         {
             get { return this.color; }
@@ -470,12 +468,6 @@
                 idBox_Whatsapp.Box_ProfileWhatsappId);
         }
         #endregion
-
-        public string GetColorBack(string C)
-        {
-            Color = C;
-            return Color;
-        }
 
         #region Box
         public async Task<Box> GetBox(int _BoxId)
