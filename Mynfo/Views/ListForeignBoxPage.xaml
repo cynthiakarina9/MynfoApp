@@ -92,7 +92,6 @@
                                         Grid.Row="1"
                                         FontAttributes="Italic" 
                                         FontSize="Body"
-                                        
                                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                         VerticalTextAlignment="Center"
                                         Margin="15,0,0,0">
