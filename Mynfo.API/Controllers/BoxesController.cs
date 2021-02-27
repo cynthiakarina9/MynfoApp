@@ -112,7 +112,8 @@
 
             return box;
         }
-        // GET: api/Boxes/GetBoxCount/1
+
+        // GET: api/Boxes/GetLastBox/1
         [HttpPost]
         [Route("GetBoxCount")]
         [ResponseType(typeof(Box))]
@@ -128,14 +129,11 @@
             {
                 return 0;
             }
-            var box = GetBoxes().Where(u => u.UserId == id).ToList();
-            if (box.Count == 0)
-            {
-                return 0;
-            }
+            var boxList = GetBoxes().Where(u => u.UserId == id).ToList();
 
-            return box.Count();
+            return boxList.Count();
         }
+
         //// PUT: api/Boxes/5
         //[ResponseType(typeof(void))]
         //public async Task<IHttpActionResult> PutBox(int id, Box box)
@@ -143,7 +141,7 @@
         //    if (!ModelState.IsValid)
         //    {
         //        return BadRequest(ModelState);
-        //    }
+        //    
 
         //    if (id != box.BoxId)
         //    {
