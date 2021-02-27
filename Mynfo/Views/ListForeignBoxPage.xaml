@@ -58,27 +58,76 @@
                                 <Grid 
                                     Padding="10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="20"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="30*" />
+                                        <ColumnDefinition Width="70*" />
                                     </Grid.ColumnDefinitions>
                                     <controls:CircleImage
+                                        BorderColor="{StaticResource MainColor}"
+                                        BorderThickness="3"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="0"
                                         HeightRequest = "60"
                                         WidthRequest="60"
+                                        Aspect="AspectFill"
                                         Source="{Binding ImageFullPath}">
                                     </controls:CircleImage>
                                     <Label 
                                         Grid.Column="1"
+                                        Grid.Row="0"
                                         FontAttributes="Bold" 
                                         FontSize="Title"
                                         Text="{Binding FullName}"
+                                        TextColor="{StaticResource MainColor}"
+                                        VerticalTextAlignment="Center"
+                                        Margin="15,0,0,0"/>
+                                    <Label 
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontAttributes="Italic" 
+                                        FontSize="Body"
+                                        
+                                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                        VerticalTextAlignment="Center"
+                                        Margin="15,0,0,0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Edad}"></Span>
+                                                <Span Text=" Años"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label 
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        FontAttributes="Italic" 
+                                        FontSize="Body"
+                                        Text="{Binding Ubicacion}"
                                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                         VerticalTextAlignment="Center"
                                         Margin="15,0,0,0"/>
+                                    <Label 
+                                        Grid.Column="1"
+                                        Grid.Row="3"
+                                        FontAttributes="Bold" 
+                                        FontSize="Medium"
+                                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="End"
+                                        Margin="15,0,0,0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span TextColor="{StaticResource MainColor}" Text="Conexiones: "></Span>
+                                                <Span Text="{Binding Conexiones}"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

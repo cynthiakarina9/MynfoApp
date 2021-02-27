@@ -1,12 +1,9 @@
 ﻿namespace Mynfo.Views
 {
     using Mynfo.Models;
-    using Mynfo.Services;
     using Mynfo.ViewModels;
     using Rg.Plugins.Popup.Services;
     using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 

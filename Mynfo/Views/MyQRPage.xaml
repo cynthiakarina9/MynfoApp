@@ -33,6 +33,7 @@
                             Grid.Column="0"
                             HeightRequest = "80"
                             WidthRequest = "80"
+                            Aspect="AspectFill"
                             Source="{Binding ImageSource}">
                         </controls:CircleImage>
                         <StackLayout

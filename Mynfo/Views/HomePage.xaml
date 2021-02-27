@@ -48,6 +48,7 @@
                         </Grid.ColumnDefinitions>
                         <!--Imagen de perfil -->
                         <controls:CircleImage 
+                            Aspect="AspectFill"
                             BorderColor="{StaticResource MainColor}"
                             BorderThickness="3"
                             Grid.Column="0"

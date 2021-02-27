@@ -20,6 +20,7 @@
         {
             InitializeComponent();
             NetworksQty = 0;
+            //ReloadConnections();
             On<Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
             OSAppTheme currentTheme = App.Current.RequestedTheme;
             if (currentTheme == OSAppTheme.Dark)
@@ -184,6 +185,21 @@
                 }
             }
             return netQty;
+        }
+
+        /// <summary>
+        /// Sirve para recargar las conexiones del usuario en home
+        /// </summary>
+        public static async void ReloadConnections()
+        {
+            var apiService = new ApiService();
+            var apiSecurity = Xamarin.Forms.Application.Current.Resources["APISecurity"].ToString();
+            var user = await apiService.GetUserId(apiSecurity,
+                                                "/api",
+                                                "/Users",
+                                                MainViewModel.GetInstance().User.UserId);
+
+            MainViewModel.GetInstance().User.Conexiones = user.Conexiones;
         }
 
     }

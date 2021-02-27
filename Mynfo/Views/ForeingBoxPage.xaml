@@ -62,6 +62,8 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <controls:CircleImage
+                                    BorderColor="{StaticResource MainColor}"
+                                    BorderThickness="3"
                                     Grid.Row="0"
                                     Grid.RowSpan="5"
                                     Grid.Column="0"
@@ -69,6 +71,7 @@
                                     Margin="0,5,0,0"
                                     HeightRequest="100"
                                     WidthRequest="100"
+                                    Aspect="AspectFill"
                                     x:Name="ForeignUserImage">
                                 </controls:CircleImage>
                                 <Label 
@@ -79,7 +82,7 @@
                                     FontSize = "25"
                                     HorizontalTextAlignment="Start"
                                     Padding="0,-5,0,0"
-                                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                    TextColor = "{StaticResource MainColor}"
                                     VerticalOptions="Start"
                                     x:Name="ForeignUserName"/>
                                 <Label 
