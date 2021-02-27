@@ -29,11 +29,14 @@
             <Grid>
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height = "20"/>
+                        <RowDefinition Height = "Auto"/>
                         <RowDefinition Height = "Auto"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid
-                        Grid.Row="0">
+                        Grid.Row="1"
+                        HorizontalOptions="CenterAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -110,100 +113,104 @@
                             BackgroundColor="{AppThemeBinding Light=#d8dce3, Dark={StaticResource Menu_BackgroundColorDark}}"
                             Margin="30,0,30,40"/>
                     </Grid>
-                    <!--Box predeterminada-->
-                    <CollectionView 
-                        ItemsSource="{Binding Box}"
-                        Grid.Row="1"
-                        SelectionChanged="OnCollectionViewSelectionChanged"
-                        SelectionMode="Single">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout 
-                                Orientation="Vertical"
-                                Span="1" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Padding="10">
-                                    <StackLayout
-                                        HorizontalOptions="Center">
-                                        <Frame
-                                            BackgroundColor="{Binding ColorBox}"
-                                            CornerRadius="25"
-                                            HasShadow="true"
-                                            HeightRequest="80"
+                    <Grid
+                        Grid.Row="2">
+                        <!--Box predeterminada-->
+                        <CollectionView 
+                            ItemsSource="{Binding Box}"
+                            Grid.Row="0"
+                            SelectionChanged="OnCollectionViewSelectionChanged"
+                            SelectionMode="Single">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout 
+                                    Orientation="Vertical"
+                                    Span="1" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <StackLayout
+                                            HorizontalOptions="Center">
+                                            <Frame
+                                                BackgroundColor="{Binding ColorBox}"
+                                                CornerRadius="25"
+                                                HasShadow="true"
+                                                HeightRequest="80"
+                                                IsVisible="{Binding IsNull}"
+                                                WidthRequest="80"/>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="20"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding Name}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.EmptyView>
+                                <ContentView>
+                                    <StackLayout 
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label 
                                             IsVisible="{Binding IsNull}"
-                                            WidthRequest="80"/>
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="20"
-                                            HorizontalTextAlignment="Center"
-                                            Text="{Binding Name}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                                            Text="No Boxes yet"/>
                                     </StackLayout>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                        <CollectionView.EmptyView>
-                            <ContentView>
-                                <StackLayout 
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label 
-                                        IsVisible="{Binding IsNull}"
-                                        Text="No Boxes yet"/>
-                                </StackLayout>
-                            </ContentView>
-                        </CollectionView.EmptyView>
-                    </CollectionView>
-                    <!--Boxes no predeterminadas-->
-                    <CollectionView 
-                        ItemsSource="{Binding BoxNoDefault}"
-                        Grid.Row="2"                       
-                        SelectionMode="Single"
-                        SelectedItem="{Binding selectedItem}"
-                        SelectionChanged="OnCollectionViewSelectionChanged"
-                        x:Name="BoxCollectionView">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout 
-                                Orientation="Vertical"
-                                Span="3" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Padding="10">
-                                    <StackLayout
-                                        HorizontalOptions="CenterAndExpand">
-                                        <Frame
-                                            BackgroundColor="{Binding ColorBox}"
-                                            CornerRadius="15"
-                                            HasShadow="True"
-                                            HeightRequest="45"
-                                            IsVisible="{Binding MoreOne}"
-                                            WidthRequest="45">
-                                            <!--<Frame.Background>
-                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                    <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}"  Offset="0.1"/>
-                                                    <GradientStop Color="{AppThemeBinding Light=#FFFF, Dark=#0000}" Offset="0.6"/>
-                                                    <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}" Offset="0.1"/>
-                                                </LinearGradientBrush>
-                                            </Frame.Background>-->
-                                        </Frame>
-                                        <Label
-                                            FontSize="12"
-                                            HorizontalTextAlignment="Center"
-                                            Text="{Binding Name}"
-                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
-                                    </StackLayout>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                                </ContentView>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
+                        <!--Boxes no predeterminadas-->
+                        <CollectionView 
+                            Grid.Row="1"    
+                            ItemsSource="{Binding BoxNoDefault}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding selectedItem}"
+                            SelectionChanged="OnCollectionViewSelectionChanged"
+                            x:Name="BoxCollectionView">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout 
+                                    Orientation="Vertical"
+                                    Span="3" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <StackLayout
+                                            HorizontalOptions="CenterAndExpand">
+                                            <Frame
+                                                BackgroundColor="{Binding ColorBox}"
+                                                CornerRadius="15"
+                                                HasShadow="True"
+                                                HeightRequest="45"
+                                                IsVisible="{Binding MoreOne}"
+                                                WidthRequest="45">
+                                                <!--<Frame.Background>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                        <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}"  Offset="0.1"/>
+                                                        <GradientStop Color="{AppThemeBinding Light=#FFFF, Dark=#0000}" Offset="0.6"/>
+                                                        <GradientStop Color="{AppThemeBinding Light=#AAAA, Dark=#AAAA}" Offset="0.1"/>
+                                                    </LinearGradientBrush>
+                                                </Frame.Background>-->
+                                            </Frame>
+                                            <Label
+                                                FontSize="12"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding Name}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                    
                     <!--Carga-->
                     <ActivityIndicator
                         Grid.RowSpan="2"
+                        Grid.Row="1"
                         IsRunning="{Binding IsRunning}"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="CenterAndExpand">
+                        VerticalOptions="FillAndExpand">
                     </ActivityIndicator>
                 </Grid>
             </Grid>
@@ -211,7 +218,7 @@
             <Grid
                 Grid.Row="0"
                 HorizontalOptions="CenterAndExpand"
-                VerticalOptions="End">
+                VerticalOptions="EndAndExpand">
                 <ImageButton
                     BackgroundColor = "Transparent"
                     Clicked = "CreateBox_Clicked"

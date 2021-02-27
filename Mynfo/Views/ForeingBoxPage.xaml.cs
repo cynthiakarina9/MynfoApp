@@ -1,5 +1,6 @@
 ﻿namespace Mynfo.Views
 {
+    using Mynfo.Helpers;
     using Mynfo.Models;
     using System;
     using System.Collections.Generic;
@@ -33,14 +34,12 @@
             ForeignUserImage.Source = foreing.ImageFullPath;
             ForeignUserName.Text = foreing.FullName;
             if(foreing.Edad != 0)
-                ForeignAge.Text = foreing.Edad + " Años";
+                ForeignAge.Text = foreing.Edad + Languages.Anios;
             if (foreing.Ubicacion != "")
                 ForeignLocation.Text = foreing.Ubicacion;
             if (foreing.Ubicacion != "")
                 ForeignJob.Text = foreing.Ocupacion;
-            ForeignConnection.Text = "Conexiones: " + foreing.Conexiones;
-
-
+            ForeignConnection.Text = Languages.ViewsLabel + foreing.Conexiones;
             #endregion
         }
         #endregion

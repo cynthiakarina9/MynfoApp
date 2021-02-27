@@ -14,7 +14,7 @@
         public string Name { get; set; }
 
         [Required(ErrorMessage = "The field {0} is required.")]
-        [MaxLength(10, ErrorMessage = "The field {0} only can contains a maxium of {1} characters lenght.")]
+        [MaxLength(20, ErrorMessage = "The field {0} only can contains a maxium of {1} characters lenght.")]
         public string Number { get; set; }
 
         public int UserId { get; set; }
