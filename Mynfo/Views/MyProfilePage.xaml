@@ -202,11 +202,19 @@
                                     FontSize = "23"
                                     HorizontalTextAlignment = "Center"
                                     Placeholder = "{i18n:Translate LocationPlaceHolder}" 
-                                    MaxLength="30"
+                                    MaxLength="50"
                                     Text = "{Binding User.Ubicacion, Mode = TwoWay}" 
                                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                    
                                     WidthRequest="300"
-                                    x:Name = "UbicacionEntry"/>
+                                    x:Name = "UbicacionEntry">
+                                    <Entry.Keyboard>
+                                        <Keyboard x:FactoryMethod="Create">
+                                            <x:Arguments>
+                                                <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                            </x:Arguments>
+                                        </Keyboard>
+                                    </Entry.Keyboard>
+                                </Entry>
                             </StackLayout>
                             <!--Ocupación-->
                             <StackLayout
@@ -226,7 +234,15 @@
                                     Text = "{Binding User.Ocupacion, Mode = TwoWay}" 
                                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                    
                                     WidthRequest="300"
-                                    x:Name = "OcupacionEntry"/>
+                                    x:Name = "OcupacionEntry">
+                                    <Entry.Keyboard>
+                                        <Keyboard x:FactoryMethod="Create">
+                                            <x:Arguments>
+                                                <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                            </x:Arguments>
+                                        </Keyboard>
+                                    </Entry.Keyboard>
+                                </Entry>
                             </StackLayout>
                         </StackLayout>
                     </Grid>

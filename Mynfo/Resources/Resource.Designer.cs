@@ -898,6 +898,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You must add a valid side..
+        /// </summary>
+        public static string LadaValidation {
+            get {
+                return ResourceManager.GetString("LadaValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Last Name.
         /// </summary>
         public static string LastNameLabel {

@@ -693,4 +693,7 @@
   <data name="Yellow" xml:space="preserve">
     <value>Amarillo</value>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value>Debe agregar una lada valida.</value>
+  </data>
 </root>
