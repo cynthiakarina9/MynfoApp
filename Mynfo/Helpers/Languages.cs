@@ -740,6 +740,73 @@
         {
             get { return Resource.HelpLabel; }
         }
+        public static string Comments
+        {
+            get { return Resource.Comments;  }
+        }
+
+        public static string SelectColor
+        {
+            get { return Resource.SelectColor;  }
+        }
+
+        public static string Green
+        {
+            get { return Resource.Green; }
+        }
+
+        public static string Cyan
+        {
+            get { return Resource.Cyan; }
+        }
+
+        public static string DarkBlue
+        {
+            get { return Resource.DarkBlue; }
+        }
+
+        public static string Orange
+        {
+            get { return Resource.Orange; }
+        }
+        public static string LightBlue
+        {
+            get { return Resource.LightBlue; }
+        }
+
+        public static string Yellow
+        {
+            get { return Resource.Yellow; }
+        }
+
+        public static string Fuchsia
+        {
+            get { return Resource.Fuchsia; }
+        }
+        public static string DarkGreen
+        {
+            get { return Resource.DarkGreen; }
+        }
+        public static string Purple
+        {
+            get { return Resource.Purple; }
+        }
+        public static string Lilac
+        {
+            get { return Resource.Lilac; }
+        }
+        public static string Red
+        {
+            get { return Resource.Red; }
+        }
+        public static string Pink
+        {
+            get { return Resource.Pink; }
+        }
+        public static string Colorless
+        {
+            get { return Resource.Colorless; }
+        }
         public static string LadaValidation
         {
             get { return Resource.LadaValidation; }

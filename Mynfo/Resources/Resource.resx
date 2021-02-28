@@ -643,12 +643,57 @@
     <value> years old</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>How do I share my information?</value>
+    <value>How do I read another TAG?</value>
   </data>
   <data name="ViewsLabel" xml:space="preserve">
     <value>Connections: </value>
   </data>
   <data name="LadaValidation" xml:space="preserve">
     <value>You must add a valid side.</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select a color</value>
+  </data>
+  <data name="Colorless" xml:space="preserve">
+    <value>Colorless</value>
+  </data>
+  <data name="Cyan" xml:space="preserve">
+    <value>Cyan</value>
+  </data>
+  <data name="DarkBlue" xml:space="preserve">
+    <value>Dark blue</value>
+  </data>
+  <data name="DarkGreen" xml:space="preserve">
+    <value>Dark green</value>
+  </data>
+  <data name="Fuchsia" xml:space="preserve">
+    <value>Fuchsia</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="LightBlue" xml:space="preserve">
+    <value>Light blue</value>
+  </data>
+  <data name="Lilac" xml:space="preserve">
+    <value>Lilac</value>
+  </data>
+  <data name="Orange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="Pink" xml:space="preserve">
+    <value>Pink</value>
+  </data>
+  <data name="Purple" xml:space="preserve">
+    <value>Purple</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>Yellow</value>
   </data>
 </root>

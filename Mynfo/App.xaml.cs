@@ -5,6 +5,7 @@
     using Mynfo.Domain;
     using Services;
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;
     using ViewModels;
@@ -176,6 +177,7 @@
 
         protected override void OnStart()
         {
+            
         }
 
         protected override void OnSleep()
