@@ -648,4 +648,7 @@
   <data name="ViewsLabel" xml:space="preserve">
     <value>Connections: </value>
   </data>
+  <data name="LadaValidation" xml:space="preserve">
+    <value>You must add a valid side.</value>
+  </data>
 </root>

@@ -649,4 +649,7 @@ Você deve inserir um url</value>
   <data name="ViewsLabel" xml:space="preserve">
     <value>Conexões: </value>
   </data>
+  <data name="LadaValidation" xml:space="preserve">
+    <value>Você deve adicionar um lado válido.</value>
+  </data>
 </root>

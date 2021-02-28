@@ -740,5 +740,9 @@
         {
             get { return Resource.HelpLabel; }
         }
+        public static string LadaValidation
+        {
+            get { return Resource.LadaValidation; }
+        }
     }
 }
