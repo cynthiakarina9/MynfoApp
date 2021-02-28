@@ -807,5 +807,9 @@
         {
             get { return Resource.Colorless; }
         }
+        public static string LadaValidation
+        {
+            get { return Resource.LadaValidation; }
+        }
     }
 }
