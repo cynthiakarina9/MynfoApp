@@ -113,6 +113,7 @@
         {
             apiService = new ApiService();
             this.IsRunning = false;
+            EdadLabel = true;
             this.User = MainViewModel.GetInstance().User;
             if (this.User.ImageFullPath == "noimage" 
                 || this.User.ImageFullPath == string.Empty 
@@ -128,7 +129,6 @@
             {
                 EdadLabel = false;
             }
-            EdadLabel = true;
             GetBoxCount();
             GetBoxDefault();
             GetBoxNoDefault();

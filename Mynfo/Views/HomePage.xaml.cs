@@ -1,6 +1,7 @@
 ﻿namespace Mynfo.Views
 {
     using Mynfo.Domain;
+    using Mynfo.Helpers;
     using Mynfo.Models;
     using Mynfo.ViewModels;
     using Rg.Plugins.Popup.Extensions;
@@ -8,6 +9,7 @@
     using System.Data.SqlClient;
     using System.Linq;
     using System.Text;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
 
     public partial class HomePage : ContentPage
@@ -15,14 +17,29 @@
         #region Properties
         public Box selectedItem { get; set; }
         public Box selectedItem2 { get; set; }
+        public UserLocal User
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructor
         public HomePage()
         {
             InitializeComponent();
-            
+            this.User = MainViewModel.GetInstance().User;
             this.CheckLocalBox();
+            if(User.Ocupacion == null || User.Ocupacion == string.Empty)
+            {
+                OccupationLabel.Text = Languages.OccupationLabel;
+                OccupationLabel.TextColor = Color.FromHex("#A1A1A1");
+            }
+            if(User.Ubicacion == null || User.Ubicacion == string.Empty)
+            {
+                UbicacionLabel.Text = Languages.LocationLabel;
+                UbicacionLabel.TextColor = Color.FromHex("#A1A1A1");
+            }
         }
         #endregion
 

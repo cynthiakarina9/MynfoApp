@@ -91,14 +91,16 @@
                             FontSize="15"
                             Text="{Binding User.Ubicacion}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, 
-                                                        Dark={StaticResource Dark_FontColor}}"/>
+                                                        Dark={StaticResource Dark_FontColor}}"
+                            x:Name="UbicacionLabel"/>
                         <Label  
                             Grid.Column="1"
                             Grid.Row="3"
                             FontSize="15"
                             Text="{Binding User.Ocupacion}"
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, 
-                                                        Dark={StaticResource Dark_FontColor}}"/>
+                                                        Dark={StaticResource Dark_FontColor}}"
+                            x:Name="OccupationLabel"/>
                         <Label
                             Grid.Column="1"
                             Grid.Row="5">
