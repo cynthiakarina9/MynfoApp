@@ -60,7 +60,7 @@
                                 MenuItem.Accelerator="paleta.png"
                                 Title="Color"
                                 TextColor="{StaticResource MainColor}"
-                                x:Name="paleta"/>
+                                x:Name="paleta"></Picker>
                         </StackLayout>
                         
                         <!--<StackLayout 
