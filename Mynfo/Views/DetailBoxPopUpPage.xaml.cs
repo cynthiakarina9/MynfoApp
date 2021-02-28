@@ -166,7 +166,7 @@
             BoxProfiles.Clicked += new EventHandler((sender, e) => BoxDetails_Clicked(sender, e, BoxId, BoxDefault, BoxName));
 
             //Botón de Editar
-            EdithButton.Clicked += new EventHandler((sender, e) => edithBox(sender, e, BoxId, UserID, BoxDefault));
+            EdithButton.Clicked += new EventHandler((sender, e) => edithBox(sender, e, _Box, UserID, BoxDefault));
 
             //Creación del checkbox de box predeterminada
             BxDefaultCheckBox.IsChecked = BoxDefault;
@@ -457,11 +457,11 @@
         #endregion
 
         #region Commands
-        async void edithBox(object sender, EventArgs e, int _BoxId, int _UserId, bool _BoxDefault)
+        async void edithBox(object sender, EventArgs e, Box Box, int _UserId, bool _BoxDefault)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.DetailsBoxEdith = new DetailsBoxEdithViewModel(_BoxId);
-            await PopupNavigation.Instance.PushAsync(new DetailsBoxEdithPage(_BoxId));
+            mainViewModel.DetailsBoxEdith = new DetailsBoxEdithViewModel(Box);
+            await PopupNavigation.Instance.PushAsync(new DetailsBoxEdithPage(Box));
         }
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)
         {

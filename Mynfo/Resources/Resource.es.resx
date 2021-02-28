@@ -631,7 +631,7 @@
     <value> años</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>¿Cómo comparto mis datos?</value>
+    <value>¿Cómo leo otro TAG?</value>
   </data>
   <data name="LocationLabel" xml:space="preserve">
     <value>Ubicación:</value>
@@ -647,5 +647,50 @@
   </data>
   <data name="ViewsLabel" xml:space="preserve">
     <value>Conexiones: </value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Selecciona un color</value>
+  </data>
+  <data name="Colorless" xml:space="preserve">
+    <value>Sin color</value>
+  </data>
+  <data name="Cyan" xml:space="preserve">
+    <value>Azul agua</value>
+  </data>
+  <data name="DarkBlue" xml:space="preserve">
+    <value>Azul oscuro</value>
+  </data>
+  <data name="DarkGreen" xml:space="preserve">
+    <value>Verde oscuro</value>
+  </data>
+  <data name="Fuchsia" xml:space="preserve">
+    <value>Fucsia</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Verde</value>
+  </data>
+  <data name="LightBlue" xml:space="preserve">
+    <value>Azul cielo</value>
+  </data>
+  <data name="Lilac" xml:space="preserve">
+    <value>Lila</value>
+  </data>
+  <data name="Orange" xml:space="preserve">
+    <value>Naranja</value>
+  </data>
+  <data name="Pink" xml:space="preserve">
+    <value>Rosa</value>
+  </data>
+  <data name="Purple" xml:space="preserve">
+    <value>Morado</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Rojo</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>Amarillo</value>
   </data>
 </root>

@@ -49,31 +49,26 @@
                             WidthRequest="40"
                             x:Name="DeleteButton" />
                         <StackLayout
-                            HorizontalOptions="Start"
-                            Grid.Column ="0"
-                            Grid.Row="1"
-                            Padding="0,-10,0,0"
-                            VerticalOptions="Start"
-                            Orientation="Horizontal">
-                            <Picker
+                            HorizontalOptions="CenterAndExpand"
+                            Grid.ColumnSpan="4"
+                            Grid.Row="2">
+                            <!--<Picker
                                 BackgroundColor="Transparent"
                                 MenuItem.Accelerator="paleta.png"
-                                Title="Color"
+                                Title="{i18n:Translate SelectColor}"
+                                TitleColor="{StaticResource MainColor}"
                                 TextColor="{StaticResource MainColor}"
-                                x:Name="paleta"/>
+                                x:Name="paleta"/>-->
+                            <Button
+                                TextColor="{StaticResource MainColor}"
+                                Text="{Binding Color}"
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                BackgroundColor="White"
+                                BorderWidth="1"
+                                BorderColor="{StaticResource MainColor}"
+                                x:Name="ColorBtn"/>
                         </StackLayout>
-                        
-                        <!--<StackLayout 
-                            Orientation="Horizontal"
-                            Grid.ColumnSpan ="3"
-                            Grid.Row="2"
-                            RadioButtonGroup.GroupName="colors">
-                            <RadioButton Content="Red" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Red" x:Name="radio1" IsChecked="{Binding c}"/>
-                            <RadioButton Content="Green" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Green" x:Name="radio2"/>
-                            <RadioButton Content="Blue" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Blue" x:Name="radio3"/>
-                            <RadioButton Content="Other" FontSize="9" CheckedChanged="OnColorsRadioButtonCheckedChanged" Value="Other" x:Name="radio4"/>
-                        </StackLayout>-->
-
                         <!--Nombre de la box -->
                         <Entry 
                             FontAttributes="Bold"
@@ -94,7 +89,8 @@
                             Grid.Row="3"
                             Grid.ColumnSpan="4"
                             SelectionMode="Single"
-                            SelectionChanged="OnCollectionViewSelectionChanged">
+                            SelectionChanged="OnCollectionViewSelectionChanged"
+                            Margin="0,20,0,0">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout Orientation="Vertical"
                                         Span="3" />

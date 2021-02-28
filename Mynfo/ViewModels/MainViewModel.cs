@@ -448,7 +448,7 @@
             {
                 Icon = "comments1",
                 PageName = "Comments",
-                Title = "Comments",
+                Title = Languages.Comments,
             });
             this.Menus.Add(new MenuItemViewModel
             {

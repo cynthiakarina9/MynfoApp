@@ -158,7 +158,7 @@
                                                 HeightRequest="50"
                                                 Source="{Binding Logo}"
                                                 WidthRequest="50"/>
-                                            <Label
+                                        <Label
                                                 HorizontalTextAlignment="Center"
                                                 Text="{Binding ProfileName}"
                                                 FontAttributes="Bold"
@@ -167,22 +167,6 @@
                                     </StackLayout>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
-                            <!--<CollectionView.EmptyView>
-                                <ContentView>
-                                    <StackLayout 
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand">
-                                        <Label 
-                                            FontAttributes="Bold"
-                                            FontSize="18"
-                                            HorizontalOptions="Fill"
-                                            HorizontalTextAlignment="Center" 
-                                            Margin="10,0,10,280"
-                                            Text="{i18n:Translate EmptyBox}"
-                                            VerticalOptions="CenterAndExpand"/>
-                                    </StackLayout>
-                                </ContentView>
-                            </CollectionView.EmptyView>-->
                         </CollectionView>
                     </Grid>
                 </Grid>

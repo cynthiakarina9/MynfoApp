@@ -21,7 +21,6 @@
         public HomePage()
         {
             InitializeComponent();
-            
             this.CheckLocalBox();
         }
         #endregion

@@ -206,7 +206,7 @@
             //BxBtnDelete.Source = "edit2.png";
             //BxBtnDelete.WidthRequest = 50;
             //BxBtnDelete.HeightRequest = 50;
-            EdithButton.Clicked += new EventHandler((sender, e) => edithBox(sender, e, BoxId, UserID, BoxDefault));
+            EdithButton.Clicked += new EventHandler((sender, e) => edithBox(sender, e, _Box, UserID, BoxDefault));
 
             //EdithButton.Children.Add(BxBtnDelete);
 
@@ -1032,7 +1032,7 @@
 
             return Box;
         }
-        async void edithBox(object sender, EventArgs e, int _BoxId, int _UserId, bool _BoxDefault)
+        async void edithBox(object sender, EventArgs e, Box Box, int _UserId, bool _BoxDefault)
         {
             #region LastCode
             //string sqlDeleteEmails = "delete from dbo.Box_ProfileEmail where dbo.Box_ProfileEmail.BoxId = " + _BoxId,
@@ -1362,8 +1362,8 @@
             //}
             #endregion
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.DetailsBoxEdith = new DetailsBoxEdithViewModel(_BoxId);
-            await Navigation.PushAsync(new DetailsBoxEdithPage(_BoxId));
+            mainViewModel.DetailsBoxEdith = new DetailsBoxEdithViewModel(Box);
+            await Navigation.PushAsync(new DetailsBoxEdithPage(Box));
         }
 
         private void BoxDetails_Clicked(object sender, EventArgs e, int _BoxId, bool _boxDefault, string _boxName)

@@ -9,7 +9,6 @@
     using Rg.Plugins.Popup.Extensions;
     using Rg.Plugins.Popup.Services;
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Data.SqlClient;
     using System.Linq;
@@ -26,7 +25,7 @@
 
         #region Attributes
         public Entry BxNameEntry = new Entry();
-        public String boxName;
+        public string boxName;
         public Box Box;
         public Color NewColor;
         public string ColorH;
@@ -39,11 +38,11 @@
         #endregion
 
         #region Constructor
-        public DetailsBoxEdithPage(int _boxId = 0)
+        public DetailsBoxEdithPage(Box _box)
         {
             InitializeComponent();
             OSAppTheme currentTheme = Application.Current.RequestedTheme;
-            changeColor();
+            //changeColor();
             NavigationPage.SetHasNavigationBar(this, false);
             FullBackGround.BackgroundColor = NewColor;
             #region F
@@ -51,7 +50,7 @@
             
             FullBackGround.CloseWhenBackgroundIsClicked = true;
             ProfilesSelected = new ObservableCollection<ProfileLocal>();
-            int BoxId = _boxId;
+            int BoxId = _box.BoxId;
             int UserID = MainViewModel.GetInstance().User.UserId;
             bool BoxDefault = false;
             var BxSaveName = new Button();
@@ -83,6 +82,8 @@
             //Acción de botón actualización de Box
             BoxUpdateBtn.Clicked += new EventHandler((sender, e) => UpdateBoxName(sender, e, BoxId, BxNameEntry.Text, UserID, BxNameEntry.IsReadOnly));
 
+            //Acción de cambiar color de Box
+            ColorBtn.Clicked += new EventHandler((sender, e) => ChangeColor(sender, e, _box));
             #endregion
         }
         #endregion
@@ -447,7 +448,16 @@
                 "/Boxes",
                 _BoxId);
             var box3 = new Box();
-            if (ColorH == "")
+            box3 = new Box
+            {
+                BoxId = Box.BoxId,
+                BoxDefault = Box.BoxDefault,
+                Name = NameEntry.Text,
+                UserId = Box.UserId,
+                Time = Box.Time,
+                ColorBox = Box.ColorBox
+            };
+            /*if (ColorH == "")
             {
                 box3 = new Box
                 {
@@ -470,8 +480,8 @@
                     Time = Box.Time,
                     ColorBox = ColorH
                 };
-            }
-            
+            }*/
+
             await MainViewModel.GetInstance().DetailsBoxEdith.EdithBox(box3);
 
             //BoxName = _name;
@@ -657,7 +667,12 @@
             }
         }
 
-        private string changeColor()
+        async void ChangeColor(object sender, EventArgs e, Box _Box)
+        {
+            await Navigation.PushPopupAsync(new ColorPickerPopUp(_Box));
+        }
+
+        /*private string changeColor()
         {
             ColorH = "";
             Dictionary<string, string> nameToColor = new Dictionary<string, string>
@@ -715,13 +730,13 @@
                             case "Morado":
                                 ColorH = "#7f416a";
                                 break;
-                            case "Lila ":
+                            case "Lila":
                                 ColorH = "#6f50ff";
                                 break;
-                            case "Rojo ":
+                            case "Rojo":
                                 ColorH = "#c1271f";
                                 break;
-                            case "Rosa ":
+                            case "Rosa":
                                 ColorH = "#ce7d7d";
                                 break;
                             default:
@@ -731,8 +746,8 @@
                 };
             return ColorH;
         }
-        
-       
+        */
+
         #endregion
 
     }

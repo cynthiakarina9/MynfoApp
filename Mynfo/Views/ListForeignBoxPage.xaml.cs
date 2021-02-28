@@ -38,6 +38,10 @@
         }
         #endregion
 
+        #region Methods
+
+        #endregion
+
         //#region Methods
         //public async void GetUSer(int _ForeignUserId)
         //{
