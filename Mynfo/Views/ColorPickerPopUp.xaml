@@ -5,8 +5,9 @@
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="Mynfo.Views.ColorPickerPopUp"
              x:Name="ColorPicker">
-    <StackLayout Padding="15">
-        <Frame Margin="25">
+    <Frame 
+        CornerRadius="30"
+        Margin="25">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition  />
@@ -181,5 +182,4 @@
                     x:Name="SaveColorBtn"/>
             </Grid>
         </Frame>
-    </StackLayout>
 </popup:PopupPage>
