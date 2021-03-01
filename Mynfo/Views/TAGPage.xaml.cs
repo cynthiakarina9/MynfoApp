@@ -53,6 +53,7 @@
                 }
                 else if (Device.RuntimePlatform == Device.Android)
                 {
+                    App.Navigator.PushAsync(new RedyToScan());
                     Vibration.Vibrate(duration);
                     write_nfc = true;
                 }

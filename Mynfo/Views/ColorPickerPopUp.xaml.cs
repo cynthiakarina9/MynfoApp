@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 namespace Mynfo.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ColorPickerPopUp : PopupPage
+    public partial class ColorPickerPopUp 
     {
         public ColorPickerPopUp(Box _Box)
         {

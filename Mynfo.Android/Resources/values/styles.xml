@@ -7,7 +7,7 @@
   </style>
   <style name = "NightTheme" parent = "Theme.AppCompat">
     <item name="colorPrimary" >#222b3a</item>
-    <item name="colorPrimaryDark">#FFFFFF</item>
+    <item name="colorPrimaryDark">#222b3a</item>
     <item name="colorAccent">#FF5521</item>
     
   </style>

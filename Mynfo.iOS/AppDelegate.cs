@@ -140,6 +140,7 @@
             catch (Exception e) 
             {
                 Console.WriteLine(e);
+                user_id = 0;
             }            
              
             user_id_tag = user_id.ToString();
@@ -174,7 +175,7 @@
                 });
             }
             session.InvalidateSession();
-            session.Dispose();
+            Session.InvalidateSession();
         }
 
         string GetRecords(NFCNdefPayload[] records)
