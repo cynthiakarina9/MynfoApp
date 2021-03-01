@@ -426,12 +426,12 @@
                 PageName = "MyProfilePage",
                 Title = Languages.MyAccount,
             });
-            this.Menus.Add(new MenuItemViewModel
-            {
-                Icon = "question",
-                PageName = "Help",
-                Title = Languages.HelpLabel,
-            });
+            //this.Menus.Add(new MenuItemViewModel
+            //{
+            //    Icon = "question",
+            //    PageName = "Help",
+            //    Title = Languages.HelpLabel,
+            //});
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "icon_tag",
