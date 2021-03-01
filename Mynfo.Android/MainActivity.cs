@@ -204,7 +204,7 @@
                     }
                     PopupNavigation.Instance.PopAsync();
                     PopupNavigation.Instance.PushAsync(new Stickerconfig());
-                    Thread.Sleep(4000);
+                    Thread.Sleep(10000);
                     PopupNavigation.Instance.PopAsync();
                 }
                 else 
