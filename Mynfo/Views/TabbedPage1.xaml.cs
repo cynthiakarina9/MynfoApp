@@ -30,12 +30,12 @@
             if (currentTheme == OSAppTheme.Dark)
             {
                 Logosuperior.Source = "logo_superior2.png";
-                BackG.BackgroundColor = Color.FromHex("#222b3a");
+                BackG.BarBackgroundColor = Color.FromHex("#222b3a");
             }
             else
             {
                 Logosuperior.Source = "logo_superior3.png";
-                BackG.BackgroundColor = Color.FromHex("#FFFFFF");
+                BackG.BarBackgroundColor = Color.FromHex("#FFFFFF");
             }
 
             var mainViewModel = MainViewModel.GetInstance();
