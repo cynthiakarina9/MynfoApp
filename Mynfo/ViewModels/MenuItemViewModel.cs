@@ -16,8 +16,7 @@
         public string Icon { get; set; }
         public string Title { get; set; }
         public string PageName { get; set; }
-        public bool Share { get; set; }
-        public static bool nfc_status { get; set; }
+        public bool Share { get; set; }        
         #endregion
 
         #region Commands
@@ -78,7 +77,7 @@
                 await App.Navigator.PushAsync(new QRTabbedPage());
             }
  
-            else if ((this.PageName == "TAGPage") && (nfc_status == true))
+            else if (this.PageName == "TAGPage")
             {
                 MainViewModel.GetInstance().TAG = new TAGViewModel();
                 await App.Navigator.PushAsync(new TAGPage());
