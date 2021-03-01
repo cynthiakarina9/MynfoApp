@@ -55,33 +55,34 @@
                             </Grid.ColumnDefinitions>
                             <!--Imagen de perfil -->
                             <controls:CircleImage 
-                            Aspect="AspectFill"
-                            BorderColor="{StaticResource MainColor}"
-                            BorderThickness="3"
-                            Grid.Column="0"
-                            Grid.Row="0"
-                            Grid.RowSpan="3"
-                            HorizontalOptions="Center"
-                            HeightRequest = "125"
-                            Margin="30,0,30,0"
-                            Source = "{Binding ImageSource}"
-                            VerticalOptions="Center"
-                            WidthRequest="125">
+                                Aspect="AspectFill"
+                                BorderColor="{StaticResource MainColor}"
+                                BorderThickness="3"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                HorizontalOptions="Center"
+                                HeightRequest = "125"
+                                Margin="30,0,30,0"
+                                Source = "{Binding ImageSource}"
+                                VerticalOptions="Center"
+                                WidthRequest="125">
                             </controls:CircleImage>
+
                             <Label 
-                            FontAttributes="Bold"
-                            FontSize="Title"
-                            Text="{Binding User.FirstName}"
-                            TextColor="{StaticResource MainColor}"
-                            Grid.Column="1"
-                            Grid.Row="0"/>
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="{Binding User.FirstName}"
+                                TextColor="{StaticResource MainColor}"
+                                Grid.Column="1"
+                                Grid.Row="0"/>
                             <Label
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            FontSize="15"
-                            IsVisible="{Binding EdadLabel}"
-                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, 
-                                                        Dark={StaticResource Dark_FontColor}}">
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                FontSize="15"
+                                IsVisible="{Binding EdadLabel}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, 
+                                                            Dark={StaticResource Dark_FontColor}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding User.Edad}"></Span>
@@ -97,7 +98,7 @@
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, 
                                                         Dark={StaticResource Dark_FontColor}}"
                             x:Name="UbicacionLabel"/>
-                        <Label  
+                            <Label  
                             Grid.Column="1"
                             Grid.Row="3"
                             FontSize="15"
@@ -105,7 +106,7 @@
                             TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, 
                                                         Dark={StaticResource Dark_FontColor}}"
                             x:Name="OccupationLabel"/>
-                        <Label
+                            <Label
                             Grid.Column="1"
                             Grid.Row="5">
                                 <Label.FormattedText>
