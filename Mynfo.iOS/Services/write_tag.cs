@@ -63,10 +63,10 @@ namespace Mynfo.iOS.Services
                     {
                         var nFCNdefTag = tags[0];
                         session.ConnectToTag(nFCNdefTag, CompletionHandler);
-                        string dominio = "http://boxweb1.azurewebsites.net/";
+                        string dominio = "http://boxweb.azurewebsites.net/";
                         string user = MainViewModel.GetInstance().User.UserId.ToString();
                         string tag_id = "";
-                        string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
+                        string url = dominio + "index.aspx?user_id=" + user + "&tag_id=" + tag_id;
                         NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
                         NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
                         nFCNdefTag.WriteNdef(nFCNdefMessage, delegate

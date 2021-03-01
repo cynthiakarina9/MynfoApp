@@ -79,7 +79,7 @@
         {
             System.Text.StringBuilder sb;
             int userId = MainViewModel.GetInstance().User.UserId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetProfiles = "select * from dbo.ProfileEmails where dbo.ProfileEmails.UserId = " + userId;
             int netQty = 0;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -108,7 +108,7 @@
         {
             System.Text.StringBuilder sb;
             int userId = MainViewModel.GetInstance().User.UserId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetProfiles = "select * from dbo.ProfilePhones where dbo.ProfilePhones.UserId = " + userId;
             int netQty = 0;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -137,7 +137,7 @@
         {
             System.Text.StringBuilder sb;
             int userId = MainViewModel.GetInstance().User.UserId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetProfiles = "select * from dbo.ProfileWhatsapps where dbo.ProfileWhatsapps.UserId = " + userId;
             int netQty = 0;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
@@ -166,7 +166,7 @@
         {
             System.Text.StringBuilder sb;
             int userId = MainViewModel.GetInstance().User.UserId;
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetProfiles = "select * from dbo.ProfileSMs where dbo.ProfileSMs.UserId = " + userId;
             int netQty = 0;
             using (SqlConnection connection = new SqlConnection(cadenaConexion))
