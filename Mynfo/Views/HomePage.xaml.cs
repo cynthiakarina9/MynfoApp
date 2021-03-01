@@ -52,7 +52,7 @@
 
             using (var conn = new SQLite.SQLiteConnection(App.root_db))
             {
-                string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+                string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                 //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                 string queryToGetBoxDefault = "select * from dbo.Boxes where dbo.boxes.UserId = "
                                                 + MainViewModel.GetInstance().User.UserId
@@ -482,7 +482,7 @@
                 connSQLite.Insert(foreingBox);
             }
 
-            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             string queryGetPhones = "select dbo.Boxes.BoxId, dbo.ProfilePhones.ProfilePhoneId, dbo.ProfilePhones.Name, " +
                              "dbo.ProfilePhones.Number from dbo.Box_ProfilePhone Join dbo.Boxes " +
                              "on(dbo.Boxes.BoxId = dbo.Box_ProfilePhone.BoxId) " +

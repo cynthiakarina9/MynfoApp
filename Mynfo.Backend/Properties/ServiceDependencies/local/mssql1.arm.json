@@ -4,7 +4,7 @@
   "parameters": {
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "MynfoApp",
+      "defaultValue": "MobileAPPMyInfoNFC",
       "metadata": {
         "_parameterType": "resourceGroup",
         "description": "Nombre del grupo de recursos del recurso. Se recomienda poner los recursos en el mismo grupo de recursos para mejorar el seguimiento."
@@ -36,7 +36,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('Mynfo', subscription().subscriptionId)))]",
+      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('mynfo', subscription().subscriptionId)))]",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "apiVersion": "2019-10-01",
       "dependsOn": [
@@ -51,7 +51,7 @@
             {
               "kind": "v12.0",
               "location": "[parameters('resourceLocation')]",
-              "name": "serverappmynfo1",
+              "name": "serverappmynfo",
               "type": "Microsoft.Sql/servers",
               "apiVersion": "2017-10-01-preview"
             },
@@ -59,15 +59,15 @@
               "sku": {
                 "name": "Standard",
                 "tier": "Standard",
-                "capacity": 10
+                "capacity": 20
               },
               "kind": "v12.0,user",
               "location": "[parameters('resourceLocation')]",
-              "name": "serverappmynfo1/Mynfo",
+              "name": "serverappmynfo/mynfo",
               "type": "Microsoft.Sql/servers/databases",
               "apiVersion": "2017-10-01-preview",
               "dependsOn": [
-                "serverappmynfo1"
+                "serverappmynfo"
               ]
             }
           ]

@@ -210,7 +210,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\MynfoBackend1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\MynfoBackend - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -262,11 +262,6 @@
     <Content Include="Views\UserTypes\Details.cshtml" />
     <Content Include="Views\UserTypes\Edit.cshtml" />
     <Content Include="Views\UserTypes\Index.cshtml" />
-    <Content Include="Views\RedSocials\Create.cshtml" />
-    <Content Include="Views\RedSocials\Delete.cshtml" />
-    <Content Include="Views\RedSocials\Details.cshtml" />
-    <Content Include="Views\RedSocials\Edit.cshtml" />
-    <Content Include="Views\RedSocials\Index.cshtml" />
     <Content Include="Views\Box_ProfileSM\Create.cshtml" />
     <Content Include="Views\Box_ProfileSM\Delete.cshtml" />
     <Content Include="Views\Box_ProfileSM\Details.cshtml" />
@@ -322,6 +317,11 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\RedSocials\Create.cshtml" />
+    <Content Include="Views\RedSocials\Delete.cshtml" />
+    <Content Include="Views\RedSocials\Details.cshtml" />
+    <Content Include="Views\RedSocials\Edit.cshtml" />
+    <Content Include="Views\RedSocials\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
