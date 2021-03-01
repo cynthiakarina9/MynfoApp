@@ -47,45 +47,53 @@ namespace Mynfo.iOS.Services
         [Foundation.Preserve(Conditional = true)]
         public void DidDetectTags(NFCNdefReaderSession session, INFCNdefTag[] tags)
         {
-            string user_id_tag = AppDelegate.user_id_tag;
-            if (user_id_tag == "?") 
+            try
             {
-                Task task = App.DisplayAlertAsync("¡Primero escanea este Tag para escribirlo!");
-                session.InvalidateSession();
-                session.Dispose();
-                AppDelegate.user_id_tag = "?";
-            }
-            else
-            {
-                if ((Convert.ToInt32(user_id_tag) == Convert.ToInt32(MainViewModel.GetInstance().User.UserId.ToString())) || (0 == Convert.ToInt32(user_id_tag)))
+                string user_id_tag = AppDelegate.user_id_tag;
+                if (user_id_tag == "?")
                 {
-                    var nFCNdefTag = tags[0];
-                    session.ConnectToTag(nFCNdefTag, CompletionHandler);
-                    string dominio = "http://boxweb1.azurewebsites.net/";
-                    string user = MainViewModel.GetInstance().User.UserId.ToString();
-                    string tag_id = "";
-                    string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
-                    NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
-                    NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
-                    nFCNdefTag.WriteNdef(nFCNdefMessage, delegate{});
-                    //Task task = App.DisplayAlertAsync(user_id_tag);
+                    Task task = App.DisplayAlertAsync("¡Primero escanea este Tag para escribirlo!");
+                    session.InvalidateSession();
+                    session.Dispose();
+                    AppDelegate.user_id_tag = "?";
                 }
                 else
                 {
-                    Task task2 = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");                    
-                    session.Dispose();
-                    session.InvalidateSession();
+                    if ((Convert.ToInt32(user_id_tag) == Convert.ToInt32(MainViewModel.GetInstance().User.UserId.ToString())) || (0 == Convert.ToInt32(user_id_tag)))
+                    {
+                        var nFCNdefTag = tags[0];
+                        session.ConnectToTag(nFCNdefTag, CompletionHandler);
+                        string dominio = "http://boxweb.azurewebsites.net/";
+                        string user = MainViewModel.GetInstance().User.UserId.ToString();
+                        string tag_id = "";
+                        string url = dominio + "index.aspx?user_id=" + user + "&tag_id=" + tag_id;
+                        NFCNdefPayload payload = NFCNdefPayload.CreateWellKnownTypePayload(url);
+                        NFCNdefMessage nFCNdefMessage = new NFCNdefMessage(new NFCNdefPayload[] { payload });
+                        nFCNdefTag.WriteNdef(nFCNdefMessage, delegate
+                        {
+                            Console.WriteLine("ok");
+                        });
+                        //Task task = App.DisplayAlertAsync(user_id_tag);
+                    }
+                    else
+                    {
+                        Task task2 = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
+                        session.Dispose();
+                        session.InvalidateSession();
+                        AppDelegate.user_id_tag = "?";
+                    }
                     AppDelegate.user_id_tag = "?";
+                    PopupNavigation.Instance.PopAsync();
+                    session.InvalidateSession();
+                    _tagSession.InvalidateSession();                    
+                    Thread.Sleep(4000);                    
                 }
-                AppDelegate.user_id_tag = "?";
-                PopupNavigation.Instance.PopAsync();
-                session.InvalidateSession();
-                _tagSession.InvalidateSession();
-                PopupNavigation.Instance.PushAsync(new Stickerconfig());
-                Thread.Sleep(4000);
-                PopupNavigation.Instance.PopAsync();
-                // session.Dispose();     
-            }            
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+                modo_escritura = false;
+            }
         }
         string GetRecords(NFCNdefPayload[] records)
         {

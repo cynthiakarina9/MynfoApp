@@ -24,12 +24,13 @@
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", /*Theme = "@style/MainTheme",*/ MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },    
     Categories = new[] { "android.intent.category.DEFAULT" }), 
     IntentFilter(new[] { "android.nfc.action.NDEF_DISCOVERED" },
-    DataHost = "boxweb1.azurewebsites.net", DataScheme = "http",
+    DataHost = "boxweb.azurewebsites.net", DataScheme = "http",
     Categories = new[] { "android.intent.category.DEFAULT" })]
     [MetaData("android.nfc.action.TECH_DISCOVERED", Resource = "@xml/techlist")]
 
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
-    {        
+    {
+        public static NfcAdapter NFCdevice;
         public string json;
         public Mynfo.Droid.Services.CardReader cardReader;
         public NfcReaderFlags READER_FLAGS = NfcReaderFlags.NfcA | NfcReaderFlags.SkipNdefCheck;
@@ -70,15 +71,15 @@
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             //ShortcutBadger.ApplyCount();            
-
+            
             DetectShakeTest();
             ToggleAccelerometer();
-
+            get_status_nfc();
             var receiver = new Mynfo.Droid.Services.MessageReceiver();
             RegisterReceiver(receiver, new IntentFilter("MSG_NAME"));
             cardReader = new Mynfo.Droid.Services.CardReader();
             LoadApplication(new App(dbRoot));
-
+            
             if (Intent?.Extras != null)
             {
                 var message = Intent.Extras.GetString("MSG_DATA");
@@ -93,6 +94,20 @@
             else
             {
                 this.SetTheme(Resource.Style.MainTheme);
+            }
+        }
+
+        public void get_status_nfc() 
+        {
+            NfcManager NfcManager = (NfcManager)Android.App.Application.Context.GetSystemService(Context.NfcService);
+            NFCdevice = NfcManager.DefaultAdapter;
+            if (NFCdevice != null)
+            {
+                MenuItemViewModel.nfc_status = true;
+            }
+            else
+            {
+                MenuItemViewModel.nfc_status = false;
             }
         }
 
@@ -139,9 +154,8 @@
             {
 
                 if (TAGPage.write_nfc == true)
-                {                    
-                    //PopupNavigation.Instance.PopAsync();
-                    PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
+                {
+                    //App.Navigator.PushAsync(new ConfigStikerPage());                    
                     int user_id = 0;
                     if (NfcAdapter.ActionNdefDiscovered.Equals(Intent.Action))
                     {
@@ -166,12 +180,12 @@
                         }
                     }
 
-                    string dominio = "boxweb1.azurewebsites.net/";
+                    string dominio = "boxweb.azurewebsites.net/";
                     string user = MainViewModel.GetInstance().User.UserId.ToString();
                     string tag_id = "";
                     if (user_id == Convert.ToInt32(user) || 0 == user_id)
                     {
-                        string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
+                        string url = dominio + "index.aspx?user_id=" + user + "&tag_id=" + tag_id;
                         //http://localhost:58951/index.aspx?user_id=7
                         var tag = Intent.GetParcelableExtra(NfcAdapter.ExtraTag) as Tag;
                         if (tag != null)
@@ -202,10 +216,7 @@
                     {
                         System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
                     }
-                    PopupNavigation.Instance.PopAsync();
-                    PopupNavigation.Instance.PushAsync(new Stickerconfig());
-                    Thread.Sleep(4000);
-                    PopupNavigation.Instance.PopAsync();
+                    App.Navigator.PushAsync(new Stickerconfig());                                        
                 }
                 else 
                 {

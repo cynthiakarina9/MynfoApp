@@ -50,7 +50,7 @@ namespace Mynfo.Services
                                 int UserTypeId_get = (int)reader["UserTypeId"];
                                 bool Share = (bool)reader["Share"];
 
-                                if (Share != true) { user_id = "2"; get_box_id = 0; }
+                                if (Share != true) { user_id = "1"; get_box_id = 0; }
 
                                 InsertForeignData(Convert.ToInt32(user_id), get_box_id);
                             }
