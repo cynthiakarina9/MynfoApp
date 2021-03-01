@@ -139,9 +139,8 @@
             {
 
                 if (TAGPage.write_nfc == true)
-                {                    
-                    //PopupNavigation.Instance.PopAsync();
-                    PopupNavigation.Instance.PushAsync(new ConfigStikerPage());
+                {
+                    //App.Navigator.PushAsync(new ConfigStikerPage());                    
                     int user_id = 0;
                     if (NfcAdapter.ActionNdefDiscovered.Equals(Intent.Action))
                     {
@@ -202,10 +201,7 @@
                     {
                         System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
                     }
-                    PopupNavigation.Instance.PopAsync();
-                    PopupNavigation.Instance.PushAsync(new Stickerconfig());
-                    Thread.Sleep(10000);
-                    PopupNavigation.Instance.PopAsync();
+                    App.Navigator.PushAsync(new Stickerconfig());                                        
                 }
                 else 
                 {

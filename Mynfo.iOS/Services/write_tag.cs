@@ -85,10 +85,8 @@ namespace Mynfo.iOS.Services
                     AppDelegate.user_id_tag = "?";
                     PopupNavigation.Instance.PopAsync();
                     session.InvalidateSession();
-                    _tagSession.InvalidateSession();
-                    PopupNavigation.Instance.PushAsync(new Stickerconfig());
-                    Thread.Sleep(4000);
-                    PopupNavigation.Instance.PopAsync();
+                    _tagSession.InvalidateSession();                    
+                    Thread.Sleep(4000);                    
                 }
             }
             catch (Exception ex)
