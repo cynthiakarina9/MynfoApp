@@ -11,7 +11,7 @@
     using Rg.Plugins.Popup.Services;
 
     public class MenuItemViewModel : BaseViewModel
-    {
+    { 
         #region Properties
         public string Icon { get; set; }
         public string Title { get; set; }
