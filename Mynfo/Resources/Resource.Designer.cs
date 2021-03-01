@@ -322,6 +322,24 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Colorless.
+        /// </summary>
+        public static string Colorless {
+            get {
+                return ResourceManager.GetString("Colorless", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Comments.
+        /// </summary>
+        public static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Setting sticker . . . .
         /// </summary>
         public static string ConfigSticker {
@@ -489,6 +507,33 @@ namespace Mynfo.Resources {
         public static string CurrentPasswordPlaceHolder {
             get {
                 return ResourceManager.GetString("CurrentPasswordPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cyan.
+        /// </summary>
+        public static string Cyan {
+            get {
+                return ResourceManager.GetString("Cyan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Dark blue.
+        /// </summary>
+        public static string DarkBlue {
+            get {
+                return ResourceManager.GetString("DarkBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Dark green.
+        /// </summary>
+        public static string DarkGreen {
+            get {
+                return ResourceManager.GetString("DarkGreen", resourceCulture);
             }
         }
         
@@ -754,6 +799,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Fuchsia.
+        /// </summary>
+        public static string Fuchsia {
+            get {
+                return ResourceManager.GetString("Fuchsia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a German:.
         /// </summary>
         public static string German {
@@ -772,6 +826,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Green.
+        /// </summary>
+        public static string Green {
+            get {
+                return ResourceManager.GetString("Green", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a This number has whatsapp..
         /// </summary>
         public static string HaveWhats {
@@ -781,7 +844,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a How do I share my information?.
+        ///   Busca una cadena traducida similar a How do I read another TAG?.
         /// </summary>
         public static string HelpLabel {
             get {
@@ -835,6 +898,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You must add a valid side..
+        /// </summary>
+        public static string LadaValidation {
+            get {
+                return ResourceManager.GetString("LadaValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Last Name.
         /// </summary>
         public static string LastNameLabel {
@@ -858,6 +930,24 @@ namespace Mynfo.Resources {
         public static string LastNameValidation {
             get {
                 return ResourceManager.GetString("LastNameValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Light blue.
+        /// </summary>
+        public static string LightBlue {
+            get {
+                return ResourceManager.GetString("LightBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lilac.
+        /// </summary>
+        public static string Lilac {
+            get {
+                return ResourceManager.GetString("Lilac", resourceCulture);
             }
         }
         
@@ -1159,6 +1249,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Orange.
+        /// </summary>
+        public static string Orange {
+            get {
+                return ResourceManager.GetString("Orange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Password.
         /// </summary>
         public static string Password {
@@ -1258,6 +1357,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Pink.
+        /// </summary>
+        public static string Pink {
+            get {
+                return ResourceManager.GetString("Pink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Population:.
         /// </summary>
         public static string Population {
@@ -1339,6 +1447,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Purple.
+        /// </summary>
+        public static string Purple {
+            get {
+                return ResourceManager.GetString("Purple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Push.
         /// </summary>
         public static string Push {
@@ -1402,6 +1519,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Red.
+        /// </summary>
+        public static string Red {
+            get {
+                return ResourceManager.GetString("Red", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Region:.
         /// </summary>
         public static string Region {
@@ -1452,6 +1578,15 @@ namespace Mynfo.Resources {
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select a color.
+        /// </summary>
+        public static string SelectColor {
+            get {
+                return ResourceManager.GetString("SelectColor", resourceCulture);
             }
         }
         
@@ -1641,6 +1776,15 @@ namespace Mynfo.Resources {
         public static string WrongEmail {
             get {
                 return ResourceManager.GetString("WrongEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Yellow.
+        /// </summary>
+        public static string Yellow {
+            get {
+                return ResourceManager.GetString("Yellow", resourceCulture);
             }
         }
         

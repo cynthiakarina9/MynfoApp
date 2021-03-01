@@ -6,7 +6,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Rg.Plugins.Popup.Services;
-    using System.Collections.Generic;
+    using System;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
     using System.Windows.Input;
@@ -23,11 +23,14 @@
         private ProfileLocal profile;
         private ObservableCollection<Box> box;
         private ObservableCollection<Box> boxNoDefault;
+        private string viewsByUser;
         private bool isRunning;
         private bool isNull;
         private bool moreOne;
         private ImageSource imageSource;
         private bool edadLabel;
+        private bool visibleButton;
+        private bool _isRefreshing;
         #endregion
 
         #region Properties
@@ -40,6 +43,11 @@
         {
             get { return this.boxNoDefault; }
             set { SetValue(ref this.boxNoDefault, value); }
+        }
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set { _isRefreshing = value; OnPropertyChanged(); }
         }
         public bool IsRunning
         {
@@ -86,7 +94,6 @@
             }
         }
         public Box selectedItem { get; set; }
-
         public UserLocal User
         {
             get;
@@ -102,6 +109,18 @@
             get { return this.edadLabel; }
             set { SetValue(ref this.edadLabel, value); }
         }
+        public bool VisibleButton
+        {
+            get { return this.visibleButton; }
+            set { SetValue(ref this.visibleButton, value); }
+        }
+        public string ViewsByUser
+        {
+            get { return this.viewsByUser; }
+            set { SetValue(ref this.viewsByUser, value);  }
+        }
+
+        public ICommand RefreshCommand { private set; get; }
         #endregion
 
         #region Contructor
@@ -109,6 +128,7 @@
         {
             apiService = new ApiService();
             this.IsRunning = false;
+            EdadLabel = true;
             this.User = MainViewModel.GetInstance().User;
             if (this.User.ImageFullPath == "noimage" 
                 || this.User.ImageFullPath == string.Empty 
@@ -124,9 +144,13 @@
             {
                 EdadLabel = false;
             }
-            EdadLabel = true;
+            GetBoxCount();
             GetBoxDefault();
             GetBoxNoDefault();
+
+            ViewsByUser = Convert.ToString(Imprime_box.GetViewsByUser(MainViewModel.GetInstance().User.UserId));
+
+            RefreshCommand = new Command(async () => await RefreshViewsByUser());
         }
         #endregion
 
@@ -207,7 +231,6 @@
             this.IsRunning = false;
             return Box;
         }
-
 
         #region Listas
         public void AddList(Box _Boxes)
@@ -299,6 +322,31 @@
             await PopupNavigation.Instance.PushAsync(new DetailBoxPopUpPage(_Box));
         }
 
+        public async Task<bool> GetBoxCount()
+        {
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var BoxCount = await this.apiService.GetBoxCount(
+                apiSecurity,
+                "/api",
+                "/Boxes/GetBoxCount",
+                MainViewModel.GetInstance().User.UserId);
+            VisibleButton = false;
+            if (BoxCount <4)
+            {
+                VisibleButton = true;
+            }
+            else
+            {
+                VisibleButton = false;
+            }
+            return VisibleButton;
+        }
+
+        async Task RefreshViewsByUser()
+        {
+            ViewsByUser = Convert.ToString(Imprime_box.GetViewsByUser(MainViewModel.GetInstance().User.UserId));
+            IsRefreshing = false;
+        }
         #endregion
 
         #region Commands

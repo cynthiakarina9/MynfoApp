@@ -1,94 +1,49 @@
 ﻿namespace Mynfo.Views
 {
     using Mynfo.Domain;
+    using Mynfo.Helpers;
     using Mynfo.Models;
-    using Mynfo.Services;
     using Mynfo.ViewModels;
     using Rg.Plugins.Popup.Extensions;
     using System;
     using System.Data.SqlClient;
     using System.Linq;
     using System.Text;
-    using Xamarin.Essentials;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
 
     public partial class HomePage : ContentPage
     {
-        #region Services
-        ApiService apiService;
-        #endregion
-
-        #region Attributes
-        #endregion
-
         #region Properties
         public Box selectedItem { get; set; }
         public Box selectedItem2 { get; set; }
+        public UserLocal User
+        {
+            get;
+            set;
+        }
         #endregion
+
+        #region Constructor
         public HomePage()
         {
             InitializeComponent();
-            
-            //ButtonBox.Clicked += new EventHandler((sender, e) => ChangeBoxbool(sender, e, ButtonBox.IsPressed));
-
-            System.Text.StringBuilder sb;
-            string      userId = MainViewModel.GetInstance().User.UserId.ToString();
-            string      consultaGetBoxesNum = "select * from dbo.Boxes where Boxes.UserId = " + userId;
-            string      cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-            //string     cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-          
-            int         BoxNum = 0;
-
-
+            this.User = MainViewModel.GetInstance().User;
             this.CheckLocalBox();
-
-            //Primer consulta para saber cantidad de boxes creadas
-            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            if(User.Ocupacion == null || User.Ocupacion == string.Empty)
             {
-                sb = new System.Text.StringBuilder();
-                sb.Append(consultaGetBoxesNum);
-                string sql = sb.ToString();
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            BoxNum++;
-                        }
-                    }
-                    connection.Close();
-                }
+                OccupationLabel.Text = Languages.OccupationLabel;
+                OccupationLabel.TextColor = Color.FromHex("#A1A1A1");
             }
-
-            //Validamos que podamos crear boxes nuevas
-            if(BoxNum == 4)
+            if(User.Ubicacion == null || User.Ubicacion == string.Empty)
             {
-                CreateBoxBtn.IsVisible = false;
-                CreateBoxBtn.IsEnabled = false;
+                UbicacionLabel.Text = Languages.LocationLabel;
+                UbicacionLabel.TextColor = Color.FromHex("#A1A1A1");
             }
-            else if(BoxNum < 4)
-            {
-                CreateBoxBtn.IsVisible = true;
-                CreateBoxBtn.IsEnabled = true;
-            }            
-        }       
-
-        private async void CreateBox_Clicked(object sender, EventArgs e)
-        {
-            var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.BoxRegister = new BoxRegisterViewModel();
-            await Navigation.PushAsync(new BoxRegisterPage());
-            //await Navigation.PushAsync(new ConfigStikerPage());
-
-            //await Launcher.OpenAsync(new Uri("fb://page/100000686899395"));
-            //await Launcher.OpenAsync(new Uri("https://twitter.com/RToachee"));
-            //await Launcher.OpenAsync(new Uri("instagram:page_id//user?username=rodritoachee"));
-            //await Launcher.OpenAsync(new Uri("mailto:rrodriguez@atx.com"));
         }
+        #endregion
 
+        #region Methods
         private void CheckLocalBox()
         {
             BoxLocal boxLocal = new BoxLocal();
@@ -99,7 +54,7 @@
             {
                 string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                 //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-                string queryToGetBoxDefault = "select * from dbo.Boxes where dbo.boxes.UserId = " 
+                string queryToGetBoxDefault = "select * from dbo.Boxes where dbo.boxes.UserId = "
                                                 + MainViewModel.GetInstance().User.UserId
                                                 + " and dbo.Boxes.BoxDefault = 1";
                 StringBuilder sb;
@@ -107,13 +62,13 @@
                 var resulForeingBox = conn.GetTableInfo("ForeingBox");
                 var resultForeingProfiles = conn.GetTableInfo("ForeingProfile");
 
-                if(resulForeingBox.Count == 0)
+                if (resulForeingBox.Count == 0)
                 {
                     conn.CreateTable<ForeingBox>();
 
                     if (resultForeingProfiles.Count == 0)
                     {
-                        conn.CreateTable <ForeingProfile>();
+                        conn.CreateTable<ForeingProfile>();
                     }
                 }
 
@@ -127,7 +82,7 @@
                     conn.CreateTable<BoxLocal>();
 
                     //Si no existe la tabla de perfiles...
-                    if(resultProfileLocal.Count == 0)
+                    if (resultProfileLocal.Count == 0)
                     {
                         //Creamos la tabla de perfiles local
                         conn.CreateTable<ProfileLocal>();
@@ -173,7 +128,7 @@
 
                     }
                     //Si existe la box en la nube
-                    if(boxLocal.BoxId != 0)
+                    if (boxLocal.BoxId != 0)
                     {
                         //Creación de perfiles locales de box local
                         string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
@@ -296,13 +251,13 @@
                         }
 
                         //Validamos que se haya insertado al menos un perfil
-                        if(conn.Table<ProfileLocal>().Count() > 0)
+                        if (conn.Table<ProfileLocal>().Count() > 0)
                         {
                             valProfileLocal = true;
                         }
                     }
 
-                    if(valBoxLocal == true && valProfileLocal == true)
+                    if (valBoxLocal == true && valProfileLocal == true)
                     {
                         //this.get_box();
                     }
@@ -496,18 +451,6 @@
 
             }
         }
-        private void ChangeBoxbool(object sender, EventArgs e, bool pressed)
-        {
-            if (pressed == true)
-            {
-                //ButtonBox.Source = "logo_superior.png";
-            }
-            else
-            {
-                //ButtonBox.Source = "logo_superior2.png";
-            }
-        }
-
         private void GoToTestPage()
         {
             /*MainViewModel.GetInstance().Testing = new TestingViewModel();
@@ -683,7 +626,7 @@
                         {
                             int IdRedSocial = (int)reader["RedSocialId"];
                             var Name = string.Empty;
-                            switch(IdRedSocial)
+                            switch (IdRedSocial)
                             {
                                 case 1:
                                     Name = "Facebook";
@@ -745,6 +688,15 @@
             App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
             //App.Current.MainPage = new Xamarin.Forms.NavigationPage(new Mynfo.Views.ForeingBoxPage(foreingBox, true));
         }
+        #endregion
+
+        #region Commands
+        private async void CreateBox_Clicked(object sender, EventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.BoxRegister = new BoxRegisterViewModel();
+            await Navigation.PushAsync(new BoxRegisterPage());
+        }        
         async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedItem = e.CurrentSelection.FirstOrDefault() as Box;
@@ -754,11 +706,6 @@
             await Navigation.PushPopupAsync(new DetailBoxPopUpPage(selectedItem));
             ((CollectionView)sender).SelectedItem = null;
         }
-
-        //Detalles de box predeterminada
-        private void ButtonDefault(object sender, EventArgs e)
-        {
-            MainViewModel.GetInstance().Home.GoToDetails();
-        }
+        #endregion
     }
 }

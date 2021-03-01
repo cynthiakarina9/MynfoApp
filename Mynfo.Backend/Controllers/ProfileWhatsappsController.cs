@@ -50,7 +50,7 @@ namespace Mynfo.Backend.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProfileWhatsappId,Name,Number,UserId")] ProfileWhatsapp profileWhatsapp)
+        public async Task<ActionResult> Create([Bind(Include = "ProfileWhatsappId,Name,Number,UserId,Exist")] ProfileWhatsapp profileWhatsapp)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace Mynfo.Backend.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProfileWhatsappId,Name,Number,UserId")] ProfileWhatsapp profileWhatsapp)
+        public async Task<ActionResult> Edit([Bind(Include = "ProfileWhatsappId,Name,Number,UserId,Exist")] ProfileWhatsapp profileWhatsapp)
         {
             if (ModelState.IsValid)
             {

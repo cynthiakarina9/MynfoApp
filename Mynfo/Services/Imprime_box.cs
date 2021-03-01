@@ -87,6 +87,7 @@ namespace Mynfo.Services
             ForeingBox foreingBox;
             ForeingProfile foreingProfile;
             ForeingBox A = new ForeingBox();
+            ForeingBox oldForeing = new ForeingBox(); ;
             //Validar que la box no exista
             using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
             {
@@ -120,8 +121,14 @@ namespace Mynfo.Services
             }
             else
             {
+                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    oldForeing = A;
+                    connSQLite.ExecuteScalar<ForeingBox>("UPDATE ForeingBox SET Conexiones = ? WHERE ForeingBox.UserId = ?", box_detail.Conexiones, box_detail.UserId);
+                    connSQLite.ExecuteScalar<ForeingBox>("UPDATE ForeingBox SET Time = ? WHERE ForeingBox.BoxId = ?", DateTime.Now, A.BoxId);
+                    A = connSQLite.FindWithQuery<ForeingBox>("select * from ForeingBox where ForeingBox.BoxId = ?", box_id);
+                }
                 foreingBox = A;
-                foreingBox.Conexiones = box_detail.Conexiones;
             }
             try
             {
@@ -312,6 +319,13 @@ namespace Mynfo.Services
                         {
                             MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
                         }
+                        else
+                        {
+                            //Box anterior
+                            //oldForeing
+                            MainViewModel.GetInstance().ListForeignBox.UpdateList(foreingBox.UserId);
+                            
+                        }
                     });
                 }
             }
@@ -340,6 +354,35 @@ namespace Mynfo.Services
                 }
                 
             }
+        }
+
+        public static int GetViewsByUser(int _UserId)
+        {
+            System.Text.StringBuilder sb;
+            int views = 0;
+            string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string queryAddView = "select * from  dbo.Users WHERE dbo.Users.UserId = " + _UserId;
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryAddView);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            views = (int)reader["Conexiones"];
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            return views;
         }
     }
 }

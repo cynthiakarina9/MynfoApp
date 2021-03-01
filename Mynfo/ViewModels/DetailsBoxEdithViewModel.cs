@@ -36,13 +36,11 @@
             get { return this.isRunning; }
             set { SetValue(ref this.isRunning, value); }
         }
-
         public Box Box
         {
             get { return this.box; }
             set { SetValue(ref this.box, value); }
         }
-
         public string Color
         {
             get { return this.color; }
@@ -100,17 +98,18 @@
         #endregion
 
         #region Constructor
-        public DetailsBoxEdithViewModel(int _BoxId)
+        public DetailsBoxEdithViewModel(Box _Box)
         {
             apiService = new ApiService();
             Box = new Box();
-            GetBox(_BoxId);
+            GetBox(_Box.BoxId);
             ProfilesSelected = new ObservableCollection<ProfileLocal>();
             ProfilePerfiles = new ObservableCollection<ProfileLocal>();
-            GetListEmail(_BoxId);
-            GetListPhone(_BoxId);
-            GetListSM(_BoxId);
-            GetListWhatsapp(_BoxId);
+            GetListEmail(_Box.BoxId);
+            GetListPhone(_Box.BoxId);
+            GetListSM(_Box.BoxId);
+            GetListWhatsapp(_Box.BoxId);
+            GetBoxColorName(_Box);
         }
         #endregion
 
@@ -471,12 +470,6 @@
         }
         #endregion
 
-        public string GetColorBack(string C)
-        {
-            Color = C;
-            return Color;
-        }
-
         #region Box
         public async Task<Box> GetBox(int _BoxId)
         {
@@ -505,6 +498,54 @@
         public void addProfile(ProfileLocal _profileSelected)
         {
             ProfilesSelected.Add(_profileSelected);
+        }
+
+        public void GetBoxColorName(Box _Box)
+        {
+            string colorHex = _Box.ColorBox;
+
+            switch (colorHex)
+            {
+                case "#12947f":
+                    Color = Languages.Green;// "Verde";
+                    break;
+                case "#2fc4b2":
+                    Color = Languages.Cyan;// "Verde Agua";
+                    break;
+                case "#404a7f":
+                    Color = Languages.DarkBlue;// "Azul oscuro";
+                    break;
+                case "#FF5521":
+                    Color = Languages.Orange;// "Anaranjado";
+                    break;
+                case "#508ed8":
+                    Color = Languages.LightBlue;// "Azul claro";
+                    break;
+                case "#d89a00":
+                    Color = Languages.Yellow;// "Amarillo";
+                    break;
+                case "#ff0033":
+                    Color = Languages.Fuchsia;// "Fuchsia";
+                    break;
+                case "#008445":
+                    Color = Languages.DarkGreen;// "Verde Oscuro";
+                    break;
+                case "#7f416a":
+                    Color = Languages.Purple;// "Morado";
+                    break;
+                case "#6f50ff":
+                    Color = Languages.Lilac;// "Lila";
+                    break;
+                case "#c1271f":
+                    Color = Languages.Red;// "Rojo";
+                    break;
+                case "#ce7d7d":
+                    Color = Languages.Pink;// "Rosa";
+                    break;
+                default:
+                    Color = Languages.Colorless;// "Sin color";
+                    break;
+            }
         }
         #endregion
 

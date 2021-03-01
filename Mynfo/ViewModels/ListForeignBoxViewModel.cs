@@ -1,13 +1,9 @@
 ﻿namespace Mynfo.ViewModels
 {
-    using GalaSoft.MvvmLight.Command;
     using Models;
     using Mynfo.Services;
-    using Mynfo.Views;
-    using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Windows.Input;
     using Xamarin.Forms;
 
     public class ListForeignBoxViewModel : BaseViewModel
@@ -77,6 +73,50 @@
         public void AddList(ForeingBox _foreingBox)
         {
             ForeingBox.Add(_foreingBox);
+        }
+
+        public void UpdateList(ForeingBox _foreingBoxOld, ForeingBox _foreingBoxNew)
+        {
+            int findValue = _foreingBoxOld.BoxId;
+            int newIndex = 0;
+            for(int i = 0; i < ForeingBox.Count; i++)
+            {
+                if(ForeingBox[i].BoxId == findValue)
+                {
+                    newIndex = i;
+                }
+            }
+
+            ForeingBox.RemoveAt(newIndex);
+
+            ForeingBox.Insert(newIndex, _foreingBoxNew);
+        }
+
+        public void UpdateList(int _UserId)
+        {
+            List<ForeingBox> list = new List<ForeingBox>();
+
+            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+            {
+                list = connSQLite.Query<ForeingBox>("select * from ForeingBox where ForeingBox.UserId = ?", _UserId);
+            }
+
+            foreach(ForeingBox foreing in list)
+            {
+                int findValue = foreing.BoxId;
+                int newIndex = 0;
+                for (int i = 0; i < ForeingBox.Count; i++)
+                {
+                    if (ForeingBox[i].BoxId == findValue)
+                    {
+                        newIndex = i;
+                    }
+                }
+
+                ForeingBox.RemoveAt(newIndex);
+
+                ForeingBox.Insert(newIndex, foreing);
+            }
         }
         #endregion
 

@@ -644,9 +644,57 @@ Você deve inserir um url</value>
     <value> anos</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>Como faço para compartilhar meus dados?</value>
+    <value>Como leio outro TAG?</value>
   </data>
   <data name="ViewsLabel" xml:space="preserve">
     <value>Conexões: </value>
+  </data>
+  <data name="LadaValidation" xml:space="preserve">
+    <value>Você deve adicionar um lado válido.</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comentários</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Selecione uma cor</value>
+  </data>
+  <data name="Colorless" xml:space="preserve">
+    <value>Incolor</value>
+  </data>
+  <data name="Cyan" xml:space="preserve">
+    <value>Ciano</value>
+  </data>
+  <data name="DarkBlue" xml:space="preserve">
+    <value>Azul escuro</value>
+  </data>
+  <data name="DarkGreen" xml:space="preserve">
+    <value>Verde escuro</value>
+  </data>
+  <data name="Fuchsia" xml:space="preserve">
+    <value>Fúcsia</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Verde</value>
+  </data>
+  <data name="LightBlue" xml:space="preserve">
+    <value>Azul claro</value>
+  </data>
+  <data name="Lilac" xml:space="preserve">
+    <value>Lilás</value>
+  </data>
+  <data name="Orange" xml:space="preserve">
+    <value>Laranja</value>
+  </data>
+  <data name="Pink" xml:space="preserve">
+    <value>Rosa</value>
+  </data>
+  <data name="Purple" xml:space="preserve">
+    <value>Roxo</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Vermelho</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>Amarelo</value>
   </data>
 </root>

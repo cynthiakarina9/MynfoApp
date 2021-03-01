@@ -1,7 +1,10 @@
 ﻿namespace Mynfo.Views
 {
+    using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
+    using System;
+    using System.Collections.Generic;
     using System.Data.SqlClient;
     using Xamarin.Forms;
     using Xamarin.Forms.PlatformConfiguration;
@@ -20,6 +23,8 @@
         {
             InitializeComponent();
             NetworksQty = 0;
+            //ReloadConnections();
+            CheckTimeForeingBox();
             On<Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
             OSAppTheme currentTheme = App.Current.RequestedTheme;
             if (currentTheme == OSAppTheme.Dark)
@@ -186,5 +191,61 @@
             return netQty;
         }
 
+        /// <summary>
+        /// Sirve para recargar las conexiones del usuario en home
+        /// </summary>
+        public static async void ReloadConnections()
+        {
+            var apiService = new ApiService();
+            var apiSecurity = Xamarin.Forms.Application.Current.Resources["APISecurity"].ToString();
+            var user = await apiService.GetUserId(apiSecurity,
+                                                "/api",
+                                                "/Users",
+                                                MainViewModel.GetInstance().User.UserId);
+
+            MainViewModel.GetInstance().User.Conexiones = user.Conexiones;
+        }
+
+        /// <summary>
+        /// Sirve para calcular el tiempo que le queda a las boxes recibidas, y si es que ya expiraron, las borra
+        /// </summary>
+        public void CheckTimeForeingBox()
+        {
+            //Detectar las boxes recibidas que van a expirar
+            List<ForeingBox> list = new List<ForeingBox>();
+            List<ForeingBox> deleteList = new List<ForeingBox>();
+
+            using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+            {
+                list = connSQLite.Query<ForeingBox>("select * from ForeingBox");
+            }
+            if(list.Count > 0)
+            {
+                foreach (ForeingBox foreing in list)
+                {
+                    DateTime expiration = foreing.Time.AddMinutes(5);
+                    DateTime actual = DateTime.Now;
+                    int res = DateTime.Compare(expiration, actual);
+
+                    if (res <= 0)
+                    {
+                        deleteList.Add(foreing);
+                    }
+
+                }
+            }
+
+            if(deleteList.Count > 0)
+            {
+                foreach (ForeingBox foreingDelete in deleteList)
+                {
+                    using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                    {
+                        connSQLite.Query<ForeingBox>("delete from ForeingProfile where ForeingProfile.BoxId = ?", foreingDelete.BoxId);
+                        connSQLite.Query<ForeingBox>("delete from ForeingBox where ForeingBox.BoxId = ?", foreingDelete.BoxId);
+                    }
+                }
+            }
+        }
     }
 }

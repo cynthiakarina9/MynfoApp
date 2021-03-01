@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="Mynfo.Views.ColorPickerPopUp"
+             x:Name="ColorPicker">
+    <Frame 
+        CornerRadius="30"
+        Margin="25">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition  />
+                    <RowDefinition  />
+                    <RowDefinition  />
+                    <RowDefinition />
+                    <RowDefinition  />
+                    <RowDefinition  />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="Title"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource MainColor}"
+                    Text="{i18n:Translate SelectColor}"/>
+
+                <!--Colores-->
+                <!--primera fila-->
+                <!--Verde-->
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="0">
+                    <Frame
+                        BackgroundColor="#12947f"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        IsChecked="True"
+                        GroupName="Colors"
+                        x:Name="Green"/>
+                </StackLayout>
+                <!--Azul agua-->
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="1">
+                    <Frame
+                        BackgroundColor="#2fc4b2"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="Cyan"/>
+                </StackLayout>
+                <!--Azul Oscuro-->
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="2">
+                    <Frame
+                        BackgroundColor="#404a7f"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="DarkBlue"/>
+                </StackLayout>
+                <!--Segunda fila-->
+                <!--NAranja-->
+                <StackLayout
+                    Grid.Row="2"
+                    Grid.Column="0">
+                    <Frame
+                        BackgroundColor="#FF5521"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="Orange"/>
+                </StackLayout>
+                <!--Azul cielo-->
+                <StackLayout
+                    Grid.Row="2"
+                    Grid.Column="1">
+                    <Frame
+                        BackgroundColor="#508ed8"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="LightBlue"/>
+                </StackLayout>
+                <!--Amarillo-->
+                <StackLayout
+                    Grid.Row="2"
+                    Grid.Column="2">
+                    <Frame
+                        BackgroundColor="#d89a00"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="Yellow"/>
+                </StackLayout>
+                <!--Tercer fila-->
+                <!--Fuscia-->
+                <StackLayout
+                    Grid.Row="3"
+                    Grid.Column="0">
+                    <Frame
+                        BackgroundColor="#ff0033"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="Fuschia"/>
+                </StackLayout>
+                <!--Verde Oscuro-->
+                <StackLayout
+                    Grid.Row="3"
+                    Grid.Column="1">
+                    <Frame
+                        BackgroundColor="#008445"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="DarkGreen"/>
+                </StackLayout>
+                <!--Morado-->
+                <StackLayout
+                    Grid.Row="3"
+                    Grid.Column="2">
+                    <Frame
+                        BackgroundColor="#7f416a"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="Purple"/>
+                </StackLayout>
+                <!--Cuarta fila-->
+                <!--Lila-->
+                <StackLayout
+                    Grid.Row="4"
+                    Grid.Column="0">
+                    <Frame
+                        BackgroundColor="#6f50ff"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="Lilac"/>
+                </StackLayout>
+                <!--Rojo-->
+                <StackLayout
+                    Grid.Row="4"
+                    Grid.Column="1">
+                    <Frame
+                        BackgroundColor="#c1271f"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="Red"/>
+                </StackLayout>
+                <!--Rosa-->
+                <StackLayout
+                    Grid.Row="4"
+                    Grid.Column="2">
+                    <Frame
+                        BackgroundColor="#ce7d7d"/>
+                    <RadioButton
+                        HorizontalOptions="CenterAndExpand"
+                        GroupName="Colors"
+                        x:Name="Pink"/>
+                </StackLayout>
+                <Button
+                    Grid.Row="5"
+                    Grid.ColumnSpan="3"
+                    BackgroundColor = "{StaticResource MainColor}"
+                    BorderRadius = "23"
+                    HeightRequest = "50"
+                    Margin="15"
+                    Text = "{i18n:Translate Save}"
+                    TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}" 
+                    x:Name="SaveColorBtn"/>
+            </Grid>
+        </Frame>
+</popup:PopupPage>

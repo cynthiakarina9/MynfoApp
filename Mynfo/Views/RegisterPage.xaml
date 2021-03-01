@@ -26,8 +26,8 @@
                 Padding = "15">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height = "60"/>
-                            <RowDefinition Height = "170"/>
+                            <RowDefinition Height= "60"/>
+                            <RowDefinition Height= "200"/>
                             <RowDefinition />
                             <RowDefinition />
                             <RowDefinition Height = "100"/>
@@ -44,7 +44,9 @@
                             Grid.Row = "1"
                             VerticalOptions="Center">
                             <controls:CircleImage 
-                                HeightRequest = "120"
+                                HeightRequest = "150"
+                                Aspect="AspectFill"
+                                Margin="100,0,100,0"
                                 Source = "{Binding ImageSource}">
                                 <controls:CircleImage.GestureRecognizers>
                                     <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />

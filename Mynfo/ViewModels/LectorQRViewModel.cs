@@ -85,7 +85,7 @@
 
         public async Task<Box> GetBoxDefault(int id)
         {
-            if(id== null || id ==0)
+            if(id == null || id ==0)
             {
                 await Application.Current.MainPage.DisplayAlert(
                    Languages.Error,
@@ -132,21 +132,30 @@
                     Languages.Accept);
                 return null;
             }
-            Imprime_box imprime = new Imprime_box();
-            Imprime_box.InsertForeignData(UserFornaneo.UserId, BoxL.BoxId);
-            //ForeingBox foreingBox2;
-            //foreingBox2 = new ForeingBox
-            //{
-            //    BoxId = BoxL.BoxId,
-            //    UserId = BoxL.UserId,
-            //    Time = DateTime.Now,
-            //    ImagePath = UserFornaneo.ImagePath,
-            //    UserTypeId = UserFornaneo.UserTypeId,
-            //    FirstName = UserFornaneo.FirstName,
-            //    LastName = UserFornaneo.LastName
 
-            //};
-            //GoToTestPage(id, BoxL.BoxId, foreingBox2);
+            int UserIdToSend = UserFornaneo.UserId;
+
+            //Perfil predeterminado, que es el perfil de Mynfo y box predeterminada de Ese perfil
+            if (UserFornaneo.Share != true) 
+            { 
+                UserIdToSend = 1;
+                BoxL = await apiService.GetBoxDefault<Box>(
+                apiSecurity,
+                "/api",
+                "/Boxes/GetBoxDefault",
+                UserIdToSend);
+
+                if (BoxL == null)
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                        Languages.Error,
+                        "El usuario no tiene boxes",
+                        Languages.Accept);
+                    return null;
+                }
+            }
+
+            Imprime_box.InsertForeignData(UserIdToSend, BoxL.BoxId);
             return Box;
         }
 
