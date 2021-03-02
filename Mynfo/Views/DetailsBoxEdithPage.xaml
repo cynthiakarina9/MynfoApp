@@ -29,7 +29,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="70"/>
-                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
@@ -49,9 +49,9 @@
                             WidthRequest="40"
                             x:Name="DeleteButton" />
                         <StackLayout
-                            HorizontalOptions="CenterAndExpand"
-                            Grid.ColumnSpan="4"
-                            Grid.Row="2">
+                            HorizontalOptions="Start"
+                            Grid.Column ="0"
+                            Grid.Row="1">
                             <!--<Picker
                                 BackgroundColor="Transparent"
                                 MenuItem.Accelerator="paleta.png"
@@ -59,14 +59,11 @@
                                 TitleColor="{StaticResource MainColor}"
                                 TextColor="{StaticResource MainColor}"
                                 x:Name="paleta"/>-->
-                            <Button
-                                TextColor="{StaticResource MainColor}"
-                                Text="{Binding Color}"
-                                FontAttributes="Bold"
-                                FontSize="Medium"
-                                BackgroundColor="White"
+                            <ImageButton
+                                BackgroundColor="Transparent"
                                 BorderWidth="1"
-                                BorderColor="{StaticResource MainColor}"
+                                HeightRequest="40"
+                                WidthRequest="40"
                                 x:Name="ColorBtn"/>
                         </StackLayout>
                         <!--Nombre de la box -->

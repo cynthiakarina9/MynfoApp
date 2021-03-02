@@ -66,6 +66,7 @@
                 BxSaveName.BackgroundColor = Color.FromHex("#222b3a");
                 BxBtnDelete.BackgroundColor = Color.FromHex("#222b3a");
                 DeleteButton.Source = "trash3";
+                ColorBtn.Source = "pelta3";
             }
             else
             {
@@ -74,6 +75,7 @@
                 BxSaveName.BackgroundColor = Color.FromHex("#FFFFFF");
                 BxBtnDelete.BackgroundColor = Color.FromHex("#FFFFFF");
                 DeleteButton.Source = "trash2";
+                ColorBtn.Source = "paleta";
             }
             
             //Acción de boton de borrado
