@@ -216,7 +216,7 @@
                     {
                         System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
                     }
-                    App.Navigator.PushAsync(new Stickerconfig());                                        
+                    App.Navigator.PushAsync(new Stickerconfig());
                 }
                 else 
                 {
