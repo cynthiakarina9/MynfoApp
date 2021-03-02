@@ -103,11 +103,11 @@
             NFCdevice = NfcManager.DefaultAdapter;
             if (NFCdevice != null)
             {
-                MenuItemViewModel.nfc_status = true;
+                MainViewModel.nfc_status = true;
             }
             else
             {
-                MenuItemViewModel.nfc_status = false;
+                MainViewModel.nfc_status = false;
             }
         }
 

@@ -1780,7 +1780,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Yellow.
+        ///   Busca una cadena traducida similar a Golden.
         /// </summary>
         public static string Yellow {
             get {
