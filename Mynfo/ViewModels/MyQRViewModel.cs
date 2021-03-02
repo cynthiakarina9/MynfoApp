@@ -66,7 +66,7 @@
         #region Methods
         public string GetDato (UserLocal U)
         {
-            User = "https://boxweb1.azurewebsites.net/index3.aspx?user_id=" + U.UserId + "&tag_id=";
+            User = "https://boxweb.azurewebsites.net/index3.aspx?user_id=" + U.UserId + "&tag_id=";
             return User;
         }
         #endregion
