@@ -5,6 +5,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.Views;
+    using Plugin.Media;
     using Rg.Plugins.Popup.Services;
     using System;
     using System.Data.SqlClient;
@@ -66,6 +67,7 @@
         {
             apiService = new ApiService();
             IsScanning = true;
+            CrossMedia.Current.Initialize();
         }
         #endregion
 

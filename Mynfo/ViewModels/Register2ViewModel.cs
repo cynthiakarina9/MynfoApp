@@ -302,8 +302,8 @@
                 "/api",
                 "/Users/LoginMessage",
                 Email);
-            this.IsRunning = false;
-            this.IsEnabled = true;
+                this.IsRunning = false;
+                this.IsEnabled = true;
 
             await Application.Current.MainPage.DisplayAlert(
                 Languages.ConfirmLabel,

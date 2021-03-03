@@ -421,28 +421,24 @@
         private void LoadMenu()
         {
             this.Menus = new ObservableCollection<MenuItemViewModel>();
-            this.Menus.Add(new MenuItemViewModel
-            {
-                Icon = "account",
-                PageName = "MyProfilePage",
-                Title = Languages.MyAccount,
-            });
-            if (nfc_status == true)
-            {
-                this.Menus.Add(new MenuItemViewModel
-                {
-                    Icon = "question",
-                    PageName = "Help",
-                    Title = Languages.HelpLabel,
-                });
-            }
-
-
-            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
-            {
             
             if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
             {
+                this.Menus.Add(new MenuItemViewModel
+                {
+                    Icon = "account",
+                    PageName = "MyProfilePage",
+                    Title = Languages.MyAccount,
+                });
+                if (nfc_status == true)
+                {
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "question",
+                        PageName = "Help",
+                        Title = Languages.HelpLabel,
+                    });
+                }
                 this.Menus.Add(new MenuItemViewModel
                 {
                     Icon = "question",
@@ -455,44 +451,104 @@
                     PageName = "TAGPage",
                     Title = Languages.Tag,
                 });
+                this.Menus.Add(new MenuItemViewModel
+                {
+                    Icon = "icon_qr",
+                    PageName = "QR",
+                    Title = Languages.QR,
+                });
+                this.Menus.Add(new MenuItemViewModel
+                {
+                    Icon = "comments1",
+                    PageName = "Comments",
+                    Title = Languages.Comments,
+                });
+                this.Menus.Add(new MenuItemViewModel
+                {
+                    Icon = "logout",
+                    PageName = "LoginPage",
+                    Title = Languages.LogOut,
+                });
             }
             else if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
-            {
-                if (nfc_status == true)
                 {
-                    this.Menus.Add(new MenuItemViewModel
+                    if (nfc_status == true)
                     {
-                        Icon = "question",
-                        PageName = "Help",
-                        Title = Languages.HelpLabel,
-                    });
-                    this.Menus.Add(new MenuItemViewModel
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "account",
+                            PageName = "MyProfilePage",
+                            Title = Languages.MyAccount,
+                        });
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "question",
+                            PageName = "Help",
+                            Title = Languages.HelpLabel,
+                        });
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "icon_tag",
+                            PageName = "TAGPage",
+                            Title = Languages.Tag,
+                        });
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "icon_qr",
+                            PageName = "QR",
+                            Title = Languages.QR,
+                        });
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "comments1",
+                            PageName = "Comments",
+                            Title = Languages.Comments,
+                        });
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "logout",
+                            PageName = "LoginPage",
+                            Title = Languages.LogOut,
+                        });
+                    }
+                    else
                     {
-                        Icon = "icon_tag",
-                        PageName = "TAGPage",
-                        Title = Languages.Tag,
-                    });
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "account",
+                            PageName = "MyProfilePage",
+                            Title = Languages.MyAccount,
+                        });
+                        if (nfc_status == true)
+                        {
+                            this.Menus.Add(new MenuItemViewModel
+                            {
+                                Icon = "question",
+                                PageName = "Help",
+                                Title = Languages.HelpLabel,
+                            });
+                        }
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "icon_qr",
+                            PageName = "QR",
+                            Title = Languages.QR,
+                        });
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "comments1",
+                            PageName = "Comments",
+                            Title = Languages.Comments,
+                        });
+                        this.Menus.Add(new MenuItemViewModel
+                        {
+                            Icon = "logout",
+                            PageName = "LoginPage",
+                            Title = Languages.LogOut,
+                        });
+                    }
                 }
-            }
-
-            this.Menus.Add(new MenuItemViewModel
-            {
-                Icon = "icon_qr",
-                PageName = "QR",
-                Title = Languages.QR,
-            });
-            this.Menus.Add(new MenuItemViewModel
-            {
-                Icon = "comments1",
-                PageName = "Comments",
-                Title = Languages.Comments,
-            });
-            this.Menus.Add(new MenuItemViewModel
-            {
-                Icon = "logout",
-                PageName = "LoginPage",
-                Title = Languages.LogOut,
-            });
+            
         }
         #endregion
 

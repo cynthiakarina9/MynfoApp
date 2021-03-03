@@ -697,4 +697,13 @@ Você deve inserir um url</value>
   <data name="Yellow" xml:space="preserve">
     <value>Dourado</value>
   </data>
+  <data name="MessageWhatsApp" xml:space="preserve">
+    <value>Olá!, conheci você através do mynfo, sou </value>
+  </data>
+  <data name="MyTAGValidation" xml:space="preserve">
+    <value>Este myTAG está vinculada a outro usuário!</value>
+  </data>
+  <data name="NoBoxesYet" xml:space="preserve">
+    <value>Ainda sem Boxes.</value>
+  </data>
 </root>

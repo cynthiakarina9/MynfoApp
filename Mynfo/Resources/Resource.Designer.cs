@@ -1033,6 +1033,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Hi!, I met you through mynfo, I&apos;m .
+        /// </summary>
+        public static string MessageWhatsApp {
+            get {
+                return ResourceManager.GetString("MessageWhatsApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Account.
         /// </summary>
         public static string MyAccount {
@@ -1074,6 +1083,15 @@ namespace Mynfo.Resources {
         public static string MyQR {
             get {
                 return ResourceManager.GetString("MyQR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This MyTAG is linked to another user!.
+        /// </summary>
+        public static string MyTAGValidation {
+            get {
+                return ResourceManager.GetString("MyTAGValidation", resourceCulture);
             }
         }
         
@@ -1191,6 +1209,15 @@ namespace Mynfo.Resources {
         public static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No Boxes yet..
+        /// </summary>
+        public static string NoBoxesYet {
+            get {
+                return ResourceManager.GetString("NoBoxesYet", resourceCulture);
             }
         }
         

@@ -4,6 +4,19 @@
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mynfo.Views.RedyToScan">
+    <NavigationPage.TitleView>
+        <Grid>
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Clicked="BackHome_Clicked"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,70,0"
+                HorizontalOptions = "Center"
+                VerticalOptions = "Center"
+                WidthRequest = "100"
+                x:Name="Logosuperior"/>
+        </Grid>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <Frame
             BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"

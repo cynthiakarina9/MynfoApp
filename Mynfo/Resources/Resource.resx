@@ -696,4 +696,13 @@
   <data name="Yellow" xml:space="preserve">
     <value>Golden</value>
   </data>
+  <data name="MessageWhatsApp" xml:space="preserve">
+    <value>Hi!, I met you through mynfo, I'm </value>
+  </data>
+  <data name="MyTAGValidation" xml:space="preserve">
+    <value>This MyTAG is linked to another user!</value>
+  </data>
+  <data name="NoBoxesYet" xml:space="preserve">
+    <value>No Boxes yet.</value>
+  </data>
 </root>

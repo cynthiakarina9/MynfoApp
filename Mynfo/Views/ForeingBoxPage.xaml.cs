@@ -101,11 +101,11 @@
                 case "Whatsapp":
                     try
                     {
-                        Chat.Open("+52" + selectedItem.value, "Hola un gusto. Soy " + MainViewModel.GetInstance().User.FullName + ", te comparto este mensaje por Mynfo!");
+                        Chat.Open(selectedItem.value, Languages.MessageWhatsApp + MainViewModel.GetInstance().User.FirstName);
                     }
                     catch (Exception ex)
                     {
-                        await DisplayAlert("Error", ex.Message, "OK");
+                        await DisplayAlert(Languages.Error, ex.Message, Languages.Accept);
                     }
                     break;
                 case "Youtube":

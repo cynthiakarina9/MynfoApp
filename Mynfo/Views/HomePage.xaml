@@ -160,7 +160,7 @@
                                         VerticalOptions="CenterAndExpand">
                                     <Label 
                                             IsVisible="{Binding IsNull}"
-                                            Text="No Boxes yet"/>
+                                            Text="{i18n:Translate NoBoxesYet}"/>
                                 </StackLayout>
                             </ContentView>
                         </CollectionView.EmptyView>

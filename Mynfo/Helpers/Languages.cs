@@ -811,5 +811,17 @@
         {
             get { return Resource.LadaValidation; }
         }
+        public static string MyTAGValidation
+        {
+            get { return Resource.MyTAGValidation; }
+        }
+        public static string MessageWhatsApp
+        {
+            get { return Resource.MessageWhatsApp; }
+        }
+        public static string NoBoxesYet
+        {
+            get { return Resource.NoBoxesYet; }
+        }
     }
 }

@@ -7,6 +7,7 @@
     using Android.Nfc.Tech;
     using Android.OS;
     using Android.Runtime;
+    using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.ViewModels;
     using Mynfo.Views;
@@ -220,7 +221,7 @@
                     }
                     else 
                     {
-                        System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
+                        System.Threading.Tasks.Task task = App.DisplayAlertAsync(Languages.MyTAGValidation);
                     }
 
                     App.Navigator.PushAsync(new Stickerconfig());

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mynfo.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,21 @@ namespace Mynfo.Views
         public RedyToScan()
         {
             InitializeComponent();
+            OSAppTheme currentTheme = App.Current.RequestedTheme;
+            if (currentTheme == OSAppTheme.Dark)
+            {
+                Logosuperior.Source = "logo_superior2.png";
+            }
+            else
+            {
+                Logosuperior.Source = "logo_superior3.png";
+            }
+        }
+
+        private void BackHome_Clicked (object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            App.Current.MainPage = new MasterPage();
         }
     }
 }
