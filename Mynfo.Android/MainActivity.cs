@@ -191,7 +191,7 @@
                     string tag_id = "";
                     if (user_id == Convert.ToInt32(user) || 0 == user_id)
                     {
-                        string url = dominio + "index.aspx?user_id=" + user + "&tag_id=" + tag_id;
+                        string url = dominio + "index3.aspx?user_id=" + user + "&tag_id=" + tag_id;
                         //http://localhost:58951/index.aspx?user_id=7
                         var tag = Intent.GetParcelableExtra(NfcAdapter.ExtraTag) as Tag;
                         if (tag != null)
@@ -223,7 +223,8 @@
                         System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
                     }
 
-                    App.Navigator.PushAsync(new Stickerconfig());                    
+                    App.Navigator.PushAsync(new Stickerconfig());
+                    OnDestroy();
                 }
                 else 
                 {
@@ -249,6 +250,7 @@
                                 string user_id = depura_userid[0];                                
 
                                 Imprime_box.Consulta_user(user_id, tag_id);
+                                OnDestroy();
                             }
                         }
                     }
@@ -258,8 +260,20 @@
             {
                 Console.WriteLine(ex);
             }
-            //DisableReaderMode();      
+            //DisableReaderMode();
+            
         }
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            NfcAdapter mNfcAdapter = NfcAdapter.GetDefaultAdapter(this);
+            if (mNfcAdapter != null)
+            {
+                mNfcAdapter.Dispose();
+                mNfcAdapter = null;
+            }
+        }
+            
 
         //Convert the byte array of the NfcCard Uid to string
         private static string ByteArrayToString(byte[] ba)
