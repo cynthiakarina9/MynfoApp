@@ -20,7 +20,7 @@
                     RefreshColor="{StaticResource MainColor}">
                     <ScrollView
                         Grid.Row="0"
-                        VerticalOptions="CenterAndExpand">
+                        VerticalOptions="FillAndExpand">
                         <Grid
                             Grid.Row="0"
                             HorizontalOptions="FillAndExpand">
