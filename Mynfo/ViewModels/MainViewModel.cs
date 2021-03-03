@@ -11,6 +11,7 @@
         private UserLocal user;
         private BoxLocal box;
         private ProfileEmail profileEmail;
+        public static bool nfc_status { get; set; }
         #endregion
 
         #region Properties
@@ -426,18 +427,36 @@
                 PageName = "MyProfilePage",
                 Title = Languages.MyAccount,
             });
-            //this.Menus.Add(new MenuItemViewModel
-            //{
-            //    Icon = "question",
-            //    PageName = "Help",
-            //    Title = Languages.HelpLabel,
-            //});
             this.Menus.Add(new MenuItemViewModel
             {
-                Icon = "icon_tag",
-                PageName = "TAGPage",
-                Title = Languages.Tag,
+                Icon = "question",
+                PageName = "Help",
+                Title = Languages.HelpLabel,
             });
+
+
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+            {
+                this.Menus.Add(new MenuItemViewModel
+                {
+                    Icon = "icon_tag",
+                    PageName = "TAGPage",
+                    Title = Languages.Tag,
+                });
+            }
+            else if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+            {
+                if (nfc_status == true)
+                {
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "icon_tag",
+                        PageName = "TAGPage",
+                        Title = Languages.Tag,
+                    });
+                }
+            }
+
             this.Menus.Add(new MenuItemViewModel
             {
                 Icon = "icon_qr",

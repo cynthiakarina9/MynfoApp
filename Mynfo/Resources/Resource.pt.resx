@@ -572,7 +572,7 @@ Você deve inserir um url</value>
     <value>Código QR</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Configurar Tag</value>
+    <value>Configurar MyTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Scan QR</value>
@@ -584,7 +584,7 @@ Você deve inserir um url</value>
     <value>e cole na parte de trás do seu telefone.</value>
   </data>
   <data name="ConfigureTAG" xml:space="preserve">
-    <value>Configurar TAG</value>
+    <value>Configurar MyTAG</value>
   </data>
   <data name="Push" xml:space="preserve">
     <value>Pressione</value>
@@ -593,7 +593,7 @@ Você deve inserir um url</value>
     <value>Loja</value>
   </data>
   <data name="SureTAG" xml:space="preserve">
-    <value>Certifique-se de ter sua TAG em mãos.</value>
+    <value>Certifique-se de ter sua MyTAG em mãos.</value>
   </data>
   <data name="TakeinStore" xml:space="preserve">
     <value>Se você ainda não tem, compre em</value>
@@ -608,16 +608,16 @@ Você deve inserir um url</value>
     <value>Digitalize um código QR do Mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Autocolante de configuração . . .</value>
+    <value>Configurando MyTAG ...</value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
-    <value>Todas as caixas que você configurar e manipular a partir de agora serão refletidas em sua etiqueta.</value>
+    <value>Todas as caixas que você configurar e manipular a partir de agora serão refletidas em sua MyTAG.</value>
   </data>
   <data name="ConfigStickerRi" xml:space="preserve">
-    <value>¡Etiqueta configurada!</value>
+    <value>¡MyTAG Configurada!</value>
   </data>
   <data name="HoldYourPhone" xml:space="preserve">
-    <value>Mantenha seu telefone próximo à etiqueta.</value>
+    <value>Mantenha seu MyTAG atrás do telefone.</value>
   </data>
   <data name="ReadyToScan" xml:space="preserve">
     <value>Pronto para escanear.</value>
@@ -644,7 +644,7 @@ Você deve inserir um url</value>
     <value> anos</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>Como leio outro TAG?</value>
+    <value>Como leio outro MyTAG?</value>
   </data>
   <data name="ViewsLabel" xml:space="preserve">
     <value>Conexões: </value>

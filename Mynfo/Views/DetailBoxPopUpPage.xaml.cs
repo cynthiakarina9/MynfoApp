@@ -54,7 +54,7 @@
             //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
             System.Text.StringBuilder sb;
             BoxName = "";
-            bool BoxDefault = false;
+            bool BoxDefault = _Box.BoxDefault;
             int UserId = 0;
             DateTime boxcreation = DateTime.Now;
             var BxSaveName = new ImageButton();

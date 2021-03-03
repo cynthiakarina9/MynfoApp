@@ -18,13 +18,20 @@
                     IsRefreshing="{Binding IsRefreshing}"
                     Command="{Binding RefreshCommand}"
                     RefreshColor="{StaticResource MainColor}">
-                    <ScrollView>
+                    <ScrollView
+                        Grid.Row="0"
+                        VerticalOptions="CenterAndExpand">
                         <Grid
-                            Padding="0,20,0,0"
                             Grid.Row="0"
                             HorizontalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="45*"/>
@@ -76,16 +83,16 @@
                                                         Dark={StaticResource Dark_FontColor}}"
                             x:Name="UbicacionLabel"/>
                             <Label  
-                            Grid.Column="1"
-                            Grid.Row="3"
-                            FontSize="15"
-                            Text="{Binding User.Ocupacion}"
-                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, 
-                                                        Dark={StaticResource Dark_FontColor}}"
-                            x:Name="OccupationLabel"/>
+                                Grid.Column="1"
+                                Grid.Row="3"
+                                FontSize="15"
+                                Text="{Binding User.Ocupacion}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, 
+                                                            Dark={StaticResource Dark_FontColor}}"
+                                x:Name="OccupationLabel"/>
                             <Label
-                            Grid.Column="1"
-                            Grid.Row="5">
+                                Grid.Column="1"
+                                Grid.Row="5">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span 
@@ -101,13 +108,13 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-
                             <Line
                                 Grid.ColumnSpan="2"
                                 Grid.Row="6"
                                 HeightRequest="1"
                                 BackgroundColor="{AppThemeBinding Light=#d8dce3, Dark={StaticResource Menu_BackgroundColorDark}}"
-                                Margin="30,0,30,27"/>
+                                Margin="30,0,30,0"
+                                WidthRequest="0.1"/>
                         </Grid>
                     </ScrollView>
                 </RefreshView>
