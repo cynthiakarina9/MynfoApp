@@ -72,8 +72,8 @@
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             //ShortcutBadger.ApplyCount();            
             
-            DetectShakeTest();
-            ToggleAccelerometer();
+            //DetectShakeTest();
+            //ToggleAccelerometer();
             get_status_nfc();
             var receiver = new Mynfo.Droid.Services.MessageReceiver();
             RegisterReceiver(receiver, new IntentFilter("MSG_NAME"));
@@ -139,7 +139,13 @@
             try 
             {
                 var nfc = NfcAdapter.GetDefaultAdapter(this);
-                if (nfc != null) nfc.DisableReaderMode(this);
+                if (nfc != null) 
+                {
+                    nfc.DisableReaderMode(this);
+                    nfc.DisableForegroundDispatch(this);
+                    nfc.DisableForegroundNdefPush(this);
+                    nfc.Dispose();
+                }
             }
             catch(Exception ex) 
             {
@@ -216,7 +222,8 @@
                     {
                         System.Threading.Tasks.Task task = App.DisplayAlertAsync("¡Este Tag esta vinculado con otro usuario!");
                     }
-                    App.Navigator.PushAsync(new Stickerconfig());
+
+                    App.Navigator.PushAsync(new Stickerconfig());                    
                 }
                 else 
                 {
@@ -250,7 +257,8 @@
             catch (Exception ex) 
             {
                 Console.WriteLine(ex);
-            }           
+            }
+            //DisableReaderMode();      
         }
 
         //Convert the byte array of the NfcCard Uid to string
