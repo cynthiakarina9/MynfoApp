@@ -68,10 +68,9 @@
                                     Grid.RowSpan="5"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
-                                    Margin="0,5,0,0"
                                     HeightRequest="100"
                                     WidthRequest="100"
-                                    Aspect="AspectFill"
+                                    Aspect="AspectFit"
                                     x:Name="ForeignUserImage">
                                 </controls:CircleImage>
                                 <Label 
