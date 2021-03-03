@@ -28,6 +28,7 @@
                     <Label
                         FontSize="12"
                         Text="{i18n:Translate HoldYourPhone}"
+                        HorizontalTextAlignment="Center"
                         VerticalOptions="End" 
                         HorizontalOptions="CenterAndExpand"/>
                 </Grid>

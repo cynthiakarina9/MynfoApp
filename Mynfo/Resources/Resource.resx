@@ -571,7 +571,7 @@
     <value>QR code</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Configure Tag</value>
+    <value>Configure MyTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Scan QR</value>
@@ -583,7 +583,7 @@
     <value>and stick it to the back of your phone.</value>
   </data>
   <data name="ConfigureTAG" xml:space="preserve">
-    <value>Configure TAG</value>
+    <value>Configure MyTAG</value>
   </data>
   <data name="Push" xml:space="preserve">
     <value>Push</value>
@@ -592,7 +592,7 @@
     <value>Store</value>
   </data>
   <data name="SureTAG" xml:space="preserve">
-    <value>Make sure you have your TAG at hand.</value>
+    <value>Make sure you have your MyTAG at hand.</value>
   </data>
   <data name="TakeinStore" xml:space="preserve">
     <value>If you don't have it yet, buy it at</value>
@@ -607,16 +607,16 @@
     <value>Scan a QR code from Mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Setting sticker . . . </value>
+    <value>Setting MyTAG . . . </value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
-    <value>All the Boxes that you configure and manipulate from now on will be reflected in your sticker.</value>
+    <value>All the Boxes that you configure and manipulate from now on will be reflected in your MyTAG.</value>
   </data>
   <data name="ConfigStickerRi" xml:space="preserve">
-    <value>Sticker configurated!</value>
+    <value>MyTAG configurated!</value>
   </data>
   <data name="HoldYourPhone" xml:space="preserve">
-    <value>Hold your Phone near the sticker.</value>
+    <value>Hold your Phone near the MyTAG.</value>
   </data>
   <data name="ReadyToScan" xml:space="preserve">
     <value>Ready to Scan.</value>
@@ -643,7 +643,7 @@
     <value> years old</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>How do I read another TAG?</value>
+    <value>How do I read another MyTAG?</value>
   </data>
   <data name="ViewsLabel" xml:space="preserve">
     <value>Connections: </value>

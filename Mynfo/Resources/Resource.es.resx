@@ -571,7 +571,7 @@
     <value>Código QR</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Configurar Tag</value>
+    <value>Configurar MyTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Escanear QR</value>
@@ -583,7 +583,7 @@
     <value>y pegalo a la parte posterior de tu teléfono.</value>
   </data>
   <data name="ConfigureTAG" xml:space="preserve">
-    <value>Configurar TAG</value>
+    <value>Configurar MyTAG</value>
   </data>
   <data name="Push" xml:space="preserve">
     <value>Presiona</value>
@@ -592,7 +592,7 @@
     <value>Tienda</value>
   </data>
   <data name="SureTAG" xml:space="preserve">
-    <value>Asegúrese de tener su TAG a la mano.</value>
+    <value>Asegúrese de tener su MyTAG a la mano.</value>
   </data>
   <data name="TakeinStore" xml:space="preserve">
     <value>Si aún no lo tienes, cómpralo en</value>
@@ -607,16 +607,16 @@
     <value>Escanea un codigo QR de Mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Configurando etiqueta . . . </value>
+    <value>Configurando MyTAG . . . </value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
-    <value>Todas las Boxes que configures y manipules de ahora en adelante se veran reflejados en tu etiqueta.</value>
+    <value>Todas las Boxes que configures y manipules de ahora en adelante se veran reflejados en tu MyTAG.</value>
   </data>
   <data name="ConfigStickerRi" xml:space="preserve">
-    <value>¡Etiqueta configurada!</value>
+    <value>¡MyTAG configurada!</value>
   </data>
   <data name="HoldYourPhone" xml:space="preserve">
-    <value>Mantenga su teléfono cerca de la etiqueta.</value>
+    <value>Mantenga su MyTAG atrás de su teléfono.</value>
   </data>
   <data name="ReadyToScan" xml:space="preserve">
     <value>Listo para escanear.</value>
@@ -631,7 +631,7 @@
     <value> años</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>¿Cómo leo otro TAG?</value>
+    <value>¿Cómo leo otro MyTAG?</value>
   </data>
   <data name="LocationLabel" xml:space="preserve">
     <value>Ubicación:</value>

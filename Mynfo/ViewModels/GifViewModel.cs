@@ -50,7 +50,7 @@
             switch (Name)
             {
                 case "All":
-                    GitImage = "facebook.gif";
+                    GitImage = "GIF_scaneo_Android.gif";
                     break;
                 case "Facebook":
                     GitImage = "facebook.gif";
