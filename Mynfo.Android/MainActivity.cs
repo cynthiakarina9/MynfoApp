@@ -225,7 +225,7 @@
                     }
 
                     App.Navigator.PushAsync(new Stickerconfig());
-                    OnDestroy();
+                    //OnDestroy();
                 }
                 else 
                 {
@@ -251,7 +251,7 @@
                                 string user_id = depura_userid[0];                                
 
                                 Imprime_box.Consulta_user(user_id, tag_id);
-                                OnDestroy();
+                                //OnDestroy();
                             }
                         }
                     }
@@ -264,6 +264,7 @@
             //DisableReaderMode();
             
         }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();

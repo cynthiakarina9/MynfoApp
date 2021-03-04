@@ -67,11 +67,27 @@
         {
             apiService = new ApiService();
             IsScanning = true;
-            CrossMedia.Current.Initialize();
+
+            GetPermition();
         }
         #endregion
 
         #region Methods
+        public async void GetPermition()
+        {
+            bool A = false;
+            try
+            {
+                if (await CrossMedia.Current.Initialize() == true)
+                {
+                    A = true;
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
         public void OnScanResult(Result result)
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
@@ -79,6 +95,15 @@
                 IsScanning = false;
                 string a = result.Text;
                 string[] b = a.Split('=', '&');
+                if(b.Length != 4)
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                      Languages.Error,
+                      Languages.InvalidUser,
+                      Languages.Accept);
+                    await App.Navigator.PopAsync();
+                    return;
+                }
                 await MainViewModel.GetInstance().LectorQR.GetBoxDefault(Convert.ToInt32(b[1]));
                 result = null;
             });
@@ -91,7 +116,7 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                    Languages.Error,
-                   "El usuario no es valido",
+                   Languages.UserNotFound,
                    Languages.Accept);
                 return null;
             }
@@ -117,7 +142,7 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    "El usuario no es valido",
+                    Languages.UserNotFound,
                     Languages.Accept);
                 return null;
             }
@@ -130,7 +155,7 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    "El usuario no tiene boxes",
+                    Languages.UserWithoutBoxes,
                     Languages.Accept);
                 return null;
             }
@@ -151,12 +176,12 @@
                 {
                     await Application.Current.MainPage.DisplayAlert(
                         Languages.Error,
-                        "El usuario no tiene boxes",
+                        Languages.UserWithoutBoxes,
                         Languages.Accept);
                     return null;
                 }
             }
-
+            await App.Navigator.PopAsync();
             Imprime_box.InsertForeignData(UserIdToSend, BoxL.BoxId);
             return Box;
         }

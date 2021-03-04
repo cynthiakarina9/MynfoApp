@@ -823,5 +823,17 @@
         {
             get { return Resource.NoBoxesYet; }
         }
+        public static string UserNotFound
+        {
+            get { return Resource.UserNotFound; }
+        }
+        public static string UserWithoutBoxes
+        {
+            get { return Resource.UserWithoutBoxes; }
+        }
+        public static string InvalidUser
+        {
+            get { return Resource.InvalidUser; }
+        }
     }
 }

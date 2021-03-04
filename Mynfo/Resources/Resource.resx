@@ -571,7 +571,7 @@
     <value>QR code</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Configure MyTAG</value>
+    <value>Getting your myTAG ready</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Scan QR</value>
@@ -583,7 +583,7 @@
     <value>and stick it to the back of your phone.</value>
   </data>
   <data name="ConfigureTAG" xml:space="preserve">
-    <value>Configure MyTAG</value>
+    <value>Configure myTAG</value>
   </data>
   <data name="Push" xml:space="preserve">
     <value>Push</value>
@@ -592,31 +592,31 @@
     <value>Store</value>
   </data>
   <data name="SureTAG" xml:space="preserve">
-    <value>Make sure you have your MyTAG at hand.</value>
+    <value>Make sure you have your myTAG at hand.</value>
   </data>
   <data name="TakeinStore" xml:space="preserve">
     <value>If you don't have it yet, buy it at</value>
   </data>
   <data name="ProfileMynfo" xml:space="preserve">
-    <value>Mynfo Profile</value>
+    <value>mynfo Profile</value>
   </data>
   <data name="QRForWhat" xml:space="preserve">
     <value>This QR code will allow you to share your default box in any browser.</value>
   </data>
   <data name="QRMynfo" xml:space="preserve">
-    <value>Scan a QR code from Mynfo.</value>
+    <value>Scan a QR code from mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Setting MyTAG . . . </value>
+    <value>Setting myTAG . . . </value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
-    <value>All the Boxes that you configure and manipulate from now on will be reflected in your MyTAG.</value>
+    <value>All the Boxes that you configure and manipulate from now on will be reflected in your myTAG.</value>
   </data>
   <data name="ConfigStickerRi" xml:space="preserve">
-    <value>MyTAG configurated!</value>
+    <value>myTAG configurated!</value>
   </data>
   <data name="HoldYourPhone" xml:space="preserve">
-    <value>Hold your Phone near the MyTAG.</value>
+    <value>Hold your Phone near the myTAG.</value>
   </data>
   <data name="ReadyToScan" xml:space="preserve">
     <value>Ready to Scan.</value>
@@ -643,7 +643,7 @@
     <value> years old</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>How do I read another MyTAG?</value>
+    <value>How do I read another myTAG?</value>
   </data>
   <data name="ViewsLabel" xml:space="preserve">
     <value>Connections: </value>
@@ -696,13 +696,22 @@
   <data name="Yellow" xml:space="preserve">
     <value>Golden</value>
   </data>
+  <data name="InvalidUser" xml:space="preserve">
+    <value>Invalid code.</value>
+  </data>
   <data name="MessageWhatsApp" xml:space="preserve">
     <value>Hi!, I met you through mynfo, I'm </value>
   </data>
   <data name="MyTAGValidation" xml:space="preserve">
-    <value>This MyTAG is linked to another user!</value>
+    <value>This myTAG is linked to another user!</value>
   </data>
   <data name="NoBoxesYet" xml:space="preserve">
     <value>No Boxes yet.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>The user is invalid.</value>
+  </data>
+  <data name="UserWithoutBoxes" xml:space="preserve">
+    <value>The user doesn´t have boxes created.</value>
   </data>
 </root>

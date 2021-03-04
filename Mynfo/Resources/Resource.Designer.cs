@@ -142,7 +142,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a All the Boxes that you configure and manipulate from now on will be reflected in your MyTAG..
+        ///   Busca una cadena traducida similar a All the Boxes that you configure and manipulate from now on will be reflected in your myTAG..
         /// </summary>
         public static string AllConfigSticker {
             get {
@@ -340,7 +340,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Setting MyTAG . . . .
+        ///   Busca una cadena traducida similar a Setting myTAG . . . .
         /// </summary>
         public static string ConfigSticker {
             get {
@@ -349,7 +349,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a MyTAG configurated!.
+        ///   Busca una cadena traducida similar a myTAG configurated!.
         /// </summary>
         public static string ConfigStickerRi {
             get {
@@ -358,7 +358,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Configure MyTAG.
+        ///   Busca una cadena traducida similar a Configure myTAG.
         /// </summary>
         public static string ConfigureTAG {
             get {
@@ -844,7 +844,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a How do I read another MyTAG?.
+        ///   Busca una cadena traducida similar a How do I read another myTAG?.
         /// </summary>
         public static string HelpLabel {
             get {
@@ -853,7 +853,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Hold your Phone near the MyTAG..
+        ///   Busca una cadena traducida similar a Hold your Phone near the myTAG..
         /// </summary>
         public static string HoldYourPhone {
             get {
@@ -876,6 +876,15 @@ namespace Mynfo.Resources {
         public static string Information {
             get {
                 return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invalid code..
+        /// </summary>
+        public static string InvalidUser {
+            get {
+                return ResourceManager.GetString("InvalidUser", resourceCulture);
             }
         }
         
@@ -1087,7 +1096,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a This MyTAG is linked to another user!.
+        ///   Busca una cadena traducida similar a This myTAG is linked to another user!.
         /// </summary>
         public static string MyTAGValidation {
             get {
@@ -1429,7 +1438,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Mynfo Profile.
+        ///   Busca una cadena traducida similar a mynfo Profile.
         /// </summary>
         public static string ProfileMynfo {
             get {
@@ -1519,7 +1528,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Scan a QR code from Mynfo..
+        ///   Busca una cadena traducida similar a Scan a QR code from mynfo..
         /// </summary>
         public static string QRMynfo {
             get {
@@ -1699,7 +1708,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Make sure you have your MyTAG at hand..
+        ///   Busca una cadena traducida similar a Make sure you have your myTAG at hand..
         /// </summary>
         public static string SureTAG {
             get {
@@ -1708,7 +1717,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Configure MyTAG.
+        ///   Busca una cadena traducida similar a Getting your myTAG ready.
         /// </summary>
         public static string Tag {
             get {
@@ -1753,11 +1762,29 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The user is invalid..
+        /// </summary>
+        public static string UserNotFound {
+            get {
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The user was created, now you can login with this email and password.
         /// </summary>
         public static string UserRegisteredMessage {
             get {
                 return ResourceManager.GetString("UserRegisteredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The user doesn´t have boxes created..
+        /// </summary>
+        public static string UserWithoutBoxes {
+            get {
+                return ResourceManager.GetString("UserWithoutBoxes", resourceCulture);
             }
         }
         
