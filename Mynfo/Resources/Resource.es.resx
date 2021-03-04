@@ -571,7 +571,7 @@
     <value>Código QR</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Configurar MyTAG</value>
+    <value>Configurando tu myTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Escanear QR</value>
@@ -583,7 +583,7 @@
     <value>y pegalo a la parte posterior de tu teléfono.</value>
   </data>
   <data name="ConfigureTAG" xml:space="preserve">
-    <value>Configurar MyTAG</value>
+    <value>Configurar myTAG</value>
   </data>
   <data name="Push" xml:space="preserve">
     <value>Presiona</value>
@@ -592,31 +592,31 @@
     <value>Tienda</value>
   </data>
   <data name="SureTAG" xml:space="preserve">
-    <value>Asegúrese de tener su MyTAG a la mano.</value>
+    <value>Asegúrese de tener su myTAG a la mano.</value>
   </data>
   <data name="TakeinStore" xml:space="preserve">
     <value>Si aún no lo tienes, cómpralo en</value>
   </data>
   <data name="ProfileMynfo" xml:space="preserve">
-    <value>Perfil de Mynfo</value>
+    <value>Perfil de mynfo</value>
   </data>
   <data name="QRForWhat" xml:space="preserve">
     <value>Este código QR te permitirá compartir tu box predeterminada en cuaquier navegador.</value>
   </data>
   <data name="QRMynfo" xml:space="preserve">
-    <value>Escanea un codigo QR de Mynfo.</value>
+    <value>Escanea un codigo QR de mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Configurando MyTAG . . . </value>
+    <value>Configurando myTAG . . . </value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
-    <value>Todas las Boxes que configures y manipules de ahora en adelante se veran reflejados en tu MyTAG.</value>
+    <value>Todas las Boxes que configures y manipules de ahora en adelante se veran reflejados en tu myTAG.</value>
   </data>
   <data name="ConfigStickerRi" xml:space="preserve">
-    <value>¡MyTAG configurada!</value>
+    <value>¡myTAG configurada!</value>
   </data>
   <data name="HoldYourPhone" xml:space="preserve">
-    <value>Mantenga su MyTAG atrás de su teléfono.</value>
+    <value>Mantenga su myTAG atrás de su teléfono.</value>
   </data>
   <data name="ReadyToScan" xml:space="preserve">
     <value>Listo para escanear.</value>
@@ -631,7 +631,7 @@
     <value> años</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>¿Cómo leo otro MyTAG?</value>
+    <value>¿Cómo leo otro myTAG?</value>
   </data>
   <data name="LocationLabel" xml:space="preserve">
     <value>Ubicación:</value>
@@ -696,13 +696,22 @@
   <data name="LadaValidation" xml:space="preserve">
     <value>Debe agregar una lada valida.</value>
   </data>
+  <data name="InvalidUser" xml:space="preserve">
+    <value>Código invalido.</value>
+  </data>
   <data name="MessageWhatsApp" xml:space="preserve">
     <value>¡Hola!, te conocí a través de mynfo, soy </value>
   </data>
   <data name="MyTAGValidation" xml:space="preserve">
-    <value>¡Este MyTAG esta vinculado con otro usuario!</value>
+    <value>¡Este myTAG esta vinculado con otro usuario!</value>
   </data>
   <data name="NoBoxesYet" xml:space="preserve">
     <value>Aún no hay Boxes.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>El usuario no es válido.</value>
+  </data>
+  <data name="UserWithoutBoxes" xml:space="preserve">
+    <value>El usuario no tiene Boxes.</value>
   </data>
 </root>

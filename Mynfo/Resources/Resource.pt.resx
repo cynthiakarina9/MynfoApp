@@ -469,7 +469,7 @@
     <value>Para retornar</value>
   </data>
   <data name="DeleteBoxNotification" xml:space="preserve">
-    <value>Você está prestes a excluir a caixa permanentemente, deseja continuar?</value>
+    <value>Você está prestes a excluir a Box permanentemente, deseja continuar?</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Não</value>
@@ -530,7 +530,7 @@ Você deve inserir um url</value>
     <value>Fechar</value>
   </data>
   <data name="NetworkAdded" xml:space="preserve">
-    <value>Rede adicionada à caixa </value>
+    <value>Rede adicionada à Boxes </value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Sucesso!</value>
@@ -551,7 +551,7 @@ Você deve inserir um url</value>
     <value />
   </data>
   <data name="EmptyBox" xml:space="preserve">
-    <value>Você ainda não tem redes adicionadas a esta caixa.</value>
+    <value>Você ainda não tem redes adicionadas a esta Box.</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Próximo</value>
@@ -572,7 +572,7 @@ Você deve inserir um url</value>
     <value>Código QR</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Configurar MyTAG</value>
+    <value>Preparando seu myTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Scan QR</value>
@@ -593,31 +593,31 @@ Você deve inserir um url</value>
     <value>Loja</value>
   </data>
   <data name="SureTAG" xml:space="preserve">
-    <value>Certifique-se de ter sua MyTAG em mãos.</value>
+    <value>Certifique-se de ter sua myTAG em mãos.</value>
   </data>
   <data name="TakeinStore" xml:space="preserve">
     <value>Se você ainda não tem, compre em</value>
   </data>
   <data name="ProfileMynfo" xml:space="preserve">
-    <value>Perfil Mynfo</value>
+    <value>Perfil mynfo</value>
   </data>
   <data name="QRForWhat" xml:space="preserve">
-    <value>Este código QR permitirá que você compartilhe sua caixa padrão em qualquer navegador.</value>
+    <value>Este código QR permitirá que você compartilhe sua Box padrão em qualquer navegador.</value>
   </data>
   <data name="QRMynfo" xml:space="preserve">
-    <value>Digitalize um código QR do Mynfo.</value>
+    <value>Digitalize um código QR do mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Configurando MyTAG ...</value>
+    <value>Configurando myTAG ...</value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
-    <value>Todas as caixas que você configurar e manipular a partir de agora serão refletidas em sua MyTAG.</value>
+    <value>Todas as Boxes que você configurar e manipular a partir de agora serão refletidas em sua myTAG.</value>
   </data>
   <data name="ConfigStickerRi" xml:space="preserve">
-    <value>¡MyTAG Configurada!</value>
+    <value>¡myTAG Configurada!</value>
   </data>
   <data name="HoldYourPhone" xml:space="preserve">
-    <value>Mantenha seu MyTAG atrás do telefone.</value>
+    <value>Mantenha seu myTAG atrás do telefone.</value>
   </data>
   <data name="ReadyToScan" xml:space="preserve">
     <value>Pronto para escanear.</value>
@@ -644,7 +644,7 @@ Você deve inserir um url</value>
     <value> anos</value>
   </data>
   <data name="HelpLabel" xml:space="preserve">
-    <value>Como leio outro MyTAG?</value>
+    <value>Como leio outro myTAG?</value>
   </data>
   <data name="ViewsLabel" xml:space="preserve">
     <value>Conexões: </value>
@@ -697,6 +697,9 @@ Você deve inserir um url</value>
   <data name="Yellow" xml:space="preserve">
     <value>Dourado</value>
   </data>
+  <data name="InvalidUser" xml:space="preserve">
+    <value>Código inválido.</value>
+  </data>
   <data name="MessageWhatsApp" xml:space="preserve">
     <value>Olá!, conheci você através do mynfo, sou </value>
   </data>
@@ -705,5 +708,11 @@ Você deve inserir um url</value>
   </data>
   <data name="NoBoxesYet" xml:space="preserve">
     <value>Ainda sem Boxes.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>O usuário é inválido.</value>
+  </data>
+  <data name="UserWithoutBoxes" xml:space="preserve">
+    <value>O usuário não tem Boxes.</value>
   </data>
 </root>
