@@ -715,4 +715,7 @@ Você deve inserir um url</value>
   <data name="UserWithoutBoxes" xml:space="preserve">
     <value>O usuário não tem Boxes.</value>
   </data>
+  <data name="HowMynfoWorks" xml:space="preserve">
+    <value>Como funciona o mynfo?</value>
+  </data>
 </root>

@@ -4,6 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              BackgroundColor="Transparent"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="Mynfo.Views.ProfileTypeSelection">
     <NavigationPage.TitleView>
         <Grid>
@@ -25,12 +26,32 @@
             Margin="30"
             x:Name="BackG">
             <Grid
-                BindingContext="{Binding Profiles}">
+                BindingContext="{Binding ProfileTypeSelection}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <!--Titulo-->
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Command="{Binding GotoAddCommand}"
+                    Grid.RowSpan="2"
+                    HeightRequest="40"
+                    HorizontalOptions="Start"
+                    IsEnabled="true"
+                    Source="lista"
+                    VerticalOptions="Start"
+                    WidthRequest="40"/>
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Command="{Binding GoBackCommand}"
+                    Grid.RowSpan="2"
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    IsEnabled="true"
+                    Source="check3"
+                    VerticalOptions="Start"
+                    WidthRequest="40"/>
                 <Label 
                     Grid.Row = "0" 
                     Text = "{i18n:Translate ChooseTypeProfile}"
@@ -44,7 +65,7 @@
                     <Grid>
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="0"/>
                                 <RowDefinition Height="100" />
                                 <RowDefinition Height="100" />
                                 <RowDefinition Height="100" />

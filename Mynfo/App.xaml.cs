@@ -44,7 +44,7 @@
 
             //Set root SQLite
             root_db = root_DB;
-
+            Xamarin.Forms.Device.SetFlags(new[] { "CarouselView_Experimental" });
             Preferences.Set("key1", Guid.NewGuid().ToString());
             Preferences.Set("IsEnabled", true);
 

@@ -64,6 +64,9 @@
                 case "YouTube":
                     GitImage = "youtube.gif";
                     break;
+                case "BasicIntro":
+                    GitImage = "GIF_mynfo_general.gif";
+                    break;
                 default:
                     break;
             }

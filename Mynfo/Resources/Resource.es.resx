@@ -714,4 +714,7 @@
   <data name="UserWithoutBoxes" xml:space="preserve">
     <value>El usuario no tiene Boxes.</value>
   </data>
+  <data name="HowMynfoWorks" xml:space="preserve">
+    <value>¿Cómo funciona mynfo?</value>
+  </data>
 </root>

@@ -114,11 +114,13 @@
             var response = await userManager.AddPasswordAsync(userASP.Id, newPassword);
             if (response.Succeeded)
             {
-                var subject = "Mynfo App - Recuperación de contraseña";
+                var subject = "mynfo App - Recuperación de contraseña";
                 var body = string.Format(@"
-                    <h1>Mynfo App - Recuperación de contraseña</h1>
+                    <center><img src='https://mynfoapi.azurewebsites.net/Resource/Drawable/Logo_sin_relleno.png'
+                         width='200' height='200'></center>
+                    <center><h1>mynfo App - Recuperación de contraseña</h1>
                     <p>Su nueva contraseña es: <strong>{0}</strong></p>
-                    <p>Por favor no olvide cambiarla por una de fácil recordación",
+                    <p>¡Por favor no olvide cambiarla por una de fácil recordación! </center>",
                     newPassword);
                 await MailHelper.SendMail(email, subject, body);
             }

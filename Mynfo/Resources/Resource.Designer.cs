@@ -871,6 +871,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a How mynfo works?.
+        /// </summary>
+        public static string HowMynfoWorks {
+            get {
+                return ResourceManager.GetString("HowMynfoWorks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Information.
         /// </summary>
         public static string Information {
