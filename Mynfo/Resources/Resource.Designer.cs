@@ -340,7 +340,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Setting myTAG . . . .
+        ///   Busca una cadena traducida similar a Getting your myTAG ready ....
         /// </summary>
         public static string ConfigSticker {
             get {
@@ -1726,7 +1726,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Getting your myTAG ready.
+        ///   Busca una cadena traducida similar a myTAG configuration.
         /// </summary>
         public static string Tag {
             get {
