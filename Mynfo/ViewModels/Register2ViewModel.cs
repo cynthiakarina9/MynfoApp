@@ -201,7 +201,8 @@
                 LastName = user1.LastName,
                 ImageArray = user1.ImageArray,
                 UserTypeId = user1.UserTypeId,
-                Password = this.Password
+                Password = this.Password,
+                Share = true
             };
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 

@@ -340,7 +340,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Setting myTAG . . . .
+        ///   Busca una cadena traducida similar a Getting your myTAG ready ....
         /// </summary>
         public static string ConfigSticker {
             get {
@@ -867,6 +867,15 @@ namespace Mynfo.Resources {
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a How mynfo works?.
+        /// </summary>
+        public static string HowMynfoWorks {
+            get {
+                return ResourceManager.GetString("HowMynfoWorks", resourceCulture);
             }
         }
         
@@ -1717,7 +1726,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Getting your myTAG ready.
+        ///   Busca una cadena traducida similar a myTAG configuration.
         /// </summary>
         public static string Tag {
             get {

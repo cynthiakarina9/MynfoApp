@@ -471,84 +471,112 @@
                 });
             }
             else if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+            {
+                if (nfc_status == true)
                 {
-                    if (nfc_status == true)
+                    //Mi cuenta
+                    this.Menus.Add(new MenuItemViewModel
                     {
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "account",
-                            PageName = "MyProfilePage",
-                            Title = Languages.MyAccount,
-                        });
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "question",
-                            PageName = "Help",
-                            Title = Languages.HelpLabel,
-                        });
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "icon_tag",
-                            PageName = "TAGPage",
-                            Title = Languages.Tag,
-                        });
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "icon_qr",
-                            PageName = "QR",
-                            Title = Languages.QR,
-                        });
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "comments1",
-                            PageName = "Comments",
-                            Title = Languages.Comments,
-                        });
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "logout",
-                            PageName = "LoginPage",
-                            Title = Languages.LogOut,
-                        });
-                    }
-                    else
+                        Icon = "account",
+                        PageName = "MyProfilePage",
+                        Title = Languages.MyAccount,
+                    });
+                    //Código QR
+                    this.Menus.Add(new MenuItemViewModel
                     {
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "account",
-                            PageName = "MyProfilePage",
-                            Title = Languages.MyAccount,
-                        });
-                        if (nfc_status == true)
-                        {
-                            this.Menus.Add(new MenuItemViewModel
-                            {
-                                Icon = "question",
-                                PageName = "Help",
-                                Title = Languages.HelpLabel,
-                            });
-                        }
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "icon_qr",
-                            PageName = "QR",
-                            Title = Languages.QR,
-                        });
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "comments1",
-                            PageName = "Comments",
-                            Title = Languages.Comments,
-                        });
-                        this.Menus.Add(new MenuItemViewModel
-                        {
-                            Icon = "logout",
-                            PageName = "LoginPage",
-                            Title = Languages.LogOut,
-                        });
-                    }
+                        Icon = "icon_qr",
+                        PageName = "QR",
+                        Title = Languages.QR,
+                    });
+                    //Tienda
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "compra",
+                        PageName = "Store",
+                        Title = Languages.Store,
+                    });
+                    //Configurar myTAG
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "icon_tag",
+                        PageName = "TAGPage",
+                        Title = Languages.Tag,
+                    });
+                    //Cómo leer otr myTAG
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "question",
+                        PageName = "Help",
+                        Title = Languages.HelpLabel,
+                    });
+                    //Cómo funciona mynfo
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "Logo_sin_relleno",
+                        PageName = "BasicIntro",
+                        Title = Languages.HowMynfoWorks,
+                    });
+                    //Comentarios
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "comments1",
+                        PageName = "Comments",
+                        Title = Languages.Comments,
+                    });
+                    //Logout
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "logout",
+                        PageName = "LoginPage",
+                        Title = Languages.LogOut,
+                    });
                 }
-            
+                else
+                {
+                    //Mi cuenta
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "account",
+                        PageName = "MyProfilePage",
+                        Title = Languages.MyAccount,
+                    });
+                    //Código QR
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "icon_qr",
+                        PageName = "QR",
+                        Title = Languages.QR,
+                    });
+                    //Tienda
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "compra",
+                        PageName = "Store",
+                        Title = Languages.Store,
+                    });
+                    //Cómo funciona mynfo
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "Logo_sin_relleno",
+                        PageName = "BasicIntro",
+                        Title = Languages.HowMynfoWorks,
+                    });
+                    //Comentarios
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "comments1",
+                        PageName = "Comments",
+                        Title = Languages.Comments,
+                    });
+                    //Logout
+                    this.Menus.Add(new MenuItemViewModel
+                    {
+                        Icon = "logout",
+                        PageName = "LoginPage",
+                        Title = Languages.LogOut,
+                    });
+                }
+            }            
         }
         #endregion
 

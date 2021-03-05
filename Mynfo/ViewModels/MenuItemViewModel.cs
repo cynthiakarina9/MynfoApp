@@ -76,7 +76,7 @@
             {
                 await App.Navigator.PushAsync(new QRTabbedPage());
             }
- 
+
             else if (this.PageName == "TAGPage")
             {
                 MainViewModel.GetInstance().TAG = new TAGViewModel();
@@ -92,6 +92,16 @@
             else if (this.PageName == "Comments")
             {
                 await Browser.OpenAsync("https://mynfo.mx/preguntas-frecuentes/", BrowserLaunchMode.SystemPreferred);
+            }
+
+            else if (this.PageName == "Store")
+            {
+                await Browser.OpenAsync("https://mynfo.mx/index.php/tienda/", BrowserLaunchMode.SystemPreferred);
+            }
+            else if (this.PageName == "BasicIntro")
+            {
+                MainViewModel.GetInstance().GIF = new GifViewModel("BasicIntro");
+                await PopupNavigation.Instance.PushAsync(new GifPage());
             }
         }
         #endregion

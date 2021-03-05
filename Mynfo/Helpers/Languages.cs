@@ -835,5 +835,9 @@
         {
             get { return Resource.InvalidUser; }
         }
+        public static string HowMynfoWorks
+        {
+            get { return Resource.HowMynfoWorks; }
+        }
     }
 }

@@ -571,7 +571,7 @@
     <value>Código QR</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Configurando tu myTAG</value>
+    <value>Preparando su myTAG ...</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Escanear QR</value>
@@ -713,5 +713,8 @@
   </data>
   <data name="UserWithoutBoxes" xml:space="preserve">
     <value>El usuario no tiene Boxes.</value>
+  </data>
+  <data name="HowMynfoWorks" xml:space="preserve">
+    <value>¿Cómo funciona mynfo?</value>
   </data>
 </root>

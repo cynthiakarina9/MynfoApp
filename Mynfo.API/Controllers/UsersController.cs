@@ -162,10 +162,10 @@
                 var response2 = await userManager.AddPasswordAsync(userASP.Id, newPassword);
                 if (response2.Succeeded)
                 {
-                    var subject = "Mynfo - Password Recovery";
+                    var subject = "mynfo - Password Recovery";
                     var body = string.Format(@"
                         
-                        <center><h1>Mynfo - Password Recovery</h1>
+                        <center><h1>mynfo - Password Recovery</h1>
                         <p>This is an automatically generated new password, use it to login again.</p>
                         <p>We recommend changing it right away.</p>
                         <p>Your new password is: <strong>{0}</strong></p>
@@ -262,7 +262,8 @@
                 {
                     var subject = "Added User to mynfo";
                     var body = string.Format(@"
-                        
+                        <center><img src='https://mynfoapi.azurewebsites.net/Resource/Drawable/Logo_sin_relleno.png'
+                         width='200' height='200'></center>
                                 <center><h1> Welcome to mynfo, we love having you here! </h1>
                     <p> You have successfully created your account, 
                         now you can share all your contact information in the easiest way.</p>

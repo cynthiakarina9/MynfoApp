@@ -14,7 +14,7 @@
             InitializeComponent();
             //On<Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.ProfileTypeSelection = new ProfileTypeSelectionViewModel();
+            mainViewModel.ProfileTypeSelection = new ProfileTypeSelectionViewModel(_BoxId);
             mainViewModel.ListOfNetworks = new ListOfNetworksViewModel(_BoxId);
 
             On<Windows>().SetHeaderIconsEnabled(true);

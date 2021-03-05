@@ -572,7 +572,7 @@ Você deve inserir um url</value>
     <value>Código QR</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Preparando seu myTAG</value>
+    <value>Configurações de myTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Scan QR</value>
@@ -608,7 +608,7 @@ Você deve inserir um url</value>
     <value>Digitalize um código QR do mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Configurando myTAG ...</value>
+    <value>Preparando seu myTAG ...</value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
     <value>Todas as Boxes que você configurar e manipular a partir de agora serão refletidas em sua myTAG.</value>
@@ -714,5 +714,8 @@ Você deve inserir um url</value>
   </data>
   <data name="UserWithoutBoxes" xml:space="preserve">
     <value>O usuário não tem Boxes.</value>
+  </data>
+  <data name="HowMynfoWorks" xml:space="preserve">
+    <value>Como funciona o mynfo?</value>
   </data>
 </root>

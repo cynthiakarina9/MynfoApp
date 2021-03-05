@@ -5,6 +5,7 @@
     using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.Views;
+    using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -26,6 +27,7 @@
         private ObservableCollection<ProfileWhatsapp> profileWhatsapp;
         private ObservableCollection<ProfileSM> profileSM;
         public bool emptyList;
+        public Box box;
         #endregion
 
         #region Properties
@@ -75,7 +77,14 @@
                 SetValue(ref profileSM, value);
             }
         }
-
+        public Box Box
+        {
+            get { return box; }
+            private set
+            {
+                SetValue(ref box, value);
+            }
+        }
         public ProfileEmail selectedProfileEmail { get; set; }
         public ProfilePhone selectedProfilePhone { get; set; }
         public ProfileWhatsapp selectedProfileWhatsapp { get; set; }
@@ -86,6 +95,7 @@
         public ProfilesBYPESMViewModel(int _BoxId, string _ProfileType)
         {
             apiService = new ApiService();
+            GetBox();
             EmptyList = false;
             switch (_ProfileType)
             {
@@ -156,6 +166,32 @@
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
             Application.Current.MainPage = new MasterPage();
+        }
+
+        public ICommand GotoAddCommand
+        {
+            get
+            {
+                return new RelayCommand(GotoAdd);
+            }
+        }
+        private void GotoAdd()
+        {
+            PopupNavigation.Instance.PopAsync();
+            MainViewModel.GetInstance().ListOfNetworks = new ListOfNetworksViewModel(Box.BoxId);
+            PopupNavigation.Instance.PushAsync(new ListOfNetworksPage(Box.BoxId));
+        }
+
+        public ICommand GoBackCommand
+        {
+            get
+            {
+                return new RelayCommand(GoBack);
+            }
+        }
+        private void GoBack()
+        {
+            PopupNavigation.Instance.PopAsync();
         }
         #endregion
 
@@ -493,6 +529,21 @@
             ProfileWhatsapp.Remove(selectedProfileWhatsapp);
 
             ProfileWhatsapp.Insert(newIndex, _profileWhatsapp);
+        }
+        #endregion
+
+        #region Box
+        public async Task<Box> GetBox()
+        {
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+
+            Box = new Box();
+            Box = await this.apiService.GetBox(
+                apiSecurity,
+                "/api",
+                "/Boxes",
+                MainViewModel.GetInstance().User.UserId);
+            return Box;
         }
         #endregion
 

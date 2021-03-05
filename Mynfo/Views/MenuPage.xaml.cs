@@ -14,11 +14,11 @@
             InitializeComponent();
             if (MainViewModel.GetInstance().User.Share == true)
             {
-                TagLabel.Text = "MyTAG ON";
+                TagLabel.Text = "myTAG ON";
             }
             else
             {
-                TagLabel.Text = "MyTAG OFF";
+                TagLabel.Text = "myTAG OFF";
             }
         }
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -35,8 +35,8 @@
             {
                 bool value = e.Value;
                 int share = 1;
-                if (value == true) { share = 1; TagLabel.Text = "MyTAG ON"; }
-                if (value == false) { share = 0; TagLabel.Text = "MyTAG OFF"; }
+                if (value == true) { share = 1; TagLabel.Text = "myTAG ON"; }
+                if (value == false) { share = 0; TagLabel.Text = "myTAG OFF"; }
                 int user_id = MainViewModel.GetInstance().User.UserId;
                 //string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
                 string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";

@@ -571,7 +571,7 @@
     <value>QR code</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Getting your myTAG ready</value>
+    <value>myTAG configuration</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Scan QR</value>
@@ -607,7 +607,7 @@
     <value>Scan a QR code from mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Setting myTAG . . . </value>
+    <value>Getting your myTAG ready ...</value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
     <value>All the Boxes that you configure and manipulate from now on will be reflected in your myTAG.</value>
@@ -713,5 +713,8 @@
   </data>
   <data name="UserWithoutBoxes" xml:space="preserve">
     <value>The user doesn´t have boxes created.</value>
+  </data>
+  <data name="HowMynfoWorks" xml:space="preserve">
+    <value>How mynfo works?</value>
   </data>
 </root>
