@@ -40,6 +40,7 @@
                 Ubicacion = user.Ubicacion,
                 Ocupacion = user.Ocupacion,
                 Conexiones = user.Conexiones,
+                
             };
         }
         #endregion

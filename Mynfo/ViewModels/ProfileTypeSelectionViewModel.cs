@@ -37,7 +37,7 @@
         public ProfileTypeSelectionViewModel(int _BoxId)
         {
             apiService = new ApiService();
-            GetBox();
+            GetBox(_BoxId);
         }
         #endregion
 
@@ -85,7 +85,7 @@
         #region Methods
 
         #region Box
-        public async Task<Box> GetBox()
+        public async Task<Box> GetBox(int _BoxId)
         {
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
 
@@ -94,7 +94,7 @@
                 apiSecurity,
                 "/api",
                 "/Boxes",
-                MainViewModel.GetInstance().User.UserId);
+                _BoxId);
             return Box;
         }
         #endregion

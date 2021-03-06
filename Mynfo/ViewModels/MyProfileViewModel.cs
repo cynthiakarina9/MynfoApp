@@ -127,21 +127,36 @@
                             new StoreCameraMediaOptions
                             {
                                 SaveToAlbum = true,
-                                Directory = "Sample",
-                                Name = "test.jpg",
+                                Directory = "mynfo",
+                                Name = "ProfileImage.jpg",
                                 PhotoSize = PhotoSize.Small,
+                                CompressionQuality = 50
                             }
                         );
                     }
                     else
                     {
-                        this.file = await CrossMedia.Current.PickPhotoAsync();
+                        //this.file = await CrossMedia.Current.PickPhotoAsync();
+                        this.file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+                        {
+                            CompressionQuality = 50,
+                            //CustomPhotoSize = 35,
+                            //PhotoSize = PhotoSize.MaxWidthHeight,
+                            //MaxWidthHeight = 2000
+                        });
                     }
                 }
 
                 else
                 {
-                    this.file = await CrossMedia.Current.PickPhotoAsync();
+                    //this.file = await CrossMedia.Current.PickPhotoAsync();
+                    this.file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+                    {
+                        CompressionQuality = 50,
+                        //CustomPhotoSize = 35,
+                        //PhotoSize = PhotoSize.MaxWidthHeight,
+                        //MaxWidthHeight = 2000
+                    });
                 }
 
                 if (this.file != null)

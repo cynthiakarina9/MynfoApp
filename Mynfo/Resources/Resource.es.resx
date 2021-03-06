@@ -571,7 +571,7 @@
     <value>Código QR</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Preparando su myTAG ...</value>
+    <value>Configuración de myTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Escanear QR</value>
@@ -607,7 +607,7 @@
     <value>Escanea un codigo QR de mynfo.</value>
   </data>
   <data name="ConfigSticker" xml:space="preserve">
-    <value>Configurando myTAG . . . </value>
+    <value>Preparando su myTAG ...</value>
   </data>
   <data name="AllConfigSticker" xml:space="preserve">
     <value>Todas las Boxes que configures y manipules de ahora en adelante se veran reflejados en tu myTAG.</value>
@@ -716,5 +716,37 @@
   </data>
   <data name="HowMynfoWorks" xml:space="preserve">
     <value>¿Cómo funciona mynfo?</value>
+  </data>
+  <data name="DoNotShowAgain" xml:space="preserve">
+    <value>No mostrar de nuevo.</value>
+  </data>
+  <data name="LabelStep1" xml:space="preserve">
+    <value>Paso 1:</value>
+  </data>
+  <data name="LabelStep2" xml:space="preserve">
+    <value>Paso 2:</value>
+  </data>
+  <data name="LabelStep3" xml:space="preserve">
+    <value>Paso 3:</value>
+  </data>
+  <data name="ReadInstructions" xml:space="preserve">
+    <value>Lee todas las instrucciones (3 pasos) antes de empezar a configurar tu myTAG</value>
+  </data>
+  <data name="Step1" xml:space="preserve">
+    <value>Ten a la mano tu myTAG, si aun no lo tienes, compralo en tienda.</value>
+  </data>
+  <data name="Step2" xml:space="preserve">
+    <value>Cuando presiona el botón set mayTAG, su teléfono vibra, una vez que termine de vibrar, lleve su pegatina a la PARTE SUPERIOR TRASERA de su teléfono.
+
+Nota: La posición de la antena NFC en su teléfono puede variar según el modelo. Puede estar en parte superior, media o inferior trasera.</value>
+  </data>
+  <data name="Step3" xml:space="preserve">
+    <value>Manten tu myTAG pegado al teléfono hasta que vibre nuevamente y veas la pantalla de confirmación.</value>
+  </data>
+  <data name="Walktrough" xml:space="preserve">
+    <value>Te presentamos un pequeño paseo por la app.</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>¡Bienvenido a mynfo!</value>
   </data>
 </root>

@@ -161,6 +161,7 @@
 
             var userLocal = Converter.ToUserLocal(user);
             userLocal.Password = this.Password;
+            userLocal.MostrarTutorial = false;
 
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;

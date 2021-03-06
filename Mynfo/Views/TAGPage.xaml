@@ -59,7 +59,7 @@
                     Grid.Row="2"
                     VerticalOptions="End"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Lee todas las instrucciones (3 pasos) antes de empezar a configurar tu Tag"
+                    Text="{i18n:Translate ReadInstructions}"
                     HorizontalTextAlignment="Center"
                     FontAttributes="Bold"
                     Padding="0,0,0,15"/>
@@ -90,7 +90,7 @@
                                         <Label Text="{Binding Detail}"
                                            FontAttributes="None"
                                            HorizontalOptions="Center"
-                                           MaxLines="5"
+                                           MaxLines="14"
                                            LineBreakMode="TailTruncation" />
                                     </StackLayout>
                                 </Frame>
