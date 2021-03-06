@@ -4,7 +4,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="Mynfo.Views.Stickerconfig"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+             BackgroundColor="Transparent"
              BindingContext = "{Binding Main, Source = {StaticResource Locator}}">
     <ContentPage.Content>
         <Frame

@@ -3,6 +3,7 @@
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              x:Class="Mynfo.Views.RedyToScan">
     <NavigationPage.TitleView>
         <Grid>

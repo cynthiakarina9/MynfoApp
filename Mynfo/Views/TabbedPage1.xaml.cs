@@ -3,6 +3,7 @@
     using Mynfo.Models;
     using Mynfo.Services;
     using Mynfo.ViewModels;
+    using Rg.Plugins.Popup.Services;
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
@@ -62,7 +63,7 @@
             NetworksQty += GetPhoneQty();
             NetworksQty += GetWhatsAppQty();
             NetworksQty += GetSocialMediaQty();
-
+            CheckIntroductionBool();
 
             if (NetworksQty > 1)
             {
@@ -245,6 +246,15 @@
                         connSQLite.Query<ForeingBox>("delete from ForeingBox where ForeingBox.BoxId = ?", foreingDelete.BoxId);
                     }
                 }
+            }
+        }
+
+        public async void CheckIntroductionBool()
+        {
+            if (MainViewModel.GetInstance().User.MostrarTutorial == false)
+            {
+                MainViewModel.GetInstance().IntroductionGif = new IntroductionGifViewModel();
+                await PopupNavigation.Instance.PushAsync(new IntroductionGifPage());
             }
         }
     }

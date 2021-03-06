@@ -839,5 +839,45 @@
         {
             get { return Resource.HowMynfoWorks; }
         }
+        public static string ReadInstructions
+        {
+            get { return Resource.ReadInstructions; }
+        }
+        public static string Step1
+        {
+            get { return Resource.Step1; }
+        }
+        public static string Step2
+        {
+            get { return Resource.Step2; }
+        }
+        public static string Step3
+        {
+            get { return Resource.Step3; }
+        }
+        public static string LabelStep1
+        {
+            get { return Resource.LabelStep1; }
+        }
+        public static string LabelStep2
+        {
+            get { return Resource.LabelStep2; }
+        }
+        public static string LabelStep3
+        {
+            get { return Resource.LabelStep3; }
+        }
+        public static string Welcome
+        {
+            get { return Resource.Welcome; }
+        }
+        public static string Walktrough
+        {
+            get { return Resource.Walktrough; }
+        }
+        public static string DoNotShowAgain
+        {
+            get { return Resource.DoNotShowAgain; }
+        }
     }
 }

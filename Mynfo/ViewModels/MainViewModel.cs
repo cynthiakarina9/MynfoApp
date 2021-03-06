@@ -248,6 +248,12 @@
             set;
         }
 
+        public IntroductionGifViewModel IntroductionGif
+        {
+            get;
+            set;
+        }
+
         public LectorQRViewModel LectorQR
         {
             get;

@@ -29,6 +29,8 @@
 
         public string Password { get; set; }
 
+        public bool MostrarTutorial { get; set; }
+
         public string ImageFullPath
         {
             get

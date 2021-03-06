@@ -583,6 +583,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Don&apos;t show again..
+        /// </summary>
+        public static string DoNotShowAgain {
+            get {
+                return ResourceManager.GetString("DoNotShowAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Dutch:.
         /// </summary>
         public static string Dutch {
@@ -912,6 +921,33 @@ namespace Mynfo.Resources {
         public static string Japanese {
             get {
                 return ResourceManager.GetString("Japanese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Step 1:.
+        /// </summary>
+        public static string LabelStep1 {
+            get {
+                return ResourceManager.GetString("LabelStep1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Step 2:.
+        /// </summary>
+        public static string LabelStep2 {
+            get {
+                return ResourceManager.GetString("LabelStep2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Step 3:.
+        /// </summary>
+        public static string LabelStep3 {
+            get {
+                return ResourceManager.GetString("LabelStep3", resourceCulture);
             }
         }
         
@@ -1546,6 +1582,15 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Read all the instructions (3 steps) before starting to configure your myTAG..
+        /// </summary>
+        public static string ReadInstructions {
+            get {
+                return ResourceManager.GetString("ReadInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ready to Scan..
         /// </summary>
         public static string ReadyToScan {
@@ -1690,6 +1735,35 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Have your myTAG on hand, if you don&apos;t have it yet, buy it in store..
+        /// </summary>
+        public static string Step1 {
+            get {
+                return ResourceManager.GetString("Step1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a When you press the set mayTAG button, your phone vibrates, once it finishes vibrating, take your sticker to the TOP BACK of your phone.
+        ///
+        ///Note: The position of the NFC antenna on your phone may vary depending on the model. It can be in the upper, middle or lower back..
+        /// </summary>
+        public static string Step2 {
+            get {
+                return ResourceManager.GetString("Step2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Keep your myTAG glued to the phone until it vibrates again and you see the confirmation screen..
+        /// </summary>
+        public static string Step3 {
+            get {
+                return ResourceManager.GetString("Step3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Store.
         /// </summary>
         public static string Store {
@@ -1816,11 +1890,29 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Here you have a little walk trough the app..
+        /// </summary>
+        public static string Walktrough {
+            get {
+                return ResourceManager.GetString("Walktrough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Warning.
         /// </summary>
         public static string Warning {
             get {
                 return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Welcome to mynfo!.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
         
