@@ -267,7 +267,7 @@
                                 <center><h1> Welcome to mynfo, we love having you here! </h1>
                     <p> You have successfully created your account, 
                         now you can share all your contact information in the easiest way.</p>
-                    <p> For more information, doubt or comments visit:</p>
+                    <p> For more information, questions or comments visit:</p>
                   <p><a href = 'www.mynfo.mx' > www.mynfo.mx </a></p></center>");
 
                     await MailHelper.SendMail(email, subject, body);
@@ -284,7 +284,7 @@
         }
 
         // PUT: api/Users/5
-        //[Authorize]
+        [Authorize]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutUser(int id, User user)
         {
@@ -293,7 +293,7 @@
                 var stream = new MemoryStream(user.ImageArray);
                 var guid = Guid.NewGuid().ToString();
                 var file = string.Format("{0}.jpg", guid);
-                var folder = "~Content/Images";
+                var folder = "~/Content/Images";
                 var fullPath = string.Format("{0}/{1}", folder, file);
                 var response = FilesHelper.UploadPhoto(stream, folder, file);
 
@@ -333,7 +333,7 @@
                 var stream = new MemoryStream(user.ImageArray);
                 var guid = Guid.NewGuid().ToString();
                 var file = string.Format("{0}.jpg", guid);
-                var folder = "~/Content/Images";
+                var folder = "~Content/Images";
                 var fullPath = string.Format("{0}/{1}", folder, file);
                 var response = FilesHelper.UploadPhoto(stream, folder, file);
 

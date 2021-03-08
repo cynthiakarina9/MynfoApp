@@ -1582,7 +1582,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Read all the instructions (3 steps) before starting to configure your myTAG..
+        ///   Busca una cadena traducida similar a Read both steps before configurating your myTAG..
         /// </summary>
         public static string ReadInstructions {
             get {
@@ -1735,7 +1735,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Have your myTAG on hand, if you don&apos;t have it yet, buy it in store..
+        ///   Busca una cadena traducida similar a Press the Configure myTAG button, wait until the phone stops vibrating and you see the &quot;ready to scan&quot; screen, then place your myTAG to the upper back of your phone..
         /// </summary>
         public static string Step1 {
             get {
@@ -1744,9 +1744,9 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a When you press the set mayTAG button, your phone vibrates, once it finishes vibrating, take your sticker to the TOP BACK of your phone.
+        ///   Busca una cadena traducida similar a Keep your myTAG pressed against the phone until it vibrates again and you see the confirmation screen. 
         ///
-        ///Note: The position of the NFC antenna on your phone may vary depending on the model. It can be in the upper, middle or lower back..
+        ///NOTE: The area of your phone where you have to place your myTAG in order to congifure it may vary dependeing on the phone model..
         /// </summary>
         public static string Step2 {
             get {

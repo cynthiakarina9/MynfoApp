@@ -130,7 +130,7 @@
                                 Directory = "mynfo",
                                 Name = "ProfileImage.jpg",
                                 PhotoSize = PhotoSize.Small,
-                                CompressionQuality = 50
+                                CompressionQuality = 80
                             }
                         );
                     }
@@ -139,7 +139,7 @@
                         //this.file = await CrossMedia.Current.PickPhotoAsync();
                         this.file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
                         {
-                            CompressionQuality = 50,
+                            CompressionQuality = 80,
                             //CustomPhotoSize = 35,
                             //PhotoSize = PhotoSize.MaxWidthHeight,
                             //MaxWidthHeight = 2000
@@ -152,7 +152,7 @@
                     //this.file = await CrossMedia.Current.PickPhotoAsync();
                     this.file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
                     {
-                        CompressionQuality = 50,
+                        CompressionQuality = 80,
                         //CustomPhotoSize = 35,
                         //PhotoSize = PhotoSize.MaxWidthHeight,
                         //MaxWidthHeight = 2000
