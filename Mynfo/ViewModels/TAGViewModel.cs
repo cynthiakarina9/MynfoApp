@@ -86,11 +86,6 @@
                 Title = Languages.LabelStep2,
                 Detail = Languages.Step2
             });
-            CarouselInstructions.Add(new CarouselModel
-            {
-                Title = Languages.LabelStep3,
-                Detail = Languages.Step3
-            });
         }
         #endregion
     }

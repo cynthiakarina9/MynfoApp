@@ -731,15 +731,15 @@ Você deve inserir um url</value>
     <value>Passo 3:</value>
   </data>
   <data name="ReadInstructions" xml:space="preserve">
-    <value>Leia todas as instruções (3 etapas) antes de começar a configurar sua myTAG.</value>
+    <value>Leia as duas etapas antes de configurar seu myTAG.</value>
   </data>
   <data name="Step1" xml:space="preserve">
     <value>Tenha seu myTAG em mãos, se ainda não o tem, compre na loja.</value>
   </data>
   <data name="Step2" xml:space="preserve">
-    <value>Quando você pressiona o botão set mayTAG, seu telefone vibra, assim que terminar de vibrar, leve seu adesivo para o TOPO TRASEIRO de seu telefone.
+    <value>Mantenha seu myTAG pressionado contra o telefone até que ele vibre novamente e você veja a tela de confirmação.
 
-Nota: A posição da antena NFC em seu telefone pode variar dependendo do modelo. Pode ser na parte superior, média ou inferior das costas.</value>
+NOTA: A área do telefone onde você deve colocar o myTAG para configurá-lo pode variar dependendo do modelo do telefone.</value>
   </data>
   <data name="Step3" xml:space="preserve">
     <value>Mantenha seu myTAG colado ao telefone até que vibre novamente e você veja a tela de confirmação.</value>

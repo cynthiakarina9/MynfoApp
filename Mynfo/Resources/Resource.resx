@@ -730,15 +730,15 @@
     <value>Step 3:</value>
   </data>
   <data name="ReadInstructions" xml:space="preserve">
-    <value>Read all the instructions (3 steps) before starting to configure your myTAG.</value>
+    <value>Read both steps before configurating your myTAG.</value>
   </data>
   <data name="Step1" xml:space="preserve">
-    <value>Have your myTAG on hand, if you don't have it yet, buy it in store.</value>
+    <value>Press the Configure myTAG button, wait until the phone stops vibrating and you see the "ready to scan" screen, then place your myTAG to the upper back of your phone.</value>
   </data>
   <data name="Step2" xml:space="preserve">
-    <value>When you press the set mayTAG button, your phone vibrates, once it finishes vibrating, take your sticker to the TOP BACK of your phone.
+    <value>Keep your myTAG pressed against the phone until it vibrates again and you see the confirmation screen. 
 
-Note: The position of the NFC antenna on your phone may vary depending on the model. It can be in the upper, middle or lower back.</value>
+NOTE: The area of your phone where you have to place your myTAG in order to congifure it may vary dependeing on the phone model.</value>
   </data>
   <data name="Step3" xml:space="preserve">
     <value>Keep your myTAG glued to the phone until it vibrates again and you see the confirmation screen.</value>
