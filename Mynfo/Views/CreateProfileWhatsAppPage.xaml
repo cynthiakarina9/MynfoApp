@@ -89,40 +89,20 @@
                             VerticalOptions = "Center"/>
                         <Grid
                             HorizontalOptions="CenterAndExpand"
-                            Margin="50,0,0,0"
                             VerticalOptions="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Entry
-                                FontSize = "21"
-                                HeightRequest = "46"
-                                HorizontalTextAlignment = "Center"
-                                HorizontalOptions = "End"
-                                Grid.Column="0"
-                                IsSpellCheckEnabled="True"
-                                Keyboard = "Telephone"
-                                MaxLength = "3"
-                                Text = "{Binding Lada}"
-                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                Placeholder = "xxx"
-                                VerticalOptions = "Center" 
-                                WidthRequest="80"/>
                             <Entry 
                                 FontSize = "21"
                                 HeightRequest = "46"
                                 HorizontalTextAlignment = "Center"
                                 HorizontalOptions = "Center"
                                 IsSpellCheckEnabled="True"
-                                Grid.Column="1"
                                 Keyboard = "Telephone"
-                                Margin="-20,0,0,0"
                                 MaxLength = "10"
-                                Text = "{Binding Number2}"
+                                Text = "{Binding Number}"
                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                 Placeholder = "xxx-xxx-xxxx"
                                 VerticalOptions = "Center" 
-                                WidthRequest="180"
+                                WidthRequest="300"
                                 x:Name="ProfileNumber"/>
                         </Grid>
                     </StackLayout>
