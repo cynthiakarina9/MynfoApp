@@ -349,7 +349,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a myTAG configurated!.
+        ///   Busca una cadena traducida similar a myTAG configured!.
         /// </summary>
         public static string ConfigStickerRi {
             get {
@@ -880,7 +880,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a How mynfo works?.
+        ///   Busca una cadena traducida similar a How does mynfo work?.
         /// </summary>
         public static string HowMynfoWorks {
             get {
@@ -1800,7 +1800,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a myTAG configuration.
+        ///   Busca una cadena traducida similar a Configure myTAG.
         /// </summary>
         public static string Tag {
             get {
@@ -1890,7 +1890,7 @@ namespace Mynfo.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Here you have a little walk trough the app..
+        ///   Busca una cadena traducida similar a Here you have a little walk through the app..
         /// </summary>
         public static string Walktrough {
             get {

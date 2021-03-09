@@ -571,7 +571,7 @@
     <value>Código QR</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>Configuración de myTAG</value>
+    <value>Configurar myTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Escanear QR</value>

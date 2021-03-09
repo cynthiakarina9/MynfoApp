@@ -25,7 +25,7 @@
             InitializeComponent();
             NetworksQty = 0;
             //ReloadConnections();
-            CheckTimeForeingBox();
+            //CheckTimeForeingBox();
             On<Android>().SetToolbarPlacement(Xamarin.Forms.PlatformConfiguration.AndroidSpecific.ToolbarPlacement.Bottom);
             OSAppTheme currentTheme = App.Current.RequestedTheme;
             if (currentTheme == OSAppTheme.Dark)
