@@ -96,7 +96,7 @@
 
             else if (this.PageName == "Store")
             {
-                await Browser.OpenAsync("https://mynfo.mx/index.php/tienda/", BrowserLaunchMode.SystemPreferred);
+                await Browser.OpenAsync("https://mynfo.mx/compra-tu-mytag/", BrowserLaunchMode.SystemPreferred);
             }
             else if (this.PageName == "BasicIntro")
             {

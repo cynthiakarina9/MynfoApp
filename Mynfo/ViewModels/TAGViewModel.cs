@@ -67,7 +67,7 @@
         }
         private async void GoToStore()
         {
-            await Launcher.OpenAsync(new Uri("https://mynfo.mx/index.php/tienda/"));
+            await Launcher.OpenAsync(new Uri("https://mynfo.mx/compra-tu-mytag/"));
         }
         #endregion
 
