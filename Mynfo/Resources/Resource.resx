@@ -571,7 +571,7 @@
     <value>QR code</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>myTAG configuration</value>
+    <value>Configure myTAG</value>
   </data>
   <data name="EscanQR" xml:space="preserve">
     <value>Scan QR</value>
@@ -613,7 +613,7 @@
     <value>All the Boxes that you configure and manipulate from now on will be reflected in your myTAG.</value>
   </data>
   <data name="ConfigStickerRi" xml:space="preserve">
-    <value>myTAG configurated!</value>
+    <value>myTAG configured!</value>
   </data>
   <data name="HoldYourPhone" xml:space="preserve">
     <value>Hold your Phone near the myTAG.</value>
@@ -715,7 +715,7 @@
     <value>The user doesn´t have boxes created.</value>
   </data>
   <data name="HowMynfoWorks" xml:space="preserve">
-    <value>How mynfo works?</value>
+    <value>How does mynfo work?</value>
   </data>
   <data name="DoNotShowAgain" xml:space="preserve">
     <value>Don't show again.</value>
@@ -744,7 +744,7 @@ NOTE: The area of your phone where you have to place your myTAG in order to cong
     <value>Keep your myTAG glued to the phone until it vibrates again and you see the confirmation screen.</value>
   </data>
   <data name="Walktrough" xml:space="preserve">
-    <value>Here you have a little walk trough the app.</value>
+    <value>Here you have a little walk through the app.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to mynfo!</value>

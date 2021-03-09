@@ -157,11 +157,11 @@
                                                 HeightRequest="50"
                                                 Source="{Binding Logo}"
                                                 WidthRequest="50"/>
-                                        <Label
+                                        <!--<Label
                                                 HorizontalTextAlignment="Center"
                                                 Text="{Binding ProfileName}"
                                                 FontAttributes="Bold"
-                                                TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />
+                                                TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />-->
 
                                     </StackLayout>
                                 </DataTemplate>
