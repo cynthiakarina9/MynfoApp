@@ -101,7 +101,7 @@
                 case "Whatsapp":
                     try
                     {
-                        Chat.Open(selectedItem.value, Languages.MessageWhatsApp + MainViewModel.GetInstance().User.FirstName);
+                        Chat.Open("52"+ selectedItem.value, Languages.MessageWhatsApp + MainViewModel.GetInstance().User.FirstName);
                     }
                     catch (Exception ex)
                     {
