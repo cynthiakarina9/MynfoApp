@@ -29,7 +29,7 @@
         private void NewProfileTwitter_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileTwitter = new CreateProfileTwitterViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Twitter");
             App.Navigator.PushAsync(new CreateProfileTwitterPage());
         }
 

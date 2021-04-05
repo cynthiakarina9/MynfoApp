@@ -29,7 +29,8 @@
         private void NewProfileYoutube_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileYoutube = new CreateProfileYoutubeViewModel();
+            //mainViewModel.CreateProfileYoutube = new CreateProfileYoutubeViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Youtube");
             App.Navigator.PushAsync(new CreateProfileYoutubePage());
         }
 

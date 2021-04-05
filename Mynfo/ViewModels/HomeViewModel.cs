@@ -5,6 +5,8 @@
     using Mynfo.Helpers;
     using Mynfo.Models;
     using Mynfo.Services;
+    using Rg.Plugins.Popup.Animations;
+    using Rg.Plugins.Popup.Enums;
     using Rg.Plugins.Popup.Services;
     using System;
     using System.Collections.ObjectModel;
@@ -367,6 +369,34 @@
             MainViewModel.GetInstance().DetailsBox = new DetailsBoxViewModel(_Box);
             await PopupNavigation.Instance.PushAsync(new DetailBoxPopUpPage(_Box));
             selectedItem = null;
+        }
+
+        public ICommand ImageSizeCommand
+        {
+            get
+            {
+                return new RelayCommand(ImageSize);
+            }
+        }
+        public async void ImageSize()
+        {
+            MainViewModel.GetInstance().ImageSize = new ImageSizeViewModel();
+            var Page = new ImageSizePopUpPage();
+            var scaleAnimation = new ScaleAnimation
+            {
+                PositionIn = MoveAnimationOptions.Top,
+                PositionOut = MoveAnimationOptions.Bottom,
+                ScaleIn = 1.2,
+                ScaleOut = 0.8,
+                DurationIn = 400,
+                DurationOut = 800,
+                EasingIn = Easing.BounceIn,
+                EasingOut = Easing.CubicOut,
+                HasBackgroundAnimation = false
+            };
+
+            Page.Animation = scaleAnimation;
+            await PopupNavigation.Instance.PushAsync(Page);
         }
         #endregion
     }

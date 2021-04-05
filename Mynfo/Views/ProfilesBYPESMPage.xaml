@@ -401,6 +401,55 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
+                        <!-- Lista de Telegram -->
+                        <ListView 
+                            Grid.Row="0"
+                            HasUnevenRows="true"
+                            ItemSelected="OnListViewItemSelected"
+                            ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
+                            ItemTapped="OnListViewItemTapped"
+                            Margin="10,-10,10,20"
+                            SelectedItem="{Binding selectedProfileSM}"
+                            x:Name="ProfileListTelegram">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                HeightRequest="30"
+                                                Source="telegram2"
+                                                WidthRequest="30"/>
+                                            <Label 
+                                                FontSize="18"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Margin="0,0,20,0"
+                                                Text="{Binding ProfileName}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment = "Start"/>
+                                            <input:CheckBox 
+                                                BorderColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                IsEnabled="False"
+                                                Grid.Column="3"
+                                                IsChecked="{Binding Exist}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        
                         <!-- Lista de Tiktok -->
                         <ListView 
                             Grid.Row="0"

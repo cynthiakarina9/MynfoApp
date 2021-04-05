@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="Mynfo.Views.ImageSizePopUpPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <Frame
+            BackgroundColor="Transparent"
+            BindingContext="{Binding ImageSize}"
+            Margin="80"
+            x:Name="FameOfImage">
+            <Grid
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/> 
+                </Grid.RowDefinitions>
+                <Image
+                    BackgroundColor="Transparent"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center"
+                    x:Name="ImageSize"/>
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</popup:PopupPage>

@@ -36,22 +36,21 @@
                             TextColor = "{StaticResource MainColor}"
                             VerticalOptions = "Center"/>
                         <Image
-                            HeightRequest = "180"
-                            Source = "mail2"
                             Grid.Row = "1"
-                            WidthRequest = "180"/>
+                            Source = "mail2"
+                            Scale="0.8"/>
                         <StackLayout 
                             Grid.Row = "2"
                             Padding = "20">
                             <Label 
-                                FontSize = "24" 
+                                FontSize = "20" 
                                 FontAttributes="Bold"
                                 HorizontalOptions = "Center"
                                 Text = "{i18n:Translate NameProfile}" 
                                 TextColor = "{StaticResource MainColor}"
                                 VerticalOptions = "Center"/>
                             <Entry 
-                                FontSize = "21"
+                                FontSize = "20"
                                 HorizontalTextAlignment = "Center"
                                 HeightRequest = "46"
                                 HorizontalOptions = "Center"
@@ -75,14 +74,14 @@
                         <StackLayout 
                                 Grid.Row = "3">
                             <Label 
-                                FontSize = "24" 
+                                FontSize = "20" 
                                 FontAttributes="Bold"
                                 HorizontalOptions = "Center"
                                 VerticalOptions = "Center" 
                                 Text = "{i18n:Translate EMail}"
                                 TextColor = "{StaticResource MainColor}" />
                             <Entry 
-                                FontSize = "21"
+                                FontSize = "20"
                                 HorizontalTextAlignment = "Center"
                                 HeightRequest = "46"
                                 HorizontalOptions = "Center"

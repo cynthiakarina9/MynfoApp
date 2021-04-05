@@ -28,107 +28,80 @@
                 <Grid>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="60*"/>
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
                         <!-- Información del usuario foraneo-->
                         <StackLayout
                             Grid.Row="0"
-                            Grid.RowSpan="4"
-                            Grid.Column="0"
-                            Grid.ColumnSpan = "3"
                             HorizontalOptions="CenterAndExpand">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
-                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
                                 </Grid.ColumnDefinitions>
                                 <controls:CircleImage
                                     BorderColor="{StaticResource MainColor}"
                                     BorderThickness="3"
                                     Grid.Row="0"
-                                    Grid.RowSpan="5"
+                                    Grid.RowSpan="2"
                                     Grid.Column="0"
-                                    Grid.ColumnSpan="2"
                                     HeightRequest="100"
                                     WidthRequest="100"
-                                    Aspect="AspectFit"
+                                    Aspect="AspectFill"
                                     x:Name="ForeignUserImage">
                                 </controls:CircleImage>
                                 <Label 
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="3"
+                                    Grid.Column="1"
                                     Grid.Row="0"
                                     FontAttributes="Bold"
-                                    FontSize = "25"
+                                    FontSize = "20"
                                     HorizontalTextAlignment="Start"
-                                    Padding="0,-5,0,0"
                                     TextColor = "{StaticResource MainColor}"
-                                    VerticalOptions="Start"
+                                    VerticalOptions="Center"
                                     x:Name="ForeignUserName"/>
-                                <Label 
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="3"
-                                    Grid.Row="1"
-                                    FontSize = "15"
-                                    HorizontalTextAlignment="Start"
-                                    VerticalTextAlignment="Center"
-                                    Padding="0,-5,0,0"
-                                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                    VerticalOptions="Start"
-                                    x:Name="ForeignAge"/>
-                                <Label 
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="3"
-                                    Grid.Row="2"
-                                    FontSize = "15"
-                                    HorizontalTextAlignment="Start"
-                                    VerticalTextAlignment="Center"
-                                    Padding="0,-5,0,0"
-                                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                    VerticalOptions="Start"
-                                    x:Name="ForeignLocation"/>
-                                <Label 
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="3"
-                                    Grid.Row="3"
-                                    FontSize = "15"
-                                    HorizontalTextAlignment="Start"
-                                    VerticalTextAlignment="Center"
-                                    Padding="0,-5,0,0"
-                                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                    VerticalOptions="Start"
-                                    x:Name="ForeignJob"/>
-                                <Label 
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="3"
-                                    Grid.Row="4"
-                                    FontSize = "15"
-                                    FontAttributes="Bold"
-                                    HorizontalTextAlignment="End"
-                                    VerticalTextAlignment="Center"
-                                    Padding="0,-5,0,0"
-                                    TextColor = "#FF5521"
-                                    VerticalOptions="Start"
-                                    x:Name="ForeignConnection"/>
+                                <Grid
+                                    Grid.Column="1"
+                                    Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        FontSize = "15"
+                                        HorizontalTextAlignment="Start"
+                                        VerticalTextAlignment="Center"
+                                        TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                        
+                                        x:Name="ForeignAge"/>
+                                    <Label 
+                                        Grid.Row="1"
+                                        FontSize = "15"
+                                        HorizontalTextAlignment="Start"
+                                        VerticalTextAlignment="Center"
+                                        TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                        
+                                        x:Name="ForeignLocation"/>
+                                    <Label 
+                                        Grid.Row="2"
+                                        FontSize = "15"
+                                        HorizontalTextAlignment="Start"
+                                        VerticalTextAlignment="Center"
+                                        TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                       
+                                        x:Name="ForeignJob"/>
+                                    <Label 
+                                        Grid.Row="3"
+                                        FontSize = "15"
+                                        FontAttributes="Bold"
+                                        HorizontalTextAlignment="End"
+                                        VerticalTextAlignment="Center"
+                                        TextColor = "#FF5521"
+                                        x:Name="ForeignConnection"/>
+                                </Grid>
                             </Grid>
                             <Line
                                 HeightRequest="1"
@@ -139,8 +112,7 @@
                         <!-- Listado de perfiles -->
                         <CollectionView 
                             ItemsSource="{Binding ProfilesF}"
-                            Grid.Row="4"
-                            Grid.ColumnSpan="3"
+                            Grid.Row="1"
                             SelectionMode="Single"
                             SelectionChanged="OnCollectionViewSelectionChanged">
                             <CollectionView.ItemsLayout>
@@ -153,10 +125,10 @@
                                         BackgroundColor="Transparent"
                                         Padding="10">
                                         <Image
-                                                BackgroundColor="Transparent"
-                                                HeightRequest="50"
-                                                Source="{Binding Logo}"
-                                                WidthRequest="50"/>
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="50"
+                                            Source="{Binding Logo}"
+                                            WidthRequest="50"/>
                                         <!--<Label
                                                 HorizontalTextAlignment="Center"
                                                 Text="{Binding ProfileName}"
@@ -171,6 +143,5 @@
                 </Grid>
             </Grid>
         </Frame>
-        
     </ContentPage.Content>
 </popup:PopupPage>

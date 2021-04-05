@@ -8,10 +8,13 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPage : ContentPage
     {
+        #region Constructor
         public MenuPage()
         {
             get_share();
             InitializeComponent();
+            
+            //EdithButton.Clicked += new EventHandler((sender, e) => GotoMyProfile_Clicked(sender, e));
             if (MainViewModel.GetInstance().User.Share == true)
             {
                 TagLabel.Text = "myTAG ON";
@@ -20,7 +23,11 @@
             {
                 TagLabel.Text = "myTAG OFF";
             }
+            
         }
+        #endregion
+
+        #region Methods
         void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             MenuItemViewModel selectedItem = e.SelectedItem as MenuItemViewModel;
@@ -82,5 +89,14 @@
                 }
             }
         }
+        #endregion
+
+        #region Commands
+        private void GotoMyProfile_Clicked(object sender, EventArgs e)
+        {
+            MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+            App.Navigator.PushAsync(new MyProfilePage());
+        }
+        #endregion
     }
 }

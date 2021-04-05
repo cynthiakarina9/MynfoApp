@@ -26,6 +26,7 @@
             ProfilesYoutube.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Youtube", _boxDefault, _boxName));
             ProfilesTwitch.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Twitch", _boxDefault, _boxName));
             ProfilesWebPage.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "WebPage", _boxDefault, _boxName));
+            ProfilesTelegram.Clicked += new EventHandler((sender, e) => ProfilesList_Clicked(sender, e, _BoxId, "Telegram", _boxDefault, _boxName));
         }
 
         private void ProfilesList_Clicked(object sender, EventArgs e, int _BoxId, string _profileType, bool _BoxDefault, string _boxName)

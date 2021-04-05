@@ -29,7 +29,7 @@
         private void NewProfileSpotify_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileSpotify = new CreateProfileSpotifyViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Spotify");
             App.Navigator.PushAsync(new CreateProfileSpotifyPage());
         }
 

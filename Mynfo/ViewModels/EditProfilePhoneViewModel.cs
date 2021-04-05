@@ -227,6 +227,7 @@
         private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().MenuItem = new MenuItemViewModel();
             Application.Current.MainPage = new MasterPage();
         }
         #endregion

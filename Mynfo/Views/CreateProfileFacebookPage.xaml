@@ -7,7 +7,7 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
-            BindingContext="{Binding CreateProfileFacebook}">
+            BindingContext="{Binding CreateProfileSM}">
             <ImageButton 
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
@@ -21,7 +21,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid
-            BindingContext = "{Binding CreateProfileFacebook}">
+            BindingContext = "{Binding CreateProfileSM}">
             <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -44,21 +44,20 @@
                         VerticalOptions = "Center"/>
                     <Image 
                         Grid.Row = "1" 
-                        HeightRequest = "180"
                         Source ="facebook2"
-                        WidthRequest = "180"/>
+                        Scale="0.8"/>
                     <StackLayout 
                         Grid.Row = "2"
                         Padding = "20">
                         <Label 
-                            FontSize = "24" 
+                            FontSize = "20" 
                             FontAttributes="Bold"
                             HorizontalOptions = "Center"
                             Text = "{i18n:Translate NameProfile}"
                             TextColor = "{StaticResource MainColor}"
                             VerticalOptions = "Center"/>
                         <Entry 
-                            FontSize = "21"
+                            FontSize = "20"
                             HeightRequest = "46"
                             HorizontalTextAlignment = "Center"
                             HorizontalOptions = "Center"
@@ -85,7 +84,7 @@
                             HorizontalOptions = "Center"
                             Orientation="Horizontal">
                             <Label 
-                                FontSize = "24" 
+                                FontSize = "20" 
                                 FontAttributes="Bold"
                                 HorizontalOptions = "Center"
                                 Text = "{i18n:Translate Link}"
@@ -100,7 +99,7 @@
                                 WidthRequest="20"/>
                         </StackLayout>
                         <Entry 
-                            FontSize = "21"
+                            FontSize = "20"
                             HeightRequest = "46"
                             HorizontalTextAlignment = "Center"
                             HorizontalOptions = "Center"
@@ -126,7 +125,7 @@
             <Button 
                 BackgroundColor = "{StaticResource MainColor}"
                 BorderRadius = "23"
-                Command = "{Binding SaveProfileFacebookCommand}"
+                Command = "{Binding SaveProfileCommand}"
                 HeightRequest = "50"
                 HorizontalOptions="Fill"
                 Margin="15"

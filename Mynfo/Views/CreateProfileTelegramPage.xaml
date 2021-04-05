@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.CreateProfileTelegramPage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Grid
+            BindingContext = "{Binding CreateProfileSM}">
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Command="{Binding BackHomeCommand}"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,70,0"
+                HorizontalOptions = "Center"
+                VerticalOptions = "Center"
+                WidthRequest = "100"
+                x:Name="Logosuperior"/>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid
+            BindingContext = "{Binding CreateProfileSM}">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height = "70"/>
+                        <RowDefinition Height = "160"/>
+                        <RowDefinition Height = "110"/>
+                        <RowDefinition Height = "110"/>
+                        <RowDefinition />
+                        <RowDefinition Height = "120"/>
+                    </Grid.RowDefinitions>
+                    <Label 
+                        FontAttributes = "Bold"
+                        FontSize = "25"
+                        Grid.ColumnSpan ="1"
+                        Grid.Row = "0"
+                        HorizontalOptions = "Center"
+                        Text = "{i18n:Translate AddNetwork}"
+                        TextColor = "{StaticResource MainColor}"
+                        VerticalOptions = "Center"/>
+                    <Image
+                        Grid.Row = "1"
+                        Source = "telegram2"
+                        Scale = "0.8"/>
+                    <StackLayout 
+                        Grid.Row = "2"
+                        Padding = "20">
+                        <Label 
+                            FontSize = "20" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NameProfile}" 
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Entry 
+                            FontSize = "20"
+                            HeightRequest = "46"
+                            HorizontalTextAlignment = "Center"
+                            HorizontalOptions = "Center"
+                            IsTextPredictionEnabled="True"
+                            MaxLength = "20"
+                            Placeholder = "{i18n:Translate NProfilePlaceH}"
+                            Text = "{Binding Name}"
+                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            VerticalOptions = "Center" 
+                            WidthRequest = "300"
+                            x:Name="ProfileName">
+                            <Entry.Keyboard>
+                                <Keyboard x:FactoryMethod="Create">
+                                    <x:Arguments>
+                                        <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                    </x:Arguments>
+                                </Keyboard>
+                            </Entry.Keyboard>
+                        </Entry>
+                    </StackLayout>
+                    <StackLayout 
+                        Grid.Row = "3">
+                        <Label 
+                            FontSize = "20" 
+                            FontAttributes="Bold"
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate NumberPhone}" 
+                            TextColor = "{StaticResource MainColor}"
+                            VerticalOptions = "Center"/>
+                        <Grid
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Center">
+                            <Entry 
+                                FontSize = "20"
+                                HeightRequest = "46"
+                                HorizontalTextAlignment = "Center"
+                                HorizontalOptions = "Center"
+                                IsSpellCheckEnabled="True"
+                                Keyboard = "Telephone"
+                                MaxLength = "10"
+                                Text = "{Binding Link}"
+                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                Placeholder = "xxx-xxx-xxxx"
+                                VerticalOptions = "Center" 
+                                WidthRequest="300"
+                                x:Name="ProfileNumber"/>
+                        </Grid>
+                    </StackLayout>
+                    <Grid
+                        Grid.Row = "4"
+                        VerticalOptions = "CenterAndExpand">
+                        <ActivityIndicator
+                            IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                            VerticalOptions = "CenterAndExpand"
+                            x:Name= "ActivityIn">
+                        </ActivityIndicator>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <Button 
+                BackgroundColor = "{StaticResource MainColor}"
+                BorderRadius = "23"
+                Command = "{Binding SaveProfileCommand}"
+                HeightRequest = "50"
+                HorizontalOptions="Fill"
+                Margin="15"
+                Text = "{i18n:Translate Save}"
+                TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
+                VerticalOptions="End"
+                x:Name="Save"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

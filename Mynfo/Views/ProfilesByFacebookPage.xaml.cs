@@ -29,7 +29,7 @@
         private void NewProfileFacebook_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Facebook");
             App.Navigator.PushAsync(new CreateProfileFacebookPage());
         }
 

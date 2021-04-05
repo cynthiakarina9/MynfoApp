@@ -78,6 +78,7 @@
                     mainViewModel.TAG = new TAGViewModel();
                     mainViewModel.ChangePassword = new ChangePasswordViewModel();
                     mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
+                    mainViewModel.MenuItem = new MenuItemViewModel();
                     
                     Current.MainPage = new MasterPage();
                 }
@@ -163,6 +164,7 @@
             mainViewModel.Profiles = new ProfilesViewModel();
             mainViewModel.TAG = new TAGViewModel();
             mainViewModel.ListForeignBox = new ListForeignBoxViewModel();
+            mainViewModel.MenuItem = new MenuItemViewModel();
             Xamarin.Forms.Application.Current.MainPage = new MasterPage();
             Settings.IsRemembered = "true";
         }

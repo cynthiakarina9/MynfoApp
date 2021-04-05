@@ -69,6 +69,9 @@
     <Compile Update="Views\CreateProfileFacebookPage.xaml.cs">
       <DependentUpon>CreateProfileFacebookPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\CreateProfileSMPage.xaml.cs">
+      <DependentUpon>CreateProfileSMPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\CreateProfileTwitchPage.xaml.cs">
       <DependentUpon>CreateProfileTwitchPage.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,9 @@
     <Compile Update="Views\EditProfileTwitchPage.xaml.cs">
       <DependentUpon>EditProfileTwitchPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\EditProfileTelegramPage.xaml.cs">
+      <DependentUpon>EditProfileTelegramPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -95,6 +101,9 @@
     </Compile>
     <Compile Update="Views\MasterPageIOS.xaml.cs">
       <DependentUpon>MasterPageIOS.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ProfilesByTelegramPage.xaml.cs">
+      <DependentUpon>ProfilesByTelegramPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\PupPopPage.xaml.cs">
       <DependentUpon>PupPopPage.xaml</DependentUpon>
@@ -149,6 +158,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CreateProfilePhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CreateProfileSMPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CreateProfileSnapchatPage.xaml">
@@ -236,6 +248,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ImageSizePopUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\IntroductionGifPage.xaml">

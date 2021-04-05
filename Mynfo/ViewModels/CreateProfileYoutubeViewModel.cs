@@ -46,7 +46,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileYoutubeViewModel()
+        public CreateProfileYoutubeViewModel(string A)
         {
             this.apiService = new ApiService();
 

@@ -53,7 +53,6 @@
 
             switch (_ProfileType)
             {
-
                 case "Email":
                     ProfileListEmail.IsVisible = true;
                     ProfileListPhone.IsVisible = false;
@@ -62,6 +61,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -77,6 +77,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -92,6 +93,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -107,6 +109,7 @@
                     ProfileListLinkedin.IsVisible = true;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -122,6 +125,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -137,6 +141,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = true;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -152,6 +157,23 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = true;
+                    ProfileListTelegram.IsVisible = false;
+                    ProfileListTiktok.IsVisible = false;
+                    ProfileListTwitch.IsVisible = false;
+                    ProfileListTwitter.IsVisible = false;
+                    ProfileListWebPage.IsVisible = false;
+                    ProfileListWhatsapp.IsVisible = false;
+                    ProfileListYoutube.IsVisible = false;
+                    break;
+                case "Telegram":
+                    ProfileListEmail.IsVisible = false;
+                    ProfileListPhone.IsVisible = false;
+                    ProfileListFacebook.IsVisible = false;
+                    ProfileListInstagram.IsVisible = false;
+                    ProfileListLinkedin.IsVisible = false;
+                    ProfileListSnapchat.IsVisible = false;
+                    ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = true;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -167,6 +189,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = true;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -182,6 +205,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = true;
                     ProfileListTwitter.IsVisible = false;
@@ -197,6 +221,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = true;
@@ -212,6 +237,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -227,6 +253,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -242,6 +269,7 @@
                     ProfileListLinkedin.IsVisible = false;
                     ProfileListSnapchat.IsVisible = false;
                     ProfileListSpotify.IsVisible = false;
+                    ProfileListTelegram.IsVisible = false;
                     ProfileListTiktok.IsVisible = false;
                     ProfileListTwitch.IsVisible = false;
                     ProfileListTwitter.IsVisible = false;
@@ -255,8 +283,6 @@
 
         }
         #endregion
-
-        #region Methods
 
         #region Commands
         private void GoToProfiles_Clicked(object sender, EventArgs e, int _boxId, string _profileType, bool _BoxDefault)
@@ -273,39 +299,43 @@
                     PopupNavigation.Instance.PushAsync(new CreateProfileEmailPopUpPage());
                     break;
                 case "Facebook":
-                    mainViewModel.CreateProfileFacebook = new CreateProfileFacebookViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Facebook");
                     PopupNavigation.Instance.PushAsync(new CreateProfileFacebookPopUpPage());
                     break;
                 case "Instagram":
-                    mainViewModel.CreateProfileInstagram = new CreateProfileInstagramViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Instagram");
                     PopupNavigation.Instance.PushAsync(new CreateProfileInstagramPopUpPage());
                     break;
                 case "LinkedIn":
-                    mainViewModel.CreateProfileLinkedin = new CreateProfileLinkedinViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("LinkedIn");
                     PopupNavigation.Instance.PushAsync(new CreateProfileLinkedinPopUpPage());
                     break;
                 case "Spotify":
-                    mainViewModel.CreateProfileSpotify = new CreateProfileSpotifyViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Spotify");
                     PopupNavigation.Instance.PushAsync(new CreateProfileSpotifyPopUpPage());
                     break;
                 case "Snapchat":
-                    mainViewModel.CreateProfileSnapchat = new CreateProfileSnapchatViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Snapchat");
                     PopupNavigation.Instance.PushAsync(new CreateProfileSnapchatPopUpPage());
                     break;
+                case "Telegram":
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Telegram");
+                    PopupNavigation.Instance.PushAsync(new CreateProfileTelegramPopUpPage());
+                    break;
                 case "Twitch":
-                    mainViewModel.CreateProfileTwitch = new CreateProfileTwitchViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Twitch");
                     PopupNavigation.Instance.PushAsync(new CreateProfileTwitchPopUpPage());
                     break;
                 case "TikTok":
-                    mainViewModel.CreateProfileTiktok = new CreateProfileTiktokViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("TikTok");
                     PopupNavigation.Instance.PushAsync(new CreateProfileTiktokPopUpPage());
                     break;
                 case "Twitter":
-                    mainViewModel.CreateProfileTwitter = new CreateProfileTwitterViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Twitter");
                     PopupNavigation.Instance.PushAsync(new CreateProfileTwitterPopUpPage());
                     break;
                 case "WebPage":
-                    mainViewModel.CreateProfileWebPage = new CreateProfileWebViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("WebPage");
                     PopupNavigation.Instance.PushAsync(new CreateProfileWebPagePopUpPage());
                     break;
                 case "Whatsapp":
@@ -313,7 +343,7 @@
                     PopupNavigation.Instance.PushAsync(new CreateProfileWhatsAppPopUpPage());
                     break;
                 case "Youtube":
-                    mainViewModel.CreateProfileYoutube = new CreateProfileYoutubeViewModel();
+                    mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Youtube");
                     PopupNavigation.Instance.PushAsync(new CreateProfileYoutubePopUpPage());
                     break;
                 default:
@@ -417,6 +447,8 @@
             }
         }
         #endregion
+
+        #region Methods
 
         #region Email
         public async void DeleteProfileEmail(int _box, int _profileEmailId)
@@ -559,6 +591,7 @@
                 box_ProfileSM);
 
         }
+
         public async void DeleteProfileSM(int _box, int _profileSMId)
         {
             var connection = await this.apiService.CheckConnection();

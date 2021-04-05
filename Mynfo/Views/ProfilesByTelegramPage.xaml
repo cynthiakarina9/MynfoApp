@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Mynfo.Helpers"
+             x:Class="Mynfo.Views.ProfilesByTelegramPage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <NavigationPage.TitleView>
+        <Grid
+            BindingContext="{Binding ProfilesByTelegram}">
+            <ImageButton
+                BackgroundColor = "Transparent"
+                Command="{Binding BackHomeCommand}"
+                Grid.ColumnSpan = "3"
+                Margin = "0,0,70,0"
+                HorizontalOptions = "Center"
+                VerticalOptions = "Center"
+                WidthRequest = "100"
+                x:Name="Logosuperior"/>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid
+            BindingContext="{Binding ProfilesByTelegram}">
+            <!--Titulo-->
+            <Label 
+                Grid.Row = "0" 
+                Text = "{i18n:Translate NetworksList}"
+                FontSize = "25"
+                FontAttributes="Bold"
+                TextColor = "{StaticResource MainColor}"
+                HorizontalOptions = "CenterAndExpand"
+                VerticalOptions = "Start" 
+                Margin = "0,5,0,15"/>
+            <Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition />
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <ActivityIndicator
+                        Grid.Row = "1"
+                        IsRunning = "{Binding IsRunning}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions="StartAndExpand">
+                    </ActivityIndicator>
+
+                    <!--End Titulo-->
+                    <ListView 
+                        ItemsSource="{Binding profileSM}"
+                        Grid.Row="1"
+                        SelectedItem="{Binding selectedProfile}"
+                        ItemSelected="OnListViewItemSelected"
+                        ItemTapped="OnListViewItemTapped"
+                        HasUnevenRows="true"
+                        x:Name="ListaTelegram">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="30" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            HeightRequest="30"
+                                            Margin="10"
+                                            Source="telegram2"
+                                            WidthRequest="30"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            FontSize="18"
+                                            FontAttributes="Bold" 
+                                            Text="{Binding ProfileName}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                            VerticalOptions="Start"
+                                            HorizontalTextAlignment = "Start"/>
+                                        <Label 
+                                            FontSize="15"
+                                            Grid.Column="1"
+                                            Text="{Binding link}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                            VerticalOptions="End"
+                                            HorizontalTextAlignment = "Start"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="21"
+                        Grid.Row="1"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding EmptyList}"
+                        Margin="10,0,10,280"
+                        Text="{i18n:Translate ProfileNull}"
+                        TextColor="LightGray"
+                        VerticalOptions="Center"/>
+                </Grid>
+            </Grid>
+            <!-- Botón de nuevo -->
+            <ImageButton
+                Grid.Row="0"
+                BackgroundColor = "Transparent"
+                Clicked = "NewProfileTelegram_Clicked"
+                HeightRequest = "60"
+                HorizontalOptions ="Center"
+                Margin = "15"
+                Source = "Plus"
+                VerticalOptions = "End"
+                WidthRequest = "60" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

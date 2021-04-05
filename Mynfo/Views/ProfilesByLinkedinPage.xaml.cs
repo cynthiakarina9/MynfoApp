@@ -29,7 +29,7 @@
         private void NewProfileLinkedin_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileLinkedin = new CreateProfileLinkedinViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("LinkedIn");
             App.Navigator.PushAsync(new CreateProfileLinkedinPage());
         }
 

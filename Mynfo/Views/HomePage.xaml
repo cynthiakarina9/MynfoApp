@@ -51,6 +51,9 @@
                                     Source = "{Binding ImageSource}"
                                     VerticalOptions="Center"
                                     WidthRequest="125">
+                                    <controls:CircleImage.GestureRecognizers>
+                                        <TapGestureRecognizer Command = "{Binding ImageSizeCommand}" />
+                                    </controls:CircleImage.GestureRecognizers>
                                 </controls:CircleImage>
 
                                 <Label 

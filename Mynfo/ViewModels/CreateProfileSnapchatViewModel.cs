@@ -45,7 +45,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileSnapchatViewModel()
+        public CreateProfileSnapchatViewModel(string A)
         {
             this.apiService = new ApiService();
         }
