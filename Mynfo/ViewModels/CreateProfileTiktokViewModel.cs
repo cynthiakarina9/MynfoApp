@@ -45,7 +45,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileTiktokViewModel()
+        public CreateProfileTiktokViewModel(string A)
         {
             this.apiService = new ApiService();
         }

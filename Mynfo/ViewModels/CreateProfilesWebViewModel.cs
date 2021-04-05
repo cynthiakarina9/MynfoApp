@@ -45,7 +45,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileWebViewModel()
+        public CreateProfileWebViewModel(string A)
         {
             this.apiService = new ApiService();
         }

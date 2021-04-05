@@ -3,9 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Mynfo.Helpers"
              x:Class="Mynfo.Views.LoginPage"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+             BackgroundImageSource="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
+        <!--<Frame.Background>
+                <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                    <GradientStop Color="#edd7c5"
+                          Offset="0.1"/>
+                    <GradientStop Color="#cea17d"
+                          Offset="1.0"/>
+                    <GradientStop Color="#f4e9e0"
+                          Offset="0.1"/>
+                </LinearGradientBrush>
+            </Frame.Background>-->
         <Grid
             BindingContext = "{Binding Login}">
             <ScrollView>
@@ -83,86 +94,96 @@
                             IsToggled = "{Binding IsRemembered, Mode = TwoWay}"
                             HorizontalOptions = "End"/>
                     </StackLayout >
-                    <StackLayout
-                        Orientation="Horizontal"
+                    <Grid
                         HorizontalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
                         <Button
                             BackgroundColor = "{AppThemeBinding Light={StaticResource MainColor}, Dark=white}"
-                            BorderRadius = "23"
+                            BorderRadius = "20"
                             Command = "{Binding LoginCommand}"
-                            HorizontalOptions = "Center"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            HorizontalOptions = "FillAndExpand"
                             IsEnabled = "{Binding IsEnabled,Mode = TwoWay}"
                             Text = "{i18n:Translate Login}"
                             TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource MainColor}}"
-                            WidthRequest = "150"/>
+                            VerticalOptions="Center"/>
                         <Button
                             BackgroundColor="Transparent"
                             BorderRadius = "23"
                             Command="{Binding RegisterCommand}"
-                            HorizontalOptions="Center"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            HorizontalOptions="FillAndExpand"
                             Text="{i18n:Translate Register}"
                             TextColor="{StaticResource MainColor}"
                             BorderWidth="2"
                             BorderColor="{StaticResource MainColor}"
-                            VerticalOptions="FillAndExpand"
-                            WidthRequest="150"/>
-                    </StackLayout>
+                            VerticalOptions="Center"/>
+                    </Grid>
                     <Label
-                        HorizontalOptions = "Center"
-                        Text = "{i18n:Translate Forgot}"
-                        TextColor = "{StaticResource MainColor}"
-                        Margin="25"
-                        VerticalOptions = "FillAndExpand">
+                            HorizontalOptions = "Center"
+                            Text = "{i18n:Translate Forgot}"
+                            TextColor = "{StaticResource MainColor}"
+                            Margin="25"
+                            VerticalOptions = "FillAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"/>
                         </Label.GestureRecognizers>
                     </Label>
                     <!--<StackLayout
-                            HorizontalOptions = "Center"
-                            Orientation = "Horizontal"
-                            VerticalOptions = "EndAndExpand">
-                        <Image
-                            Source = "facebook2"
-                            WidthRequest = "45">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command = "{Binding LoginFacebookComand}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Frame 
-                            OutlineColor = "Transparent">
+                                HorizontalOptions = "Center"
+                                Orientation = "Horizontal"
+                                VerticalOptions = "EndAndExpand">
                             <Image
-                            Source = "twitter1"
-                            WidthRequest = "45"/>
-                        </Frame>
-                        <Image
-                            Source = "instagram1"
-                            WidthRequest = "45"/>
-                    </StackLayout>-->
+                                Source = "facebook2"
+                                WidthRequest = "45">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command = "{Binding LoginFacebookComand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Frame 
+                                OutlineColor = "Transparent">
+                                <Image
+                                Source = "twitter1"
+                                WidthRequest = "45"/>
+                            </Frame>
+                            <Image
+                                Source = "instagram1"
+                                WidthRequest = "45"/>
+                        </StackLayout>-->
                     <ActivityIndicator
-                        IsRunning = "{Binding IsRunning, Mode=TwoWay}"
-                        VerticalOptions = "CenterAndExpand">
+                            IsRunning = "{Binding IsRunning, Mode=TwoWay}"
+                            VerticalOptions = "CenterAndExpand">
                     </ActivityIndicator>
                 </StackLayout>
             </ScrollView>
+            
             <!--<StackLayout 
-                HorizontalOptions="Start"
-                VerticalOptions="End">
-                <Button
-                    BackgroundColor="Transparent"
-                    FontSize="8"
                     HorizontalOptions="Start"
-                    Text="Terminos y condiciones"/>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions="End"
-                VerticalOptions="End">
-                <Button
-                    BackgroundColor="Transparent"
-                    FontSize="8"
+                    VerticalOptions="End">
+                    <Button
+                        BackgroundColor="Transparent"
+                        FontSize="8"
+                        HorizontalOptions="Start"
+                        Text="Terminos y condiciones"/>
+                </StackLayout>
+                <StackLayout
                     HorizontalOptions="End"
-                    Text="Política de privacidad"
-                    TextColor="Black"/>
-            </StackLayout>-->
+                    VerticalOptions="End">
+                    <Button
+                        BackgroundColor="Transparent"
+                        FontSize="8"
+                        HorizontalOptions="End"
+                        Text="Política de privacidad"
+                        TextColor="Black"/>
+                </StackLayout>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

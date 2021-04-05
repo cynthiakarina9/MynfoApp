@@ -14,7 +14,7 @@
             Margin="30"
             x:Name="BackG">
             <Grid
-                BindingContext = "{Binding CreateProfileInstagram}">
+                BindingContext = "{Binding CreateProfileSM}">
                 <ScrollView>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -37,21 +37,20 @@
                             VerticalOptions = "Center"/>
                         <Image 
                             Grid.Row = "1" 
-                            HeightRequest = "180"
                             Source ="instagramlogo2"
-                            WidthRequest = "180"/>
+                            Scale="0.8"/>
                         <StackLayout 
                             Grid.Row = "2"
                             Padding = "20">
                             <Label 
-                                FontSize = "24" 
+                                FontSize = "20" 
                                 FontAttributes="Bold"
                                 HorizontalOptions = "Center"
                                 Text = "{i18n:Translate NameProfile}"
                                 TextColor = "{StaticResource MainColor}"
                                 VerticalOptions = "Center"/>
                             <Entry 
-                                FontSize = "21"
+                                FontSize = "20"
                                 HeightRequest = "46"
                                 HorizontalTextAlignment = "Center"
                                 HorizontalOptions = "Center"
@@ -75,7 +74,7 @@
                         <StackLayout 
                             Grid.Row = "3">
                             <Label 
-                                FontSize = "24" 
+                                FontSize = "20" 
                                 FontAttributes="Bold"
                                 HorizontalOptions = "Center"
                                 Text = "{i18n:Translate NickName}"
@@ -86,14 +85,14 @@
                                 Margin="25,-5,25,0"
                                 Orientation="Horizontal">
                                 <Label
-                                    FontSize = "22"
+                                    FontSize = "20"
                                     HorizontalOptions = "Center"
                                     Text = "@"
                                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                     VerticalOptions="Center"
                                     WidthRequest = "50" />
                                 <Entry 
-                                    FontSize = "21"
+                                    FontSize = "20"
                                     HeightRequest = "46"
                                     HorizontalOptions="Center"
                                     Margin="-40,0,0,0"
@@ -118,7 +117,7 @@
                 <Button 
                     BackgroundColor = "{StaticResource MainColor}"
                     BorderRadius = "23"
-                    Command = "{Binding SaveProfileInstagramCommand}"
+                    Command = "{Binding SaveProfileCommand}"
                     HeightRequest = "50"
                     HorizontalOptions="Fill"
                     Margin="15"

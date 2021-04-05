@@ -210,6 +210,7 @@
             }
 
             mainViewModel.Home = new HomeViewModel();
+            mainViewModel.MenuItem = new MenuItemViewModel();
             mainViewModel.Register = new RegisterViewModel();
             mainViewModel.MyProfile = new MyProfileViewModel();
             mainViewModel.Profiles = new ProfilesViewModel();

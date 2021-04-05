@@ -1,5 +1,6 @@
 ﻿namespace Mynfo.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
     using Mynfo.Helpers;
     using Mynfo.Models;
@@ -10,6 +11,7 @@
     using System;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
+    using System.Windows.Input;
     using Xamarin.Forms;
     using ZXing;
 
@@ -184,6 +186,22 @@
             await App.Navigator.PopAsync();
             Imprime_box.InsertForeignData(UserIdToSend, BoxL.BoxId);
             return Box;
+        }
+        #endregion
+
+        #region Commands
+        public ICommand BackHomeCommand
+        {
+            get
+            {
+                return new RelayCommand(BackHome);
+            }
+        }
+        private void BackHome()
+        {
+            MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().MenuItem = new MenuItemViewModel();
+            Application.Current.MainPage = new MasterPage();
         }
         #endregion
     }

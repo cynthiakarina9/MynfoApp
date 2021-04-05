@@ -28,7 +28,7 @@
         private void NewProfileSnapchat_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileSnapchat = new CreateProfileSnapchatViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Snapchat");
             App.Navigator.PushAsync(new CreateProfileSnapchatPage());
         }
 

@@ -3,6 +3,7 @@
     using Models;
     using Mynfo.Domain;
     using Mynfo.Helpers;
+    using Mynfo.Views;
     using System.Collections.ObjectModel;
 
     public class MainViewModel : BaseViewModel
@@ -58,11 +59,19 @@
             get;
             set;
         }
+
         public CreateProfilesViewModel CreateProfiles
         {
             get;
             set;
         }
+
+        public CreateProfileSMViewModel CreateProfileSM
+        {
+            get;
+            set;
+        }
+
         public CreateProfileEmailViewModel CreateProfileEmail
         {
             get;
@@ -100,6 +109,12 @@
         }
 
         public CreateProfileSpotifyViewModel CreateProfileSpotify
+        {
+            get;
+            set;
+        }
+
+        public CreateProfileTelegramViewModel CreateProfileTelegram
         {
             get;
             set;
@@ -188,6 +203,12 @@
             set;
         }
 
+        public EditProfileTelegramViewModel EditProfileTelegram
+        {
+            get;
+            set;
+        }
+
         public EditProfileTiktokViewModel EditProfileTiktok
         {
             get;
@@ -248,6 +269,11 @@
             set;
         }
 
+        public ImageSizeViewModel ImageSize
+        {
+            get;
+            set;
+        }
         public IntroductionGifViewModel IntroductionGif
         {
             get;
@@ -274,7 +300,11 @@
             get;
             set;
         }
-
+        public MenuItemViewModel MenuItem
+        {
+            get;
+            set;
+        }
         public MyProfileViewModel MyProfile
         { 
             get; 
@@ -336,6 +366,12 @@
         }
 
         public ProfilesBySpotifyViewModel ProfilesBySpotify
+        {
+            get;
+            set;
+        }
+
+        public ProfilesByTelegramViewModel ProfilesByTelegram
         {
             get;
             set;

@@ -125,6 +125,10 @@
                     RedSocial = 8;
                     GetListSM(_BoxId);
                     break;
+                case "Telegram":
+                    RedSocial = 11;
+                    GetListSM(_BoxId);
+                    break;
                 case "TikTok":
                     RedSocial = 6;
                     GetListSM(_BoxId);

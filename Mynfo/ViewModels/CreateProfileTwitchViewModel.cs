@@ -46,7 +46,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileTwitchViewModel()
+        public CreateProfileTwitchViewModel(string A)
         {
             this.apiService = new ApiService();
         }

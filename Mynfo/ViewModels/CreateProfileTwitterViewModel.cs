@@ -45,7 +45,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileTwitterViewModel()
+        public CreateProfileTwitterViewModel(string A)
         {
             this.apiService = new ApiService();
         }

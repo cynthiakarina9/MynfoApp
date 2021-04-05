@@ -46,7 +46,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileInstagramViewModel()
+        public CreateProfileInstagramViewModel(string A)
         {
             this.apiService = new ApiService();
         }

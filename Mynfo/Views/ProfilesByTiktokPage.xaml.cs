@@ -28,7 +28,7 @@
         private void NewProfileTiktok_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileTiktok = new CreateProfileTiktokViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("TikTok"); ;
             App.Navigator.PushAsync(new CreateProfileTiktokPage());
         }
 

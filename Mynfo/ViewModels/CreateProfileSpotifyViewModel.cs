@@ -46,7 +46,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileSpotifyViewModel()
+        public CreateProfileSpotifyViewModel(string A)
         {
             this.apiService = new ApiService();
         }

@@ -7,7 +7,7 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
-            BindingContext="{Binding CreateProfileYoutube}">
+            BindingContext="{Binding CreateProfileSM}">
             <ImageButton 
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
@@ -21,7 +21,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid
-            BindingContext = "{Binding CreateProfileYoutube}">
+            BindingContext = "{Binding CreateProfileSM}">
             <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -125,8 +125,8 @@
             </ScrollView>
             <Button 
                 BackgroundColor = "{StaticResource MainColor}"
+                Command="{Binding SaveProfileCommand}"
                 BorderRadius = "23"
-                Command = "{Binding SaveProfileYoutubeCommand}"
                 HeightRequest = "50"
                 HorizontalOptions="Fill"
                 Margin="15"

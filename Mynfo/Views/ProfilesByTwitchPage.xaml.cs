@@ -28,7 +28,7 @@
         private void NewProfileTwitch_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileTwitch = new CreateProfileTwitchViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Twitch");
             App.Navigator.PushAsync(new CreateProfileTwitchPage());
         }
 

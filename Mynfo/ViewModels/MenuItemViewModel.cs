@@ -16,7 +16,15 @@
         public string Icon { get; set; }
         public string Title { get; set; }
         public string PageName { get; set; }
-        public bool Share { get; set; }        
+        public bool Share { get; set; }
+        public UserLocal User { get; set; }
+        #endregion
+
+        #region Constructor
+        public MenuItemViewModel()
+        {
+            User = MainViewModel.GetInstance().User;
+        }
         #endregion
 
         #region Commands
@@ -103,6 +111,20 @@
                 MainViewModel.GetInstance().GIF = new GifViewModel("BasicIntro");
                 await PopupNavigation.Instance.PushAsync(new GifPage());
             }
+        }
+
+        public ICommand ChangeImageCommand
+        {
+            get
+            {
+                return new RelayCommand(ChangeImage);
+            }
+        }
+        private void ChangeImage()
+        {
+            App.Master.IsPresented = false;
+            MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+            App.Navigator.PushAsync(new MyProfilePage());
         }
         #endregion
     }

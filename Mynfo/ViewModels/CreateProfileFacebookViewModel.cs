@@ -47,7 +47,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileFacebookViewModel()
+        public CreateProfileFacebookViewModel(string A)
         {
             this.apiService = new ApiService();
         }
@@ -186,6 +186,7 @@
             MainViewModel.GetInstance().GIF = new GifViewModel("Facebook");
             await PopupNavigation.Instance.PushAsync(new GifPage());
         }
+
         public ICommand BackHomeCommand
         {
             get
@@ -196,6 +197,7 @@
         private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().MenuItem = new MenuItemViewModel();
             Application.Current.MainPage = new MasterPage();
         }
         #endregion

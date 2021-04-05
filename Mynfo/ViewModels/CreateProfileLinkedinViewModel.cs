@@ -46,7 +46,7 @@
         #endregion
 
         #region Constructor
-        public CreateProfileLinkedinViewModel()
+        public CreateProfileLinkedinViewModel(string A)
         {
             this.apiService = new ApiService();
         }

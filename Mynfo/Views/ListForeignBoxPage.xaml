@@ -13,7 +13,7 @@
                 HorizontalOptions="Start">
                 <Label 
                     FontAttributes = "Bold"
-                    FontSize = "18"
+                    FontSize = "25"
                     HorizontalOptions = "Start"
                     Text = "{i18n:Translate ReceivedBoxes}"
                     TextColor = "{StaticResource Dark_FontColor}"/>
@@ -38,19 +38,18 @@
                 <StackLayout>
                     <Label 
                         Text = "{i18n:Translate ReceivedBoxes}"
-                        FontSize = "30"
+                        FontSize = "25"
                         FontAttributes="Bold"
                         TextColor = "{StaticResource MainColor}"
                         HorizontalOptions = "Center"
-                        VerticalOptions = "Center"  
-                        Margin = "0,15,0,0"/>
+                        VerticalOptions = "Center"/>
                 </StackLayout>
                 <ListView 
                     ItemsSource="{Binding ForeingBox}"
                     HasUnevenRows="true"
                     ItemSelected="OnListViewItemSelected"
                     ItemTapped="OnListViewItemTapped"
-                    Margin="10,35,10,20"
+                    Margin="0"
                     x:Name="ForeignBoxList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -82,7 +81,7 @@
                                         Grid.Column="1"
                                         Grid.Row="0"
                                         FontAttributes="Bold" 
-                                        FontSize="Title"
+                                        FontSize="20"
                                         Text="{Binding FullName}"
                                         TextColor="{StaticResource MainColor}"
                                         VerticalTextAlignment="Center"
@@ -91,7 +90,7 @@
                                         Grid.Column="1"
                                         Grid.Row="1"
                                         FontAttributes="Italic" 
-                                        FontSize="Body"
+                                        FontSize="15"
                                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                         VerticalTextAlignment="Center"
                                         Margin="15,0,0,0"
@@ -107,7 +106,7 @@
                                         Grid.Column="1"
                                         Grid.Row="2"
                                         FontAttributes="Italic" 
-                                        FontSize="Body"
+                                        FontSize="15"
                                         Text="{Binding Ubicacion}"
                                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                         VerticalTextAlignment="Center"
@@ -116,7 +115,7 @@
                                         Grid.ColumnSpan="2"
                                         Grid.Row="3"
                                         FontAttributes="Bold" 
-                                        FontSize="Large"
+                                        FontSize="15"
                                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                         VerticalTextAlignment="End"
                                         HorizontalTextAlignment="Center">

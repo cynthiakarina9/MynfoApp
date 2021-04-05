@@ -268,9 +268,10 @@
                 MainViewModel.GetInstance().Token.TokenType,
                 MainViewModel.GetInstance().Token.AccessToken,
                 this.User.Email);
+            bool Tutorial = MainViewModel.GetInstance().User.MostrarTutorial;
             var userLocal = Converter.ToUserLocal(userApi);
             MainViewModel.GetInstance().User = userLocal;
-
+            MainViewModel.GetInstance().User.MostrarTutorial = Tutorial;
             //Connection with SQLite
             using (var conn = new SQLite.SQLiteConnection(App.root_db))
             {
@@ -281,6 +282,7 @@
 
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Home = new HomeViewModel();
+            mainViewModel.MenuItem = new MenuItemViewModel();
             Application.Current.MainPage = new MasterPage();
         }
         
@@ -294,6 +296,7 @@
         private void BackHome()
         {
             MainViewModel.GetInstance().Home = new HomeViewModel();
+            MainViewModel.GetInstance().MenuItem = new MenuItemViewModel();
             Application.Current.MainPage = new MasterPage();
         }
         #endregion

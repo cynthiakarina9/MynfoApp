@@ -7,8 +7,9 @@
              BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
              Title = "☰">
     <ContentPage.Content>
-        <StackLayout
-            Padding = "20,30,5,5">
+        <StackLayout>
+            <!--<StackLayout
+                Padding = "20,30,5,5">
             <controls:CircleImage
                 Aspect="AspectFill"
                 Margin="40,0,40,0"
@@ -22,31 +23,79 @@
                 HorizontalTextAlignment="Center"
                 Padding = "5"
                 Text = "{Binding User.FullName, StringFormat = '{0}'}"
-                TextColor = "{StaticResource MainColor}" />
-            <StackLayout
-                Orientation="Horizontal"
-                VerticalOptions = "Center"
-                HorizontalOptions = "CenterAndExpand"
-                Margin="0,30,0,30">
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    HorizontalOptions = "StartAndExpand"
-                    VerticalOptions = "CenterAndExpand"
-                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                    x:Name="TagLabel"/>
-                <Switch
-                    Toggled="OnToggled"
-                    HeightRequest="25"
-                    IsToggled = "{Binding User.Share, Mode = TwoWay}"
-                    HorizontalOptions = "Center"
-                    x:Name="TagSwitch"/>
-            </StackLayout >
+                TextColor = "{StaticResource MainColor}" />-->
+            <Frame
+                BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
+                BindingContext="{Binding MenuItem}"
+                CornerRadius="30"
+                HasShadow="True"
+                Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <!--<ImageButton
+                        BackgroundColor="Transparent"
+                        Clicked="GotoMyProfile_Clicked"
+                        HorizontalOptions="End"
+                        HeightRequest="25"
+                        Grid.Row="0"
+                        IsEnabled="True"
+                        Margin="0,-10,-10,0"
+                        Source="edit2"
+                        VerticalOptions="Start"
+                        WidthRequest="25"
+                        x:Name="EdithButton"/>-->
+                    <StackLayout
+                        Grid.Row="0"
+                        Orientation="Horizontal">
+                        <controls:CircleImage
+                            Aspect="AspectFill"
+                            HeightRequest="80"
+                            Source="{Binding User.ImageFullPath}"
+                            WidthRequest="80">
+                            <controls:CircleImage.GestureRecognizers>
+                                <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />
+                            </controls:CircleImage.GestureRecognizers>
+                        </controls:CircleImage>
+                        <Label 
+                            FontSize = "20"
+                            FontAttributes = "Bold"
+                            HorizontalOptions = "Center"
+                            HorizontalTextAlignment="Center"
+                            Padding = "5"
+                            Text = "{Binding User.FullName, StringFormat = '{0}'}"
+                            TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="1"
+                        Orientation="Horizontal"
+                        VerticalOptions = "Center"
+                        HorizontalOptions = "CenterAndExpand">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HorizontalOptions = "StartAndExpand"
+                            VerticalOptions = "CenterAndExpand"
+                            TextColor = "{StaticResource MainColor}"
+                            x:Name="TagLabel"/>
+                        <Switch
+                            Toggled="OnToggled"
+                            HeightRequest="20"
+                            IsToggled = "{Binding User.Share, Mode = TwoWay}"
+                            HorizontalOptions = "Center"
+                            x:Name="TagSwitch"/>
+                    </StackLayout >
+                </Grid>
+            </Frame>
+            
             <ListView 
                 BackgroundColor="{AppThemeBinding Light={StaticResource Menu_BackgroundColorLight}, Dark={StaticResource Menu_BackgroundColorDark}}"
                 ItemsSource = "{Binding Menus}"
                 HasUnevenRows = "True"
-                SeparatorVisibility = "None">
+                SeparatorVisibility="Default">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -56,20 +105,21 @@
                                     <TapGestureRecognizer Command = "{Binding NavigateCommand}" />
                                 </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width = "*"></ColumnDefinition>
-                                    <ColumnDefinition Width = "2*"></ColumnDefinition>
+                                    <ColumnDefinition Width = "Auto"/>
+                                    <ColumnDefinition Width = "10"/>
+                                    <ColumnDefinition Width = "Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height = "Auto"></RowDefinition>
+                                    <RowDefinition Height = "Auto"/>
                                 </Grid.RowDefinitions>
                                 <Image 
                                     Grid.Column = "0"
-                                    HeightRequest = "50"
+                                    HeightRequest = "30"
                                     Source = "{Binding Icon}"
-                                    WidthRequest = "50" />
+                                    WidthRequest = "30" />
                                 <Label 
                                     FontSize = "17"
-                                    Grid.Column = "1"
+                                    Grid.Column = "2"
                                     Text = "{Binding Title}"
                                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                     VerticalOptions = "Center" />

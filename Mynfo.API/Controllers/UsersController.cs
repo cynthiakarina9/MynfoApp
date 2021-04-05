@@ -333,7 +333,7 @@
                 var stream = new MemoryStream(user.ImageArray);
                 var guid = Guid.NewGuid().ToString();
                 var file = string.Format("{0}.jpg", guid);
-                var folder = "~Content/Images";
+                var folder = "~/Content/Images";
                 var fullPath = string.Format("{0}/{1}", folder, file);
                 var response = FilesHelper.UploadPhoto(stream, folder, file);
 

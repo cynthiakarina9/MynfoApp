@@ -28,7 +28,7 @@
         private void NewProfileWebPage_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileWebPage= new CreateProfileWebViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("WebPage");
             App.Navigator.PushAsync(new CreateProfileWebPagePage());
         }
 

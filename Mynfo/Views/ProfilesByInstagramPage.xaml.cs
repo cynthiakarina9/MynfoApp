@@ -29,7 +29,7 @@
         private void NewProfileInstagram_Clicked(object sender, EventArgs e)
         {
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.CreateProfileInstagram = new CreateProfileInstagramViewModel();
+            mainViewModel.CreateProfileSM = new CreateProfileSMViewModel("Instagram");
             App.Navigator.PushAsync(new CreateProfileInstagramPage());
         }
 

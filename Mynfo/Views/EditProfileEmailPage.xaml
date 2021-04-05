@@ -39,7 +39,7 @@
                     <!-- Título y borrar network-->
                     <Label 
                         FontAttributes = "Bold"
-                        FontSize = "30"
+                        FontSize = "25"
                         Grid.ColumnSpan ="2"
                         Grid.Row = "0"
                         HorizontalOptions = "Center"
@@ -58,25 +58,24 @@
                         x:Name = "ButtonDelete"/>
                     <!-- Imagen de network -->
                     <Image
-                        HeightRequest = "180"
-                        Source = "mail2"
                         Grid.Row = "1"
                         Grid.ColumnSpan ="2"
-                        WidthRequest = "180"/>
+                        Source = "mail2"
+                        Scale = "0.8"/>
                     <!-- Nombre de perfil -->
                     <StackLayout 
                         Grid.Row = "2"
                         Grid.ColumnSpan ="2"
                         Padding = "20">
                         <Label 
-                            FontSize = "24" 
+                            FontSize = "20" 
                             FontAttributes="Bold"
                             HorizontalOptions = "Center"
                             Text = "{i18n:Translate NameProfile}" 
                             TextColor = "{StaticResource MainColor}"
                             VerticalOptions = "Center"/>
                         <Entry 
-                            FontSize = "21"
+                            FontSize = "20"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
                             HorizontalOptions = "Center"
@@ -100,14 +99,14 @@
                         Grid.Row = "3"
                         Grid.ColumnSpan ="2">
                         <Label 
-                            FontSize = "24" 
+                            FontSize = "20" 
                             FontAttributes="Bold"
                             HorizontalOptions = "Center"
                             VerticalOptions = "Center" 
                             Text = "{i18n:Translate EMail}"
                             TextColor = "{StaticResource MainColor}"/>
                         <Entry
-                            FontSize = "21"
+                            FontSize = "20"
                             HorizontalTextAlignment = "Center"
                             HeightRequest = "46"
                             HorizontalOptions = "Center"

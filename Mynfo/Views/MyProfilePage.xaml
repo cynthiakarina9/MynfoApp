@@ -31,45 +31,70 @@
                 Grid.Row="0"
                 HorizontalOptions="Center"
                 VerticalOptions="Start">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <!--Imagen de perfil-->
                 <controls:CircleImage 
                     Aspect="AspectFill"
+                    Grid.Column="0"
                     Grid.Row="0"
-                    HeightRequest = "180"
-                    Source = "{Binding ImageSource}">
+                    HeightRequest = "175"
+                    Source = "{Binding ImageSource}"
+                    WidthRequest="175">
                     <controls:CircleImage.GestureRecognizers>
                         <TapGestureRecognizer Command = "{Binding ChangeImageCommand}" />
                     </controls:CircleImage.GestureRecognizers>
                 </controls:CircleImage>
-                <StackLayout
+                <!--<StackLayout
+                    Grid.Column="0"
                     Grid.Row="1"
                     VerticalOptions="Center"
                     x:Name = "ChangeImage">
                     <Label 
                         HorizontalOptions = "Center" 
-                        FontSize = "Small" 
+                        FontSize = "9" 
                         Text = "{i18n:Translate ChangeImage}"
                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"/>
-                </StackLayout>
+                </StackLayout>-->
                 <StackLayout
-                    Grid.Row="2">
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    VerticalOptions="Center">
                     <Button
                         BackgroundColor = "Transparent"
                         BorderColor="{StaticResource MainColor}"
                         BorderRadius = "23"
                         BorderWidth="1"
                         Command = "{Binding ChangePasswordCommand}"
-                        Grid.Row="1"
+                        FontAttributes="Bold"
+                        FontSize="10"
                         HorizontalOptions = "FillAndExpand"
-                        HeightRequest="46"
+                        HeightRequest="40"
                         IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
+                        Margin="0,5,0,10"
                         Text = "{i18n:Translate ChangePassword}"
                         TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                        x:Name = "ButtonChangePassw">
-                    </Button>
+                        x:Name = "ButtonChangePassw"/>
+                    <!-- Botones de acciones -->
+                    <Button
+                        BackgroundColor = "{StaticResource MainColor}"
+                        BorderRadius = "23"
+                        Command = "{Binding SaveCommand}"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions = "FillAndExpand"
+                        HeightRequest="40"
+                        IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
+                        Margin="0,5,0,10"
+                        Text = "{i18n:Translate Save}"
+                        TextColor="{AppThemeBinding Light={StaticResource Dark_FontColor}, Dark={StaticResource Light_FontColor}}"
+                        WidthRequest="50"
+                        x:Name = "ButtonSave"/>
                 </StackLayout>
             </Grid>
             <ScrollView  
@@ -88,7 +113,8 @@
                             <StackLayout
                                 HorizontalOptions="Center">
                                 <Label
-                                    FontSize = "17"
+                                    FontAttributes="Bold"
+                                    FontSize = "20"
                                     Grid.Column = "0"
                                     HorizontalOptions = "End"
                                     HorizontalTextAlignment = "Start"
@@ -99,7 +125,7 @@
                             <StackLayout
                                 Padding="0,-10,0,0">
                                 <Entry 
-                                    FontSize = "23"
+                                    FontSize = "20"
                                     Placeholder = "{i18n:Translate FirstNamePlaceHolder}" 
                                     Text = "{Binding User.FirstName, Mode = TwoWay}" 
                                     TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
@@ -118,7 +144,8 @@
                             <StackLayout
                                 HorizontalOptions="Center">
                                 <Label
-                                    FontSize = "17"
+                                    FontAttributes="Bold"
+                                    FontSize = "20"
                                     Grid.Column = "0"
                                     HorizontalOptions = "End"
                                     HorizontalTextAlignment = "Start"
@@ -129,7 +156,7 @@
                             <StackLayout
                                 Padding="0,-10,0,0">
                                 <Entry 
-                                    FontSize = "23" 
+                                    FontSize = "20" 
                                     HorizontalTextAlignment = "Center" 
                                     Placeholder = "{i18n:Translate LastNamePlaceHolder}" 
                                     Text = "{Binding User.LastName, Mode=TwoWay}"
@@ -149,7 +176,8 @@
                                 HorizontalOptions="Center"
                                 x:Name = "Email">
                                 <Label
-                                    FontSize = "17"
+                                    FontAttributes="Bold"
+                                    FontSize = "20"
                                     Grid.Column = "0"
                                     HorizontalOptions = "Center"
                                     HorizontalTextAlignment = "Start"
@@ -158,7 +186,7 @@
                                     VerticalOptions = "Center" 
                                     x:Name = "EmailLabel"/>
                                 <Entry 
-                                    FontSize = "21"
+                                    FontSize = "20"
                                     HorizontalTextAlignment = "Center" 
                                     IsEnabled="False"
                                     Keyboard="Email"
@@ -171,14 +199,15 @@
                             <StackLayout
                                 HorizontalOptions="Center">
                                 <Label
-                                    FontSize = "17"
+                                    FontAttributes="Bold"
+                                    FontSize = "20"
                                     Grid.Column = "0"
                                     HorizontalOptions = "Center"
                                     Text = "{i18n:Translate AgeLabel}"
                                     TextColor = "{StaticResource MainFountyColor}"
                                     VerticalOptions = "Center" />
                                 <Entry 
-                                    FontSize = "23"
+                                    FontSize = "20"
                                     HorizontalTextAlignment = "Center" 
                                     Keyboard="Numeric"
                                     MaxLength="3"
@@ -192,14 +221,15 @@
                             <StackLayout
                                 HorizontalOptions="Center">
                                 <Label
-                                    FontSize = "17"
+                                    FontAttributes="Bold"
+                                    FontSize = "20"
                                     Grid.Column = "0"
                                     HorizontalOptions = "Center"
                                     Text = "{i18n:Translate LocationLabel}"
                                     TextColor = "{StaticResource MainFountyColor}"
                                     VerticalOptions = "Center" />
                                 <Entry 
-                                    FontSize = "23"
+                                    FontSize = "20"
                                     HorizontalTextAlignment = "Center"
                                     Placeholder = "{i18n:Translate LocationPlaceHolder}" 
                                     MaxLength="50"
@@ -220,14 +250,15 @@
                             <StackLayout
                                 HorizontalOptions="Center">
                                 <Label
-                                    FontSize = "17"
+                                    FontAttributes="Bold"
+                                    FontSize = "20"
                                     Grid.Column = "0"
                                     HorizontalOptions = "Center"
                                     Text = "{i18n:Translate OccupationLabel}"
                                     TextColor = "{StaticResource MainFountyColor}"
                                     VerticalOptions = "Center" />
                                 <Entry 
-                                    FontSize = "15"
+                                    FontSize = "20"
                                     HorizontalTextAlignment = "Center" 
                                     MaxLength="50"
                                     Placeholder = "{i18n:Translate OccupationPlaceHolder}" 
@@ -250,25 +281,8 @@
                         IsRunning = "{Binding IsRunning, Mode = TwoWay}"
                         VerticalOptions = "CenterAndExpand">
                     </ActivityIndicator>
-                    
                 </Grid>
             </ScrollView>
-            <!-- Botones de acciones -->
-            <Grid
-                Grid.Row="0"
-                HorizontalOptions="End"
-                VerticalOptions="Start"
-                Margin="0,0,5,0">
-                <ImageButton
-                    BackgroundColor = "Transparent"
-                    Command = "{Binding SaveCommand}"
-                    HeightRequest = "50"
-                    IsEnabled = "{Binding IsEnabled, Mode = TwoWay}"
-                    x:Name = "ButtonSave"
-                    Source="save"
-                    WidthRequest="50">
-                </ImageButton>
-            </Grid>
             <!--<Grid
                 Grid.Row="0"
                 VerticalOptions="End"

@@ -239,15 +239,16 @@
                                 x:Name="ProfilesWebPage"/>
 
                             <!--BoxView 14-->
-                            <!--<ImageButton 
+                            <ImageButton 
                                 BackgroundColor = "Transparent"
                                 Grid.Column = "3"
                                 Grid.Row = "7" 
                                 HeightRequest = "150"
                                 HorizontalOptions = "Center"
-                                Source = "skype1.png"
+                                Source = "telegram1.png"
                                 VerticalOptions = "Center"
-                                WidthRequest = "150" />-->
+                                WidthRequest = "150" 
+                                x:Name="ProfilesTelegram"/>
                         </Grid>
                     </Grid>
                 </ScrollView>

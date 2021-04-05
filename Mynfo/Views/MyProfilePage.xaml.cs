@@ -33,7 +33,7 @@
                 FirstNameEntry.IsReadOnly = true;
                 LastNameEntry.IsReadOnly = true;
                 //ExtProfile.IsVisible = true;
-                ChangeImage.IsVisible = false;
+                //ChangeImage.IsVisible = false;
             }
         }
     }

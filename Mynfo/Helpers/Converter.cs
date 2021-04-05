@@ -8,22 +8,22 @@
     {
         #region User
         public static UserLocal ToUserLocal(User user)
-                {
-                    return new UserLocal
-                    {
-                        Email = user.Email,
-                        FirstName = user.FirstName,
-                        ImagePath = user.ImagePath,
-                        LastName = user.LastName,
-                        UserId = user.UserId,
-                        UserTypeId = user.UserTypeId,
-                        Share = user.Share,
-                        Edad = user.Edad,
-                        Ubicacion = user.Ubicacion,
-                        Ocupacion = user.Ocupacion,
-                        Conexiones = user.Conexiones,
-                    };
-                }
+        {
+            return new UserLocal
+            {
+                Email = user.Email,
+                FirstName = user.FirstName,
+                ImagePath = user.ImagePath,
+                LastName = user.LastName,
+                UserId = user.UserId,
+                UserTypeId = user.UserTypeId,
+                Share = user.Share,
+                Edad = user.Edad,
+                Ubicacion = user.Ubicacion,
+                Ocupacion = user.Ocupacion,
+                Conexiones = user.Conexiones,
+            };
+        }
         public static User ToUserDomain(UserLocal user, byte[] imageArray)
         {
             return new User
@@ -158,6 +158,9 @@
                 case 10:
                     LogoSM = "gmail2";
                     break;
+                case 11:
+                    LogoSM = "telegram2";
+                    break;
                 default:
                     break;
             }
@@ -207,6 +210,9 @@
                     break;
                 case 10:
                     LogoSM = "gmail3";
+                    break;
+                case 11:
+                    LogoSM = "telegram3";
                     break;
                 default:
                     break;
