@@ -7,222 +7,217 @@
              x:Class="Mynfo.Views.ProfilesPage">
     <ContentPage.Content>
         <Grid
-            BindingContext="{Binding Profiles}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <!--Titulo-->
-            <!--<Label 
-                Grid.Row = "0" 
-                Text = "{i18n:Translate ChooseTypeProfile}"
-                FontSize = "25"
-                FontAttributes="Bold"
-                TextColor = "{StaticResource MainColor}"
-                HorizontalOptions = "Center"
-                VerticalOptions = "Start"  />-->
-            <Grid
-                Grid.Row="0"
-                VerticalOptions="Start">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="75*"/>
-                </Grid.ColumnDefinitions>
-                <ScrollView
-                    BindingContext="{Binding Profiles}"
-                    Grid.Column="0"
-                    Grid.Row="0"
-                    HorizontalOptions="Center">
-                    <Grid>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <!--BoxView 1-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "EmailProfile_Clicked"
-                                Grid.Row = "0"   
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "mail1.png"   
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!--BoxView 2-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "PhoneProfile_Clicked"
-                                Grid.Row = "1" 
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "tel1.png"
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!--BoxView 3-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "WhatsAppProfile_Clicked"
-                                Grid.Row = "2" 
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "whatsapp1.png"
-                                VerticalOptions = "Center"
-                                WidthRequest = "50"/>
-                            <!--BoxView 4-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "FacebookProfile_Clicked"
-                                Grid.Row = "3" 
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "facebook1.png"
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!--BoxView 5-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "InstagramProfile_Clicked"
-                                Grid.Row = "4" 
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "instagramlogo1.png"
-                                VerticalOptions = "Center"
-                                WidthRequest = "50"/>
-
-                            <!--BoxView 6 -->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "TwitterProfile_Clicked"
-                                Grid.Row = "5"   
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "twitterlogo1.png"   
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!-- BoxView 7 -->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "LinkedinProfile_Clicked"
-                                Grid.Row = "6" 
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "linkedin1.png"
-                                VerticalOptions = "Center"
-                                WidthRequest = "50"/>
-
-                            <!--BoxView 8-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "TiktokProfile_Clicked"
-                                Grid.Row = "7"   
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "tiktok1.png"   
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!--BoxView 9-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "SnapchatProfile_Clicked"
-                                Grid.Row = "8" 
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "snapchat1.png"
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!--BoxView 10-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "SpotifyProfile_Clicked"
-                                Grid.Row = "9"   
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "spotify1.png"   
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!--BoxView 11-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "YoutubeProfile_Clicked"
-                                Grid.Row = "10"   
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "youtube1.png"   
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!--BoxView 12-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "TwitchProfile_Clicked"
-                                Grid.Row = "11"   
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "twitch1.png"   
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!--BoxView 13-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "WebPageProfile_Clicked"
-                                Grid.Row = "12"   
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "gmail1.png"   
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-
-                            <!--BoxView 14-->
-                            <ImageButton 
-                                BackgroundColor = "Transparent"
-                                Clicked = "TelegramProfile_Clicked"
-                                Grid.Row = "13"   
-                                HeightRequest = "50"
-                                HorizontalOptions = "Center"
-                                Source = "telegram1.png"   
-                                VerticalOptions = "Center"
-                                WidthRequest = "50" />
-                        </Grid>
-                    </Grid>
-                </ScrollView>
-                <ScrollView
-                    Grid.Column="1"
-                    Grid.Row="0">
+            BindingContext="{Binding Profiles}"
+            Grid.Row="0"
+            VerticalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="75*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollView
+                BindingContext="{Binding Profiles}"
+                Grid.Column="0"
+                HorizontalOptions="Center">
+                <Grid>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50*"/>
-                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <ActivityIndicator
-                            Grid.Row = "0"
-                            IsRunning = "{Binding IsRunning}"
-                            HorizontalOptions = "CenterAndExpand"
-                            VerticalOptions="Start" />
-                        <!-- Lista de perfiles de email -->
+                        <!--BoxView 1-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "EmailProfile_Clicked"
+                            Grid.Row = "0"   
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "mail1.png"   
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!--BoxView 2-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "PhoneProfile_Clicked"
+                            Grid.Row = "1" 
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "tel1.png"
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!--BoxView 3-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "WhatsAppProfile_Clicked"
+                            Grid.Row = "2" 
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "whatsapp1.png"
+                            VerticalOptions = "Center"
+                            WidthRequest = "50"/>
+                        <!--BoxView 4-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "FacebookProfile_Clicked"
+                            Grid.Row = "3" 
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "facebook1.png"
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!--BoxView 5-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "InstagramProfile_Clicked"
+                            Grid.Row = "4" 
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "instagramlogo1.png"
+                            VerticalOptions = "Center"
+                            WidthRequest = "50"/>
+
+                        <!--BoxView 6 -->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "TwitterProfile_Clicked"
+                            Grid.Row = "5"   
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "twitterlogo1.png"   
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!-- BoxView 7 -->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "LinkedinProfile_Clicked"
+                            Grid.Row = "6" 
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "linkedin1.png"
+                            VerticalOptions = "Center"
+                            WidthRequest = "50"/>
+
+                        <!--BoxView 8-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "TiktokProfile_Clicked"
+                            Grid.Row = "7"   
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "tiktok1.png"   
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!--BoxView 9-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "SnapchatProfile_Clicked"
+                            Grid.Row = "8" 
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "snapchat1.png"
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!--BoxView 10-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "SpotifyProfile_Clicked"
+                            Grid.Row = "9"   
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "spotify1.png"   
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!--BoxView 11-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "YoutubeProfile_Clicked"
+                            Grid.Row = "10"   
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "youtube1.png"   
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!--BoxView 12-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "TwitchProfile_Clicked"
+                            Grid.Row = "11"   
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "twitch1.png"   
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!--BoxView 13-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "WebPageProfile_Clicked"
+                            Grid.Row = "12"   
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "gmail1.png"   
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+
+                        <!--BoxView 14-->
+                        <ImageButton 
+                            BackgroundColor = "Transparent"
+                            Clicked = "TelegramProfile_Clicked"
+                            Grid.Row = "13"   
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            Source = "telegram1.png"   
+                            VerticalOptions = "Center"
+                            WidthRequest = "50" />
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <Grid
+                Grid.Column="1">
+                <Grid>
+                    <ActivityIndicator
+                        IsRunning = "{Binding IsRunning}"
+                        HorizontalOptions = "CenterAndExpand"
+                        VerticalOptions="Start" />
+                    <!-- Lista de perfiles de email -->
+                    <Grid
+                        x:Name="ProfileListEmail">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="Email"
+                            TextColor="{StaticResource MainColor}"/>
                         <ListView  
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileEmail, Mode=TwoWay}"
-                            SelectedItem="{Binding selectedProfileEmail}"
-                            x:Name="ProfileListEmail">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileEmail}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="3*" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
@@ -250,28 +245,61 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <!--Lista vacia-->
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Clicked="ButtonEmail_Clicked"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonEmail"/>
+                    </Grid>
 
-                        <!-- Lista de perfiles de teléfono -->
+                    <!-- Lista de perfiles de teléfono -->
+                    <Grid
+                        x:Name="ProfileListPhone">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="Phone"
+                            TextColor="{StaticResource MainColor}"/>
                         <ListView 
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfilePhone, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfilePhone, Mode=TwoWay}"
-                            x:Name="ProfileListPhone">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfilePhone, Mode=TwoWay}">
                             <ListView.ItemTemplate>
                                 <DataTemplate >
                                     <ViewCell>
-                                        <Grid Padding="15">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="3*" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
@@ -299,36 +327,70 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <!--Lista vacia-->
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Clicked="ButtonPhone_Clicked"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonPhone"/>
+                    </Grid>
 
-                        <!-- Lista de Facebook -->
-                        <ListView 
-                            Grid.RowSpan="2"
+                    <!-- Lista de Facebook -->
+                    <Grid
+                        x:Name="ProfileListFacebook">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="Facebook"
+                            TextColor="{StaticResource MainColor}"/>
+                        <ListView    
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListFacebook">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Margin="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="3*" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
                                                 HeightRequest="30"
-                                                Margin="0,0,20,0"
                                                 Source="facebook2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 Text="{Binding ProfileName}"
@@ -340,26 +402,59 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonFacebook"/>
+                    </Grid>
 
-                        <!-- Lista de Instagram -->
+                    <!-- Lista de Instagram -->
+                    <Grid
+                        x:Name="ProfileListInstagram">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="Instagram"
+                            TextColor="{StaticResource MainColor}"/>
                         <ListView 
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListInstagram">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="3*" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
@@ -368,12 +463,11 @@
                                                 Source="instagramlogo2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalTextAlignment = "Start"
                                                 HorizontalOptions="Center"
-                                                Margin="0,0,20,0"
                                                 Text="{Binding ProfileName}"
                                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                                 VerticalOptions="Center"/>
@@ -382,19 +476,53 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonInstagram"/>
+                    </Grid>
 
-                        <!-- Lista de Linkedin -->
-                        <ListView 
+                    <!-- Lista de Linkedin -->
+                    <Grid
+                        x:Name="ProfileListLinkedin">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
                             Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="LinkedIn"
+                            TextColor="{StaticResource MainColor}"/>
+                        <ListView 
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListLinkedin">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
@@ -410,7 +538,7 @@
                                                 Source="linkedin2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -424,19 +552,53 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonLinkedin"/>
+                    </Grid>
 
-                        <!-- Lista de Snapchat -->
+                    <!-- Lista de Snapchat -->
+                    <Grid
+                        x:Name="ProfileListSnapchat">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="SnapChat"
+                            TextColor="{StaticResource MainColor}"/>
                         <ListView 
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListSnapchat">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
@@ -452,7 +614,7 @@
                                                 Source="snapchat2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -466,19 +628,53 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonSnapchat"/>
+                    </Grid>
 
-                        <!-- Lista de Spotify -->
-                        <ListView 
-                            Grid.RowSpan="2"
+                    <!-- Lista de Spotify -->
+                    <Grid
+                        x:Name="ProfileListSpotify">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="Spotify"
+                            TextColor="{StaticResource MainColor}"/>
+                        <ListView              
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListSpotify">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
@@ -494,7 +690,7 @@
                                                 Source="spotify2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -508,26 +704,59 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonSpotify"/>
+                    </Grid>
 
-                        <!-- Lista de Telegram -->
+                    <!-- Lista de Telegram -->
+                    <Grid
+                        x:Name="ProfileListTelegram">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="Telegram"
+                            TextColor="{StaticResource MainColor}"/>
                         <ListView 
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListTelegram">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="3*" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
@@ -536,7 +765,7 @@
                                                 Source="telegram2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 Margin="0,0,20,0"
@@ -549,19 +778,53 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonTelegram"/>
+                    </Grid>
 
-                        <!-- Lista de Tiktok -->
+                    <!-- Lista de Tiktok -->
+                    <Grid
+                        x:Name="ProfileListTiktok">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="TikTok"
+                            TextColor="{StaticResource MainColor}"/>
                         <ListView 
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListTiktok">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
@@ -577,7 +840,7 @@
                                                 Source="tiktok2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 Margin="0,0,20,0"
@@ -590,19 +853,53 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonTiktok"/>
+                    </Grid>
 
-                        <!-- Lista de Twitch -->
-                        <ListView 
-                            Grid.RowSpan="2"
+                    <!-- Lista de Twitch -->
+                    <Grid
+                        x:Name="ProfileListTwitch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="Twitch"
+                            TextColor="{StaticResource MainColor}"/>
+                        <ListView          
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListTwitch">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
@@ -618,7 +915,7 @@
                                                 Source="twitch2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -632,26 +929,59 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"                            
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonTwitch"/>
+                    </Grid>
 
-                        <!-- Lista de Twitter -->
-                        <ListView 
-                            Grid.RowSpan="2"
+                    <!-- Lista de Twitter -->
+                    <Grid
+                        x:Name="ProfileListTwitter">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="Twitter"
+                            TextColor="{StaticResource MainColor}"/>
+                        <ListView
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListTwitter">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="3*" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
@@ -660,7 +990,7 @@
                                                 Source="twitterlogo2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -674,26 +1004,59 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonTwitter"/>
+                    </Grid>
 
-                        <!-- Lista de WebPage -->
+                    <!-- Lista de WebPage -->
+                    <Grid
+                        x:Name="ProfileListWebPage">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="WebPage"
+                            TextColor="{StaticResource MainColor}"/>
                         <ListView 
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListWebPage">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="3*" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
@@ -702,7 +1065,7 @@
                                                 Source="gmail2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -716,26 +1079,59 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonWebPage"/>
+                    </Grid>
 
-                        <!-- Lista de WhatsApp -->
+                    <!-- Lista de WhatsApp -->
+                    <Grid
+                        x:Name="ProfileListWhatsapp">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            Margin="0,10,0,15"
+                            HorizontalOptions="Center"
+                            Text="Whatsapp"
+                            TextColor="{StaticResource MainColor}"/>
                         <ListView 
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileWhatsapp, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileWhatsapp}"
-                            x:Name="ProfileListWhatsapp">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileWhatsapp}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="3*" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
@@ -747,7 +1143,7 @@
                                                 FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
-                                                Margin="0,0,10,0"
+                                                Margin="0,0,15,0"
                                                 Text="{Binding Name}"
                                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                                 VerticalOptions="Start"
@@ -764,26 +1160,60 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding EmptyList}"
+                            Text="{i18n:Translate ProfileNull}"
+                            TextColor="LightGray"
+                            VerticalOptions="Center"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Clicked="ButtonWhatsapp_Clicked"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonWhatsapp"/>
+                    </Grid>
 
-                        <!-- Lista de Youtube -->
+                    <!-- Lista de Youtube -->
+                    <Grid
+                        x:Name="ProfileListYoutube">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            Margin="0,10,0,15"
+                            Text="YouTube"
+                            TextColor="{StaticResource MainColor}"/>
                         <ListView 
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileSM, Mode=TwoWay}"
-                            Margin="10,-10,10,20"
-                            SelectedItem="{Binding selectedProfileSM}"
-                            x:Name="ProfileListYoutube">
+                            ItemTapped="OnListViewItemTapped"
+                            SelectedItem="{Binding selectedProfileSM}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="20">
+                                        <Grid 
+                                            Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="3*" />
                                             </Grid.ColumnDefinitions>
                                             <ImageButton
                                                 BackgroundColor="Transparent"
@@ -792,11 +1222,10 @@
                                                 Source="youtube2"
                                                 WidthRequest="30"/>
                                             <Label 
-                                                FontSize="18"
+                                                FontSize="15"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
-                                                Margin="0,0,20,0"
                                                 Text="{Binding ProfileName}"
                                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                                 VerticalOptions="Center"
@@ -806,22 +1235,28 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
-                        <!--Lista vacia-->
                         <Label
                             FontAttributes="Bold"
-                            FontSize="21"
-                            Grid.Column="0"
-                            Grid.Row="0"
+                            FontSize="20"
+                            Grid.Row="1"
                             HorizontalTextAlignment="Center"
-                            HorizontalOptions="CenterAndExpand"
+                            HorizontalOptions="Center"
                             IsVisible="{Binding EmptyList}"
-                            Margin="0,-300,0,0"
                             Text="{i18n:Translate ProfileNull}"
                             TextColor="LightGray"
-                            VerticalOptions="CenterAndExpand"/>
+                            VerticalOptions="Center"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Grid.Row="2"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,15"
+                            Source="Plus"
+                            VerticalOptions="End"
+                            WidthRequest="60"
+                            x:Name="ButtonYoutube"/>
                     </Grid>
-                </ScrollView>
+                </Grid>
             </Grid>
         </Grid>
     </ContentPage.Content>

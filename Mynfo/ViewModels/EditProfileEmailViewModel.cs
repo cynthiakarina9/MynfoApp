@@ -115,7 +115,7 @@
             this.IsEnabled = true;
 
             //Agregar a la lista
-            MainViewModel.GetInstance().ProfilesByEmail.updateProfile(profile);
+            MainViewModel.GetInstance().Profiles.updateProfileEmail(profile);
             await App.Navigator.PopAsync();
         }
 
@@ -158,7 +158,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            MainViewModel.GetInstance().ProfilesByEmail.removeProfile();
+            MainViewModel.GetInstance().Profiles.removeProfileEmail();
 
             await App.Navigator.PopAsync();
         }

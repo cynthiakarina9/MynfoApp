@@ -43,7 +43,7 @@
         #endregion
 
         #region Constructor
-        public EditProfileInstagramViewModel(int _ProfileMSId)
+        public EditProfileInstagramViewModel(int _ProfileMSId, int a)
         {
             apiService = new ApiService();
             GetProfile(_ProfileMSId);

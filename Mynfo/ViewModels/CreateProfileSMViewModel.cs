@@ -289,44 +289,45 @@
             }
             else
             {
-                switch (Type)
-                {
-                    case "Facebook":
-                        mainViewModel.ProfilesByFacebook.addProfile(profileSM);
-                        break;
-                    case "Instagram":
-                        mainViewModel.ProfilesByInstagram.addProfile(profileSM);
-                        break;
-                    case "Twitter":
-                        mainViewModel.ProfilesByTwitter.addProfile(profileSM);
-                        break;
-                    case "Snapchat":
-                        mainViewModel.ProfilesBySnapchat.addProfile(profileSM);
-                        break;
-                    case "LinkedIn":
-                        mainViewModel.ProfilesByLinkedin.addProfile(profileSM);
-                        break;
-                    case "TikTok":
-                        mainViewModel.ProfilesByTiktok.addProfile(profileSM);
-                        break;
-                    case "Youtube":
-                        mainViewModel.ProfilesByYoutube.addProfile(profileSM);
-                        break;
-                    case "Spotify":
-                        mainViewModel.ProfilesBySpotify.addProfile(profileSM);
-                        break;
-                    case "Twitch":
-                        mainViewModel.ProfilesByTwitch.addProfile(profileSM);
-                        break;
-                    case "WebPage":
-                        mainViewModel.ProfilesByWebPage.addProfile(profileSM);
-                        break;
-                    case "Telegram":
-                        mainViewModel.ProfilesByTelegram.addProfile(profileSM);
-                        break;
-                    default:
-                        break;
-                }                
+                mainViewModel.Profiles.addProfileSM(profileSM);
+                //switch (Type)
+                //{
+                //    case "Facebook":
+                //        mainViewModel.Profiles.addProfileSM(profileSM);
+                //        break;
+                //    case "Instagram":
+                //        mainViewModel.ProfilesByInstagram.addProfile(profileSM);
+                //        break;
+                //    case "Twitter":
+                //        mainViewModel.ProfilesByTwitter.addProfile(profileSM);
+                //        break;
+                //    case "Snapchat":
+                //        mainViewModel.ProfilesBySnapchat.addProfile(profileSM);
+                //        break;
+                //    case "LinkedIn":
+                //        mainViewModel.ProfilesByLinkedin.addProfile(profileSM);
+                //        break;
+                //    case "TikTok":
+                //        mainViewModel.ProfilesByTiktok.addProfile(profileSM);
+                //        break;
+                //    case "Youtube":
+                //        mainViewModel.ProfilesByYoutube.addProfile(profileSM);
+                //        break;
+                //    case "Spotify":
+                //        mainViewModel.ProfilesBySpotify.addProfile(profileSM);
+                //        break;
+                //    case "Twitch":
+                //        mainViewModel.ProfilesByTwitch.addProfile(profileSM);
+                //        break;
+                //    case "WebPage":
+                //        mainViewModel.ProfilesByWebPage.addProfile(profileSM);
+                //        break;
+                //    case "Telegram":
+                //        mainViewModel.ProfilesByTelegram.addProfile(profileSM);
+                //        break;
+                //    default:
+                //        break;
+                //}                
             }
 
 

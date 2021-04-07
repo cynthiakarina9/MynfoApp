@@ -168,7 +168,7 @@
             #endregion
 
 
-            MainViewModel.GetInstance().ProfilesByPhone.updateProfile(profile);
+            MainViewModel.GetInstance().Profiles.updateProfilePhone(profile);
 
             await App.Navigator.PopAsync();
         }
@@ -212,7 +212,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            MainViewModel.GetInstance().ProfilesByPhone.removeProfile();
+            MainViewModel.GetInstance().Profiles.removeProfilePhone();
 
             await App.Navigator.PopAsync();
         }
