@@ -499,6 +499,8 @@
         private void WhatsAppProfile_Clicked(object sender, EventArgs e)
         {
             MainViewModel.GetInstance().Profiles.GetListWhatsapp();
+
+            #region Listas
             ProfileListEmail.IsVisible = false;
             ProfileListPhone.IsVisible = false;
             ProfileListFacebook.IsVisible = false;
@@ -513,6 +515,24 @@
             ProfileListWebPage.IsVisible = false;
             ProfileListWhatsapp.IsVisible = true;
             ProfileListYoutube.IsVisible = false;
+            #endregion
+
+            #region Buttons
+            ButtonEmail.IsVisible = false;
+            ButtonFacebook.IsVisible = false;
+            ButtonInstagram.IsVisible = false;
+            ButtonLinkedin.IsVisible = false;
+            ButtonPhone.IsVisible = false;
+            ButtonSnapchat.IsVisible = false;
+            ButtonSpotify.IsVisible = false;
+            ButtonTelegram.IsVisible = false;
+            ButtonTiktok.IsVisible = false;
+            ButtonTwitch.IsVisible = false;
+            ButtonTwitter.IsVisible = false;
+            ButtonWebPage.IsVisible = false;
+            ButtonWhatsapp.IsVisible = true;
+            ButtonYoutube.IsVisible = false;
+            #endregion
         }
 
         private void YoutubeProfile_Clicked(object sender, EventArgs e)

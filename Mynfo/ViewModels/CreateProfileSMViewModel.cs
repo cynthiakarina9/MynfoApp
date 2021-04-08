@@ -157,7 +157,7 @@
                     ProfileType1 = "Snapchat";
                     Logo1 = "snapchat2";
                     break;
-                case "LinkedIn":
+                case "Linkedin":
                     Profile = new ProfileSM
                     {
                         ProfileName = this.Name,

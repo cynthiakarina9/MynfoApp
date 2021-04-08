@@ -274,6 +274,8 @@
                         x:Name="ProfileListPhone">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -356,6 +358,8 @@
                         x:Name="ProfileListFacebook">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -429,6 +433,8 @@
                         x:Name="ProfileListInstagram">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -503,6 +509,8 @@
                         x:Name="ProfileListLinkedin">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -579,6 +587,8 @@
                         x:Name="ProfileListSnapchat">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -655,6 +665,8 @@
                         x:Name="ProfileListSpotify">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -731,6 +743,8 @@
                         x:Name="ProfileListTelegram">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -805,6 +819,8 @@
                         x:Name="ProfileListTiktok">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -880,6 +896,8 @@
                         x:Name="ProfileListTwitch">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -956,6 +974,8 @@
                         x:Name="ProfileListTwitter">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -1031,6 +1051,8 @@
                         x:Name="ProfileListWebPage">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -1106,6 +1128,8 @@
                         x:Name="ProfileListWhatsapp">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
@@ -1188,6 +1212,8 @@
                         x:Name="ProfileListYoutube">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Label
                             FontAttributes="Bold"
