@@ -7,7 +7,7 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <NavigationPage.TitleView>
         <Grid
-            BindingContext = "{Binding EditProfileLinkedin}">
+            BindingContext = "{Binding EdithProfile}">
             <ImageButton
                 BackgroundColor = "Transparent"
                 Command="{Binding BackHomeCommand}"
@@ -21,7 +21,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid
-            BindingContext = "{Binding EditProfileLinkedin}">
+            BindingContext = "{Binding EdithProfile}">
             <ScrollView>
                 <Grid>
                     <Grid.RowDefinitions>

@@ -166,7 +166,7 @@
             }
             else
             {
-                mainViewModel.ProfilesByPhone.addProfile(profilephone);
+                mainViewModel.Profiles.addProfilePhone(profilephone);
             }
 
             this.Name = string.Empty;

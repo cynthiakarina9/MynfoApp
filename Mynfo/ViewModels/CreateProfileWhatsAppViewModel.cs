@@ -176,7 +176,7 @@
             }
             else
             {
-                mainViewModel.ProfilesByWhatsApp.addProfile(profileWhatsapp);
+                mainViewModel.Profiles.addProfileWhatsapp(profileWhatsapp);
             }
 
             this.Name = string.Empty;

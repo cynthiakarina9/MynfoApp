@@ -48,7 +48,7 @@
 
             ProfileSM tappedItem = e.Item as ProfileSM;
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.EditProfileInstagram = new EditProfileInstagramViewModel(tappedItem.ProfileMSId);
+            mainViewModel.EdithProfile = new EdithProfileViewModel(tappedItem.ProfileMSId);
             App.Navigator.PushAsync(new EditProfileInstagramPage());
         }
         #endregion

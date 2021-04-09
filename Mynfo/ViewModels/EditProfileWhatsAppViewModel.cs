@@ -136,7 +136,7 @@
 
 
             //Agregar a la lista
-            MainViewModel.GetInstance().ProfilesByWhatsApp.updateProfile(profile);
+            MainViewModel.GetInstance().Profiles.updateProfileWhatsapp(profile);
 
             await App.Navigator.PopAsync();
         }
@@ -180,7 +180,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            MainViewModel.GetInstance().ProfilesByWhatsApp.removeProfile();
+            MainViewModel.GetInstance().Profiles.removeProfileWhatsapp();
 
             await App.Navigator.PopAsync();
         }

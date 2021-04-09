@@ -167,6 +167,12 @@
             get; 
             set;
         }
+
+        public EdithProfileViewModel EdithProfile
+        {
+            get;
+            set;
+        }
         public EditProfileFacebookViewModel EditProfileFacebook
         {
             get;

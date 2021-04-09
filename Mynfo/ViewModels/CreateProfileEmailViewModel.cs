@@ -158,7 +158,7 @@
             }
             else
             {
-                mainViewModel.ProfilesByEmail.addProfile(profileemail);
+                mainViewModel.Profiles.addProfileEmail(profileemail);
             }
 
             this.Name = string.Empty;

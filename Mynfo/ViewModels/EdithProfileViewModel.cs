@@ -3,12 +3,13 @@
     using GalaSoft.MvvmLight.Command;
     using Mynfo.Domain;
     using Mynfo.Helpers;
+    using Mynfo.Services;
     using Mynfo.Views;
-    using Services;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
-    public class EditProfileFacebookViewModel : BaseViewModel
+
+    public class EdithProfileViewModel : BaseViewModel
     {
         #region Services
         ApiService apiService;
@@ -43,12 +44,13 @@
         #endregion
 
         #region Constructor
-        public EditProfileFacebookViewModel(int _ProfileMSId)
+        public EdithProfileViewModel(int _ProfileMSId)
         {
             apiService = new ApiService();
             GetProfile(_ProfileMSId);
         }
         #endregion
+
 
         #region Methods
         private async Task<ProfileSM> GetProfile(int _ProfileMSId)
@@ -90,14 +92,6 @@
                     Languages.Accept);
                 return;
             }
-            if (!RegexUtilities.IsValidURL(this.profileSM.link))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.LinkValidation,
-                    Languages.Accept);
-                return;
-            }
             this.IsRunning = true;
             this.IsEnabled = false;
             var checkConnetion = await this.apiService.CheckConnection();
@@ -121,7 +115,9 @@
 
             this.IsRunning = false;
             this.IsEnabled = true;
+
             MainViewModel.GetInstance().Profiles.updateProfileSM(profile);
+
             await App.Navigator.PopAsync();
         }
 
