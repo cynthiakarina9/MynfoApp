@@ -74,7 +74,7 @@
                                     <StackLayout 
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand">
-                                        <Label Text="No Boxes   yet"/>
+                                        <Label Text="No Boxes  yet"/>
                                     </StackLayout>
                                 </ContentView>
                             </CollectionView.EmptyView>
