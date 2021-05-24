@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mynfo.Models
+﻿namespace Mynfo.Models
 {
     using System;
     using Newtonsoft.Json;
     using SQLite;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
 
     public class TokenResponse
     {

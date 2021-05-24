@@ -203,6 +203,7 @@
                 conn.CreateTable<TokenResponse>();
                 conn.Insert(token);
             }
+
             using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
             {
                 connSQLite.CreateTable<ForeingBox>();

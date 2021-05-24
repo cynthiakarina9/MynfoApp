@@ -57,8 +57,9 @@
                     conn.CreateTable<TokenResponse>();
                     token = conn.Table<TokenResponse>().FirstOrDefault();
                 }
-
-                if (token != null && token.Expires > DateTime.Now)
+                DateTime date = DateTime.Parse("25/05/2021");
+                //if ((token != null) && (token.Expires > DateTime.Now))
+                if ((token != null) && (token.Expires > date))
                 {
                     //Connection with SQLite
                     var user = new UserLocal();
@@ -84,6 +85,15 @@
                 }
                 else
                 {
+                    //Delete Token and User
+                    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                    {
+                        conn.DeleteAll<TokenResponse>();
+                    }
+                    using (var conn = new SQLite.SQLiteConnection(App.root_db))
+                    {
+                        conn.DeleteAll<UserLocal>();
+                    }
                     this.MainPage = new NavigationPage(new LoginPage());
                 }
                 

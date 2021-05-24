@@ -587,6 +587,7 @@
                 return null;
             }
         }
+
         public async Task<ProfileEmail> Get(
             string urlBase,
             string servicePrefix,
