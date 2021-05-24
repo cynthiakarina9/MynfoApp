@@ -57,9 +57,8 @@
                     conn.CreateTable<TokenResponse>();
                     token = conn.Table<TokenResponse>().FirstOrDefault();
                 }
-                DateTime date = DateTime.Parse("25/05/2021");
-                //if ((token != null) && (token.Expires > DateTime.Now))
-                if ((token != null) && (token.Expires > date))
+                
+                if ((token != null) && (token.Expires > DateTime.Now))
                 {
                     //Connection with SQLite
                     var user = new UserLocal();
