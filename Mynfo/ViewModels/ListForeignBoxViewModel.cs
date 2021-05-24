@@ -25,6 +25,7 @@
                 SetValue(ref foreingBox, value);
             }
         }
+        public ForeingBox selectedItem { get; set; }
         #endregion
 
         #region Contructor
@@ -60,7 +61,7 @@
             {
                 int a = conn.Table<ForeingProfile>().Count();
 
-                foreignBoxList = conn.Table<ForeingBox>().ToList();
+                foreignBoxList = conn.Query<ForeingBox>("select * from ForeingBox where ForeingBox.UserRecivedId = ?", MainViewModel.GetInstance().User.UserId);                
             }
 
             foreach (ForeingBox foreingBoxValue in foreignBoxList)
@@ -81,7 +82,7 @@
             int newIndex = 0;
             for(int i = 0; i < ForeingBox.Count; i++)
             {
-                if(ForeingBox[i].BoxId == findValue)
+                if(ForeingBox[i].BoxId == findValue && ForeingBox[i].UserRecivedId == MainViewModel.GetInstance().User.UserId)
                 {
                     newIndex = i;
                 }
@@ -98,7 +99,7 @@
 
             using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
             {
-                list = connSQLite.Query<ForeingBox>("select * from ForeingBox where ForeingBox.UserId = ?", _UserId);
+                list = connSQLite.Query<ForeingBox>("select * from ForeingBox where ForeingBox.UserId = "+ _UserId + " and ForeingBox.UserRecivedId = "+ MainViewModel.GetInstance().User.UserId);
             }
 
             foreach(ForeingBox foreing in list)
@@ -107,7 +108,7 @@
                 int newIndex = 0;
                 for (int i = 0; i < ForeingBox.Count; i++)
                 {
-                    if (ForeingBox[i].BoxId == findValue)
+                    if (ForeingBox[i].BoxId == findValue && ForeingBox[i].UserRecivedId == MainViewModel.GetInstance().User.UserId)
                     {
                         newIndex = i;
                     }
@@ -117,6 +118,19 @@
 
                 ForeingBox.Insert(newIndex, foreing);
             }
+        }
+
+        public void DeleteList(int a)
+        {
+            var F = new ForeingBox();
+            foreach (ForeingBox BoxF in ForeingBox)
+            {
+                if(BoxF.BoxId == a && BoxF.UserRecivedId == MainViewModel.GetInstance().User.UserId)
+                {
+                    F = BoxF;
+                } 
+            }
+            ForeingBox.Remove(F);
         }
         #endregion
 

@@ -28,20 +28,24 @@
                 <Grid>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40*"/>
-                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="70*"/>
                         </Grid.RowDefinitions>
                         <!-- Información del usuario foraneo-->
-                        <StackLayout
+                        <Grid
                             Grid.Row="0"
                             HorizontalOptions="CenterAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                            </Grid.RowDefinitions>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50*"/>
-                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <controls:CircleImage
                                     BorderColor="{StaticResource MainColor}"
@@ -58,10 +62,10 @@
                                     Grid.Column="1"
                                     Grid.Row="0"
                                     FontAttributes="Bold"
-                                    FontSize = "20"
+                                    FontSize = "15"
+                                    HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     TextColor = "{StaticResource MainColor}"
-                                    VerticalOptions="Center"
                                     x:Name="ForeignUserName"/>
                                 <Grid
                                     Grid.Column="1"
@@ -104,41 +108,48 @@
                                 </Grid>
                             </Grid>
                             <Line
+                                Grid.Row="2"
                                 HeightRequest="1"
                                 BackgroundColor="#FF5521"
-                                Margin="0,0,0,40"/>
-                        </StackLayout>
+                                Margin="0,0,0,0"
+                                WidthRequest="1"/>
+                        </Grid>
 
                         <!-- Listado de perfiles -->
-                        <CollectionView 
-                            ItemsSource="{Binding ProfilesF}"
+                        <StackLayout
                             Grid.Row="1"
-                            SelectionMode="Single"
-                            SelectionChanged="OnCollectionViewSelectionChanged">
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Vertical"
-                                        Span="3" />
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout
-                                        BackgroundColor="Transparent"
-                                        Padding="10">
-                                        <Image
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Start">
+                            <CollectionView 
+                                ItemsSource="{Binding ProfilesF}"                                
+                                SelectionMode="Single"
+                                SelectionChanged="OnCollectionViewSelectionChanged">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical"
+                                            Span="3" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
                                             BackgroundColor="Transparent"
-                                            HeightRequest="50"
-                                            Source="{Binding Logo}"
-                                            WidthRequest="50"/>
-                                        <!--<Label
-                                                HorizontalTextAlignment="Center"
-                                                Text="{Binding ProfileName}"
-                                                FontAttributes="Bold"
-                                                TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />-->
+                                            Padding="10">
+                                            <Image
+                                                BackgroundColor="Transparent"
+                                                HeightRequest="50"
+                                                Source="{Binding Logo}"
+                                                WidthRequest="50"/>
+                                            <!--<Label
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding ProfileName}"
+                                                    FontAttributes="Bold"
+                                                    TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}" />-->
 
-                                    </StackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                        
                     </Grid>
                 </Grid>
             </Grid>

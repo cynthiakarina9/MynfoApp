@@ -1,6 +1,7 @@
 ﻿namespace Mynfo.Domain
 {
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -45,6 +46,9 @@
 
         [Display(Name = "Conexiones")]
         public int Conexiones { get; set; }
+
+        [Display(Name = "Fecha")]
+        public virtual DateTime Fecha { get; set; }
 
         [JsonIgnore]
         public virtual UserType UserType { get; set; }

@@ -48,7 +48,8 @@
         public EditProfileEmailViewModel(int _ProfileEmailId)
         {
             apiService = new ApiService();
-            GetProfileEmail( _ProfileEmailId);
+            var a = _ProfileEmailId;
+            GetProfileEmail( a);
         }
         #endregion
 

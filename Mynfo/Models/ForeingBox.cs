@@ -31,6 +31,8 @@
 
         public int Conexiones { get; set; }
 
+        public int UserRecivedId { get; set; }
+
         public string ImageFullPath
         {
             get

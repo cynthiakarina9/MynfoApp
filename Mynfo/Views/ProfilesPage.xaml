@@ -5,18 +5,40 @@
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLigth}, Dark={StaticResource BackgroundColorDark}}"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="Mynfo.Views.ProfilesPage">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid
             BindingContext="{Binding Profiles}"
             Grid.Row="0"
             VerticalOptions="FillAndExpand">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="75*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="70*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="70*"/>
+            </Grid.RowDefinitions>
             <ScrollView
                 BindingContext="{Binding Profiles}"
                 Grid.Column="0"
+                Grid.RowSpan="2"
                 HorizontalOptions="Center">
                 <Grid>
                     <Grid>
@@ -28,158 +50,243 @@
                             BackgroundColor = "Transparent"
                             Clicked = "EmailProfile_Clicked"
                             Grid.Row = "0"   
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "mail1.png"   
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!--BoxView 2-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "PhoneProfile_Clicked"
                             Grid.Row = "1" 
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "tel1.png"
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!--BoxView 3-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "WhatsAppProfile_Clicked"
                             Grid.Row = "2" 
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "whatsapp1.png"
                             VerticalOptions = "Center"
-                            WidthRequest = "50"/>
+                            WidthRequest = "60"/>
                         <!--BoxView 4-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "FacebookProfile_Clicked"
                             Grid.Row = "3" 
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "facebook1.png"
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!--BoxView 5-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "InstagramProfile_Clicked"
                             Grid.Row = "4" 
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "instagramlogo1.png"
                             VerticalOptions = "Center"
-                            WidthRequest = "50"/>
+                            WidthRequest = "60"/>
 
                         <!--BoxView 6 -->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "TwitterProfile_Clicked"
                             Grid.Row = "5"   
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "twitterlogo1.png"   
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!-- BoxView 7 -->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "LinkedinProfile_Clicked"
                             Grid.Row = "6" 
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "linkedin1.png"
                             VerticalOptions = "Center"
-                            WidthRequest = "50"/>
+                            WidthRequest = "60"/>
 
                         <!--BoxView 8-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "TiktokProfile_Clicked"
                             Grid.Row = "7"   
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "tiktok1.png"   
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!--BoxView 9-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "SnapchatProfile_Clicked"
                             Grid.Row = "8" 
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "snapchat1.png"
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!--BoxView 10-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "SpotifyProfile_Clicked"
                             Grid.Row = "9"   
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "spotify1.png"   
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!--BoxView 11-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "YoutubeProfile_Clicked"
                             Grid.Row = "10"   
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "youtube1.png"   
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!--BoxView 12-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "TwitchProfile_Clicked"
                             Grid.Row = "11"   
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "twitch1.png"   
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!--BoxView 13-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "WebPageProfile_Clicked"
                             Grid.Row = "12"   
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "gmail1.png"   
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
 
                         <!--BoxView 14-->
                         <ImageButton 
                             BackgroundColor = "Transparent"
                             Clicked = "TelegramProfile_Clicked"
                             Grid.Row = "13"   
-                            HeightRequest = "50"
+                            HeightRequest = "60"
                             HorizontalOptions = "Center"
                             Source = "telegram1.png"   
                             VerticalOptions = "Center"
-                            WidthRequest = "50" />
+                            WidthRequest = "60" />
                     </Grid>
                 </Grid>
             </ScrollView>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="mail2"
+                Scale="0.6"
+                x:Name="ImageEmail"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="tel2"
+                Scale="0.6"
+                x:Name="ImagePhone"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="facebook2"
+                Scale="0.6"
+                x:Name="ImageFacebook"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="instagramlogo2"
+                Scale="0.6"
+                x:Name="ImageInstagram"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="twitterlogo2"
+                Scale="0.6"
+                x:Name="ImageTwitter"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="snapchat2"
+                Scale="0.6"
+                x:Name="ImageSnapchat"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="linkedin2"
+                Scale="0.6"
+                x:Name="ImageLinkedIn"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="tiktok2"
+                Scale="0.6"
+                x:Name="ImageTiktok"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="twitch2"
+                Scale="0.6"
+                x:Name="ImageTwitch"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="whatsapp2"
+                Scale="0.6"
+                x:Name="ImageWhatsapp"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="telegram2"
+                Scale="0.6"
+                x:Name="ImageTelegram"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="spotify2"
+                Scale="0.6"
+                x:Name="ImageSpotify"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="youtube2"
+                Scale="0.6"
+                x:Name="ImageYoutube"/>
+            <Image 
+                Grid.Column="1"
+                Grid.Row="0"
+                Source="gmail2"
+                Scale="0.6"
+                x:Name="ImageWeb"/>
             <Grid
-                Grid.Column="1">
+                Grid.Column="1"
+                Grid.Row="1">
                 <Grid>
                     <ActivityIndicator
                         IsRunning = "{Binding IsRunning}"
@@ -193,20 +300,22 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="Email"
-                            TextColor="{StaticResource MainColor}"/>
-                        <ListView  
+                            TextColor="{StaticResource MainColor}"/>-->
+                        <!--<ListView  
                             Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileEmail, Mode=TwoWay}"
                             ItemTapped="OnListViewItemTapped"
-                            SelectedItem="{Binding selectedProfileEmail}">
+                            SelectedItem="{Binding selectedProfileEmail}"
+                            HorizontalScrollBarVisibility="Always"
+                            x:Name="EmailList">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -222,21 +331,24 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                Grid.RowSpan="2"
+                                                HeightRequest="40"
                                                 Source="mail2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
+                                                Grid.Row="0"
                                                 Text="{Binding Name}"
                                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                                 VerticalOptions="StartAndExpand"
                                                 HorizontalTextAlignment = "Start"/>
                                             <Label 
                                                 Grid.Column="1"
+                                                Grid.Row="1"
                                                 Text="{Binding Email, Mode=TwoWay}"
-                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                               
                                                 FontSize="13"
                                                 VerticalOptions="EndAndExpand"
                                                 HorizontalTextAlignment="Start"/>
@@ -244,7 +356,69 @@
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>
+                        </ListView>-->
+                        <CollectionView 
+                            ItemsSource="{Binding ProfileEmail, Mode=TwoWay}"
+                            Grid.Row="1"
+                            SelectionChanged="OnCollectionViewSelectionChanged"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding selectedProfileEmail}"
+                            x:Name="EmailList">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout 
+                                    Orientation="Vertical"
+                                    Span="1" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid 
+                                            Padding="0,10,0,10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <ImageButton
+                                                BackgroundColor="Transparent"
+                                                Grid.Column="0"
+                                                Grid.RowSpan="2"
+                                                HeightRequest="40"
+                                                Source="mail2"
+                                                WidthRequest="40"/>
+                                        <Label 
+                                                FontSize="17"
+                                                FontAttributes="Bold" 
+                                                Grid.Column="1"
+                                                Grid.Row="0"
+                                                Text="{Binding Name}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                                VerticalOptions="StartAndExpand"
+                                                HorizontalTextAlignment = "Start"/>
+                                        <Label 
+                                                Grid.Column="1"
+                                                Grid.Row="1"
+                                                Text="{Binding Email, Mode=TwoWay}"
+                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                               
+                                                FontSize="13"
+                                                VerticalOptions="EndAndExpand"
+                                                HorizontalTextAlignment="Start"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.EmptyView>
+                                <ContentView>
+                                    <StackLayout 
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand">
+                                        <Label 
+                                        IsVisible="{Binding EmptyList}"
+                                        Text="{i18n:Translate ProfileNull}"/>
+                                    </StackLayout>
+                                </ContentView>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
                         <!--Lista vacia-->
                         <Label
                             FontAttributes="Bold"
@@ -277,14 +451,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="Phone"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView 
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -298,6 +472,7 @@
                                             Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -306,19 +481,22 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                Grid.RowSpan="2"
+                                                HeightRequest="40"
                                                 Source="tel2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
+                                                Grid.Row="0"
                                                 Text="{Binding Name}"
                                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                                 VerticalOptions="Start"
                                                 HorizontalTextAlignment = "Start"/>
                                             <Label 
                                                 Grid.Column="1"
+                                                Grid.Row="1"
                                                 Text="{Binding Number, Mode=TwoWay}"
                                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
                                                 FontSize="13"
@@ -361,14 +539,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="Facebook"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView    
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -390,11 +568,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="facebook2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 Text="{Binding ProfileName}"
@@ -436,14 +614,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="Instagram"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView 
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -465,11 +643,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="instagramlogo2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalTextAlignment = "Start"
@@ -512,14 +690,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="LinkedIn"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView 
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -542,11 +720,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="linkedin2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -590,14 +768,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="SnapChat"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView 
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -620,11 +798,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="snapchat2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -668,14 +846,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="Spotify"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView              
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -698,11 +876,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="spotify2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -746,14 +924,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="Telegram"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView 
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -775,11 +953,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="telegram2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 Margin="0,0,20,0"
@@ -822,14 +1000,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="TikTok"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView 
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -852,11 +1030,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="tiktok2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 Margin="0,0,20,0"
@@ -899,14 +1077,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="Twitch"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView          
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -929,11 +1107,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="twitch2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -977,14 +1155,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="Twitter"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -1006,11 +1184,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="twitterlogo2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -1054,14 +1232,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="WebPage"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView 
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -1083,11 +1261,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="gmail2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"
@@ -1131,14 +1309,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             Margin="0,10,0,15"
                             HorizontalOptions="Center"
                             Text="Whatsapp"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView 
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -1152,6 +1330,7 @@
                                             Padding="0,10,0,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
@@ -1160,13 +1339,15 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                Grid.RowSpan="2"
+                                                HeightRequest="40"
                                                 Source="whatsapp2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
+                                                Grid.Row="0"
                                                 Margin="0,0,15,0"
                                                 Text="{Binding Name}"
                                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
@@ -1174,6 +1355,7 @@
                                                 HorizontalTextAlignment = "Start"/>
                                             <Label 
                                                 Grid.Column="1"
+                                                Grid.Row="1"
                                                 FontSize="13"
                                                 Text="{Binding Number, Mode=TwoWay}"
                                                 TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
@@ -1215,14 +1397,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <Label
+                        <!--<Label
                             FontAttributes="Bold"
                             FontSize="20"
                             Grid.Row="0"
                             HorizontalOptions="Center"
                             Margin="0,10,0,15"
                             Text="YouTube"
-                            TextColor="{StaticResource MainColor}"/>
+                            TextColor="{StaticResource MainColor}"/>-->
                         <ListView 
                             Grid.Row="1"
                             HasUnevenRows="true"
@@ -1244,11 +1426,11 @@
                                             <ImageButton
                                                 BackgroundColor="Transparent"
                                                 Grid.Column="0"
-                                                HeightRequest="30"
+                                                HeightRequest="40"
                                                 Source="youtube2"
-                                                WidthRequest="30"/>
+                                                WidthRequest="40"/>
                                             <Label 
-                                                FontSize="15"
+                                                FontSize="17"
                                                 FontAttributes="Bold" 
                                                 Grid.Column="1"
                                                 HorizontalOptions="Center"

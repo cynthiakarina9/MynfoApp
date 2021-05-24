@@ -49,84 +49,97 @@
                     HasUnevenRows="true"
                     ItemSelected="OnListViewItemSelected"
                     ItemTapped="OnListViewItemTapped"
+                    SelectedItem="{Binding selectedItem}"
                     Margin="0"
                     x:Name="ForeignBoxList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid 
-                                    Padding="15">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="35*"/>
-                                        <RowDefinition Height="18*"/>
-                                        <RowDefinition Height="18*"/>
-                                        <RowDefinition Height="29*"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30*" />
-                                        <ColumnDefinition Width="70*" />
-                                    </Grid.ColumnDefinitions>
-                                    <controls:CircleImage
-                                        BorderColor="{StaticResource MainColor}"
-                                        BorderThickness="3"
-                                        Grid.Row="0"
-                                        Grid.RowSpan="3"
-                                        Grid.Column="0"
-                                        HeightRequest = "60"
-                                        WidthRequest="60"
-                                        Aspect="AspectFill"
-                                        Source="{Binding ImageFullPath}">
-                                    </controls:CircleImage>
-                                    <Label 
-                                        Grid.Column="1"
-                                        Grid.Row="0"
-                                        FontAttributes="Bold" 
-                                        FontSize="20"
-                                        Text="{Binding FullName}"
-                                        TextColor="{StaticResource MainColor}"
-                                        VerticalTextAlignment="Center"
-                                        Margin="15,0,0,0"/>
-                                    <Label 
-                                        Grid.Column="1"
-                                        Grid.Row="1"
-                                        FontAttributes="Italic" 
-                                        FontSize="15"
-                                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                        VerticalTextAlignment="Center"
-                                        Margin="15,0,0,0"
-                                        IsVisible="{Binding Edad}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Edad}"></Span>
-                                                <Span Text="{i18n:Translate Anios}"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label 
-                                        Grid.Column="1"
-                                        Grid.Row="2"
-                                        FontAttributes="Italic" 
-                                        FontSize="15"
-                                        Text="{Binding Ubicacion}"
-                                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                        VerticalTextAlignment="Center"
-                                        Margin="15,0,0,0"/>
-                                    <Label 
-                                        Grid.ColumnSpan="2"
-                                        Grid.Row="3"
-                                        FontAttributes="Bold" 
-                                        FontSize="15"
-                                        TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                        VerticalTextAlignment="End"
-                                        HorizontalTextAlignment="Center">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span TextColor="{StaticResource MainColor}" Text="{i18n:Translate ViewsLabel}" ></Span>
-                                                <Span Text="{Binding Conexiones}"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </Grid>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem                                                 
+                                                BackgroundColor="LightPink"
+                                                CommandParameter="{Binding BoxId}"
+                                                IconImageSource="trash1"
+                                                Invoked="OnDeleteSwipeItemInvoked"
+                                                Text="Delete"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid 
+                                        Padding="15">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35*"/>
+                                            <RowDefinition Height="18*"/>
+                                            <RowDefinition Height="18*"/>
+                                            <RowDefinition Height="29*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30*" />
+                                            <ColumnDefinition Width="70*" />
+                                        </Grid.ColumnDefinitions>
+                                        <controls:CircleImage
+                                            BorderColor="{StaticResource MainColor}"
+                                            BorderThickness="3"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="3"
+                                            Grid.Column="0"
+                                            HeightRequest = "60"
+                                            WidthRequest="60"
+                                            Aspect="AspectFill"
+                                            Source="{Binding ImageFullPath}">
+                                        </controls:CircleImage>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            FontAttributes="Bold" 
+                                            FontSize="15"
+                                            Text="{Binding FullName}"
+                                            TextColor="{StaticResource MainColor}"
+                                            VerticalTextAlignment="Center"
+                                            Margin="15,0,0,0"/>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            FontAttributes="Italic" 
+                                            FontSize="15"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                            VerticalTextAlignment="Center"
+                                            Margin="15,0,0,0"
+                                            IsVisible="{Binding Edad}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Edad}"></Span>
+                                                    <Span Text="{i18n:Translate Anios}"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            FontAttributes="Italic" 
+                                            FontSize="15"
+                                            Text="{Binding Ubicacion}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                            VerticalTextAlignment="Center"
+                                            Margin="15,0,0,0"/>
+                                        <Label 
+                                            Grid.ColumnSpan="2"
+                                            Grid.Row="3"
+                                            FontAttributes="Bold" 
+                                            FontSize="15"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                            VerticalTextAlignment="End"
+                                            HorizontalTextAlignment="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span TextColor="{StaticResource MainColor}" Text="{i18n:Translate ViewsLabel}" ></Span>
+                                                    <Span Text="{Binding Conexiones}"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </SwipeView>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

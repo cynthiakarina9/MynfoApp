@@ -91,7 +91,7 @@ namespace Mynfo.Services
             //Validar que la box no exista
             using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
             {
-                A = connSQLite.FindWithQuery<ForeingBox>("select * from ForeingBox where ForeingBox.BoxId = ?", box_id);
+                A = connSQLite.FindWithQuery<ForeingBox>("select * from ForeingBox where ForeingBox.BoxId = " + box_id + " and ForeingBox.UserRecivedId = " + MainViewModel.GetInstance().User.UserId);
             }
 
             if (A == null)
@@ -110,7 +110,8 @@ namespace Mynfo.Services
                     Edad = box_detail.Edad,
                     Ubicacion = box_detail.Ubicacion,
                     Ocupacion = box_detail.Ocupacion,
-                    Conexiones = box_detail.Conexiones
+                    Conexiones = box_detail.Conexiones,
+                    UserRecivedId = MainViewModel.GetInstance().User.UserId
                 };
 
                 //Insertar la box foranea

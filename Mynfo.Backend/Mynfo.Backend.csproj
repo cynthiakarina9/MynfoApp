@@ -312,16 +312,16 @@
     <Content Include="Views\Boxes\Details.cshtml" />
     <Content Include="Views\Boxes\Edit.cshtml" />
     <Content Include="Views\Boxes\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\RedSocials\Create.cshtml" />
     <Content Include="Views\RedSocials\Delete.cshtml" />
     <Content Include="Views\RedSocials\Details.cshtml" />
     <Content Include="Views\RedSocials\Edit.cshtml" />
     <Content Include="Views\RedSocials\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

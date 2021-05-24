@@ -2,6 +2,7 @@
 {
     using Mynfo.Domain;
     using System;
+    using System.Linq;
     using ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
@@ -9,11 +10,13 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilesPage : ContentPage
     {
+        public ProfileEmail selectedItem { get; set; }
+
         public ProfilesPage()
         {
             InitializeComponent();
             MainViewModel.GetInstance().Profiles.GetListEmail();
-
+            selectedItem = null;
             #region Listas
             ProfileListEmail.IsVisible = true;
             ProfileListPhone.IsVisible = false;
@@ -46,6 +49,23 @@
             ButtonWebPage.IsVisible = false;
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
+            #endregion
+
+            #region Image
+            ImageEmail.IsVisible = true;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
             #endregion
 
             #region Commands
@@ -103,6 +123,23 @@
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
             #endregion
+
+            #region Image
+            ImageEmail.IsVisible = true;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
+            #endregion
         }
 
         private void PhoneProfile_Clicked(object sender, EventArgs e)
@@ -141,6 +178,23 @@
             ButtonWebPage.IsVisible = false;
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
+            #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = true;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
             #endregion
         }
 
@@ -181,6 +235,23 @@
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
             #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = true;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
+            #endregion
         }
 
         private void LinkedinProfile_Clicked(object sender, EventArgs e)
@@ -219,6 +290,23 @@
             ButtonWebPage.IsVisible = false;
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
+            #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = true;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
             #endregion
         }
 
@@ -259,6 +347,23 @@
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
             #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = true;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
+            #endregion
         }
 
         private void SnapchatProfile_Clicked(object sender, EventArgs e)
@@ -297,6 +402,23 @@
             ButtonWebPage.IsVisible = false;
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
+            #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = true;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
             #endregion
         }
 
@@ -338,6 +460,23 @@
             ButtonYoutube.IsVisible = false;
             #endregion
 
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = true;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
+            #endregion
+
         }
 
         private void TiktokProfile_Clicked(object sender, EventArgs e)
@@ -376,6 +515,23 @@
             ButtonWebPage.IsVisible = false;
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
+            #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = true;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
             #endregion
         }
 
@@ -416,6 +572,23 @@
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
             #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = true;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
+            #endregion
         }
 
         private void TwitterProfile_Clicked(object sender, EventArgs e)
@@ -454,6 +627,23 @@
             ButtonWebPage.IsVisible = false;
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
+            #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = true;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
             #endregion
         }
 
@@ -494,6 +684,23 @@
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
             #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = true;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
+            #endregion
         }
 
         private void WhatsAppProfile_Clicked(object sender, EventArgs e)
@@ -532,6 +739,23 @@
             ButtonWebPage.IsVisible = false;
             ButtonWhatsapp.IsVisible = true;
             ButtonYoutube.IsVisible = false;
+            #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = true;
+            ImageYoutube.IsVisible = false;
             #endregion
         }
 
@@ -572,6 +796,23 @@
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = true;
             #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = false;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = true;
+            #endregion
         }
 
         private void TelegramProfile_Clicked(object sender, EventArgs e)
@@ -610,6 +851,23 @@
             ButtonWebPage.IsVisible = false;
             ButtonWhatsapp.IsVisible = false;
             ButtonYoutube.IsVisible = false;
+            #endregion
+
+            #region Image
+            ImageEmail.IsVisible = false;
+            ImageFacebook.IsVisible = false;
+            ImageInstagram.IsVisible = false;
+            ImageLinkedIn.IsVisible = false;
+            ImagePhone.IsVisible = false;
+            ImageSnapchat.IsVisible = false;
+            ImageSpotify.IsVisible = false;
+            ImageTelegram.IsVisible = true;
+            ImageTiktok.IsVisible = false;
+            ImageTwitch.IsVisible = false;
+            ImageTwitter.IsVisible = false;
+            ImageWeb.IsVisible = false;
+            ImageWhatsapp.IsVisible = false;
+            ImageYoutube.IsVisible = false;
             #endregion
         }
         #endregion
@@ -677,6 +935,18 @@
         }
         #endregion
 
+         void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedItem = e.CurrentSelection.FirstOrDefault() as ProfileEmail;
+            if (selectedItem == null)
+                return;
+            MainViewModel.GetInstance().EditProfileEmail = new EditProfileEmailViewModel(selectedItem.ProfileEmailId);
+            App.Navigator.PushAsync(new EditProfileEmailPage());
+            if(MainViewModel.GetInstance().Profiles.IsUp == false)
+            {
+                EmailList.SelectedItem = null;
+            }                                              
+        }
         void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
         {
             ProfileEmail tappedItemEmail = e.Item as ProfileEmail;
@@ -694,6 +964,7 @@
             {
                 MainViewModel.GetInstance().EditProfilePhone = new EditProfilePhoneViewModel(tappedItemPhone.ProfilePhoneId);
                 App.Navigator.PushAsync(new EditProfilePhonePage(tappedItemPhone.ProfilePhoneId));
+                tappedItemPhone = null;
             }
 
             else if (tappedItemSM != null)
@@ -703,46 +974,57 @@
                     case 1:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileFacebookPage());
+                        tappedItemSM = null;
                         break;
                     case 2:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileInstagramPage());
+                        tappedItemSM = null;
                         break;
                     case 3:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileTwitterPage());
+                        tappedItemSM = null;
                         break;
                     case 4:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileSnapchatPage());
+                        tappedItemSM = null;
                         break;
                     case 5:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileLinkedinPage());
+                        tappedItemSM = null;
                         break;
                     case 6:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileTiktokPage());
+                        tappedItemSM = null;
                         break;
                     case 7:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileYoutubePage());
+                        tappedItemSM = null;
                         break;
                     case 8:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileSpotifyPage());
+                        tappedItemSM = null;
                         break;
                     case 9:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileTwitchPage());
+                        tappedItemSM = null;
                         break;
                     case 10:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileWebPagePage());
+                        tappedItemSM = null;
                         break;
                     case 11:
                         MainViewModel.GetInstance().EdithProfile = new EdithProfileViewModel(tappedItemSM.ProfileMSId);
                         App.Navigator.PushAsync(new EditProfileTelegramPage());
+                        tappedItemSM = null;
                         break;
                     default:
                         break;
@@ -754,7 +1036,9 @@
             {
                 MainViewModel.GetInstance().EditProfileWhatsApp = new EditProfileWhatsAppViewModel(tappedItemWhatsapp.ProfileWhatsappId);
                 App.Navigator.PushAsync(new EditProfileWhatsAppPage());
+                tappedItemWhatsapp = null;
             }
+            var a = tappedItemEmail;
         }
         #endregion
     }

@@ -20,7 +20,7 @@
 
         #region Attributes
         private bool isRunning;
-        private int RedSocial;
+        private bool isUp;
         private ObservableCollection<ProfileEmail> profileEmail;
         private ObservableCollection<ProfilePhone> profilePhone;
         private ObservableCollection<ProfileWhatsapp> profileWhatsapp;
@@ -84,6 +84,14 @@
                 SetValue(ref box, value);
             }
         }
+        public bool IsUp
+        {
+            get { return isUp; }
+            private set
+            {
+                SetValue(ref isUp, value);
+            }
+        }
         public ProfileEmail selectedProfileEmail { get; set; }
         public ProfilePhone selectedProfilePhone { get; set; }
         public ProfileWhatsapp selectedProfileWhatsapp { get; set; }
@@ -94,6 +102,7 @@
         public ProfilesViewModel()
         {
             apiService = new ApiService();
+            IsUp = false;
         }
         #endregion
 
@@ -388,12 +397,14 @@
             }
         }
 
-        public void updateProfileEmail(ProfileEmail _profileEmail)
+        public bool updateProfileEmail(ProfileEmail _profileEmail)
         {
             int newIndex = ProfileEmail.IndexOf(selectedProfileEmail);
             ProfileEmail.Remove(selectedProfileEmail);
 
             ProfileEmail.Insert(newIndex, _profileEmail);
+            IsUp = true;
+            return IsUp;
         }
         #endregion
 
@@ -485,6 +496,7 @@
             ProfilePhone.Remove(selectedProfilePhone);
 
             ProfilePhone.Insert(newIndex, _profilePhone);
+            selectedProfilePhone = null;
         }
         #endregion
 
