@@ -4,7 +4,7 @@
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable" 
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:i18n="clr-namespace:Mynfo.Helpers" 
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="Mynfo.Views.MyQRPage"
              BindingContext = "{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>

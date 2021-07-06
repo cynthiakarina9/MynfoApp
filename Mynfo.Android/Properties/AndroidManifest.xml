@@ -10,7 +10,7 @@
 	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
 	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
 	<uses-permission android:name="android.permission.VIBRATE" />
-	<application android:label="Mynfo" android:theme="@style/MainTheme" android:icon="@drawable/logo5" android:extractNativeLibs="true">
+	<application android:label="Mynfo" android:theme="@style/MainTheme" android:icon="@drawable/spotify2" android:extractNativeLibs="true">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>

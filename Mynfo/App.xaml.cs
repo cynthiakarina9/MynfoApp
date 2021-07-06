@@ -49,8 +49,7 @@
             Preferences.Set("IsEnabled", true);
 
             if (Settings.IsRemembered == "true")
-            {
-                
+            {                
                 var token = new TokenResponse();               
                 using (var conn = new SQLite.SQLiteConnection(App.root_db))
                 {

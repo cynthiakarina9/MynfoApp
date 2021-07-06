@@ -381,43 +381,32 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <ImageButton
-                                                BackgroundColor="Transparent"
-                                                Grid.Column="0"
-                                                Grid.RowSpan="2"
-                                                HeightRequest="40"
-                                                Source="mail2"
-                                                WidthRequest="40"/>
+                                            BackgroundColor="Transparent"
+                                            Grid.Column="0"
+                                            Grid.RowSpan="2"
+                                            HeightRequest="40"
+                                            Source="mail2"
+                                            WidthRequest="40"/>
                                         <Label 
-                                                FontSize="17"
-                                                FontAttributes="Bold" 
-                                                Grid.Column="1"
-                                                Grid.Row="0"
-                                                Text="{Binding Name}"
-                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
-                                                VerticalOptions="StartAndExpand"
-                                                HorizontalTextAlignment = "Start"/>
+                                            FontSize="17"
+                                            FontAttributes="Bold" 
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Text="{Binding Name}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"
+                                            VerticalOptions="StartAndExpand"
+                                            HorizontalTextAlignment = "Start"/>
                                         <Label 
-                                                Grid.Column="1"
-                                                Grid.Row="1"
-                                                Text="{Binding Email, Mode=TwoWay}"
-                                                TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                               
-                                                FontSize="13"
-                                                VerticalOptions="EndAndExpand"
-                                                HorizontalTextAlignment="Start"/>
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Text="{Binding Email, Mode=TwoWay}"
+                                            TextColor="{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                               
+                                            FontSize="13"
+                                            VerticalOptions="EndAndExpand"
+                                            HorizontalTextAlignment="Start"/>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
-                            <CollectionView.EmptyView>
-                                <ContentView>
-                                    <StackLayout 
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand">
-                                        <Label 
-                                        IsVisible="{Binding EmptyList}"
-                                        Text="{i18n:Translate ProfileNull}"/>
-                                    </StackLayout>
-                                </ContentView>
-                            </CollectionView.EmptyView>
                         </CollectionView>
                         <!--Lista vacia-->
                         <Label

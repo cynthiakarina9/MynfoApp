@@ -202,6 +202,7 @@
                 ImageArray = user1.ImageArray,
                 UserTypeId = user1.UserTypeId,
                 Password = this.Password,
+                Fecha = DateTime.Now,
                 Share = true
             };
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
