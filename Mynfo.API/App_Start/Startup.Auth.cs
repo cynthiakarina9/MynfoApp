@@ -39,9 +39,9 @@ namespace Mynfo.API
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 //AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(1),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1000),
                 // En el modo de producción establezca AllowInsecureHttp = false
-                AllowInsecureHttp = true
+                AllowInsecureHttp = false
             };
 
             // Permitir que la aplicación use tokens portadores para autenticar usuarios
