@@ -308,7 +308,7 @@
                             Margin="0,10,0,15"
                             Text="Email"
                             TextColor="{StaticResource MainColor}"/>-->
-                        <!--<ListView  
+                        <ListView  
                             Grid.Row="1"
                             HasUnevenRows="true"
                             ItemsSource="{Binding ProfileEmail, Mode=TwoWay}"
@@ -356,8 +356,8 @@
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>-->
-                        <CollectionView 
+                        </ListView>
+                        <!--<CollectionView 
                             ItemsSource="{Binding ProfileEmail, Mode=TwoWay}"
                             Grid.Row="1"
                             SelectionChanged="OnCollectionViewSelectionChanged"
@@ -372,7 +372,7 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid 
-                                            Padding="0,10,0,10">
+                                        Padding="0,10,0,10">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
@@ -407,7 +407,7 @@
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
-                        </CollectionView>
+                        </CollectionView>-->
                         <!--Lista vacia-->
                         <Label
                             FontAttributes="Bold"

@@ -7,6 +7,7 @@
     using Android.Nfc.Tech;
     using Android.OS;
     using Android.Runtime;
+    using Mynfo.Domain;
     using Mynfo.Helpers;
     using Mynfo.Services;
     using Mynfo.ViewModels;
@@ -15,12 +16,15 @@
     using Plugin.Permissions;
     using Rg.Plugins.Popup.Services;
     using System;
+    using Device = Xamarin.Forms.Device;
     using System.Configuration;
     using System.IO;
     using System.Text;
     using System.Threading;
+    using System.Threading.Tasks;
     using Xamarin.Essentials;
     using Xamarin.Forms;
+    using Mynfo.Models;
 
     [Activity(Label = "Mynfo", Icon = "@mipmap/icon", /*Theme = "@style/MainTheme",*/ MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait), IntentFilter(new[] { "android.nfc.action.TECH_DISCOVERED" },    
     Categories = new[] { "android.intent.category.DEFAULT" }), 
@@ -33,6 +37,8 @@
     {
         public static NfcAdapter NFCdevice;
         public string json;
+        public string id_user { get; set; }        
+        public Box box_detail = new Box();
         public Mynfo.Droid.Services.CardReader cardReader;
         public NfcReaderFlags READER_FLAGS = NfcReaderFlags.NfcA | NfcReaderFlags.SkipNdefCheck;
         #region Singleton
@@ -119,10 +125,12 @@
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
         public override void OnBackPressed()
         {
             Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed);
         }
+
         private void EnableReaderMode()
         {
             try
@@ -135,6 +143,7 @@
                 Console.WriteLine(ex);
             }            
         }
+
         private void DisableReaderMode()
         {
             try 
@@ -153,13 +162,28 @@
                 Console.WriteLine(ex);
             }            
         }
+
+        private async Task<Box> GetBox(int user_id)
+        {            
+            ApiService apiService = new ApiService();
+           
+            var apiSecurity = App.Current.Resources["APISecurity"].ToString();
+                                                               
+            box_detail = await apiService.GetBoxDefault<Box>(apiSecurity,
+                                                "/api",
+                                                "/Boxes",
+                                                user_id);
+            return box_detail;
+        }
+
         protected string TagUid;
+
         protected override void OnResume()
         {
             base.OnResume();            
+            int A;
             try 
             {
-
                 if (TAGPage.write_nfc == true)
                 {
                     //App.Navigator.PushAsync(new ConfigStikerPage());                    
@@ -183,6 +207,8 @@
                                 string[] variables = result.Split('=');
                                 string[] depura_userid = variables[1].Split('&');                                
                                 user_id = Convert.ToInt32(depura_userid[0]);
+                                GetBox(user_id);
+                                Imprime_box.InsertForeignData(user_id, box_detail.BoxId);
                             }
                         }
                     }
@@ -248,13 +274,13 @@
                                 string[] variables = result.Split('=');                                                                
                                 string[] depura_userid = variables[1].Split('&');
                                 string tag_id = variables[2]; 
-                                string user_id = depura_userid[0];                                
+                                id_user = depura_userid[0];
+                                Imprime_box.Consulta_user(id_user, tag_id);
 
-                                Imprime_box.Consulta_user(user_id, tag_id);
                                 //OnDestroy();
                             }
                         }
-                    }
+                    } 
                 }                
             }
             catch (Exception ex) 
@@ -263,6 +289,33 @@
             }
             //DisableReaderMode();
             
+        }
+
+        protected override void OnRestart()
+        {
+            base.OnRestart();         
+            instance = this;
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
+
+            //popups
+            Rg.Plugins.Popup.Popup.Init(this);
+
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            get_status_nfc();
+            var receiver = new Mynfo.Droid.Services.MessageReceiver();
+            RegisterReceiver(receiver, new IntentFilter("MSG_NAME"));
+            cardReader = new Mynfo.Droid.Services.CardReader();            
+
+            if (Intent?.Extras != null)
+            {
+                var message = Intent.Extras.GetString("MSG_DATA");
+                //await App.DisplayAlertAsync(message);
+            }
+
+            //GetBox(2);
+            Imprime_box.InsertForeignData(2,56);
+
         }
 
         protected override void OnDestroy()
@@ -275,7 +328,6 @@
                 mNfcAdapter = null;
             }
         }
-            
 
         //Convert the byte array of the NfcCard Uid to string
         private static string ByteArrayToString(byte[] ba)

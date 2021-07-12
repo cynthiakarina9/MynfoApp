@@ -12,6 +12,7 @@ using Mynfo.Domain;
 
 namespace Mynfo.Backend.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class Box_ProfileSMController : Controller
     {
         private LocalDataContext db = new LocalDataContext();

@@ -35,50 +35,51 @@
                             Grid.Row="0"
                             HorizontalOptions="CenterAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="99*"/>
+                                <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="80*"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50*"/>
-                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="50*"/>
                                 </Grid.ColumnDefinitions>
-                                <controls:CircleImage
-                                    BorderColor="{StaticResource MainColor}"
-                                    BorderThickness="3"
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
+                                <Grid
                                     Grid.Column="0"
-                                    HeightRequest="100"
-                                    WidthRequest="100"
-                                    Aspect="AspectFill"
-                                    x:Name="ForeignUserImage">
-                                </controls:CircleImage>
-                                <Label 
-                                    Grid.Column="1"
-                                    Grid.Row="0"
-                                    FontAttributes="Bold"
-                                    FontSize = "15"
-                                    HorizontalOptions="FillAndExpand"
-                                    HorizontalTextAlignment="Start"
-                                    TextColor = "{StaticResource MainColor}"
-                                    x:Name="ForeignUserName"/>
+                                    Grid.Row="0">
+                                    <Label                                         
+                                        FontAttributes="Bold"
+                                        FontSize = "15"                                    
+                                        HorizontalTextAlignment="Start"                                    
+                                        TextColor = "{StaticResource MainColor}"                                    
+                                        x:Name="ForeignUserName"/>
+                                </Grid>
+                                <Grid
+                                    Grid.Column="0"
+                                    Grid.Row="1">
+                                    <controls:CircleImage
+                                        BorderColor="{StaticResource MainColor}"
+                                        BorderThickness="3"                                        
+                                        HeightRequest="100"                                    
+                                        WidthRequest="100"
+                                        Aspect="AspectFill"
+                                        x:Name="ForeignUserImage">
+                                    </controls:CircleImage>
+                                </Grid>
                                 <Grid
                                     Grid.Column="1"
-                                    Grid.Row="1">
+                                    Grid.RowSpan="2">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="25"/>
-                                        <RowDefinition Height="25"/>
-                                        <RowDefinition Height="25"/>
-                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Label 
                                         Grid.Row="0"
                                         FontSize = "15"
                                         HorizontalTextAlignment="Start"
+                                        Margin="0,0,0,-10"
                                         VerticalTextAlignment="Center"
                                         TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                        
                                         x:Name="ForeignAge"/>
@@ -94,7 +95,8 @@
                                         FontSize = "15"
                                         HorizontalTextAlignment="Start"
                                         VerticalTextAlignment="Center"
-                                        TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                       
+                                        TextColor = "{AppThemeBinding Light={StaticResource Light_FontColor}, Dark={StaticResource Dark_FontColor}}"                                        
+                                        VerticalOptions="FillAndExpand"
                                         x:Name="ForeignJob"/>
                                     <Label 
                                         Grid.Row="3"
@@ -107,10 +109,9 @@
                                 </Grid>
                             </Grid>
                             <Line
-                                Grid.Row="2"
+                                Grid.Row="1"
                                 HeightRequest="1"
-                                BackgroundColor="#FF5521"
-                                Margin="0,0,0,0"
+                                BackgroundColor="#FF5521"                                
                                 WidthRequest="1"/>
                         </Grid>
 

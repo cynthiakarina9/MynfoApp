@@ -1,39 +1,28 @@
-﻿using Android.Content;
-using Android.Nfc;
-using Android.Nfc.Tech;
+﻿using System;
 using Mynfo.Domain;
 using Mynfo.Models;
-using Mynfo.Services;
 using Mynfo.ViewModels;
 using Mynfo.Views;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Device = Xamarin.Forms.Device;
+using Rg.Plugins.Popup.Services;
 
-namespace Mynfo.Droid.Services
+namespace Mynfo.Services
 {
-    class Imprime_box
+    public class Imprime_box
     {
         public static void Consulta_user(string user_id, string tag_id)
         {
             try
             {
+                string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
-
-                //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
-
-                string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+                //string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
                 string queryLastBoxCreated =
 
-                "select dbo.Users.FirstName, dbo.Users.LastName, dbo.Users.UserTypeId, dbo.Users.ImagePath, dbo.Boxes.BoxId from dbo.Users " +
+                "select dbo.Users.FirstName, dbo.Users.LastName, dbo.Users.UserTypeId, dbo.Users.ImagePath, dbo.Users.Share, dbo.Boxes.BoxId from dbo.Users " +
                 "join dbo.Boxes on(dbo.Boxes.UserId = dbo.Users.UserId) " +
                 " where dbo.Users.UserId = " + user_id +
                 " and dbo.Boxes.BoxDefault = 1";
@@ -59,7 +48,11 @@ namespace Mynfo.Droid.Services
                                 string get_ImagePath = reader["ImagePath"].ToString();
                                 int get_box_id = (int)reader["BoxId"];
                                 int UserTypeId_get = (int)reader["UserTypeId"];
-                                InsertForeignData(user_id, get_box_id);
+                                bool Share = (bool)reader["Share"];
+
+                                if (Share != true) { user_id = "1"; get_box_id = 0; }
+
+                                InsertForeignData(Convert.ToInt32(user_id), get_box_id);
                             }
                         }
 
@@ -72,14 +65,15 @@ namespace Mynfo.Droid.Services
                 Console.WriteLine(ex);
             }
         }
-        
-        public static async void InsertForeignData(string user_id, int box_id)
+
+        public static async void InsertForeignData(int user_id, int box_id)
         {
             ApiService apiService = new ApiService();
 
-            int user_I = Convert.ToInt32(user_id);
+            int user_I = user_id;
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             User box_detail = new User();
+            AddViewToUser(user_I);
             box_detail = await apiService.GetUserId(apiSecurity,
                                                 "/api",
                                                 "/Users",
@@ -92,48 +86,71 @@ namespace Mynfo.Droid.Services
 
             ForeingBox foreingBox;
             ForeingProfile foreingProfile;
-
+            ForeingBox A = new ForeingBox();
+            ForeingBox oldForeing = new ForeingBox(); ;
             //Validar que la box no exista
-            //using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
-            //{
-            //    connSQLite.CreateTable<ForeingBox>();
-            //}
-
-
-
-            //Inicializar la box foranea
-            foreingBox = new ForeingBox
-            {
-                BoxId = box_id,
-                UserId = user_I,
-                //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),
-                Time = DateTime.Now,
-                ImagePath = box_detail.ImagePath,
-                UserTypeId = box_detail.UserTypeId,
-                FirstName = box_detail.FirstName,
-                LastName = box_detail.LastName
-
-            };
-
-            //Insertar la box foranea
             using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
             {
-                connSQLite.Insert(foreingBox);
+                A = connSQLite.FindWithQuery<ForeingBox>("select * from ForeingBox where ForeingBox.BoxId = " + box_id + " and ForeingBox.UserRecivedId = " + MainViewModel.GetInstance().User.UserId);
+            }
+
+            if (A == null)
+            {
+                //Inicializar la box foranea
+                foreingBox = new ForeingBox
+                {
+                    BoxId = box_id,
+                    UserId = user_I,
+                    //Time = Convert.ToDateTime(nfcData[0].time).ToUniversalTime(),
+                    Time = DateTime.Now,
+                    ImagePath = box_detail.ImagePath,
+                    UserTypeId = box_detail.UserTypeId,
+                    FirstName = box_detail.FirstName,
+                    LastName = box_detail.LastName,
+                    Edad = box_detail.Edad,
+                    Ubicacion = box_detail.Ubicacion,
+                    Ocupacion = box_detail.Ocupacion,
+                    Conexiones = box_detail.Conexiones,
+                    UserRecivedId = MainViewModel.GetInstance().User.UserId
+                };
+
+                //Insertar la box foranea
+                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    connSQLite.Insert(foreingBox);
+                }
+            }
+            else
+            {
+                using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                {
+                    oldForeing = A;
+                    connSQLite.ExecuteScalar<ForeingBox>("UPDATE ForeingBox SET Conexiones = ? WHERE ForeingBox.UserId = ?", box_detail.Conexiones, box_detail.UserId);
+                    connSQLite.ExecuteScalar<ForeingBox>("UPDATE ForeingBox SET Time = ? WHERE ForeingBox.BoxId = ?", DateTime.Now, A.BoxId);
+                    A = connSQLite.FindWithQuery<ForeingBox>("select * from ForeingBox where ForeingBox.BoxId = ?", box_id);
+                }
+                foreingBox = A;
             }
             try
             {
                 if (box_id != 0)
                 {
-                    using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                    //using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                    //{
+                    //    connSQLite.CreateTable<Profile_get>();
+                    //}
+                    if (A != null)
                     {
-                        connSQLite.CreateTable<Profile_get>();
+                        using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                        {
+                            connSQLite.Execute("Delete from ForeingProfile Where ForeingProfile.BoxId = ?", A.BoxId);
+                        }
                     }
-
-
+                    #region ForeignProfiles
                     System.Text.StringBuilder sb;
-                    //string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+                    string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
-                    string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+                    //string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
 
                     //Creación de perfiles locales de box local
                     string queryGetBoxEmail = "select * from dbo.ProfileEmails " +
@@ -149,6 +166,10 @@ namespace Mynfo.Droid.Services
                                                     "(dbo.ProfileSMs.ProfileMSId = dbo.Box_ProfileSM.ProfileMSId) " +
                                                     "join dbo.RedSocials on(dbo.ProfileSMs.RedSocialId = dbo.RedSocials.RedSocialId) " +
                                                     "where dbo.Box_ProfileSM.BoxId = " + box_id;
+                    string queryGetBoxWhatsappProfiles = "select * from dbo.ProfileWhatsapps " +
+                                                    "join dbo.Box_ProfileWhatsapp on" +
+                                                    "(dbo.ProfileWhatsapps.ProfileWhatsappId = dbo.Box_ProfileWhatsapp.ProfileWhatsappId) " +
+                                                    "where dbo.Box_ProfileWhatsapp.BoxId = " + box_id;
 
                     //Consulta para obtener perfiles email
                     using (SqlConnection conn1 = new SqlConnection(cadenaConexion))
@@ -253,19 +274,123 @@ namespace Mynfo.Droid.Services
                             conn1.Close();
                         }
                     }
+
+                    //Consulta para obtener perfiles Whatsapp
+                    using (SqlConnection conn1 = new SqlConnection(cadenaConexion))
+                    {
+                        sb = new System.Text.StringBuilder();
+                        sb.Append(queryGetBoxWhatsappProfiles);
+
+                        string sql = sb.ToString();
+
+                        using (SqlCommand command = new SqlCommand(sql, conn1))
+                        {
+                            conn1.Open();
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    foreingProfile = new ForeingProfile
+                                    {
+                                        BoxId = box_id,
+                                        UserId = (int)reader["UserId"],
+                                        ProfileName = (string)reader["Name"],
+                                        value = (string)reader["Number"],
+                                        ProfileType = "Whatsapp"
+                                    };
+                                    //Crear perfil de Whatsapp de box local predeterminada
+                                    using (var connSQLite = new SQLite.SQLiteConnection(App.root_db))
+                                    {
+                                        connSQLite.Insert(foreingProfile);
+                                    }
+                                }
+                            }
+
+                            conn1.Close();
+                        }
+                    }
+                    #endregion
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        //App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
+                        MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(foreingBox);
+                        //App.Navigator.PopAsync();
+                        if (PopupNavigation.PopupStack.Count != 0)
+                        {
+                            PopupNavigation.Instance.PopAllAsync();
+                        }                            
+                        PopupNavigation.Instance.PushAsync(new ForeingBoxPage(foreingBox, true));
+                        if (A == null)
+                        {
+                            MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
+                        }
+                        else
+                        {
+                            //Box anterior
+                            //oldForeing
+                            MainViewModel.GetInstance().ListForeignBox.UpdateList(foreingBox.UserId);
+
+                        }
+                        PopupNavigation.Instance.PushAsync(new ForeingBoxPage(foreingBox, true));
+                    });
                 }
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    //App.Navigator.PushAsync(new ForeingBoxPage(foreingBox, true));
-                    MainViewModel.GetInstance().ForeingBox = new ForeingBoxViewModel(foreingBox, true);
-                    Application.Current.MainPage.Navigation.PushModalAsync(new ForeingBoxPage(foreingBox, true));
-                    MainViewModel.GetInstance().ListForeignBox.AddList(foreingBox);
-                });
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-        }        
+        }
+
+        public static void AddViewToUser(int _UserId)
+        {
+            System.Text.StringBuilder sb;
+            //string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string queryAddView = "UPDATE dbo.Users SET Conexiones = Conexiones + 1 WHERE dbo.Users.UserId = " + _UserId;
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryAddView);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+            }
+        }
+
+        public static int GetViewsByUser(int _UserId)
+        {
+            System.Text.StringBuilder sb;
+            int views = 0;
+            //string cadenaConexion = @"data source=serverappmynfo1.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string cadenaConexion = @"data source=serverappmynfo.database.windows.net;initial catalog=mynfo;user id=adminmynfo;password=4dmiNFC*Atx2020;Connect Timeout=60";
+            string queryAddView = "select * from  dbo.Users WHERE dbo.Users.UserId = " + _UserId;
+            using (SqlConnection connection = new SqlConnection(cadenaConexion))
+            {
+                sb = new System.Text.StringBuilder();
+                sb.Append(queryAddView);
+                string sql = sb.ToString();
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            views = (int)reader["Conexiones"];
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            return views;
+        }
     }
 }

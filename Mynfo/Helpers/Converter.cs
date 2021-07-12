@@ -22,6 +22,7 @@
                 Ubicacion = user.Ubicacion,
                 Ocupacion = user.Ocupacion,
                 Conexiones = user.Conexiones,
+                Fecha = user.Fecha
             };
         }
         public static User ToUserDomain(UserLocal user, byte[] imageArray)
@@ -40,7 +41,7 @@
                 Ubicacion = user.Ubicacion,
                 Ocupacion = user.Ocupacion,
                 Conexiones = user.Conexiones,
-                
+                Fecha = user.Fecha
             };
         }
         #endregion
