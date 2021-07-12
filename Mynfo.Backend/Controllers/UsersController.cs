@@ -12,6 +12,7 @@ using Mynfo.Domain;
 
 namespace Mynfo.Backend.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private LocalDataContext db = new LocalDataContext();

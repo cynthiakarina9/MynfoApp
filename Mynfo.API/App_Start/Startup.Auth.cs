@@ -39,7 +39,7 @@ namespace Mynfo.API
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 //AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1000),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(10000),
                 // En el modo de producción establezca AllowInsecureHttp = false
                 AllowInsecureHttp = false
             };

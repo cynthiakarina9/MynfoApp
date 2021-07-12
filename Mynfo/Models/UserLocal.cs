@@ -1,6 +1,7 @@
 ﻿namespace Mynfo.Models
 {
     using SQLite;
+    using System;
 
     public class UserLocal
     {
@@ -26,6 +27,8 @@
         public string Ocupacion { get; set; }
 
         public int Conexiones { get; set; }
+
+        public DateTime Fecha { get; set; }
 
         public string Password { get; set; }
 

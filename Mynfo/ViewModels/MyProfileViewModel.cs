@@ -239,8 +239,8 @@
             {
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
             }
-
-            var userDomain = Converter.ToUserDomain(this.User, imageArray);
+            
+            var userDomain = Converter.ToUserDomain(this.User, imageArray);            
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var response = await this.apiService.Put(
                 apiSecurity,

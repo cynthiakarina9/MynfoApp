@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Mynfo.Backend.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProfileSMsController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
