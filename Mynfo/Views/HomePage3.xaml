@@ -13,7 +13,7 @@
                         <VisualState x:Name="Selected" >
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="Transparent" />
+                                        Value="Transparent"/>
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
